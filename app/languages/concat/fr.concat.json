@@ -1,0 +1,22 @@
+{
+	"home": "Accueil",
+	"login": "Connexion",
+	"alert_close_btn_tooltip": "Fermer",
+	"btn_label": "Je suis un label",
+	"dropdown_search_empty": "Aucune donnée trouvée",
+	"dropdown_count": "{{selected}} éléments sélectionnés sur {{total}}",
+	"dropdown_count_all": "Tous les éléments sélectionnés",
+	"dropdown_required_tooltip": "Champ requis",
+	"input_password_lowercase": "Une lettre minuscule",
+	"input_password_uppercase": "Une lettre majuscule",
+	"input_password_number": "Un chiffre",
+	"input_password_special_char": "Un caractère spécial",
+	"input_password_min_length": "Au moins {{length}} caractères",
+	"input_required_tooltip": "Champ requis",
+	"pagination_previous": "Précédent",
+	"pagination_next": "Suivant",
+	"pagination_first": "Premier",
+	"pagination_last": "Dernier",
+	"popup_close": "Fermer",
+	"textarea_required_tooltip": "Champ requis"
+}
