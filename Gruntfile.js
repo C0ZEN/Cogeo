@@ -34,8 +34,11 @@ module.exports = function (grunt) {
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower     : {
-        files: ['bower.json'],
-        tasks: ['wiredep']
+        files: [
+          'bower.json',
+          '<%= yeoman.app %>/languages/**/*.json'
+        ],
+        tasks: ['wiredep', 'languages']
       },
       js        : {
         files  : [
@@ -56,7 +59,7 @@ module.exports = function (grunt) {
         tasks: ['newer:copy:styles', 'postcss']
       },
       less      : {
-        files: ['<%= yeoman.app %>/styles/*.less'],
+        files: ['<%= yeoman.app %>/styles/**/*.less'],
         tasks: ['less:main', 'newer:copy:styles', 'postcss']
       },
       gruntfile : {

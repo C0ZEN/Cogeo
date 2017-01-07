@@ -24,7 +24,7 @@
     "animate.css": "^3.5.2",
     "angular-uuid-service": "^0.1.0",
     "angular-elastic": "https://C0ZEN@bitbucket.org/C0ZEN/angular-elastic.git#v2.6.0",
-    "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#1.0.8",
+    "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop",
     "scrollreveal": "^3.3.2",
     "angular-scroll": "^1.0.0"
   },
