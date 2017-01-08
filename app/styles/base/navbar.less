@@ -1,0 +1,85 @@
+nav.atom-navbar {
+  display:             flex;
+  flex-direction:      row;
+  align-items:         center;
+  justify-content:     space-between;
+  position:            fixed;
+  top:                 0;
+  left:                0;
+  padding:             0 @atom-space-base;
+  width:               100%;
+  z-index:             1000;
+  background-color:    @atom-color-line-rule-light;
+  border-bottom:       1px solid @atom-color-line-rule;
+  animation-fill-mode: @atom-animation-fill;
+  animation-duration:  @atom-animation-duration-in-fast;
+  height:              60px;
+  div {
+    display:         flex;
+    flex-direction:  row;
+    align-items:     center;
+    justify-content: space-between;
+    height:          100%;
+    img {
+      height:       41px;
+      margin-right: @atom-space-base;
+      &.brand {
+        cursor:  pointer;
+        outline: @atom-outline;
+      }
+    }
+    div.link {
+      height:      100%;
+      padding:     0 @atom-space-small;
+      margin:      0 @atom-space-base;
+      cursor:      pointer;
+      position:    relative;
+      outline:     @atom-outline;
+      color:       @atom-color-font;
+      font-size:   15px;
+      font-weight: 600;
+      transition:  @atom-transition;
+      &:after {
+        position:         absolute;
+        left:             0;
+        bottom:           -1px;
+        width:            100%;
+        height:           0;
+        content:          '';
+        background-color: @atom-color-line-rule-light;
+        transition:       @atom-transition;
+      }
+      &:hover,
+      &:focus,
+      &:active {
+        &:after {
+          height: 4px;
+        }
+        &.link-blue {
+          color: @atom-color-blue;
+          &:after {
+            background-color: @atom-color-blue;
+          }
+        }
+        &.link-green {
+          color: @atom-color-green;
+          &:after {
+            background-color: @atom-color-green;
+          }
+        }
+        &.link-purple {
+          color: @atom-color-purple;
+          &:after {
+            background-color: @atom-color-purple;
+          }
+        }
+        &.link-yellow {
+          color: @atom-color-yellow;
+          &:after {
+            background-color: @atom-color-yellow;
+          }
+        }
+      }
+    }
+  }
+}

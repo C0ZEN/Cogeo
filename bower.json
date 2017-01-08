@@ -60,7 +60,9 @@
     },
     "cozen-lib": {
       "main": [
-        "release/all-in-one.min.js",
+        "release/clean/main.js",
+        "release/clean/template.cache.js",
+        "release/clean/directives.js",
         "release/main.min.css"
       ]
     }

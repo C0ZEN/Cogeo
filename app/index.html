@@ -35,9 +35,12 @@
     <div ng-include="'views/common/navbar/navbar.top.html'"></div>
 
     <!-- Dynamic content goes here, depending on the current ui-view -->
-    <cozen-view cozen-view-scroll-bar-height="{{ innerHeight - 72 }}">
+    <cozen-view cozen-view-scroll-bar-height="{{ data.innerHeight - 72 }}">
       <div ui-view></div>
     </cozen-view>
+
+    <!-- Popups (append to body, all loaded) -->
+    <div ng-include="'views/common/popups.html'"></div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -64,29 +67,25 @@
     <script src="bower_components/ng-scrollbars/src/scrollbars.js"></script>
     <script src="bower_components/angular-uuid-service/angular-uuid-service.js"></script>
     <script src="bower_components/angular-elastic/elastic.js"></script>
-    <script src="bower_components/cozen-lib/release/all-in-one.min.js"></script>
+    <script src="bower_components/cozen-lib/release/clean/main.js"></script>
+    <script src="bower_components/cozen-lib/release/clean/template.cache.js"></script>
+    <script src="bower_components/cozen-lib/release/clean/directives.js"></script>
     <script src="bower_components/scrollreveal/dist/scrollreveal.js"></script>
     <script src="bower_components/angular-scroll/angular-scroll.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- start-js -->
-
-    <script src="scripts/app.js" type="text/javascript"></script>
-
-    <script src="views/home/home.router.js" type="text/javascript"></script>
-
-    <script src="views/home/home.ctrl.js" type="text/javascript"></script>
-
-    <script src="views/app.router.js" type="text/javascript"></script>
-
-    <script src="scripts/factories/goTo.factory.js" type="text/javascript"></script>
-
-    <script src="scripts/controllers/main.js" type="text/javascript"></script>
-
-    <script src="scripts/controllers/about.js" type="text/javascript"></script>
-
-    <!-- end-js -->
+<script src="app.js" type="text/javascript"></script>
+<script src="views/home/home.router.js" type="text/javascript"></script>
+<script src="views/home/home.ctrl.js" type="text/javascript"></script>
+<script src="views/common/navbar/navbar.ctrl.js" type="text/javascript"></script>
+<script src="views/app.router.js" type="text/javascript"></script>
+<script src="scripts/factories/goTo.factory.js" type="text/javascript"></script>
+<script src="scripts/factories/backState.factory.js" type="text/javascript"></script>
+<script src="scripts/controllers/main.js" type="text/javascript"></script>
+<script src="scripts/controllers/about.js" type="text/javascript"></script>
+<!-- end-js -->
 
   </body>
 </html>

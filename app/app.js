@@ -78,13 +78,36 @@
   run.$inject = [
     '$rootScope',
     '$state',
-    'goTo'
+    'goTo',
+    'cozenPopupFactory'
   ];
 
-  function run($rootScope, $state, goTo) {
-    $rootScope.$state      = $state;
-    $rootScope.innerHeight = window.innerHeight;
-    $rootScope.goTo        = goTo;
+  function run($rootScope, $state, goTo, cozenPopupFactory) {
+
+    // Public global data
+    $rootScope.data = {
+      innerHeight: window.innerHeight
+    };
+
+    // Public global services
+    $rootScope.$state = $state;
+    $rootScope.goTo   = goTo;
+
+    // Public global functions
+    $rootScope.methods = {
+      showPopup: showPopup
+    };
+
+    function showPopup($event, name) {
+
+      // Required to avoid an show and hide behavior
+      $event.stopPropagation();
+
+      // Show the popup
+      cozenPopupFactory.show({
+        name: name
+      });
+    }
   }
 
 })(window.angular, window);
