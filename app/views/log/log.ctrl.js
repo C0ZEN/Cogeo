@@ -5,13 +5,24 @@
     .module('4pjtApp')
     .controller('LogCtrl', LogCtrl);
 
-  LogCtrl.$inject = [];
+  LogCtrl.$inject = [
+    '$timeout'
+  ];
 
-  function LogCtrl() {
+  function LogCtrl($timeout) {
     var vm = this;
 
     // Common data
-    vm.data = {};
+    vm.register = {
+      passwordConfig: {
+        lowercase  : true,
+        uppercase  : true,
+        number     : true,
+        specialChar: false,
+        minLength  : 8
+      }
+    };
+    vm.login    = {};
 
     // Methods
     vm.methods = {};

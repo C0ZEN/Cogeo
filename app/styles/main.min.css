@@ -220,6 +220,11 @@ div.atom-btn-container {
   margin-left: 6px;
   margin-right: 6px;
 }
+p.help-text {
+  margin: 0;
+  color: #8c8c8c;
+  text-align: justify;
+}
 /********************/
 /**   TEXT ALIGN   **/
 /********************/

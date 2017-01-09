@@ -1,11 +1,82 @@
-<div class="container space-large-before text-center">
+<div class="container space-large-before">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-8">
+
+      <!-- Title -->
       <h1>{{ 'log_register_title' | translate }}</h1>
-      <p class="grey">
+      <p class="help-text">
         {{ 'log_register_subtitle_1' | translate }}
         <a href
+           ng-click="goTo.view('app.login')">
+          {{ 'log_register_subtitle_2' | translate }}</a>
+        {{ 'log_register_subtitle_3' | translate }}
       </p>
+      <p class="help-text">{{ 'log_register_subtitle_4' | translate }}</p>
+
+      <!-- Form -->
+      <div class="row space-large-before">
+        <div class="col-xs-8">
+          <cozen-form cozen-form-name="register"
+                      cozen-form-ctrl="vm">
+            <cozen-input cozen-input-model="vm.register.surname"
+                         cozen-input-name="lastname"
+                         cozen-input-max-length="30"
+                         cozen-input-pattern-name
+                         cozen-input-label="log_register_surname"
+                         cozen-input-placeholder="log_register_surname_pc"
+                         cozen-input-required="true"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.register.givenName"
+                         cozen-input-name="firstname"
+                         cozen-input-max-length="30"
+                         cozen-input-pattern-name
+                         cozen-input-label="log_register_given_name"
+                         cozen-input-placeholder="log_register_given_name_pc"
+                         cozen-input-required="true"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.register.username"
+                         cozen-input-name="username"
+                         cozen-input-max-length="30"
+                         cozen-input-pattern-letter
+                         cozen-input-label="log_register_username"
+                         cozen-input-placeholder="log_register_username_pc"
+                         cozen-input-required="true"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.register.email"
+                         cozen-input-name="email"
+                         cozen-input-max-length="50"
+                         cozen-input-pattern-email
+                         cozen-input-label="log_register_email"
+                         cozen-input-placeholder="log_register_email_pc"
+                         cozen-input-required="true"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.register.password"
+                         cozen-input-name="password"
+                         cozen-input-max-length="40"
+                         cozen-input-label="log_register_password"
+                         cozen-input-placeholder="log_register_password_pc"
+                         cozen-input-required="true"
+                         cozen-input-type-password
+                         cozen-input-type-password-config="vm.register.passwordConfig"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.register.checkPassword"
+                         cozen-input-name="check-password"
+                         cozen-input-max-length="40"
+                         cozen-input-label="log_register_check_password"
+                         cozen-input-placeholder="log_register_check_password_pc"
+                         cozen-input-required="true"
+                         cozen-input-type-password
+                         cozen-input-has-error="vm.register.checkPassword != vm.register.password"
+                         cozen-input-type-password-config="vm.register.passwordConfig">
+            </cozen-input>
+          </cozen-form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
