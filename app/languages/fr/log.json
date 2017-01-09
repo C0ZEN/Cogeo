@@ -1,3 +1,9 @@
 {
-  "login": "Connexion"
+  "login": "Connexion",
+  "register": "Inscription",
+  "log_register_title": "Je crée mon compte Cogeo",
+  "log_register_subtitle_1": "Tu peux passer cette étape en te",
+  "log_register_subtitle_2": "connectant",
+  "log_register_subtitle_3": "directement à ton compte Google ou Facebook.",
+  "log_register_subtitle_4": "Cependant, nous te conseillons de t'inscrire pour mieux maîtriser tes informations d'identifications."
 }

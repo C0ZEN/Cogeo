@@ -9,14 +9,17 @@
     <div class="col-xs-12 space-large-after">
       <div class="col-xs-6 text-right">
         <cozen-btn cozen-btn-type-warning
+                   cozen-btn-icon-right="fa icons8-logout-rounded"
                    cozen-btn-label="popup_logout_body_logout"
-                   cozen-btn-auto-sizing="true">
+                   cozen-btn-auto-sizing="true"
+                   cozen-btn-on-click="vm.methods.logout()">
         </cozen-btn>
       </div>
       <div class="col-xs-6 text-left">
-        <cozen-btn cozen-btn-type-warning
-                   cozen-btn-label="popup_logout_body_logout"
-                   cozen-btn-auto-sizing="true">
+        <cozen-btn cozen-btn-type-cold
+                   cozen-btn-label="popup_logout_body_cancel"
+                   cozen-btn-auto-sizing="true"
+                   cozen-btn-on-click="vm.methods.closePopup('logout')">
         </cozen-btn>
       </div>
     </div>

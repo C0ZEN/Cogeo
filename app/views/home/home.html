@@ -274,8 +274,14 @@
           </div>
           <div>
             <h4 class="yellow">{{ 'home_footer_links_title' | translate }}</h4>
-            <a href>{{ 'home_footer_links_login' | translate }}</a>
-            <a href>{{ 'home_footer_links_register' | translate }}</a>
+            <a href
+               ng-click="goTo.view('app.login')">
+              {{ 'home_footer_links_login' | translate }}
+            </a>
+            <a href
+               ng-click="goTo.view('app.register')">
+              {{ 'home_footer_links_register' | translate }}
+            </a>
             <a href
                onclick="this.blur()"
                ng-click="methods.showPopup($event, 'logout')">

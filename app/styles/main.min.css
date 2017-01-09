@@ -468,48 +468,60 @@ nav.atom-navbar div div.link:after {
 }
 nav.atom-navbar div div.link:hover:after,
 nav.atom-navbar div div.link:focus:after,
-nav.atom-navbar div div.link:active:after {
+nav.atom-navbar div div.link:active:after,
+nav.atom-navbar div div.link.active:after {
   height: 4px;
 }
 nav.atom-navbar div div.link:hover.link-blue,
 nav.atom-navbar div div.link:focus.link-blue,
-nav.atom-navbar div div.link:active.link-blue {
+nav.atom-navbar div div.link:active.link-blue,
+nav.atom-navbar div div.link.active.link-blue {
   color: #2c9fdd;
 }
 nav.atom-navbar div div.link:hover.link-blue:after,
 nav.atom-navbar div div.link:focus.link-blue:after,
-nav.atom-navbar div div.link:active.link-blue:after {
+nav.atom-navbar div div.link:active.link-blue:after,
+nav.atom-navbar div div.link.active.link-blue:after {
   background-color: #2c9fdd;
 }
 nav.atom-navbar div div.link:hover.link-green,
 nav.atom-navbar div div.link:focus.link-green,
-nav.atom-navbar div div.link:active.link-green {
+nav.atom-navbar div div.link:active.link-green,
+nav.atom-navbar div div.link.active.link-green {
   color: #4ac291;
 }
 nav.atom-navbar div div.link:hover.link-green:after,
 nav.atom-navbar div div.link:focus.link-green:after,
-nav.atom-navbar div div.link:active.link-green:after {
+nav.atom-navbar div div.link:active.link-green:after,
+nav.atom-navbar div div.link.active.link-green:after {
   background-color: #4ac291;
 }
 nav.atom-navbar div div.link:hover.link-purple,
 nav.atom-navbar div div.link:focus.link-purple,
-nav.atom-navbar div div.link:active.link-purple {
+nav.atom-navbar div div.link:active.link-purple,
+nav.atom-navbar div div.link.active.link-purple {
   color: #9c27b0;
 }
 nav.atom-navbar div div.link:hover.link-purple:after,
 nav.atom-navbar div div.link:focus.link-purple:after,
-nav.atom-navbar div div.link:active.link-purple:after {
+nav.atom-navbar div div.link:active.link-purple:after,
+nav.atom-navbar div div.link.active.link-purple:after {
   background-color: #9c27b0;
 }
 nav.atom-navbar div div.link:hover.link-yellow,
 nav.atom-navbar div div.link:focus.link-yellow,
-nav.atom-navbar div div.link:active.link-yellow {
+nav.atom-navbar div div.link:active.link-yellow,
+nav.atom-navbar div div.link.active.link-yellow {
   color: #feb909;
 }
 nav.atom-navbar div div.link:hover.link-yellow:after,
 nav.atom-navbar div div.link:focus.link-yellow:after,
-nav.atom-navbar div div.link:active.link-yellow:after {
+nav.atom-navbar div div.link:active.link-yellow:after,
+nav.atom-navbar div div.link.active.link-yellow:after {
   background-color: #feb909;
+}
+body {
+  padding-top: 60px;
 }
 section {
   padding: 84px 0;
@@ -523,7 +535,7 @@ header {
   background-size: cover;
   background-position: center;
   text-align: center;
-  margin-top: 0;
+  margin-top: -60px;
   height: 100vh;
 }
 header .header-content {
@@ -728,21 +740,23 @@ aside#footer div.links a:hover {
  */
 @font-face {
   font-family: "Atom";
-  src: url("../../fonts/Atom_51ece6c0dc95ccf16c845fb4e0c49085.eot");
-  src: url("../../fonts/Atom_51ece6c0dc95ccf16c845fb4e0c49085.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_51ece6c0dc95ccf16c845fb4e0c49085.woff2") format("woff2"), url("../../fonts/Atom_51ece6c0dc95ccf16c845fb4e0c49085.woff") format("woff"), url("../../fonts/Atom_51ece6c0dc95ccf16c845fb4e0c49085.ttf") format("truetype"), url("../../fonts/Atom_51ece6c0dc95ccf16c845fb4e0c49085.svg#Atom") format("svg");
+  src: url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.eot");
+  src: url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.woff2") format("woff2"), url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.woff") format("woff"), url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.ttf") format("truetype"), url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.svg#Atom") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Atom";
-    src: url("../../fonts/Atom_51ece6c0dc95ccf16c845fb4e0c49085.svg#Atom") format("svg");
+    src: url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.svg#Atom") format("svg");
   }
 }
 [data-icons8]:before,
 .icons8-channel-mosaic:before,
 .icons8-chat:before,
 .icons8-google-groups:before,
+.icons8-login-rounded-right:before,
+.icons8-logout-rounded:before,
 .icons8-picture-filled:before,
 .icons8-rabbit:before,
 .icons8-robot-3-filled:before,
@@ -773,6 +787,12 @@ aside#footer div.links a:hover {
 }
 .icons8-google-groups:before {
   content: "\f108";
+}
+.icons8-login-rounded-right:before {
+  content: "\f10f";
+}
+.icons8-logout-rounded:before {
+  content: "\f10e";
 }
 .icons8-picture-filled:before {
   content: "\f10c";

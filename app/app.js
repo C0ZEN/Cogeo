@@ -54,7 +54,9 @@
       .dropdownDisplayModelLength(true)
       .requiredType('icon')
       .alertIconLeftDefault('fa fa-info-circle')
-      .currentLanguage('fr');
+      .currentLanguage('fr')
+      .popupAnimationInAnimation('zoomIn')
+      .popupAnimationOutAnimation('zoomOut');
 
     // Configure the location provider
     $locationProvider.html5Mode({

@@ -22,14 +22,16 @@
       {{ 'navbar_price' | translate }}
     </div>
     <div class="link link-green"
+         ng-class="{'active': goTo.isCurrentView('app.login')}"
          onclick="this.blur()"
-         ng-click="goTo.view('')"
+         ng-click="goTo.view('app.login')"
          tabindex="0">
       {{ 'navbar_login' | translate }}
     </div>
     <div class="link link-purple"
+         ng-class="{'active': goTo.isCurrentView('app.register')}"
          onclick="this.blur()"
-         ng-click="goTo.view('')"
+         ng-click="goTo.view('app.register')"
          tabindex="0">
       {{ 'navbar_register' | translate }}
     </div>
