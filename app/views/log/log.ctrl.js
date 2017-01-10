@@ -6,10 +6,11 @@
     .controller('LogCtrl', LogCtrl);
 
   LogCtrl.$inject = [
-    '$timeout'
+    '$timeout',
+    'CONFIG'
   ];
 
-  function LogCtrl($timeout) {
+  function LogCtrl($timeout, CONFIG) {
     var vm = this;
 
     // Common data
@@ -25,6 +26,7 @@
     };
     vm.login    = {};
     vm.form     = {};
+    vm.CONFIG   = CONFIG;
 
     // Methods
     vm.methods = {
@@ -34,12 +36,10 @@
     };
 
     function onPasswordChange(newModel) {
-      console.log(newModel, vm.register.checkPassword);
       vm.register.passwordMismatch = newModel != vm.register.checkPassword;
     }
 
     function onCheckPasswordChange(newModel) {
-      console.log(newModel, vm.register.password);
       vm.register.passwordMismatch = vm.register.password != newModel;
     }
 

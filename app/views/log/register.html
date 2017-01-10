@@ -20,58 +20,58 @@
                       cozen-form-ctrl="vm"
                       cozen-form-model="form">
             <cozen-input cozen-input-model="vm.register.surname"
-                         cozen-input-name="lastname"
-                         cozen-input-max-length="30"
-                         cozen-input-pattern-name
+                         cozen-input-name="{{ vm.CONFIG.internal.log.surname.name }}"
+                         cozen-input-max-length="{{ vm.CONFIG.internal.log.surname.length }}"
+                         cozen-input-pattern="{{ vm.CONFIG.internal.log.surname.pattern }}"
                          cozen-input-label="log_register_surname"
                          cozen-input-placeholder="log_register_surname_pc"
-                         cozen-input-required="true"
+                         cozen-input-required="{{ vm.CONFIG.internal.log.surname.required }}"
                          class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.givenName"
-                         cozen-input-name="firstname"
-                         cozen-input-max-length="30"
-                         cozen-input-pattern-name
+                         cozen-input-name="{{ vm.CONFIG.internal.log.givenName.name }}"
+                         cozen-input-max-length="{{ vm.CONFIG.internal.log.givenName.length }}"
+                         cozen-input-pattern="{{ vm.CONFIG.internal.log.givenName.pattern }}"
                          cozen-input-label="log_register_given_name"
                          cozen-input-placeholder="log_register_given_name_pc"
-                         cozen-input-required="true"
+                         cozen-input-required="{{ vm.CONFIG.internal.log.givenName.required }}"
                          class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.username"
-                         cozen-input-name="username"
-                         cozen-input-max-length="30"
-                         cozen-input-pattern-letter
+                         cozen-input-name="{{ vm.CONFIG.internal.log.username.name }}"
+                         cozen-input-max-length="{{ vm.CONFIG.internal.log.username.length }}"
+                         cozen-input-pattern="{{ vm.CONFIG.internal.log.username.pattern }}"
                          cozen-input-label="log_register_username"
                          cozen-input-placeholder="log_register_username_pc"
-                         cozen-input-required="true"
+                         cozen-input-required="{{ vm.CONFIG.internal.log.username.required }}"
                          class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.email"
-                         cozen-input-name="email"
-                         cozen-input-max-length="50"
-                         cozen-input-pattern-email
+                         cozen-input-name="{{ vm.CONFIG.internal.log.email.name }}"
+                         cozen-input-max-length="{{ vm.CONFIG.internal.log.email.length }}"
+                         cozen-input-pattern="{{ vm.CONFIG.internal.log.email.pattern }}"
                          cozen-input-label="log_register_email"
                          cozen-input-placeholder="log_register_email_pc"
-                         cozen-input-required="true"
+                         cozen-input-required="{{ vm.CONFIG.internal.log.email.required }}"
                          class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.password"
-                         cozen-input-name="password"
-                         cozen-input-max-length="40"
+                         cozen-input-name="{{ vm.CONFIG.internal.log.password.name }}"
+                         cozen-input-max-length="{{ vm.CONFIG.internal.log.password.length }}"
                          cozen-input-label="log_register_password"
                          cozen-input-placeholder="log_register_password_pc"
-                         cozen-input-required="true"
+                         cozen-input-required="{{ vm.CONFIG.internal.log.password.required }}"
                          cozen-input-on-change="vm.methods.onPasswordChange(newModel)"
                          cozen-input-type-password
                          cozen-input-type-password-config="vm.register.passwordConfig"
                          class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.checkPassword"
-                         cozen-input-name="checkPassword"
-                         cozen-input-max-length="40"
+                         cozen-input-name="{{ vm.CONFIG.internal.log.checkPassword.name }}"
+                         cozen-input-max-length="{{ vm.CONFIG.internal.log.checkPassword.length }}"
                          cozen-input-label="log_register_check_password"
                          cozen-input-placeholder="log_register_check_password_pc"
-                         cozen-input-required="true"
+                         cozen-input-required="{{ vm.CONFIG.internal.log.checkPassword.required }}"
                          cozen-input-has-error="vm.register.passwordMismatch"
                          cozen-input-on-change="vm.methods.onCheckPasswordChange(newModel)"
                          cozen-input-type-password
