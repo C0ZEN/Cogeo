@@ -56,7 +56,8 @@
       .alertIconLeftDefault('fa fa-info-circle')
       .currentLanguage('fr')
       .popupAnimationInAnimation('zoomIn')
-      .popupAnimationOutAnimation('zoomOut');
+      .popupAnimationOutAnimation('zoomOut')
+      .popupFooter(false);
 
     // Configure the location provider
     $locationProvider.html5Mode({
@@ -75,6 +76,9 @@
 
     // Configure the locale for moment
     moment.locale(CONFIG.currentLanguage);
+
+    // 4pjt Config
+    CONFIG.internal = {};
   }
 
   run.$inject = [

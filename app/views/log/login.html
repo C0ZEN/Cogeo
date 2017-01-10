@@ -1,7 +1,96 @@
-<div class="container">
+<div class="container space-large-before">
   <div class="row">
-    <div class="col-xs-12">
-      <h4>{{ '' }}</h4>
+    <div class="col-xs-12 animated fadeInLeft">
+
+      <!-- Title -->
+      <h1>{{ 'log_login_title' | translate }}</h1>
+      <p class="help-text">
+        {{ 'log_login_subtitle_1' | translate }}
+        <a href
+           ng-click="goTo.view('app.register')">
+          {{ 'log_login_subtitle_2' | translate }}</a>
+        {{ 'log_login_subtitle_3' | translate }}
+      </p>
+      <p class="help-text">{{ 'log_login_subtitle_4' | translate }}</p>
+
+      <!-- Form -->
+      <div class="row space-large-before space-large-before-column same-height-column">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5">
+          <cozen-form cozen-form-name="login"
+                      cozen-form-ctrl="vm"
+                      cozen-form-model="form">
+            <cozen-input cozen-input-model="vm.login.surname"
+                         cozen-input-name="lastname"
+                         cozen-input-max-length="30"
+                         cozen-input-pattern-name
+                         cozen-input-label="log_login_surname"
+                         cozen-input-placeholder="log_login_surname_pc"
+                         cozen-input-required="true"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.login.givenName"
+                         cozen-input-name="firstname"
+                         cozen-input-max-length="30"
+                         cozen-input-pattern-name
+                         cozen-input-label="log_login_given_name"
+                         cozen-input-placeholder="log_login_given_name_pc"
+                         cozen-input-required="true"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.login.username"
+                         cozen-input-name="username"
+                         cozen-input-max-length="30"
+                         cozen-input-pattern-letter
+                         cozen-input-label="log_login_username"
+                         cozen-input-placeholder="log_login_username_pc"
+                         cozen-input-required="true"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.login.email"
+                         cozen-input-name="email"
+                         cozen-input-max-length="50"
+                         cozen-input-pattern-email
+                         cozen-input-label="log_login_email"
+                         cozen-input-placeholder="log_login_email_pc"
+                         cozen-input-required="true"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.login.password"
+                         cozen-input-name="password"
+                         cozen-input-max-length="40"
+                         cozen-input-label="log_login_password"
+                         cozen-input-placeholder="log_login_password_pc"
+                         cozen-input-required="true"
+                         cozen-input-on-change="vm.methods.onPasswordChange(newModel)"
+                         cozen-input-type-password
+                         cozen-input-type-password-config="vm.login.passwordConfig"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-input cozen-input-model="vm.login.checkPassword"
+                         cozen-input-name="checkPassword"
+                         cozen-input-max-length="40"
+                         cozen-input-label="log_login_check_password"
+                         cozen-input-placeholder="log_login_check_password_pc"
+                         cozen-input-required="true"
+                         cozen-input-has-error="vm.login.passwordMismatch"
+                         cozen-input-on-change="vm.methods.onCheckPasswordChange(newModel)"
+                         cozen-input-type-password
+                         cozen-input-type-password-config="vm.login.passwordConfig"
+                         class="space-medium-after">
+            </cozen-input>
+            <cozen-btn cozen-btn-label="log_login_submit"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-disabled="vm.form.login.$invalid"
+                       cozen-btn-on-click="vm.methods.login()">
+            </cozen-btn>
+          </cozen-form>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-6 col-lg-7 animated zoomIn">
+          <img ng-src="images/bg/computer.png"
+               height="400"
+               class="form-left-img">
+        </div>
+      </div>
     </div>
   </div>
 </div>

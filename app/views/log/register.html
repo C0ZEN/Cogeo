@@ -1,6 +1,6 @@
 <div class="container space-large-before">
   <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-12 animated fadeInLeft">
 
       <!-- Title -->
       <h1>{{ 'log_register_title' | translate }}</h1>
@@ -14,10 +14,11 @@
       <p class="help-text">{{ 'log_register_subtitle_4' | translate }}</p>
 
       <!-- Form -->
-      <div class="row space-large-before">
-        <div class="col-xs-8">
+      <div class="row space-large-before space-large-before-column same-height-column">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5">
           <cozen-form cozen-form-name="register"
-                      cozen-form-ctrl="vm">
+                      cozen-form-ctrl="vm"
+                      cozen-form-model="form">
             <cozen-input cozen-input-model="vm.register.surname"
                          cozen-input-name="lastname"
                          cozen-input-max-length="30"
@@ -60,21 +61,34 @@
                          cozen-input-label="log_register_password"
                          cozen-input-placeholder="log_register_password_pc"
                          cozen-input-required="true"
+                         cozen-input-on-change="vm.methods.onPasswordChange(newModel)"
                          cozen-input-type-password
                          cozen-input-type-password-config="vm.register.passwordConfig"
                          class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.checkPassword"
-                         cozen-input-name="check-password"
+                         cozen-input-name="checkPassword"
                          cozen-input-max-length="40"
                          cozen-input-label="log_register_check_password"
                          cozen-input-placeholder="log_register_check_password_pc"
                          cozen-input-required="true"
+                         cozen-input-has-error="vm.register.passwordMismatch"
+                         cozen-input-on-change="vm.methods.onCheckPasswordChange(newModel)"
                          cozen-input-type-password
-                         cozen-input-has-error="vm.register.checkPassword != vm.register.password"
-                         cozen-input-type-password-config="vm.register.passwordConfig">
+                         cozen-input-type-password-config="vm.register.passwordConfig"
+                         class="space-medium-after">
             </cozen-input>
+            <cozen-btn cozen-btn-label="log_register_submit"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-disabled="vm.form.register.$invalid"
+                       cozen-btn-on-click="vm.methods.register()">
+            </cozen-btn>
           </cozen-form>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-6 col-lg-7 animated zoomIn">
+          <img ng-src="images/bg/rocket.jpg"
+               height="400"
+               class="form-left-img">
         </div>
       </div>
     </div>
