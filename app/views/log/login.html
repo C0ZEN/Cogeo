@@ -1,6 +1,6 @@
 <div class="container space-large-before">
   <div class="row">
-    <div class="col-xs-12 animated fadeInLeft">
+    <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-12 animated fadeInLeft">
 
       <!-- Title -->
       <h1>{{ 'log_login_title' | translate }}</h1>
@@ -19,75 +19,49 @@
           <cozen-form cozen-form-name="login"
                       cozen-form-ctrl="vm"
                       cozen-form-model="form">
-            <cozen-input cozen-input-model="vm.login.surname"
-                         cozen-input-name="lastname"
-                         cozen-input-max-length="30"
-                         cozen-input-pattern-name
-                         cozen-input-label="log_login_surname"
-                         cozen-input-placeholder="log_login_surname_pc"
-                         cozen-input-required="true"
-                         class="space-medium-after">
-            </cozen-input>
-            <cozen-input cozen-input-model="vm.login.givenName"
-                         cozen-input-name="firstname"
-                         cozen-input-max-length="30"
-                         cozen-input-pattern-name
-                         cozen-input-label="log_login_given_name"
-                         cozen-input-placeholder="log_login_given_name_pc"
-                         cozen-input-required="true"
-                         class="space-medium-after">
-            </cozen-input>
+            <cozen-btn cozen-btn-label="log_login_facebook"
+                       cozen-btn-on-click="vm.methods.facebook()"
+                       cozen-btn-icon-left="fa fa-facebook-f"
+                       cozen-btn-type-facebook
+                       class="space-base-after">
+            </cozen-btn>
+            <cozen-btn cozen-btn-label="log_login_google"
+                       cozen-btn-on-click="vm.methods.google()"
+                       cozen-btn-icon-left="fa fa-google-plus"
+                       cozen-btn-type-google
+                       class="space-medium-after">
+            </cozen-btn>
             <cozen-input cozen-input-model="vm.login.username"
-                         cozen-input-name="username"
-                         cozen-input-max-length="30"
-                         cozen-input-pattern-letter
+                         cozen-input-name="{{ vm.CONFIG.internal.log.username.name }}"
+                         cozen-input-max-length="{{ vm.CONFIG.internal.log.username.length }}"
+                         cozen-input-pattern="{{ vm.CONFIG.internal.log.username.pattern }}"
                          cozen-input-label="log_login_username"
                          cozen-input-placeholder="log_login_username_pc"
-                         cozen-input-required="true"
-                         class="space-medium-after">
-            </cozen-input>
-            <cozen-input cozen-input-model="vm.login.email"
-                         cozen-input-name="email"
-                         cozen-input-max-length="50"
-                         cozen-input-pattern-email
-                         cozen-input-label="log_login_email"
-                         cozen-input-placeholder="log_login_email_pc"
-                         cozen-input-required="true"
+                         cozen-input-required="{{ vm.CONFIG.internal.log.username.required }}"
                          class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.login.password"
-                         cozen-input-name="password"
-                         cozen-input-max-length="40"
+                         cozen-input-name="{{ vm.CONFIG.internal.log.password.name }}"
+                         cozen-input-max-length="{{ vm.CONFIG.internal.log.password.length }}"
                          cozen-input-label="log_login_password"
                          cozen-input-placeholder="log_login_password_pc"
-                         cozen-input-required="true"
+                         cozen-input-required="{{ vm.CONFIG.internal.log.password.required }}"
                          cozen-input-on-change="vm.methods.onPasswordChange(newModel)"
                          cozen-input-type-password
-                         cozen-input-type-password-config="vm.login.passwordConfig"
-                         class="space-medium-after">
-            </cozen-input>
-            <cozen-input cozen-input-model="vm.login.checkPassword"
-                         cozen-input-name="checkPassword"
-                         cozen-input-max-length="40"
-                         cozen-input-label="log_login_check_password"
-                         cozen-input-placeholder="log_login_check_password_pc"
-                         cozen-input-required="true"
-                         cozen-input-has-error="vm.login.passwordMismatch"
-                         cozen-input-on-change="vm.methods.onCheckPasswordChange(newModel)"
-                         cozen-input-type-password
-                         cozen-input-type-password-config="vm.login.passwordConfig"
+                         cozen-input-type-password-config="vm.CONFIG.internal.log.password.passwordConfig"
                          class="space-medium-after">
             </cozen-input>
             <cozen-btn cozen-btn-label="log_login_submit"
                        cozen-btn-auto-sizing="true"
                        cozen-btn-disabled="vm.form.login.$invalid"
-                       cozen-btn-on-click="vm.methods.login()">
+                       cozen-btn-on-click="vm.methods.login()"
+                       cozen-btn-icon-right="fa icons8-login-rounded-right"
+                       cozen-btn-type-green>
             </cozen-btn>
           </cozen-form>
         </div>
         <div class="hidden-xs hidden-sm col-md-6 col-lg-7 animated zoomIn">
           <img ng-src="images/bg/computer.png"
-               height="400"
                class="form-left-img">
         </div>
       </div>

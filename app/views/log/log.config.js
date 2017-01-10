@@ -24,7 +24,7 @@
         pattern : 'name',
         name    : 'firstname'
       },
-      username    : {
+      username     : {
         length  : 30,
         required: true,
         pattern : 'letter',
@@ -37,9 +37,16 @@
         name    : 'email'
       },
       password     : {
-        length  : 40,
-        required: true,
-        name    : 'password'
+        length        : 40,
+        required      : true,
+        name          : 'password',
+        passwordConfig: {
+          lowercase  : true,
+          uppercase  : true,
+          number     : true,
+          specialChar: false,
+          minLength  : 8
+        }
       },
       checkPassword: {
         length  : 40,

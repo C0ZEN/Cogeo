@@ -41,7 +41,7 @@
           align-items: center;
 }
 .img-thumbnail {
-  border: 1px solid #e2e6e6;
+  border: 1px solid #d6dbdb;
   padding: 12px;
 }
 /**********************/
@@ -215,7 +215,7 @@ a:hover {
 /**   HR   **/
 /************/
 hr.small {
-  border-color: #e2e6e6;
+  border-color: #d6dbdb;
   border-width: 3px;
   max-width: 50px;
 }
@@ -240,6 +240,7 @@ p.help-text {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  width: 50%;
 }
 [ng\:cloak],
 [ng-cloak],
@@ -248,6 +249,9 @@ p.help-text {
 .ng-cloak,
 .x-ng-cloak {
   display: none !important;
+}
+body {
+  overflow-x: hidden;
 }
 /********************/
 /**   TEXT ALIGN   **/
@@ -437,13 +441,13 @@ p.help-text {
 /**   BORDER   **/
 /****************/
 .border-bottom-small {
-  border-bottom: 1px solid #e2e6e6;
+  border-bottom: 1px solid #d6dbdb;
 }
 .border-bottom-normal {
-  border-bottom: 3px solid #e2e6e6;
+  border-bottom: 3px solid #d6dbdb;
 }
 .border-bottom-large {
-  border-bottom: 6px solid #e2e6e6;
+  border-bottom: 6px solid #d6dbdb;
 }
 nav.atom-navbar {
   display: -webkit-box;
@@ -466,7 +470,7 @@ nav.atom-navbar {
   width: 100%;
   z-index: 1000;
   background-color: #f8f8f8;
-  border-bottom: 1px solid #e2e6e6;
+  border-bottom: 1px solid #d6dbdb;
   height: 60px;
 }
 nav.atom-navbar div {
@@ -791,20 +795,21 @@ aside#footer div.links a:hover {
  */
 @font-face {
   font-family: "Atom";
-  src: url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.eot");
-  src: url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.woff2") format("woff2"), url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.woff") format("woff"), url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.ttf") format("truetype"), url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.svg#Atom") format("svg");
+  src: url("../../fonts/Atom_e784f46e020c520b9aded137145c7354.eot");
+  src: url("../../fonts/Atom_e784f46e020c520b9aded137145c7354.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_e784f46e020c520b9aded137145c7354.woff2") format("woff2"), url("../../fonts/Atom_e784f46e020c520b9aded137145c7354.woff") format("woff"), url("../../fonts/Atom_e784f46e020c520b9aded137145c7354.ttf") format("truetype"), url("../../fonts/Atom_e784f46e020c520b9aded137145c7354.svg#Atom") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Atom";
-    src: url("../../fonts/Atom_e99401352206cfe9aac99900ada78e8e.svg#Atom") format("svg");
+    src: url("../../fonts/Atom_e784f46e020c520b9aded137145c7354.svg#Atom") format("svg");
   }
 }
 [data-icons8]:before,
 .icons8-channel-mosaic:before,
 .icons8-chat:before,
+.icons8-clouds-filled:before,
 .icons8-google-groups:before,
 .icons8-login-rounded-right:before,
 .icons8-logout-rounded:before,
@@ -835,6 +840,9 @@ aside#footer div.links a:hover {
 }
 .icons8-chat:before {
   content: "\f103";
+}
+.icons8-clouds-filled:before {
+  content: "\f111";
 }
 .icons8-google-groups:before {
   content: "\f108";

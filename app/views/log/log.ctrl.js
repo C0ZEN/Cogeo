@@ -15,13 +15,6 @@
 
     // Common data
     vm.register = {
-      passwordConfig  : {
-        lowercase  : true,
-        uppercase  : true,
-        number     : true,
-        specialChar: false,
-        minLength  : 8
-      },
       passwordMismatch: false
     };
     vm.login    = {};
@@ -32,7 +25,8 @@
     vm.methods = {
       onPasswordChange     : onPasswordChange,
       onCheckPasswordChange: onCheckPasswordChange,
-      register             : register
+      register             : register,
+      login                : login
     };
 
     function onPasswordChange(newModel) {
@@ -44,6 +38,10 @@
     }
 
     function register() {
+
+    }
+
+    function login() {
 
     }
   }

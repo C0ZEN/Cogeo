@@ -24,17 +24,11 @@
   "log_login_subtitle_2": "t'inscrire",
   "log_login_subtitle_3": "pour accéder à nos fonctionnalités.",
   "log_login_subtitle_4": "Ne t'inquiète pas, Cogeo est totalement gratuit.",
-  "log_login_surname": "Nom",
-  "log_login_given_name": "Prénom",
   "log_login_username": "Identifiant",
-  "log_login_email": "Email",
   "log_login_password": "Mot de passe",
-  "log_login_check_password": "Vérification du mot de passe",
-  "log_login_surname_pc": "Nom",
-  "log_login_given_name_pc": "Prénom",
   "log_login_username_pc": "Identifiant unique (login de connexion)",
-  "log_login_email_pc": "Email",
   "log_login_password_pc": "Mot de passe",
-  "log_login_check_password_pc": "Vérification du mot de passe",
-  "log_login_submit": "S'inscrire"
+  "log_login_submit": "Se connecter",
+  "log_login_facebook": "Se connecter avec Facebook",
+  "log_login_google": "Se connecter avec Google"
 }

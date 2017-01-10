@@ -1,6 +1,6 @@
 <div class="container space-large-before">
   <div class="row">
-    <div class="col-xs-12 animated fadeInLeft">
+    <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-12 animated fadeInLeft">
 
       <!-- Title -->
       <h1>{{ 'log_register_title' | translate }}</h1>
@@ -63,7 +63,7 @@
                          cozen-input-required="{{ vm.CONFIG.internal.log.password.required }}"
                          cozen-input-on-change="vm.methods.onPasswordChange(newModel)"
                          cozen-input-type-password
-                         cozen-input-type-password-config="vm.register.passwordConfig"
+                         cozen-input-type-password-config="vm.CONFIG.internal.log.password.passwordConfig"
                          class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.checkPassword"
@@ -75,19 +75,20 @@
                          cozen-input-has-error="vm.register.passwordMismatch"
                          cozen-input-on-change="vm.methods.onCheckPasswordChange(newModel)"
                          cozen-input-type-password
-                         cozen-input-type-password-config="vm.register.passwordConfig"
+                         cozen-input-type-password-config="vm.CONFIG.internal.log.password.passwordConfig"
                          class="space-medium-after">
             </cozen-input>
             <cozen-btn cozen-btn-label="log_register_submit"
                        cozen-btn-auto-sizing="true"
                        cozen-btn-disabled="vm.form.register.$invalid"
-                       cozen-btn-on-click="vm.methods.register()">
+                       cozen-btn-on-click="vm.methods.register()"
+                       cozen-btn-icon-right="fa icons8-clouds-filled"
+                       cozen-btn-type-purple>
             </cozen-btn>
           </cozen-form>
         </div>
         <div class="hidden-xs hidden-sm col-md-6 col-lg-7 animated zoomIn">
           <img ng-src="images/bg/rocket.jpg"
-               height="400"
                class="form-left-img">
         </div>
       </div>
