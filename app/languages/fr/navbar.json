@@ -3,5 +3,8 @@
   "navbar_register": "Inscription",
   "navbar_logout": "Déconnexion",
   "navbar_product": "Produit",
-  "navbar_price": "Prix"
+  "navbar_price": "Prix",
+  "navbar_other": "Autre",
+  "navbar_other_account": "Compte",
+  "navbar_other_settings": "Paramètres"
 }

@@ -11,7 +11,7 @@
 
   function config($stateProvider) {
 
-    // Log route
+    // Log routes
     $stateProvider
       .state('app.login', {
         url         : '/login',

@@ -6,16 +6,22 @@
     .controller('PopupCtrl', PopupCtrl);
 
   PopupCtrl.$inject = [
-    'cozenPopupFactory'
+    'cozenPopupFactory',
+    'CONFIG'
   ];
 
-  function PopupCtrl(cozenPopupFactory) {
-    var vm = this;
+  function PopupCtrl(cozenPopupFactory, CONFIG) {
+    var popup = this;
+
+    // Common data
+    popup.forgottenPassword = {};
+    popup.CONFIG            = CONFIG;
 
     // Methods
-    vm.methods = {
-      closePopup: closePopup,
-      logout    : logout
+    popup.methods = {
+      closePopup       : closePopup,
+      logout           : logout,
+      forgottenPassword: forgottenPassword
     };
 
     function closePopup(name) {
@@ -25,6 +31,10 @@
     }
 
     function logout() {
+
+    }
+
+    function forgottenPassword() {
 
     }
   }

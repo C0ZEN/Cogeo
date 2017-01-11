@@ -9,8 +9,8 @@
         <a href
            ng-click="goTo.view('app.register')">
           {{ 'log_login_subtitle_2' | translate }}</a>
-        {{ 'log_login_subtitle_3' | translate }}
       </p>
+      <p class="help-text">{{ 'log_login_subtitle_3' | translate }}</p>
       <p class="help-text">{{ 'log_login_subtitle_4' | translate }}</p>
 
       <!-- Form -->
@@ -19,18 +19,25 @@
           <cozen-form cozen-form-name="login"
                       cozen-form-ctrl="vm"
                       cozen-form-model="form">
+
+            <!-- Socials -->
+            <h3 class="space-medium-after">{{ 'log_login_socials_title' | translate }}</h3>
             <cozen-btn cozen-btn-label="log_login_facebook"
                        cozen-btn-on-click="vm.methods.facebook()"
                        cozen-btn-icon-left="fa fa-facebook-f"
                        cozen-btn-type-facebook
-                       class="space-base-after">
+                       cozen-btn-class="space-base-after">
             </cozen-btn>
             <cozen-btn cozen-btn-label="log_login_google"
                        cozen-btn-on-click="vm.methods.google()"
                        cozen-btn-icon-left="fa fa-google-plus"
-                       cozen-btn-type-google
-                       class="space-medium-after">
+                       cozen-btn-type-google>
             </cozen-btn>
+
+            <hr class="space-medium-before space-medium-after">
+
+            <!-- Cogeo -->
+            <h3 class="space-medium-after">{{ 'log_login_account' | translate }}</h3>
             <cozen-input cozen-input-model="vm.login.username"
                          cozen-input-name="{{ vm.CONFIG.internal.log.username.name }}"
                          cozen-input-max-length="{{ vm.CONFIG.internal.log.username.length }}"
@@ -38,7 +45,7 @@
                          cozen-input-label="log_login_username"
                          cozen-input-placeholder="log_login_username_pc"
                          cozen-input-required="{{ vm.CONFIG.internal.log.username.required }}"
-                         class="space-medium-after">
+                         cozen-input-class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.login.password"
                          cozen-input-name="{{ vm.CONFIG.internal.log.password.name }}"
@@ -49,19 +56,26 @@
                          cozen-input-on-change="vm.methods.onPasswordChange(newModel)"
                          cozen-input-type-password
                          cozen-input-type-password-config="vm.CONFIG.internal.log.password.passwordConfig"
-                         class="space-medium-after">
+                         cozen-input-class="space-medium-after">
             </cozen-input>
-            <cozen-btn cozen-btn-label="log_login_submit"
-                       cozen-btn-auto-sizing="true"
-                       cozen-btn-disabled="vm.form.login.$invalid"
-                       cozen-btn-on-click="vm.methods.login()"
-                       cozen-btn-icon-right="fa icons8-login-rounded-right"
-                       cozen-btn-type-green>
-            </cozen-btn>
+            <div class="center-flex-content">
+              <cozen-btn cozen-btn-label="log_login_submit"
+                         cozen-btn-auto-sizing="true"
+                         cozen-btn-disabled="vm.form.login.$invalid"
+                         cozen-btn-on-click="vm.methods.login()"
+                         cozen-btn-icon-right="fa icons8-login-rounded-right"
+                         cozen-btn-type-green>
+              </cozen-btn>
+              <a href
+                 onclick="this.blur()"
+                 ng-click="methods.showPopup($event, 'forgottenPassword')">
+                {{ 'log_login_forgotten_password' | translate }}
+              </a>
+            </div>
           </cozen-form>
         </div>
         <div class="hidden-xs hidden-sm col-md-6 col-lg-7 animated zoomIn">
-          <img ng-src="images/bg/computer.png"
+          <img ng-src="images/bg/platforms.jpg"
                class="form-left-img">
         </div>
       </div>

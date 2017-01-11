@@ -26,7 +26,7 @@
                          cozen-input-label="log_register_surname"
                          cozen-input-placeholder="log_register_surname_pc"
                          cozen-input-required="{{ vm.CONFIG.internal.log.surname.required }}"
-                         class="space-medium-after">
+                         cozen-input-class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.givenName"
                          cozen-input-name="{{ vm.CONFIG.internal.log.givenName.name }}"
@@ -35,7 +35,7 @@
                          cozen-input-label="log_register_given_name"
                          cozen-input-placeholder="log_register_given_name_pc"
                          cozen-input-required="{{ vm.CONFIG.internal.log.givenName.required }}"
-                         class="space-medium-after">
+                         cozen-input-class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.username"
                          cozen-input-name="{{ vm.CONFIG.internal.log.username.name }}"
@@ -44,7 +44,7 @@
                          cozen-input-label="log_register_username"
                          cozen-input-placeholder="log_register_username_pc"
                          cozen-input-required="{{ vm.CONFIG.internal.log.username.required }}"
-                         class="space-medium-after">
+                         cozen-input-class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.email"
                          cozen-input-name="{{ vm.CONFIG.internal.log.email.name }}"
@@ -53,7 +53,7 @@
                          cozen-input-label="log_register_email"
                          cozen-input-placeholder="log_register_email_pc"
                          cozen-input-required="{{ vm.CONFIG.internal.log.email.required }}"
-                         class="space-medium-after">
+                         cozen-input-class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.password"
                          cozen-input-name="{{ vm.CONFIG.internal.log.password.name }}"
@@ -64,7 +64,7 @@
                          cozen-input-on-change="vm.methods.onPasswordChange(newModel)"
                          cozen-input-type-password
                          cozen-input-type-password-config="vm.CONFIG.internal.log.password.passwordConfig"
-                         class="space-medium-after">
+                         cozen-input-class="space-medium-after">
             </cozen-input>
             <cozen-input cozen-input-model="vm.register.checkPassword"
                          cozen-input-name="{{ vm.CONFIG.internal.log.checkPassword.name }}"
@@ -76,7 +76,7 @@
                          cozen-input-on-change="vm.methods.onCheckPasswordChange(newModel)"
                          cozen-input-type-password
                          cozen-input-type-password-config="vm.CONFIG.internal.log.password.passwordConfig"
-                         class="space-medium-after">
+                         cozen-input-class="space-medium-after">
             </cozen-input>
             <cozen-btn cozen-btn-label="log_register_submit"
                        cozen-btn-auto-sizing="true"

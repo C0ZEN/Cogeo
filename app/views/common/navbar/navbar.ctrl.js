@@ -13,9 +13,12 @@
     var vm = this;
 
     // Common data
-    vm.data = {
+    vm.data  = {
       offset  : 60, // Height of the navbar
       duration: 600
+    };
+    vm.other = {
+      hover: false
     };
 
     // Methods
