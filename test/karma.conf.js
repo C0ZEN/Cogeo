@@ -48,6 +48,8 @@ module.exports = function(config) {
       'bower_components/cozen-lib/release/clean/directives.js',
       'bower_components/scrollreveal/dist/scrollreveal.js',
       'bower_components/angular-scroll/angular-scroll.js',
+      'bower_components/angularjs-slider/dist/rzslider.js',
+      'bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

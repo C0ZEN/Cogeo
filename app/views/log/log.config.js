@@ -27,7 +27,7 @@
       username     : {
         length  : 30,
         required: true,
-        pattern : 'letter',
+        pattern : '[a-zA-Z0-9]*',
         name    : 'username'
       },
       email        : {

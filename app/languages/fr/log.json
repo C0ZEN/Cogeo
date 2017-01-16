@@ -1,7 +1,8 @@
 {
   "login": "Connexion",
   "register": "Inscription",
-  "log_register_title": "Je crée mon compte Cogeo",
+  "new_password": "Nouveau mot de passe",
+  "log_register_title": "Je crée mon compte Cogeo.",
   "log_register_subtitle_1": "Tu peux passer cette étape en te",
   "log_register_subtitle_2": "connectant",
   "log_register_subtitle_3": "directement à ton compte Google ou Facebook.",
@@ -33,5 +34,13 @@
   "log_login_google": "Se connecter avec Google",
   "log_login_socials_title": "Avec un réseau social",
   "log_login_account": "Avec mon compte Cogeo",
-  "log_login_forgotten_password": "Mot de passe oublié ?"
+  "log_login_forgotten_password": "Mot de passe oublié ?",
+  "log_new_password_title": "Je change mon mot de passe.",
+  "log_new_password_submit": "Changer de mot de passe",
+  "log_new_password_password": "Nouveau mot de passe",
+  "log_new_password_password_pc": "Nouveau mot de passe",
+  "log_new_password_confirm_password": "Vérification du nouveau mot de passe",
+  "log_new_password_confirm_password_pc": "Vérification du nouveau mot de passe",
+  "log_new_password_subtitle_1": "Saisi un nouveau mot de passe pour ton compte Cogeo.",
+  "log_new_password_subtitle_2": "Une fois la modification valider, tu pourra te connecter avec ton nouveau mot de passe."
 }

@@ -66,6 +66,10 @@ h3 {
 h4 {
   font-family: 'Catamaran', Arial, sans-serif;
   color: #4c596b;
+  font-weight: 400;
+}
+h4 strong {
+  font-weight: 500;
 }
 span {
   font-family: 'Catamaran', Arial, sans-serif;
@@ -92,6 +96,12 @@ a:focus,
 a:hover {
   color: #32afe3;
   outline: 0;
+}
+label.atom-label {
+  font-size: 16px;
+  color: #8c8c8c;
+  padding: 0;
+  font-weight: 400;
 }
 /**********************/
 /**   SPACE BEFORE   **/
@@ -275,6 +285,50 @@ p.help-text {
 }
 body {
   overflow-x: hidden;
+}
+div.profile-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: #f8f8f8;
+  border: 1px solid #d6dbdb;
+  border-radius: 3px;
+  padding: 6px;
+}
+div.profile-card div.text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 12px;
+}
+div.profile-card div.text h4,
+div.profile-card div.text p,
+div.profile-card div.text h3 {
+  margin: 0;
+}
+div.profile-card div.text h3 small {
+  color: #8c8c8c;
+}
+div.profile-card img {
+  width: 70px;
+  height: 70px;
+}
+div.profile-card img.img-thumbnail {
+  padding: 6px;
 }
 /********************/
 /**   TEXT ALIGN   **/
@@ -649,6 +703,7 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item {
   width: 100%;
   outline: 0;
 }
+nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item.active,
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:focus,
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:hover {
   color: #2c9fdd;
@@ -656,6 +711,22 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:hover {
 }
 body {
   padding-top: 60px;
+}
+.rzslider .rz-pointer {
+  outline: 0;
+  background-color: #2c9fdd;
+}
+.rzslider .rz-pointer.rz-active {
+  background-color: #32afe3;
+}
+.rzslider .rz-pointer.rz-active:after {
+  background-color: #ffffff;
+}
+.rzslider .rz-bar {
+  background: #e4e7e7;
+}
+.rzslider .rz-tick {
+  background: #d6dbdb;
 }
 section {
   padding: 84px 0;
@@ -874,30 +945,34 @@ aside#footer div.links a:hover {
  */
 @font-face {
   font-family: "Atom";
-  src: url("../../fonts/Atom_426b4cac8a207f78c9aafba7ea622920.eot");
-  src: url("../../fonts/Atom_426b4cac8a207f78c9aafba7ea622920.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_426b4cac8a207f78c9aafba7ea622920.woff2") format("woff2"), url("../../fonts/Atom_426b4cac8a207f78c9aafba7ea622920.woff") format("woff"), url("../../fonts/Atom_426b4cac8a207f78c9aafba7ea622920.ttf") format("truetype"), url("../../fonts/Atom_426b4cac8a207f78c9aafba7ea622920.svg#Atom") format("svg");
+  src: url("../../fonts/Atom_3767c5af5d82bd85d4772ebf39274f6e.eot");
+  src: url("../../fonts/Atom_3767c5af5d82bd85d4772ebf39274f6e.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_3767c5af5d82bd85d4772ebf39274f6e.woff2") format("woff2"), url("../../fonts/Atom_3767c5af5d82bd85d4772ebf39274f6e.woff") format("woff"), url("../../fonts/Atom_3767c5af5d82bd85d4772ebf39274f6e.ttf") format("truetype"), url("../../fonts/Atom_3767c5af5d82bd85d4772ebf39274f6e.svg#Atom") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Atom";
-    src: url("../../fonts/Atom_426b4cac8a207f78c9aafba7ea622920.svg#Atom") format("svg");
+    src: url("../../fonts/Atom_3767c5af5d82bd85d4772ebf39274f6e.svg#Atom") format("svg");
   }
 }
 [data-icons8]:before,
 .icons8-channel-mosaic:before,
 .icons8-chat:before,
 .icons8-clouds-filled:before,
+.icons8-edit:before,
 .icons8-google-groups:before,
 .icons8-google-plus:before,
 .icons8-login-rounded-right:before,
 .icons8-logout-rounded:before,
 .icons8-message-filled:before,
+.icons8-microphone:before,
+.icons8-network:before,
 .icons8-picture-filled:before,
 .icons8-rabbit:before,
 .icons8-robot-3-filled:before,
 .icons8-settings:before,
+.icons8-speaker:before,
 .icons8-time:before,
 .icons8-video-call:before {
   display: inline-block;
@@ -925,6 +1000,9 @@ aside#footer div.links a:hover {
 .icons8-clouds-filled:before {
   content: "\f111";
 }
+.icons8-edit:before {
+  content: "\f116";
+}
 .icons8-google-groups:before {
   content: "\f108";
 }
@@ -940,6 +1018,12 @@ aside#footer div.links a:hover {
 .icons8-message-filled:before {
   content: "\f114";
 }
+.icons8-microphone:before {
+  content: "\f119";
+}
+.icons8-network:before {
+  content: "\f118";
+}
 .icons8-picture-filled:before {
   content: "\f10c";
 }
@@ -951,6 +1035,9 @@ aside#footer div.links a:hover {
 }
 .icons8-settings:before {
   content: "\f105";
+}
+.icons8-speaker:before {
+  content: "\f11a";
 }
 .icons8-time:before {
   content: "\f106";

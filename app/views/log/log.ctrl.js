@@ -17,6 +17,7 @@
     vm.register = {
       passwordMismatch: false
     };
+    vm.loading  = false;
     vm.login    = {};
     vm.form     = {};
     vm.CONFIG   = CONFIG;
@@ -26,22 +27,31 @@
       onPasswordChange     : onPasswordChange,
       onCheckPasswordChange: onCheckPasswordChange,
       register             : register,
-      login                : login
+      login                : login,
+      newPassword          : newPassword
     };
 
-    function onPasswordChange(newModel) {
-      vm.register.passwordMismatch = newModel != vm.register.checkPassword;
+    function onPasswordChange(newModel, parent) {
+      vm[parent].passwordMismatch = newModel != vm[parent].checkPassword;
     }
 
-    function onCheckPasswordChange(newModel) {
-      vm.register.passwordMismatch = vm.register.password != newModel;
+    function onCheckPasswordChange(newModel, parent) {
+      vm[parent].passwordMismatch = vm[parent].password != newModel;
     }
 
     function register() {
-
+      vm.loading             = true;
+      vm.register.type       = 'user';
+      vm.register.superAdmin = false;
+      vm.loading             = false;
     }
 
     function login() {
+      vm.loading = true;
+      vm.loading = false;
+    }
+
+    function newPassword() {
 
     }
   }

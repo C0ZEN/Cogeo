@@ -1,0 +1,48 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!-- Profile card -->
+      <h3 class="space-base-after no-margin-top">{{ 'account_profile_profile_card' | translate }}</h3>
+      <div class="profile-card">
+        <img class="img-circle img-thumbnail"
+             ng-src="images/bot/Friendybot.png">
+        <div class="text">
+          <h3>{{ vm.user.surname }} {{ vm.user.givenName }}</h3>
+          <p class="help-text">@{{ vm.user.username }}</p>
+          <h4>
+            <a href>#Supinfo</a>
+            <a href>#9gag</a>
+            <a href>#Bf1</a>
+          </h4>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <h3 class="space-medium-before space-base-after">{{ 'account_profile_data' | translate }}</h3>
+      <h4>
+        <strong>{{ 'account_profile_username' | translate }}:</strong>
+        {{ vm.user.username }}
+      </h4>
+      <h4>
+        <strong>{{ 'account_profile_email' | translate }}:</strong>
+        {{ vm.user.email }}
+      </h4>
+      <h4 style="margin-bottom: 0;">
+        <strong>{{ 'account_profile_born_date' | translate }}:</strong>
+        16/04/1994
+      </h4>
+      <p class="help-block space-medium-after">
+        {{ 'account_profile_date_register'
+        | translate:"{date:'" + (vm.user.date.register * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Edit btn -->
+  <cozen-btn cozen-btn-label="account_profile_edit"
+             cozen-btn-auto-sizing="true"
+             cozen-btn-on-click="goTo.view('app.account.profileEdit')"
+             cozen-btn-class="space-medium-after">
+  </cozen-btn>
+</div>

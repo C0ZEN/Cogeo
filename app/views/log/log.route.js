@@ -30,6 +30,15 @@
         data        : {
           pageTitle: 'register'
         }
+      })
+      .state('app.newPassword', {
+        url         : '/new-password/:token',
+        templateUrl : 'views/log/new.password.html',
+        controller  : 'LogCtrl',
+        controllerAs: 'vm',
+        data        : {
+          pageTitle: 'new_password'
+        }
       });
   }
 

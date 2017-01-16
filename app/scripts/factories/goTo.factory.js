@@ -15,10 +15,11 @@
 
     // Public functions
     return {
-      view           : view,
-      isCurrentView  : isCurrentView,
-      hasThisParent  : hasThisParent,
-      getCurrentParam: getCurrentParam
+      view             : view,
+      isCurrentView    : isCurrentView,
+      hasThisParent    : hasThisParent,
+      getCurrentParam  : getCurrentParam,
+      isOneOfThoseViews: isOneOfThoseViews
     };
 
     function view(view, param) {
@@ -38,6 +39,20 @@
     function hasThisParent(parent) {
       if (CONFIG.debug) Methods.directiveCallbackLog('goTo', 'hasThisParent');
       return Methods.isInList($state.current.name, parent);
+    }
+
+    function isOneOfThoseViews(views) {
+      var i, length;
+      if (typeof views == 'object') {
+        for (i = 0, length = views.length; i < length; i++) {
+          if (isCurrentView(views[i])) return true;
+        }
+      } else {
+        for (i = 0, length = arguments.length; i < length; i++) {
+          if (isCurrentView(arguments[i])) return true;
+        }
+      }
+      return false;
     }
 
     function getCurrentParam(param, formatted) {

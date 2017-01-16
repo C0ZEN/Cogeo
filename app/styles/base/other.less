@@ -37,3 +37,35 @@ p.help-text {
 body {
   overflow-x: hidden;
 }
+div.profile-card {
+  display:          flex;
+  flex-direction:   row;
+  align-items:      center;
+  justify-content:  flex-start;
+  background-color: @atom-color-line-rule-light;
+  border:           1px solid @atom-color-line-rule;
+  border-radius:    @atom-radius;
+  padding:          @atom-space-small;
+  div.text {
+    display:        flex;
+    flex-direction: column;
+    margin-left:    @atom-space-base;
+    h4,
+    p,
+    h3 {
+      margin: 0;
+    }
+    h3 {
+      small {
+        color: @atom-color-label;
+      }
+    }
+  }
+  img {
+    width:  70px;
+    height: 70px;
+    &.img-thumbnail {
+      padding: @atom-space-small;
+    }
+  }
+}

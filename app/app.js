@@ -27,7 +27,9 @@
       'uuid',
       'monospaced.elastic',
       'duScroll',
-      'cozenLib'
+      'cozenLib',
+      'rzModule',
+      'tmh.dynamicLocale'
     ])
     .config(config)
     .run(run);
@@ -37,11 +39,12 @@
     '$translateProvider',
     'CONFIG',
     'ThemesProvider',
-    'ConfigProvider'
+    'ConfigProvider',
+    'tmhDynamicLocaleProvider'
   ];
 
   // Global configuration
-  function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider) {
+  function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider) {
 
     // Override the CONFIG for the Atom theme
     ThemesProvider.setActiveTheme('atom');
@@ -54,7 +57,7 @@
       .dropdownDisplayModelLength(true)
       .requiredType('icon')
       .alertIconLeftDefault('fa fa-info-circle')
-      .currentLanguage('fr')
+      .currentLanguage(CONFIG.currentLanguage)
       .popupAnimationInAnimation('zoomIn')
       .popupAnimationOutAnimation('zoomOut')
       .popupFooter(false);
@@ -76,6 +79,11 @@
 
     // Configure the locale for moment
     moment.locale(CONFIG.currentLanguage);
+
+    // Configure the locale for angular default services
+    tmhDynamicLocaleProvider
+      .localeLocationPattern('/bower_components/angular-i18n/angular-locale_{{locale}}.js')
+      .defaultLocale(CONFIG.currentLanguage);
 
     // 4pjt Config
     CONFIG.internal = {};
