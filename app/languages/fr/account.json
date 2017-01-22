@@ -25,6 +25,8 @@
   "account_profile_new_password_pc": "Nouveau mot de passe",
   "account_profile_repeat_new_password": "Confirmation du nouveau mot de passe",
   "account_profile_repeat_new_password_pc": "Confirmation du nouveau mot de passe",
+  "account_profile_picture": "Image de profile",
+  "account_profile_picture_upload": "Uploader une image",
   "account_settings_network_title": "Réseau",
   "account_settings_network_port_1": "Port principal",
   "account_settings_network_port_1_pc": "Port principal",

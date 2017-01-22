@@ -75,6 +75,7 @@ module.exports = function(config) {
       'bower_components/angulartics/src/angulartics-marketo.js',
       'bower_components/angulartics/src/angulartics-intercom.js',
       'bower_components/videogular-angulartics/vg-analytics.js',
+      'bower_components/ng-file-upload/ng-file-upload.js',
       'bower_components/cozen-lib/release/clean/main.js',
       'bower_components/cozen-lib/release/clean/template.cache.js',
       'bower_components/cozen-lib/release/clean/directives.js',

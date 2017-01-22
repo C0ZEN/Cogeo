@@ -34,6 +34,35 @@
       date      : {
         register  : 1484561615,
         lastUpdate: 1484561615
+      },
+      picture   : {
+        "$ngfName"    : "3.jpg",
+        "$ngfOrigSize": 146126,
+        "upload"      : {},
+        "result"      : {
+          "public_id"        : "ygfsbbfylq91lq753jyo",
+          "version"          : 1485115972,
+          "signature"        : "439e54b4a9837f4a9f74a9ae219a625762cdcadd",
+          "width"            : 600,
+          "height"           : 600,
+          "format"           : "jpg",
+          "resource_type"    : "image",
+          "created_at"       : "2017-01-22T20:12:52Z",
+          "tags"             : [
+            "cozen"
+          ],
+          "bytes"            : 71142,
+          "type"             : "upload",
+          "etag"             : "441a0154c495381deb37b1a57f487a33",
+          "url"              : "http://res.cloudinary.com/cozen/image/upload/v1485115972/ygfsbbfylq91lq753jyo.jpg",
+          "secure_url"       : "https://res.cloudinary.com/cozen/image/upload/v1485115972/ygfsbbfylq91lq753jyo.jpg",
+          "context"          : {
+            "custom": {
+              "photo": "3.jpg"
+            }
+          },
+          "original_filename": "3"
+        }
       }
     };
     vm.userCopy                  = angular.copy(vm.user);
