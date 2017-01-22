@@ -1,3 +1,12 @@
+/**
+ * @ngdoc directive
+ * @name logo-layer
+ * @restrict E
+ * @replace false
+ * @transclude false
+ * @description
+ *
+ */
 (function (angular) {
   'use strict';
 
@@ -11,25 +20,17 @@
 
   function logoLayer(VG_STATES) {
     return {
-      bindToController: true,
-      controller      : ControllerName,
-      controllerAs    : 'vm',
-      link            : link,
-      restrict        : 'E',
-      scope           : {},
-      require: "^videogular"
+      link       : link,
+      restrict   : 'E',
+      require    : "^videogular",
+      replace    : false,
+      transclude : false,
+      templateUrl: 'scripts/directives/logoLayer/logoLayer.template.html'
     };
 
-    function link(scope, element, attrs) {
-
+    function link(scope, element, attrs, API) {
+      scope.API = API;
     }
-  }
-
-  ControllerName.$inject = ['dependency'];
-
-  /* @ngInject */
-  function ControllerName(dependency) {
-
   }
 
 })(window.angular);

@@ -29,7 +29,14 @@
       'duScroll',
       'cozenLib',
       'rzModule',
-      'tmh.dynamicLocale'
+      'tmh.dynamicLocale',
+      'angularAudioRecorder',
+      "com.2fdevs.videogular",
+      "com.2fdevs.videogular.plugins.controls",
+      "com.2fdevs.videogular.plugins.overlayplay",
+      "com.2fdevs.videogular.plugins.poster",
+      "com.2fdevs.videogular.plugins.imaads",
+      "com.2fdevs.videogular.plugins.buffering"
     ])
     .config(config)
     .run(run);
@@ -60,7 +67,8 @@
       .currentLanguage(CONFIG.currentLanguage)
       .popupAnimationInAnimation('zoomIn')
       .popupAnimationOutAnimation('zoomOut')
-      .popupFooter(false);
+      .popupFooter(false)
+      .btnToggleStartRight(false);
 
     // Configure the location provider
     $locationProvider.html5Mode({
@@ -86,7 +94,17 @@
       .defaultLocale(CONFIG.currentLanguage);
 
     // 4pjt Config
-    CONFIG.internal = {};
+    CONFIG.internal = {
+      video: {
+        theme  : "bower_components/videogular-themes-default/videogular.css",
+        plugins: {
+          controls: {
+            autoHide    : true,
+            autoHideTime: 4000
+          }
+        }
+      }
+    };
   }
 
   run.$inject = [
@@ -112,14 +130,15 @@
       showPopup: showPopup
     };
 
-    function showPopup($event, name) {
+    function showPopup($event, name, data) {
 
       // Required to avoid an show and hide behavior
       $event.stopPropagation();
 
       // Show the popup
       cozenPopupFactory.show({
-        name: name
+        name: name,
+        data: data
       });
     }
   }

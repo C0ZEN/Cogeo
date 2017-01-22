@@ -69,3 +69,98 @@ div.profile-card {
     }
   }
 }
+.audioRecorder-analyzer {
+  border:     1px solid @atom-color-line-rule;
+  display:    flex;
+  height:     130px;
+  box-sizing: border-box;
+}
+.waveSurfer {
+  border: 1px solid @atom-color-line-rule;
+}
+videogular div.my-logo-layer {
+  position: absolute;
+  display:  block;
+  z-index:  50;
+  top:      0;
+}
+videogular div.my-logo-layer img {
+  padding-left: @atom-space-base;
+  padding-top:  @atom-space-base;
+  opacity:      0.5;
+  height:       48px;
+}
+videogular vg-poster img,
+[videogular] vg-poster img {
+  max-height: 50% !important;
+  max-width:  50% !important;
+}
+div.atom-logs {
+  div.atom-log {
+    border-top:          1px solid @atom-color-line-rule;
+    border-right:        1px solid @atom-color-line-rule;
+    padding:             @atom-space-small @atom-space-base;
+    animation-fill-mode: @atom-animation-fill;
+    animation-duration:  @atom-animation-duration-in-fast;
+    .animation-fadeInLeft(-@atom-space-base);
+    display:             flex;
+    flex-direction:      row;
+    justify-content:     flex-start;
+    align-items:         center;
+    &.ng-leave-active {
+      display:            none;
+      animation-duration: 0ms;
+    }
+    &.group {
+      border-left: 3px solid @atom-color-blue;
+      div.icon {
+        color: @atom-color-blue;
+      }
+    }
+    &.channel {
+      border-left: 3px solid @atom-color-green;
+      div.icon {
+        color: @atom-color-green;
+      }
+    }
+    &.social {
+      border-left: 3px solid @atom-color-purple;
+      div.icon {
+        color: @atom-color-purple;
+      }
+    }
+    &.border-bottom {
+      border-bottom:              1px solid @atom-color-line-rule;
+      border-bottom-left-radius:  @atom-radius;
+      border-bottom-right-radius: @atom-radius;
+    }
+    div.icon {
+      padding-right: @atom-space-base;
+      font-size:     20px;
+      i {
+        vertical-align: middle;
+        font-size:      inherit;
+      }
+    }
+    div.text {
+      p {
+        margin: 0;
+        &:first-of-type {
+          font-size: @atom-font-h3;
+        }
+      }
+    }
+  }
+  > :first-child {
+    border-top-left-radius:  @atom-radius;
+    border-top-right-radius: @atom-radius;
+  }
+}
+div.cozen-input.atom-search-input {
+  div.cozen-input-icon.left {
+    padding: 3px 6px 6px 8px !important;
+  }
+}
+.flex-end {
+  justify-content: flex-end !important;
+}

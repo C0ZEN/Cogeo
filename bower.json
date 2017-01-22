@@ -24,12 +24,21 @@
     "animate.css": "^3.5.2",
     "angular-uuid-service": "^0.1.0",
     "angular-elastic": "https://C0ZEN@bitbucket.org/C0ZEN/angular-elastic.git#v2.6.0",
-    "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop",
     "scrollreveal": "^3.3.2",
     "angular-scroll": "^1.0.0",
     "angularjs-slider": "^6.0.0",
     "angular-dynamic-locale": "^0.1.32",
-    "angular-i18n": "^1.6.1"
+    "angular-i18n": "^1.6.1",
+    "angularAudioRecorder": "^1.4.1",
+    "videogular": "^1.4.4",
+    "videogular-controls": "^1.4.4",
+    "videogular-buffering": "^1.4.4",
+    "videogular-overlay-play": "^1.4.4",
+    "videogular-poster": "^1.4.4",
+    "videogular-ima-ads": "^1.4.4",
+    "videogular-angulartics": "^1.4.4",
+    "videogular-themes-default": "^1.4.4",
+    "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",
@@ -41,8 +50,8 @@
     "bootstrap": {
       "main": [
         "less/bootstrap.less",
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
+        "dist/css/bootstrap.min.css",
+        "dist/js/bootstrap.min.js"
       ]
     },
     "moment": {
@@ -67,6 +76,27 @@
         "release/clean/template.cache.js",
         "release/clean/directives.js",
         "release/main.min.css"
+      ]
+    },
+    "angularjs-slider": {
+      "main": [
+        "dist/rzslider.min.js",
+        "dist/rzslider.min.css"
+      ]
+    },
+    "jquery": {
+      "main": [
+        "dist/jquery.min.js"
+      ]
+    },
+    "angular": {
+      "main": [
+        "angular.min.js"
+      ]
+    },
+    "animate.css": {
+      "main": [
+        "animate.min.css"
       ]
     }
   },

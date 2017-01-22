@@ -4,7 +4,8 @@
              cozen-popup-header-title="popup_logout_header_title">
   <div class="row">
     <div class="col-xs-12">
-      <h3 class="space-large-before space-large-after text-center">{{ 'popup_logout_body_title' | translate }}</h3>
+      <h3 class="space-large-before space-large-after text-center">{{ 'popup_logout_body_title' | translate
+                                                                         }}</h3>
     </div>
     <div class="col-xs-12 space-large-after text-center">
       <cozen-btn cozen-btn-type-warning
@@ -12,13 +13,13 @@
                  cozen-btn-label="popup_logout_body_logout"
                  cozen-btn-auto-sizing="true"
                  cozen-btn-on-click="popup.methods.logout()"
-                 cozen-btn-class="space-small-right">
+                 cozen-btn-class="space-base-right">
       </cozen-btn>
       <cozen-btn cozen-btn-type-cold
                  cozen-btn-label="popup_cancel"
                  cozen-btn-auto-sizing="true"
                  cozen-btn-on-click="popup.methods.closePopup('logout')"
-                 cozen-btn-class="space-small-left">
+                 cozen-btn-class="space-base-left">
       </cozen-btn>
     </div>
   </div>

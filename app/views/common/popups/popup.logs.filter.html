@@ -1,50 +1,53 @@
-<cozen-popup cozen-popup-name="forgottenPassword"
-             cozen-popup-type-green
-             cozen-popup-header-title="popup_forgotten_password_header_title">
+<cozen-popup cozen-popup-name="logsFilter"
+             cozen-popup-type-info
+             cozen-popup-size-small
+             cozen-popup-data="popup.logsFilter.data"
+             cozen-popup-header-title="popup_logs_filter_header_title">
   <div class="row">
-    <div class="col-xs-10 col-xs-push-1 space-large-after">
-      <h3 class="space-large-before">{{ 'popup_forgotten_password_body_title' | translate }}</h3>
-      <p class="help-text">{{ 'popup_forgotten_password_body_subtitle_1' | translate }}</p>
-      <p class="help-text">{{ 'popup_forgotten_password_body_subtitle_2' | translate }}</p>
-      <p class="help-text">{{ 'popup_forgotten_password_body_subtitle_3' | translate }}</p>
-    </div>
-    <div class="col-xs-10 col-xs-push-1 space-large-after">
-      <div class="row same-height-column">
-        <div class="col-xs-12 col-md-8">
-          <cozen-form cozen-form-name="forgottenPassword"
-                      cozen-form-ctrl="popup"
-                      cozen-form-model="form">
-            <cozen-input cozen-input-model="popup.forgottenPassword.email"
-                         cozen-input-name="{{ popup.CONFIG.internal.log.email.name }}"
-                         cozen-input-max-length="{{ popup.CONFIG.internal.log.email.length }}"
-                         cozen-input-pattern="{{ popup.CONFIG.internal.log.email.pattern }}"
-                         cozen-input-label="log_register_email"
-                         cozen-input-placeholder="log_register_email_pc"
-                         cozen-input-required="{{ popup.CONFIG.internal.log.email.required }}"
-                         cozen-input-class="space-medium-after">
-            </cozen-input>
-            <div class="center-flex-content">
-              <cozen-btn cozen-btn-type-green
-                         cozen-btn-icon-right="fa icons8-message-filled"
-                         cozen-btn-label="popup_forgotten_password_body_send"
-                         cozen-btn-auto-sizing="true"
-                         cozen-btn-disabled="popup.form.forgottenPassword.$invalid"
-                         cozen-btn-on-click="popup.methods.forgottenPassword()">
-              </cozen-btn>
-              <cozen-btn cozen-btn-type-cold
-                         cozen-btn-label="popup_cancel"
-                         cozen-btn-auto-sizing="true"
-                         cozen-btn-on-click="popup.methods.closePopup('forgotten_password')">
-              </cozen-btn>
-            </div>
-          </cozen-form>
-        </div>
-        <div class="hidden-xs hidden-sm col-md-4">
-          <img ng-src="images/bg/mail.png"
-               style="left: 60%"
-               class="form-left-img">
-        </div>
-      </div>
+    <div class="col-xs-10 col-xs-push-1 space-large-before space-large-after">
+      <cozen-form cozen-form-name="logsFilter"
+                  cozen-form-ctrl="popup"
+                  cozen-form-model="form">
+
+        <!-- Events -->
+        <cozen-dropdown cozen-dropdown-model="popup.logsFilter.trash"
+                        cozen-dropdown-validator-all
+                        cozen-dropdown-multiple="true"
+                        cozen-dropdown-model-enhanced="2"
+                        cozen-dropdown-class="space-medium-after"
+                        cozen-dropdown-label="popup_logs_filter_body_event"
+                        cozen-dropdown-placeholder="popup_logs_filter_body_event_pc"
+                        cozen-dropdown-all-selected-text="popup_logs_filter_body_event_all_selected">
+          <cozen-dropdown-item-simple ng-repeat="event in popup.logsFilter.data.events track by $index"
+                                      cozen-dropdown-item-simple-value="event.id"
+                                      cozen-dropdown-item-simple-label="{{ event.name }}"
+                                      cozen-dropdown-item-simple-icon-left="{{ event.icon }} {{ event.color }}"
+                                      cozen-dropdown-item-simple-selected="event.selected">
+          </cozen-dropdown-item-simple>
+        </cozen-dropdown>
+
+        <!-- Limit per page -->
+        <cozen-input cozen-input-model="popup.logsFilter.data.limit"
+                     cozen-input-name="limit"
+                     cozen-input-min="1"
+                     cozen-input-max="100"
+                     cozen-input-min-length="1"
+                     cozen-input-max-length="3"
+                     cozen-input-type-number
+                     cozen-input-label="popup_logs_filter_body_limit"
+                     cozen-input-placeholder="popup_logs_filter_body_limit_pc"
+                     cozen-input-required="true"
+                     cozen-input-validator-all
+                     cozen-input-class="space-medium-after">
+        </cozen-input>
+
+        <!-- Order by -->
+        <cozen-btn-toggle cozen-btn-toggle-model="popup.logsFilter.data.orderBy"
+                          cozen-btn-toggle-label="popup_logs_filter_body_order_by"
+                          cozen-btn-toggle-start-right="true"
+                          cozen-btn-toggle-tooltip="popup_logs_filter_body_order_by_tooltip">
+        </cozen-btn-toggle>
+      </cozen-form>
     </div>
   </div>
 </cozen-popup>

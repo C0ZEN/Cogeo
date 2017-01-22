@@ -9,26 +9,21 @@
       </h3>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.groups.creation"
                         cozen-btn-toggle-label="account_notifications_creation"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.groups.edit"
                         cozen-btn-toggle-label="account_notifications_edit"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.groups.newMember"
                         cozen-btn-toggle-label="account_notifications_new_member_group"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.groups.kickedMember"
                         cozen-btn-toggle-label="account_notifications_kicked_member"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.groups.bannedMember"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-label="account_notifications_banned_member">
       </cozen-btn-toggle>
 
@@ -39,36 +34,31 @@
       </h3>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.channels.creation"
                         cozen-btn-toggle-label="account_notifications_creation"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.channels.edit"
                         cozen-btn-toggle-label="account_notifications_edit"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.channels.newMember"
                         cozen-btn-toggle-label="account_notifications_new_member_group"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.channels.kickedMember"
                         cozen-btn-toggle-label="account_notifications_kicked_member"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.channels.bannedMember"
                         cozen-btn-toggle-label="account_notifications_banned_member"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.channels.newMessage"
                         cozen-btn-toggle-label="account_notifications_new_message"
-                        cozen-btn-toggle-start-right="false"
                         cozen-btn-toggle-class="space-small-after">
       </cozen-btn-toggle>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.channels.newMessageTagged"
-                        cozen-btn-toggle-start-right="false"
+                        cozen-btn-toggle-tooltip="{{ 'account_notifications_new_message_tagged_tooltip' | translate }}"
+                        cozen-btn-toggle-tooltip-type="html"
                         cozen-btn-toggle-label="account_notifications_new_message_tagged">
       </cozen-btn-toggle>
 
@@ -79,7 +69,16 @@
       </h3>
       <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.directMessage.newMessage"
                         cozen-btn-toggle-label="account_notifications_new_message"
-                        cozen-btn-toggle-start-right="false"
+                        cozen-btn-toggle-class="space-medium-after">
+      </cozen-btn-toggle>
+
+      <!-- Other -->
+      <h3 class="space-large-before yellow">
+        <i class="icons-middle icons8-appointment-reminders"></i>
+        {{ 'account_notifications_other' | translate }}
+      </h3>
+      <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.other.newFriend"
+                        cozen-btn-toggle-label="account_notifications_new_friend"
                         cozen-btn-toggle-class="space-medium-after">
       </cozen-btn-toggle>
 

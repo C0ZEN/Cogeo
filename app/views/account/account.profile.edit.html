@@ -41,9 +41,12 @@
                      cozen-input-label="log_register_email"
                      cozen-input-placeholder="log_register_email_pc"
                      cozen-input-validator-all
-                     cozen-input-required="{{ vm.CONFIG.internal.log.email.required }}"
-                     cozen-input-class="space-medium-after">
+                     cozen-input-required="{{ vm.CONFIG.internal.log.email.required }}">
         </cozen-input>
+        <p class="help-block space-small-before space-medium-after">
+          {{ 'account_profile_date_last_update'
+          | translate:"{date:'" + (vm.user.date.lastUpdate * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
+        </p>
 
         <div class="center-flex-content space-medium-after">
 

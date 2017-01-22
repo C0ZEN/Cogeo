@@ -1,0 +1,30 @@
+.animation-fadeInLeft(@start-length) {
+  @start-length-cleaned: unit(@start-length);
+  @name: ~ "fadeInLeft@{start-length-cleaned}";
+  @-webkit-keyframes @name {
+    from {
+      opacity:           0;
+      -webkit-transform: translate3d(@start-length, 0, 0);
+      transform:         translate3d(@start-length, 0, 0);
+    }
+    to {
+      opacity:           1;
+      -webkit-transform: none;
+      transform:         none;
+    }
+  }
+  @keyframes @name {
+    from {
+      opacity:           0;
+      -webkit-transform: translate3d(@start-length, 0, 0);
+      transform:         translate3d(@start-length, 0, 0);
+    }
+    to {
+      opacity:           1;
+      -webkit-transform: none;
+      transform:         none;
+    }
+  }
+  -webkit-animation-name: @name;
+  animation-name:         @name;
+}

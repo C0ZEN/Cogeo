@@ -72,6 +72,16 @@
         {{ (vm.notifications.directMessage.newMessage ? 'account_activated' : 'account_disabled') | translate }}
       </h4>
 
+      <!-- Other -->
+      <h3 class="space-large-before yellow">
+        <i class="icons-middle icons8-appointment-reminders"></i>
+        {{ 'account_notifications_other' | translate }}
+      </h3>
+      <h4 class="space-medium-after">
+        <strong>{{ 'account_notifications_new_friend' | translate }}:</strong>
+        {{ (vm.notifications.other.newFriend ? 'account_activated' : 'account_disabled') | translate }}
+      </h4>
+
       <!-- Edit btn -->
       <cozen-btn cozen-btn-label="account_settings_edit"
                  cozen-btn-auto-sizing="true"

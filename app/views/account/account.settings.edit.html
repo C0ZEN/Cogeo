@@ -45,6 +45,13 @@
         <rzslider rz-slider-model="vm.settings.micro.volume"
                   rz-slider-options="vm.CONFIG.internal.account.settings.micro.volume">
         </rzslider>
+        <div class="space-base-before">
+          <a href
+             onclick="this.blur()"
+             ng-click="methods.showPopup($event, 'testMicrophone')">
+            {{ 'account_settings_micro_test' | translate }}
+          </a>
+        </div>
 
         <!-- Speaker -->
         <h3 class="space-large-before space-base-after purple">
@@ -55,6 +62,13 @@
         <rzslider rz-slider-model="vm.settings.speaker.volume"
                   rz-slider-options="vm.CONFIG.internal.account.settings.speaker.volume">
         </rzslider>
+        <div class="space-base-before">
+          <a href
+             onclick="this.blur()"
+             ng-click="methods.showPopup($event, 'testSpeaker')">
+            {{ 'account_settings_speaker_test' | translate }}
+          </a>
+        </div>
 
         <!-- Other -->
         <h3 class="space-large-before space-base-after yellow">

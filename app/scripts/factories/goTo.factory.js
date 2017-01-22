@@ -37,7 +37,6 @@
     }
 
     function hasThisParent(parent) {
-      if (CONFIG.debug) Methods.directiveCallbackLog('goTo', 'hasThisParent');
       return Methods.isInList($state.current.name, parent);
     }
 

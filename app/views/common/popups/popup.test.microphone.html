@@ -1,25 +1,71 @@
-<cozen-popup cozen-popup-size-small
-             cozen-popup-name="logout"
-             cozen-popup-type-warning
-             cozen-popup-header-title="popup_logout_header_title">
+<cozen-popup cozen-popup-name="testMicrophone"
+             cozen-popup-type-info
+             cozen-popup-header-title="popup_test_microphone_header_title">
   <div class="row">
-    <div class="col-xs-12">
-      <h3 class="space-large-before space-large-after text-center">{{ 'popup_logout_body_title' | translate }}</h3>
-    </div>
-    <div class="col-xs-12 space-large-after text-center">
-      <cozen-btn cozen-btn-type-warning
-                 cozen-btn-icon-right="fa icons8-logout-rounded"
-                 cozen-btn-label="popup_logout_body_logout"
-                 cozen-btn-auto-sizing="true"
-                 cozen-btn-on-click="popup.methods.logout()"
-                 cozen-btn-class="space-small-right">
-      </cozen-btn>
-      <cozen-btn cozen-btn-type-cold
-                 cozen-btn-label="popup_cancel"
-                 cozen-btn-auto-sizing="true"
-                 cozen-btn-on-click="popup.methods.closePopup('logout')"
-                 cozen-btn-class="space-small-left">
-      </cozen-btn>
+    <div class="col-xs-10 col-xs-push-1 space-large-after">
+
+      <!-- Title -->
+      <h3 class="space-large-before">{{ 'popup_test_microphone_body_title' | translate }}</h3>
+      <p class="help-text">{{ 'popup_test_microphone_body_subtitle_1' | translate }}</p>
+      <p class="help-text">{{ 'popup_test_microphone_body_subtitle_2' | translate }}</p>
+
+      <!-- Test area -->
+      <ng-audio-recorder id="audioInput"
+                         show-player="false"
+                         audio-model="popup.testMicrophone.recordedInput">
+        <div ng-if="recorder.isAvailable"
+             class="space-medium-before">
+          <cozen-btn cozen-btn-label="popup_test_microphone_body_start_record"
+                     cozen-btn-auto-sizing="true"
+                     cozen-btn-disabled="recorder.status.isRecording"
+                     cozen-btn-on-click="recorder.startRecord()"
+                     cozen-btn-icon-right="fa icons8-record"
+                     cozen-btn-class="space-base-right">
+          </cozen-btn>
+          <cozen-btn cozen-btn-label="popup_test_microphone_body_stop_record"
+                     cozen-btn-auto-sizing="true"
+                     cozen-btn-type-error
+                     cozen-btn-disabled="!recorder.status.isRecording"
+                     cozen-btn-on-click="recorder.stopRecord()"
+                     cozen-btn-icon-right="fa icons8-stop"
+                     cozen-btn-class="space-base-left space-base-right">
+          </cozen-btn>
+          <cozen-btn cozen-btn-label="popup_test_microphone_body_play_record"
+                     cozen-btn-auto-sizing="true"
+                     cozen-btn-type-success
+                     cozen-btn-disabled="recorder.status.isRecording || !recorder.audioModel"
+                     cozen-btn-on-click="recorder.playbackRecording()"
+                     cozen-btn-icon-right="fa icons8-play"
+                     cozen-btn-class="space-base-left">
+          </cozen-btn>
+
+          <!-- Analyzer -->
+          <div ng-show="recorder.status.isRecording"
+               class="space-medium-before">
+            <ng-audio-recorder-analyzer></ng-audio-recorder-analyzer>
+          </div>
+
+          <!-- Wave -->
+          <div ng-show="recorder.audioModel"
+               class="space-medium-before">
+            <ng-audio-recorder-wave-view cursor-color="#1e88e5"
+                                         cursor-width="1"
+                                         hide-scrollbar="true"
+                                         progress-color="#7cb342"
+                                         wave-color="#e53935">
+            </ng-audio-recorder-wave-view>
+          </div>
+        </div>
+
+        <!-- On error -->
+        <div ng-if="!recorder.isAvailable"
+             class="space-large-after">
+          <cozen-alert cozen-alert-type-error
+                       cozen-alert-close-btn="false"
+                       cozen-alert-label="popup_test_microphone_body_record_error">
+          </cozen-alert>
+        </div>
+      </ng-audio-recorder>
     </div>
   </div>
 </cozen-popup>

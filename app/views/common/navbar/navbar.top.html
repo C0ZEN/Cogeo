@@ -47,6 +47,7 @@
          ng-mouseleave="vm.other.hover = false"
          ng-keydown="$event.keyCode == 13 ? vm.other.hover = !vm.other.hover : null"
          ng-click="vm.other.hover = true"
+         ng-class="{'active': goTo.hasThisParent('app.account')}"
          tabindex="0">
       {{ 'navbar_other' | translate }}
       <div class="link-dropdown"

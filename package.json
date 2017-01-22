@@ -43,5 +43,8 @@
   },
   "scripts": {
     "test": "karma start test\\karma.conf.js"
+  },
+  "dependencies": {
+    "ng-simple-webrtc": "^0.22.0"
   }
 }
