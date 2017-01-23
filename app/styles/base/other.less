@@ -37,36 +37,43 @@ p.help-text {
 body {
   overflow-x: hidden;
 }
-div.profile-card {
-  display:          flex;
-  flex-direction:   row;
-  align-items:      center;
-  justify-content:  flex-start;
-  background-color: @atom-color-line-rule-light;
+div.atom-profile {
+  background-color: @atom-color-white;
   border:           1px solid @atom-color-line-rule;
   border-radius:    @atom-radius;
-  padding:          @atom-space-small;
-  div.text {
-    display:        flex;
-    flex-direction: column;
-    margin-left:    @atom-space-base;
-    h4,
-    p,
-    h3 {
-      margin: 0;
+  padding:          @atom-space-base @atom-space-medium;
+  margin-bottom:    @atom-space-base;
+  div.profile-card {
+    display:         flex;
+    flex-direction:  row;
+    align-items:     center;
+    justify-content: flex-start;
+    div.text {
+      display:        flex;
+      flex-direction: column;
+      margin-left:    @atom-space-base;
+      h4,
+      p,
+      h3 {
+        margin: 0;
+      }
+      h3 {
+        small {
+          color: @atom-color-label;
+        }
+      }
     }
-    h3 {
-      small {
-        color: @atom-color-label;
+    img {
+      width:  70px;
+      height: 70px;
+      &.img-thumbnail {
+        padding: @atom-space-small;
       }
     }
   }
-  img {
-    width:  70px;
-    height: 70px;
-    &.img-thumbnail {
-      padding: @atom-space-small;
-    }
+  hr {
+    margin-top:    @atom-space-base;
+    margin-bottom: @atom-space-base;
   }
 }
 .audioRecorder-analyzer {
@@ -103,6 +110,9 @@ div.cozen-input.atom-search-input {
 .flex-end {
   justify-content: flex-end !important;
 }
+.flex-start {
+  justify-content: flex-start !important;
+}
 i.atom-icon-btn {
   color:  @atom-color-blue;
   cursor: pointer;
@@ -111,7 +121,7 @@ i.atom-icon-btn {
     color: @atom-color-blue-active;
   }
   &.purple {
-    color:  @atom-color-purple;
+    color: @atom-color-purple;
     &:focus,
     &:hover {
       color: @atom-color-purple-active;

@@ -57,3 +57,23 @@ label.atom-label {
   padding:     0;
   font-weight: 400;
 }
+mark.atom-mark {
+  border-radius: @atom-radius;
+  padding:       0 @atom-space-small;
+  font-size:     @atom-font-small;
+  font-weight:   400;
+  color:         @atom-color-white;
+  &.creator {
+    background-color: @atom-color-blue;
+  }
+  &.member {
+    background-color: @atom-color-green;
+  }
+  &.admin {
+    background-color: @atom-color-purple;
+  }
+  &.kicked,
+  &.banned {
+    background-color: @atom-color-yellow;
+  }
+}

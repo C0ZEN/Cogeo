@@ -6,10 +6,12 @@
     .controller('NavbarCtrl', NavbarCtrl);
 
   NavbarCtrl.$inject = [
-    '$document'
+    '$document',
+    '$rootScope',
+    'groupsFactory'
   ];
 
-  function NavbarCtrl($document) {
+  function NavbarCtrl($document, $rootScope, groupsFactory) {
     var vm = this;
 
     // Common data
@@ -25,16 +27,7 @@
     vm.group  = {
       hover: false
     };
-    vm.groups = [
-      {
-        name       : 'Supinfo',
-        description: 'Une description'
-      },
-      {
-        name       : '4PJT',
-        description: 'Une description'
-      }
-    ];
+    vm.groups = groupsFactory.getUserGroups($rootScope.data.user.username);
 
     // Methods
     vm.methods = {

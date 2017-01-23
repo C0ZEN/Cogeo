@@ -15,9 +15,14 @@
                                  cozen-pills-item-simple-selected="vm.nav.all">
         </cozen-pills-item-simple>
         <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_details"
-                                 cozen-pills-item-simple-on-click="goTo.view('app.groups.details')"
-                                 cozen-pills-item-simple-disabled="!goTo.isCurrentView('app.groups.details')"
+                                 cozen-pills-item-simple-on-click="goTo.view('app.groups.details', {'groupName': vm.details.group.name})"
+                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all')"
                                  cozen-pills-item-simple-selected="vm.nav.details">
+        </cozen-pills-item-simple>
+        <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_edit"
+                                 cozen-pills-item-simple-on-click="goTo.view('app.groups.edit', {'groupName': vm.details.group.name})"
+                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || !vm.details.userIsAdmin"
+                                 cozen-pills-item-simple-selected="vm.nav.edit">
         </cozen-pills-item-simple>
       </cozen-pills>
 

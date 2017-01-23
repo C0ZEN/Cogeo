@@ -103,6 +103,26 @@ label.atom-label {
   padding: 0;
   font-weight: 400;
 }
+mark.atom-mark {
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #ffffff;
+}
+mark.atom-mark.creator {
+  background-color: #2c9fdd;
+}
+mark.atom-mark.member {
+  background-color: #4ac291;
+}
+mark.atom-mark.admin {
+  background-color: #9c27b0;
+}
+mark.atom-mark.kicked,
+mark.atom-mark.banned {
+  background-color: #feb909;
+}
 /**********************/
 /**   SPACE BEFORE   **/
 /**********************/
@@ -156,6 +176,24 @@ label.atom-label {
 }
 .space-extra-large-right {
   margin-right: 84px !important;
+}
+/********************/
+/**   SPACE LEFT   **/
+/********************/
+.space-small-left {
+  margin-left: 6px !important;
+}
+.space-base-left {
+  margin-left: 12px !important;
+}
+.space-medium-left {
+  margin-left: 24px !important;
+}
+.space-large-left {
+  margin-left: 36px !important;
+}
+.space-extra-large-left {
+  margin-left: 84px !important;
 }
 /**************************/
 /**   SPACE AFTER GRID   **/
@@ -286,7 +324,14 @@ p.help-text {
 body {
   overflow-x: hidden;
 }
-div.profile-card {
+div.atom-profile {
+  background-color: #ffffff;
+  border: 1px solid #d6dbdb;
+  border-radius: 3px;
+  padding: 12px 24px;
+  margin-bottom: 12px;
+}
+div.atom-profile div.profile-card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -300,12 +345,8 @@ div.profile-card {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  background-color: #f8f8f8;
-  border: 1px solid #d6dbdb;
-  border-radius: 3px;
-  padding: 6px;
 }
-div.profile-card div.text {
+div.atom-profile div.profile-card div.text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -315,20 +356,24 @@ div.profile-card div.text {
           flex-direction: column;
   margin-left: 12px;
 }
-div.profile-card div.text h4,
-div.profile-card div.text p,
-div.profile-card div.text h3 {
+div.atom-profile div.profile-card div.text h4,
+div.atom-profile div.profile-card div.text p,
+div.atom-profile div.profile-card div.text h3 {
   margin: 0;
 }
-div.profile-card div.text h3 small {
+div.atom-profile div.profile-card div.text h3 small {
   color: #8c8c8c;
 }
-div.profile-card img {
+div.atom-profile div.profile-card img {
   width: 70px;
   height: 70px;
 }
-div.profile-card img.img-thumbnail {
+div.atom-profile div.profile-card img.img-thumbnail {
   padding: 6px;
+}
+div.atom-profile hr {
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 .audioRecorder-analyzer {
   border: 1px solid #d6dbdb;
@@ -365,6 +410,11 @@ div.cozen-input.atom-search-input div.cozen-input-icon.left {
   -webkit-box-pack: end !important;
       -ms-flex-pack: end !important;
           justify-content: flex-end !important;
+}
+.flex-start {
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
 }
 i.atom-icon-btn {
   color: #2c9fdd;
@@ -948,6 +998,9 @@ div.atom-groups div.atom-group div.text p {
 }
 div.atom-groups div.atom-group div.text p:first-of-type {
   font-size: 16px;
+}
+div.atom-groups div.atom-group div.text a {
+  margin-right: 6px;
 }
 div.atom-groups > :first-child {
   border-top-left-radius: 3px;

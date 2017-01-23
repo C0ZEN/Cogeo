@@ -7,16 +7,13 @@
 
   GroupsCtrl.$inject = [
     'CONFIG',
-    '$scope',
     'goTo',
     '$rootScope',
-    '$filter',
     '$state',
-    'groupsFactory',
-    'userFactory'
+    'groupsFactory'
   ];
 
-  function GroupsCtrl(CONFIG, $scope, goTo, $rootScope, $filter, $state, groupsFactory, userFactory) {
+  function GroupsCtrl(CONFIG, goTo, $rootScope, $state, groupsFactory) {
     var vm = this;
 
     // Common data
@@ -24,15 +21,16 @@
     vm.loading = false;
 
     // Get user
-    vm.user = userFactory.getUser();
+    vm.user = $rootScope.data.user;
 
     // Groups data
-    vm.groups = groupsFactory.getGroups();
+    vm.groups = groupsFactory.getGroupsWithUserRoles(vm.user.username);
 
     // Config for all groups view
     vm.all = angular.copy(vm.user.settings.preferences.allGroups);
 
     vm.details = {};
+    vm.edit    = {};
 
     // Methods
     vm.methods = {
@@ -41,7 +39,9 @@
       getGroupPicture : getGroupPicture,
       onDisplayDetails: onDisplayDetails,
       joinGroup       : joinGroup,
-      leaveGroup      : leaveGroup
+      leaveGroup      : leaveGroup,
+      getKickedTime   : Utils.getKickedTime,
+      onDisplayEdit   : onDisplayEdit
     };
 
     // To add selected design to the proper pill
@@ -53,16 +53,17 @@
     function updatePills() {
       vm.nav = {
         all    : goTo.isCurrentView('app.groups.all'),
-        details: goTo.isCurrentView('app.groups.details')
+        details: goTo.isCurrentView('app.groups.details'),
+        edit   : goTo.isCurrentView('app.groups.edit')
       };
     }
 
     function save(form) {
       vm.loading = true;
       switch (form) {
-        case 'settings':
+        case 'edit':
           vm.loading = false;
-          goTo.view('app.account.settings');
+          goTo.view('app.groups.details', {groupName: vm.details.group.name});
           break;
       }
     }
@@ -75,11 +76,12 @@
 
     function onDisplayDetails() {
       var name  = $state.params.groupName;
-      var group = groupsFactory.getGroupByName(name);
+      var group = groupsFactory.getGroupByNameWithUserRoles(name, vm.user.username);
       if (group != null) {
         vm.details.group         = group;
         vm.details.user          = groupsFactory.getUserFromGroup(vm.user.username, name);
         vm.details.userIsInGroup = vm.details.user != null;
+        vm.details.userIsAdmin   = vm.details.user != null ? vm.details.user.admin : false;
       } else {
         // @todo error handling
       }
@@ -91,6 +93,17 @@
 
     function leaveGroup(groupName) {
 
+    }
+
+    function onDisplayEdit() {
+      var name  = $state.params.groupName;
+      var group = groupsFactory.getGroupByNameWithUserRoles(name, vm.user.username);
+      if (group != null) {
+        vm.edit         = angular.copy(group);
+        vm.details.user = groupsFactory.getUserFromGroup(vm.user.username, name);
+      } else {
+        // @todo error handling
+      }
     }
   }
 

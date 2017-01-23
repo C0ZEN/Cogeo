@@ -22,9 +22,7 @@
     vm.loading = false;
 
     // User data
-    vm.user                      = userFactory.getUser();
-    vm.userCopy                  = angular.copy(vm.user);
-    vm.userCopy.passwordMismatch = false;
+    vm.user = $rootScope.data.user;
 
     // Settings
     vm.settings = angular.copy(vm.user.settings);
@@ -50,7 +48,8 @@
       onCheckPasswordChange : onCheckPasswordChange,
       onNewVolumeSetFromTest: onNewVolumeSetFromTest,
       getAllLogs            : getAllLogs,
-      getLogSrc             : getLogSrc
+      getLogSrc             : getLogSrc,
+      onDisplayEdit         : onDisplayEdit
     };
 
     // To add selected design to the proper pill
@@ -148,6 +147,11 @@
         case 'socialInvitationAccepted':
           return 'icons8-chat';
       }
+    }
+
+    function onDisplayEdit() {
+      vm.userCopy                  = angular.copy($rootScope.data.user);
+      vm.userCopy.passwordMismatch = false;
     }
   }
 

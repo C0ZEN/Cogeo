@@ -17,12 +17,16 @@
       {{ 'navbar_groups' | translate }}
       <div class="link-dropdown dropdown-right"
            ng-class="{'down': vm.group.hover}">
+        <div class="link-dropdown-item"
+             ng-class="{'active': false}"
+             ng-click="goTo.view('app.groups.all')"
+             tabindex="0">
+          {{ 'navbar_groups_all' | translate }}
+        </div>
         <div ng-repeat="group in vm.groups track by $index"
              class="link-dropdown-item"
              ng-class="{'active': false}"
-             ng-click="goTo.view('app.groups.details', {
-                groupName: group.name
-             })"
+             ng-click="goTo.view('app.groups.details', {groupName: group.name})"
              tabindex="0">
           <div class="img">
             <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.result.url) }}">

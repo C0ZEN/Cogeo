@@ -37,6 +37,7 @@
              ng-repeat="group in vm.groups
            | orderBy: 'name':vm.all.orderBy
            | filter: vm.all.search
+           | myGroups:vm.user.username:vm.all.myGroups:vm.all.myGroupsAdmin
            | startFrom: (vm.all.currentPage - 1) * vm.all.limit
            | limitTo: vm.all.limit
            as allGroupsFilter track by $index">
@@ -49,6 +50,33 @@
                  ng-bind-html="group.name"
                  ng-click="goTo.view('app.groups.details', {groupName: group.name})">
               </a>
+              <cozen-tooltip ng-show="group.userRoles.isCreator"
+                             cozen-tooltip-placement="auto bottom"
+                             cozen-tooltip-label="'groups_creator_in' | translate:{'date': (group.date.creation * 1000 | date: 'EEEE dd MMMM yyyy')}">
+                <mark class="atom-mark creator">{{ 'groups_creator' | translate }}</mark>
+              </cozen-tooltip>
+              <cozen-tooltip ng-show="group.userRoles.isMember"
+                             cozen-tooltip-placement="auto bottom"
+                             cozen-tooltip-label="'groups_member_since' | translate:{'date': (group.userRoles.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
+                <mark class="atom-mark member">{{ 'groups_member' | translate }}</mark>
+              </cozen-tooltip>
+              <cozen-tooltip ng-show="group.userRoles.isAdmin"
+                             cozen-tooltip-placement="auto bottom"
+                             cozen-tooltip-label="'groups_member_since' | translate:{'date': (group.userRoles.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
+                <mark class="atom-mark admin">{{ 'groups_admin' | translate }}</mark>
+              </cozen-tooltip>
+              <cozen-tooltip ng-show="group.userRoles.isBanned"
+                             cozen-tooltip-placement="auto bottom"
+                             cozen-tooltip-type-html
+                             cozen-tooltip-label="'groups_banned_since' | translate:{'date': (group.userRoles.banned.on * 1000 | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.banned.by, 'for': group.userRoles.banned.for}">
+                <mark class="atom-mark banned">{{ 'groups_banned' | translate }}</mark>
+              </cozen-tooltip>
+              <cozen-tooltip ng-show="group.userRoles.isKicked"
+                             cozen-tooltip-placement="auto bottom"
+                             cozen-tooltip-type-html
+                             cozen-tooltip-label="'groups_kicked_since' | translate:{'date': (group.userRoles.kicked.on * 1000 | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.kicked.by, 'for': group.userRoles.kicked.for, 'time': (vm.methods.getKickedTime(group.userRoles.kicked.time).key | translate)}">
+                <mark class="atom-mark kicked">{{ 'groups_kicked' | translate }}</mark>
+              </cozen-tooltip>
             </p>
             <p class="help-text">{{ group.description }}</p>
           </div>
@@ -58,6 +86,7 @@
         <div style="display: none;"
              ng-repeat="group in vm.groups
            | filter: vm.all.search
+           | myGroups:vm.user.username:vm.all.myGroups:vm.all.myGroupsAdmin
            as fakeAllGroupsFilter track by $index">
         </div>
       </div>

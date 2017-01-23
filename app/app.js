@@ -112,14 +112,16 @@
     '$rootScope',
     '$state',
     'goTo',
-    'cozenPopupFactory'
+    'cozenPopupFactory',
+    'userFactory'
   ];
 
-  function run($rootScope, $state, goTo, cozenPopupFactory) {
+  function run($rootScope, $state, goTo, cozenPopupFactory, userFactory) {
 
     // Public global data
     $rootScope.data = {
-      innerHeight: window.innerHeight
+      innerHeight: window.innerHeight,
+      user       : userFactory.getUser()
     };
 
     // Public global services

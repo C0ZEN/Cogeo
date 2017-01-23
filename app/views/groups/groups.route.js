@@ -33,6 +33,13 @@
         data       : {
           pageTitle: 'groups_details'
         }
+      })
+      .state('app.groups.edit', {
+        url        : '/edit/:groupName',
+        templateUrl: 'views/groups/groups.edit.html',
+        data       : {
+          pageTitle: 'groups_edit'
+        }
       });
   }
 

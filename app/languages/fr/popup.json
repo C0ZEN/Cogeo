@@ -22,11 +22,17 @@
   "popup_logs_filter_body_event_pc": "Catégorie(s) affichée(s)",
   "popup_logs_filter_body_event_all_selected": "Toutes les catégories sélectionnées",
   "popup_logs_filter_body_order_by": "Ordre décroissant",
-  "popup_logs_filter_body_order_by_tooltip": "Afficher les événements récents en premier ?",
+  "popup_logs_filter_body_order_by_tooltip": "Afficher les événements récents en premier",
   "popup_forgotten_password_header_title": "Mot de passe oublié",
   "popup_forgotten_password_body_title": "Faire une demande de changement de mot de passe ?",
   "popup_forgotten_password_body_subtitle_1": "Tu recevras un email dans la minute avec un lien vers un formulaire.",
   "popup_forgotten_password_body_subtitle_2": "Ce formulaire te permettra de définir un nouveau mot de passe.",
   "popup_forgotten_password_body_subtitle_3": "La sécurité de vos données est une de nos priorité.",
-  "popup_forgotten_password_body_send": "Confirmer la demande"
+  "popup_forgotten_password_body_send": "Confirmer la demande",
+  "popup_allGroups_filter_header_title": "Filtrer les groupes",
+  "popup_allGroups_filter_body_order_by_tooltip": "Afficher les groupes par ordre alphabétique (de A à Z)",
+  "popup_allGroups_filter_body_myGroups": "Seulement mes groupes",
+  "popup_allGroups_filter_body_myGroups_tooltip": "Afficher seulement les groupes dont je suis membre",
+  "popup_allGroups_filter_body_myGroupsAdmin": "Et ou je suis l'administrateur",
+  "popup_allGroups_filter_body_myGroupsAdmin_tooltip": "Afficher seulement les groupes dont je suis membre et dont je suis administrateur"
 }
