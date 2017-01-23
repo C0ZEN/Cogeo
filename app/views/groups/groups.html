@@ -1,0 +1,28 @@
+<div class="container space-large-before animated fadeIn">
+  <div class="row">
+    <div class="col-xs-12 col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
+
+      <!-- Title -->
+      <h1>{{ 'groups_groups_title' | translate }}</h1>
+      <p class="help-text">{{ 'groups_groups_subtitle_1' | translate }}</p>
+      <p class="help-text">{{ 'groups_groups_subtitle_2' | translate }}</p>
+      <p class="help-text space-medium-after">{{ 'groups_groups_subtitle_3' | translate }}</p>
+
+      <!-- Nav -->
+      <cozen-pills cozen-pills-class="space-large-after">
+        <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_all"
+                                 cozen-pills-item-simple-on-click="goTo.view('app.groups.all')"
+                                 cozen-pills-item-simple-selected="vm.nav.all">
+        </cozen-pills-item-simple>
+        <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_details"
+                                 cozen-pills-item-simple-on-click="goTo.view('app.groups.details')"
+                                 cozen-pills-item-simple-disabled="!goTo.isCurrentView('app.groups.details')"
+                                 cozen-pills-item-simple-selected="vm.nav.details">
+        </cozen-pills-item-simple>
+      </cozen-pills>
+
+      <!-- Content -->
+      <div class="ui-view"></div>
+    </div>
+  </div>
+</div>

@@ -21,14 +21,36 @@
       hover: false
     };
 
+    // Groups
+    vm.group  = {
+      hover: false
+    };
+    vm.groups = [
+      {
+        name       : 'Supinfo',
+        description: 'Une description'
+      },
+      {
+        name       : '4PJT',
+        description: 'Une description'
+      }
+    ];
+
     // Methods
     vm.methods = {
-      scrollToElement: scrollToElement
+      scrollToElement: scrollToElement,
+      getGroupPicture: getGroupPicture
     };
 
     function scrollToElement(element) {
       var div = angular.element(document.getElementById(element));
       $document.scrollToElement(div, vm.data.offset, vm.data.duration);
+    }
+
+    function getGroupPicture(name, pictureUrl) {
+      if (Methods.isNullOrEmpty(pictureUrl)) {
+        return 'images/groups/' + name.slice(0, 1) + '.png';
+      } else return pictureUrl;
     }
   }
 

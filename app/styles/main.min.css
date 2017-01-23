@@ -358,100 +358,6 @@ videogular vg-poster img,
   max-height: 50% !important;
   max-width: 50% !important;
 }
-div.atom-logs div.atom-log {
-  border-top: 1px solid #d6dbdb;
-  border-right: 1px solid #d6dbdb;
-  padding: 6px 12px;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  -webkit-animation-duration: 300ms;
-          animation-duration: 300ms;
-  -webkit-animation-name: fadeInLeft-12;
-  animation-name: fadeInLeft-12;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-@-webkit-keyframes fadeInLeft-12 {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-@keyframes fadeInLeft-12 {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-div.atom-logs div.atom-log.ng-leave-active {
-  display: none;
-  -webkit-animation-duration: 0ms;
-          animation-duration: 0ms;
-}
-div.atom-logs div.atom-log.group {
-  border-left: 3px solid #2c9fdd;
-}
-div.atom-logs div.atom-log.group div.icon {
-  color: #2c9fdd;
-}
-div.atom-logs div.atom-log.channel {
-  border-left: 3px solid #4ac291;
-}
-div.atom-logs div.atom-log.channel div.icon {
-  color: #4ac291;
-}
-div.atom-logs div.atom-log.social {
-  border-left: 3px solid #9c27b0;
-}
-div.atom-logs div.atom-log.social div.icon {
-  color: #9c27b0;
-}
-div.atom-logs div.atom-log.border-bottom {
-  border-bottom: 1px solid #d6dbdb;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-div.atom-logs div.atom-log div.icon {
-  padding-right: 12px;
-  font-size: 20px;
-}
-div.atom-logs div.atom-log div.icon i {
-  vertical-align: middle;
-  font-size: inherit;
-}
-div.atom-logs div.atom-log div.text p {
-  margin: 0;
-}
-div.atom-logs div.atom-log div.text p:first-of-type {
-  font-size: 16px;
-}
-div.atom-logs > :first-child {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
 div.cozen-input.atom-search-input div.cozen-input-icon.left {
   padding: 3px 6px 6px 8px !important;
 }
@@ -459,6 +365,21 @@ div.cozen-input.atom-search-input div.cozen-input-icon.left {
   -webkit-box-pack: end !important;
       -ms-flex-pack: end !important;
           justify-content: flex-end !important;
+}
+i.atom-icon-btn {
+  color: #2c9fdd;
+  cursor: pointer;
+}
+i.atom-icon-btn:focus,
+i.atom-icon-btn:hover {
+  color: #32afe3;
+}
+i.atom-icon-btn.purple {
+  color: #9c27b0;
+}
+i.atom-icon-btn.purple:focus,
+i.atom-icon-btn.purple:hover {
+  color: #b92ed1;
 }
 /********************/
 /**   TEXT ALIGN   **/
@@ -816,6 +737,9 @@ nav.atom-navbar div div.link div.link-dropdown {
   overflow: hidden;
   height: auto;
 }
+nav.atom-navbar div div.link div.link-dropdown.dropdown-right {
+  left: 0;
+}
 nav.atom-navbar div div.link div.link-dropdown.down {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -825,13 +749,29 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item {
   color: #4c596b;
   font-size: 16px;
   font-weight: 500;
-  display: block;
   padding: 6px 12px;
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
   background-color: #ffffff;
   width: 100%;
   outline: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item div.img img {
+  margin-right: 6px;
+  height: 22px;
 }
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item.active,
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:focus,
@@ -841,6 +781,177 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:hover {
 }
 body {
   padding-top: 60px;
+}
+div.atom-logs div.atom-log {
+  border-top: 1px solid #d6dbdb;
+  border-right: 1px solid #d6dbdb;
+  padding: 6px 12px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeInLeft-12;
+  animation-name: fadeInLeft-12;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@-webkit-keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+    transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+    transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+div.atom-logs div.atom-log.ng-leave-active {
+  display: none;
+  -webkit-animation-duration: 0ms;
+          animation-duration: 0ms;
+}
+div.atom-logs div.atom-log.group {
+  border-left: 3px solid #2c9fdd;
+}
+div.atom-logs div.atom-log.group div.icon {
+  color: #2c9fdd;
+}
+div.atom-logs div.atom-log.channel {
+  border-left: 3px solid #4ac291;
+}
+div.atom-logs div.atom-log.channel div.icon {
+  color: #4ac291;
+}
+div.atom-logs div.atom-log.social {
+  border-left: 3px solid #9c27b0;
+}
+div.atom-logs div.atom-log.social div.icon {
+  color: #9c27b0;
+}
+div.atom-logs div.atom-log.border-bottom {
+  border-bottom: 1px solid #d6dbdb;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+div.atom-logs div.atom-log div.icon {
+  padding-right: 12px;
+  font-size: 20px;
+}
+div.atom-logs div.atom-log div.icon i {
+  vertical-align: middle;
+  font-size: inherit;
+}
+div.atom-logs div.atom-log div.text p {
+  margin: 0;
+}
+div.atom-logs div.atom-log div.text p:first-of-type {
+  font-size: 16px;
+}
+div.atom-logs > :first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+div.atom-groups div.atom-group {
+  border-top: 1px solid #d6dbdb;
+  border-right: 1px solid #d6dbdb;
+  border-left: 1px solid #d6dbdb;
+  padding: 6px 12px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeInLeft-12;
+  animation-name: fadeInLeft-12;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@-webkit-keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+    transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+    transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+div.atom-groups div.atom-group.ng-leave-active {
+  display: none;
+  -webkit-animation-duration: 0ms;
+          animation-duration: 0ms;
+}
+div.atom-groups div.atom-group.border-bottom {
+  border-bottom: 1px solid #d6dbdb;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+div.atom-groups div.atom-group div.img {
+  padding-right: 12px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+div.atom-groups div.atom-group div.img img {
+  height: 42px;
+}
+div.atom-groups div.atom-group div.text p {
+  margin: 0;
+}
+div.atom-groups div.atom-group div.text p:first-of-type {
+  font-size: 16px;
+}
+div.atom-groups > :first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 .rzslider .rz-pointer {
   outline: 0;

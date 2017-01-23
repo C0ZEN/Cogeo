@@ -1,0 +1,50 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.onDisplayDetails()">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!-- Profile card -->
+      <div class="profile-card">
+        <img class="img-circle img-thumbnail"
+             ng-src="{{ vm.methods.getGroupPicture(vm.details.group.name, vm.details.group.picture.result.url) }}">
+        <div class="text">
+          <h3>{{ vm.details.group.name }}</h3>
+          <p class="help-text">{{ vm.details.group.description }}</p>
+          <div>
+            <cozen-tooltip cozen-tooltip-label="'groups_details_quicklink_tooltip' | translate:{groupName: vm.details.group.name}"
+                           cozen-tooltip-placement="auto bottom"
+                           cozen-tooltip-type-html>
+              <h4>
+                <a href
+                   id="groupQuicklink">{{ vm.details.group.quicklink }}</a>
+              </h4>
+            </cozen-tooltip>
+            <cozen-tooltip cozen-tooltip-label="'groups_details_quicklink_copy'">
+              <i class="fa fa-fw fa-copy atom-icon-btn purple"
+                 ngclipboard
+                 data-clipboard-target="#groupQuicklink">
+              </i>
+            </cozen-tooltip>
+          </div>
+        </div>
+      </div>
+
+      <!-- Join group btn -->
+      <cozen-btn ng-show="!vm.details.userIsInGroup"
+                 cozen-btn-label="groups_details_join_group"
+                 cozen-btn-auto-sizing="true"
+                 cozen-btn-on-click="vm.methods.joinGroup(vm.details.group.name)"
+                 cozen-btn-class="space-medium-after">
+      </cozen-btn>
+
+      <!-- Leave btn -->
+      <a href
+         ng-show="vm.details.userIsInGroup"
+         class="space-medium-after"
+         onclick="this.blur()"
+         ng-click="vm.methods.leaveGroup(vm.details.group.name)">
+        {{ 'groups_details_leave_group' | translate }}
+      </a>
+    </div>
+  </div>
+</div>

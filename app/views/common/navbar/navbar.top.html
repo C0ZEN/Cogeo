@@ -1,11 +1,39 @@
 <nav class="atom-navbar animated fadeInDown"
      ng-controller="NavbarCtrl as vm">
+
+  <!-- Left -->
   <div class="atom-navbar-block left">
     <img alt="Cogeo"
          class="brand"
          ng-click="goTo.view('app.home')"
          ng-src="images/brand/CogeoSampleSmallTransparent.png">
+    <div class="link link-blue"
+         onclick="this.blur()"
+         ng-mouseenter="vm.group.hover = true"
+         ng-mouseleave="vm.group.hover = false"
+         ng-keydown="$event.keyCode == 13 ? vm.group.hover = !vm.group.hover : null"
+         ng-click="vm.group.hover = true"
+         tabindex="0">
+      {{ 'navbar_groups' | translate }}
+      <div class="link-dropdown dropdown-right"
+           ng-class="{'down': vm.group.hover}">
+        <div ng-repeat="group in vm.groups track by $index"
+             class="link-dropdown-item"
+             ng-class="{'active': false}"
+             ng-click="goTo.view('app.groups.details', {
+                groupName: group.name
+             })"
+             tabindex="0">
+          <div class="img">
+            <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.result.url) }}">
+          </div>
+          <span>{{ group.name }}</span>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Right -->
   <div class="atom-navbar-block right">
     <div ng-if="goTo.isCurrentView('app.home')"
          class="link link-blue"

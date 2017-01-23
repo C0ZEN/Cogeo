@@ -1,0 +1,74 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row">
+
+        <!-- Filter -->
+        <cozen-form cozen-form-name="all"
+                    cozen-form-ctrl="vm"
+                    cozen-form-model="form">
+          <div class="col-xs-12 col-md-6">
+            <cozen-input cozen-input-model="vm.all.search"
+                         cozen-input-name="search"
+                         cozen-input-success-design="false"
+                         cozen-input-error-design="false"
+                         cozen-input-icon-left="fa fa-search"
+                         cozen-input-placeholder="groups_all_search_pc"
+                         cozen-input-auto-complete="off"
+                         cozen-input-class="atom-search-input">
+            </cozen-input>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <cozen-pagination cozen-pagination-model="vm.all.currentPage"
+                              cozen-pagination-class="flex-end"
+                              cozen-pagination-limit-per-page="vm.all.limit"
+                              cozen-pagination-total-elements="fakeAllGroupsFilter.length"
+                              cozen-pagination-auto-hide="true">
+            </cozen-pagination>
+          </div>
+        </cozen-form>
+      </div>
+
+      <!-- Groups -->
+      <div class="atom-groups space-medium-before space-base-after">
+        <div class="atom-group"
+             style="animation-delay: {{ 50 * $index + 'ms' }};"
+             ng-class="[$last ? 'border-bottom' : '']"
+             ng-repeat="group in vm.groups
+           | orderBy: 'name':vm.all.orderBy
+           | filter: vm.all.search
+           | startFrom: (vm.all.currentPage - 1) * vm.all.limit
+           | limitTo: vm.all.limit
+           as allGroupsFilter track by $index">
+          <div class="img">
+            <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.result.url) }}">
+          </div>
+          <div class="text">
+            <p>
+              <a href
+                 ng-bind-html="group.name"
+                 ng-click="goTo.view('app.groups.details', {groupName: group.name})">
+              </a>
+            </p>
+            <p class="help-text">{{ group.description }}</p>
+          </div>
+        </div>
+
+        <!-- Groups fake (for actual length) -->
+        <div style="display: none;"
+             ng-repeat="group in vm.groups
+           | filter: vm.all.search
+           as fakeAllGroupsFilter track by $index">
+        </div>
+      </div>
+
+      <!-- More filter -->
+      <a href
+         class="space-medium-after"
+         onclick="this.blur()"
+         ng-click="methods.showPopup($event, 'allGroupsFilter', vm.all)">
+        {{ 'groups_all_show_filter' | translate }}
+      </a>
+    </div>
+  </div>
+</div>

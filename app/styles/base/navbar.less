@@ -92,6 +92,9 @@ nav.atom-navbar {
         min-width:                  200px;
         overflow:                   hidden;
         height:                     auto;
+        &.dropdown-right {
+          left: 0;
+        }
         &.down {
           display: flex;
         }
@@ -99,12 +102,19 @@ nav.atom-navbar {
           color:            @atom-color-font;
           font-size:        @atom-font-h3;
           font-weight:      500;
-          display:          block;
           padding:          @atom-space-small @atom-space-base;
           transition:       @atom-transition;
           background-color: @atom-color-white;
           width:            100%;
           outline:          @atom-outline;
+          display:          flex;
+          flex-direction:   row;
+          justify-content:  flex-start;
+          align-items:      center;
+          div.img img {
+            margin-right: @atom-space-small;
+            height:       22px;
+          }
           &.active,
           &:focus,
           &:hover {

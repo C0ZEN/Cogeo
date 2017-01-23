@@ -79,6 +79,8 @@ module.exports = function(config) {
       'bower_components/cozen-lib/release/clean/main.js',
       'bower_components/cozen-lib/release/clean/template.cache.js',
       'bower_components/cozen-lib/release/clean/directives.js',
+      'bower_components/clipboard/dist/clipboard.js',
+      'bower_components/ngclipboard/dist/ngclipboard.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
