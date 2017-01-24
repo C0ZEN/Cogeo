@@ -14,6 +14,7 @@
   "log_register_password": "Mot de passe",
   "log_register_check_password": "Vérification du mot de passe",
   "log_register_surname_pc": "Nom",
+  "log_register_username_tooltip": "Une fois l'identifiant choisi, vous ne pourrez plus le modifier",
   "log_register_given_name_pc": "Prénom",
   "log_register_username_pc": "Identifiant unique (login de connexion)",
   "log_register_email_pc": "Email",

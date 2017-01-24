@@ -2,7 +2,6 @@
      ng-init="vm.methods.onDisplayDetails()">
   <div class="row">
     <div class="col-xs-12">
-
       <div class="atom-profile">
 
         <!-- Profile card -->
@@ -46,13 +45,13 @@
                              cozen-tooltip-placement="auto bottom"
                              cozen-tooltip-type-html>
                 <h4>
-                  <a href>{{ vm.details.group.quicklink }}</a>
+                  <a href>{{ vm.CONFIG.internal.group.quicklink + vm.details.group.name }}</a>
                 </h4>
               </cozen-tooltip>
               <cozen-tooltip cozen-tooltip-label="'groups_details_quicklink_copy'">
                 <i class="fa fa-fw fa-copy atom-icon-btn purple"
                    ngclipboard
-                   data-clipboard-text="{{ vm.details.group.quicklink }}">
+                   data-clipboard-text="{{ vm.CONFIG.internal.group.quicklink + vm.details.group.name }}">
                 </i>
               </cozen-tooltip>
             </div>

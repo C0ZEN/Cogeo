@@ -18,7 +18,7 @@
       {
         name       : 'Supinfo',
         description: 'Une description',
-        quicklink  : 'http://cogeo.com/app/fr/invites/group/Supinfo',
+        quicklink  : 'http://localhost:9000/#!/app/fr/groups/join/Supinfo',
         creator    : 'C0ZEN',
         date       : {
           creation  : 1484561615,
@@ -34,6 +34,32 @@
             },
             banned  : {
               active: false
+            }
+          }
+        ],
+        invitations: [
+          {
+            _id     : 'zfzefzfz',
+            username: 'Totzefzeo',
+            status  : {
+              date    : 1484561615,
+              response: 1
+            }
+          },
+          {
+            _id     : 'zfzefzfz',
+            username: 'Totfzefzefzefo',
+            status  : {
+              date    : 1484561615,
+              response: 0
+            }
+          },
+          {
+            _id     : 'zfzefzfz',
+            username: 'Toto',
+            status  : {
+              date    : 1484561615,
+              response: 2
             }
           }
         ]
@@ -134,7 +160,8 @@
       getGroupByNameWithUserRoles: getGroupByNameWithUserRoles,
       getUserFromGroup           : getUserFromGroup,
       getGroupsWithUserRoles     : getGroupsWithUserRoles,
-      getUserGroups              : getUserGroups
+      getUserGroups              : getUserGroups,
+      updateGroup                : updateGroup
     };
 
     function getGroups() {
@@ -193,6 +220,15 @@
         }
       }
       return $filter('orderBy')(newGroups, 'name', false);
+    }
+
+    function updateGroup(group) {
+      for (var i = 0, length = groups.length; i < length; i++) {
+        if (groups[i].name == group.name) {
+          groups[i] = group;
+          break;
+        }
+      }
     }
   }
 

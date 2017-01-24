@@ -69,7 +69,7 @@
           volume: 72
         },
         preferences : {
-          log      : {
+          log              : {
             limit  : 9,
             all    : false,
             orderBy: true,
@@ -97,12 +97,17 @@
               }
             ]
           },
-          allGroups: {
+          allGroups        : {
             limit        : 9,
             all          : false,
             orderBy      : false,
             myGroups     : false,
             myGroupsAdmin: false
+          },
+          groupsInvitations: {
+            limit  : 9,
+            all    : false,
+            orderBy: false
           }
         }
       },

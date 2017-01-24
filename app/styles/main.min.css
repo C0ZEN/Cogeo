@@ -1006,6 +1006,100 @@ div.atom-groups > :first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
+div.atom-invitations div.atom-invitation {
+  border-top: 1px solid #d6dbdb;
+  border-right: 1px solid #d6dbdb;
+  padding: 6px 12px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeInLeft-12;
+  animation-name: fadeInLeft-12;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@-webkit-keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+    transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+    transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+div.atom-invitations div.atom-invitation.ng-leave-active {
+  display: none;
+  -webkit-animation-duration: 0ms;
+          animation-duration: 0ms;
+}
+div.atom-invitations div.atom-invitation.waiting {
+  border-left: 3px solid #1e88e5;
+}
+div.atom-invitations div.atom-invitation.waiting div.icon {
+  color: #1e88e5;
+}
+div.atom-invitations div.atom-invitation.accepted {
+  border-left: 3px solid #7cb342;
+}
+div.atom-invitations div.atom-invitation.accepted div.icon {
+  color: #7cb342;
+}
+div.atom-invitations div.atom-invitation.rejected {
+  border-left: 3px solid #e53935;
+}
+div.atom-invitations div.atom-invitation.rejected div.icon {
+  color: #e53935;
+}
+div.atom-invitations div.atom-invitation.border-bottom {
+  border-bottom: 1px solid #d6dbdb;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+div.atom-invitations div.atom-invitation div.icon {
+  padding-right: 12px;
+  font-size: 24px;
+}
+div.atom-invitations div.atom-invitation div.icon i {
+  vertical-align: middle;
+  font-size: inherit;
+}
+div.atom-invitations div.atom-invitation div.text p {
+  margin: 0;
+}
+div.atom-invitations div.atom-invitation div.text p:first-of-type {
+  font-size: 16px;
+}
+div.atom-invitations > :first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
 .rzslider .rz-pointer {
   outline: 0;
   background-color: #2c9fdd;
@@ -1239,15 +1333,15 @@ aside#footer div.links a:hover {
  */
 @font-face {
   font-family: "Atom";
-  src: url("../../fonts/Atom_64cca70fd9c924e5c6f666f9483eb9a1.eot");
-  src: url("../../fonts/Atom_64cca70fd9c924e5c6f666f9483eb9a1.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_64cca70fd9c924e5c6f666f9483eb9a1.woff2") format("woff2"), url("../../fonts/Atom_64cca70fd9c924e5c6f666f9483eb9a1.woff") format("woff"), url("../../fonts/Atom_64cca70fd9c924e5c6f666f9483eb9a1.ttf") format("truetype"), url("../../fonts/Atom_64cca70fd9c924e5c6f666f9483eb9a1.svg#Atom") format("svg");
+  src: url("../../fonts/Atom_aaf6dd9c4f6cd75d5ceaab4ef6201d08.eot");
+  src: url("../../fonts/Atom_aaf6dd9c4f6cd75d5ceaab4ef6201d08.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_aaf6dd9c4f6cd75d5ceaab4ef6201d08.woff2") format("woff2"), url("../../fonts/Atom_aaf6dd9c4f6cd75d5ceaab4ef6201d08.woff") format("woff"), url("../../fonts/Atom_aaf6dd9c4f6cd75d5ceaab4ef6201d08.ttf") format("truetype"), url("../../fonts/Atom_aaf6dd9c4f6cd75d5ceaab4ef6201d08.svg#Atom") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Atom";
-    src: url("../../fonts/Atom_64cca70fd9c924e5c6f666f9483eb9a1.svg#Atom") format("svg");
+    src: url("../../fonts/Atom_aaf6dd9c4f6cd75d5ceaab4ef6201d08.svg#Atom") format("svg");
   }
 }
 [data-icons8]:before,
@@ -1256,6 +1350,9 @@ aside#footer div.links a:hover {
 .icons8-chat:before,
 .icons8-clouds-filled:before,
 .icons8-edit:before,
+.icons8-event-accepted-filled:before,
+.icons8-event-accepted-tentatively-filled:before,
+.icons8-event-declined-filled:before,
 .icons8-google-groups:before,
 .icons8-google-plus:before,
 .icons8-lock:before,
@@ -1309,6 +1406,15 @@ aside#footer div.links a:hover {
 }
 .icons8-edit:before {
   content: "\f116";
+}
+.icons8-event-accepted-filled:before {
+  content: "\f12c";
+}
+.icons8-event-accepted-tentatively-filled:before {
+  content: "\f12b";
+}
+.icons8-event-declined-filled:before {
+  content: "\f12a";
 }
 .icons8-google-groups:before {
   content: "\f108";

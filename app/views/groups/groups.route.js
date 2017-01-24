@@ -40,6 +40,13 @@
         data       : {
           pageTitle: 'groups_edit'
         }
+      })
+      .state('app.groups.invitations', {
+        url        : '/invitations/:groupName',
+        templateUrl: 'views/groups/groups.invitations.html',
+        data       : {
+          pageTitle: 'groups_invitations'
+        }
       });
   }
 
