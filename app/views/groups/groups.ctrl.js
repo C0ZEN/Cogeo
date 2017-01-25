@@ -12,16 +12,16 @@
     '$state',
     'groupsFactory',
     'userFactory',
-    'usersFactory'
+    'usersFactory',
+    '$filter'
   ];
 
-  function GroupsCtrl(CONFIG, goTo, $rootScope, $state, groupsFactory, userFactory, usersFactory) {
+  function GroupsCtrl(CONFIG, goTo, $rootScope, $state, groupsFactory, userFactory, usersFactory, $filter) {
     var vm = this;
 
     // Common data
     vm.CONFIG  = CONFIG;
     vm.loading = false;
-
 
     vm.user        = userFactory.getUser();
     vm.groups      = groupsFactory.getGroupsWithUserRoles(vm.user.username);
@@ -29,6 +29,8 @@
     vm.details     = {};
     vm.edit        = {};
     vm.invitations = angular.copy(vm.user.settings.preferences.groupsInvitations);
+    vm.members     = angular.copy(vm.user.settings.preferences.groupsMembers);
+    vm.log         = angular.copy(vm.user.settings.preferences.log);
 
     // Methods
     vm.methods = {
@@ -39,7 +41,10 @@
       joinGroup       : joinGroup,
       leaveGroup      : leaveGroup,
       getKickedTime   : Utils.getKickedTime,
-      getUserFullName : usersFactory.getUserFullName
+      getUserFullName : usersFactory.getUserFullName,
+      onShowAll       : onShowAll,
+      getAllLogs      : getAllLogs,
+      getLogSrc       : getLogSrc
     };
 
     // To add selected design to the proper pill
@@ -54,7 +59,9 @@
         all        : goTo.isCurrentView('app.groups.all'),
         details    : goTo.isCurrentView('app.groups.details'),
         edit       : goTo.isCurrentView('app.groups.edit'),
-        invitations: goTo.isCurrentView('app.groups.invitations')
+        members    : goTo.isCurrentView('app.groups.members'),
+        invitations: goTo.isCurrentView('app.groups.invitations'),
+        log        : goTo.isCurrentView('app.groups.log')
       };
     }
 
@@ -86,7 +93,16 @@
         vm.details.userIsInGroup = vm.details.user != null;
         vm.details.userIsAdmin   = vm.details.user != null ? vm.details.user.admin : false;
         vm.edit                  = angular.copy(group);
-        vm.groupInvitations      = group.invitations;
+        vm.groupInvitations      = angular.copy(group.invitations);
+        vm.groupMembers          = usersFactory.addUsersFullNames(group.users);
+        vm.logs                  = angular.copy(group.logs);
+        if (!Methods.isNullOrEmpty(vm.logs)) {
+          console.log(1);
+          vm.logs.forEach(function (log) {
+            log.text          = $filter('translate')('account_log_' + log.type, log.values);
+            log.formattedDate = $filter('date')(log.date * 1000, 'EEEE dd MMMM yyyy à HH:mm');
+          });
+        }
       } else {
         // @todo error handling
       }
@@ -98,6 +114,58 @@
 
     function leaveGroup(groupName) {
 
+    }
+
+    function onShowAll() {
+
+      // It will hide the edit btn
+      vm.details.userIsAdmin = false;
+    }
+
+    function getAllLogs() {
+      vm.log.all = true;
+    }
+
+    function getLogSrc(type) {
+      switch (type) {
+        case 'newGroupCreated':
+        case 'newGroupJoined':
+        case 'newChannelCreated':
+        case 'newChannelJoined':
+          return 'icons8-plus';
+        case 'groupLeft':
+        case 'channelLeft':
+          return 'icons8-logout-rounded';
+        case 'groupEdited':
+        case 'channelEdited':
+        case 'socialUserRenamed':
+        case 'socialUserAliasRemoved':
+          return 'icons8-edit';
+        case 'groupInvitationSentOne':
+        case 'groupInvitationSentMany':
+        case 'channelInvitationSentOne':
+        case 'channelInvitationSentMany':
+        case 'socialInvitationSent':
+          return 'icons8-message-filled';
+        case 'groupPermissionsGranted':
+        case 'channelPermissionsGranted':
+          return 'icons8-unlock';
+        case 'groupPermissionsRevoked':
+        case 'channelPermissionsRevoked':
+          return 'icons8-lock';
+        case 'groupUserKicked':
+        case 'groupUserBanned':
+        case 'channelUserKicked':
+        case 'channelUserBanned':
+        case 'socialUserBlocked':
+        case 'socialUserRemoved':
+          return 'icons8-no-chat';
+        case 'groupUserUnbanned':
+        case 'channelUserUnbanned':
+        case 'socialUserUnblocked':
+        case 'socialInvitationAccepted':
+          return 'icons8-chat';
+      }
     }
   }
 

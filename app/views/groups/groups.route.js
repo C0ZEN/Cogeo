@@ -41,11 +41,25 @@
           pageTitle: 'groups_edit'
         }
       })
+      .state('app.groups.members', {
+        url        : '/members/:groupName',
+        templateUrl: 'views/groups/groups.members.html',
+        data       : {
+          pageTitle: 'groups_members'
+        }
+      })
       .state('app.groups.invitations', {
         url        : '/invitations/:groupName',
         templateUrl: 'views/groups/groups.invitations.html',
         data       : {
           pageTitle: 'groups_invitations'
+        }
+      })
+      .state('app.groups.log', {
+        url        : '/log/:groupName',
+        templateUrl: 'views/groups/groups.log.html',
+        data       : {
+          pageTitle: 'account_log'
         }
       });
   }

@@ -6,6 +6,7 @@
   "groups_banned": "Banni",
   "groups_kicked": "Expulsé",
   "groups_join": "Rejoindre un groupe Cogeo",
+  "groups_members": "Membres du groupe",
   "groups_invitations": "Invitations d'un groupe",
   "groups_creator_in": "Crée le {{date}}",
   "groups_member_since": "Membre depuis le {{date}}",
@@ -23,9 +24,12 @@
   "groups_groups_subtitle_1": "Tu peux visualiser la liste des groupes,",
   "groups_groups_subtitle_2": "Rejoindre et quitter les groupes,",
   "groups_groups_subtitle_3": "Voir et modifier les groupes",
+  "groups_members_since": "Membre depuis le {{date}}",
+  "groups_members_search_pc": "Rechercher un membre en particulier",
   "groups_pills_all": "Tous",
   "groups_pills_details": "Détails",
   "groups_pills_edit": "Modifier",
+  "groups_pills_members": "Membres",
   "groups_pills_invitations": "Invitations",
   "groups_all_search_pc": "Rechercher un groupe en particulier",
   "groups_all_show_filter": "Plus de filtres",
@@ -50,5 +54,5 @@
   "groups_invitations_status_0": "Invitation refusée le {{date}}",
   "groups_invitations_status_1": "Invitation envoyée le {{date}}",
   "groups_invitations_status_2": "Invitation acceptée le {{date}}",
-  "groups_invitations_search_pc": "Rechercher une invitation en particulière"
+  "groups_invitations_search_pc": "Rechercher une invitation particulière"
 }

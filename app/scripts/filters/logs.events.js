@@ -9,15 +9,17 @@
     return logsEventsFilter;
 
     function logsEventsFilter(items, events) {
-      var newItems = [];
-      items.forEach(function (item) {
-        events.forEach(function (event) {
-          if (item.event == event.id) {
-            if (event.selected) newItems.push(item);
-          }
+      if (!Methods.isNullOrEmpty(items)) {
+        var newItems = [];
+        items.forEach(function (item) {
+          events.forEach(function (event) {
+            if (item.event == event.id) {
+              if (event.selected) newItems.push(item);
+            }
+          });
         });
-      });
-      return newItems;
+        return newItems;
+      } else return items;
     }
   }
 

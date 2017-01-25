@@ -38,6 +38,7 @@
              ng-repeat="invitation in vm.groupInvitations
            | orderBy: 'date':vm.invitations.orderBy
            | filter: vm.invitations.search
+           | groupsInvitationsTypes: vm.invitations.types
            | startFrom: (vm.invitations.currentPage - 1) * vm.invitations.limit
            | limitTo: vm.invitations.limit
            as invitationsFilter track by $index">
@@ -62,6 +63,7 @@
         <div style="display: none;"
              ng-repeat="group in vm.groupInvitations
            | filter: vm.invitations.search
+           | groupsInvitationsTypes: vm.invitations.types
            as fakeInvitationsFilter track by $index">
         </div>
       </div>
@@ -70,7 +72,7 @@
       <a href
          class="space-medium-after"
          onclick="this.blur()"
-         ng-click="methods.showPopup($event, 'allGroupsFilter', vm.all)">
+         ng-click="methods.showPopup($event, 'groupsInvitationsFilter', vm.invitations)">
         {{ 'groups_all_show_filter' | translate }}
       </a>
     </div>

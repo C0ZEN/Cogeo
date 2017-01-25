@@ -104,10 +104,61 @@
             myGroups     : false,
             myGroupsAdmin: false
           },
+          groupsMembers    : {
+            limit  : 9,
+            all    : false,
+            orderBy: false,
+            status : [
+              {
+                id      : 'kicked',
+                name    : 'groups_kicked',
+                icon    : 'fa fa-fw icons8-lock',
+                color   : 'yellow',
+                selected: true
+              },
+              {
+                id      : 'banned',
+                name    : 'groups_banned',
+                icon    : 'fa fa-fw icons8-lock',
+                color   : 'yellow',
+                selected: true
+              },
+              {
+                id      : 'admin',
+                name    : 'groups_admin',
+                icon    : 'fa fa-fw icons8-user-male',
+                color   : 'purple',
+                selected: true
+              }
+            ]
+          },
           groupsInvitations: {
             limit  : 9,
             all    : false,
-            orderBy: false
+            orderBy: false,
+            types  : [
+              {
+                id      : 0,
+                name    : 'popup_groupsInvitations_filter_body_rejected',
+                icon    : 'fa fa-fw icons8-event-declined-filled',
+                color   : 'error',
+                selected: true
+              },
+              {
+                id      : 1,
+                name    : 'popup_groupsInvitations_filter_body_waiting',
+                icon    : 'fa fa-fw icons8-event-accepted-tentatively-filled',
+                color   : 'info',
+                selected: true
+              },
+              {
+                id      : 2,
+                name    : 'popup_groupsInvitations_filter_body_accepted',
+                icon    : 'fa fa-fw icons8-event-accepted-filled',
+                color   : 'green',
+                selected: true
+              }
+            ]
           }
         }
       },

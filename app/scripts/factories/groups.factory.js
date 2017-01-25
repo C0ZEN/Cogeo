@@ -27,13 +27,85 @@
         users      : [
           {
             username: 'C0ZEN',
-            joined  : 1484561615,
+            joined  : 1484661615,
             admin   : true,
             kicked  : {
               active: false
             },
             banned  : {
               active: false
+            }
+          },
+          {
+            username: 'Toto59',
+            joined  : 1484561615,
+            admin   : false,
+            kicked  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              time  : 3600,
+              active: true
+            },
+            banned  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              active: true
+            }
+          },
+          {
+            username: 'Toto59',
+            joined  : 1484561615,
+            admin   : false,
+            kicked  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              time  : 3600,
+              active: true
+            },
+            banned  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              active: false
+            }
+          },
+          {
+            username: 'Toto59',
+            joined  : 1484561615,
+            admin   : false,
+            kicked  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              time  : 3600,
+              active: false
+            },
+            banned  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              active: false
+            }
+          },
+          {
+            username: 'Toto59',
+            joined  : 1484561615,
+            admin   : false,
+            kicked  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              time  : 3600,
+              active: false
+            },
+            banned  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              active: true
             }
           }
         ],
@@ -60,6 +132,16 @@
             status  : {
               date    : 1484561615,
               response: 2
+            }
+          }
+        ],
+        logs       : [
+          {
+            date  : 1484561615,
+            type  : "newGroupCreated",
+            event : 'group',
+            values: {
+              name: "Un groupe de test"
             }
           }
         ]
