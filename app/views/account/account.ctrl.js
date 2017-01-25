@@ -42,7 +42,6 @@
 
     // Methods
     vm.methods = {
-      updatePills           : updatePills,
       save                  : save,
       onPasswordChange      : onPasswordChange,
       onCheckPasswordChange : onCheckPasswordChange,
@@ -52,22 +51,7 @@
       onDisplayEdit         : onDisplayEdit
     };
 
-    // To add selected design to the proper pill
-    vm.methods.updatePills();
-    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
-      vm.methods.updatePills();
-    });
-
     $rootScope.$on('newVolumeSetFromTest', vm.methods.onNewVolumeSetFromTest);
-
-    function updatePills() {
-      vm.nav = {
-        profile      : goTo.isOneOfThoseViews('app.account.profile', 'app.account.profileEdit', 'app.account.profileEditPassword'),
-        notifications: goTo.isOneOfThoseViews('app.account.notifications', 'app.account.notificationsEdit'),
-        settings     : goTo.isOneOfThoseViews('app.account.settings', 'app.account.settingsEdit'),
-        log          : goTo.isOneOfThoseViews('app.account.log')
-      };
-    }
 
     function save(form) {
       vm.loading = true;

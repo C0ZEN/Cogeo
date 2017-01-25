@@ -30,11 +30,10 @@
     vm.edit        = {};
     vm.invitations = angular.copy(vm.user.settings.preferences.groupsInvitations);
     vm.members     = angular.copy(vm.user.settings.preferences.groupsMembers);
-    vm.log         = angular.copy(vm.user.settings.preferences.log);
+    vm.log         = angular.copy(vm.user.settings.preferences.groupsLog);
 
     // Methods
     vm.methods = {
-      updatePills     : updatePills,
       save            : save,
       getGroupPicture : getGroupPicture,
       onDisplayDetails: onDisplayDetails,
@@ -46,24 +45,6 @@
       getAllLogs      : getAllLogs,
       getLogSrc       : getLogSrc
     };
-
-    // To add selected design to the proper pill
-    vm.methods.updatePills();
-    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
-      vm.methods.updatePills();
-      vm.params = $state.params;
-    });
-
-    function updatePills() {
-      vm.nav = {
-        all        : goTo.isCurrentView('app.groups.all'),
-        details    : goTo.isCurrentView('app.groups.details'),
-        edit       : goTo.isCurrentView('app.groups.edit'),
-        members    : goTo.isCurrentView('app.groups.members'),
-        invitations: goTo.isCurrentView('app.groups.invitations'),
-        log        : goTo.isCurrentView('app.groups.log')
-      };
-    }
 
     function save(form) {
       vm.loading = true;
@@ -97,9 +78,8 @@
         vm.groupMembers          = usersFactory.addUsersFullNames(group.users);
         vm.logs                  = angular.copy(group.logs);
         if (!Methods.isNullOrEmpty(vm.logs)) {
-          console.log(1);
           vm.logs.forEach(function (log) {
-            log.text          = $filter('translate')('account_log_' + log.type, log.values);
+            log.text          = $filter('translate')('groups_log_' + log.type, log.values);
             log.formattedDate = $filter('date')(log.date * 1000, 'EEEE dd MMMM yyyy à HH:mm');
           });
         }

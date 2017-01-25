@@ -61,6 +61,13 @@
         data       : {
           pageTitle: 'account_log'
         }
+      })
+      .state('app.groups.recruit', {
+        url        : '/recruit/:groupName',
+        templateUrl: 'views/groups/groups.recruit.html',
+        data       : {
+          pageTitle: 'account_recruit'
+        }
       });
   }
 

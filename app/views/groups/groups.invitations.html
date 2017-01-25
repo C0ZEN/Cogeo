@@ -68,13 +68,22 @@
         </div>
       </div>
 
-      <!-- More filter -->
-      <a href
-         class="space-medium-after"
-         onclick="this.blur()"
-         ng-click="methods.showPopup($event, 'groupsInvitationsFilter', vm.invitations)">
-        {{ 'groups_all_show_filter' | translate }}
-      </a>
+      <div class="space-medium-after center-flex-content">
+
+        <!-- Add members btn -->
+        <cozen-btn ng-show="vm.details.userIsInGroup"
+                   cozen-btn-label="groups_invitations_invite_group"
+                   cozen-btn-auto-sizing="true"
+                   cozen-btn-on-click="goTo.view('app.groups.recruit', {'groupName': vm.details.group.name})">
+        </cozen-btn>
+
+        <!-- More filter -->
+        <a href
+           onclick="this.blur()"
+           ng-click="methods.showPopup($event, 'groupsInvitationsFilter', vm.invitations)">
+          {{ 'groups_all_show_filter' | translate }}
+        </a>
+      </div>
     </div>
   </div>
 </div>

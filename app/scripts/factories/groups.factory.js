@@ -137,11 +137,204 @@
         ],
         logs       : [
           {
-            date  : 1484561615,
-            type  : "newGroupCreated",
+            date  : 1484561616,
+            type  : "newGroupJoined",
             event : 'group',
             values: {
-              name: "Un groupe de test"
+              userName: "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484561816,
+            type  : "newGroupJoined",
+            event : 'group',
+            values: {
+              userName: "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484561916,
+            type  : "newChannelCreated",
+            event : 'channel',
+            values: {
+              name    : "Bar",
+              userName: "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484561917,
+            type  : "newChannelJoined",
+            event : 'channel',
+            values: {
+              name    : "Bar",
+              userName: "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484561997,
+            type  : "channelEdited",
+            event : 'channel',
+            values: {
+              name    : "Bar",
+              userName: "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484562017,
+            type  : "channelLeft",
+            event : 'channel',
+            values: {
+              name    : "Bar",
+              userName: "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484562117,
+            type  : "groupLeft",
+            event : 'group',
+            values: {
+              userName: "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484563117,
+            type  : "groupEdited",
+            event : 'group',
+            values: {
+              userName: "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484564117,
+            type  : "groupInvitationSentOne",
+            event : 'group',
+            values: {
+              userName        : "@C0ZEN",
+              userEmailInvited: "170862@supinfo.com"
+            }
+          },
+          {
+            date  : 1484564117,
+            type  : "groupInvitationSentMany",
+            event : 'group',
+            values: {
+              userName: "@C0ZEN",
+              quantity: 8
+            }
+          },
+          {
+            date  : 1484564117,
+            type  : "channelInvitationSentOne",
+            event : 'channel',
+            values: {
+              name            : "Lol",
+              userName        : "@C0ZEN",
+              userEmailInvited: "170862@supinfo.com"
+            }
+          },
+          {
+            date  : 1484564117,
+            type  : "channelInvitationSentMany",
+            event : 'channel',
+            values: {
+              name    : "Lol",
+              userName: "@C0ZEN",
+              quantity: 4
+            }
+          },
+          {
+            date  : 1484564126,
+            type  : "groupPermissionsGranted",
+            event : 'group',
+            values: {
+              userName       : "@C0ZEN",
+              userNameGranted: "@Marco"
+            }
+          },
+          {
+            date  : 1484564126,
+            type  : "groupPermissionsRevoked",
+            event : 'group',
+            values: {
+              userNameRevoked: "@Marco",
+              userName       : "@C0ZEN"
+            }
+          },
+          {
+            date  : 1484564126,
+            type  : "groupUserKicked",
+            event : 'group',
+            values: {
+              userName      : "@C0ZEN",
+              userNameKicked: "@Marco"
+            }
+          },
+          {
+            date  : 1484564126,
+            type  : "groupUserBanned",
+            event : 'group',
+            values: {
+              userName      : "@C0ZEN",
+              userNameBanned: "@Marco"
+            }
+          },
+          {
+            date  : 1484564126,
+            type  : "groupUserUnbanned",
+            event : 'group',
+            values: {
+              userName        : "@C0ZEN",
+              userNameUnbanned: "@Marco"
+            }
+          },
+          {
+            date  : 1484564127,
+            type  : "channelPermissionsGranted",
+            event : 'channel',
+            values: {
+              userName       : "@C0ZEN",
+              userNameGranted: "@Marco",
+              name           : "Les junkies"
+            }
+          },
+          {
+            date  : 1484564127,
+            type  : "channelPermissionsRevoked",
+            event : 'channel',
+            values: {
+              userName       : "@C0ZEN",
+              userNameRevoked: "@Marco",
+              name           : "Les junkies"
+            }
+          },
+          {
+            date  : 1484564127,
+            type  : "channelUserKicked",
+            event : 'channel',
+            values: {
+              userName      : "@C0ZEN",
+              userNameKicked: "@Marco",
+              name          : "Les junkies"
+            }
+          },
+          {
+            date  : 1484564127,
+            type  : "channelUserBanned",
+            event : 'channel',
+            values: {
+              userName      : "@C0ZEN",
+              userNameBanned: "@Marco",
+              name          : "Les junkies"
+            }
+          },
+          {
+            date  : 1484564127,
+            type  : "channelUserUnbanned",
+            event : 'channel',
+            values: {
+              userName        : "@C0ZEN",
+              userNameUnbanned: "@Marco",
+              name            : "Les junkies"
             }
           }
         ]

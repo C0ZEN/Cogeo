@@ -159,6 +159,27 @@
                 selected: true
               }
             ]
+          },
+          groupsLog        : {
+            limit  : 9,
+            all    : false,
+            orderBy: true,
+            events : [
+              {
+                id      : 'group',
+                name    : 'account_event_group',
+                icon    : 'fa icons8-google-groups',
+                color   : 'blue',
+                selected: true
+              },
+              {
+                id      : 'channel',
+                name    : 'account_event_channel',
+                icon    : 'fa icons8-channel-mosaic',
+                color   : 'green',
+                selected: true
+              }
+            ]
           }
         }
       },

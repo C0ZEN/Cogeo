@@ -7,22 +7,23 @@
       <p class="help-text space-medium-after">{{ 'account_account_subtitle' | translate }}</p>
 
       <!-- Nav -->
-      <cozen-pills cozen-pills-class="space-large-after">
+      <cozen-pills cozen-pills-class="space-large-after"
+                   cozen-pills-auto-update-model="false">
         <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_profile"
                                  cozen-pills-item-simple-on-click="goTo.view('app.account.profile')"
-                                 cozen-pills-item-simple-selected="vm.nav.profile">
+                                 cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.account.profile', 'app.account.profileEdit', 'app.account.profileEditPassword')">
         </cozen-pills-item-simple>
         <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_notifications"
                                  cozen-pills-item-simple-on-click="goTo.view('app.account.notifications')"
-                                 cozen-pills-item-simple-selected="vm.nav.notifications">
+                                 cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.account.notifications', 'app.account.notificationsEdit')">
         </cozen-pills-item-simple>
         <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_settings"
                                  cozen-pills-item-simple-on-click="goTo.view('app.account.settings')"
-                                 cozen-pills-item-simple-selected="vm.nav.settings">
+                                 cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.account.settings', 'app.account.settingsEdit')">
         </cozen-pills-item-simple>
         <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_log"
                                  cozen-pills-item-simple-on-click="goTo.view('app.account.log')"
-                                 cozen-pills-item-simple-selected="vm.nav.log">
+                                 cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.account.log')">
         </cozen-pills-item-simple>
       </cozen-pills>
 
