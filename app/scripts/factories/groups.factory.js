@@ -29,6 +29,7 @@
             username: 'C0ZEN',
             joined  : 1484661615,
             admin   : true,
+            hasLeft : 0,
             kicked  : {
               active: false
             },
@@ -40,24 +41,7 @@
             username: 'Toto59',
             joined  : 1484561615,
             admin   : false,
-            kicked  : {
-              by    : 'Toto',
-              on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
-              time  : 3600,
-              active: true
-            },
-            banned  : {
-              by    : 'Toto',
-              on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
-              active: true
-            }
-          },
-          {
-            username: 'Toto59',
-            joined  : 1484561615,
-            admin   : false,
+            hasLeft : 0,
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
@@ -69,6 +53,25 @@
               by    : 'Toto',
               on    : 1484561615,
               for   : 'Il a pas dit bonjour',
+              active: true
+            }
+          },
+          {
+            username: 'Toto59',
+            joined  : 1484561615,
+            admin   : false,
+            hasLeft : 0,
+            kicked  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
+              time  : 3600,
+              active: true
+            },
+            banned  : {
+              by    : 'Toto',
+              on    : 1484561615,
+              for   : 'Il a pas dit bonjour',
               active: false
             }
           },
@@ -76,6 +79,7 @@
             username: 'Toto59',
             joined  : 1484561615,
             admin   : false,
+            hasLeft : 0,
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
@@ -94,6 +98,7 @@
             username: 'Toto59',
             joined  : 1484561615,
             admin   : false,
+            hasLeft : 0,
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
@@ -353,6 +358,7 @@
             username: 'C0ZEN',
             joined  : 1484561615,
             admin   : false,
+            hasLeft : 0,
             kicked  : {
               active: false
             },
@@ -376,6 +382,7 @@
             username: 'C0ZEN',
             joined  : 1484561615,
             admin   : false,
+            hasLeft : 1484561615,
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
@@ -406,6 +413,7 @@
             username: 'zfzef',
             joined  : 1484561615,
             admin   : true,
+            hasLeft : 0,
             kicked  : {
               active: false
             },
@@ -436,7 +444,8 @@
       getUserFromGroup           : getUserFromGroup,
       getGroupsWithUserRoles     : getGroupsWithUserRoles,
       getUserGroups              : getUserGroups,
-      updateGroup                : updateGroup
+      updateGroup                : updateGroup,
+      doesUserHasRights          : doesUserHasRights
     };
 
     function getGroups() {
@@ -475,7 +484,7 @@
         user                   = getUserFromGroup(userName, newGroups[i].name);
         newGroups[i].userRoles = {
           isCreator: newGroups[i].creator == userName,
-          isMember : user != null,
+          isMember : user != null ? user.hasLeft == 0 : false,
           isAdmin  : user != null ? user.admin : false,
           isBanned : user != null ? user.banned.active : false,
           isKicked : user != null ? user.kicked.active : false,
@@ -504,6 +513,18 @@
           break;
         }
       }
+    }
+
+    function doesUserHasRights(user) {
+      if (user != null) {
+        if (user.kicked != null) {
+          if (user.kicked.active) return false;
+        }
+        if (user.banned != null) {
+          if (user.banned.active) return false;
+        }
+        return true;
+      } else return false;
     }
   }
 

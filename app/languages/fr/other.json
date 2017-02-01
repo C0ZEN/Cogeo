@@ -6,5 +6,6 @@
   "other_time_43200": "12 heures",
   "other_time_86400": "1 jour",
   "other_time_259200": "3 jours",
-  "other_time_604800": "7 jours"
+  "other_time_604800": "7 jours",
+  "other_userAction_label": "Administrer"
 }

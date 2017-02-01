@@ -59,7 +59,8 @@
 
     function getGroupPicture(name, pictureUrl) {
       if (Methods.isNullOrEmpty(pictureUrl)) {
-        return 'images/groups/' + name.slice(0, 1) + '.png';
+        if (name != null) return 'images/groups/' + name.slice(0, 1) + '.png';
+        else return '';
       } else return pictureUrl;
     }
 
@@ -71,8 +72,9 @@
       if (group != null) {
         vm.details.group         = group;
         vm.details.user          = groupsFactory.getUserFromGroup(vm.user.username, name);
-        vm.details.userIsInGroup = vm.details.user != null;
+        vm.details.userIsInGroup = vm.details.user != null ? vm.details.user.hasLeft == 0 : false;
         vm.details.userIsAdmin   = vm.details.user != null ? vm.details.user.admin : false;
+        vm.details.userHasRights = groupsFactory.doesUserHasRights(vm.details.user);
         vm.edit                  = angular.copy(group);
         vm.groupInvitations      = angular.copy(group.invitations);
         vm.groupMembers          = usersFactory.addUsersFullNames(group.users);

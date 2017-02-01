@@ -24,22 +24,22 @@
         <cozen-pills-item-simple ng-show="vm.details.userIsAdmin"
                                  cozen-pills-item-simple-label="groups_pills_edit"
                                  cozen-pills-item-simple-on-click="goTo.view('app.groups.edit', {'groupName': vm.details.group.name})"
-                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || !vm.details.userIsAdmin"
+                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || !vm.details.userIsAdmin || vm.details.group == null"
                                  cozen-pills-item-simple-selected="goTo.isCurrentView('app.groups.edit')">
         </cozen-pills-item-simple>
         <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_members"
                                  cozen-pills-item-simple-on-click="goTo.view('app.groups.members', {'groupName': vm.details.group.name})"
-                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all')"
+                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
                                  cozen-pills-item-simple-selected="goTo.isCurrentView('app.groups.members')">
         </cozen-pills-item-simple>
         <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_invitations"
                                  cozen-pills-item-simple-on-click="goTo.view('app.groups.invitations', {'groupName': vm.details.group.name})"
-                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all')"
+                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
                                  cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.groups.invitations', 'app.groups.recruit')">
         </cozen-pills-item-simple>
         <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_log"
                                  cozen-pills-item-simple-on-click="goTo.view('app.groups.log', {'groupName': vm.details.group.name})"
-                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all')"
+                                 cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
                                  cozen-pills-item-simple-selected="goTo.isCurrentView('app.groups.log')">
         </cozen-pills-item-simple>
       </cozen-pills>

@@ -31,10 +31,13 @@
       </div>
 
       <!-- Members -->
-      <div class="atom-groups space-medium-before space-base-after">
+      <div ng-show="vm.groupMembers.length > 0"
+           class="atom-groups space-medium-before space-base-after">
         <div class="atom-group"
              style="animation-delay: {{ 50 * $index + 'ms' }};"
              ng-class="{'border-bottom': $last}"
+             ng-mouseenter="member.isHoverMember = true"
+             ng-mouseleave="member.isHoverMember = true"
              ng-repeat="member in vm.groupMembers
            | orderBy: 'joined':vm.members.orderBy
            | filter: vm.members.search
@@ -45,7 +48,12 @@
           <div class="text">
             <p>
               {{ member.givenName }} {{ member.surname }}
-              <small>@{{ member.username }}</small>
+              <small>
+                <a href
+                   ng-click="goTo.view('app.profiles.user', {username: member.username})">
+                  @{{ member.username }}
+                </a>
+              </small>
               <cozen-tooltip ng-show="member.admin"
                              cozen-tooltip-placement="auto bottom"
                              cozen-tooltip-label="'groups_member_since' | translate:{'date': (member.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
@@ -68,6 +76,9 @@
               {{ 'groups_members_since' | translate:{date: (member.joined * 1000 | date: 'EEEE dd MMMM yyyy')} }}
             </p>
           </div>
+          <div class="action-btn">
+            <user-action is-label-visible="member.isHoverMember"></user-action>
+          </div>
         </div>
 
         <!-- Members fake (for actual length) -->
@@ -78,6 +89,14 @@
            as fakeMembersFilter track by $index">
         </div>
       </div>
+
+      <!-- Info message for empty invitations -->
+      <cozen-alert cozen-alert-display="vm.groupMembers.length == 0"
+                   cozen-alert-label="'groups_members_empty'"
+                   cozen-alert-close-btn="false"
+                   cozen-alert-class="space-medium-before space-base-after"
+                   cozen-alert-type-info>
+      </cozen-alert>
 
       <!-- More filter -->
       <a href

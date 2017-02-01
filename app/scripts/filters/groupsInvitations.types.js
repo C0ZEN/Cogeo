@@ -10,13 +10,15 @@
 
     function groupsInvitationsTypesFilter(items, events) {
       var newItems = [];
-      items.forEach(function (item) {
-        events.forEach(function (event) {
-          if (item.status.response == event.id) {
-            if (event.selected) newItems.push(item);
-          }
+      if (items != null) {
+        items.forEach(function (item) {
+          events.forEach(function (event) {
+            if (item.status.response == event.id) {
+              if (event.selected) newItems.push(item);
+            }
+          });
         });
-      });
+      }
       return newItems;
     }
   }

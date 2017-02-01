@@ -19,7 +19,8 @@
       isCurrentView    : isCurrentView,
       hasThisParent    : hasThisParent,
       getCurrentParam  : getCurrentParam,
-      isOneOfThoseViews: isOneOfThoseViews
+      isOneOfThoseViews: isOneOfThoseViews,
+      viewUserProfile: viewUserProfile
     };
 
     function view(view, param) {
@@ -61,6 +62,17 @@
         data[param] = $stateParams[param];
         return data;
       } else return $stateParams[param];
+    }
+
+    function viewUserProfile(view, params) {
+
+      // Remove the @ tag
+      if (params.username != null) {
+        if (params.username.charAt(0) == '@') {
+          params.username = params.username.substr(1);
+        }
+      }
+      this.view(view, params);
     }
   }
 

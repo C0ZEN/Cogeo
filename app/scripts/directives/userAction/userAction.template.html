@@ -1,0 +1,21 @@
+<div class="user-action"
+     ng-class="_methods.getMainClass()">
+
+  <!-- Label -->
+  <a ng-show="isLabelVisible"
+     ng-click="_methods.onLabelClicked($event)"
+     href>
+    {{ 'other_userAction_label' | translate }}
+  </a>
+
+  <!-- Actions -->
+  <div ng-show="isActionsVisible"
+       class="actions">
+    <div ng-repeat="action in ['granted', 'revoked', 'kicked', 'banned', 'unbanned'] track by $index"
+         ng-show="action"
+         ng-class="action"
+         class="action">
+      <img ng-src="images/actions/action-{{ action }}.png">
+    </div>
+  </div>
+</div>

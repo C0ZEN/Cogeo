@@ -1,0 +1,68 @@
+<!-- Title -->
+<h1>{{ 'profiles_user_title' | translate:{username: vm.params.username} }}</h1>
+<p class="help-text space-medium-after">{{ 'profiles_user_subtitle' | translate }}</p>
+
+<div ng-init="vm.methods.onUserInit()"
+     class="animated fadeIn">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <div class="atom-profile">
+
+        <!-- Profile card -->
+        <div class="profile-card">
+          <img class="img-circle img-thumbnail"
+               ng-src="{{ vm.user.picture.result.url }}">
+          <div class="text">
+            <h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>
+            <p class="help-text">@{{ vm.user.username }}</p>
+            <h4>
+              <a href>#Supinfo</a>
+              <a href>#9gag</a>
+              <a href>#Bf1</a>
+            </h4>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Info -->
+        <h3 class="space-medium-before space-base-after">{{ 'profiles_user_details' | translate }}</h3>
+        <h4>
+          <strong>{{ 'account_profile_username' | translate }}:</strong>
+          {{ vm.user.username }}
+        </h4>
+        <h4>
+          <strong>{{ 'account_profile_email' | translate }}:</strong>
+          {{ vm.user.email }}
+        </h4>
+        <h4 style="margin-bottom: 0;">
+          <strong>{{ 'account_profile_born_date' | translate }}:</strong>
+          16/04/1994
+        </h4>
+        <p class="help-block">
+          {{ 'account_profile_date_register'
+          | translate:"{date:'" + (vm.user.date.register * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
+        </p>
+
+        <!-- Groups -->
+        <h3 class="space-medium-before space-base-after">{{ 'profiles_user_groups' | translate }}</h3>
+      </div>
+
+      <div class="center-flex-content space-medium-after">
+
+        <!-- Add to friends -->
+        <cozen-btn cozen-btn-label="profiles_user_add_to_friend"
+                   cozen-btn-auto-sizing="true"
+                   cozen-btn-on-click="vm.methods.socialAction('add')">
+        </cozen-btn>
+
+        <!-- Remove from friends -->
+        <a href
+           ng-click="vm.methods.socialAction('remove')">
+          {{ 'profiles_user_add_from_friends' | translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

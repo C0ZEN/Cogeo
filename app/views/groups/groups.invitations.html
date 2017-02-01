@@ -31,7 +31,8 @@
       </div>
 
       <!-- Invitations -->
-      <div class="atom-invitations space-medium-before space-base-after">
+      <div ng-show="vm.groupInvitations != null"
+           class="atom-invitations space-medium-before space-base-after">
         <div class="atom-invitation"
              style="animation-delay: {{ 50 * $index + 'ms' }};"
              ng-class="{'border-bottom': $last, 'waiting': invitation.status.response == 1, 'accepted': invitation.status.response == 2, 'rejected': invitation.status.response == 0}"
@@ -50,7 +51,12 @@
           <div class="text">
             <p>
               {{ vm.methods.getUserFullName(invitation.username) }}
-              <small>@{{ invitation.username }}</small>
+              <small>
+                <a href
+                   ng-click="goTo.view('app.profiles.user', {username: invitation.username})">
+                  @{{ invitation.username }}
+                </a>
+              </small>
             </p>
             <p class="help-text">
               {{ ('groups_invitations_status_' + invitation.status.response)
@@ -67,6 +73,14 @@
            as fakeInvitationsFilter track by $index">
         </div>
       </div>
+
+      <!-- Info message for empty invitations -->
+      <cozen-alert cozen-alert-display="vm.groupInvitations == null"
+                   cozen-alert-label="'groups_invitations_empty'"
+                   cozen-alert-close-btn="false"
+                   cozen-alert-class="space-medium-before space-base-after"
+                   cozen-alert-type-info>
+      </cozen-alert>
 
       <div class="space-medium-after center-flex-content">
 

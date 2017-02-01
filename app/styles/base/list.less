@@ -100,6 +100,10 @@ div.atom-groups {
         margin-right: @atom-space-small;
       }
     }
+    div.action-btn {
+      margin-left: auto;
+      margin-top:  4px;
+    }
   }
   > :first-child {
     border-top-left-radius:  @atom-radius;
@@ -168,4 +172,45 @@ div.atom-invitations {
     border-top-right-radius: @atom-radius;
   }
 }
-
+// User action directive
+div.user-action {
+  position: relative;
+  div.actions {
+    position: absolute;
+    top:      0;
+    left:     0;
+    div.action {
+      border-radius:    50%;
+      padding:          3px 6px;
+      background-color: @atom-color-white;
+      cursor:           pointer;
+      position:         absolute;
+      img {
+        width:  14px;
+        height: 14px;
+      }
+      &.granted {
+        border: 1px solid @atom-color-blue;
+        top:    -34px;
+        left:   5px;
+      }
+      &.revoked {
+        border: 1px solid @atom-color-purple;
+        top:    -34px;
+        left:   40px;
+      }
+      &.kicked {
+        border: 1px solid @atom-color-yellow;
+        top:    28px;
+      }
+      &.banned {
+        border: 1px solid @atom-color-error;
+        top:    28px;
+      }
+      &.unbanned {
+        border: 1px solid @atom-color-green;
+        top:    28px;
+      }
+    }
+  }
+}

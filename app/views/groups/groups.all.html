@@ -48,7 +48,7 @@
           <div class="text">
             <p>
               <a href
-                 ng-bind-html="group.name"
+                 compile="group.name"
                  ng-click="goTo.view('app.groups.details', {groupName: group.name})">
               </a>
               <cozen-tooltip ng-show="group.userRoles.isCreator"

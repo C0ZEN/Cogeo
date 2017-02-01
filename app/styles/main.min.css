@@ -1011,6 +1011,10 @@ div.atom-groups div.atom-group div.text p:first-of-type {
 div.atom-groups div.atom-group div.text a {
   margin-right: 6px;
 }
+div.atom-groups div.atom-group div.action-btn {
+  margin-left: auto;
+  margin-top: 4px;
+}
 div.atom-groups > :first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -1108,6 +1112,47 @@ div.atom-invitations div.atom-invitation div.text p:first-of-type {
 div.atom-invitations > :first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+}
+div.user-action {
+  position: relative;
+}
+div.user-action div.actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+div.user-action div.actions div.action {
+  border-radius: 50%;
+  padding: 3px 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  position: absolute;
+}
+div.user-action div.actions div.action img {
+  width: 14px;
+  height: 14px;
+}
+div.user-action div.actions div.action.granted {
+  border: 1px solid #2c9fdd;
+  top: -34px;
+  left: 5px;
+}
+div.user-action div.actions div.action.revoked {
+  border: 1px solid #9c27b0;
+  top: -34px;
+  left: 40px;
+}
+div.user-action div.actions div.action.kicked {
+  border: 1px solid #feb909;
+  top: 28px;
+}
+div.user-action div.actions div.action.banned {
+  border: 1px solid #e53935;
+  top: 28px;
+}
+div.user-action div.actions div.action.unbanned {
+  border: 1px solid #4ac291;
+  top: 28px;
 }
 .rzslider .rz-pointer {
   outline: 0;
