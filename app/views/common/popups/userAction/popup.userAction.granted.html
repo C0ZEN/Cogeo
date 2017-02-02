@@ -1,0 +1,27 @@
+<cozen-popup cozen-popup-name="userActionGranted"
+             cozen-popup-type-info
+             cozen-popup-data="userActionGrantedData"
+             cozen-popup-header-title="popup_userAction_granted_header_title">
+  <div class="row">
+    <div class="col-xs-12 space-large-before space-medium-after">
+      <h3>{{ 'popup_userAction_granted_body_title' | translate:userActionGrantedData }}</h3>
+      <p class="help-text">{{ 'popup_userAction_granted_body_subtitle_1' | translate:userActionGrantedData }}</p>
+      <p class="help-text">{{ 'popup_userAction_granted_body_subtitle_2' | translate:userActionGrantedData }}</p>
+    </div>
+    <div class="col-xs-12 space-large-after">
+      <cozen-btn cozen-btn-type-info
+                 cozen-btn-icon-right="fa fa-fw fa-unlock-alt"
+                 cozen-btn-label="popup_userAction_granted_body_granted"
+                 cozen-btn-auto-sizing="true"
+                 cozen-btn-on-click="popup.methods.userAction.granted()"
+                 cozen-btn-class="space-base-right">
+      </cozen-btn>
+      <cozen-btn cozen-btn-type-cold
+                 cozen-btn-label="popup_cancel"
+                 cozen-btn-auto-sizing="true"
+                 cozen-btn-on-click="popup.methods.closePopup('userActionGranted')"
+                 cozen-btn-class="space-base-left">
+      </cozen-btn>
+    </div>
+  </div>
+</cozen-popup>

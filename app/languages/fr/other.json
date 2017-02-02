@@ -7,5 +7,16 @@
   "other_time_86400": "1 jour",
   "other_time_259200": "3 jours",
   "other_time_604800": "7 jours",
-  "other_userAction_label": "Administrer"
+  "other_userAction_label": "Administrer",
+  "other_userAction_banned": "Bannir",
+  "other_userAction_granted": "Promouvoir",
+  "other_userAction_kicked": "Expulsé",
+  "other_userAction_revoked": "Destitué",
+  "other_userAction_unbanned": "Débannir",
+  "other_kicked_reason_1": "Insultes",
+  "other_kicked_reason_2": "Menaces",
+  "other_kicked_reason_3": "Non respect des autres utilisateurs",
+  "other_kicked_reason_4": "Spam",
+  "other_kicked_reason_5": "Contenu offensant",
+  "other_kicked_reason_x": "Autre(s) raison(s)"
 }

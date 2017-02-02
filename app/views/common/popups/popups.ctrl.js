@@ -38,6 +38,39 @@
       })
     };
 
+    // userActionKicked
+    popup.userActionKicked = {
+      data: {
+        reasons: [
+          {
+            id : "1",
+            key: "other_kicked_reason_1"
+          },
+          {
+            id : "2",
+            key: "other_kicked_reason_2"
+          },
+          {
+            id : "3",
+            key: "other_kicked_reason_3"
+          },
+          {
+            id : "4",
+            key: "other_kicked_reason_4"
+          },
+          {
+            id : "5",
+            key: "other_kicked_reason_5"
+          },
+          {
+            id : "x",
+            key: "other_kicked_reason_x"
+          }
+        ],
+        times  : Utils.getKickedTimeList()
+      }
+    };
+
     // logsFilter
     popup.logsFilter = {};
 
@@ -46,7 +79,14 @@
       closePopup       : closePopup,
       logout           : logout,
       forgottenPassword: forgottenPassword,
-      onPlayerReady    : onPlayerReady
+      onPlayerReady    : onPlayerReady,
+      userAction       : {
+        granted : userActionGranted,
+        revoked : userActionRevoked,
+        kicked  : userActionKicked,
+        banned  : userActionBanned,
+        unbanned: userActionUnbanned
+      }
     };
 
     function closePopup(name) {
@@ -72,6 +112,26 @@
           newVolume: newVolume * 100
         })
       });
+    }
+
+    function userActionGranted() {
+      popup.methods.closePopup('userActionGranted');
+    }
+
+    function userActionRevoked() {
+      popup.methods.closePopup('userActionRevoked');
+    }
+
+    function userActionKicked() {
+      popup.methods.closePopup('userActionKicked');
+    }
+
+    function userActionBanned() {
+      popup.methods.closePopup('userActionBanned');
+    }
+
+    function userActionUnbanned() {
+      popup.methods.closePopup('userActionUnbanned');
     }
   }
 

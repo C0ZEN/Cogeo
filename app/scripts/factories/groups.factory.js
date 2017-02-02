@@ -38,6 +38,18 @@
             }
           },
           {
+            username: 'C0ZEN59',
+            joined  : 1484661615,
+            admin   : true,
+            hasLeft : 0,
+            kicked  : {
+              active: false
+            },
+            banned  : {
+              active: false
+            }
+          },
+          {
             username: 'Toto59',
             joined  : 1484561615,
             admin   : false,
@@ -432,7 +444,20 @@
           creation  : 1484561615,
           lastUpdate: 1484561615
         },
-        users      : []
+        users      : [
+          {
+            username: 'C0ZEN',
+            joined  : 1484661615,
+            admin   : true,
+            hasLeft : 0,
+            kicked  : {
+              active: false
+            },
+            banned  : {
+              active: false
+            }
+          }
+        ]
       }
     ];
 

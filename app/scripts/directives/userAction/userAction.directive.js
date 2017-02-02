@@ -7,12 +7,17 @@
  * @description
  *
  * [Scope params]
- * @param {boolean} kicked    = true > Display the kicked action
- * @param {boolean} banned    = true > Display the banned action
- * @param {boolean} unbanned  = true > Display the unbanned action
- * @param {boolean} revoked   = true > Display the revoked action
- * @param {boolean} granted   = true > Display the granted action
- * @param {boolean} isVisible = true > Show/hide the actions
+ * @param {boolean} userActionKicked    = true > Display the kicked action
+ * @param {boolean} userActionBanned    = true > Display the banned action
+ * @param {boolean} userActionUnbanned  = true > Display the unbanned action
+ * @param {boolean} userActionRevoked   = true > Display the revoked action
+ * @param {boolean} userActionGranted   = true > Display the granted action
+ * @param {boolean} userActionIsVisible = true > Show/hide the actions
+ * @param {object}  userActionGrantedData      > Data required by the popup
+ * @param {object}  userActionRevokedData      > Data required by the popup
+ * @param {object}  userActionKickedData       > Data required by the popup
+ * @param {object}  userActionBannedData       > Data required by the popup
+ * @param {object}  userActionUnbannedData     > Data required by the popup
  *
  */
 (function (angular) {
@@ -22,19 +27,26 @@
     .module('4pjtApp')
     .directive('userAction', userAction);
 
-  userAction.$inject = [];
+  userAction.$inject = [
+    '$rootScope'
+  ];
 
-  function userAction() {
+  function userAction($rootScope) {
     return {
       link       : link,
       restrict   : 'E',
       scope      : {
-        kicked        : '=?',
-        banned        : '=?',
-        unbanned      : '=?',
-        revoked       : '=?',
-        granted       : '=?',
-        isVisible: '=?'
+        userActionKicked      : '=?',
+        userActionBanned      : '=?',
+        userActionUnbanned    : '=?',
+        userActionRevoked     : '=?',
+        userActionGranted     : '=?',
+        userActionIsVisible   : '=?',
+        userActionGrantedData : '=?',
+        userActionRevokedData : '=?',
+        userActionKickedData  : '=?',
+        userActionBannedData  : '=?',
+        userActionUnbannedData: '=?'
       },
       replace    : false,
       transclude : false,
@@ -50,7 +62,8 @@
         onLabelClicked: onLabelClicked,
         showActions   : showActions,
         hideActions   : hideActions,
-        toggleActions : toggleActions
+        toggleActions : toggleActions,
+        onClick       : onClick
       };
 
       var data = {
@@ -64,25 +77,25 @@
         // Public functions
         scope._methods = {
           getMainClass  : getMainClass,
-          onLabelClicked: onLabelClicked
+          onLabelClicked: onLabelClicked,
+          onClick       : onClick
         };
 
         // Checking required stuff
         if (methods.hasError()) return;
 
         // Default values (scope)
-        if (angular.isUndefined(attrs.kicked)) scope.kicked = true;
-        if (angular.isUndefined(attrs.banned)) scope.banned = true;
-        if (angular.isUndefined(attrs.unbanned)) scope.unbanned = true;
-        if (angular.isUndefined(attrs.revoked)) scope.revoked = true;
-        if (angular.isUndefined(attrs.granted)) scope.granted = true;
-        if (angular.isUndefined(attrs.isLabelVisible)) scope.isLabelVisible = true;
+        if (angular.isUndefined(attrs.userActionKicked)) scope.userActionKicked = true;
+        if (angular.isUndefined(attrs.userActionBanned)) scope.userActionBanned = true;
+        if (angular.isUndefined(attrs.userActionUnbanned)) scope.userActionUnbanned = true;
+        if (angular.isUndefined(attrs.userActionRevoked)) scope.userActionRevoked = true;
+        if (angular.isUndefined(attrs.userActionGranted)) scope.userActionGranted = true;
 
         // Default values (attributes)
-        scope.isVisible = false;
+        scope.userActionIsVisible = true;
 
         // Watcher
-        scope.$watch('isVisible', function (newValue) {
+        scope.$watch('userActionIsVisible', function (newValue) {
           if (!newValue) methods.hideActions();
         });
       }
@@ -106,15 +119,35 @@
       }
 
       function showActions() {
-        scope.isVisible = true;
+        scope.userActionIsVisible = true;
       }
 
       function hideActions() {
-        scope.isVisible = false;
+        scope.userActionIsVisible = false;
       }
 
       function toggleActions() {
-        scope.isVisible = !scope.isVisible;
+        scope.userActionIsVisible = !scope.userActionIsVisible;
+      }
+
+      function onClick($event, type) {
+        switch (type) {
+          case 'granted':
+            $rootScope.methods.showPopup($event, 'userActionGranted', scope.userActionGrantedData);
+            break;
+          case 'revoked':
+            $rootScope.methods.showPopup($event, 'userActionRevoked', scope.userActionRevokedData);
+            break;
+          case 'kicked':
+            $rootScope.methods.showPopup($event, 'userActionKicked', scope.userActionKickedData);
+            break;
+          case 'banned':
+            $rootScope.methods.showPopup($event, 'userActionBanned', scope.userActionBannedData);
+            break;
+          case 'unbanned':
+            $rootScope.methods.showPopup($event, 'userActionUnbanned', scope.userActionUnbannedData);
+            break;
+        }
       }
     }
   }

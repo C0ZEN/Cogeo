@@ -36,8 +36,6 @@
         <div class="atom-group"
              style="animation-delay: {{ 50 * $index + 'ms' }};"
              ng-class="{'border-bottom': $last}"
-             ng-mouseenter="member.isHoverMember = true"
-             ng-mouseleave="member.isHoverMember = true"
              ng-repeat="member in vm.groupMembers
            | orderBy: 'joined':vm.members.orderBy
            | filter: vm.members.search
@@ -54,6 +52,11 @@
                   @{{ member.username }}
                 </a>
               </small>
+              <cozen-tooltip ng-show="member.username == vm.details.group.creator"
+                             cozen-tooltip-placement="auto bottom"
+                             cozen-tooltip-label="'groups_member_since' | translate:{'date': (member.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
+                <mark class="atom-mark creator">{{ 'groups_creator' | translate }}</mark>
+              </cozen-tooltip>
               <cozen-tooltip ng-show="member.admin"
                              cozen-tooltip-placement="auto bottom"
                              cozen-tooltip-label="'groups_member_since' | translate:{'date': (member.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
@@ -76,8 +79,19 @@
               {{ 'groups_members_since' | translate:{date: (member.joined * 1000 | date: 'EEEE dd MMMM yyyy')} }}
             </p>
           </div>
-          <div class="action-btn">
-            <user-action is-visible="member.isHoverMember"></user-action>
+          <div ng-show="vm.details.userIsAdmin && vm.details.group.creator != member.username && vm.user.username != member.username"
+               class="action-btn">
+            <user-action user-action-granted="!member.admin && !member.kicked.active && !member.banned.active"
+                         user-action-revoked="member.admin && !member.kicked.active && !member.banned.active"
+                         user-action-kicked="!member.kicked.active && !member.banned.active"
+                         user-action-banned="!member.kicked.active && !member.banned.active"
+                         user-action-unbanned="member.kicked.active || member.banned.active"
+                         user-action-granted-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
+                         user-action-revoked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
+                         user-action-kicked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
+                         user-action-banned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
+                         user-action-unbanned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}">
+            </user-action>
           </div>
         </div>
 

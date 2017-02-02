@@ -1127,31 +1127,38 @@ div.actions-list {
 }
 div.actions-list div.action-item {
   border-radius: 50%;
-  padding: 2px 4px;
+  padding: 1px 3px;
   background-color: #ffffff;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  margin-left: 6px;
+  border: 1px solid #d6dbdb;
+  color: #d6dbdb;
+  outline: 0;
 }
 div.actions-list div.action-item i {
   vertical-align: middle;
 }
-div.actions-list div.action-item.granted {
+div.actions-list div.action-item:hover {
+  background-color: #f8f8f8;
+}
+div.actions-list div.action-item:hover.granted {
   border: 1px solid #2c9fdd;
   color: #2c9fdd;
 }
-div.actions-list div.action-item.revoked {
+div.actions-list div.action-item:hover.revoked {
   border: 1px solid #9c27b0;
   color: #9c27b0;
 }
-div.actions-list div.action-item.kicked {
+div.actions-list div.action-item:hover.kicked {
   border: 1px solid #feb909;
   color: #feb909;
 }
-div.actions-list div.action-item.banned {
+div.actions-list div.action-item:hover.banned {
   border: 1px solid #e53935;
   color: #e53935;
 }
-div.actions-list div.action-item.unbanned {
+div.actions-list div.action-item:hover.unbanned {
   border: 1px solid #4ac291;
   color: #4ac291;
 }

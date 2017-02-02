@@ -179,32 +179,39 @@ div.actions-list {
   align-items:    center;
   div.action-item {
     border-radius:    50%;
-    padding:          2px 4px;
+    padding:          1px 3px;
     background-color: @atom-color-white;
     cursor:           pointer;
-    font-size:        16px;
+    font-size:        18px;
+    margin-left:      @atom-space-small;
+    border:           1px solid @atom-color-line-rule;
+    color:            @atom-color-line-rule;
+    outline:          @atom-outline;
     i {
       vertical-align: middle;
     }
-    &.granted {
-      border: 1px solid @atom-color-blue;
-      color:  @atom-color-blue;
-    }
-    &.revoked {
-      border: 1px solid @atom-color-purple;
-      color:  @atom-color-purple;
-    }
-    &.kicked {
-      border: 1px solid @atom-color-yellow;
-      color:  @atom-color-yellow;
-    }
-    &.banned {
-      border: 1px solid @atom-color-error;
-      color:  @atom-color-error;
-    }
-    &.unbanned {
-      border: 1px solid @atom-color-green;
-      color:  @atom-color-green;
+    &:hover {
+      background-color: @atom-color-line-rule-light;
+      &.granted {
+        border: 1px solid @atom-color-blue;
+        color:  @atom-color-blue;
+      }
+      &.revoked {
+        border: 1px solid @atom-color-purple;
+        color:  @atom-color-purple;
+      }
+      &.kicked {
+        border: 1px solid @atom-color-yellow;
+        color:  @atom-color-yellow;
+      }
+      &.banned {
+        border: 1px solid @atom-color-error;
+        color:  @atom-color-error;
+      }
+      &.unbanned {
+        border: 1px solid @atom-color-green;
+        color:  @atom-color-green;
+      }
     }
   }
 }
