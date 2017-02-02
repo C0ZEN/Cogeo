@@ -7,12 +7,12 @@
  * @description
  *
  * [Scope params]
- * @param {boolean} kicked         = true > Display the kicked action
- * @param {boolean} banned         = true > Display the banned action
- * @param {boolean} unbanned       = true > Display the unbanned action
- * @param {boolean} revoked        = true > Display the revoked action
- * @param {boolean} granted        = true > Display the granted action
- * @param {boolean} isLabelVisible = true > Display the label
+ * @param {boolean} kicked    = true > Display the kicked action
+ * @param {boolean} banned    = true > Display the banned action
+ * @param {boolean} unbanned  = true > Display the unbanned action
+ * @param {boolean} revoked   = true > Display the revoked action
+ * @param {boolean} granted   = true > Display the granted action
+ * @param {boolean} isVisible = true > Show/hide the actions
  *
  */
 (function (angular) {
@@ -34,7 +34,7 @@
         unbanned      : '=?',
         revoked       : '=?',
         granted       : '=?',
-        isLabelVisible: '=?'
+        isVisible: '=?'
       },
       replace    : false,
       transclude : false,
@@ -79,10 +79,10 @@
         if (angular.isUndefined(attrs.isLabelVisible)) scope.isLabelVisible = true;
 
         // Default values (attributes)
-        scope.isActionsVisible = true;
+        scope.isVisible = false;
 
         // Watcher
-        scope.$watch('isLabelVisible', function (newValue) {
+        scope.$watch('isVisible', function (newValue) {
           if (!newValue) methods.hideActions();
         });
       }
@@ -106,15 +106,15 @@
       }
 
       function showActions() {
-        scope.isActionsVisible = true;
+        scope.isVisible = true;
       }
 
       function hideActions() {
-        scope.isActionsVisible = false;
+        scope.isVisible = false;
       }
 
       function toggleActions() {
-        scope.isActionsVisible = !scope.isActionsVisible;
+        scope.isVisible = !scope.isVisible;
       }
     }
   }

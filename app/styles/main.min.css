@@ -1113,46 +1113,47 @@ div.atom-invitations > :first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-div.user-action {
-  position: relative;
+div.actions-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-div.user-action div.actions {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-div.user-action div.actions div.action {
+div.actions-list div.action-item {
   border-radius: 50%;
-  padding: 3px 6px;
+  padding: 2px 4px;
   background-color: #ffffff;
   cursor: pointer;
-  position: absolute;
+  font-size: 16px;
 }
-div.user-action div.actions div.action img {
-  width: 14px;
-  height: 14px;
+div.actions-list div.action-item i {
+  vertical-align: middle;
 }
-div.user-action div.actions div.action.granted {
+div.actions-list div.action-item.granted {
   border: 1px solid #2c9fdd;
-  top: -34px;
-  left: 5px;
+  color: #2c9fdd;
 }
-div.user-action div.actions div.action.revoked {
+div.actions-list div.action-item.revoked {
   border: 1px solid #9c27b0;
-  top: -34px;
-  left: 40px;
+  color: #9c27b0;
 }
-div.user-action div.actions div.action.kicked {
+div.actions-list div.action-item.kicked {
   border: 1px solid #feb909;
-  top: 28px;
+  color: #feb909;
 }
-div.user-action div.actions div.action.banned {
+div.actions-list div.action-item.banned {
   border: 1px solid #e53935;
-  top: 28px;
+  color: #e53935;
 }
-div.user-action div.actions div.action.unbanned {
+div.actions-list div.action-item.unbanned {
   border: 1px solid #4ac291;
-  top: 28px;
+  color: #4ac291;
 }
 .rzslider .rz-pointer {
   outline: 0;
