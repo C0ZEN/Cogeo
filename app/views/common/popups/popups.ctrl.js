@@ -9,14 +9,16 @@
     'cozenPopupFactory',
     'CONFIG',
     '$scope',
-    '$rootScope'
+    '$rootScope',
+    'userFactory'
   ];
 
-  function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope) {
+  function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory) {
     var popup = this;
 
     // Common data
     popup.CONFIG = CONFIG;
+    popup.user   = userFactory.getUser();
 
     // forgottenPassword
     popup.forgottenPassword = {};
@@ -91,8 +93,8 @@
 
     function closePopup(name) {
       cozenPopupFactory.hide({
-        name: name
-      });
+                               name: name
+                             });
     }
 
     function logout() {

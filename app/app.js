@@ -113,10 +113,11 @@
     '$state',
     'goTo',
     'cozenPopupFactory',
-    'userFactory'
+    'userFactory',
+    '$filter'
   ];
 
-  function run($rootScope, $state, goTo, cozenPopupFactory, userFactory) {
+  function run($rootScope, $state, goTo, cozenPopupFactory, userFactory, $filter) {
 
     // Public global data
     $rootScope.data = {
@@ -130,7 +131,8 @@
 
     // Public global functions
     $rootScope.methods = {
-      showPopup: showPopup
+      showPopup: showPopup,
+      getKickBanFor: getKickBanFor
     };
 
     function showPopup($event, name, data) {
@@ -143,6 +145,10 @@
         name: name,
         data: data
       });
+    }
+
+    function getKickBanFor(forValue) {
+      return $filter('translate')('other_kicked_reason_' + forValue);
     }
   }
 

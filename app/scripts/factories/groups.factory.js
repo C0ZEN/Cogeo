@@ -57,14 +57,14 @@
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '1',
               time  : 3600,
               active: true
             },
             banned  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '2',
               active: true
             }
           },
@@ -76,14 +76,14 @@
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '3',
               time  : 3600,
               active: true
             },
             banned  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '4',
               active: false
             }
           },
@@ -95,14 +95,14 @@
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '5',
               time  : 3600,
               active: false
             },
             banned  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : 'x',
               active: false
             }
           },
@@ -114,14 +114,14 @@
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '1',
               time  : 3600,
               active: false
             },
             banned  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '2',
               active: true
             }
           }
@@ -398,14 +398,14 @@
             kicked  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '1',
               time  : 3600,
               active: true
             },
             banned  : {
               by    : 'Toto',
               on    : 1484561615,
-              for   : 'Il a pas dit bonjour',
+              for   : '2',
               active: true
             }
           }

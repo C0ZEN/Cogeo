@@ -103,6 +103,12 @@ label.atom-label {
   padding: 0;
   font-weight: 400;
 }
+span.atom-value {
+  font-size: 16px;
+  color: #4c596b;
+  padding: 0;
+  font-weight: 400;
+}
 mark.atom-mark {
   border-radius: 3px;
   padding: 0 6px;
