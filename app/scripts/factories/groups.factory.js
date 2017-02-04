@@ -9,10 +9,12 @@
     '$state',
     'CONFIG',
     '$stateParams',
-    '$filter'
+    '$filter',
+    'usersFactory',
+    'userFactory'
   ];
 
-  function groupsFactory($state, CONFIG, $stateParams, $filter) {
+  function groupsFactory($state, CONFIG, $stateParams, $filter, usersFactory, userFactory) {
 
     var groups = [
       {
@@ -470,7 +472,9 @@
       getGroupsWithUserRoles     : getGroupsWithUserRoles,
       getUserGroups              : getUserGroups,
       updateGroup                : updateGroup,
-      doesUserHasRights          : doesUserHasRights
+      doesUserHasRights          : doesUserHasRights,
+      getAvailableUsers          : getAvailableUsers,
+      isUserInGroup              : isUserInGroup
     };
 
     function getGroups() {
@@ -550,6 +554,38 @@
         }
         return true;
       } else return false;
+    }
+
+    function getAvailableUsers(groupName) {
+      var users          = usersFactory.getUsers(), availableUsers = [], unavailable, tmpUser;
+      var activeUsername = userFactory.getUser().username;
+      angular.forEach(users, function (user) {
+        unavailable = false;
+        if (user.username == activeUsername) unavailable = true;
+        else {
+          tmpUser = getUserFromGroup(user.username, groupName);
+
+          // The user is in the group
+          if (tmpUser != null) {
+            if (tmpUser.hasLeft == 0) unavailable = true;
+            else if (tmpUser.kicked.active || tmpUser.banned.active) unavailable = true;
+          }
+        }
+        if (!unavailable) availableUsers.push(user);
+      });
+      return availableUsers;
+    }
+
+    function isUserInGroup(userName, groupName) {
+      var group = getGroupByName(groupName);
+      if (group != null) {
+        angular.forEach(group.users, function (user) {
+          if (user.username == userName) {
+            return user.hasLeft == 0;
+          }
+        });
+      }
+      return false;
     }
   }
 

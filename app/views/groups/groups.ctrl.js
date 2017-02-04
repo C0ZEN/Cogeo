@@ -43,7 +43,9 @@
       getUserFullName : usersFactory.getUserFullName,
       onShowAll       : onShowAll,
       getAllLogs      : getAllLogs,
-      getLogSrc       : getLogSrc
+      getLogSrc       : getLogSrc,
+      onRecruitInit   : onRecruitInit,
+      recruit         : recruit
     };
 
     function save(form) {
@@ -147,6 +149,17 @@
         case 'socialUserUnblocked':
         case 'socialInvitationAccepted':
           return 'icons8-chat';
+      }
+    }
+
+    function onRecruitInit() {
+      vm.availableUsers = groupsFactory.getAvailableUsers($state.params.groupName);
+    }
+
+    function recruit(type) {
+      switch (type) {
+        case 'cogeoUsers':
+          break;
       }
     }
   }

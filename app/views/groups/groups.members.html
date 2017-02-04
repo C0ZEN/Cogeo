@@ -88,9 +88,9 @@
                          user-action-unbanned="member.kicked.active || member.banned.active"
                          user-action-granted-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
                          user-action-revoked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
-                         user-action-kicked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
-                         user-action-banned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
-                         user-action-unbanned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}">
+                         user-action-kicked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}"
+                         user-action-banned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}"
+                         user-action-unbanned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}">
             </user-action>
           </div>
         </div>

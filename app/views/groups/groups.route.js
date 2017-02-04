@@ -59,7 +59,7 @@
         url        : '/log/:groupName',
         templateUrl: 'views/groups/groups.log.html',
         data       : {
-          pageTitle: 'account_log'
+          pageTitle: 'group_log'
         }
       })
       .state('app.groups.recruit', {
@@ -67,6 +67,13 @@
         templateUrl: 'views/groups/groups.recruit.html',
         data       : {
           pageTitle: 'account_recruit'
+        }
+      })
+      .state('app.groups.new', {
+        url        : '/new',
+        templateUrl: 'views/groups/groups.add.html',
+        data       : {
+          pageTitle: 'group_new'
         }
       });
   }

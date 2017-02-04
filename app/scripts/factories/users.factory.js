@@ -64,7 +64,8 @@
       getGroups        : getGroups,
       getUserFullName  : getUserFullName,
       addUsersFullNames: addUsersFullNames,
-      getUserByUsername: getUserByUsername
+      getUserByUsername: getUserByUsername,
+      getUsers         : getUsers
     };
 
     function getGroups() {
@@ -96,6 +97,10 @@
         if (users[i].username == userName) return users[i];
       }
       return null;
+    }
+
+    function getUsers() {
+      return users;
     }
   }
 

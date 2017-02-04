@@ -39,7 +39,8 @@
     "videogular-angulartics": "^1.4.4",
     "videogular-themes-default": "^1.4.4",
     "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop",
-    "ngclipboard": "^1.1.1"
+    "ngclipboard": "^1.1.1",
+    "angular-translate-interpolation-messageformat": "^2.13.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",

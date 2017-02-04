@@ -215,3 +215,54 @@ div.actions-list {
     }
   }
 }
+// Inline list (for compacted data)
+div.atom-inline-list {
+  div.atom-list-item-container {
+    display:         flex;
+    flex-direction:  row;
+    justify-content: space-between;
+    align-items:     center;
+    div.atom-inline-item {
+      border-top:          1px solid @atom-color-line-rule;
+      border-left:         1px solid @atom-color-line-rule;
+      border-right:        1px solid @atom-color-line-rule;
+      padding:             @atom-space-small @atom-space-base;
+      animation-fill-mode: @atom-animation-fill;
+      animation-duration:  @atom-animation-duration-in-fast;
+      .animation-fadeInLeft(-@atom-space-base);
+      display:             flex;
+      flex-direction:      row;
+      justify-content:     flex-start;
+      align-items:         center;
+      flex:                1;
+      &.ng-leave-active {
+        display:            none;
+        animation-duration: 0ms;
+      }
+    }
+    div.atom-remove-btn {
+      margin-left:   auto;
+      padding-left:  @atom-space-base;
+      padding-right: @atom-space-base;
+      cursor:        pointer;
+      font-size:     @atom-font-h3;
+      color:         @atom-color-label;
+      transition:    @atom-transition;
+      outline:       @atom-outline;
+      &:focus,
+      &:active,
+      &:hover {
+        color: @atom-color-blue;
+      }
+    }
+  }
+  > :first-child div.atom-inline-item {
+    border-top-left-radius:  @atom-radius;
+    border-top-right-radius: @atom-radius;
+  }
+  > :last-child div.atom-inline-item {
+    border-bottom:              1px solid @atom-color-line-rule;
+    border-bottom-left-radius:  @atom-radius;
+    border-bottom-right-radius: @atom-radius;
+  }
+}

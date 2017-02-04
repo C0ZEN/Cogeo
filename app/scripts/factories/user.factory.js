@@ -14,8 +14,8 @@
   function userFactory($state, CONFIG, $stateParams) {
 
     var user = {
-      givenName    : 'Testelin',
-      surname      : 'Geoffrey',
+      givenName    : 'Geoffrey',
+      surname      : 'Testelin',
       email        : 'geoffrey.testelin@gmail.com',
       username     : 'C0ZEN',
       superAdmin   : true,

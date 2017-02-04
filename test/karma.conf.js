@@ -81,6 +81,8 @@ module.exports = function(config) {
       'bower_components/cozen-lib/release/clean/directives.js',
       'bower_components/clipboard/dist/clipboard.js',
       'bower_components/ngclipboard/dist/ngclipboard.js',
+      'bower_components/messageformat/messageformat.js',
+      'bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -8,7 +8,7 @@
       <p class="help-text">{{ 'groups_join_subtitle_2' | translate:{groupName:vm.data.groupName} }}</p>
 
       <!-- Form -->
-      <div class="row space-large-before">
+      <div class="row space-large-before space-extra-large-after">
         <div class="col-xs-12 col-sm-8 col-md-6">
           <cozen-form cozen-form-name="join"
                       cozen-form-ctrl="vm"
@@ -31,6 +31,14 @@
           </cozen-form>
         </div>
       </div>
+
+      <!-- Title -->
+      <h1>{{ 'groups_join_discover_title' | translate }}</h1>
+      <p class="help-text">{{ 'groups_join_discover_subtitle_1' | translate }}</p>
+      <p class="help-text">{{ 'groups_join_discover_subtitle_2' | translate }}</p>
+      <p class="help-text"
+         compile="'groups_join_discover_subtitle_3' | translate">
+      </p>
     </div>
   </div>
 </div>
