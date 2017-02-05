@@ -45,7 +45,8 @@
       getAllLogs      : getAllLogs,
       getLogSrc       : getLogSrc,
       onRecruitInit   : onRecruitInit,
-      recruit         : recruit
+      recruit         : recruit,
+      toggleRecruitMod: toggleRecruitMod
     };
 
     function save(form) {
@@ -154,13 +155,27 @@
 
     function onRecruitInit() {
       vm.availableUsers = groupsFactory.getAvailableUsers($state.params.groupName);
+      vm.recruitMod     = 'users';
+      vm.recruitEmail   = [{
+        email: ''
+      }];
     }
 
     function recruit(type) {
       switch (type) {
         case 'cogeoUsers':
+          vm.methods.onRecruitInit();
+          break;
+        case 'cogeoEmail':
+          vm.recruitEmail   = [{
+            email: ''
+          }];
           break;
       }
+    }
+
+    function toggleRecruitMod() {
+      vm.recruitMod = vm.recruitMod == 'users' ? 'email' : 'users';
     }
   }
 

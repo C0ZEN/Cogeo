@@ -8,10 +8,11 @@
   userFactory.$inject = [
     '$state',
     'CONFIG',
-    '$stateParams'
+    '$stateParams',
+    'httpRequest'
   ];
 
-  function userFactory($state, CONFIG, $stateParams) {
+  function userFactory($state, CONFIG, $stateParams, httpRequest) {
 
     var user = {
       givenName    : 'Geoffrey',
@@ -486,7 +487,11 @@
     // Public functions
     return {
       getUser    : getUser,
-      getSettings: getSettings
+      getSettings: getSettings,
+      isConnected: isConnected,
+      httpRequest: {
+        getUser: httpRequestGetUser
+      }
     };
 
     function getUser() {
@@ -495,6 +500,16 @@
 
     function getSettings() {
       return user.settings;
+    }
+
+    function isConnected() {
+      return user != null;
+    }
+
+    /// HTTP REQUEST ///
+    function httpRequestGetUser(callback) {
+      // user = httpRequest.request('GET', 'user/Cozen', {}, callback);
+      httpRequest.request('GET', 'user/Cozen', {}, callback);
     }
   }
 

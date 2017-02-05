@@ -7,7 +7,8 @@
       <p class="help-text">
         {{ 'log_login_subtitle_1' | translate }}
         <a href
-           ng-click="goTo.view('app.register')">
+           ng-click="goTo.view('app.register', null, $event)"
+           ui-sref="app.register">
           {{ 'log_login_subtitle_2' | translate }}
         </a>
       </p>
@@ -23,13 +24,13 @@
 
             <!-- Socials -->
             <h3 class="space-medium-after">{{ 'log_login_socials_title' | translate }}</h3>
-            <cozen-btn cozen-btn-label="log_login_facebook"
+            <cozen-btn cozen-btn-label="'log_login_facebook'"
                        cozen-btn-on-click="vm.methods.facebook()"
                        cozen-btn-icon-left="fa fa-facebook-f"
                        cozen-btn-type-facebook
                        cozen-btn-class="space-base-after">
             </cozen-btn>
-            <cozen-btn cozen-btn-label="log_login_google"
+            <cozen-btn cozen-btn-label="'log_login_google'"
                        cozen-btn-on-click="vm.methods.google()"
                        cozen-btn-icon-left="fa fa-google-plus"
                        cozen-btn-type-google>
@@ -60,7 +61,7 @@
                          cozen-input-class="space-medium-after">
             </cozen-input>
             <div class="center-flex-content">
-              <cozen-btn cozen-btn-label="log_login_submit"
+              <cozen-btn cozen-btn-label="'log_login_submit'"
                          cozen-btn-auto-sizing="true"
                          cozen-btn-disabled="vm.form.login.$invalid"
                          cozen-btn-loader="vm.loading"

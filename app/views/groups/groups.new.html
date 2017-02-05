@@ -7,7 +7,8 @@
       <p class="help-text">
         {{ 'log_login_subtitle_1' | translate }}
         <a href
-           ng-click="goTo.view('app.register')">
+           ng-click="goTo.view('app.register', null, $event)"
+           ui-sref="app.register">
           {{ 'log_login_subtitle_2' | translate }}
         </a>
       </p>

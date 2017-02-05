@@ -22,7 +22,7 @@
     vm.loading = false;
 
     // User data
-    vm.user = $rootScope.data.user;
+    vm.user = userFactory.getUser();
 
     // Settings
     vm.settings = angular.copy(vm.user.settings);
@@ -134,7 +134,7 @@
     }
 
     function onDisplayEdit() {
-      vm.userCopy                  = angular.copy($rootScope.data.user);
+      vm.userCopy                  = angular.copy(userFactory.getUser());
       vm.userCopy.passwordMismatch = false;
     }
   }

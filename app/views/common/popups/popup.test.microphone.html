@@ -15,14 +15,14 @@
                          audio-model="popup.testMicrophone.recordedInput">
         <div ng-if="recorder.isAvailable"
              class="space-medium-before">
-          <cozen-btn cozen-btn-label="popup_test_microphone_body_start_record"
+          <cozen-btn cozen-btn-label="'popup_test_microphone_body_start_record'"
                      cozen-btn-auto-sizing="true"
                      cozen-btn-disabled="recorder.status.isRecording"
                      cozen-btn-on-click="recorder.startRecord()"
                      cozen-btn-icon-right="fa icons8-record"
                      cozen-btn-class="space-base-right">
           </cozen-btn>
-          <cozen-btn cozen-btn-label="popup_test_microphone_body_stop_record"
+          <cozen-btn cozen-btn-label="'popup_test_microphone_body_stop_record'"
                      cozen-btn-auto-sizing="true"
                      cozen-btn-type-error
                      cozen-btn-disabled="!recorder.status.isRecording"
@@ -30,7 +30,7 @@
                      cozen-btn-icon-right="fa icons8-stop"
                      cozen-btn-class="space-base-left space-base-right">
           </cozen-btn>
-          <cozen-btn cozen-btn-label="popup_test_microphone_body_play_record"
+          <cozen-btn cozen-btn-label="'popup_test_microphone_body_play_record'"
                      cozen-btn-auto-sizing="true"
                      cozen-btn-type-success
                      cozen-btn-disabled="recorder.status.isRecording || !recorder.audioModel"

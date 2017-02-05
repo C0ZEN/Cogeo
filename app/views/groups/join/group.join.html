@@ -22,7 +22,7 @@
                          cozen-input-required="{{ vm.CONFIG.internal.log.email.required }}">
             </cozen-input>
             <p class="help-text space-small-before space-medium-after">{{ 'groups_join_after_email' | translate }}</p>
-            <cozen-btn cozen-btn-label="{{ 'groups_join_group' | translate:{groupName: vm.data.groupName} }}"
+            <cozen-btn cozen-btn-label="'groups_join_group' | translate:{groupName: vm.data.groupName}"
                        cozen-btn-auto-sizing="true"
                        cozen-btn-disabled="vm.form.join.$invalid"
                        cozen-btn-loader="vm.loading"

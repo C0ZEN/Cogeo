@@ -7,7 +7,8 @@
       <p class="help-text">
         {{ 'log_register_subtitle_1' | translate }}
         <a href
-           ng-click="goTo.view('app.login')">
+           ng-click="goTo.view('app.login', null, $event)"
+           ui-sref="app.login">
           {{ 'log_register_subtitle_2' | translate }}</a>
         {{ 'log_register_subtitle_3' | translate }}
       </p>
@@ -79,7 +80,7 @@
                          cozen-input-type-password-config="vm.CONFIG.internal.log.password.passwordConfig"
                          cozen-input-class="space-medium-after">
             </cozen-input>
-            <cozen-btn cozen-btn-label="log_register_submit"
+            <cozen-btn cozen-btn-label="'log_register_submit'"
                        cozen-btn-auto-sizing="true"
                        cozen-btn-disabled="vm.form.register.$invalid"
                        cozen-btn-loader="vm.loading"

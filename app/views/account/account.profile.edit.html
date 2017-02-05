@@ -48,7 +48,7 @@
         <cozen-btn cozen-btn-upload-model="vm.userCopy.picture"
                    cozen-btn-is-upload="true"
                    cozen-btn-upper-label="account_profile_picture"
-                   cozen-btn-label="account_profile_picture_upload">
+                   cozen-btn-label="'account_profile_picture_upload'">
         </cozen-btn>
         <p class="help-block space-small-before space-medium-after">
           {{ 'account_profile_date_last_update'
@@ -58,7 +58,7 @@
         <div class="center-flex-content space-medium-after">
 
           <!-- Edit btn -->
-          <cozen-btn cozen-btn-label="account_settings_save"
+          <cozen-btn cozen-btn-label="'account_settings_save'"
                      cozen-btn-auto-sizing="true"
                      cozen-btn-type-success
                      cozen-btn-loader="vm.loading"
@@ -70,7 +70,8 @@
           <!-- Edit password link -->
           <a href
              onclick="this.blur()"
-             ng-click="goTo.view('app.account.profileEditPassword')">
+             ng-click="goTo.view('app.account.profileEditPassword', null, $event)"
+             ui-sref="app.account.profileEditPassword">
             {{ 'account_profile_change_password' | translate }}
           </a>
         </div>

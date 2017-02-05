@@ -56,6 +56,36 @@
           register  : 1484561615,
           lastUpdate: 1484561615
         }
+      },
+      {
+        givenName : 'Unknown',
+        surname   : 'User',
+        email     : 'unknown.user@mystery.com',
+        username  : 'User1',
+        superAdmin: false,
+        private   : {
+          profile: false
+        },
+        type      : 'user',
+        date      : {
+          register  : 1484561615,
+          lastUpdate: 1484561615
+        }
+      },
+      {
+        givenName : 'Unknown2',
+        surname   : 'User2',
+        email     : 'unknown2.user2@mystery.com',
+        username  : 'User2',
+        superAdmin: false,
+        private   : {
+          profile: false
+        },
+        type      : 'user',
+        date      : {
+          register  : 1484561615,
+          lastUpdate: 1484561615
+        }
       }
     ];
 

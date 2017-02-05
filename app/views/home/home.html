@@ -8,7 +8,7 @@
       <h2>{{ 'home_header_content_h2_1' | translate }}</h2>
       <h2>{{ 'home_header_content_h2_2' | translate }}</h2>
       <div class="space-large-before">
-        <cozen-btn cozen-btn-label="home_discover_cogeo"
+        <cozen-btn cozen-btn-label="'home_discover_cogeo'"
                    cozen-btn-type-default
                    cozen-btn-auto-sizing="true"
                    cozen-btn-size-large
@@ -31,7 +31,7 @@
         <h3>{{ 'home_about_text_2' | translate }}</h3>
         <h3>{{ 'home_about_text_3' | translate }}</h3>
         <div class="space-large-before sr-button">
-          <cozen-btn cozen-btn-label="home_register"
+          <cozen-btn cozen-btn-label="'home_register'"
                      cozen-btn-type-primary
                      cozen-btn-auto-sizing="true"
                      cozen-btn-size-large
@@ -194,7 +194,7 @@
         <h2 class="section-heading">{{ 'home_register_title' | translate }}</h2>
         <hr class="small light">
         <div class="space-large-before sr-button">
-          <cozen-btn cozen-btn-label="home_register"
+          <cozen-btn cozen-btn-label="'home_register'"
                      cozen-btn-type-primary
                      cozen-btn-auto-sizing="true"
                      cozen-btn-size-large
@@ -275,11 +275,13 @@
           <div>
             <h4 class="yellow">{{ 'home_footer_links_title' | translate }}</h4>
             <a href
-               ng-click="goTo.view('app.login')">
+               ng-click="goTo.view('app.login', null, $event)"
+               ui-sref="app.login">
               {{ 'home_footer_links_login' | translate }}
             </a>
             <a href
-               ng-click="goTo.view('app.register')">
+               ng-click="goTo.view('app.register', null, $event)"
+               ui-sref="app.register">
               {{ 'home_footer_links_register' | translate }}
             </a>
             <a href

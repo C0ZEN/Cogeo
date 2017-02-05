@@ -132,6 +132,7 @@
           {
             _id     : 'zfzefzfz',
             username: 'Totzefzeo',
+            sentBy  : 'C0ZEN',
             status  : {
               date    : 1484561615,
               response: 1
@@ -139,7 +140,17 @@
           },
           {
             _id     : 'zfzefzfz',
+            username: 'User1',
+            sentBy  : 'C0ZEN',
+            status  : {
+              date    : 1484561615,
+              response: 0
+            }
+          },
+          {
+            _id     : 'zfzefzfz',
             username: 'Totfzefzefzefo',
+            sentBy  : 'C0ZEN',
             status  : {
               date    : 1484561615,
               response: 0
@@ -148,6 +159,7 @@
           {
             _id     : 'zfzefzfz',
             username: 'Toto',
+            sentBy  : 'C0ZEN',
             status  : {
               date    : 1484561615,
               response: 2
@@ -465,16 +477,17 @@
 
     // Public functions
     return {
-      getGroups                  : getGroups,
-      getGroupByName             : getGroupByName,
-      getGroupByNameWithUserRoles: getGroupByNameWithUserRoles,
-      getUserFromGroup           : getUserFromGroup,
-      getGroupsWithUserRoles     : getGroupsWithUserRoles,
-      getUserGroups              : getUserGroups,
-      updateGroup                : updateGroup,
-      doesUserHasRights          : doesUserHasRights,
-      getAvailableUsers          : getAvailableUsers,
-      isUserInGroup              : isUserInGroup
+      getGroups                    : getGroups,
+      getGroupByName               : getGroupByName,
+      getGroupByNameWithUserRoles  : getGroupByNameWithUserRoles,
+      getUserFromGroup             : getUserFromGroup,
+      getGroupsWithUserRoles       : getGroupsWithUserRoles,
+      getUserGroups                : getUserGroups,
+      updateGroup                  : updateGroup,
+      doesUserHasRights            : doesUserHasRights,
+      getAvailableUsers            : getAvailableUsers,
+      isUserInGroup                : isUserInGroup,
+      getInvitationForUserFromGroup: getInvitationForUserFromGroup
     };
 
     function getGroups() {
@@ -557,10 +570,12 @@
     }
 
     function getAvailableUsers(groupName) {
-      var users          = usersFactory.getUsers(), availableUsers = [], unavailable, tmpUser;
+      var users          = usersFactory.getUsers(), availableUsers = [], unavailable, tmpUser, tmpInvitation;
       var activeUsername = userFactory.getUser().username;
       angular.forEach(users, function (user) {
         unavailable = false;
+
+        // Remove active user
         if (user.username == activeUsername) unavailable = true;
         else {
           tmpUser = getUserFromGroup(user.username, groupName);
@@ -569,6 +584,15 @@
           if (tmpUser != null) {
             if (tmpUser.hasLeft == 0) unavailable = true;
             else if (tmpUser.kicked.active || tmpUser.banned.active) unavailable = true;
+          }
+
+          // The user is not in the group but check the invitations
+          else {
+            tmpInvitation = getInvitationForUserFromGroup(user.username, groupName);
+
+            if (tmpInvitation != null) {
+              if (tmpInvitation.status.response != 0) unavailable = true;
+            }
           }
         }
         if (!unavailable) availableUsers.push(user);
@@ -579,13 +603,21 @@
     function isUserInGroup(userName, groupName) {
       var group = getGroupByName(groupName);
       if (group != null) {
-        angular.forEach(group.users, function (user) {
-          if (user.username == userName) {
-            return user.hasLeft == 0;
-          }
-        });
+        for (var i = 0, length = group.users.length; i < length; i++) {
+          if (group.users[i].username == userName) return group.users[i].hasLeft == 0;
+        }
       }
       return false;
+    }
+
+    function getInvitationForUserFromGroup(userName, groupName) {
+      var group = getGroupByName(groupName);
+      if (group != null) {
+        for (var i = 0, length = group.invitations.length; i < length; i++) {
+          if (group.invitations[i].username == userName) return group.invitations[i];
+        }
+      }
+      return null;
     }
   }
 

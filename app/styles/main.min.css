@@ -102,6 +102,7 @@ label.atom-label {
   color: #8c8c8c;
   padding: 0;
   font-weight: 400;
+  line-height: 1;
 }
 span.atom-value {
   font-size: 16px;
@@ -128,6 +129,11 @@ mark.atom-mark.admin {
 mark.atom-mark.kicked,
 mark.atom-mark.banned {
   background-color: #feb909;
+}
+.flex-1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 /**********************/
 /**   SPACE BEFORE   **/
@@ -1240,7 +1246,17 @@ div.atom-inline-list div.atom-list-item-container div.atom-inline-item.ng-leave-
   -webkit-animation-duration: 0ms;
           animation-duration: 0ms;
 }
-div.atom-inline-list div.atom-list-item-container div.atom-remove-btn {
+div.atom-inline-list > :first-child div.atom-inline-item {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+div.atom-inline-list > :last-child div.atom-inline-item {
+  border-bottom: 1px solid #d6dbdb;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+div.atom-add-btn,
+div.atom-remove-btn {
   margin-left: auto;
   padding-left: 12px;
   padding-right: 12px;
@@ -1251,19 +1267,41 @@ div.atom-inline-list div.atom-list-item-container div.atom-remove-btn {
   transition: all 80ms ease-out;
   outline: 0;
 }
-div.atom-inline-list div.atom-list-item-container div.atom-remove-btn:focus,
-div.atom-inline-list div.atom-list-item-container div.atom-remove-btn:active,
-div.atom-inline-list div.atom-list-item-container div.atom-remove-btn:hover {
+div.atom-add-btn:focus,
+div.atom-remove-btn:focus,
+div.atom-add-btn:active,
+div.atom-remove-btn:active,
+div.atom-add-btn:hover,
+div.atom-remove-btn:hover {
   color: #2c9fdd;
 }
-div.atom-inline-list > :first-child div.atom-inline-item {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+div.atom-email-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 12px;
 }
-div.atom-inline-list > :last-child div.atom-inline-item {
-  border-bottom: 1px solid #d6dbdb;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+div.atom-email-list div.atom-email-input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+div.atom-email-list div.atom-email-btn {
+  margin-left: auto;
+}
+div.atom-email-list div.atom-email-btn > div {
+  -webkit-transition: none;
+  transition: none;
 }
 .rzslider .rz-pointer {
   outline: 0;
@@ -1280,6 +1318,72 @@ div.atom-inline-list > :last-child div.atom-inline-item {
 }
 .rzslider .rz-tick {
   background: #d6dbdb;
+}
+div.atom-loader {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  margin-top: -60px;
+}
+div.atom-loader:before,
+div.atom-loader:after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 0;
+  left: calc(40%);
+  background-color: #2c9fdd;
+  -webkit-animation: squaremove 1s ease-in-out infinite;
+          animation: squaremove 1s ease-in-out infinite;
+}
+div.atom-loader:after {
+  bottom: 0;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+@-webkit-keyframes squaremove {
+  0%,
+  100% {
+    -webkit-transform: translate(0, 0) rotate(0);
+            transform: translate(0, 0) rotate(0);
+  }
+  25% {
+    -webkit-transform: translate(48px, 48px) rotate(45deg);
+            transform: translate(48px, 48px) rotate(45deg);
+  }
+  50% {
+    -webkit-transform: translate(0px, 96px) rotate(0deg);
+            transform: translate(0px, 96px) rotate(0deg);
+  }
+  75% {
+    -webkit-transform: translate(-48px, 48px) rotate(45deg);
+            transform: translate(-48px, 48px) rotate(45deg);
+  }
+}
+@keyframes squaremove {
+  0%,
+  100% {
+    -webkit-transform: translate(0, 0) rotate(0);
+            transform: translate(0, 0) rotate(0);
+  }
+  25% {
+    -webkit-transform: translate(48px, 48px) rotate(45deg);
+            transform: translate(48px, 48px) rotate(45deg);
+  }
+  50% {
+    -webkit-transform: translate(0px, 96px) rotate(0deg);
+            transform: translate(0px, 96px) rotate(0deg);
+  }
+  75% {
+    -webkit-transform: translate(-48px, 48px) rotate(45deg);
+            transform: translate(-48px, 48px) rotate(45deg);
+  }
 }
 section {
   padding: 84px 0;

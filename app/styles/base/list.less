@@ -240,21 +240,6 @@ div.atom-inline-list {
         animation-duration: 0ms;
       }
     }
-    div.atom-remove-btn {
-      margin-left:   auto;
-      padding-left:  @atom-space-base;
-      padding-right: @atom-space-base;
-      cursor:        pointer;
-      font-size:     @atom-font-h3;
-      color:         @atom-color-label;
-      transition:    @atom-transition;
-      outline:       @atom-outline;
-      &:focus,
-      &:active,
-      &:hover {
-        color: @atom-color-blue;
-      }
-    }
   }
   > :first-child div.atom-inline-item {
     border-top-left-radius:  @atom-radius;
@@ -264,5 +249,38 @@ div.atom-inline-list {
     border-bottom:              1px solid @atom-color-line-rule;
     border-bottom-left-radius:  @atom-radius;
     border-bottom-right-radius: @atom-radius;
+  }
+}
+div.atom-add-btn,
+div.atom-remove-btn {
+  margin-left:   auto;
+  padding-left:  @atom-space-base;
+  padding-right: @atom-space-base;
+  cursor:        pointer;
+  font-size:     @atom-font-h3;
+  color:         @atom-color-label;
+  transition:    @atom-transition;
+  outline:       @atom-outline;
+  &:focus,
+  &:active,
+  &:hover {
+    color: @atom-color-blue;
+  }
+}
+// Email list
+div.atom-email-list {
+  display:         flex;
+  flex-direction:  row;
+  justify-content: space-between;
+  align-items:     center;
+  margin-bottom:   @atom-space-base;
+  div.atom-email-input {
+    flex: 1;
+  }
+  div.atom-email-btn {
+    margin-left: auto;
+    > div {
+      transition: none;
+    }
   }
 }

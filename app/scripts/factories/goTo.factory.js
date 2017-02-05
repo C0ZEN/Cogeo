@@ -20,10 +20,11 @@
       hasThisParent    : hasThisParent,
       getCurrentParam  : getCurrentParam,
       isOneOfThoseViews: isOneOfThoseViews,
-      viewUserProfile: viewUserProfile
+      viewUserProfile  : viewUserProfile
     };
 
-    function view(view, param) {
+    function view(view, param, $event) {
+      if ($event != null) $event.preventDefault();
       if (CONFIG.debug) Methods.directiveCallbackLog('goTo', 'view');
 
       // Add the :lang as param (for app param)
@@ -64,7 +65,8 @@
       } else return $stateParams[param];
     }
 
-    function viewUserProfile(view, params) {
+    function viewUserProfile(view, params, $event) {
+      if ($event != null) $event.preventDefault();
 
       // Remove the @ tag
       if (params.username != null) {

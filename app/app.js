@@ -48,11 +48,12 @@
     'CONFIG',
     'ThemesProvider',
     'ConfigProvider',
-    'tmhDynamicLocaleProvider'
+    'tmhDynamicLocaleProvider',
+    '$httpProvider'
   ];
 
   // Global configuration
-  function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider) {
+  function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider, $httpProvider) {
 
     // Override the CONFIG for the Atom theme
     ThemesProvider.setActiveTheme('atom');
@@ -94,8 +95,16 @@
       .localeLocationPattern('/bower_components/angular-i18n/angular-locale_{{locale}}.js')
       .defaultLocale(CONFIG.currentLanguage);
 
+    // Setup for CORS issues and JSON http requests
+    // $httpProvider.defaults.useXDomain = true;
+    // $httpProvider.defaults.withCredentials = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+
     // 4pjt Config
     CONFIG.internal = {
+      API  : 'https://qwirk.herokuapp.com/',
       video: {
         theme  : "bower_components/videogular-themes-default/videogular.css",
         plugins: {
@@ -114,15 +123,15 @@
     'goTo',
     'cozenPopupFactory',
     'userFactory',
-    '$filter'
+    '$filter',
+    'httpRequest'
   ];
 
-  function run($rootScope, $state, goTo, cozenPopupFactory, userFactory, $filter) {
+  function run($rootScope, $state, goTo, cozenPopupFactory, userFactory, $filter, httpRequest) {
 
     // Public global data
     $rootScope.data = {
-      innerHeight: window.innerHeight,
-      user       : userFactory.getUser()
+      innerHeight: window.innerHeight
     };
 
     // Public global services
@@ -131,7 +140,7 @@
 
     // Public global functions
     $rootScope.methods = {
-      showPopup: showPopup,
+      showPopup    : showPopup,
       getKickBanFor: getKickBanFor
     };
 

@@ -8,10 +8,11 @@
   NavbarCtrl.$inject = [
     '$document',
     '$rootScope',
-    'groupsFactory'
+    'groupsFactory',
+    'userFactory'
   ];
 
-  function NavbarCtrl($document, $rootScope, groupsFactory) {
+  function NavbarCtrl($document, $rootScope, groupsFactory, userFactory) {
     var vm = this;
 
     // Common data
@@ -24,15 +25,19 @@
     };
 
     // Groups
-    vm.group  = {
+    vm.group = {
       hover: false
     };
-    vm.groups = groupsFactory.getUserGroups($rootScope.data.user.username);
+
+    // Get the current user
+    var user = userFactory.getUser();
+    if (user != null) vm.groups = groupsFactory.getUserGroups(user.username);
 
     // Methods
     vm.methods = {
       scrollToElement: scrollToElement,
-      getGroupPicture: getGroupPicture
+      getGroupPicture: getGroupPicture,
+      isConnected    : userFactory.isConnected
     };
 
     function scrollToElement(element) {

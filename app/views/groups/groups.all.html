@@ -31,7 +31,7 @@
       </div>
 
       <!-- Groups -->
-      <div class="atom-groups space-medium-before space-base-after">
+      <div class="atom-groups space-base-before space-base-after">
         <div class="atom-group"
              style="animation-delay: {{ 50 * $index + 'ms' }};"
              ng-class="[$last ? 'border-bottom' : '']"
@@ -49,7 +49,8 @@
             <p>
               <a href
                  compile="group.name"
-                 ng-click="goTo.view('app.groups.details', {groupName: group.name})">
+                 ng-click="goTo.view('app.groups.details', {groupName: group.name}, null)"
+                 ui-sref="app.groups.details({groupName: group.name})">
               </a>
               <cozen-tooltip ng-show="group.userRoles.isMember"
                              cozen-tooltip-placement="auto bottom"
@@ -104,7 +105,8 @@
         <!-- Add group -->
         <a href
            onclick="this.blur()"
-           ng-click="goTo.view('app.groups.new')">
+           ng-click="goTo.view('app.groups.new', null, $event)"
+           ui-sref="app.groups.new">
           {{ 'groups_add_new' | translate }}
         </a>
       </div>

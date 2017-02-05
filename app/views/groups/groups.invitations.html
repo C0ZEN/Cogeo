@@ -32,7 +32,7 @@
 
       <!-- Invitations -->
       <div ng-show="vm.groupInvitations != null"
-           class="atom-invitations space-medium-before space-base-after">
+           class="atom-invitations space-base-before space-base-after">
         <div class="atom-invitation"
              style="animation-delay: {{ 50 * $index + 'ms' }};"
              ng-class="{'border-bottom': $last, 'waiting': invitation.status.response == 1, 'accepted': invitation.status.response == 2, 'rejected': invitation.status.response == 0}"
@@ -53,15 +53,14 @@
               {{ vm.methods.getUserFullName(invitation.username) }}
               <small>
                 <a href
-                   ng-click="goTo.view('app.profiles.user', {username: invitation.username})">
+                   ng-click="goTo.view('app.profiles.user', {username: invitation.username}, $event)"
+                   ui-sref="app.profiles.user({username: invitation.username})">
                   @{{ invitation.username }}
                 </a>
               </small>
             </p>
-            <p class="help-text">
-              {{ ('groups_invitations_status_' + invitation.status.response)
-              | translate:{date: (invitation.status.date * 1000 | date: 'EEEE dd MMMM yyyy - HH:mm')} }}
-            </p>
+            <p class="help-text"
+               compile="('groups_invitations_status_' + invitation.status.response) | translate:{date: (invitation.status.date * 1000 | date: 'EEEE dd MMMM yyyy - HH:mm'), userName: '@' + invitation.sentBy}"></p>
           </div>
         </div>
 
@@ -86,7 +85,7 @@
 
         <!-- Add members btn -->
         <cozen-btn ng-show="vm.details.userIsInGroup"
-                   cozen-btn-label="groups_invitations_invite_group"
+                   cozen-btn-label="'groups_invitations_invite_group'"
                    cozen-btn-auto-sizing="true"
                    cozen-btn-on-click="goTo.view('app.groups.recruit', {'groupName': vm.details.group.name})">
         </cozen-btn>

@@ -32,7 +32,7 @@
 
       <!-- Members -->
       <div ng-show="vm.groupMembers.length > 0"
-           class="atom-groups space-medium-before space-base-after">
+           class="atom-groups space-base-before space-base-after">
         <div class="atom-group"
              style="animation-delay: {{ 50 * $index + 'ms' }};"
              ng-class="{'border-bottom': $last}"
@@ -48,7 +48,8 @@
               {{ member.givenName }} {{ member.surname }}
               <small>
                 <a href
-                   ng-click="goTo.view('app.profiles.user', {username: member.username})">
+                   ng-click="goTo.view('app.profiles.user', {username: member.username}, $event)"
+                   ui-sref="app.profiles.user({username: member.username})">
                   @{{ member.username }}
                 </a>
               </small>

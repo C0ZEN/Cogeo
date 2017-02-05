@@ -3,11 +3,16 @@
 
   <!-- Left -->
   <div class="atom-navbar-block left">
+
+    <!-- Logo -->
     <img alt="Cogeo"
          class="brand"
          ng-click="goTo.view('app.home')"
          ng-src="images/brand/CogeoSampleSmallTransparent.png">
-    <div class="link link-blue"
+
+    <!-- Groups -->
+    <div ng-show="vm.methods.isConnected()"
+         class="link link-blue"
          onclick="this.blur()"
          ng-mouseenter="vm.group.hover = true"
          ng-mouseleave="vm.group.hover = false"
@@ -39,41 +44,57 @@
 
   <!-- Right -->
   <div class="atom-navbar-block right">
-    <div ng-if="goTo.isCurrentView('app.home')"
+
+    <!-- Product -->
+    <div ng-show="goTo.isCurrentView('app.home')"
          class="link link-blue"
          onclick="this.blur()"
          ng-click="vm.methods.scrollToElement('communication')"
          tabindex="0">
       {{ 'navbar_product' | translate }}
     </div>
-    <div ng-if="goTo.isCurrentView('app.home')"
+
+    <!-- Price -->
+    <div ng-show="goTo.isCurrentView('app.home')"
          class="link link-blue"
          onclick="this.blur()"
          ng-click="vm.methods.scrollToElement('register')"
          tabindex="0">
       {{ 'navbar_price' | translate }}
     </div>
-    <div class="link link-green"
+
+    <!-- Login -->
+    <div ng-show="!vm.methods.isConnected()"
+         class="link link-green"
          ng-class="{'active': goTo.isCurrentView('app.login')}"
          onclick="this.blur()"
          ng-click="goTo.view('app.login')"
          tabindex="0">
       {{ 'navbar_login' | translate }}
     </div>
-    <div class="link link-purple"
+
+    <!-- Register -->
+    <div ng-show="!vm.methods.isConnected()"
+         class="link link-purple"
          ng-class="{'active': goTo.isCurrentView('app.register')}"
          onclick="this.blur()"
          ng-click="goTo.view('app.register')"
          tabindex="0">
       {{ 'navbar_register' | translate }}
     </div>
-    <div class="link link-yellow"
+
+    <!-- Logout -->
+    <div ng-show="vm.methods.isConnected()"
+         class="link link-yellow"
          onclick="this.blur()"
          ng-click="methods.showPopup($event, 'logout')"
          tabindex="0">
       {{ 'navbar_logout' | translate }}
     </div>
-    <div class="link link-blue"
+
+    <!-- Other -->
+    <div ng-show="vm.methods.isConnected()"
+         class="link link-blue"
          onclick="this.blur()"
          ng-mouseenter="vm.other.hover = true"
          ng-mouseleave="vm.other.hover = false"

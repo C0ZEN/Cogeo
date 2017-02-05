@@ -54,7 +54,8 @@
           <h4>
             <strong>{{ 'groups_details_creator' | translate }}:</strong>
             <a href
-               ng-click="goTo.view('app.profiles.user', {username: vm.details.group.creator})">
+               ng-click="goTo.view('app.profiles.user', {username: vm.details.group.creator}, $event)"
+               ui-sref="app.profiles.user({username: vm.details.group.creator})">
               @{{ vm.details.group.creator }}
             </a>
           </h4>
@@ -99,7 +100,7 @@
 
         <!-- Join group btn -->
         <cozen-btn ng-show="!vm.details.userIsInGroup && !vm.details.group.userRoles.isBanned && !vm.details.group.userRoles.isKicked"
-                   cozen-btn-label="groups_details_join_group"
+                   cozen-btn-label="'groups_details_join_group'"
                    cozen-btn-auto-sizing="true"
                    cozen-btn-on-click="vm.methods.joinGroup(vm.details.group.name)"
                    cozen-btn-class="space-medium-after">
@@ -110,7 +111,7 @@
 
           <!-- Edit btn -->
           <cozen-btn ng-show="vm.details.userIsAdmin"
-                     cozen-btn-label="groups_details_edit_group"
+                     cozen-btn-label="'groups_details_edit_group'"
                      cozen-btn-auto-sizing="true"
                      cozen-btn-on-click="goTo.view('app.groups.edit', {'groupName': vm.details.group.name})">
           </cozen-btn>
