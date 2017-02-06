@@ -37,7 +37,8 @@
       'com.2fdevs.videogular.plugins.poster',
       'com.2fdevs.videogular.plugins.imaads',
       'com.2fdevs.videogular.plugins.buffering',
-      'ngclipboard'
+      'ngclipboard',
+      'LocalStorageModule'
     ])
     .config(config)
     .run(run);
@@ -49,11 +50,12 @@
     'ThemesProvider',
     'ConfigProvider',
     'tmhDynamicLocaleProvider',
-    '$httpProvider'
+    '$httpProvider',
+    '$qProvider'
   ];
 
   // Global configuration
-  function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider, $httpProvider) {
+  function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider, $httpProvider, $qProvider) {
 
     // Override the CONFIG for the Atom theme
     ThemesProvider.setActiveTheme('atom');
@@ -99,8 +101,11 @@
     // $httpProvider.defaults.useXDomain = true;
     // $httpProvider.defaults.withCredentials = true;
     delete $httpProvider.defaults.headers.common["X-Requested-With"];
-    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+    $httpProvider.defaults.headers.common["Accept"]       = "application/json";
     $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+
+    // Avoid an error in the console when a deferred is rejected
+    $qProvider.errorOnUnhandledRejections(false);
 
     // 4pjt Config
     CONFIG.internal = {

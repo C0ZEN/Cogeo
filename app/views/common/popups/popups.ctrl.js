@@ -98,7 +98,7 @@
     }
 
     function logout() {
-
+      userFactory.logout();
     }
 
     function forgottenPassword() {

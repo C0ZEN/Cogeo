@@ -7,10 +7,11 @@
 
   LogCtrl.$inject = [
     '$timeout',
-    'CONFIG'
+    'CONFIG',
+    'userFactory'
   ];
 
-  function LogCtrl($timeout, CONFIG) {
+  function LogCtrl($timeout, CONFIG, userFactory) {
     var vm = this;
 
     // Common data
@@ -19,7 +20,10 @@
     };
     vm.loading  = false;
     vm.login    = {};
-    vm.form     = {};
+    vm.form     = {
+      register: null,
+      login   : null
+    };
     vm.CONFIG   = CONFIG;
 
     // Methods
@@ -28,7 +32,9 @@
       onCheckPasswordChange: onCheckPasswordChange,
       register             : register,
       login                : login,
-      newPassword          : newPassword
+      newPassword          : newPassword,
+      startLoading         : startLoading,
+      stopLoading          : stopLoading
     };
 
     function onPasswordChange(newModel, parent) {
@@ -40,19 +46,36 @@
     }
 
     function register() {
-      vm.loading             = true;
-      vm.register.type       = 'user';
-      vm.register.superAdmin = false;
-      vm.loading             = false;
+      vm.methods.startLoading();
+      var data = {
+        surname  : vm.register.surname,
+        givenName: vm.register.givenName,
+        username : vm.register.username,
+        email    : vm.register.email,
+        password : vm.register.password
+      };
+      userFactory.httpRequest.register(data, vm.methods.stopLoading, vm.methods.stopLoading);
     }
 
     function login() {
-      vm.loading = true;
-      vm.loading = false;
+      vm.methods.startLoading();
+      var data = {
+        username: vm.login.username,
+        password: vm.login.password
+      };
+      userFactory.httpRequest.login(data, vm.methods.stopLoading, vm.methods.stopLoading);
     }
 
     function newPassword() {
 
+    }
+
+    function startLoading() {
+      vm.loading = true;
+    }
+
+    function stopLoading() {
+      vm.loading = false;
     }
   }
 

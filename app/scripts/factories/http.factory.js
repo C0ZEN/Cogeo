@@ -15,30 +15,70 @@
   function httpRequest($http, CONFIG, $q, goTo) {
 
     return {
-      request: request
+      requestGet : requestGet,
+      requestPost: requestPost,
+      customError: customError
     };
 
-    function request(method, url, params, callback) {
+    function requestGet(url, callbackSuccess, callbackError) {
       var deferred = $q.defer();
-      var request  = {
-        methods: method,
+      if (CONFIG.debug) Methods.httpRequestLog({
+        methods: 'GET',
         url    : CONFIG.internal.API + url,
         data   : {
-          data   : params,
-          session: {}
-        },
-        headers: {}
-      };
-      if (CONFIG.debug) Methods.httpRequestLog(request);
-      $http(request)
+          session: null,
+          data   : null
+        }
+      });
+      $http.get(CONFIG.internal.API + url)
         .then(function (response) {
-          if (Methods.isFunction(callback)) callback();
-          return response;
+          deferred.resolve(response);
+          console.log('success');
+          if (Methods.isFunction(callbackSuccess)) callbackSuccess();
         })
         .catch(function (response) {
-          goTo.view('app.error', {response: response});
-        });
+          deferred.reject(response, 200);
+          console.log('error');
+          if (Methods.isFunction(callbackError)) callbackError();
+          customError(response.error);
+        })
+      ;
       return deferred.promise;
+    }
+
+    function requestPost(url, params, callbackSuccess, callbackError) {
+      var deferred = $q.defer();
+      if (CONFIG.debug) Methods.httpRequestLog({
+        methods: 'POST',
+        url    : CONFIG.internal.API + url,
+        data   : {
+          session: {},
+          data   : params
+        }
+      });
+      $http.post(CONFIG.internal.API + url, {
+          data   : params,
+          session: {}
+        }
+      ).then(function (response) {
+        deferred.resolve(response);
+        if (Methods.isFunction(callbackSuccess)) callbackSuccess();
+      }).catch(function (response) {
+        deferred.reject(response, 200);
+        if (Methods.isFunction(callbackError)) callbackError();
+        customError(response.error);
+      });
+      return deferred.promise;
+    }
+
+    function customError(error) {
+      switch (error) {
+        case '1':
+        case '100':
+        case '101':
+        case '102':
+        // goTo.view('app.error', {response: response});
+      }
     }
   }
 

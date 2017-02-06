@@ -8,10 +8,11 @@
   usersFactory.$inject = [
     '$state',
     'CONFIG',
-    '$stateParams'
+    '$stateParams',
+    'httpRequest'
   ];
 
-  function usersFactory($state, CONFIG, $stateParams) {
+  function usersFactory($state, CONFIG, $stateParams, httpRequest) {
 
     var users = [
       {
@@ -95,7 +96,10 @@
       getUserFullName  : getUserFullName,
       addUsersFullNames: addUsersFullNames,
       getUserByUsername: getUserByUsername,
-      getUsers         : getUsers
+      getUsers         : getUsers,
+      httpRequest      : {
+        getAll: httpRequestGetAll
+      }
     };
 
     function getGroups() {
@@ -131,6 +135,15 @@
 
     function getUsers() {
       return users;
+    }
+
+    /// HTTP REQUEST ///
+    function httpRequestGetAll(callbackSuccess, callbackError) {
+      httpRequest.requestGet('user', callbackSuccess, callbackError)
+        .then(function (response) {
+          users = response.data;
+          console.log(response);
+        });
     }
   }
 

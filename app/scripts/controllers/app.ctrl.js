@@ -8,10 +8,11 @@
   AppCtrl.$inject = [
     'CONFIG',
     'userFactory',
-    '$scope'
+    '$scope',
+    'localStorageService'
   ];
 
-  function AppCtrl(CONFIG, userFactory, $scope) {
+  function AppCtrl(CONFIG, userFactory, $scope, localStorageService) {
     var app = this;
 
     // Common data
@@ -26,9 +27,13 @@
     function onInit() {
       var requestQuantity = 1;
       Methods.firstLoadLog(true);
-      userFactory.httpRequest.getUser(function () {
-        isDone();
-      });
+
+      // Get the stuff about the current connected user (to avoid login)
+      var user = localStorageService.get('currentUser');
+
+      // Login with the app (how each load, to make sure that the token is still valid)
+      // May be a potential performance leak nevertheless the security is enhanced
+      userFactory.httpRequest.login(user, isDone, isDone);
 
       function isDone() {
         requestQuantity--;
