@@ -84,6 +84,7 @@ module.exports = function(config) {
       'bower_components/messageformat/messageformat.js',
       'bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
+      'bower_components/angularjs-social-login/angularjs-social-login.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

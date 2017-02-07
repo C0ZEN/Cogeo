@@ -8,10 +8,11 @@
   LogCtrl.$inject = [
     '$timeout',
     'CONFIG',
-    'userFactory'
+    'userFactory',
+    '$rootScope'
   ];
 
-  function LogCtrl($timeout, CONFIG, userFactory) {
+  function LogCtrl($timeout, CONFIG, userFactory, $rootScope) {
     var vm = this;
 
     // Common data
@@ -34,8 +35,12 @@
       login                : login,
       newPassword          : newPassword,
       startLoading         : startLoading,
-      stopLoading          : stopLoading
+      stopLoading          : stopLoading,
+      onSocialSignInSuccess: onSocialSignInSuccess
     };
+
+    // Events
+    $rootScope.$on('event:social-sign-in-success', vm.methods.onSocialSignInSuccess);
 
     function onPasswordChange(newModel, parent) {
       vm[parent].passwordMismatch = newModel != vm[parent].checkPassword;
@@ -76,6 +81,10 @@
 
     function stopLoading() {
       vm.loading = false;
+    }
+
+    function onSocialSignInSuccess($event, socialData) {
+      // socialData => name, email, image_url, uid, provider, token
     }
   }
 

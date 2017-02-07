@@ -38,7 +38,8 @@
       'com.2fdevs.videogular.plugins.imaads',
       'com.2fdevs.videogular.plugins.buffering',
       'ngclipboard',
-      'LocalStorageModule'
+      'LocalStorageModule',
+      'socialLogin'
     ])
     .config(config)
     .run(run);
@@ -51,11 +52,13 @@
     'ConfigProvider',
     'tmhDynamicLocaleProvider',
     '$httpProvider',
-    '$qProvider'
+    '$qProvider',
+    'socialProvider'
   ];
 
   // Global configuration
-  function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider, $httpProvider, $qProvider) {
+  function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider,
+                  $httpProvider, $qProvider, socialProvider) {
 
     // Override the CONFIG for the Atom theme
     ThemesProvider.setActiveTheme('atom');
@@ -106,6 +109,13 @@
 
     // Avoid an error in the console when a deferred is rejected
     $qProvider.errorOnUnhandledRejections(false);
+
+    // Social client and secret (Google/Facebook)
+    socialProvider.setGoogleKey("AIzaSyANiSj4N--3txST9re2QhbPuiifbx2HNQU");
+    socialProvider.setFbKey({
+      appId     : "576889762516850",
+      apiVersion: "v2.8"
+    });
 
     // 4pjt Config
     CONFIG.internal = {

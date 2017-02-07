@@ -141,7 +141,7 @@
     function httpRequestGetAll(callbackSuccess, callbackError) {
       httpRequest.requestGet('user', callbackSuccess, callbackError)
         .then(function (response) {
-          users = response.data;
+          users = response.data.data;
           console.log(response);
         });
     }

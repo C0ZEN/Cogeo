@@ -93,8 +93,8 @@
 
     function closePopup(name) {
       cozenPopupFactory.hide({
-                               name: name
-                             });
+        name: name
+      });
     }
 
     function logout() {
