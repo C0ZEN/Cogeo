@@ -1,93 +1,94 @@
-<div class="animated fadeIn">
-	<div class="row">
-		<div class="col-xs-12">
+<div class="animated fadeIn"
+     ng-init="vm.methods.initNotifications()">
+    <div class="row">
+        <div class="col-xs-12">
 
-			<!-- Groups -->
-			<h3 class="no-margin-top blue">
-				<i class="icons-middle icons8-google-groups"></i>
-				{{ 'account_notifications_groups' | translate }}
-			</h3>
-			<h4>
-				<strong>{{ 'account_notifications_creation' | translate }}:</strong>
-				{{ (vm.notifications.groups.creation ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_edit' | translate }}:</strong>
-				{{ (vm.notifications.groups.edit ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_new_member_group' | translate }}:</strong>
-				{{ (vm.notifications.groups.newMember ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_kicked_member' | translate }}:</strong>
-				{{ (vm.notifications.groups.kickedMember ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_banned_member' | translate }}:</strong>
-				{{ (vm.notifications.groups.bannedMember ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
+            <!-- Groups -->
+            <h3 class="no-margin-top blue">
+                <i class="icons-middle icons8-google-groups"></i>
+                {{ 'account_notifications_groups' | translate }}
+            </h3>
+            <h4>
+                <strong>{{ 'account_notifications_creation' | translate }}:</strong>
+                {{ (vm.notifications.groups.creation ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_edit' | translate }}:</strong>
+                {{ (vm.notifications.groups.edit ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_new_member_group' | translate }}:</strong>
+                {{ (vm.notifications.groups.newMember ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_kicked_member' | translate }}:</strong>
+                {{ (vm.notifications.groups.kickedMember ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_banned_member' | translate }}:</strong>
+                {{ (vm.notifications.groups.bannedMember ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
 
-			<!-- Channels -->
-			<h3 class="space-large-before green">
-				<i class="icons-middle icons8-channel-mosaic"></i>
-				{{ 'account_notifications_channels' | translate }}
-			</h3>
-			<h4>
-				<strong>{{ 'account_notifications_creation' | translate }}:</strong>
-				{{ (vm.notifications.channels.creation ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_edit' | translate }}:</strong>
-				{{ (vm.notifications.channels.edit ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_new_member_channel' | translate }}:</strong>
-				{{ (vm.notifications.channels.newMember ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_kicked_member' | translate }}:</strong>
-				{{ (vm.notifications.channels.kickedMember ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_banned_member' | translate }}:</strong>
-				{{ (vm.notifications.channels.bannedMember ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_new_message' | translate }}:</strong>
-				{{ (vm.notifications.channels.newMessage ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
-			<h4>
-				<strong>{{ 'account_notifications_new_message_tagged' | translate }}:</strong>
-				{{ (vm.notifications.channels.newMessageTagged ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
+            <!-- Channels -->
+            <h3 class="space-large-before green">
+                <i class="icons-middle icons8-channel-mosaic"></i>
+                {{ 'account_notifications_channels' | translate }}
+            </h3>
+            <h4>
+                <strong>{{ 'account_notifications_creation' | translate }}:</strong>
+                {{ (vm.notifications.channels.creation ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_edit' | translate }}:</strong>
+                {{ (vm.notifications.channels.edit ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_new_member_channel' | translate }}:</strong>
+                {{ (vm.notifications.channels.newMember ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_kicked_member' | translate }}:</strong>
+                {{ (vm.notifications.channels.kickedMember ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_banned_member' | translate }}:</strong>
+                {{ (vm.notifications.channels.bannedMember ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_new_message' | translate }}:</strong>
+                {{ (vm.notifications.channels.newMessage ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_new_message_tagged' | translate }}:</strong>
+                {{ (vm.notifications.channels.newMessageTagged ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
 
-			<!-- Direct message -->
-			<h3 class="space-large-before purple">
-				<i class="icons-middle icons8-chat"></i>
-				{{ 'account_notifications_direct_message' | translate }}
-			</h3>
-			<h4 class="space-medium-after">
-				<strong>{{ 'account_notifications_new_message' | translate }}:</strong>
-				{{ (vm.notifications.directMessage.newMessage ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
+            <!-- Direct message -->
+            <h3 class="space-large-before purple">
+                <i class="icons-middle icons8-chat"></i>
+                {{ 'account_notifications_direct_message' | translate }}
+            </h3>
+            <h4 class="space-medium-after">
+                <strong>{{ 'account_notifications_new_message' | translate }}:</strong>
+                {{ (vm.notifications.directMessage.newMessage ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
 
-			<!-- Other -->
-			<h3 class="space-large-before yellow">
-				<i class="icons-middle icons8-appointment-reminders"></i>
-				{{ 'account_notifications_other' | translate }}
-			</h3>
-			<h4 class="space-medium-after">
-				<strong>{{ 'account_notifications_new_friend' | translate }}:</strong>
-				{{ (vm.notifications.other.newFriend ? 'account_activated' : 'account_disabled') | translate }}
-			</h4>
+            <!-- Other -->
+            <h3 class="space-large-before yellow">
+                <i class="icons-middle icons8-appointment-reminders"></i>
+                {{ 'account_notifications_other' | translate }}
+            </h3>
+            <h4 class="space-medium-after">
+                <strong>{{ 'account_notifications_new_friend' | translate }}:</strong>
+                {{ (vm.notifications.other.newFriend ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
 
-			<!-- Edit btn -->
-			<cozen-btn cozen-btn-label="'account_settings_edit'"
-			           cozen-btn-auto-sizing="true"
-			           cozen-btn-on-click="goTo.view('app.account.notificationsEdit')"
-			           cozen-btn-class="space-medium-after">
-			</cozen-btn>
-		</div>
-	</div>
+            <!-- Edit btn -->
+            <cozen-btn cozen-btn-label="'account_settings_edit'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="goTo.view('app.account.notificationsEdit')"
+                       cozen-btn-class="space-medium-after">
+            </cozen-btn>
+        </div>
+    </div>
 </div>

@@ -1,115 +1,115 @@
 <div class="animated fadeIn"
      ng-init="vm.methods.onShowAll()">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="row">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
 
-        <!-- Filter -->
-        <cozen-form cozen-form-name="all"
-                    cozen-form-ctrl="vm"
-                    cozen-form-model="form">
-          <div class="col-xs-12 col-md-6">
-            <cozen-input cozen-input-model="vm.all.search"
-                         cozen-input-name="search"
-                         cozen-input-success-design="false"
-                         cozen-input-error-design="false"
-                         cozen-input-icon-left="fa fa-search"
-                         cozen-input-placeholder="groups_all_search_pc"
-                         cozen-input-auto-complete="off"
-                         cozen-input-class="atom-search-input">
-            </cozen-input>
-          </div>
-          <div class="col-xs-12 col-md-6">
-            <cozen-pagination cozen-pagination-model="vm.all.currentPage"
-                              cozen-pagination-class="flex-end"
-                              cozen-pagination-limit-per-page="vm.all.limit"
-                              cozen-pagination-total-elements="fakeAllGroupsFilter.length"
-                              cozen-pagination-auto-hide="true">
-            </cozen-pagination>
-          </div>
-        </cozen-form>
-      </div>
+                <!-- Filter -->
+                <cozen-form cozen-form-name="all"
+                            cozen-form-ctrl="vm"
+                            cozen-form-model="form">
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-input cozen-input-model="vm.all.search"
+                                     cozen-input-name="search"
+                                     cozen-input-success-design="false"
+                                     cozen-input-error-design="false"
+                                     cozen-input-icon-left="fa fa-search"
+                                     cozen-input-placeholder="groups_all_search_pc"
+                                     cozen-input-auto-complete="off"
+                                     cozen-input-class="atom-search-input">
+                        </cozen-input>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-pagination cozen-pagination-model="vm.all.currentPage"
+                                          cozen-pagination-class="flex-end"
+                                          cozen-pagination-limit-per-page="vm.all.limit"
+                                          cozen-pagination-total-elements="fakeAllGroupsFilter.length"
+                                          cozen-pagination-auto-hide="true">
+                        </cozen-pagination>
+                    </div>
+                </cozen-form>
+            </div>
 
-      <!-- Groups -->
-      <div class="atom-groups space-base-before space-base-after">
-        <div class="atom-group"
-             style="animation-delay: {{ 50 * $index + 'ms' }};"
-             ng-class="[$last ? 'border-bottom' : '']"
-             ng-repeat="group in vm.groups
+            <!-- Groups -->
+            <div class="atom-groups space-base-before space-base-after">
+                <div class="atom-group"
+                     style="animation-delay: {{ 50 * $index + 'ms' }};"
+                     ng-class="[$last ? 'border-bottom' : '']"
+                     ng-repeat="group in vm.groups
            | orderBy: 'name':vm.all.orderBy
            | filter: vm.all.search
            | myGroups:vm.user.username:vm.all.myGroups:vm.all.myGroupsAdmin
            | startFrom: (vm.all.currentPage - 1) * vm.all.limit
            | limitTo: vm.all.limit
            as allGroupsFilter track by $index">
-          <div class="img">
-            <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.url) }}">
-          </div>
-          <div class="text">
-            <p>
-              <a href
-                 compile="group.name"
-                 ng-click="goTo.view('app.groups.details', {groupName: group.name}, null)"
-                 ui-sref="app.groups.details({groupName: group.name})">
-              </a>
-              <cozen-tooltip ng-show="group.userRoles.isMember"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-label="'groups_member_since' | translate:{'date': (group.userRoles.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
-                <mark class="atom-mark member">{{ 'groups_member' | translate }}</mark>
-              </cozen-tooltip>
-              <cozen-tooltip ng-show="group.userRoles.isCreator"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-label="'groups_creator_in' | translate:{'date': (group.date.creation * 1000 | date: 'EEEE dd MMMM yyyy')}">
-                <mark class="atom-mark creator">{{ 'groups_creator' | translate }}</mark>
-              </cozen-tooltip>
-              <cozen-tooltip ng-show="group.userRoles.isAdmin"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-label="'groups_member_since' | translate:{'date': (group.userRoles.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
-                <mark class="atom-mark admin">{{ 'groups_admin' | translate }}</mark>
-              </cozen-tooltip>
-              <cozen-tooltip ng-show="group.userRoles.isBanned"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-type-html
-                             cozen-tooltip-label="'groups_banned_since' | translate:{'date': (group.userRoles.banned.on * 1000 | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.banned.by, 'for': methods.getKickBanFor(group.userRoles.banned.for)}">
-                <mark class="atom-mark banned">{{ 'groups_banned' | translate }}</mark>
-              </cozen-tooltip>
-              <cozen-tooltip ng-show="group.userRoles.isKicked"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-type-html
-                             cozen-tooltip-label="'groups_kicked_since' | translate:{'date': (group.userRoles.kicked.on * 1000 | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.kicked.by, 'for': methods.getKickBanFor(group.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(group.userRoles.kicked.time).key | translate)}">
-                <mark class="atom-mark kicked">{{ 'groups_kicked' | translate }}</mark>
-              </cozen-tooltip>
-            </p>
-            <p class="help-text">{{ group.description }}</p>
-          </div>
-        </div>
+                    <div class="img">
+                        <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.url) }}">
+                    </div>
+                    <div class="text">
+                        <p>
+                            <a href
+                               compile="group.name"
+                               ng-click="goTo.view('app.groups.details', {groupName: group.name}, null)"
+                               ui-sref="app.groups.details({groupName: group.name})">
+                            </a>
+                            <cozen-tooltip ng-show="group.userRoles.isMember"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'groups_member_since' | translate:{'date': (group.userRoles.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark member">{{ 'groups_member' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="group.userRoles.isCreator"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'groups_creator_in' | translate:{'date': (group.date.creation * 1000 | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark creator">{{ 'groups_creator' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="group.userRoles.isAdmin"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'groups_member_since' | translate:{'date': (group.userRoles.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark admin">{{ 'groups_admin' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="group.userRoles.isBanned"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-type-html
+                                           cozen-tooltip-label="'groups_banned_since' | translate:{'date': (group.userRoles.banned.on * 1000 | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.banned.by, 'for': methods.getKickBanFor(group.userRoles.banned.for)}">
+                                <mark class="atom-mark banned">{{ 'groups_banned' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="group.userRoles.isKicked"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-type-html
+                                           cozen-tooltip-label="'groups_kicked_since' | translate:{'date': (group.userRoles.kicked.on * 1000 | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.kicked.by, 'for': methods.getKickBanFor(group.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(group.userRoles.kicked.time).key | translate)}">
+                                <mark class="atom-mark kicked">{{ 'groups_kicked' | translate }}</mark>
+                            </cozen-tooltip>
+                        </p>
+                        <p class="help-text">{{ group.description }}</p>
+                    </div>
+                </div>
 
-        <!-- Groups fake (for actual length) -->
-        <div style="display: none;"
-             ng-repeat="group in vm.groups
+                <!-- Groups fake (for actual length) -->
+                <div style="display: none;"
+                     ng-repeat="group in vm.groups
            | filter: vm.all.search
            | myGroups:vm.user.username:vm.all.myGroups:vm.all.myGroupsAdmin
            as fakeAllGroupsFilter track by $index">
+                </div>
+            </div>
+
+            <div class="center-flex-content space-medium-after">
+
+                <!-- More filter -->
+                <a href
+                   onclick="this.blur()"
+                   ng-click="methods.showPopup($event, 'allGroupsFilter', vm.all)">
+                    {{ 'groups_all_show_filter' | translate }}
+                </a>
+
+                <!-- Add group -->
+                <a href
+                   onclick="this.blur()"
+                   ng-click="goTo.view('app.groupsNew', null, $event)"
+                   ui-sref="app.groupsNew">
+                    {{ 'groups_add_new' | translate }}
+                </a>
+            </div>
         </div>
-      </div>
-
-      <div class="center-flex-content space-medium-after">
-
-        <!-- More filter -->
-        <a href
-           onclick="this.blur()"
-           ng-click="methods.showPopup($event, 'allGroupsFilter', vm.all)">
-          {{ 'groups_all_show_filter' | translate }}
-        </a>
-
-        <!-- Add group -->
-        <a href
-           onclick="this.blur()"
-           ng-click="goTo.view('app.groups.new', null, $event)"
-           ui-sref="app.groups.new">
-          {{ 'groups_add_new' | translate }}
-        </a>
-      </div>
     </div>
-  </div>
 </div>
