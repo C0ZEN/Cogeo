@@ -34,7 +34,7 @@
              ng-click="goTo.view('app.groups.details', {groupName: group.name})"
              tabindex="0">
           <div class="img">
-            <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.result.url) }}">
+            <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.url) }}">
           </div>
           <span>{{ group.name }}</span>
         </div>

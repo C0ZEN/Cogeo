@@ -1,51 +1,51 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-xs-12">
+	<div class="row">
+		<div class="col-xs-12">
 
-      <div class="atom-profile">
+			<div class="atom-profile">
 
-        <!-- Profile card -->
-        <div class="profile-card">
-          <img class="img-circle img-thumbnail"
-               ng-src="{{ vm.user.picture.result.url }}">
-          <div class="text">
-            <h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>            <p class="help-text">@{{ vm.user.username }}</p>
-            <h4>
-              <a href>#Supinfo</a>
-              <a href>#9gag</a>
-              <a href>#Bf1</a>
-            </h4>
-          </div>
-        </div>
+				<!-- Profile card -->
+				<div class="profile-card">
+					<img class="img-circle img-thumbnail"
+					     ng-src="{{ vm.user.picture.url }}">
+					<div class="text">
+						<h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>
+						<p class="help-text">@{{ vm.user.username }}</p>
+						<h4>
+							<a href>#Supinfo</a>
+							<a href>#9gag</a>
+							<a href>#Bf1</a>
+						</h4>
+					</div>
+				</div>
 
-        <hr>
+				<hr>
 
-        <!-- Info -->
-        <h3 class="space-medium-before space-base-after">{{ 'account_profile_data' | translate }}</h3>
-        <h4>
-          <strong>{{ 'account_profile_username' | translate }}:</strong>
-          {{ vm.user.username }}
-        </h4>
-        <h4>
-          <strong>{{ 'account_profile_email' | translate }}:</strong>
-          {{ vm.user.email }}
-        </h4>
-        <h4 style="margin-bottom: 0;">
-          <strong>{{ 'account_profile_born_date' | translate }}:</strong>
-          16/04/1994
-        </h4>
-        <p class="help-block no-margin-bottom">
-          {{ 'account_profile_date_register'
-          | translate:"{date:'" + (vm.user.date.register * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
-        </p>
-      </div>
-    </div>
-  </div>
+				<!-- Info -->
+				<h3 class="space-medium-before space-base-after">{{ 'account_profile_data' | translate }}</h3>
+				<h4>
+					<strong>{{ 'account_profile_username' | translate }}:</strong>
+					{{ vm.user.username }}
+				</h4>
+				<h4>
+					<strong>{{ 'account_profile_email' | translate }}:</strong>
+					{{ vm.user.email }}
+				</h4>
+				<h4 style="margin-bottom: 0;">
+					<strong>{{ 'account_profile_born_date' | translate }}:</strong>
+					16/04/1994
+				</h4>
+				<p class="help-block no-margin-bottom">
+					{{ 'account_profile_date_register' | translate:"{date:'" + (vm.user.date.register * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
+				</p>
+			</div>
+		</div>
+	</div>
 
-  <!-- Edit btn -->
-  <cozen-btn cozen-btn-label="'account_profile_edit'"
-             cozen-btn-auto-sizing="true"
-             cozen-btn-on-click="goTo.view('app.account.profileEdit')"
-             cozen-btn-class="space-medium-after">
-  </cozen-btn>
+	<!-- Edit btn -->
+	<cozen-btn cozen-btn-label="'account_profile_edit'"
+	           cozen-btn-auto-sizing="true"
+	           cozen-btn-on-click="goTo.view('app.account.profileEdit')"
+	           cozen-btn-class="space-medium-after">
+	</cozen-btn>
 </div>

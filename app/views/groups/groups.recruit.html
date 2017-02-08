@@ -1,170 +1,170 @@
 <div class="animated fadeIn"
      ng-init="vm.methods.onDisplayDetails(); vm.methods.onRecruitInit();">
-  <div class="row">
-    <div class="col-xs-12">
+	<div class="row">
+		<div class="col-xs-12">
 
-      <!-- Title -->
-      <h2>{{ 'groups_recruit_title' | translate:{groupName: vm.params.groupName} }}</h2>
-      <p class="help-text">{{ 'groups_recruit_subtitle_1' | translate }}</p>
-      <p class="help-text">{{ 'groups_recruit_subtitle_2' | translate }}</p>
+			<!-- Title -->
+			<h2>{{ 'groups_recruit_title' | translate:{groupName: vm.params.groupName} }}</h2>
+			<p class="help-text">{{ 'groups_recruit_subtitle_1' | translate }}</p>
+			<p class="help-text">{{ 'groups_recruit_subtitle_2' | translate }}</p>
 
-      <!-- Quicklink -->
-      <h3 class="space-large-before space-small-after">{{ 'groups_recruit_quicklink' | translate }}</h3>
-      <div ng-include="'views/groups/common/quicklink.html'"></div>
+			<!-- Quicklink -->
+			<h3 class="space-large-before space-small-after">{{ 'groups_recruit_quicklink' | translate }}</h3>
+			<div ng-include="'views/groups/common/quicklink.html'"></div>
 
-      <!-- Invite users -->
-      <div ng-show="vm.recruitMod == 'users'"
-           class="row">
-        <div class="col-xs-12 col-sm-8">
-          <h3 class="space-medium-before space-base-after">{{ 'groups_recruit_cogeoUsers_title' | translate }}</h3>
-          <cozen-form cozen-form-name="recruitUsers"
-                      cozen-form-ctrl="vm"
-                      cozen-form-class="space-base-after"
-                      cozen-form-model="form">
+			<!-- Invite users -->
+			<div ng-show="vm.recruitMod == 'users'"
+			     class="row">
+				<div class="col-xs-12 col-sm-8">
+					<h3 class="space-medium-before space-base-after">{{ 'groups_recruit_cogeoUsers_title' | translate }}</h3>
+					<cozen-form cozen-form-name="recruitUsers"
+					            cozen-form-ctrl="vm"
+					            cozen-form-class="space-base-after"
+					            cozen-form-model="form">
 
-            <!-- Select Cogeo members -->
-            <cozen-dropdown cozen-dropdown-model="vm.availableUsersSelected"
-                            cozen-dropdown-label="groups_recruit_cogeoUsers_dropdown_label"
-                            cozen-dropdown-multiple="true"
-                            cozen-dropdown-model-enhanced="count"
-                            cozen-dropdown-class="space-small-after"
-                            cozen-dropdown-success-design="false"
-                            cozen-dropdown-error-design="false"
-                            cozen-dropdown-all-selected-text="groups_recruit_cogeoUsers_dropdown_allSelectedText"
-                            cozen-dropdown-count-text="groups_recruit_cogeoUsers_dropdown_countText"
-                            cozen-dropdown-placeholder="groups_recruit_cogeoUsers_dropdown_pc">
-              <cozen-dropdown-item-search cozen-dropdown-item-search-placeholder="groups_recruit_cogeoUsers_dropdown_search_pc"
-                                          cozen-dropdown-item-search-empty-text="groups_recruit_cogeoUsers_dropdown_search_empty">
-              </cozen-dropdown-item-search>
-              <cozen-dropdown-item-simple ng-repeat="user in vm.availableUsers track by $index"
-                                          cozen-dropdown-item-simple-value="user.username"
-                                          cozen-dropdown-item-simple-sub-label="@{{ user.username }}"
-                                          cozen-dropdown-item-simple-selected="user.isSelected"
-                                          cozen-dropdown-item-simple-label="{{ user.givenName + ' ' + user.surname }}">
-              </cozen-dropdown-item-simple>
-            </cozen-dropdown>
-            <p class="help-text">{{ 'groups_recruit_cogeoUsers_dropdown_help' | translate }}</p>
+						<!-- Select Cogeo members -->
+						<cozen-dropdown cozen-dropdown-model="vm.availableUsersSelected"
+						                cozen-dropdown-label="groups_recruit_cogeoUsers_dropdown_label"
+						                cozen-dropdown-multiple="true"
+						                cozen-dropdown-model-enhanced="count"
+						                cozen-dropdown-class="space-small-after"
+						                cozen-dropdown-success-design="false"
+						                cozen-dropdown-error-design="false"
+						                cozen-dropdown-all-selected-text="groups_recruit_cogeoUsers_dropdown_allSelectedText"
+						                cozen-dropdown-count-text="groups_recruit_cogeoUsers_dropdown_countText"
+						                cozen-dropdown-placeholder="groups_recruit_cogeoUsers_dropdown_pc">
+							<cozen-dropdown-item-search cozen-dropdown-item-search-placeholder="groups_recruit_cogeoUsers_dropdown_search_pc"
+							                            cozen-dropdown-item-search-empty-text="groups_recruit_cogeoUsers_dropdown_search_empty">
+							</cozen-dropdown-item-search>
+							<cozen-dropdown-item-simple ng-repeat="user in vm.availableUsers track by $index"
+							                            cozen-dropdown-item-simple-value="user.username"
+							                            cozen-dropdown-item-simple-sub-label="@{{ user.username }}"
+							                            cozen-dropdown-item-simple-selected="user.isSelected"
+							                            cozen-dropdown-item-simple-label="{{ user.givenName + ' ' + user.surname }}">
+							</cozen-dropdown-item-simple>
+						</cozen-dropdown>
+						<p class="help-text">{{ 'groups_recruit_cogeoUsers_dropdown_help' | translate }}</p>
 
-            <!-- List of selected Cogeo members -->
-            <label ng-if-start="vm.availableUsersSelected.length > 0"
-                   compile="vm.availableUsersSelected.length == 1 ? ('groups_recruit_cogeoUsers_selected_user' | translate) : ('groups_recruit_cogeoUsers_selected_users' | translate)"
-                   class="space-small-after space-medium-before atom-label">
-            </label>
-            <div class="atom-inline-list space-base-after">
-              <div ng-if="user.isSelected"
-                   ng-repeat="user in vm.availableUsers track by $index"
-                   class="atom-list-item-container">
-                <div class="atom-inline-item"
-                     style="animation-delay: {{ 50 * $index + 'ms' }};"
-                     ng-class="[$last ? 'border-bottom' : '']">
-                  <span>
-                    {{ user.givenName + ' ' + user.surname }}
-                    <small>
-                      <a href
-                         ng-click="goTo.view('app.profiles.user', {username: user.username}, $event)"
-                         ui-sref="app.profiles.user({username: user.username})">
-                        @{{ user.username }}
-                      </a>
-                    </small>
-                  </span>
-                </div>
-                <div class="atom-remove-btn"
-                     ng-click="user.isSelected = false">
-                  <i class="fa fa-fw fa-trash-o"></i>
-                </div>
-              </div>
-            </div>
+						<!-- List of selected Cogeo members -->
+						<label ng-if-start="vm.availableUsersSelected.length > 0"
+						       compile="vm.availableUsersSelected.length == 1 ? ('groups_recruit_cogeoUsers_selected_user' | translate) : ('groups_recruit_cogeoUsers_selected_users' | translate)"
+						       class="space-small-after space-medium-before atom-label">
+						</label>
+						<div class="atom-inline-list space-base-after">
+							<div ng-if="user.isSelected"
+							     ng-repeat="user in vm.availableUsers track by $index"
+							     class="atom-list-item-container">
+								<div class="atom-inline-item"
+								     style="animation-delay: {{ 50 * $index + 'ms' }};"
+								     ng-class="[$last ? 'border-bottom' : '']">
+									<span>
+										{{ user.givenName + ' ' + user.surname }}
+										<small>
+											<a href
+											   ng-click="goTo.view('app.profiles.user', {username: user.username}, $event)"
+											   ui-sref="app.profiles.user({username: user.username})">
+												@{{ user.username }}
+											</a>
+										</small>
+									</span>
+								</div>
+								<div class="atom-remove-btn"
+								     ng-click="user.isSelected = false">
+									<i class="fa fa-fw fa-trash-o"></i>
+								</div>
+							</div>
+						</div>
 
-            <div ng-if-end
-                 class="center-flex-content">
+						<div ng-if-end
+						     class="center-flex-content">
 
-              <!-- Submit btn -->
-              <cozen-btn cozen-btn-icon-right="fa fa-fw icons8-message-filled"
-                         cozen-btn-label="vm.availableUsersSelected.length == 1 ? ('groups_recruit_cogeoUsers_submit_user' | translate:{username: vm.availableUsersSelected[0]}) : 'groups_recruit_cogeoUsers_submit_users'"
-                         cozen-btn-auto-sizing="true"
-                         cozen-btn-on-click="vm.methods.recruit('cogeoUsers')">
-              </cozen-btn>
+							<!-- Submit btn -->
+							<cozen-btn cozen-btn-icon-right="fa fa-fw icons8-message-filled"
+							           cozen-btn-label="vm.availableUsersSelected.length == 1 ? ('groups_recruit_cogeoUsers_submit_user' | translate:{username: vm.availableUsersSelected[0]}) : 'groups_recruit_cogeoUsers_submit_users'"
+							           cozen-btn-auto-sizing="true"
+							           cozen-btn-on-click="vm.methods.recruit('cogeoUsers')">
+							</cozen-btn>
 
-              <!-- Link to email mod -->
-              <a href
-                 ng-click="vm.methods.toggleRecruitMod()">
-                {{ 'groups_recruit_cogeoUsers_mod' | translate }}
-              </a>
-            </div>
-          </cozen-form>
+							<!-- Link to email mod -->
+							<a href
+							   ng-click="vm.methods.toggleRecruitMod()">
+								{{ 'groups_recruit_cogeoUsers_mod' | translate }}
+							</a>
+						</div>
+					</cozen-form>
 
-          <!-- Link to email mod -->
-          <a ng-show="vm.availableUsersSelected.length == 0"
-             href
-             ng-click="vm.methods.toggleRecruitMod()">
-            {{ 'groups_recruit_cogeoUsers_mod' | translate }}
-          </a>
-        </div>
-      </div>
+					<!-- Link to email mod -->
+					<a ng-show="vm.availableUsersSelected.length == 0"
+					   href
+					   ng-click="vm.methods.toggleRecruitMod()">
+						{{ 'groups_recruit_cogeoUsers_mod' | translate }}
+					</a>
+				</div>
+			</div>
 
-      <!-- Invite email -->
-      <div ng-show="vm.recruitMod == 'email'"
-           class="row">
-        <div class="col-xs-12 col-sm-8">
-          <h3 class="space-medium-before space-base-after">{{ 'groups_recruit_email_title' | translate }}</h3>
-          <cozen-form cozen-form-name="recruitEmail"
-                      cozen-form-ctrl="vm"
-                      cozen-form-class="space-base-after"
-                      cozen-form-model="form">
+			<!-- Invite email -->
+			<div ng-show="vm.recruitMod == 'email'"
+			     class="row">
+				<div class="col-xs-12 col-sm-8">
+					<h3 class="space-medium-before space-base-after">{{ 'groups_recruit_email_title' | translate }}</h3>
+					<cozen-form cozen-form-name="recruitEmail"
+					            cozen-form-ctrl="vm"
+					            cozen-form-class="space-base-after"
+					            cozen-form-model="form">
 
-            <!-- Email list -->
-            <div class="atom-email-list"
-                 ng-repeat="email in vm.recruitEmail track by $index">
+						<!-- Email list -->
+						<div class="atom-email-list"
+						     ng-repeat="email in vm.recruitEmail track by $index">
 
-              <!-- Input -->
-              <div class="atom-email-input">
-                <cozen-input cozen-input-model="email.email"
-                             cozen-input-name="recruit-email-{{ $index }}"
-                             cozen-input-max-length="{{ vm.CONFIG.internal.log.email.length }}"
-                             cozen-input-pattern="{{ vm.CONFIG.internal.log.email.pattern }}"
-                             cozen-input-validator-empty="false"
-                             cozen-input-placeholder="{{ 'groups_recruit_email_pc' | translate:{index: $index + 1} }}"
-                             cozen-input-required="false">
-                </cozen-input>
-              </div>
+							<!-- Input -->
+							<div class="atom-email-input">
+								<cozen-input cozen-input-model="email.email"
+								             cozen-input-name="recruit-email-{{ $index }}"
+								             cozen-input-max-length="{{ vm.CONFIG.internal.log.email.length }}"
+								             cozen-input-pattern="{{ vm.CONFIG.internal.log.email.pattern }}"
+								             cozen-input-validator-empty="false"
+								             cozen-input-placeholder="{{ 'groups_recruit_email_pc' | translate:{index: $index + 1} }}"
+								             cozen-input-required="false">
+								</cozen-input>
+							</div>
 
-              <div class="atom-email-btn">
+							<div class="atom-email-btn">
 
-                <!-- Add -->
-                <div ng-show="$last"
-                     class="atom-add-btn"
-                     ng-click="vm.recruitEmail.push({email: ''})">
-                  <i class="fa fa-fw fa-plus-circle"></i>
-                </div>
+								<!-- Add -->
+								<div ng-show="$last"
+								     class="atom-add-btn"
+								     ng-click="vm.recruitEmail.push({email: ''})">
+									<i class="fa fa-fw fa-plus-circle"></i>
+								</div>
 
-                <!-- Trash -->
-                <div ng-show="!$last"
-                     class="atom-remove-btn"
-                     ng-click="vm.recruitEmail.splice($index, 1)">
-                  <i class="fa fa-fw fa-trash-o"></i>
-                </div>
-              </div>
-            </div>
+								<!-- Trash -->
+								<div ng-show="!$last"
+								     class="atom-remove-btn"
+								     ng-click="vm.recruitEmail.splice($index, 1)">
+									<i class="fa fa-fw fa-trash-o"></i>
+								</div>
+							</div>
+						</div>
 
-            <div class="center-flex-content">
+						<div class="center-flex-content">
 
-              <!-- Submit btn -->
-              <cozen-btn cozen-btn-icon-right="fa fa-fw icons8-message-filled"
-                         cozen-btn-label="'groups_recruit_email_submit'"
-                         cozen-btn-auto-sizing="true"
-                         cozen-btn-disabled="vm.form.recruitEmail.$invalid"
-                         cozen-btn-on-click="vm.methods.recruit('cogeoEmail')">
-              </cozen-btn>
+							<!-- Submit btn -->
+							<cozen-btn cozen-btn-icon-right="fa fa-fw icons8-message-filled"
+							           cozen-btn-label="'groups_recruit_email_submit'"
+							           cozen-btn-auto-sizing="true"
+							           cozen-btn-disabled="vm.form.recruitEmail.$invalid"
+							           cozen-btn-on-click="vm.methods.recruit('cogeoEmail')">
+							</cozen-btn>
 
-              <!-- Link to users mod -->
-              <a href
-                 ng-click="vm.methods.toggleRecruitMod()">
-                {{ 'groups_recruit_email_mod' | translate }}
-              </a>
-            </div>
-          </cozen-form>
-        </div>
-      </div>
-    </div>
-  </div>
+							<!-- Link to users mod -->
+							<a href
+							   ng-click="vm.methods.toggleRecruitMod()">
+								{{ 'groups_recruit_email_mod' | translate }}
+							</a>
+						</div>
+					</cozen-form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
