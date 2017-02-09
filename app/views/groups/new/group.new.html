@@ -1,6 +1,9 @@
-<div class="container space-large-before">
+<div class="container space-large-before"
+     ng-show="vm.isReady"
+     cozen-when-ready="vm.methods.onReady()"
+     cozen-wait-for-interpolation="true">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-12 animated fadeInLeft">
 
             <!-- Title -->
             <h1>{{ 'log_login_title' | translate }}</h1>

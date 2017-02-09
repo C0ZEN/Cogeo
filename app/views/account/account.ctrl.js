@@ -40,25 +40,34 @@
             initLogs              : initLogs
         };
 
+        // When a change occur into the popup of test
         $rootScope.$on('newVolumeSetFromTest', vm.methods.onNewVolumeSetFromTest);
+
+        // When the user factory is updated
+        userFactory.subscribe($scope, function () {
+            vm.user = userFactory.getUser();
+            vm.methods.initSettings();
+            vm.methods.initNotifications();
+            vm.methods.initLogs();
+        });
 
         function save(form) {
             vm.methods.startLoading();
             switch (form) {
-                case 'settings':
-                    console.log(vm.settings);
-                    userFactory.httpRequest.updateSettings(vm.settings, vm.methods.stopLoading, vm.methods.stopLoading);
-                    goTo.view('app.account.settings');
-                    break;
-                case 'profile':
-                    goTo.view('app.account.profile');
-                    break;
-                case 'profile-password':
-                    goTo.view('app.account.profile');
-                    break;
-                case 'notifications':
-                    goTo.view('app.account.notifications');
-                    break;
+            case 'settings':
+                console.log(vm.settings);
+                userFactory.httpRequest.updateSettings(vm.settings, vm.methods.stopLoading, vm.methods.stopLoading);
+                goTo.view('app.account.settings');
+                break;
+            case 'profile':
+                goTo.view('app.account.profile');
+                break;
+            case 'profile-password':
+                goTo.view('app.account.profile');
+                break;
+            case 'notifications':
+                goTo.view('app.account.notifications');
+                break;
             }
         }
 
@@ -80,43 +89,43 @@
 
         function getLogSrc(type) {
             switch (type) {
-                case 'newGroupCreated':
-                case 'newGroupJoined':
-                case 'newChannelCreated':
-                case 'newChannelJoined':
-                    return 'icons8-plus';
-                case 'groupLeft':
-                case 'channelLeft':
-                    return 'icons8-logout-rounded';
-                case 'groupEdited':
-                case 'channelEdited':
-                case 'socialUserRenamed':
-                case 'socialUserAliasRemoved':
-                    return 'icons8-edit';
-                case 'groupInvitationSentOne':
-                case 'groupInvitationSentMany':
-                case 'channelInvitationSentOne':
-                case 'channelInvitationSentMany':
-                case 'socialInvitationSent':
-                    return 'icons8-message-filled';
-                case 'groupPermissionsGranted':
-                case 'channelPermissionsGranted':
-                    return 'icons8-unlock';
-                case 'groupPermissionsRevoked':
-                case 'channelPermissionsRevoked':
-                    return 'icons8-lock';
-                case 'groupUserKicked':
-                case 'groupUserBanned':
-                case 'channelUserKicked':
-                case 'channelUserBanned':
-                case 'socialUserBlocked':
-                case 'socialUserRemoved':
-                    return 'icons8-no-chat';
-                case 'groupUserUnbanned':
-                case 'channelUserUnbanned':
-                case 'socialUserUnblocked':
-                case 'socialInvitationAccepted':
-                    return 'icons8-chat';
+            case 'newGroupCreated':
+            case 'newGroupJoined':
+            case 'newChannelCreated':
+            case 'newChannelJoined':
+                return 'icons8-plus';
+            case 'groupLeft':
+            case 'channelLeft':
+                return 'icons8-logout-rounded';
+            case 'groupEdited':
+            case 'channelEdited':
+            case 'socialUserRenamed':
+            case 'socialUserAliasRemoved':
+                return 'icons8-edit';
+            case 'groupInvitationSentOne':
+            case 'groupInvitationSentMany':
+            case 'channelInvitationSentOne':
+            case 'channelInvitationSentMany':
+            case 'socialInvitationSent':
+                return 'icons8-message-filled';
+            case 'groupPermissionsGranted':
+            case 'channelPermissionsGranted':
+                return 'icons8-unlock';
+            case 'groupPermissionsRevoked':
+            case 'channelPermissionsRevoked':
+                return 'icons8-lock';
+            case 'groupUserKicked':
+            case 'groupUserBanned':
+            case 'channelUserKicked':
+            case 'channelUserBanned':
+            case 'socialUserBlocked':
+            case 'socialUserRemoved':
+                return 'icons8-no-chat';
+            case 'groupUserUnbanned':
+            case 'channelUserUnbanned':
+            case 'socialUserUnblocked':
+            case 'socialInvitationAccepted':
+                return 'icons8-chat';
             }
         }
 

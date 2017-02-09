@@ -1,50 +1,55 @@
 (function (angular) {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('4pjtApp')
-    .controller('AppCtrl', AppCtrl);
+    angular
+        .module('4pjtApp')
+        .controller('AppCtrl', AppCtrl);
 
-  AppCtrl.$inject = [
-    'CONFIG',
-    'userFactory',
-    '$scope',
-    'localStorageService'
-  ];
+    AppCtrl.$inject = [
+        'CONFIG',
+        'userFactory',
+        '$scope',
+        'localStorageService'
+    ];
 
-  function AppCtrl(CONFIG, userFactory, $scope, localStorageService) {
-    var app = this;
+    function AppCtrl(CONFIG, userFactory, $scope, localStorageService) {
+        var app = this;
 
-    // Common data
-    app.CONFIG  = CONFIG;
-    app.isReady = false;
+        // Common data
+        app.CONFIG  = CONFIG;
+        app.isReady = false;
 
-    // Methods
-    app.methods = {
-      onInit: onInit
-    };
+        // Methods
+        app.methods = {
+            onInit: onInit
+        };
 
-    function onInit() {
-      var requestQuantity = 1;
-      Methods.firstLoadLog(true);
+        function onInit() {
+            var requestQuantity = 1;
+            Methods.firstLoadLog(true);
 
-      // Get the stuff about the current connected user (to avoid login)
-      var user = localStorageService.get('currentUser');
+            // Get the stuff about the current connected user (to avoid login)
+            var user = localStorageService.get('currentUser');
+            if (user != null && user.username != null && user.token != null) {
 
-      // Login with the app (how each load, to make sure that the token is still valid)
-      // May be a potential performance leak nevertheless the security is enhanced
-      userFactory.httpRequest.login(user, isDone, isDone);
+                // Login with the app (how each load, to make sure that the token is still valid)
+                // May be a potential performance leak nevertheless the security is enhanced
+                userFactory.httpRequest.login(user, isDone, isDone);
+            }
+            else {
+                isDone();
+            }
 
-      function isDone() {
-        requestQuantity--;
-        if (requestQuantity <= 0) {
-          app.isReady = true;
-          Methods.firstLoadLog(false);
-          Methods.safeApply($scope);
+            function isDone() {
+                requestQuantity--;
+                if (requestQuantity <= 0) {
+                    app.isReady = true;
+                    Methods.firstLoadLog(false);
+                    Methods.safeApply($scope);
+                }
+            }
         }
-      }
     }
-  }
 
 })(window.angular);
 

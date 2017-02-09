@@ -850,6 +850,13 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:hover {
   color: #2c9fdd;
   background-color: #f8f8f8;
 }
+nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-separator {
+  background-color: #d6dbdb;
+  height: 1px;
+  width: 100%;
+  padding: 0 12px;
+  margin: 4px auto;
+}
 body {
   padding-top: 60px;
 }

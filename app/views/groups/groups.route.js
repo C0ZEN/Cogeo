@@ -68,13 +68,6 @@
                 data       : {
                     pageTitle: 'account_recruit'
                 }
-            })
-            .state('app.groupsNew', {
-                url        : '/group/new',
-                templateUrl: 'views/groups/groups.new.html',
-                data       : {
-                    pageTitle: 'group_new'
-                }
             });
     }
 
