@@ -1,54 +1,54 @@
 <div class="animated fadeIn"
      ng-init="vm.methods.onDisplayDetails()">
-  <div class="row">
-    <div class="col-xs-12">
-      <cozen-form cozen-form-name="edit"
-                  cozen-form-ctrl="vm"
-                  cozen-form-model="form">
-        <cozen-input cozen-input-model="vm.edit.name"
-                     cozen-input-name="{{ vm.CONFIG.internal.group.name.name }}"
-                     cozen-input-max-length="{{ vm.CONFIG.internal.group.name.length }}"
-                     cozen-input-pattern="{{ vm.CONFIG.internal.group.name.pattern }}"
-                     cozen-input-label="groups_register_name"
-                     cozen-input-placeholder="groups_register_name_pc"
-                     cozen-input-validator-all
-                     cozen-input-required="{{ vm.CONFIG.internal.group.name.required }}">
-        </cozen-input>
-        <p class="help-block space-small-before space-medium-after">
-          {{ 'groups_register_quicklink_preview' | translate }}:
-          <span style="font-style:italic;">{{ vm.CONFIG.internal.group.quicklink + vm.edit.name }}</span>
-        </p>
-        <cozen-textarea cozen-textarea-model="vm.edit.description"
-                        cozen-textarea-name="{{ vm.CONFIG.internal.group.description.name }}"
-                        cozen-textarea-max-length="{{ vm.CONFIG.internal.group.description.length }}"
-                        cozen-textarea-label="groups_register_description"
-                        cozen-textarea-placeholder="groups_register_description_pc"
-                        cozen-textarea-validator-all
-                        cozen-textarea-elastic="false"
-                        cozen-textarea-required="{{ vm.CONFIG.internal.group.description.required }}"
-                        cozen-textarea-class="space-medium-after">
-        </cozen-textarea>
-        <cozen-btn cozen-btn-upload-model="vm.edit.picture"
-                   cozen-btn-is-upload="true"
-                   cozen-btn-upper-label="groups_register_profile_picture"
-                   cozen-btn-label="'account_profile_picture_upload'">
-        </cozen-btn>
-        <p class="help-block space-small-before space-medium-after">
-          {{ 'account_profile_date_last_update'
-          | translate:"{date:'" + (vm.edit.date.lastUpdate * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
-        </p>
+    <div class="row">
+        <div class="col-xs-12">
+            <cozen-form cozen-form-name="edit"
+                        cozen-form-ctrl="vm"
+                        cozen-form-model="form">
+                <cozen-input cozen-input-model="vm.edit.name"
+                             cozen-input-name="{{ vm.CONFIG.internal.group.name.name }}"
+                             cozen-input-max-length="{{ vm.CONFIG.internal.group.name.length }}"
+                             cozen-input-pattern="{{ vm.CONFIG.internal.group.name.pattern }}"
+                             cozen-input-label="groups_register_name"
+                             cozen-input-placeholder="groups_register_name_pc"
+                             cozen-input-validator-all
+                             cozen-input-required="{{ vm.CONFIG.internal.group.name.required }}">
+                </cozen-input>
+                <p class="help-block space-small-before space-medium-after">
+                    {{ 'groups_register_quicklink_preview' | translate }}:
+                    <span style="font-style:italic;">{{ vm.CONFIG.internal.group.quicklink + vm.edit.name }}</span>
+                </p>
+                <cozen-textarea cozen-textarea-model="vm.edit.description"
+                                cozen-textarea-name="{{ vm.CONFIG.internal.group.description.name }}"
+                                cozen-textarea-max-length="{{ vm.CONFIG.internal.group.description.length }}"
+                                cozen-textarea-label="groups_register_description"
+                                cozen-textarea-placeholder="groups_register_description_pc"
+                                cozen-textarea-validator-all
+                                cozen-textarea-elastic="false"
+                                cozen-textarea-required="{{ vm.CONFIG.internal.group.description.required }}"
+                                cozen-textarea-class="space-medium-after">
+                </cozen-textarea>
+                <cozen-btn cozen-btn-upload-model="vm.edit.picture"
+                           cozen-btn-is-upload="true"
+                           cozen-btn-upper-label="groups_register_profile_picture"
+                           cozen-btn-label="'account_profile_picture_upload'">
+                </cozen-btn>
+                <p class="help-block space-small-before space-medium-after">
+                    {{ 'account_profile_date_last_update'
+                    | translate:"{date:'" + (vm.edit.date.lastUpdate * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
+                </p>
 
-        <!-- Edit btn -->
-        <cozen-btn cozen-btn-label="'account_settings_save'"
-                   cozen-btn-auto-sizing="true"
-                   cozen-btn-type-success
-                   cozen-btn-loader="vm.loading"
-                   cozen-btn-disabled="vm.form.edit.$invalid"
-                   cozen-btn-on-click="vm.methods.save('edit')"
-                   cozen-btn-icon-right="fa icons8-clouds-filled"
-                   cozen-btn-class="space-medium-after">
-        </cozen-btn>
-      </cozen-form>
+                <!-- Edit btn -->
+                <cozen-btn cozen-btn-label="'account_settings_save'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-type-success
+                           cozen-btn-loader="vm.loading"
+                           cozen-btn-disabled="vm.form.edit.$invalid"
+                           cozen-btn-on-click="vm.methods.save('edit')"
+                           cozen-btn-icon-right="fa icons8-clouds-filled"
+                           cozen-btn-class="space-medium-after">
+                </cozen-btn>
+            </cozen-form>
+        </div>
     </div>
-  </div>
 </div>

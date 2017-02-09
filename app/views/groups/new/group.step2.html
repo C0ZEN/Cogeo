@@ -1,0 +1,38 @@
+<div class="container space-large-before anim-slide-right"
+     ng-show="vm.isReady"
+     cozen-when-ready="vm.methods.onReady()"
+     cozen-wait-for-interpolation="true">
+    <div class="row">
+        <div class="col-xs-12 animated fadeInLeft">
+
+            <!-- Title -->
+            <h1>{{ 'groups_new_title' | translate }}</h1>
+            <p class="help-text">{{ 'groups_new_subtitle_1' | translate }}</p>
+            <p class="help-text">{{ 'groups_new_subtitle_2' | translate }}</p>
+            <p class="help-text">{{ 'groups_new_subtitle_3' | translate }}</p>
+
+            <!-- Form -->
+            <cozen-form cozen-form-name="newGroup"
+                        cozen-form-ctrl="vm"
+                        cozen-form-model="form"
+                        cozen-form-class="space-large-before">
+                <cozen-input cozen-input-model="vm.newGroup.name"
+                             cozen-input-name="{{ vm.CONFIG.internal.group.name.name }}"
+                             cozen-input-max-length="{{ vm.CONFIG.internal.group.name.length }}"
+                             cozen-input-pattern="{{ vm.CONFIG.internal.group.name.pattern }}"
+                             cozen-input-label="groups_new_name"
+                             cozen-input-placeholder="groups_new_name_pc"
+                             cozen-input-required="{{ vm.CONFIG.internal.group.name.required }}">
+                </cozen-input>
+
+                <cozen-btn cozen-btn-label="'log_login_submit'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-disabled="vm.form.login.$invalid"
+                           cozen-btn-loader="vm.loading"
+                           cozen-btn-on-click="vm.methods.checkGroupName()"
+                           cozen-btn-icon-right="fa fa-fw icons8-login-rounded-right">
+                </cozen-btn>
+            </cozen-form>
+        </div>
+    </div>
+</div>

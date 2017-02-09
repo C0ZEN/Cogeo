@@ -443,6 +443,79 @@ i.atom-icon-btn.purple:focus,
 i.atom-icon-btn.purple:hover {
   color: #b92ed1;
 }
+.inherit-height {
+  height: inherit;
+}
+.flex-vertical-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.full-center-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+.full-center-content > .row {
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.full-center-content > .row > div {
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.full-center-content > .row > div > div {
+  margin: 0 auto;
+}
+.full-center-content > .row > div > img {
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+}
+.full-center-content > .row > div:nth-child(2) {
+  border-left: 6px solid #d6dbdb;
+}
+@media (max-width: 991px) {
+  .full-center-content {
+    margin-top: 36px;
+    height: auto;
+  }
+  .full-center-content > .row > div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 /********************/
 /**   TEXT ALIGN   **/
 /********************/
@@ -608,6 +681,19 @@ i.atom-icon-btn.purple:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.container.vertical-center-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: calc(100vh - 120px);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 60px;
+}
+.container.vertical-center-container > .row {
+  width: 100%;
 }
 /***************/
 /**   COLOR   **/
@@ -855,7 +941,7 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-separator {
   height: 1px;
   width: 100%;
   padding: 0 12px;
-  margin: 4px auto;
+  margin: 0 auto;
 }
 body {
   padding-top: 60px;

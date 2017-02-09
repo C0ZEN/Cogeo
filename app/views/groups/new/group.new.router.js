@@ -27,14 +27,19 @@
                 url         : '/groups/new',
                 controller  : 'GroupNewCtrl',
                 controllerAs: 'vm',
-                template    : '<ui-view/>'
+                templateUrl : 'views/groups/new/group.html'
             })
             .state('app.groupNew.firstStep', {
-                url         : '/groups/new/name',
-                templateUrl : 'views/groups/new/group.new.html',
-                controller  : 'GroupNewCtrl',
-                controllerAs: 'vm',
-                data        : {
+                url        : '/groups/new/name',
+                templateUrl: 'views/groups/new/group.step1.html',
+                data       : {
+                    pageTitle: 'group_new'
+                }
+            })
+            .state('app.groupNew.secondStep', {
+                url        : '/groups/new/details',
+                templateUrl: 'views/groups/new/group.step2.html',
+                data       : {
                     pageTitle: 'group_new'
                 }
             });

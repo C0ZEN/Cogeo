@@ -4,7 +4,7 @@
      cozen-when-ready="vm.methods.onReady()"
      cozen-wait-for-interpolation="true">
     <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-12 animated fadeInLeft">
+        <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-12 col-md-push-0 animated fadeInLeft">
 
             <!-- Title -->
             <h1>{{ 'log_login_title' | translate }}</h1>
@@ -69,7 +69,7 @@
                                        cozen-btn-disabled="vm.form.login.$invalid"
                                        cozen-btn-loader="vm.loading"
                                        cozen-btn-on-click="vm.methods.login()"
-                                       cozen-btn-icon-right="fa icons8-login-rounded-right"
+                                       cozen-btn-icon-right="fa fa-fw icons8-login-rounded-right"
                                        cozen-btn-type-green>
                             </cozen-btn>
                             <a href
