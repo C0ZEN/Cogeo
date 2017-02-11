@@ -1,8 +1,6 @@
 <!doctype html>
 <html ng-app="4pjtApp"
-      ng-controller="AppCtrl as app"
-      cozen-when-ready="app.methods.onInit()"
-      cozen-wait-for-interpolation="true">
+      ng-controller="AppCtrl as app">
     <head>
         <meta charset="utf-8">
         <title ng-bind="($state.current.data.pageTitle | translate) + ' - Cogeo'">Cogeo</title>
@@ -25,8 +23,8 @@
         <link rel="stylesheet" href="bower_components/animate.css/animate.min.css" />
         <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.min.css" />
         <link rel="stylesheet" href="bower_components/videogular-themes-default/videogular.css" />
-        <link rel="stylesheet" href="bower_components/cozen-lib/release/main.min.css" />
         <link rel="stylesheet" href="bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css" />
+        <link rel="stylesheet" href="bower_components/cozen-lib/release/main.min.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -116,10 +114,6 @@
         <script src="bower_components/angulartics/src/angulartics-marketo.js"></script>
         <script src="bower_components/angulartics/src/angulartics-intercom.js"></script>
         <script src="bower_components/videogular-angulartics/vg-analytics.js"></script>
-        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
-        <script src="bower_components/cozen-lib/release/clean/main.js"></script>
-        <script src="bower_components/cozen-lib/release/clean/template.cache.js"></script>
-        <script src="bower_components/cozen-lib/release/clean/directives.js"></script>
         <script src="bower_components/clipboard/dist/clipboard.js"></script>
         <script src="bower_components/ngclipboard/dist/ngclipboard.js"></script>
         <script src="bower_components/messageformat/messageformat.js"></script>
@@ -127,6 +121,10 @@
         <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
         <script src="bower_components/angularjs-social-login/angularjs-social-login.js"></script>
         <script src="bower_components/angular-ui-router-anim-in-out/anim-in-out.js"></script>
+        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+        <script src="bower_components/cozen-lib/release/clean/main.js"></script>
+        <script src="bower_components/cozen-lib/release/clean/template.cache.js"></script>
+        <script src="bower_components/cozen-lib/release/clean/directives.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

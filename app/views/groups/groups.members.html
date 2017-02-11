@@ -1,125 +1,125 @@
 <div class="animated fadeIn"
      ng-init="vm.methods.onDisplayDetails()">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="row">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
 
-        <!-- Filter -->
-        <cozen-form cozen-form-name="members"
-                    cozen-form-ctrl="vm"
-                    cozen-form-model="form">
-          <div class="col-xs-12 col-md-6">
-            <cozen-input cozen-input-model="vm.members.search"
-                         cozen-input-name="search"
-                         cozen-input-success-design="false"
-                         cozen-input-error-design="false"
-                         cozen-input-icon-left="fa fa-search"
-                         cozen-input-placeholder="groups_members_search_pc"
-                         cozen-input-auto-complete="off"
-                         cozen-input-class="atom-search-input">
-            </cozen-input>
-          </div>
-          <div class="col-xs-12 col-md-6">
-            <cozen-pagination cozen-pagination-model="vm.members.currentPage"
-                              cozen-pagination-class="flex-end"
-                              cozen-pagination-limit-per-page="vm.members.limit"
-                              cozen-pagination-total-elements="fakeMembersFilter.length"
-                              cozen-pagination-auto-hide="true">
-            </cozen-pagination>
-          </div>
-        </cozen-form>
-      </div>
+                <!-- Filter -->
+                <cozen-form cozen-form-name="members"
+                            cozen-form-ctrl="vm"
+                            cozen-form-model="form">
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-input cozen-input-model="vm.members.search"
+                                     cozen-input-name="search"
+                                     cozen-input-success-design="false"
+                                     cozen-input-error-design="false"
+                                     cozen-input-icon-left="fa fa-search"
+                                     cozen-input-placeholder="groups_members_search_pc"
+                                     cozen-input-auto-complete="off"
+                                     cozen-input-class="atom-search-input">
+                        </cozen-input>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-pagination cozen-pagination-model="vm.members.currentPage"
+                                          cozen-pagination-class="flex-end"
+                                          cozen-pagination-limit-per-page="vm.members.limit"
+                                          cozen-pagination-total-elements="fakeMembersFilter.length"
+                                          cozen-pagination-auto-hide="true">
+                        </cozen-pagination>
+                    </div>
+                </cozen-form>
+            </div>
 
-      <!-- Members -->
-      <div ng-show="vm.groupMembers.length > 0"
-           class="atom-groups space-base-before space-base-after">
-        <div class="atom-group"
-             style="animation-delay: {{ 50 * $index + 'ms' }};"
-             ng-class="{'border-bottom': $last}"
-             ng-repeat="member in vm.groupMembers
-           | orderBy: 'joined':vm.members.orderBy
-           | filter: vm.members.search
-           | groupsMembersStatus: vm.members.status
-           | startFrom: (vm.members.currentPage - 1) * vm.members.limit
-           | limitTo: vm.members.limit
-           as membersFilter track by $index">
-          <div class="text">
-            <p>
-              {{ member.givenName }} {{ member.surname }}
-              <small>
-                <a href
-                   ng-click="goTo.view('app.profiles.user', {username: member.username}, $event)"
-                   ui-sref="app.profiles.user({username: member.username})">
-                  @{{ member.username }}
-                </a>
-              </small>
-              <cozen-tooltip ng-show="member.username == vm.details.group.creator"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-label="'groups_member_since' | translate:{'date': (member.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
-                <mark class="atom-mark creator">{{ 'groups_creator' | translate }}</mark>
-              </cozen-tooltip>
-              <cozen-tooltip ng-show="member.admin"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-label="'groups_member_since' | translate:{'date': (member.joined * 1000 | date: 'EEEE dd MMMM yyyy')}">
-                <mark class="atom-mark admin">{{ 'groups_admin' | translate }}</mark>
-              </cozen-tooltip>
-              <cozen-tooltip ng-show="member.banned.active"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-type-html
-                             cozen-tooltip-label="'groups_banned_since' | translate:{'date': (member.banned.on * 1000 | date: 'EEEE dd MMMM yyyy'), 'userName': member.banned.by, 'for': methods.getKickBanFor(member.banned.for)}">
-                <mark class="atom-mark banned">{{ 'groups_banned' | translate }}</mark>
-              </cozen-tooltip>
-              <cozen-tooltip ng-show="member.kicked.active"
-                             cozen-tooltip-placement="auto bottom"
-                             cozen-tooltip-type-html
-                             cozen-tooltip-label="'groups_kicked_since' | translate:{'date': (member.kicked.on * 1000 | date: 'EEEE dd MMMM yyyy'), 'userName': member.kicked.by, 'for': methods.getKickBanFor(member.kicked.for), 'time': (vm.methods.getKickedTime(member.kicked.time).key | translate)}">
-                <mark class="atom-mark kicked">{{ 'groups_kicked' | translate }}</mark>
-              </cozen-tooltip>
-            </p>
-            <p class="help-text">
-              {{ 'groups_members_since' | translate:{date: (member.joined * 1000 | date: 'EEEE dd MMMM yyyy')} }}
-            </p>
-          </div>
-          <div ng-show="vm.details.userIsAdmin && vm.details.group.creator != member.username && vm.user.username != member.username"
-               class="action-btn">
-            <user-action user-action-granted="!member.admin && !member.kicked.active && !member.banned.active"
-                         user-action-revoked="member.admin && !member.kicked.active && !member.banned.active"
-                         user-action-kicked="!member.kicked.active && !member.banned.active"
-                         user-action-banned="!member.kicked.active && !member.banned.active"
-                         user-action-unbanned="member.kicked.active || member.banned.active"
-                         user-action-granted-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
-                         user-action-revoked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
-                         user-action-kicked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}"
-                         user-action-banned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}"
-                         user-action-unbanned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}">
-            </user-action>
-          </div>
+            <!-- Members -->
+            <div ng-show="vm.groupMembers.length > 0"
+                 class="atom-groups space-base-before space-base-after">
+                <div class="atom-group"
+                     style="animation-delay: {{ 50 * $index + 'ms' }};"
+                     ng-class="{'border-bottom': $last}"
+                     ng-repeat="member in vm.groupMembers
+                       | orderBy: 'joined':vm.members.orderBy
+                       | filter: vm.members.search
+                       | groupsMembersStatus: vm.members.status
+                       | startFrom: (vm.members.currentPage - 1) * vm.members.limit
+                       | limitTo: vm.members.limit
+                       as membersFilter track by $index">
+                    <div class="text">
+                        <p>
+                            {{ member.givenName }} {{ member.surname }}
+                            <small>
+                                <a href
+                                   ng-click="goTo.view('app.profiles.user', {username: member.username}, $event)"
+                                   ui-sref="app.profiles.user({username: member.username})">
+                                    @{{ member.username }}
+                                </a>
+                            </small>
+                            <cozen-tooltip ng-show="member.username == vm.details.group.creator"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'groups_member_since' | translate:{'date': (member.joined | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark creator">{{ 'groups_creator' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="member.admin"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'groups_member_since' | translate:{'date': (member.joined | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark admin">{{ 'groups_admin' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="member.banned.active"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-type-html
+                                           cozen-tooltip-label="'groups_banned_since' | translate:{'date': (member.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': member.banned.by, 'for': methods.getKickBanFor(member.banned.for)}">
+                                <mark class="atom-mark banned">{{ 'groups_banned' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="member.kicked.active"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-type-html
+                                           cozen-tooltip-label="'groups_kicked_since' | translate:{'date': (member.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': member.kicked.by, 'for': methods.getKickBanFor(member.kicked.for), 'time': (vm.methods.getKickedTime(member.kicked.time).key | translate)}">
+                                <mark class="atom-mark kicked">{{ 'groups_kicked' | translate }}</mark>
+                            </cozen-tooltip>
+                        </p>
+                        <p class="help-text">
+                            {{ 'groups_members_since' | translate:{date: (member.joined | date: 'EEEE dd MMMM yyyy')} }}
+                        </p>
+                    </div>
+                    <div ng-show="vm.details.userIsAdmin && vm.details.group.creator != member.username && vm.user.username != member.username"
+                         class="action-btn">
+                        <user-action user-action-granted="!member.admin && !member.kicked.active && !member.banned.active"
+                                     user-action-revoked="member.admin && !member.kicked.active && !member.banned.active"
+                                     user-action-kicked="!member.kicked.active && !member.banned.active"
+                                     user-action-banned="!member.kicked.active && !member.banned.active"
+                                     user-action-unbanned="member.kicked.active || member.banned.active"
+                                     user-action-granted-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
+                                     user-action-revoked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
+                                     user-action-kicked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}"
+                                     user-action-banned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}"
+                                     user-action-unbanned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}">
+                        </user-action>
+                    </div>
+                </div>
+
+                <!-- Members fake (for actual length) -->
+                <div style="display: none;"
+                     ng-repeat="member in vm.groupMembers
+                       | filter: vm.members.search
+                       | groupsMembersStatus: vm.members.status
+                       as fakeMembersFilter track by $index">
+                </div>
+            </div>
+
+            <!-- Info message for empty invitations -->
+            <cozen-alert cozen-alert-display="vm.groupMembers.length == 0"
+                         cozen-alert-label="'groups_members_empty'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-medium-before space-base-after"
+                         cozen-alert-type-info>
+            </cozen-alert>
+
+            <!-- More filter -->
+            <a href
+               class="space-medium-after"
+               onclick="this.blur()"
+               ng-click="methods.showPopup($event, 'groupsMembersFilter', vm.members)">
+                {{ 'groups_all_show_filter' | translate }}
+            </a>
         </div>
-
-        <!-- Members fake (for actual length) -->
-        <div style="display: none;"
-             ng-repeat="member in vm.groupMembers
-           | filter: vm.members.search
-           | groupsMembersStatus: vm.members.status
-           as fakeMembersFilter track by $index">
-        </div>
-      </div>
-
-      <!-- Info message for empty invitations -->
-      <cozen-alert cozen-alert-display="vm.groupMembers.length == 0"
-                   cozen-alert-label="'groups_members_empty'"
-                   cozen-alert-close-btn="false"
-                   cozen-alert-class="space-medium-before space-base-after"
-                   cozen-alert-type-info>
-      </cozen-alert>
-
-      <!-- More filter -->
-      <a href
-         class="space-medium-after"
-         onclick="this.blur()"
-         ng-click="methods.showPopup($event, 'groupsMembersFilter', vm.members)">
-        {{ 'groups_all_show_filter' | translate }}
-      </a>
     </div>
-  </div>
 </div>

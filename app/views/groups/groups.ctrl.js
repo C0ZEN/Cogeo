@@ -92,7 +92,7 @@
                 if (!Methods.isNullOrEmpty(vm.logs)) {
                     vm.logs.forEach(function (log) {
                         log.text          = $filter('translate')('groups_log_' + log.type, log.values);
-                        log.formattedDate = $filter('date')(log.date * 1000, 'EEEE dd MMMM yyyy à HH:mm');
+                        log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy à HH:mm');
                     });
                 }
             }

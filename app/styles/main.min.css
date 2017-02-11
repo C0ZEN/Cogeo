@@ -494,7 +494,7 @@ i.atom-icon-btn.purple:hover {
           align-items: center;
 }
 .full-center-content > .row > div > div {
-  margin: 0 auto;
+  margin: 0 10%;
 }
 .full-center-content > .row > div > img {
   width: 90%;
@@ -514,6 +514,11 @@ i.atom-icon-btn.purple:hover {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+}
+@media (max-width: 767px) {
+  .full-center-content > .row > div > div {
+    margin: 0 auto;
   }
 }
 /********************/
@@ -736,6 +741,18 @@ i.atom-icon-btn.purple:hover {
 }
 .background-grey-light {
   background-color: #f8f8f8;
+}
+.background-blue-flat {
+  background-color: #3498db;
+}
+.background-green-flat {
+  background-color: #2ecc71;
+}
+.background-purple-flat {
+  background-color: #9b59b6;
+}
+.background-yellow-flat {
+  background-color: #f1c40f;
 }
 /****************/
 /**   BORDER   **/
@@ -1673,6 +1690,7 @@ aside#footer div.links a {
   margin-bottom: 6px;
   display: table;
   outline: 0;
+  font-weight: 500;
 }
 aside#footer div.links a:active,
 aside#footer div.links a:focus,

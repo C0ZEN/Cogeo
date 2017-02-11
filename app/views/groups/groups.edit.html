@@ -35,7 +35,7 @@
                 </cozen-btn>
                 <p class="help-block space-small-before space-medium-after">
                     {{ 'account_profile_date_last_update'
-                    | translate:"{date:'" + (vm.edit.date.lastUpdate * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
+                    | translate:"{date:'" + (vm.edit.date.lastUpdate | date: 'EEEE dd MMMM yyyy') + "'}" }}
                 </p>
 
                 <!-- Edit btn -->

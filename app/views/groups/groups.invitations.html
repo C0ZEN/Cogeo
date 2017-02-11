@@ -60,7 +60,7 @@
               </small>
             </p>
             <p class="help-text"
-               compile="('groups_invitations_status_' + invitation.status.response) | translate:{date: (invitation.status.date * 1000 | date: 'EEEE dd MMMM yyyy - HH:mm'), userName: '@' + invitation.sentBy}"></p>
+               compile="('groups_invitations_status_' + invitation.status.response) | translate:{date: (invitation.status.date | date: 'EEEE dd MMMM yyyy - HH:mm'), userName: '@' + invitation.sentBy}"></p>
           </div>
         </div>
 

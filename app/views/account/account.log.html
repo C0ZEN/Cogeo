@@ -9,7 +9,7 @@
                             cozen-form-ctrl="vm"
                             cozen-form-model="form">
                     <div class="col-xs-12 col-md-6">
-                        <cozen-input cozen-input-model="vm.log.search"
+                        <cozen-input cozen-input-model="vm.settingsLogs.search"
                                      cozen-input-name="search"
                                      cozen-input-success-design="false"
                                      cozen-input-error-design="false"
@@ -20,9 +20,9 @@
                         </cozen-input>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <cozen-pagination cozen-pagination-model="vm.log.currentPage"
+                        <cozen-pagination cozen-pagination-model="vm.settingsLogs.currentPage"
                                           cozen-pagination-class="flex-end"
-                                          cozen-pagination-limit-per-page="vm.log.limit"
+                                          cozen-pagination-limit-per-page="vm.settingsLogs.limit"
                                           cozen-pagination-total-elements="fakeLogFilter.length"
                                           cozen-pagination-auto-hide="true">
                         </cozen-pagination>
@@ -36,11 +36,11 @@
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
                      ng-class="[log.category, $last ? 'border-bottom' : '']"
                      ng-repeat="log in vm.logs
-			           | orderBy: 'date':vm.log.orderBy
-			           | filter: vm.log.search
-			           | logsEvents: vm.log.events
-			           | startFrom: (vm.log.currentPage - 1) * vm.log.limit
-			           | limitTo: vm.log.limit
+			           | orderBy: 'date':vm.settingsLogs.orderBy
+			           | filter: vm.settingsLogs.search
+			           | logsEvents: vm.settingsLogs.events
+			           | startFrom: (vm.settingsLogs.currentPage - 1) * vm.settingsLogs.limit
+			           | limitTo: vm.settingsLogs.limit
 			           as logFilter track by $index">
                     <div class="icon">
                         <i ng-class="[vm.methods.getLogSrc(log.type)]"
@@ -56,8 +56,8 @@
                 <!-- Logs fake (for actual length) -->
                 <div style="display: none;"
                      ng-repeat="log in vm.logs
-			           | filter: vm.log.search
-			           | logsEvents: vm.log.events
+			           | filter: vm.settingsLogs.search
+			           | logsEvents: vm.settingsLogs.events
 			           as fakeLogFilter track by $index">
                 </div>
             </div>
@@ -67,22 +67,22 @@
                 <!-- More filter -->
                 <a href
                    onclick="this.blur()"
-                   ng-click="methods.showPopup($event, 'logsFilter', vm.log)">
+                   ng-click="methods.showPopup($event, 'logsFilter', vm.settingsLogs)">
                     {{ 'account_log_show_filter' | translate }}
                 </a>
 
                 <!-- Display all -->
                 <a href
                    onclick="this.blur()"
-                   ng-if="!vm.log.all"
+                   ng-if="!vm.settingsLogs.all"
                    ng-click="vm.methods.getAllLogs()">
                     {{ 'account_log_get_all' | translate }}
                 </a>
 
                 <!-- Total -->
-                <p ng-show="vm.log.all"
+                <p ng-show="vm.settingsLogs.all"
                    class="no-margin help-text animated fadeInUp">
-                    {{ 'account_log_total' | translate:{total: vm.logs.length, date: (vm.user.date.register * 1000 | date: 'MMMM yyyy')} }}
+                    {{ 'account_log_total' | translate:{total: vm.logs.length, date: (vm.user.date.register | date: 'MMMM yyyy')} }}
                 </p>
             </div>
         </div>

@@ -36,9 +36,7 @@
             newPassword          : newPassword,
             startLoading         : startLoading,
             stopLoading          : stopLoading,
-            onSocialSignInSuccess: onSocialSignInSuccess,
-            onReady              : onReady,
-            onInit               : onInit
+            onSocialSignInSuccess: onSocialSignInSuccess
         };
 
         // Events
@@ -87,14 +85,6 @@
 
         function onSocialSignInSuccess($event, socialData) {
             // socialData => name, email, image_url, uid, provider, token
-        }
-
-        function onReady() {
-            vm.isReady = true;
-        }
-
-        function onInit() {
-            vm.isReady = false;
         }
     }
 

@@ -155,7 +155,7 @@ i.atom-icon-btn {
             flex-direction : row;
             align-items    : center;
             > div {
-                margin : 0 auto;
+                margin : 0 10%;
             }
             > img {
                 width     : 90%;
@@ -175,6 +175,17 @@ i.atom-icon-btn {
         > .row {
             > div {
                 flex-direction : column;
+            }
+        }
+    }
+}
+@media (max-width : 767px) {
+    .full-center-content {
+        > .row {
+            > div {
+                > div {
+                    margin : 0 auto;
+                }
             }
         }
     }

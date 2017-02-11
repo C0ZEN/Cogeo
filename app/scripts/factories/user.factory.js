@@ -36,6 +36,7 @@
                 format: "jpg",
                 url   : "http://res.cloudinary.com/cozen/image/upload/v1485115972/ygfsbbfylq91lq753jyo.jpg"
             },
+            bio          : 'ma bio',
             settings     : {
                 ports       : {
                     first : 28,
@@ -49,30 +50,21 @@
                     volume: 72
                 },
                 preferences : {
-                    log              : {
+                    logs             : {
                         limit  : 9,
                         all    : false,
                         orderBy: true,
                         events : [
                             {
                                 id      : 'group',
-                                name    : 'account_event_group',
-                                icon    : 'fa icons8-google-groups',
-                                color   : 'blue',
                                 selected: true
                             },
                             {
                                 id      : 'channel',
-                                name    : 'account_event_channel',
-                                icon    : 'fa icons8-channel-mosaic',
-                                color   : 'green',
                                 selected: true
                             },
                             {
                                 id      : 'social',
-                                name    : 'account_event_social',
-                                icon    : 'fa icons8-user-groups',
-                                color   : 'purple',
                                 selected: true
                             }
                         ]
@@ -91,23 +83,14 @@
                         status : [
                             {
                                 id      : 'kicked',
-                                name    : 'groups_kicked',
-                                icon    : 'fa fa-fw icons8-lock',
-                                color   : 'yellow',
                                 selected: true
                             },
                             {
                                 id      : 'banned',
-                                name    : 'groups_banned',
-                                icon    : 'fa fa-fw icons8-lock',
-                                color   : 'yellow',
                                 selected: true
                             },
                             {
                                 id      : 'admin',
-                                name    : 'groups_admin',
-                                icon    : 'fa fa-fw icons8-user-male',
-                                color   : 'purple',
                                 selected: true
                             }
                         ]
@@ -119,23 +102,14 @@
                         types  : [
                             {
                                 id      : 0,
-                                name    : 'popup_groupsInvitations_filter_body_rejected',
-                                icon    : 'fa fa-fw icons8-event-declined-filled',
-                                color   : 'error',
                                 selected: true
                             },
                             {
                                 id      : 1,
-                                name    : 'popup_groupsInvitations_filter_body_waiting',
-                                icon    : 'fa fa-fw icons8-event-accepted-tentatively-filled',
-                                color   : 'info',
                                 selected: true
                             },
                             {
                                 id      : 2,
-                                name    : 'popup_groupsInvitations_filter_body_accepted',
-                                icon    : 'fa fa-fw icons8-event-accepted-filled',
-                                color   : 'green',
                                 selected: true
                             }
                         ]
@@ -147,16 +121,10 @@
                         events : [
                             {
                                 id      : 'group',
-                                name    : 'account_event_group',
-                                icon    : 'fa icons8-google-groups',
-                                color   : 'blue',
                                 selected: true
                             },
                             {
                                 id      : 'channel',
-                                name    : 'account_event_channel',
-                                icon    : 'fa icons8-channel-mosaic',
-                                color   : 'green',
                                 selected: true
                             }
                         ]
@@ -465,17 +433,25 @@
 
         // Public functions
         return {
-            subscribe  : subscribe,
-            getUser    : getUser,
-            getSettings: getSettings,
-            isConnected: isConnected,
-            logout     : logout,
-            httpRequest: {
-                getUser       : httpRequestGetUser,
-                register      : httpRequestRegister,
-                login         : httpRequestLogin,
-                logout        : httpRequestLogout,
-                updateSettings: httpRequestUpdateSettings
+            subscribe            : subscribe,
+            getUser              : getUser,
+            getSettings          : getSettings,
+            isConnected          : isConnected,
+            logout               : logout,
+            setUserInLocalStorage: setUserInLocalStorage,
+            httpRequest          : {
+                getUser                        : httpRequestGetUser,
+                register                       : httpRequestRegister,
+                login                          : httpRequestLogin,
+                logout                         : httpRequestLogout,
+                updateSettings                 : httpRequestUpdateSettings,
+                updateSettingsLog              : httpRequestUpdateSettingsLog,
+                updateSettingsAllGroups        : httpRequestUpdateSettingsAllGroups,
+                updateSettingsGroupsMembers    : httpRequestUpdateSettingsGroupsMembers,
+                updateSettingsGroupsInvitations: httpRequestUpdateSettingsGroupsInvitations,
+                updateSettingsGroupsLogs       : httpRequestUpdateSettingsGroupsLogs,
+                updateUser                     : httpRequestUpdateUser,
+                updateNotifications            : httpRequestUpdateNotifications
             }
         };
 
@@ -509,11 +485,12 @@
 
         function setUser(response) {
             user = formatUserData(response);
+            console.log(response);
             _notify();
         }
 
         function formatUserData($user) {
-            angular.forEach($user.settings.preferences.log.events, function (event) {
+            angular.forEach($user.settings.preferences.logs.events, function (event) {
                 if (event.id == 'group') {
                     event.name  = 'account_event_group';
                     event.icon  = 'fa fa-fw icons8-google-groups';
@@ -564,7 +541,7 @@
                     event.color = 'green';
                 }
             });
-            angular.forEach($user.settings.preferences.groupsLog.events, function (event) {
+            angular.forEach($user.settings.preferences.groupsLogs.events, function (event) {
                 if (event.id == 'group') {
                     event.name  = 'account_event_group';
                     event.icon  = 'fa fa-fw icons8-google-groups';
@@ -579,12 +556,20 @@
             return $user;
         }
 
+        function setUserInLocalStorage(userData) {
+            localStorageService.set('currentUser', {
+                username: userData.username,
+                token   : userData.token.login
+            });
+        }
+
         /// HTTP REQUEST ///
 
         function httpRequestGetUser(callbackSuccess, callbackError) {
             httpRequest.requestGet('user/' + user.username, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
                 });
         }
 
@@ -592,10 +577,7 @@
             httpRequest.requestPost('user', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
-                    localStorageService.set('currentUser', {
-                        username: response.data.data.username,
-                        token   : response.data.data.token.login
-                    });
+                    setUserInLocalStorage(response.data.data);
                     usersFactory.httpRequest.getAll();
                 })
             ;
@@ -605,10 +587,7 @@
             httpRequest.requestPost('login', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
-                    localStorageService.set('currentUser', {
-                        username: response.data.data.username,
-                        token   : response.data.data.token.login
-                    });
+                    setUserInLocalStorage(response.data.data);
                 })
             ;
         }
@@ -625,11 +604,70 @@
             httpRequest.requestPut('user/' + user.username + '/settings', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
-                    localStorageService.set('currentUser', {
-                        username: response.data.data.username,
-                        token   : response.data.data.token.login
-                    });
-                    usersFactory.httpRequest.getAll();
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsLog(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/log', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsAllGroups(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/all-groups', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsGroupsMembers(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/groups-members', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsGroupsInvitations(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/groups-invitations', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsGroupsLogs(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/groups-logs', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateUser(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username, data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateNotifications(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/notifications', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
                 })
             ;
         }

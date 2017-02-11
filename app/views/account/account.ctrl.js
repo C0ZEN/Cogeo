@@ -54,20 +54,35 @@
         function save(form) {
             vm.methods.startLoading();
             switch (form) {
-            case 'settings':
-                console.log(vm.settings);
-                userFactory.httpRequest.updateSettings(vm.settings, vm.methods.stopLoading, vm.methods.stopLoading);
-                goTo.view('app.account.settings');
-                break;
-            case 'profile':
-                goTo.view('app.account.profile');
-                break;
-            case 'profile-password':
-                goTo.view('app.account.profile');
-                break;
-            case 'notifications':
-                goTo.view('app.account.notifications');
-                break;
+                case 'settings':
+                    userFactory.httpRequest.updateSettings(vm.settings, function () {
+                        vm.methods.stopLoading();
+                        goTo.view('app.account.settings');
+                    }, vm.methods.stopLoading);
+                    break;
+                case 'profile':
+                    var updateUser = {
+                        givenName: vm.userCopy.givenName,
+                        surname  : vm.userCopy.surname,
+                        email    : vm.userCopy.email,
+                        picture  : vm.userCopy.picture,
+                        bio      : vm.userCopy.bio,
+                        birthday : vm.userCopy.birthday
+                    };
+                    userFactory.httpRequest.updateUser(updateUser, function () {
+                        vm.methods.stopLoading();
+                        goTo.view('app.account.profile');
+                    }, vm.methods.stopLoading);
+                    break;
+                case 'profile-password':
+                    goTo.view('app.account.profile');
+                    break;
+                case 'notifications':
+                    userFactory.httpRequest.updateNotifications(vm.notifications, function () {
+                        vm.methods.stopLoading();
+                        goTo.view('app.account.notifications');
+                    }, vm.methods.stopLoading);
+                    break;
             }
         }
 
@@ -84,48 +99,48 @@
         }
 
         function getAllLogs() {
-            vm.log.all = true;
+            vm.settingsLogs.all = true;
         }
 
         function getLogSrc(type) {
             switch (type) {
-            case 'newGroupCreated':
-            case 'newGroupJoined':
-            case 'newChannelCreated':
-            case 'newChannelJoined':
-                return 'icons8-plus';
-            case 'groupLeft':
-            case 'channelLeft':
-                return 'icons8-logout-rounded';
-            case 'groupEdited':
-            case 'channelEdited':
-            case 'socialUserRenamed':
-            case 'socialUserAliasRemoved':
-                return 'icons8-edit';
-            case 'groupInvitationSentOne':
-            case 'groupInvitationSentMany':
-            case 'channelInvitationSentOne':
-            case 'channelInvitationSentMany':
-            case 'socialInvitationSent':
-                return 'icons8-message-filled';
-            case 'groupPermissionsGranted':
-            case 'channelPermissionsGranted':
-                return 'icons8-unlock';
-            case 'groupPermissionsRevoked':
-            case 'channelPermissionsRevoked':
-                return 'icons8-lock';
-            case 'groupUserKicked':
-            case 'groupUserBanned':
-            case 'channelUserKicked':
-            case 'channelUserBanned':
-            case 'socialUserBlocked':
-            case 'socialUserRemoved':
-                return 'icons8-no-chat';
-            case 'groupUserUnbanned':
-            case 'channelUserUnbanned':
-            case 'socialUserUnblocked':
-            case 'socialInvitationAccepted':
-                return 'icons8-chat';
+                case 'newGroupCreated':
+                case 'newGroupJoined':
+                case 'newChannelCreated':
+                case 'newChannelJoined':
+                    return 'icons8-plus';
+                case 'groupLeft':
+                case 'channelLeft':
+                    return 'icons8-logout-rounded';
+                case 'groupEdited':
+                case 'channelEdited':
+                case 'socialUserRenamed':
+                case 'socialUserAliasRemoved':
+                    return 'icons8-edit';
+                case 'groupInvitationSentOne':
+                case 'groupInvitationSentMany':
+                case 'channelInvitationSentOne':
+                case 'channelInvitationSentMany':
+                case 'socialInvitationSent':
+                    return 'icons8-message-filled';
+                case 'groupPermissionsGranted':
+                case 'channelPermissionsGranted':
+                    return 'icons8-unlock';
+                case 'groupPermissionsRevoked':
+                case 'channelPermissionsRevoked':
+                    return 'icons8-lock';
+                case 'groupUserKicked':
+                case 'groupUserBanned':
+                case 'channelUserKicked':
+                case 'channelUserBanned':
+                case 'socialUserBlocked':
+                case 'socialUserRemoved':
+                    return 'icons8-no-chat';
+                case 'groupUserUnbanned':
+                case 'channelUserUnbanned':
+                case 'socialUserUnblocked':
+                case 'socialInvitationAccepted':
+                    return 'icons8-chat';
             }
         }
 
@@ -151,13 +166,13 @@
         }
 
         function initLogs() {
-            vm.logs = angular.copy(userFactory.getUser().logs);
-            vm.log  = angular.copy(userFactory.getUser().settings.preferences.log);
+            vm.logs         = angular.copy(userFactory.getUser().logs);
+            vm.settingsLogs = angular.copy(userFactory.getUser().settings.preferences.log);
 
             // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
             vm.logs.forEach(function (log) {
                 log.text          = $filter('translate')('account_log_' + log.type, log.values);
-                log.formattedDate = $filter('date')(log.date * 1000, 'EEEE dd MMMM yyyy à HH:mm');
+                log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy à HH:mm');
             });
         }
     }

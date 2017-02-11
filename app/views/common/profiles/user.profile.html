@@ -42,7 +42,7 @@
         </h4>
         <p class="help-block">
           {{ 'account_profile_date_register'
-          | translate:"{date:'" + (vm.user.date.register * 1000 | date: 'EEEE dd MMMM yyyy') + "'}" }}
+          | translate:"{date:'" + (vm.user.date.register | date: 'EEEE dd MMMM yyyy') + "'}" }}
         </p>
 
         <!-- Groups -->

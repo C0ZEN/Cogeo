@@ -1,30 +1,27 @@
-<div class="container space-large-before"
-     ng-show="vm.isReady"
-     ng-init="vm.methods.onInit()"
-     cozen-when-ready="vm.methods.onReady()"
-     cozen-wait-for-interpolation="true">
+<div class="full-center-content">
     <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-12 col-md-push-0 animated fadeInLeft">
+        <div class="col-xs-12 col-md-5">
+            <div class="animated fadeInLeft">
 
-            <!-- Title -->
-            <h1>{{ 'log_login_title' | translate }}</h1>
-            <p class="help-text">
-                {{ 'log_login_subtitle_1' | translate }}
-                <a href
-                   ng-click="goTo.view('app.register', null, $event)"
-                   ui-sref="app.register">
-                    {{ 'log_login_subtitle_2' | translate }}
-                </a>
-            </p>
-            <p class="help-text">{{ 'log_login_subtitle_3' | translate }}</p>
-            <p class="help-text">{{ 'log_login_subtitle_4' | translate }}</p>
+                <!-- Title -->
+                <h1 class="no-margin-top">{{ 'log_login_title' | translate }}</h1>
+                <p class="help-text">
+                    {{ 'log_login_subtitle_1' | translate }}
+                    <a href
+                       ng-click="goTo.view('app.log.register', null, $event)"
+                       ui-sref="app.log.register">
+                        {{ 'log_login_subtitle_2' | translate }}
+                    </a>
+                </p>
+                <p class="help-text">{{ 'log_login_subtitle_3' | translate }}</p>
+                <p class="help-text">{{ 'log_login_subtitle_4' | translate }}</p>
 
-            <!-- Form -->
-            <div class="row space-large-before space-large-before-column same-height-column">
-                <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5">
+                <!-- Form -->
+                <div class="no-padding col-xs-12 col-sm-9 col-md-12 col-lg-9">
                     <cozen-form cozen-form-name="login"
                                 cozen-form-ctrl="vm"
-                                cozen-form-model="form">
+                                cozen-form-model="form"
+                                cozen-form-class="space-large-before">
 
                         <!-- Socials -->
                         <h3 class="space-medium-after">{{ 'log_login_socials_title' | translate }}</h3>
@@ -80,11 +77,13 @@
                         </div>
                     </cozen-form>
                 </div>
-                <div class="hidden-xs hidden-sm col-md-6 col-lg-7 animated zoomIn">
-                    <img ng-src="images/bg/platforms.jpg"
-                         class="form-left-img">
-                </div>
             </div>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-7 background-green-flat">
+            <img class="animated zoomIn"
+                 ng-src="images/bg/platforms.jpg">
         </div>
     </div>
 </div>
+
+

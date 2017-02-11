@@ -74,9 +74,9 @@
         <!-- Login -->
         <div ng-show="!vm.methods.isConnected()"
              class="link link-green"
-             ng-class="{'active': goTo.isCurrentView('app.login')}"
+             ng-class="{'active': goTo.isCurrentView('app.log.login')}"
              onclick="this.blur()"
-             ng-click="goTo.view('app.login')"
+             ng-click="goTo.view('app.log.login')"
              tabindex="0">
             {{ 'navbar_login' | translate }}
         </div>
@@ -84,9 +84,9 @@
         <!-- Register -->
         <div ng-show="!vm.methods.isConnected()"
              class="link link-purple"
-             ng-class="{'active': goTo.isCurrentView('app.register')}"
+             ng-class="{'active': goTo.isCurrentView('app.log.register')}"
              onclick="this.blur()"
-             ng-click="goTo.view('app.register')"
+             ng-click="goTo.view('app.log.register')"
              tabindex="0">
             {{ 'navbar_register' | translate }}
         </div>

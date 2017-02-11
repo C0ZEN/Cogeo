@@ -24,6 +24,8 @@
             onInit: onInit
         };
 
+        window.onload = app.methods.onInit;
+
         function onInit() {
             var requestQuantity = 1;
             Methods.firstLoadLog(true);

@@ -1,45 +1,46 @@
 (function (angular) {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('4pjtApp')
-    .config(config);
+    angular
+        .module('4pjtApp')
+        .config(config);
 
-  config.$inject = [
-    '$stateProvider'
-  ];
+    config.$inject = [
+        '$stateProvider'
+    ];
 
-  function config($stateProvider) {
+    function config($stateProvider) {
 
-    // Log routes
-    $stateProvider
-      .state('app.login', {
-        url         : '/login',
-        templateUrl : 'views/log/login.html',
-        controller  : 'LogCtrl',
-        controllerAs: 'vm',
-        data        : {
-          pageTitle: 'login'
-        }
-      })
-      .state('app.register', {
-        url         : '/register',
-        templateUrl : 'views/log/register.html',
-        controller  : 'LogCtrl',
-        controllerAs: 'vm',
-        data        : {
-          pageTitle: 'register'
-        }
-      })
-      .state('app.newPassword', {
-        url         : '/new-password/:token',
-        templateUrl : 'views/log/new.password.html',
-        controller  : 'LogCtrl',
-        controllerAs: 'vm',
-        data        : {
-          pageTitle: 'new_password'
-        }
-      });
-  }
+        // Log routes
+        $stateProvider
+            .state('app.log', {
+                abstract    : true,
+                url         : '/',
+                controller  : 'LogCtrl',
+                controllerAs: 'vm',
+                templateUrl : 'views/log/log.html'
+            })
+            .state('app.log.login', {
+                url        : 'login',
+                templateUrl: 'views/log/log.login.html',
+                data       : {
+                    pageTitle: 'login'
+                }
+            })
+            .state('app.log.register', {
+                url        : 'register',
+                templateUrl: 'views/log/log.register.html',
+                data       : {
+                    pageTitle: 'register'
+                }
+            })
+            .state('app.log.newPassword', {
+                url        : 'new-password/:token',
+                templateUrl: 'views/log/log.newPassword.html',
+                data       : {
+                    pageTitle: 'new_password'
+                }
+            });
+    }
 
 })(window.angular);
