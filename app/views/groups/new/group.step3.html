@@ -1,0 +1,46 @@
+<div class="full-center-content"
+     ng-class="vm.stepForward ? 'anim-slide-left' : 'anim-slide-right'"
+     ng-init="vm.methods.checkData(3)">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div>
+
+                <!-- Title -->
+                <h1 class="no-margin-top">{{ 'groups_new_3_title' | translate:{groupName: vm.newGroup.name} }}</h1>
+                <p class="help-text">{{ 'groups_new_3_subtitle_1' | translate }}</p>
+
+                <!-- Form -->
+                <div class="no-padding col-xs-12 col-sm-9 col-md-12 col-lg-12">
+                    <cozen-form cozen-form-name="newGroup3"
+                                cozen-form-ctrl="vm"
+                                cozen-form-model="form"
+                                cozen-form-class="space-large-before">
+
+                        <div class="center-flex-content space-medium-before space-medium after">
+
+                            <!-- Submit -->
+                            <cozen-btn cozen-btn-label="'groups_new_3_create_group' | translate:{groupName: vm.newGroup.name}"
+                                       cozen-btn-auto-sizing="true"
+                                       cozen-btn-disabled="vm.form.newGroup3.$invalid"
+                                       cozen-btn-loader="vm.loading"
+                                       cozen-btn-on-click="vm.methods.createGroup()"
+                                       cozen-btn-icon-right="fa fa-fw fa-arrow-right">
+                            </cozen-btn>
+
+                            <!-- Back -->
+                            <a href
+                               ng-click="vm.methods.goStepBackward(2);"
+                               ui-sref="app.groupNew.secondStep">
+                                {{ 'groups_new_3_change_settings' | translate }}
+                            </a>
+                        </div>
+
+                    </cozen-form>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-6 background-blue-flat">
+            <img ng-src="images/bg/groups-users.jpg">
+        </div>
+    </div>
+</div>

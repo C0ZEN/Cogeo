@@ -1,4 +1,5 @@
-<div class="anim-slide-left full-center-content">
+<div class="full-center-content"
+     ng-class="vm.stepForward ? 'anim-slide-left' : 'anim-slide-right'">
     <div class="row">
         <div class="col-xs-12 col-md-5">
             <div ng-class="{'animated fadeInLeft': vm.data.step1FirstShow}">
@@ -8,7 +9,7 @@
                 <p class="help-text">{{ 'groups_new_1_subtitle_1' | translate }}</p>
 
                 <!-- Form -->
-                <div class="no-padding col-xs-12 col-sm-9 col-md-12 col-lg-9">
+                <div class="no-padding col-xs-12 col-sm-9 col-md-12 col-lg-12">
                     <cozen-form cozen-form-name="newGroup1"
                                 cozen-form-ctrl="vm"
                                 cozen-form-model="form"

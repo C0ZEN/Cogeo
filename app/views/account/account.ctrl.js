@@ -46,9 +46,9 @@
         // When the user factory is updated
         userFactory.subscribe($scope, function () {
             vm.user = userFactory.getUser();
-            vm.methods.initSettings();
-            vm.methods.initNotifications();
-            vm.methods.initLogs();
+            vm.methods.initSettings(vm.user);
+            vm.methods.initNotifications(vm.user);
+            vm.methods.initLogs(vm.user);
         });
 
         function save(form) {
@@ -157,17 +157,33 @@
             vm.loading = false;
         }
 
-        function initSettings() {
-            vm.settings = angular.copy(userFactory.getUser().settings);
+        function initSettings(user) {
+            if (user != null) {
+                vm.settings = angular.copy(user.settings);
+            }
+            else {
+                vm.settings = angular.copy(userFactory.getUser().settings);
+            }
         }
 
-        function initNotifications() {
-            vm.notifications = angular.copy(userFactory.getUser().notifications);
+        function initNotifications(user) {
+            if (user != null) {
+                vm.notifications = angular.copy(user.notifications);
+            }
+            else {
+                vm.notifications = angular.copy(userFactory.getUser().notifications);
+            }
         }
 
-        function initLogs() {
-            vm.logs         = angular.copy(userFactory.getUser().logs);
-            vm.settingsLogs = angular.copy(userFactory.getUser().settings.preferences.log);
+        function initLogs(user) {
+            if (user != null) {
+                vm.logs         = angular.copy(user.logs);
+                vm.settingsLogs = angular.copy(user.settings.preferences.log);
+            }
+            else {
+                vm.logs         = angular.copy(userFactory.getUser().logs);
+                vm.settingsLogs = angular.copy(userFactory.getUser().settings.preferences.log);
+            }
 
             // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
             vm.logs.forEach(function (log) {

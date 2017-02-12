@@ -20,11 +20,14 @@
                 </p>
                 <cozen-textarea cozen-textarea-model="vm.edit.description"
                                 cozen-textarea-name="{{ vm.CONFIG.internal.group.description.name }}"
-                                cozen-textarea-max-length="{{ vm.CONFIG.internal.group.description.length }}"
+                                cozen-textarea-max-length="{{ vm.CONFIG.internal.group.description.maxLength }}"
+                                cozen-textarea-min-length="{{ vm.CONFIG.internal.group.description.minLength }}"
                                 cozen-textarea-label="groups_register_description"
                                 cozen-textarea-placeholder="groups_register_description_pc"
                                 cozen-textarea-validator-all
                                 cozen-textarea-elastic="false"
+                                cozen-textarea-tooltip="{{ 'groups_register_description_length' | translate:{minLength: vm.CONFIG.internal.group.description.minLength, maxLength: vm.CONFIG.internal.group.description.maxLength} }}"
+                                cozen-textarea-tooltip-type="html"
                                 cozen-textarea-required="{{ vm.CONFIG.internal.group.description.required }}"
                                 cozen-textarea-class="space-medium-after">
                 </cozen-textarea>

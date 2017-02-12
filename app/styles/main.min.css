@@ -495,6 +495,7 @@ i.atom-icon-btn.purple:hover {
 }
 .full-center-content > .row > div > div {
   margin: 0 10%;
+  width: 100%;
 }
 .full-center-content > .row > div > img {
   width: 90%;

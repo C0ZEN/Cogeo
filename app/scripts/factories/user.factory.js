@@ -10,10 +10,11 @@
         'usersFactory',
         'localStorageService',
         'socialLoginService',
-        '$rootScope'
+        '$rootScope',
+        'goTo'
     ];
 
-    function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope) {
+    function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope, goTo) {
 
         var user = {
             givenName    : 'Geoffrey',
@@ -480,6 +481,7 @@
             httpRequestLogout(user.username);
             localStorageService.set('currentUser', {});
             user = null;
+            goTo.view('app.home');
             _notify();
         }
 

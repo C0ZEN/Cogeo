@@ -1,5 +1,7 @@
 {
   "account_undefined": "Non défini",
+  "account_bio": "Description",
+  "account_bio_pc": "Description",
   "account_profile": "Mon compte - Mon profil",
   "account_notifications": "Mon compte - Mes notifications",
   "account_settings": "Mon compte - Mes paramètres",

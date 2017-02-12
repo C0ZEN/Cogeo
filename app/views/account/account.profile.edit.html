@@ -52,7 +52,13 @@
                            cozen-btn-class="space-medium-after">
                 </cozen-btn>
                 <cozen-textarea cozen-textarea-model="vm.userCopy.bio"
-                                cozen-textarea-name="{{ vm.CONFIG.internal.log.bio.name }}">
+                                cozen-textarea-name="{{ vm.CONFIG.internal.log.bio.name }}"
+                                cozen-textarea-max-length="{{ vm.CONFIG.internal.log.bio.length }}"
+                                cozen-textarea-label="account_bio"
+                                cozen-textarea-placeholder="account_bio_pc"
+                                cozen-textarea-validator-all
+                                cozen-textarea-elastic="false"
+                                cozen-textarea-required="{{ vm.CONFIG.internal.log.bio.required }}">
                 </cozen-textarea>
                 <p class="help-block space-small-before space-medium-after">
                     {{ 'account_profile_date_last_update' | translate:{date: (vm.user.date.lastUpdate | date: 'EEEE dd MMMM yyyy')} }}

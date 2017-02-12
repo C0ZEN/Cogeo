@@ -42,6 +42,13 @@
                 data       : {
                     pageTitle: 'group_new'
                 }
+            })
+            .state('app.groupNew.thirdStep', {
+                url        : '/groups/new/recruit',
+                templateUrl: 'views/groups/new/group.step3.html',
+                data       : {
+                    pageTitle: 'group_new'
+                }
             });
     }
 

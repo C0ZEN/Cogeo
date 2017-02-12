@@ -27,14 +27,15 @@
             if ($event != null) {
                 $event.preventDefault();
             }
-            if (CONFIG.debug) {
-                Methods.directiveCallbackLog('goTo', 'view');
-            }
 
             // Add the :lang as param (for app param)
             param = angular.merge({}, param, {
                 lang: CONFIG.currentLanguage
             });
+
+            if (CONFIG.debug) {
+                Methods.changeRouteLog('goTo', view, param);
+            }
             $state.go(view, param);
         }
 
