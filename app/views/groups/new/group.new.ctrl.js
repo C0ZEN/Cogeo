@@ -11,17 +11,25 @@
         'CONFIG',
         'goTo',
         '$animate',
-        '$timeout'
+        '$timeout',
+        '$filter'
     ];
 
-    function GroupNewCtrl($document, $state, CONFIG, goTo, $animate, $timeout) {
+    function GroupNewCtrl($document, $state, CONFIG, goTo, $animate, $timeout, $filter) {
         var vm = this;
 
         // Common data
         vm.data        = {
             step1FirstShow: true
         };
-        vm.newGroup    = {};
+        vm.newGroup    = {
+            channels: [
+                {
+                    name   : $filter('translate')('groups_new_2_default_channel'),
+                    default: true
+                }
+            ]
+        };
         vm.CONFIG      = CONFIG;
         vm.stepForward = true;
 
@@ -46,16 +54,16 @@
 
         function checkData(step) {
             switch (step) {
-                case 2:
-                    if (Methods.isNullOrEmpty(vm.newGroup.name)) {
-                        goTo.view('app.groupNew.firstStep');
-                    }
-                    break;
-                case 3:
-                    if (Methods.isNullOrEmpty(vm.newGroup.name) || Methods.isNullOrEmpty(vm.newGroup.description)) {
-                        goTo.view('app.groupNew.firstStep');
-                    }
-                    break;
+            case 2:
+                if (Methods.isNullOrEmpty(vm.newGroup.name)) {
+                    goTo.view('app.groupNew.firstStep');
+                }
+                break;
+            case 3:
+                if (Methods.isNullOrEmpty(vm.newGroup.name) || Methods.isNullOrEmpty(vm.newGroup.description)) {
+                    goTo.view('app.groupNew.firstStep');
+                }
+                break;
             }
         }
 
@@ -77,16 +85,16 @@
         function goStepBackward(step) {
             vm.stepForward = false;
             switch (step) {
-                case 1:
-                    $timeout(function () {
-                        goTo.view('app.groupNew.firstStep');
-                    });
-                    break;
-                case 2:
-                    $timeout(function () {
-                        goTo.view('app.groupNew.secondStep');
-                    });
-                    break;
+            case 1:
+                $timeout(function () {
+                    goTo.view('app.groupNew.firstStep');
+                });
+                break;
+            case 2:
+                $timeout(function () {
+                    goTo.view('app.groupNew.secondStep');
+                });
+                break;
             }
         }
     }

@@ -15,6 +15,8 @@
                                 cozen-form-ctrl="vm"
                                 cozen-form-model="form"
                                 cozen-form-class="space-large-before">
+
+                        <!-- Description -->
                         <cozen-textarea cozen-textarea-model="vm.newGroup.description"
                                         cozen-textarea-name="{{ vm.CONFIG.internal.group.description.name }}"
                                         cozen-textarea-max-length="{{ vm.CONFIG.internal.group.description.maxLength }}"
@@ -28,12 +30,27 @@
                                         cozen-textarea-required="{{ vm.CONFIG.internal.group.description.required }}"
                                         cozen-textarea-class="space-medium-after">
                         </cozen-textarea>
+
+                        <!-- Picture -->
                         <cozen-btn cozen-btn-upload-model="vm.newGroup.picture"
                                    cozen-btn-is-upload="true"
                                    cozen-btn-upper-label="groups_register_profile_picture"
                                    cozen-btn-label="'account_profile_picture_upload'"
                                    cozen-btn-class="space-medium-after">
                         </cozen-btn>
+
+                        <div ng-repeat="channel in vm.newGroup.channels track by $index"
+                             class="center-flex-content">
+
+                            <cozen-input cozen-input-model="channel.name"
+                                         cozen-input-label="groups_new_2_channel_name"
+                                         cozen-input-placeholder="groups_new_2_channel_name_pc"
+                                         cozen-input-required="{{ vm.CONFIG.internal.channel.name.required }}"
+                                         cozen-input-name="{{ vm.CONFIG.internal.channel.name.name }}"
+                                         cozen-input-pattern="{{ vm.CONFIG.internal.channel.name.pattern }}"
+                                         cozen-input-max-length="{{ vm.CONFIG.internal.channel.name.length }}">
+                            </cozen-input>
+                        </div>
 
                         <div class="center-flex-content space-medium-before space-medium after">
 
