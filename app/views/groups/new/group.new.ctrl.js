@@ -12,26 +12,12 @@
         'goTo',
         '$animate',
         '$timeout',
-        '$filter'
+        '$filter',
+        'rfc4122'
     ];
 
-    function GroupNewCtrl($document, $state, CONFIG, goTo, $animate, $timeout, $filter) {
+    function GroupNewCtrl($document, $state, CONFIG, goTo, $animate, $timeout, $filter, rfc4122) {
         var vm = this;
-
-        // Common data
-        vm.data        = {
-            step1FirstShow: true
-        };
-        vm.newGroup    = {
-            channels: [
-                {
-                    name   : $filter('translate')('groups_new_2_default_channel'),
-                    default: true
-                }
-            ]
-        };
-        vm.CONFIG      = CONFIG;
-        vm.stepForward = true;
 
         // Methods
         vm.methods = {
@@ -39,8 +25,21 @@
             checkData     : checkData,
             checkSettings : checkSettings,
             createGroup   : createGroup,
-            goStepBackward: goStepBackward
+            goStepBackward: goStepBackward,
+            addChannel    : addChannel
         };
+
+        // Common data
+        vm.CONFIG      = CONFIG;
+        vm.rfc4122     = rfc4122;
+        vm.data        = {
+            step1FirstShow: true
+        };
+        vm.newGroup    = {
+            channels: []
+        };
+        vm.stepForward = true;
+        vm.methods.addChannel($filter('translate')('groups_new_2_default_channel'));
 
         function checkGroupName() {
             vm.stepForward         = true;
@@ -54,16 +53,16 @@
 
         function checkData(step) {
             switch (step) {
-            case 2:
-                if (Methods.isNullOrEmpty(vm.newGroup.name)) {
-                    goTo.view('app.groupNew.firstStep');
-                }
-                break;
-            case 3:
-                if (Methods.isNullOrEmpty(vm.newGroup.name) || Methods.isNullOrEmpty(vm.newGroup.description)) {
-                    goTo.view('app.groupNew.firstStep');
-                }
-                break;
+                case 2:
+                    if (Methods.isNullOrEmpty(vm.newGroup.name)) {
+                        goTo.view('app.groupNew.firstStep');
+                    }
+                    break;
+                case 3:
+                    if (Methods.isNullOrEmpty(vm.newGroup.name) || Methods.isNullOrEmpty(vm.newGroup.description)) {
+                        goTo.view('app.groupNew.firstStep');
+                    }
+                    break;
             }
         }
 
@@ -85,17 +84,25 @@
         function goStepBackward(step) {
             vm.stepForward = false;
             switch (step) {
-            case 1:
-                $timeout(function () {
-                    goTo.view('app.groupNew.firstStep');
-                });
-                break;
-            case 2:
-                $timeout(function () {
-                    goTo.view('app.groupNew.secondStep');
-                });
-                break;
+                case 1:
+                    $timeout(function () {
+                        goTo.view('app.groupNew.firstStep');
+                    });
+                    break;
+                case 2:
+                    $timeout(function () {
+                        goTo.view('app.groupNew.secondStep');
+                    });
+                    break;
             }
+        }
+
+        function addChannel(name) {
+            vm.newGroup.channels.push({
+                name   : name,
+                default: true,
+                id     : rfc4122.v4()
+            });
         }
     }
 

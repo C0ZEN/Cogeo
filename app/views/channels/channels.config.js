@@ -11,11 +11,12 @@
 
     // Account configuration
     function config(CONFIG) {
-        CONFIG.internal.group = {
-            name: {
+        CONFIG.internal.channel = {
+            maxDefault: 5,
+            name      : {
                 length  : 30,
                 required: true,
-                pattern : '[a-zA-Z0-9]*',
+                pattern : 'word',
                 name    : 'name'
             }
         }

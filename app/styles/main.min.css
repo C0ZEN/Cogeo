@@ -103,6 +103,7 @@ label.atom-label {
   padding: 0;
   font-weight: 400;
   line-height: 1;
+  margin-bottom: 6px;
 }
 span.atom-value {
   font-size: 16px;
@@ -1374,9 +1375,10 @@ div.atom-remove-btn {
   cursor: pointer;
   font-size: 16px;
   color: #8c8c8c;
-  -webkit-transition: all 80ms ease-out;
-  transition: all 80ms ease-out;
+  -webkit-transition: none;
+  transition: none;
   outline: 0;
+  vertical-align: middle;
 }
 div.atom-add-btn:focus,
 div.atom-remove-btn:focus,
@@ -1385,6 +1387,10 @@ div.atom-remove-btn:active,
 div.atom-add-btn:hover,
 div.atom-remove-btn:hover {
   color: #2c9fdd;
+}
+div.atom-add-btn i,
+div.atom-remove-btn i {
+  vertical-align: inherit;
 }
 div.atom-email-list {
   display: -webkit-box;

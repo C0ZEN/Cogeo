@@ -39,17 +39,42 @@
                                    cozen-btn-class="space-medium-after">
                         </cozen-btn>
 
+                        <!-- Channels -->
+                        <label class="atom-label">
+                            {{ 'groups_new_2_default_channels' | translate }}
+                            <cozen-icon-info cozen-icon-info-tooltip-label="'groups_new_2_maximum_default_channels' | translate:{quantity: vm.CONFIG.internal.channel.maxDefault}"
+                                             cozen-icon-info-tooltip-type="html"
+                                             cozen-icon-info-tooltip-max-width="'max-width-300'">
+                            </cozen-icon-info>
+                        </label>
                         <div ng-repeat="channel in vm.newGroup.channels track by $index"
+                             ng-class="{'space-small-after': !$last}"
                              class="center-flex-content">
 
+                            <!-- Name -->
                             <cozen-input cozen-input-model="channel.name"
-                                         cozen-input-label="groups_new_2_channel_name"
                                          cozen-input-placeholder="groups_new_2_channel_name_pc"
                                          cozen-input-required="{{ vm.CONFIG.internal.channel.name.required }}"
-                                         cozen-input-name="{{ vm.CONFIG.internal.channel.name.name }}"
+                                         cozen-input-name="{{ channel.id }}"
                                          cozen-input-pattern="{{ vm.CONFIG.internal.channel.name.pattern }}"
-                                         cozen-input-max-length="{{ vm.CONFIG.internal.channel.name.length }}">
+                                         cozen-input-max-length="{{ vm.CONFIG.internal.channel.name.length }}"
+                                         cozen-input-auto-complete="off"
+                                         style="flex: 1;">
                             </cozen-input>
+
+                            <!-- Add -->
+                            <div ng-show="$last && vm.newGroup.channels.length < vm.CONFIG.internal.channel.maxDefault"
+                                 class="atom-add-btn"
+                                 ng-click="vm.methods.addChannel()">
+                                <i class="fa fa-fw fa-plus-circle"></i>
+                            </div>
+
+                            <!-- Trash -->
+                            <div ng-show="!$last"
+                                 class="atom-remove-btn"
+                                 ng-click="vm.newGroup.channels.splice($index, 1)">
+                                <i class="fa fa-fw fa-trash-o"></i>
+                            </div>
                         </div>
 
                         <div class="center-flex-content space-medium-before space-medium after">
