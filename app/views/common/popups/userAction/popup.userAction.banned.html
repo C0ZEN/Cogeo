@@ -2,59 +2,59 @@
              cozen-popup-type-error
              cozen-popup-data="userActionBannedData"
              cozen-popup-header-title="popup_userAction_banned_header_title">
-  <div class="row">
-    <div class="col-xs-12 space-large-before space-medium-after">
-      <h3 class="no-margin-top">{{ 'popup_userAction_banned_body_title' | translate:userActionBannedData }}</h3>
-      <p class="help-text">{{ 'popup_userAction_banned_body_subtitle_1' | translate:userActionBannedData }}</p>
-      <p class="help-text">{{ 'popup_userAction_banned_body_subtitle_2' | translate:userActionBannedData }}</p>
-      <p class="help-text">{{ 'popup_userAction_banned_body_subtitle_3' | translate:userActionBannedData }}</p>
+    <div class="row">
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top">{{ 'popup_userAction_banned_body_title' | translate:userActionBannedData }}</h3>
+            <p class="help-text">{{ 'popup_userAction_banned_body_subtitle_1' | translate:userActionBannedData }}</p>
+            <p class="help-text">{{ 'popup_userAction_banned_body_subtitle_2' | translate:userActionBannedData }}</p>
+            <p class="help-text">{{ 'popup_userAction_banned_body_subtitle_3' | translate:userActionBannedData }}</p>
+        </div>
+        <cozen-form cozen-form-ctrl="popup"
+                    cozen-form-model="form"
+                    cozen-form-name="userActionBanned">
+
+            <!-- Fields -->
+            <div class="col-xs-12 space-medium-after">
+                <cozen-dropdown cozen-dropdown-model="popup.userActionBanned.for"
+                                cozen-dropdown-required="true"
+                                cozen-dropdown-label="popup_userAction_banned_body_for"
+                                cozen-dropdown-max-height="144"
+                                cozen-dropdown-single-display-selected-label="true"
+                                cozen-dropdown-placeholder="popup_userAction_banned_body_for_pc">
+                    <cozen-dropdown-item-simple ng-repeat="reason in popup.userActionKicked.data.reasons track by $index"
+                                                cozen-dropdown-item-simple-value="reason.id"
+                                                cozen-dropdown-item-simple-label="{{ reason.key | translate }}">
+                    </cozen-dropdown-item-simple>
+                </cozen-dropdown>
+                <div class="space-medium-before space-small-after">
+                    <label class="atom-label no-margin">{{ 'popup_userAction_banned_body_by' | translate }}:</label>
+                    <span class="atom-value">{{ popup.user.username }}</span>
+                </div>
+                <div>
+                    <label class="atom-label no-margin">{{ 'popup_userAction_banned_body_date' | translate }}:</label>
+                    <span date-now="EEEE dd MMMM yyyy - HH:mm"
+                          class="atom-value">
+                    </span>
+                </div>
+            </div>
+
+            <!-- Submit btn -->
+            <div class="col-xs-12 space-large-after">
+                <cozen-btn cozen-btn-type-error
+                           cozen-btn-icon-right="fa fa-fw icons8-no-chat"
+                           cozen-btn-label="'popup_userAction_banned_body_ban'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-disabled="popup.form.userActionBanned.$invalid"
+                           cozen-btn-on-click="popup.methods.userAction.banned()"
+                           cozen-btn-class="space-base-right">
+                </cozen-btn>
+                <cozen-btn cozen-btn-type-cold
+                           cozen-btn-label="'popup_cancel'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-on-click="popup.methods.closePopup('userActionBanned')"
+                           cozen-btn-class="space-base-left">
+                </cozen-btn>
+            </div>
+        </cozen-form>
     </div>
-    <cozen-form cozen-form-ctrl="popup"
-                cozen-form-model="form"
-                cozen-form-name="userActionBanned">
-
-      <!-- Fields -->
-      <div class="col-xs-12 space-medium-after">
-        <cozen-dropdown cozen-dropdown-model="popup.userActionBanned.for"
-                        cozen-dropdown-required="true"
-                        cozen-dropdown-label="popup_userAction_banned_body_for"
-                        cozen-dropdown-max-height="144"
-                        cozen-dropdown-single-display-selected-label="true"
-                        cozen-dropdown-placeholder="popup_userAction_banned_body_for_pc">
-          <cozen-dropdown-item-simple ng-repeat="reason in popup.userActionKicked.data.reasons track by $index"
-                                      cozen-dropdown-item-simple-value="reason.id"
-                                      cozen-dropdown-item-simple-label="{{ reason.key | translate }}">
-          </cozen-dropdown-item-simple>
-        </cozen-dropdown>
-        <div class="space-medium-before space-small-after">
-          <label class="atom-label no-margin">{{ 'popup_userAction_banned_body_by' | translate }}:</label>
-          <span class="atom-value">{{ popup.user.username }}</span>
-        </div>
-        <div>
-          <label class="atom-label no-margin">{{ 'popup_userAction_banned_body_date' | translate }}:</label>
-          <span date-now="EEEE dd MMMM yyyy - HH:mm"
-                class="atom-value">
-          </span>
-        </div>
-      </div>
-
-      <!-- Submit btn -->
-      <div class="col-xs-12 space-large-after">
-        <cozen-btn cozen-btn-type-error
-                   cozen-btn-icon-right="fa fa-fw icons8-no-chat"
-                   cozen-btn-label="'popup_userAction_banned_body_ban'"
-                   cozen-btn-auto-sizing="true"
-                   cozen-btn-disabled="popup.form.userActionBanned.$invalid"
-                   cozen-btn-on-click="popup.methods.userAction.banned()"
-                   cozen-btn-class="space-base-right">
-        </cozen-btn>
-        <cozen-btn cozen-btn-type-cold
-                   cozen-btn-label="'popup_cancel'"
-                   cozen-btn-auto-sizing="true"
-                   cozen-btn-on-click="popup.methods.closePopup('userActionBanned')"
-                   cozen-btn-class="space-base-left">
-        </cozen-btn>
-      </div>
-    </cozen-form>
-  </div>
 </cozen-popup>

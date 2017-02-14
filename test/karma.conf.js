@@ -82,11 +82,11 @@ module.exports = function(config) {
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/angularjs-social-login/angularjs-social-login.js',
       'bower_components/angular-ui-router-anim-in-out/anim-in-out.js',
+      'bower_components/angular-loading-bar/build/loading-bar.min.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
       'bower_components/cozen-lib/release/clean/main.js',
       'bower_components/cozen-lib/release/clean/template.cache.js',
       'bower_components/cozen-lib/release/clean/directives.js',
-      'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

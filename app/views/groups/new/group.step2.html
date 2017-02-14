@@ -59,24 +59,33 @@
                                          cozen-input-pattern="{{ vm.CONFIG.internal.channel.name.pattern }}"
                                          cozen-input-max-length="{{ vm.CONFIG.internal.channel.name.length }}"
                                          cozen-input-auto-complete="off"
+                                         cozen-input-has-error="channel.name == vm.newGroup.channels[$index - 1].name || channel.name == vm.newGroup.channels[$index + 1].name"
                                          style="flex: 1;">
                             </cozen-input>
 
                             <!-- Add -->
-                            <div ng-show="$last"
+                            <div ng-if="$last"
                                  class="atom-add-btn"
-                                 ng-class="{disabled: vm.newGroup.channels.length >= vm.CONFIG.internal.channel.maxDefault}"
-                                 ng-click="vm.newGroup.channels.length < vm.CONFIG.internal.channel.maxDefault ? vm.methods.addChannel() : null">
+                                 ng-class="{disabled: vm.newGroup.channels.length >= vm.CONFIG.internal.channel.maxDefault || vm.methods.isChannelNameDuplicated()}"
+                                 ng-click="vm.newGroup.channels.length < vm.CONFIG.internal.channel.maxDefault && !vm.methods.isChannelNameDuplicated() ? vm.methods.addChannel() : null">
                                 <i class="fa fa-fw fa-plus-circle"></i>
                             </div>
 
                             <!-- Trash -->
-                            <div ng-show="!$last"
+                            <div ng-if="!$last"
                                  class="atom-remove-btn"
                                  ng-click="vm.newGroup.channels.splice($index, 1)">
                                 <i class="fa fa-fw fa-trash-o"></i>
                             </div>
                         </div>
+
+                        <!-- Error if names are duplicated -->
+                        <cozen-alert cozen-alert-display="vm.methods.isChannelNameDuplicated()"
+                                     cozen-alert-type-error
+                                     cozen-alert-class="space-small-before"
+                                     cozen-alert-label="'groups_new_2_channel_name_error'"
+                                     cozen-alert-close-btn="false">
+                        </cozen-alert>
 
                         <div class="center-flex-content space-medium-before space-medium after">
 
@@ -96,7 +105,6 @@
                                 {{ 'groups_new_2_change_name' | translate }}
                             </a>
                         </div>
-
                     </cozen-form>
                 </div>
             </div>

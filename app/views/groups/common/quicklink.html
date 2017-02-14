@@ -1,19 +1,19 @@
 <div>
-  <cozen-tooltip cozen-tooltip-label="'groups_details_quicklink_tooltip' | translate:{groupName: vm.details.group.name}"
-                 cozen-tooltip-placement="auto bottom"
-                 cozen-tooltip-type-html>
-    <h4>
-      <a href
-         ng-click="goTo.view('app.groupJoin', {groupName: vm.details.group.name}, $event)"
-         ui-sref="app.groupJoin({groupName: vm.details.group.name})">
-        {{ vm.CONFIG.internal.group.quicklink + vm.details.group.name }}
-      </a>
-    </h4>
-  </cozen-tooltip>
-  <cozen-tooltip cozen-tooltip-label="'groups_details_quicklink_copy'">
-    <i class="fa fa-fw fa-copy atom-icon-btn purple"
-       ngclipboard
-       data-clipboard-text="{{ vm.CONFIG.internal.group.quicklink + vm.details.group.name }}">
-    </i>
-  </cozen-tooltip>
+    <cozen-tooltip cozen-tooltip-label="'groups_details_quicklink_tooltip' | translate:{groupName: vm.details.group.name}"
+                   cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-type-html>
+        <h4>
+            <a href
+               ng-click="goTo.view('app.groupJoin', {groupName: vm.details.group.name}, $event)"
+               ui-sref="app.groupJoin({groupName: vm.details.group.name})">
+                {{ vm.CONFIG.internal.group.quicklink + vm.details.group.name }}
+            </a>
+        </h4>
+    </cozen-tooltip>
+    <cozen-tooltip cozen-tooltip-label="'groups_details_quicklink_copy'">
+        <i class="fa fa-fw fa-copy atom-icon-btn purple"
+           ngclipboard
+           data-clipboard-text="{{ vm.CONFIG.internal.group.quicklink + vm.details.group.name }}">
+        </i>
+    </cozen-tooltip>
 </div>

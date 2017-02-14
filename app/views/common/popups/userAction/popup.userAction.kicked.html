@@ -2,71 +2,71 @@
              cozen-popup-type-warning
              cozen-popup-data="userActionKickedData"
              cozen-popup-header-title="popup_userAction_kicked_header_title">
-  <div class="row">
-    <div class="col-xs-12 space-large-before space-medium-after">
-      <h3 class="no-margin-top">{{ 'popup_userAction_kicked_body_title' | translate:userActionKickedData }}</h3>
-      <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_1' | translate:userActionKickedData }}</p>
-      <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_2' | translate:userActionKickedData }}</p>
-      <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_3' | translate:userActionKickedData }}</p>
+    <div class="row">
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top">{{ 'popup_userAction_kicked_body_title' | translate:userActionKickedData }}</h3>
+            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_1' | translate:userActionKickedData }}</p>
+            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_2' | translate:userActionKickedData }}</p>
+            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_3' | translate:userActionKickedData }}</p>
+        </div>
+        <cozen-form cozen-form-ctrl="popup"
+                    cozen-form-model="form"
+                    cozen-form-name="userActionKicked">
+
+            <!-- Fields -->
+            <div class="col-xs-12 space-medium-after">
+                <cozen-dropdown cozen-dropdown-model="popup.userActionKicked.for"
+                                cozen-dropdown-required="true"
+                                cozen-dropdown-class="space-medium-after"
+                                cozen-dropdown-label="popup_userAction_kicked_body_for"
+                                cozen-dropdown-max-height="216"
+                                cozen-dropdown-single-display-selected-label="true"
+                                cozen-dropdown-placeholder="popup_userAction_kicked_body_for_pc">
+                    <cozen-dropdown-item-simple ng-repeat="reason in popup.userActionKicked.data.reasons track by $index"
+                                                cozen-dropdown-item-simple-value="reason.id"
+                                                cozen-dropdown-item-simple-label="{{ reason.key | translate }}">
+                    </cozen-dropdown-item-simple>
+                </cozen-dropdown>
+                <cozen-dropdown cozen-dropdown-model="popup.userActionKicked.time"
+                                cozen-dropdown-required="true"
+                                cozen-dropdown-label="popup_userAction_kicked_body_time"
+                                cozen-dropdown-max-height="144"
+                                cozen-dropdown-single-display-selected-label="true"
+                                cozen-dropdown-placeholder="popup_userAction_kicked_body_time_pc">
+                    <cozen-dropdown-item-simple ng-repeat="time in popup.userActionKicked.data.times track by $index"
+                                                cozen-dropdown-item-simple-value="time.time"
+                                                cozen-dropdown-item-simple-label="{{ time.key | translate }}">
+                    </cozen-dropdown-item-simple>
+                </cozen-dropdown>
+                <div class="space-medium-before space-small-after">
+                    <label class="atom-label no-margin">{{ 'popup_userAction_kicked_body_by' | translate }}:</label>
+                    <span class="atom-value">{{ popup.user.username }}</span>
+                </div>
+                <div>
+                    <label class="atom-label no-margin">{{ 'popup_userAction_kicked_body_date' | translate }}:</label>
+                    <span date-now="EEEE dd MMMM yyyy - HH:mm"
+                          class="atom-value">
+                    </span>
+                </div>
+            </div>
+
+            <!-- Submit btn -->
+            <div class="col-xs-12 space-large-after">
+                <cozen-btn cozen-btn-type-warning
+                           cozen-btn-icon-right="fa fa-fw icons8-no-chat"
+                           cozen-btn-label="'popup_userAction_kicked_body_kick'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-disabled="popup.form.userActionKicked.$invalid"
+                           cozen-btn-on-click="popup.methods.userAction.kicked()"
+                           cozen-btn-class="space-base-right">
+                </cozen-btn>
+                <cozen-btn cozen-btn-type-cold
+                           cozen-btn-label="'popup_cancel'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-on-click="popup.methods.closePopup('userActionKicked')"
+                           cozen-btn-class="space-base-left">
+                </cozen-btn>
+            </div>
+        </cozen-form>
     </div>
-    <cozen-form cozen-form-ctrl="popup"
-                cozen-form-model="form"
-                cozen-form-name="userActionKicked">
-
-      <!-- Fields -->
-      <div class="col-xs-12 space-medium-after">
-        <cozen-dropdown cozen-dropdown-model="popup.userActionKicked.for"
-                        cozen-dropdown-required="true"
-                        cozen-dropdown-class="space-medium-after"
-                        cozen-dropdown-label="popup_userAction_kicked_body_for"
-                        cozen-dropdown-max-height="216"
-                        cozen-dropdown-single-display-selected-label="true"
-                        cozen-dropdown-placeholder="popup_userAction_kicked_body_for_pc">
-          <cozen-dropdown-item-simple ng-repeat="reason in popup.userActionKicked.data.reasons track by $index"
-                                      cozen-dropdown-item-simple-value="reason.id"
-                                      cozen-dropdown-item-simple-label="{{ reason.key | translate }}">
-          </cozen-dropdown-item-simple>
-        </cozen-dropdown>
-        <cozen-dropdown cozen-dropdown-model="popup.userActionKicked.time"
-                        cozen-dropdown-required="true"
-                        cozen-dropdown-label="popup_userAction_kicked_body_time"
-                        cozen-dropdown-max-height="144"
-                        cozen-dropdown-single-display-selected-label="true"
-                        cozen-dropdown-placeholder="popup_userAction_kicked_body_time_pc">
-          <cozen-dropdown-item-simple ng-repeat="time in popup.userActionKicked.data.times track by $index"
-                                      cozen-dropdown-item-simple-value="time.time"
-                                      cozen-dropdown-item-simple-label="{{ time.key | translate }}">
-          </cozen-dropdown-item-simple>
-        </cozen-dropdown>
-        <div class="space-medium-before space-small-after">
-          <label class="atom-label no-margin">{{ 'popup_userAction_kicked_body_by' | translate }}:</label>
-          <span class="atom-value">{{ popup.user.username }}</span>
-        </div>
-        <div>
-          <label class="atom-label no-margin">{{ 'popup_userAction_kicked_body_date' | translate }}:</label>
-          <span date-now="EEEE dd MMMM yyyy - HH:mm"
-                class="atom-value">
-          </span>
-        </div>
-      </div>
-
-      <!-- Submit btn -->
-      <div class="col-xs-12 space-large-after">
-        <cozen-btn cozen-btn-type-warning
-                   cozen-btn-icon-right="fa fa-fw icons8-no-chat"
-                   cozen-btn-label="'popup_userAction_kicked_body_kick'"
-                   cozen-btn-auto-sizing="true"
-                   cozen-btn-disabled="popup.form.userActionKicked.$invalid"
-                   cozen-btn-on-click="popup.methods.userAction.kicked()"
-                   cozen-btn-class="space-base-right">
-        </cozen-btn>
-        <cozen-btn cozen-btn-type-cold
-                   cozen-btn-label="'popup_cancel'"
-                   cozen-btn-auto-sizing="true"
-                   cozen-btn-on-click="popup.methods.closePopup('userActionKicked')"
-                   cozen-btn-class="space-base-left">
-        </cozen-btn>
-      </div>
-    </cozen-form>
-  </div>
 </cozen-popup>

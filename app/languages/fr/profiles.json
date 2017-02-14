@@ -1,9 +1,9 @@
 {
-  "profiles_user": "Profil d'un membre Cogeo",
-  "profiles_user_title": "Profil de {{username}}",
-  "profiles_user_subtitle": "Consulter son profil et mené des actions sociales.",
-  "profiles_user_details": "Ses informations",
-  "profiles_user_add_to_friend": "Ajouter aux amis",
-  "profiles_user_add_from_friends": "Supprimer des amis",
-  "profiles_user_groups": "Ses groupes"
+    "profiles_user": "Profil d'un membre Cogeo",
+    "profiles_user_title": "Profil de {{username}}",
+    "profiles_user_subtitle": "Consulter son profil et mené des actions sociales.",
+    "profiles_user_details": "Ses informations",
+    "profiles_user_add_to_friend": "Ajouter aux amis",
+    "profiles_user_add_from_friends": "Supprimer des amis",
+    "profiles_user_groups": "Ses groupes"
 }

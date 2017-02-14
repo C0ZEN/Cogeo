@@ -440,6 +440,7 @@
             isConnected          : isConnected,
             logout               : logout,
             setUserInLocalStorage: setUserInLocalStorage,
+            getFriends           : getFriends,
             httpRequest          : {
                 getUser                        : httpRequestGetUser,
                 register                       : httpRequestRegister,
@@ -563,6 +564,10 @@
                 username: userData.username,
                 token   : userData.token.login
             });
+        }
+
+        function getFriends() {
+            return [];
         }
 
         /// HTTP REQUEST ///

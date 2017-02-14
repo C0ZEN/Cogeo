@@ -1,15 +1,15 @@
 {
-  "navbar_login": "Connexion",
-  "navbar_register": "Inscription",
-  "navbar_logout": "Déconnexion",
-  "navbar_product": "Produit",
-  "navbar_price": "Prix",
-  "navbar_other": "Autre",
-  "navbar_other_profile": "Profil",
-  "navbar_other_notifications": "Notifications",
-  "navbar_other_log": "Historique",
-  "navbar_other_settings": "Paramètres",
-  "navbar_groups": "Groupes",
-  "navbar_groups_all": "Tous les groupes",
-  "navbar_groups_add": "Ajouter un groupe"
+    "navbar_login": "Connexion",
+    "navbar_register": "Inscription",
+    "navbar_logout": "Déconnexion",
+    "navbar_product": "Produit",
+    "navbar_price": "Prix",
+    "navbar_other": "Autre",
+    "navbar_other_profile": "Profil",
+    "navbar_other_notifications": "Notifications",
+    "navbar_other_log": "Historique",
+    "navbar_other_settings": "Paramètres",
+    "navbar_groups": "Groupes",
+    "navbar_groups_all": "Tous les groupes",
+    "navbar_groups_add": "Ajouter un groupe"
 }

@@ -1,21 +1,21 @@
 (function (angular) {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('4pjtApp')
-    .controller('ErrorCtrl', ErrorCtrl);
+    angular
+        .module('4pjtApp')
+        .controller('ErrorCtrl', ErrorCtrl);
 
-  ErrorCtrl.$inject = [];
+    ErrorCtrl.$inject = [];
 
-  function ErrorCtrl() {
-    var vm = this;
+    function ErrorCtrl() {
+        var vm = this;
 
-    // Common data
-    vm.data = {};
+        // Common data
+        vm.data = {};
 
-    // Methods
-    vm.methods = {};
-  }
+        // Methods
+        vm.methods = {};
+    }
 
 })(window.angular);
 

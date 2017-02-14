@@ -104,6 +104,12 @@
                 "release/clean/directives.js",
                 "release/main.min.css"
             ]
+        },
+        "angular-loading-bar": {
+            "main": [
+                "build/loading-bar.min.js",
+                "build/loading-bar.min.css"
+            ]
         }
     },
     "resolutions": {

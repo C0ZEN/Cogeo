@@ -8,30 +8,30 @@
  *
  */
 (function (angular) {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('4pjtApp')
-    .directive('logoLayer', logoLayer);
+    angular
+        .module('4pjtApp')
+        .directive('logoLayer', logoLayer);
 
-  logoLayer.$inject = [
-    'VG_STATES'
-  ];
+    logoLayer.$inject = [
+        'VG_STATES'
+    ];
 
-  function logoLayer(VG_STATES) {
-    return {
-      link       : link,
-      restrict   : 'E',
-      require    : "^videogular",
-      replace    : false,
-      transclude : false,
-      templateUrl: 'scripts/directives/logoLayer/logoLayer.template.html'
-    };
+    function logoLayer(VG_STATES) {
+        return {
+            link       : link,
+            restrict   : 'E',
+            require    : "^videogular",
+            replace    : false,
+            transclude : false,
+            templateUrl: 'scripts/directives/logoLayer/logoLayer.template.html'
+        };
 
-    function link(scope, element, attrs, API) {
-      scope.API = API;
+        function link(scope, element, attrs, API) {
+            scope.API = API;
+        }
     }
-  }
 
 })(window.angular);
 

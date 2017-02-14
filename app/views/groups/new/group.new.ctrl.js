@@ -6,7 +6,7 @@
         .controller('GroupNewCtrl', GroupNewCtrl);
 
     GroupNewCtrl.$inject = [
-        '$document',
+        'userFactory',
         '$state',
         'CONFIG',
         'goTo',
@@ -16,17 +16,18 @@
         'rfc4122'
     ];
 
-    function GroupNewCtrl($document, $state, CONFIG, goTo, $animate, $timeout, $filter, rfc4122) {
+    function GroupNewCtrl(userFactory, $state, CONFIG, goTo, $animate, $timeout, $filter, rfc4122) {
         var vm = this;
 
         // Methods
         vm.methods = {
-            checkGroupName: checkGroupName,
-            checkData     : checkData,
-            checkSettings : checkSettings,
-            createGroup   : createGroup,
-            goStepBackward: goStepBackward,
-            addChannel    : addChannel
+            checkGroupName         : checkGroupName,
+            checkData              : checkData,
+            checkSettings          : checkSettings,
+            createGroup            : createGroup,
+            goStepBackward         : goStepBackward,
+            addChannel             : addChannel,
+            isChannelNameDuplicated: isChannelNameDuplicated
         };
 
         // Common data
@@ -37,6 +38,9 @@
         };
         vm.newGroup    = {
             channels: []
+        };
+        vm.details     = {
+            group: {}
         };
         vm.stepForward = true;
         vm.methods.addChannel($filter('translate')('groups_new_2_default_channel'));
@@ -62,6 +66,8 @@
                     if (Methods.isNullOrEmpty(vm.newGroup.name) || Methods.isNullOrEmpty(vm.newGroup.description)) {
                         goTo.view('app.groupNew.firstStep');
                     }
+                    vm.availableUsers     = userFactory.getFriends();
+                    vm.details.group.name = angular.copy(vm.newGroup.name);
                     break;
             }
         }
@@ -103,6 +109,14 @@
                 default: true,
                 id     : rfc4122.v4()
             });
+        }
+
+        function isChannelNameDuplicated() {
+            var channelsNames = [];
+            angular.forEach(vm.newGroup.channels, function (channel) {
+                channelsNames.push(channel.name);
+            });
+            return Methods.hasDuplicates(channelsNames);
         }
     }
 

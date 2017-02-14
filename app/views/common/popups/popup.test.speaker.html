@@ -2,61 +2,61 @@
              cozen-popup-type-info
              cozen-popup-on-hide="popup.testSpeaker.video.API.pause();"
              cozen-popup-header-title="popup_test_speaker_header_title">
-  <div class="row">
-    <div class="col-xs-10 col-xs-push-1 space-large-after">
+    <div class="row">
+        <div class="col-xs-10 col-xs-push-1 space-large-after">
 
-      <!-- Title -->
-      <h3 class="space-large-before">{{ 'popup_test_speaker_body_title' | translate }}</h3>
-      <p class="help-text">{{ 'popup_test_speaker_body_subtitle_1' | translate }}</p>
-      <p class="help-text">{{ 'popup_test_speaker_body_subtitle_2' | translate }}</p>
+            <!-- Title -->
+            <h3 class="space-large-before">{{ 'popup_test_speaker_body_title' | translate }}</h3>
+            <p class="help-text">{{ 'popup_test_speaker_body_subtitle_1' | translate }}</p>
+            <p class="help-text">{{ 'popup_test_speaker_body_subtitle_2' | translate }}</p>
 
-      <!-- Video player -->
-      <div class="space-medium-before">
-        <videogular vg-player-ready="popup.methods.onPlayerReady($API)"
-                    vg-theme="popup.testSpeaker.video.theme">
-          <vg-media vg-src="popup.testSpeaker.video.sources"
-                    vg-tracks="popup.testSpeaker.video.tracks">
-          </vg-media>
+            <!-- Video player -->
+            <div class="space-medium-before">
+                <videogular vg-player-ready="popup.methods.onPlayerReady($API)"
+                            vg-theme="popup.testSpeaker.video.theme">
+                    <vg-media vg-src="popup.testSpeaker.video.sources"
+                              vg-tracks="popup.testSpeaker.video.tracks">
+                    </vg-media>
 
-          <vg-controls>
+                    <vg-controls>
 
-            <!-- Play/pause btn -->
-            <vg-play-pause-button></vg-play-pause-button>
+                        <!-- Play/pause btn -->
+                        <vg-play-pause-button></vg-play-pause-button>
 
-            <!-- Current time -->
-            <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+                        <!-- Current time -->
+                        <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
 
-            <!-- Time bar -->
-            <vg-scrub-bar>
-              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-            </vg-scrub-bar>
+                        <!-- Time bar -->
+                        <vg-scrub-bar>
+                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                        </vg-scrub-bar>
 
-            <!-- Time left -->
-            <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+                        <!-- Time left -->
+                        <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
 
-            <!-- Volume btn -->
-            <vg-volume>
-              <vg-mute-button></vg-mute-button>
-              <vg-volume-bar></vg-volume-bar>
-            </vg-volume>
+                        <!-- Volume btn -->
+                        <vg-volume>
+                            <vg-mute-button></vg-mute-button>
+                            <vg-volume-bar></vg-volume-bar>
+                        </vg-volume>
 
-            <!-- Fullscreen btn -->
-            <!--<vg-fullscreen-button ng-click="popup.click()"></vg-fullscreen-button>-->
-          </vg-controls>
+                        <!-- Fullscreen btn -->
+                        <!--<vg-fullscreen-button ng-click="popup.click()"></vg-fullscreen-button>-->
+                    </vg-controls>
 
-          <!-- Loader -->
-          <vg-buffering></vg-buffering>
+                    <!-- Loader -->
+                    <vg-buffering></vg-buffering>
 
-          <!-- Play btn -->
-          <vg-overlay-play></vg-overlay-play>
+                    <!-- Play btn -->
+                    <vg-overlay-play></vg-overlay-play>
 
-          <!-- Poster -->
-          <vg-poster vg-url="popup.testSpeaker.video.plugins.poster"></vg-poster>
+                    <!-- Poster -->
+                    <vg-poster vg-url="popup.testSpeaker.video.plugins.poster"></vg-poster>
 
-          <!-- Logo -->
-          <logo-layer></logo-layer>
-        </videogular>
-      </div>
+                    <!-- Logo -->
+                    <logo-layer></logo-layer>
+                </videogular>
+            </div>
+        </div>
     </div>
-  </div>
 </cozen-popup>

@@ -27,7 +27,6 @@
             'uuid',
             'monospaced.elastic',
             'duScroll',
-            'cozenLib',
             'rzModule',
             'tmh.dynamicLocale',
             'angularAudioRecorder',
@@ -41,7 +40,8 @@
             'LocalStorageModule',
             'socialLogin',
             'anim-in-out',
-            'cfp.loadingBar'
+            'angular-loading-bar',
+            'cozenLib'
         ])
         .config(config)
         .run(run);

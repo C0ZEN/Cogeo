@@ -1,24 +1,24 @@
 (function (angular) {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('4pjtApp')
-    .directive('dateNow', dateNow);
+    angular
+        .module('4pjtApp')
+        .directive('dateNow', dateNow);
 
-  dateNow.$inject = [
-    '$filter'
-  ];
+    dateNow.$inject = [
+        '$filter'
+    ];
 
-  function dateNow($filter) {
-    return {
-      link      : link,
-      restrict  : 'A',
-      replace   : false,
-      transclude: false
-    };
+    function dateNow($filter) {
+        return {
+            link      : link,
+            restrict  : 'A',
+            replace   : false,
+            transclude: false
+        };
 
-    function link(scope, element, attrs) {
-      element.text($filter('capitalize')($filter('date')(new Date(), attrs.dateNow)));
+        function link(scope, element, attrs) {
+            element.text($filter('capitalize')($filter('date')(new Date(), attrs.dateNow)));
+        }
     }
-  }
 })(window.angular);

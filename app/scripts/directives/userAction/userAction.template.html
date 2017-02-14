@@ -2,53 +2,53 @@
      ng-show="userActionIsVisible"
      ng-class="_methods.getMainClass()">
 
-  <!-- Granted -->
-  <cozen-tooltip cozen-tooltip-placement="auto bottom"
-                 cozen-tooltip-label="'other_userAction_granted'">
-    <div ng-show="userActionGranted"
-         ng-click="_methods.onClick($event, 'granted')"
-         class="action-item granted">
-      <i class="fa fa-fw fa-unlock-alt"></i>
-    </div>
-  </cozen-tooltip>
+    <!-- Granted -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_userAction_granted'">
+        <div ng-show="userActionGranted"
+             ng-click="_methods.onClick($event, 'granted')"
+             class="action-item granted">
+            <i class="fa fa-fw fa-unlock-alt"></i>
+        </div>
+    </cozen-tooltip>
 
-  <!-- Revoked -->
-  <cozen-tooltip cozen-tooltip-placement="auto bottom"
-                 cozen-tooltip-label="'other_userAction_revoked'">
-    <div ng-show="userActionRevoked"
-         ng-click="_methods.onClick($event, 'revoked')"
-         class="action-item revoked">
-      <i class="fa fa-fw fa-lock"></i>
-    </div>
-  </cozen-tooltip>
+    <!-- Revoked -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_userAction_revoked'">
+        <div ng-show="userActionRevoked"
+             ng-click="_methods.onClick($event, 'revoked')"
+             class="action-item revoked">
+            <i class="fa fa-fw fa-lock"></i>
+        </div>
+    </cozen-tooltip>
 
-  <!-- Kicked -->
-  <cozen-tooltip cozen-tooltip-placement="auto bottom"
-                 cozen-tooltip-label="'other_userAction_kicked'">
-    <div ng-show="userActionKicked"
-         ng-click="_methods.onClick($event, 'kicked')"
-         class="action-item kicked">
-      <i class="fa fa-fw icons8-no-chat"></i>
-    </div>
-  </cozen-tooltip>
+    <!-- Kicked -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_userAction_kicked'">
+        <div ng-show="userActionKicked"
+             ng-click="_methods.onClick($event, 'kicked')"
+             class="action-item kicked">
+            <i class="fa fa-fw icons8-no-chat"></i>
+        </div>
+    </cozen-tooltip>
 
-  <!-- Banned -->
-  <cozen-tooltip cozen-tooltip-placement="auto bottom"
-                 cozen-tooltip-label="'other_userAction_banned'">
-    <div ng-show="userActionBanned"
-         ng-click="_methods.onClick($event, 'banned')"
-         class="action-item banned">
-      <i class="fa fa-fw icons8-no-chat"></i>
-    </div>
-  </cozen-tooltip>
+    <!-- Banned -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_userAction_banned'">
+        <div ng-show="userActionBanned"
+             ng-click="_methods.onClick($event, 'banned')"
+             class="action-item banned">
+            <i class="fa fa-fw icons8-no-chat"></i>
+        </div>
+    </cozen-tooltip>
 
-  <!-- Unbanned -->
-  <cozen-tooltip cozen-tooltip-placement="auto bottom"
-                 cozen-tooltip-label="'other_userAction_unbanned'">
-    <div ng-show="userActionUnbanned"
-         ng-click="_methods.onClick($event, 'unbanned')"
-         class="action-item unbanned">
-      <i class="fa fa-fw icons8-chat"></i>
-    </div>
-  </cozen-tooltip>
+    <!-- Unbanned -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_userAction_unbanned'">
+        <div ng-show="userActionUnbanned"
+             ng-click="_methods.onClick($event, 'unbanned')"
+             class="action-item unbanned">
+            <i class="fa fa-fw icons8-chat"></i>
+        </div>
+    </cozen-tooltip>
 </div>

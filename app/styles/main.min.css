@@ -1515,6 +1515,17 @@ div.atom-loader:after {
             transform: translate(-48px, 48px) rotate(45deg);
   }
 }
+#loading-bar .bar {
+  background: #2c9fdd;
+  height: 3px;
+}
+#loading-bar .peg {
+  box-shadow: #2c9fdd 1px 0 6px 1px;
+}
+#loading-bar-spinner .spinner-icon {
+  border-top-color: #2c9fdd;
+  border-left-color: #2c9fdd;
+}
 section {
   padding: 84px 0;
 }

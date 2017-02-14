@@ -23,24 +23,30 @@
 
         function requestGet(url, callbackSuccess, callbackError) {
             var deferred = $q.defer();
-            if (CONFIG.debug) Methods.httpRequestLog({
-                methods: 'GET',
-                url    : CONFIG.internal.API + url,
-                data   : {
-                    session: null,
-                    data   : null
-                }
-            });
+            if (CONFIG.debug) {
+                Methods.httpRequestLog({
+                    methods: 'GET',
+                    url    : CONFIG.internal.API + url,
+                    data   : {
+                        session: null,
+                        data   : null
+                    }
+                });
+            }
             $http.get(CONFIG.internal.API + url)
                 .then(function (response) {
                     deferred.resolve(response);
                     console.log('success');
-                    if (Methods.isFunction(callbackSuccess)) callbackSuccess();
+                    if (Methods.isFunction(callbackSuccess)) {
+                        callbackSuccess();
+                    }
                 })
                 .catch(function (response) {
                     deferred.reject(response, 200);
                     console.log('error');
-                    if (Methods.isFunction(callbackError)) callbackError();
+                    if (Methods.isFunction(callbackError)) {
+                        callbackError();
+                    }
                     customError(response.error);
                 })
             ;
@@ -49,23 +55,29 @@
 
         function requestPost(url, params, callbackSuccess, callbackError) {
             var deferred = $q.defer();
-            if (CONFIG.debug) Methods.httpRequestLog({
-                methods: 'POST',
-                url    : CONFIG.internal.API + url,
-                data   : {
-                    session: {},
-                    data   : params
-                }
-            });
+            if (CONFIG.debug) {
+                Methods.httpRequestLog({
+                    methods: 'POST',
+                    url    : CONFIG.internal.API + url,
+                    data   : {
+                        session: {},
+                        data   : params
+                    }
+                });
+            }
             $http.post(CONFIG.internal.API + url, {
                 data   : params,
                 session: {}
             }).then(function (response) {
                 deferred.resolve(response);
-                if (Methods.isFunction(callbackSuccess)) callbackSuccess();
+                if (Methods.isFunction(callbackSuccess)) {
+                    callbackSuccess();
+                }
             }).catch(function (response) {
                 deferred.reject(response, 200);
-                if (Methods.isFunction(callbackError)) callbackError();
+                if (Methods.isFunction(callbackError)) {
+                    callbackError();
+                }
                 customError(response.error);
             });
             return deferred.promise;
@@ -73,23 +85,29 @@
 
         function requestPut(url, params, callbackSuccess, callbackError) {
             var deferred = $q.defer();
-            if (CONFIG.debug) Methods.httpRequestLog({
-                methods: 'PUT',
-                url    : CONFIG.internal.API + url,
-                data   : {
-                    session: {},
-                    data   : params
-                }
-            });
+            if (CONFIG.debug) {
+                Methods.httpRequestLog({
+                    methods: 'PUT',
+                    url    : CONFIG.internal.API + url,
+                    data   : {
+                        session: {},
+                        data   : params
+                    }
+                });
+            }
             $http.put(CONFIG.internal.API + url, {
                 data   : params,
                 session: {}
             }).then(function (response) {
                 deferred.resolve(response);
-                if (Methods.isFunction(callbackSuccess)) callbackSuccess();
+                if (Methods.isFunction(callbackSuccess)) {
+                    callbackSuccess();
+                }
             }).catch(function (response) {
                 deferred.reject(response, 200);
-                if (Methods.isFunction(callbackError)) callbackError();
+                if (Methods.isFunction(callbackError)) {
+                    callbackError();
+                }
                 customError(response.error);
             });
             return deferred.promise;

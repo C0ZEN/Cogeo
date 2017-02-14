@@ -1,27 +1,27 @@
 (function (angular) {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('4pjtApp')
-    .config(config);
+    angular
+        .module('4pjtApp')
+        .config(config);
 
-  config.$inject = [
-    '$stateProvider'
-  ];
+    config.$inject = [
+        '$stateProvider'
+    ];
 
-  function config($stateProvider) {
+    function config($stateProvider) {
 
-    // Error route
-    $stateProvider
-      .state('app.error', {
-        url         : '/error',
-        templateUrl : 'views/common/error/error.html',
-        controller  : 'ErrorCtrl',
-        controllerAs: 'vm',
-        data        : {
-          pageTitle: 'error'
-        }
-      });
-  }
+        // Error route
+        $stateProvider
+            .state('app.error', {
+                url         : '/error',
+                templateUrl : 'views/common/error/error.html',
+                controller  : 'ErrorCtrl',
+                controllerAs: 'vm',
+                data        : {
+                    pageTitle: 'error'
+                }
+            });
+    }
 
 })(window.angular);

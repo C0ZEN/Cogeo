@@ -52,11 +52,11 @@
         function save(form) {
             vm.loading = true;
             switch (form) {
-            case 'edit':
-                vm.loading = false;
-                groupsFactory.updateGroup(vm.edit);
-                goTo.view('app.groups.details', {groupName: vm.details.name});
-                break;
+                case 'edit':
+                    vm.loading = false;
+                    groupsFactory.updateGroup(vm.edit);
+                    goTo.view('app.groups.details', {groupName: vm.details.name});
+                    break;
             }
         }
 
@@ -121,43 +121,43 @@
 
         function getLogSrc(type) {
             switch (type) {
-            case 'newGroupCreated':
-            case 'newGroupJoined':
-            case 'newChannelCreated':
-            case 'newChannelJoined':
-                return 'icons8-plus';
-            case 'groupLeft':
-            case 'channelLeft':
-                return 'icons8-logout-rounded';
-            case 'groupEdited':
-            case 'channelEdited':
-            case 'socialUserRenamed':
-            case 'socialUserAliasRemoved':
-                return 'icons8-edit';
-            case 'groupInvitationSentOne':
-            case 'groupInvitationSentMany':
-            case 'channelInvitationSentOne':
-            case 'channelInvitationSentMany':
-            case 'socialInvitationSent':
-                return 'icons8-message-filled';
-            case 'groupPermissionsGranted':
-            case 'channelPermissionsGranted':
-                return 'icons8-unlock';
-            case 'groupPermissionsRevoked':
-            case 'channelPermissionsRevoked':
-                return 'icons8-lock';
-            case 'groupUserKicked':
-            case 'groupUserBanned':
-            case 'channelUserKicked':
-            case 'channelUserBanned':
-            case 'socialUserBlocked':
-            case 'socialUserRemoved':
-                return 'icons8-no-chat';
-            case 'groupUserUnbanned':
-            case 'channelUserUnbanned':
-            case 'socialUserUnblocked':
-            case 'socialInvitationAccepted':
-                return 'icons8-chat';
+                case 'newGroupCreated':
+                case 'newGroupJoined':
+                case 'newChannelCreated':
+                case 'newChannelJoined':
+                    return 'icons8-plus';
+                case 'groupLeft':
+                case 'channelLeft':
+                    return 'icons8-logout-rounded';
+                case 'groupEdited':
+                case 'channelEdited':
+                case 'socialUserRenamed':
+                case 'socialUserAliasRemoved':
+                    return 'icons8-edit';
+                case 'groupInvitationSentOne':
+                case 'groupInvitationSentMany':
+                case 'channelInvitationSentOne':
+                case 'channelInvitationSentMany':
+                case 'socialInvitationSent':
+                    return 'icons8-message-filled';
+                case 'groupPermissionsGranted':
+                case 'channelPermissionsGranted':
+                    return 'icons8-unlock';
+                case 'groupPermissionsRevoked':
+                case 'channelPermissionsRevoked':
+                    return 'icons8-lock';
+                case 'groupUserKicked':
+                case 'groupUserBanned':
+                case 'channelUserKicked':
+                case 'channelUserBanned':
+                case 'socialUserBlocked':
+                case 'socialUserRemoved':
+                    return 'icons8-no-chat';
+                case 'groupUserUnbanned':
+                case 'channelUserUnbanned':
+                case 'socialUserUnblocked':
+                case 'socialInvitationAccepted':
+                    return 'icons8-chat';
             }
         }
 
@@ -173,16 +173,16 @@
 
         function recruit(type) {
             switch (type) {
-            case 'cogeoUsers':
-                vm.methods.onRecruitInit();
-                break;
-            case 'cogeoEmail':
-                vm.recruitEmail = [
-                    {
-                        email: ''
-                    }
-                ];
-                break;
+                case 'cogeoUsers':
+                    vm.methods.onRecruitInit();
+                    break;
+                case 'cogeoEmail':
+                    vm.recruitEmail = [
+                        {
+                            email: ''
+                        }
+                    ];
+                    break;
             }
         }
 

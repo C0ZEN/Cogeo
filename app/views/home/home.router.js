@@ -1,27 +1,27 @@
 (function (angular) {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('4pjtApp')
-    .config(config);
+    angular
+        .module('4pjtApp')
+        .config(config);
 
-  config.$inject = [
-    '$stateProvider'
-  ];
+    config.$inject = [
+        '$stateProvider'
+    ];
 
-  function config($stateProvider) {
+    function config($stateProvider) {
 
-    // Home route (default)
-    $stateProvider
-      .state('app.home', {
-        url         : '/home',
-        templateUrl : 'views/home/home.html',
-        controller  : 'HomeCtrl',
-        controllerAs: 'vm',
-        data        : {
-          pageTitle: 'home'
-        }
-      });
-  }
+        // Home route (default)
+        $stateProvider
+            .state('app.home', {
+                url         : '/home',
+                templateUrl : 'views/home/home.html',
+                controller  : 'HomeCtrl',
+                controllerAs: 'vm',
+                data        : {
+                    pageTitle: 'home'
+                }
+            });
+    }
 
 })(window.angular);

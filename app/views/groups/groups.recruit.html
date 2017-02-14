@@ -131,14 +131,14 @@
                             <div class="atom-email-btn">
 
                                 <!-- Add -->
-                                <div ng-show="$last"
+                                <div ng-if="$last"
                                      class="atom-add-btn"
                                      ng-click="vm.recruitEmail.push({email: ''})">
                                     <i class="fa fa-fw fa-plus-circle"></i>
                                 </div>
 
                                 <!-- Trash -->
-                                <div ng-show="!$last"
+                                <div ng-if="!$last"
                                      class="atom-remove-btn"
                                      ng-click="vm.recruitEmail.splice($index, 1)">
                                     <i class="fa fa-fw fa-trash-o"></i>
