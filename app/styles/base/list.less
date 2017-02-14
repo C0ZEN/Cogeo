@@ -270,6 +270,15 @@ div.atom-remove-btn {
     i {
         vertical-align : inherit;
     }
+    &.disabled {
+        cursor : not-allowed;
+        color  : @atom-color-line-rule;
+        &:focus,
+        &:active,
+        &:hover {
+            color : @atom-color-line-rule;
+        }
+    }
 }
 // Email list
 div.atom-email-list {

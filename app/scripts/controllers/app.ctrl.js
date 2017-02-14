@@ -9,10 +9,11 @@
         'CONFIG',
         'userFactory',
         '$scope',
-        'localStorageService'
+        'localStorageService',
+        'cfpLoadingBar'
     ];
 
-    function AppCtrl(CONFIG, userFactory, $scope, localStorageService) {
+    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, cfpLoadingBar) {
         var app = this;
 
         // Common data
@@ -24,6 +25,8 @@
             onInit: onInit
         };
 
+        cfpLoadingBar.start();
+        cfpLoadingBar.inc();
         window.onload = app.methods.onInit;
 
         function onInit() {
@@ -36,6 +39,7 @@
 
                 // Login with the app (how each load, to make sure that the token is still valid)
                 // May be a potential performance leak nevertheless the security is enhanced
+                cfpLoadingBar.inc();
                 userFactory.httpRequest.login(user, isDone, isDone);
             }
             else {
@@ -44,7 +48,9 @@
 
             function isDone() {
                 requestQuantity--;
+                cfpLoadingBar.inc();
                 if (requestQuantity <= 0) {
+                    cfpLoadingBar.complete();
                     app.isReady = true;
                     Methods.firstLoadLog(false);
                     Methods.safeApply($scope);

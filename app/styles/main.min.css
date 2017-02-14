@@ -1392,6 +1392,19 @@ div.atom-add-btn i,
 div.atom-remove-btn i {
   vertical-align: inherit;
 }
+div.atom-add-btn.disabled,
+div.atom-remove-btn.disabled {
+  cursor: not-allowed;
+  color: #d6dbdb;
+}
+div.atom-add-btn.disabled:focus,
+div.atom-remove-btn.disabled:focus,
+div.atom-add-btn.disabled:active,
+div.atom-remove-btn.disabled:active,
+div.atom-add-btn.disabled:hover,
+div.atom-remove-btn.disabled:hover {
+  color: #d6dbdb;
+}
 div.atom-email-list {
   display: -webkit-box;
   display: -ms-flexbox;

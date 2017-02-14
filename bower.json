@@ -43,6 +43,7 @@
         "angular-local-storage": "^0.5.2",
         "angularjs-social-login": "^2.4.5",
         "angular-ui-router-anim-in-out": "^1.0.2",
+        "angular-loading-bar": "^0.9.0",
         "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop"
     },
     "devDependencies": {
@@ -75,14 +76,6 @@
                 "src/scrollbars.js"
             ]
         },
-        "cozen-lib": {
-            "main": [
-                "release/clean/main.js",
-                "release/clean/template.cache.js",
-                "release/clean/directives.js",
-                "release/main.min.css"
-            ]
-        },
         "angularjs-slider": {
             "main": [
                 "dist/rzslider.min.js",
@@ -102,6 +95,14 @@
         "animate.css": {
             "main": [
                 "animate.min.css"
+            ]
+        },
+        "cozen-lib": {
+            "main": [
+                "release/clean/main.js",
+                "release/clean/template.cache.js",
+                "release/clean/directives.js",
+                "release/main.min.css"
             ]
         }
     },

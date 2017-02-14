@@ -40,7 +40,8 @@
             'ngclipboard',
             'LocalStorageModule',
             'socialLogin',
-            'anim-in-out'
+            'anim-in-out',
+            'cfp.loadingBar'
         ])
         .config(config)
         .run(run);

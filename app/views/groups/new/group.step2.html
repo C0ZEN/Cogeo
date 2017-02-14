@@ -63,9 +63,10 @@
                             </cozen-input>
 
                             <!-- Add -->
-                            <div ng-show="$last && vm.newGroup.channels.length < vm.CONFIG.internal.channel.maxDefault"
+                            <div ng-show="$last"
                                  class="atom-add-btn"
-                                 ng-click="vm.methods.addChannel()">
+                                 ng-class="{disabled: vm.newGroup.channels.length >= vm.CONFIG.internal.channel.maxDefault}"
+                                 ng-click="vm.newGroup.channels.length < vm.CONFIG.internal.channel.maxDefault ? vm.methods.addChannel() : null">
                                 <i class="fa fa-fw fa-plus-circle"></i>
                             </div>
 
