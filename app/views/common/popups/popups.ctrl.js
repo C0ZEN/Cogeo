@@ -108,7 +108,7 @@
         }
 
         function logout() {
-            userFactory.logout();
+            userFactory.logout(popup.methods.closePopup('logout'));
         }
 
         function forgottenPassword() {

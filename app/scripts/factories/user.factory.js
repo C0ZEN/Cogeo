@@ -478,9 +478,10 @@
             return user != null;
         }
 
-        function logout() {
-            httpRequestLogout(user.username);
+        function logout(callback) {
+            httpRequestLogout(user.username, callback, callback);
             localStorageService.set('currentUser', {});
+            socialLoginService.logout();
             user = null;
             goTo.view('app.home');
             _notify();
@@ -599,12 +600,8 @@
             ;
         }
 
-        function httpRequestLogout(username) {
-            httpRequest.requestGet('logout/' + username, null, null)
-                .then(function (response) {
-                    socialLoginService.logout();
-                })
-            ;
+        function httpRequestLogout(username, callbackSuccess, callbackError) {
+            httpRequest.requestGet('logout/' + username, callbackSuccess, callbackError);
         }
 
         function httpRequestUpdateSettings(data, callbackSuccess, callbackError) {
