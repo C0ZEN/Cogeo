@@ -38,22 +38,12 @@
         // Methods
         vm.methods = {
             scrollToElement: scrollToElement,
-            getGroupPicture: getGroupPicture,
             isConnected    : userFactory.isConnected
         };
 
         function scrollToElement(element) {
             var div = angular.element(document.getElementById(element));
             $document.scrollToElement(div, vm.data.offset, vm.data.duration);
-        }
-
-        function getGroupPicture(name, pictureUrl) {
-            if (Methods.isNullOrEmpty(pictureUrl)) {
-                return 'images/groups/' + name.slice(0, 1) + '.png';
-            }
-            else {
-                return pictureUrl;
-            }
         }
     }
 

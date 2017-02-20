@@ -1,0 +1,115 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.onInitAll()">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+
+                <!-- Filter -->
+                <cozen-form cozen-form-name="allChannels"
+                            cozen-form-ctrl="vm"
+                            cozen-form-model="form">
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-input cozen-input-model="vm.allChannels.search"
+                                     cozen-input-name="search"
+                                     cozen-input-success-design="false"
+                                     cozen-input-error-design="false"
+                                     cozen-input-icon-left="fa fa-search"
+                                     cozen-input-placeholder="channels_all_search_pc"
+                                     cozen-input-auto-complete="off"
+                                     cozen-input-class="atom-search-input">
+                        </cozen-input>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-pagination cozen-pagination-model="vm.allChannels.currentPage"
+                                          cozen-pagination-class="flex-end"
+                                          cozen-pagination-limit-per-page="vm.allChannels.limit"
+                                          cozen-pagination-total-elements="fakeAllChannelsFilter.length"
+                                          cozen-pagination-auto-hide="true">
+                        </cozen-pagination>
+                    </div>
+                </cozen-form>
+            </div>
+
+            <!-- Channels -->
+            <div class="atom-groups space-base-before space-base-after">
+                <div class="atom-group"
+                     style="animation-delay: {{ 50 * $index + 'ms' }};"
+                     ng-class="[$last ? 'border-bottom' : '']"
+                     ng-repeat="channel in vm.channels
+                       | orderBy: 'name':vm.allChannels.orderBy
+                       | filter: vm.allChannels.search
+                       | myChannels:vm.params.groupName:vm.user.username:vm.allChannels.myChannels:vm.allChannels.myChannelsAdmin:vm.allChannels.privateChannels
+                       | startFrom: (vm.allChannels.currentPage - 1) * vm.allChannels.limit
+                       | limitTo: vm.allChannels.limit
+                       as allChannelsFilter track by $index">
+                    <div class="img">
+                        <img ng-src="{{ methods.getGroupPicture(channel.name) }}">
+                    </div>
+                    <div class="text">
+                        <p>
+                            <a href
+                               compile="channel.name"
+                               ng-click="goTo.view('app.channels.details', {channelName: channel.name}, null)"
+                               ui-sref="app.channels.details({channelName: channel.name})">
+                            </a>
+                            <cozen-tooltip ng-show="channel.userRoles.isMember"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'channels_member_since' | translate:{'date': (channel.userRoles.joined | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark member">{{ 'channels_member' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="channel.userRoles.isCreator"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'channels_creator_in' | translate:{'date': (channel.date.creation | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark creator">{{ 'channels_creator' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="channel.userRoles.isAdmin"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'channels_member_since' | translate:{'date': (channel.userRoles.joined | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark admin">{{ 'channels_admin' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="channel.userRoles.isBanned"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-type-html
+                                           cozen-tooltip-label="'channels_banned_since' | translate:{'date': (channel.userRoles.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': channel.userRoles.banned.by, 'for': methods.getKickBanFor(channel.userRoles.banned.for)}">
+                                <mark class="atom-mark banned">{{ 'channels_banned' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="channel.userRoles.isKicked"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-type-html
+                                           cozen-tooltip-label="'channels_kicked_since' | translate:{'date': (channel.userRoles.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': channel.userRoles.kicked.by, 'for': methods.getKickBanFor(channel.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(channel.userRoles.kicked.time).key | translate)}">
+                                <mark class="atom-mark kicked">{{ 'channels_kicked' | translate }}</mark>
+                            </cozen-tooltip>
+                        </p>
+                        <p class="help-text">{{ channel.description }}</p>
+                    </div>
+                </div>
+
+                <!-- Channels fake (for actual length) -->
+                <div style="display: none;"
+                     ng-repeat="channel in vm.channels
+                       | filter: vm.allChannels.search
+                       | myChannels:vm.params.groupName:vm.user.username:vm.allChannels.myChannels:vm.allChannels.myChannelsAdmin:vm.allChannels.privateChannels
+                       as fakeAllChannelsFilter track by $index">
+                </div>
+            </div>
+
+            <div class="center-flex-content space-medium-after">
+
+                <!-- More filter -->
+                <a href
+                   onclick="this.blur()"
+                   ng-click="methods.showPopup($event, 'allChannelsFilter', vm.allChannels)">
+                    {{ 'channels_all_show_filter' | translate }}
+                </a>
+
+                <!-- Add channel -->
+                <a href
+                   onclick="this.blur()"
+                   ng-click="goTo.view('app.channels.new', {groupName: vm.params.groupName}, $event)"
+                   ui-sref="app.channels.new({groupName: vm.params.groupName})">
+                    {{ 'channels_add_new' | translate }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

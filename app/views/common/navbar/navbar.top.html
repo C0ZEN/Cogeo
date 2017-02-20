@@ -22,22 +22,44 @@
             {{ 'navbar_groups' | translate }}
             <div class="link-dropdown dropdown-right"
                  ng-class="{'down': vm.group.hover}">
+
+                <!-- See all groups link -->
                 <div class="link-dropdown-item"
                      ng-class="{'active': false}"
                      ng-click="goTo.view('app.groups.all')"
                      tabindex="0">
                     {{ 'navbar_groups_all' | translate }}
                 </div>
+
+                <!-- Group link -->
                 <div ng-repeat="group in vm.groups track by $index"
                      class="link-dropdown-item"
                      ng-class="{'active': false}"
                      ng-click="goTo.view('app.groups.details', {groupName: group.name})"
+                     ng-mouseenter="group.showChannels = true"
+                     ng-mouseleave="group.showChannels = false"
                      tabindex="0">
                     <div class="img">
-                        <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.url) }}">
+                        <img ng-src="{{ methods.getGroupPicture(group.name) }}">
                     </div>
                     <span>{{ group.name }}</span>
+
+                    <!-- Channels -->
+                    <div ng-show="group.showChannels && group.channels.length > 0"
+                         class="sub-links">
+                        <div ng-repeat="channel in group.channels track by $index"
+                             class="link-dropdown-item"
+                             ng-click="goTo.view('app.channels.details', {channelId: channel.id})"
+                             tabindex="0">
+                            <div class="img">
+                                <img ng-src="{{ methods.getChannelPicture(group.name, channel.id) }}">
+                            </div>
+                            <span>{{ channel.name }}</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Add group link -->
                 <div class="link-dropdown-separator"></div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': false}"

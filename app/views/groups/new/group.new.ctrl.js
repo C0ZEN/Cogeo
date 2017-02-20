@@ -1,4 +1,4 @@
-(function (angular) {
+(function (angular, document) {
     'use strict';
 
     angular
@@ -7,16 +7,16 @@
 
     GroupNewCtrl.$inject = [
         'userFactory',
-        '$state',
+        'httpRequest',
         'CONFIG',
         'goTo',
-        '$animate',
+        'groupsFactory',
         '$timeout',
         '$filter',
         'rfc4122'
     ];
 
-    function GroupNewCtrl(userFactory, $state, CONFIG, goTo, $animate, $timeout, $filter, rfc4122) {
+    function GroupNewCtrl(userFactory, httpRequest, CONFIG, goTo, groupsFactory, $timeout, $filter, rfc4122) {
         var vm = this;
 
         // Methods
@@ -27,7 +27,9 @@
             createGroup            : createGroup,
             goStepBackward         : goStepBackward,
             addChannel             : addChannel,
-            isChannelNameDuplicated: isChannelNameDuplicated
+            isChannelNameDuplicated: isChannelNameDuplicated,
+            startLoading           : startLoading,
+            stopLoading            : stopLoading
         };
 
         // Common data
@@ -46,12 +48,18 @@
         vm.methods.addChannel($filter('translate')('groups_new_2_default_channel'));
 
         function checkGroupName() {
-            vm.stepForward         = true;
-            vm.loading             = true;
-            vm.loading             = false;
-            vm.data.step1FirstShow = false;
-            $timeout(function () {
-                goTo.view('app.groupNew.secondStep');
+            vm.methods.startLoading();
+            groupsFactory.httpRequest.isAvailableGroupName(vm.newGroup.name, function () {
+                vm.methods.stopLoading();
+                vm.stepForward         = true;
+                vm.data.step1FirstShow = false;
+                $timeout(function () {
+                    goTo.view('app.groupNew.secondStep');
+                });
+            }, function (response) {
+                vm.methods.stopLoading();
+                var btn = angular.element(document.querySelector('#submit-btn-new-group-step-1'));
+                httpRequest.shakeElement(btn);
             });
         }
 
@@ -82,9 +90,15 @@
         }
 
         function createGroup() {
-            vm.stepForward = true;
-            vm.loading     = true;
-            vm.loading     = false;
+            vm.stepForward      = true;
+            vm.newGroup.creator = userFactory.getUser().username;
+            groupsFactory.httpRequest.addGroup(vm.newGroup, function () {
+                vm.methods.stopLoading();
+            }, function (response) {
+                vm.methods.stopLoading();
+                var btn = angular.element(document.querySelector('#submit-btn-new-group-step-3'));
+                httpRequest.shakeElement(btn);
+            });
         }
 
         function goStepBackward(step) {
@@ -118,7 +132,15 @@
             });
             return Methods.hasDuplicates(channelsNames);
         }
+
+        function startLoading() {
+            vm.loading = true;
+        }
+
+        function stopLoading() {
+            vm.loading = false;
+        }
     }
 
-})(window.angular);
+})(window.angular, window.document);
 

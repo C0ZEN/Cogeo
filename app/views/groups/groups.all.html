@@ -43,7 +43,7 @@
            | limitTo: vm.all.limit
            as allGroupsFilter track by $index">
                     <div class="img">
-                        <img ng-src="{{ vm.methods.getGroupPicture(group.name, group.picture.url) }}">
+                        <img ng-src="{{ methods.getGroupPicture(group.name) }}">
                     </div>
                     <div class="text">
                         <p>

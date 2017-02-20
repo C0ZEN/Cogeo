@@ -139,12 +139,12 @@
         '$state',
         'goTo',
         'cozenPopupFactory',
-        'userFactory',
+        'groupsFactory',
         '$filter',
-        'httpRequest'
+        'channelsFactory'
     ];
 
-    function run($rootScope, $state, goTo, cozenPopupFactory, userFactory, $filter, httpRequest) {
+    function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory) {
 
         // Public global data
         $rootScope.data = {
@@ -157,8 +157,10 @@
 
         // Public global functions
         $rootScope.methods = {
-            showPopup    : showPopup,
-            getKickBanFor: getKickBanFor
+            showPopup        : showPopup,
+            getKickBanFor    : getKickBanFor,
+            getGroupPicture  : groupsFactory.getGroupPicture,
+            getChannelPicture: channelsFactory.getChannelPicture
         };
 
         function showPopup($event, name, data) {

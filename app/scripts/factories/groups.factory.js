@@ -11,10 +11,12 @@
         '$stateParams',
         '$filter',
         'usersFactory',
-        'userFactory'
+        'userFactory',
+        'httpRequest',
+        '$rootScope'
     ];
 
-    function groupsFactory($state, CONFIG, $stateParams, $filter, usersFactory, userFactory) {
+    function groupsFactory($state, CONFIG, $stateParams, $filter, usersFactory, userFactory, httpRequest, $rootScope) {
 
         var groups = [
             {
@@ -26,6 +28,7 @@
                     creation  : 1484561615,
                     lastUpdate: 1484561615
                 },
+                picture    : {},
                 users      : [
                     {
                         username: 'C0ZEN',
@@ -368,6 +371,62 @@
                             name            : "Les junkies"
                         }
                     }
+                ],
+                channels   : [
+                    {
+                        id         : 'fzecefz',
+                        name       : 'Supinfo channel',
+                        private    : false,
+                        picture    : {},
+                        date       : {
+                            creation  : 1484561615,
+                            lastUpdate: 1484561615
+                        },
+                        creator    : 'C0ZEN',
+                        description: 'Une description',
+                        default    : true,
+                        users      : [
+                            {
+                                username: 'C0ZEN',
+                                joined  : 1484661615,
+                                admin   : true,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        id         : 'fzeceffzfz',
+                        name       : 'Marcoooo default',
+                        private    : false,
+                        picture    : {},
+                        date       : {
+                            creation  : 1484561615,
+                            lastUpdate: 1484561615
+                        },
+                        creator    : 'C0ZEN',
+                        description: 'Une description',
+                        default    : true,
+                        users      : [
+                            {
+                                username: 'C0ZEN',
+                                joined  : 1484661615,
+                                admin   : true,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
+                            }
+                        ]
+                    }
                 ]
             },
             {
@@ -477,6 +536,7 @@
 
         // Public functions
         return {
+            subscribe                    : subscribe,
             getGroups                    : getGroups,
             getGroupByName               : getGroupByName,
             getGroupByNameWithUserRoles  : getGroupByNameWithUserRoles,
@@ -487,8 +547,24 @@
             doesUserHasRights            : doesUserHasRights,
             getAvailableUsers            : getAvailableUsers,
             isUserInGroup                : isUserInGroup,
-            getInvitationForUserFromGroup: getInvitationForUserFromGroup
+            getInvitationForUserFromGroup: getInvitationForUserFromGroup,
+            addGroup                     : addGroup,
+            getGroupPicture              : getGroupPicture,
+            getChannelById               : getChannelById,
+            httpRequest                  : {
+                addGroup            : httpRequestAddGroup,
+                isAvailableGroupName: httpRequestIsAvailableGroupName
+            }
         };
+
+        function subscribe(scope, callback) {
+            var handler = $rootScope.$on('notifying-service-event', callback);
+            scope.$on('$destroy', handler);
+        }
+
+        function _notify() {
+            $rootScope.$emit('notifying-service-event');
+        }
 
         function getGroups() {
             return groups;
@@ -508,9 +584,7 @@
             if (group != null) {
                 return getGroupsWithUserRoles(userName, group);
             }
-            else {
-                return null;
-            }
+            return null;
         }
 
         function getUserFromGroup(userName, groupName) {
@@ -652,6 +726,48 @@
                 }
             }
             return null;
+        }
+
+        function addGroup(group) {
+            groups.push(group);
+            _notify();
+        }
+
+        function getGroupPicture(groupName) {
+            if (!Methods.isNullOrEmpty(groupName)) {
+                var group = getGroupByName(groupName);
+                if (!Methods.isNullOrEmpty(group) && !Methods.isNullOrEmpty(group.picture) && !Methods.isNullOrEmpty(group.picture.url)) {
+                    return group.picture.url;
+                }
+                else {
+                    return 'images/groups/' + groupName.slice(0, 1) + '.png';
+                }
+            }
+            return '';
+        }
+
+        function getChannelById(groupName, channelId) {
+            var group = getGroupByName(groupName);
+            for (var i = 0, length = group.channels.length; i < length; i++) {
+                if (group.channels[i].id == channelId) {
+                    return group.channels[i];
+                }
+            }
+            return null;
+        }
+
+        /// HTTP REQUEST ///
+
+        function httpRequestAddGroup(data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    addGroup(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestIsAvailableGroupName(groupName, callbackSuccess, callbackError) {
+            httpRequest.requestGet('group/' + groupName + '/isAvailable', callbackSuccess, callbackError);
         }
     }
 

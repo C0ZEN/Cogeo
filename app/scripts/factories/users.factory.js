@@ -94,6 +94,7 @@
             addUsersFullNames: addUsersFullNames,
             getUserByUsername: getUserByUsername,
             getUsers         : getUsers,
+            formatUserData   : formatUserData,
             httpRequest      : {
                 getAll: httpRequestGetAll
             }
@@ -137,10 +138,77 @@
         }
 
         function setUsers(response) {
-            angular.forEach(response, function (user) {
-                // user = userFactory.formatUserData(user);
-            });
+            for (var i = 0, length = response.lenth; i < length; i++) {
+                response[i] = formatUserData(response[i]);
+            }
             users = response;
+        }
+
+        function formatUserData($user) {
+            angular.forEach($user.settings.preferences.logs.events, function (event) {
+                if (event.id == 'group') {
+                    event.name  = 'account_event_group';
+                    event.icon  = 'fa fa-fw icons8-google-groups';
+                    event.color = 'blue';
+                }
+                else if (event.id == 'channel') {
+                    event.name  = 'account_event_channel';
+                    event.icon  = 'fa fa-fw icons8-channel-mosaic';
+                    event.color = 'green';
+                }
+                else {
+                    event.name  = 'account_event_social';
+                    event.icon  = 'fa fa-fw icons8-user-groups';
+                    event.color = 'purple';
+                }
+            });
+            angular.forEach($user.settings.preferences.groupsMembers.status, function (event) {
+                if (event.id == 'kicked') {
+                    event.name  = 'groups_kicked';
+                    event.icon  = 'fa fa-fw icons8-lock';
+                    event.color = 'yellow';
+                }
+                else if (event.id == 'banned') {
+                    event.name  = 'groups_banned';
+                    event.icon  = 'fa fa-fw icons8-lock';
+                    event.color = 'yellow';
+                }
+                else {
+                    event.name  = 'groups_admin';
+                    event.icon  = 'fa fa-fw icons8-user-male';
+                    event.color = 'purple';
+                }
+            });
+            angular.forEach($user.settings.preferences.groupsInvitations.types, function (event) {
+                if (event.id == 0) {
+                    event.name  = 'popup_groupsInvitations_filter_body_rejected';
+                    event.icon  = 'fa fa-fw icons8-event-declined-filled';
+                    event.color = 'error';
+                }
+                else if (event.id == 1) {
+                    event.name  = 'popup_groupsInvitations_filter_body_waiting';
+                    event.icon  = 'fa fa-fw icons8-event-accepted-tentatively-filled';
+                    event.color = 'info';
+                }
+                else {
+                    event.name  = 'popup_groupsInvitations_filter_body_accepted';
+                    event.icon  = 'fa fa-fw icons8-event-accepted-filled';
+                    event.color = 'green';
+                }
+            });
+            angular.forEach($user.settings.preferences.groupsLogs.events, function (event) {
+                if (event.id == 'group') {
+                    event.name  = 'account_event_group';
+                    event.icon  = 'fa fa-fw icons8-google-groups';
+                    event.color = 'blue';
+                }
+                else {
+                    event.name  = 'account_event_channel';
+                    event.icon  = 'fa fa-fw icons8-channel-mosaic';
+                    event.color = 'green';
+                }
+            });
+            return $user;
         }
 
         /// HTTP REQUEST ///

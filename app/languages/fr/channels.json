@@ -1,0 +1,15 @@
+{
+    "channels_all": "Tous les channels",
+    "channels_details": "Détails d'un channel",
+    "channels_channels_title": "Les channels du groupe {{groupName}}",
+    "channels_channels_title_name": "Le channel {{channelName}} du groupe {{groupName}}",
+    "channels_channels_subtitle": "Visualise, rejoins, modifie et manage les channels.",
+    "channels_all_search_pc": "Rechercher un channel en particulier",
+    "channels_all_show_filter": "Plus de filtres",
+    "channels_add_new": "Nouveau channel",
+    "channels_pills_all": "Tous",
+    "channels_pills_details": "Détails",
+    "channels_pills_edit": "Modifier",
+    "channels_pills_members": "Membres",
+    "channels_pills_invitations": "Invitations"
+}

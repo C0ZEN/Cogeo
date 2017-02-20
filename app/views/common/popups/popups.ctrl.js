@@ -143,6 +143,9 @@
                 case 'groupsLogsFilter':
                     userFactory.httpRequest.updateSettingsGroupsLogs(popup.groupsLogsFilter.data);
                     break;
+                case 'allChannelsFilter':
+                    userFactory.httpRequest.updateSettingsAllChannels(popup.allChannelsFilter.data);
+                    break;
             }
         }
 

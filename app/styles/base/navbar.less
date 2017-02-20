@@ -90,7 +90,6 @@ nav.atom-navbar {
                 border-bottom-left-radius  : @atom-radius;
                 border-bottom-right-radius : @atom-radius;
                 min-width                  : 200px;
-                overflow                   : hidden;
                 height                     : auto;
                 &.dropdown-right {
                     left : 0;
@@ -111,6 +110,7 @@ nav.atom-navbar {
                     flex-direction   : row;
                     justify-content  : flex-start;
                     align-items      : center;
+                    position         : relative;
                     div.img img {
                         margin-right : @atom-space-small;
                         height       : 22px;
@@ -120,6 +120,19 @@ nav.atom-navbar {
                     &:hover {
                         color            : @atom-color-blue;
                         background-color : @atom-color-line-rule-light;
+                    }
+                    div.sub-links {
+                        position                   : absolute;
+                        top                        : 0;
+                        left                       : 100%;
+                        border                     : 1px solid @atom-color-line-rule;
+                        display                    : flex;
+                        flex-direction             : column;
+                        align-items                : flex-start;
+                        border-bottom-left-radius  : @atom-radius;
+                        border-bottom-right-radius : @atom-radius;
+                        min-width                  : 200px;
+                        height                     : auto;
                     }
                 }
                 div.link-dropdown-separator {

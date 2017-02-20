@@ -10,10 +10,11 @@
         'userFactory',
         '$scope',
         'localStorageService',
-        '$window'
+        '$window',
+        'usersFactory'
     ];
 
-    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window) {
+    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory) {
         var app = this;
 
         // Common data
@@ -28,7 +29,7 @@
         $window.onload = app.methods.onInit;
 
         function onInit() {
-            var requestQuantity = 1;
+            var requestQuantity = 2;
             Methods.firstLoadLog(true);
 
             // Get the stuff about the current connected user (to avoid login)
@@ -38,6 +39,7 @@
                 // Login with the app (how each load, to make sure that the token is still valid)
                 // May be a potential performance leak nevertheless the security is enhanced
                 userFactory.httpRequest.login(user, isDone, isDone);
+                usersFactory.httpRequest.getAll(isDone, isDone);
             }
             else {
                 isDone();

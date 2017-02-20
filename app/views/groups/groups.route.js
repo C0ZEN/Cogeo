@@ -11,7 +11,7 @@
 
     function config($stateProvider) {
 
-        // Account routes
+        // Groups routes
         $stateProvider
             .state('app.groups', {
                 abstract    : true,

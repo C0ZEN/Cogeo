@@ -1,0 +1,59 @@
+<cozen-popup cozen-popup-name="allChannelsFilter"
+             cozen-popup-type-info
+             cozen-popup-size-small
+             cozen-popup-data="popup.allChannelsFilter.data"
+             cozen-popup-header-title="popup_allChannels_filter_header_title"
+             cozen-popup-on-hide="popup.methods.onPopupSettingsClose(id, name)">
+    <div class="row">
+        <div class="col-xs-10 col-xs-push-1 space-large-before space-large-after">
+            <cozen-form cozen-form-name="allChannelsFilter"
+                        cozen-form-ctrl="popup"
+                        cozen-form-model="form">
+
+                <!-- Limit per page -->
+                <cozen-input cozen-input-model="popup.allChannelsFilter.data.limit"
+                             cozen-input-name="limit"
+                             cozen-input-min="1"
+                             cozen-input-max="100"
+                             cozen-input-min-length="1"
+                             cozen-input-max-length="3"
+                             cozen-input-type-number
+                             cozen-input-label="popup_logs_filter_body_limit"
+                             cozen-input-placeholder="popup_logs_filter_body_limit_pc"
+                             cozen-input-required="true"
+                             cozen-input-validator-all
+                             cozen-input-class="space-medium-after">
+                </cozen-input>
+
+                <!-- Order by -->
+                <cozen-btn-toggle cozen-btn-toggle-model="popup.allChannelsFilter.data.orderBy"
+                                  cozen-btn-toggle-label="popup_logs_filter_body_order_by"
+                                  cozen-btn-toggle-tooltip="popup_allChannels_filter_body_order_by_tooltip"
+                                  cozen-btn-toggle-class="space-medium-after">
+                </cozen-btn-toggle>
+
+                <!-- My channels -->
+                <cozen-btn-toggle cozen-btn-toggle-model="popup.allChannelsFilter.data.myChannels"
+                                  cozen-btn-toggle-label="popup_allChannels_filter_body_myChannels"
+                                  cozen-btn-toggle-tooltip="popup_allChannels_filter_body_myChannels_tooltip"
+                                  cozen-btn-toggle-on-change="popup.allChannelsFilter.data.myChannelsAdmin = false">
+                </cozen-btn-toggle>
+
+                <!-- My channels - Admin -->
+                <cozen-btn-toggle ng-show="popup.allChannelsFilter.data.myChannels"
+                                  cozen-btn-toggle-model="popup.allChannelsFilter.data.myChannelsAdmin"
+                                  cozen-btn-toggle-label="popup_allChannels_filter_body_myChannelsAdmin"
+                                  cozen-btn-toggle-tooltip="popup_allChannels_filter_body_myChannelsAdmin_tooltip"
+                                  cozen-btn-toggle-class="space-small-before">
+                </cozen-btn-toggle>
+
+                <!-- My channels - Private -->
+                <cozen-btn-toggle cozen-btn-toggle-model="popup.allChannelsFilter.data.privateChannels"
+                                  cozen-btn-toggle-label="popup_allChannels_filter_body_privateChannels"
+                                  cozen-btn-toggle-tooltip="popup_allChannels_filter_body_privateChannels_tooltip"
+                                  cozen-btn-toggle-class="space-medium-before">
+                </cozen-btn-toggle>
+            </cozen-form>
+        </div>
+    </div>
+</cozen-popup>

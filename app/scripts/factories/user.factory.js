@@ -129,6 +129,14 @@
                                 selected: true
                             }
                         ]
+                    },
+                    allChannels      : {
+                        limit          : 9,
+                        all            : false,
+                        orderBy        : false,
+                        myChannels     : false,
+                        myChannelsAdmin: false,
+                        privateChannels: false
                     }
                 }
             },
@@ -453,7 +461,8 @@
                 updateSettingsGroupsInvitations: httpRequestUpdateSettingsGroupsInvitations,
                 updateSettingsGroupsLogs       : httpRequestUpdateSettingsGroupsLogs,
                 updateUser                     : httpRequestUpdateUser,
-                updateNotifications            : httpRequestUpdateNotifications
+                updateNotifications            : httpRequestUpdateNotifications,
+                updateSettingsAllChannels      : httpRequestUpdateSettingsAllChannels
             }
         };
 
@@ -489,7 +498,6 @@
 
         function setUser(response) {
             user = formatUserData(response);
-            console.log(response);
             _notify();
         }
 
@@ -669,6 +677,15 @@
 
         function httpRequestUpdateNotifications(data, callbackSuccess, callbackError) {
             httpRequest.requestPut('user/' + user.username + '/notifications', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsAllChannels(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/all-channels', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);

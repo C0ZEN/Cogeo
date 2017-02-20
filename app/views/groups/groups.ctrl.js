@@ -13,29 +13,16 @@
         'groupsFactory',
         'userFactory',
         'usersFactory',
-        '$filter'
+        '$filter',
+        '$scope'
     ];
 
-    function GroupsCtrl(CONFIG, goTo, $rootScope, $state, groupsFactory, userFactory, usersFactory, $filter) {
+    function GroupsCtrl(CONFIG, goTo, $rootScope, $state, groupsFactory, userFactory, usersFactory, $filter, $scope) {
         var vm = this;
-
-        // Common data
-        vm.CONFIG  = CONFIG;
-        vm.loading = false;
-
-        vm.user        = userFactory.getUser();
-        vm.groups      = groupsFactory.getGroupsWithUserRoles(vm.user.username);
-        vm.all         = angular.copy(vm.user.settings.preferences.allGroups);
-        vm.details     = {};
-        vm.edit        = {};
-        vm.invitations = angular.copy(vm.user.settings.preferences.groupsInvitations);
-        vm.members     = angular.copy(vm.user.settings.preferences.groupsMembers);
-        vm.log         = angular.copy(vm.user.settings.preferences.groupsLog);
 
         // Methods
         vm.methods = {
             save            : save,
-            getGroupPicture : getGroupPicture,
             onDisplayDetails: onDisplayDetails,
             joinGroup       : joinGroup,
             leaveGroup      : leaveGroup,
@@ -49,6 +36,27 @@
             toggleRecruitMod: toggleRecruitMod
         };
 
+        // Common data
+        vm.CONFIG      = CONFIG;
+        vm.loading     = false;
+        vm.user        = userFactory.getUser();
+        vm.groups      = groupsFactory.getGroupsWithUserRoles(vm.user.username);
+        vm.all         = angular.copy(vm.user.settings.preferences.allGroups);
+        vm.details     = {};
+        vm.edit        = {};
+        vm.invitations = angular.copy(vm.user.settings.preferences.groupsInvitations);
+        vm.members     = angular.copy(vm.user.settings.preferences.groupsMembers);
+        vm.log         = angular.copy(vm.user.settings.preferences.groupsLog);
+
+        // When the user factory is updated
+        userFactory.subscribe($scope, function () {
+            vm.methods.onDisplayDetails();
+            vm.user        = userFactory.getUser();
+            vm.invitations = angular.copy(vm.user.settings.preferences.groupsInvitations);
+            vm.members     = angular.copy(vm.user.settings.preferences.groupsMembers);
+            vm.log         = angular.copy(vm.user.settings.preferences.groupsLog);
+        });
+
         function save(form) {
             vm.loading = true;
             switch (form) {
@@ -57,20 +65,6 @@
                     groupsFactory.updateGroup(vm.edit);
                     goTo.view('app.groups.details', {groupName: vm.details.name});
                     break;
-            }
-        }
-
-        function getGroupPicture(name, pictureUrl) {
-            if (Methods.isNullOrEmpty(pictureUrl)) {
-                if (name != null) {
-                    return 'images/groups/' + name.slice(0, 1) + '.png';
-                }
-                else {
-                    return '';
-                }
-            }
-            else {
-                return pictureUrl;
             }
         }
 

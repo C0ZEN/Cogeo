@@ -9,16 +9,21 @@
         '$http',
         'CONFIG',
         '$q',
-        'goTo'
+        'goTo',
+        '$animate',
+        '$timeout',
+        'cozenFloatingFeedFactory',
+        '$filter'
     ];
 
-    function httpRequest($http, CONFIG, $q, goTo) {
+    function httpRequest($http, CONFIG, $q, goTo, $animate, $timeout, cozenFloatingFeedFactory, $filter) {
 
         return {
-            requestGet : requestGet,
-            requestPost: requestPost,
-            requestPut : requestPut,
-            customError: customError
+            requestGet  : requestGet,
+            requestPost : requestPost,
+            requestPut  : requestPut,
+            shakeElement: shakeElement,
+            displayError: displayError
         };
 
         function requestGet(url, callbackSuccess, callbackError) {
@@ -36,18 +41,16 @@
             $http.get(CONFIG.internal.API + url)
                 .then(function (response) {
                     deferred.resolve(response);
-                    console.log('success');
                     if (Methods.isFunction(callbackSuccess)) {
                         callbackSuccess();
                     }
                 })
                 .catch(function (response) {
                     deferred.reject(response, 200);
-                    console.log('error');
                     if (Methods.isFunction(callbackError)) {
                         callbackError();
                     }
-                    customError(response.error);
+                    displayError(response);
                 })
             ;
             return deferred.promise;
@@ -78,7 +81,7 @@
                 if (Methods.isFunction(callbackError)) {
                     callbackError();
                 }
-                customError(response.error);
+                displayError(response);
             });
             return deferred.promise;
         }
@@ -108,19 +111,34 @@
                 if (Methods.isFunction(callbackError)) {
                     callbackError();
                 }
-                customError(response.error);
+                displayError(response);
             });
             return deferred.promise;
         }
 
-        function customError(error) {
-            switch (error) {
-                case '1':
-                case '100':
-                case '101':
-                case '102':
-                // goTo.view('app.error', {response: response});
+        function shakeElement(element) {
+            $timeout(function () {
+                $animate.addClass(element, 'animated shake').then(function () {
+                    $animate.removeClass(element, 'animated shake');
+                });
+            }, 1);
+        }
+
+        function displayError(response) {
+            var type = '';
+            switch (response.data.data) {
+                case 200:
+                    type = 'error';
+                    break;
+                default:
+                    type = 'error';
             }
+            cozenFloatingFeedFactory.addAlert({
+                label: $filter('translate')('errors_' + response.data.data, {
+                    date: $filter('date')(response.data.date, 'HH:mm')
+                }),
+                type : type
+            });
         }
     }
 

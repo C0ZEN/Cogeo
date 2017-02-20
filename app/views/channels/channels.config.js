@@ -16,7 +16,7 @@
             name      : {
                 length  : 30,
                 required: true,
-                pattern : 'word',
+                pattern : 'words',
                 name    : 'name'
             }
         }

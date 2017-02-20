@@ -1,0 +1,5 @@
+{
+    "errors_200": "<span>Ce nom de groupe est déjà utilisé ! <small>{{date}}</small></span>",
+    "errors_undefined": "<span>Une erreur inconnu est survenu ! <small>{{date}}</small></span>",
+    "errors_": "<span>Une erreur inconnu est survenu ! <small>{{date}}</small></span>"
+}

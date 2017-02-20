@@ -910,7 +910,6 @@ nav.atom-navbar div div.link div.link-dropdown {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   min-width: 200px;
-  overflow: hidden;
   height: auto;
 }
 nav.atom-navbar div div.link div.link-dropdown.dropdown-right {
@@ -944,6 +943,7 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item div.img img {
   margin-right: 6px;
@@ -954,6 +954,26 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:focus,
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:hover {
   color: #2c9fdd;
   background-color: #f8f8f8;
+}
+nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item div.sub-links {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  border: 1px solid #d6dbdb;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  min-width: 200px;
+  height: auto;
 }
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-separator {
   background-color: #d6dbdb;
