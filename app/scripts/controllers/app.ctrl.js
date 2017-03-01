@@ -42,11 +42,12 @@
                 usersFactory.httpRequest.getAll(isDone, isDone);
             }
             else {
-                isDone();
+                isDone(2);
             }
 
-            function isDone() {
-                requestQuantity--;
+            function isDone(quantity) {
+                if (quantity == null) quantity = 1;
+                requestQuantity = requestQuantity - quantity;
                 if (requestQuantity <= 0) {
                     app.isReady = true;
                     Methods.firstLoadLog(false);
