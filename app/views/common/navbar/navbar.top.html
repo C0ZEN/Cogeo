@@ -49,7 +49,7 @@
                          class="sub-links">
                         <div ng-repeat="channel in group.channels track by $index"
                              class="link-dropdown-item"
-                             ng-click="goTo.view('app.channels.details', {channelId: channel.id})"
+                             ng-click="$event.stopPropagation(); goTo.view('app.channels.details', {groupName: group.name, channelName: channel.name})"
                              tabindex="0">
                             <div class="img">
                                 <img ng-src="{{ methods.getChannelPicture(group.name, channel.id) }}">

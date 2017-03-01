@@ -377,6 +377,16 @@ div.atom-profile div.profile-card div.text h3 {
 div.atom-profile div.profile-card div.text h3 small {
   color: #8c8c8c;
 }
+div.atom-profile div.profile-card div.text i.eye {
+  cursor: pointer;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+  vertical-align: baseline;
+  color: #9c27b0;
+}
+div.atom-profile div.profile-card div.text i.eye:hover {
+  color: #b92ed1;
+}
 div.atom-profile div.profile-card img {
   width: 70px;
   height: 70px;
@@ -522,6 +532,9 @@ i.atom-icon-btn.purple:hover {
   .full-center-content > .row > div > div {
     margin: 0 auto;
   }
+}
+.inline-block {
+  display: inline-block;
 }
 /********************/
 /**   TEXT ALIGN   **/

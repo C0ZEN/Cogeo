@@ -374,8 +374,8 @@
                 ],
                 channels   : [
                     {
-                        id         : 'fzecefz',
-                        name       : 'Supinfo channel',
+                        id         : 'a',
+                        name       : 'Membre public',
                         private    : false,
                         picture    : {},
                         date       : {
@@ -401,9 +401,63 @@
                         ]
                     },
                     {
-                        id         : 'fzeceffzfz',
-                        name       : 'Marcoooo default',
+                        id         : 'b',
+                        name       : 'Membre privé',
+                        private    : true,
+                        picture    : {},
+                        date       : {
+                            creation  : 1484561615,
+                            lastUpdate: 1484561615
+                        },
+                        creator    : 'C0ZEN',
+                        description: 'Une description',
+                        default    : true,
+                        users      : [
+                            {
+                                username: 'C0ZEN',
+                                joined  : 1484661615,
+                                admin   : true,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        id         : 'c',
+                        name       : 'Non membre public',
                         private    : false,
+                        picture    : {},
+                        date       : {
+                            creation  : 1484561615,
+                            lastUpdate: 1484561615
+                        },
+                        creator    : 'C0ZEN',
+                        description: 'Une description',
+                        default    : true,
+                        users      : [
+                            {
+                                username: 'C0ZEN',
+                                joined  : 1484661615,
+                                admin   : true,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        id         : 'd',
+                        name       : 'Non membre privé',
+                        private    : true,
                         picture    : {},
                         date       : {
                             creation  : 1484561615,
@@ -551,6 +605,8 @@
             addGroup                     : addGroup,
             getGroupPicture              : getGroupPicture,
             getChannelById               : getChannelById,
+            getChannelByName             : getChannelByName,
+            isUserAdmin                  : isUserAdmin,
             httpRequest                  : {
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName
@@ -754,6 +810,24 @@
                 }
             }
             return null;
+        }
+
+        function getChannelByName(groupName, channelName) {
+            var group = getGroupByName(groupName);
+            for (var i = 0, length = group.channels.length; i < length; i++) {
+                if (group.channels[i].name == channelName) {
+                    return group.channels[i];
+                }
+            }
+            return null;
+        }
+
+        function isUserAdmin(groupName, userName) {
+            var group = getGroupByName(groupName);
+            for (var i = 0, length = group.users.length; i < length; i++) {
+                return !!(group.users[i].username == userName && group.users[i].admin);
+            }
+            return false;
         }
 
         /// HTTP REQUEST ///

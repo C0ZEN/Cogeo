@@ -103,7 +103,8 @@
                 </a>
 
                 <!-- Add channel -->
-                <a href
+                <a ng-show="vm.isGroupAdmin"
+                   href
                    onclick="this.blur()"
                    ng-click="goTo.view('app.channels.new', {groupName: vm.params.groupName}, $event)"
                    ui-sref="app.channels.new({groupName: vm.params.groupName})">

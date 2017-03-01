@@ -86,6 +86,7 @@
                     channel.isAdmin  = channel.users[i].admin;
                     channel.isBanned = channel.users[i].banned.active;
                     channel.isKicked = channel.users[i].kicked.active;
+                    channel.joined   = channel.users[i].joined;
                     break;
                 }
             }

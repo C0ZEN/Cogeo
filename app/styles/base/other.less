@@ -62,6 +62,15 @@ div.atom-profile {
                     color : @atom-color-label;
                 }
             }
+            i.eye {
+                cursor         : pointer;
+                transition     : @atom-transition;
+                vertical-align : baseline;
+                color          : @atom-color-purple;
+                &:hover {
+                    color : @atom-color-purple-active;
+                }
+            }
         }
         img {
             width  : 70px;
@@ -190,4 +199,7 @@ i.atom-icon-btn {
             }
         }
     }
+}
+.inline-block {
+    display : inline-block;
 }
