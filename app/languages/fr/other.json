@@ -19,5 +19,7 @@
     "other_kicked_reason_3": "Non respect des autres utilisateurs",
     "other_kicked_reason_4": "Spam",
     "other_kicked_reason_5": "Contenu offensant",
-    "other_kicked_reason_x": "Autre(s) raison(s)"
+    "other_kicked_reason_x": "Autre(s) raison(s)",
+    "other_yes": "Oui",
+    "other_no": "Non"
 }

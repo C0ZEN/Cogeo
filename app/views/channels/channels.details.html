@@ -79,6 +79,10 @@
                         <strong>{{ 'channels_details_last_update' | translate }}:</strong>
                         {{ vm.channel.date.lastUpdate | date: 'EEEE dd MMMM yyyy' }}
                     </h4>
+                    <h4>
+                        <strong>{{ 'channels_details_default' | translate }}:</strong>
+                        {{ (vm.channel.default ? 'other_yes' : 'other_no') | translate }}
+                    </h4>
                     <p ng-show="vm.channel.private"
                        class="no-margin-bottom help-text">
                         {{ 'channels_details_private' | translate }}

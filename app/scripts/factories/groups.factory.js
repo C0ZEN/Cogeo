@@ -397,6 +397,94 @@
                                 banned  : {
                                     active: false
                                 }
+                            },
+                            {
+                                username: 'C0ZEN59',
+                                joined  : 1484661615,
+                                admin   : true,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
+                            },
+                            {
+                                username: 'Toto59',
+                                joined  : 1484561615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '1',
+                                    time  : 3600,
+                                    active: true
+                                },
+                                banned  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '2',
+                                    active: true
+                                }
+                            },
+                            {
+                                username: 'Toto59',
+                                joined  : 1484561615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '3',
+                                    time  : 3600,
+                                    active: true
+                                },
+                                banned  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '4',
+                                    active: false
+                                }
+                            },
+                            {
+                                username: 'Toto59',
+                                joined  : 1484561615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '5',
+                                    time  : 3600,
+                                    active: false
+                                },
+                                banned  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : 'x',
+                                    active: false
+                                }
+                            },
+                            {
+                                username: 'Toto59',
+                                joined  : 1484561615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '1',
+                                    time  : 3600,
+                                    active: false
+                                },
+                                banned  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '2',
+                                    active: true
+                                }
                             }
                         ]
                     },
@@ -424,12 +512,115 @@
                                 banned  : {
                                     active: false
                                 }
+                            },
+                            {
+                                username: 'Toto59',
+                                joined  : 1484561615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '1',
+                                    time  : 3600,
+                                    active: true
+                                },
+                                banned  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '2',
+                                    active: true
+                                }
+                            },
+                            {
+                                username: 'Toto59',
+                                joined  : 1484561615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '3',
+                                    time  : 3600,
+                                    active: true
+                                },
+                                banned  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '4',
+                                    active: false
+                                }
+                            },
+                            {
+                                username: 'Toto59',
+                                joined  : 1484561615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '5',
+                                    time  : 3600,
+                                    active: false
+                                },
+                                banned  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : 'x',
+                                    active: false
+                                }
+                            },
+                            {
+                                username: 'Toto59',
+                                joined  : 1484561615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '1',
+                                    time  : 3600,
+                                    active: false
+                                },
+                                banned  : {
+                                    by    : 'Toto',
+                                    on    : 1484561615,
+                                    for   : '2',
+                                    active: true
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        id         : 'aa',
+                        name       : 'Membre public admin créateur',
+                        private    : false,
+                        picture    : {},
+                        date       : {
+                            creation  : 1484561615,
+                            lastUpdate: 1484561615
+                        },
+                        creator    : 'C0ZEN',
+                        description: 'Une description',
+                        default    : false,
+                        users      : [
+                            {
+                                username: 'C0ZEN',
+                                joined  : 1484661615,
+                                admin   : true,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
                             }
                         ]
                     },
                     {
                         id         : 'b',
-                        name       : 'Membre privé',
+                        name       : 'Membre privé admin',
                         private    : true,
                         picture    : {},
                         date       : {

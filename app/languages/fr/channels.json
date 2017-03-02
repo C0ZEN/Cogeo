@@ -21,6 +21,7 @@
     "channels_details_details": "Détails",
     "channels_details_creator": "Créateur",
     "channels_details_creation": "Création",
+    "channels_details_default": "Channel par défaut",
     "channels_details_last_update": "Dernière modification",
     "channels_details_edit_channel": "Modifier ce channel",
     "channels_details_leave_channel": "Quitter ce channel",

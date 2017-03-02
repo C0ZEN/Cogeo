@@ -146,6 +146,12 @@
                 case 'allChannelsFilter':
                     userFactory.httpRequest.updateSettingsAllChannels(popup.allChannelsFilter.data);
                     break;
+                case 'channelsMembersFilter':
+                    userFactory.httpRequest.updateSettingsChannelsMembers(popup.channelsMembersFilter.data);
+                    break;
+                case 'channelsInvitationsFilter':
+                    userFactory.httpRequest.updateSettingsChannelsInvitations(popup.channelsInvitationsFilter.data);
+                    break;
             }
         }
 

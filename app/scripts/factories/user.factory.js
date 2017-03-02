@@ -51,7 +51,7 @@
                     volume: 72
                 },
                 preferences : {
-                    logs             : {
+                    logs               : {
                         limit  : 9,
                         all    : false,
                         orderBy: true,
@@ -70,14 +70,14 @@
                             }
                         ]
                     },
-                    allGroups        : {
+                    allGroups          : {
                         limit        : 9,
                         all          : false,
                         orderBy      : false,
                         myGroups     : false,
                         myGroupsAdmin: false
                     },
-                    groupsMembers    : {
+                    groupsMembers      : {
                         limit  : 9,
                         all    : false,
                         orderBy: false,
@@ -96,7 +96,7 @@
                             }
                         ]
                     },
-                    groupsInvitations: {
+                    groupsInvitations  : {
                         limit  : 9,
                         all    : false,
                         orderBy: false,
@@ -115,7 +115,7 @@
                             }
                         ]
                     },
-                    groupsLog        : {
+                    groupsLog          : {
                         limit  : 9,
                         all    : false,
                         orderBy: true,
@@ -130,7 +130,7 @@
                             }
                         ]
                     },
-                    allChannels      : {
+                    allChannels        : {
                         limit          : 9,
                         all            : false,
                         orderBy        : false,
@@ -138,6 +138,44 @@
                         myChannelsAdmin: false,
                         privateChannels: false,
                         defaultChannels: false
+                    },
+                    channelsMembers    : {
+                        limit  : 9,
+                        all    : false,
+                        orderBy: false,
+                        status : [
+                            {
+                                id      : 'kicked',
+                                selected: true
+                            },
+                            {
+                                id      : 'banned',
+                                selected: true
+                            },
+                            {
+                                id      : 'admin',
+                                selected: true
+                            }
+                        ]
+                    },
+                    channelsInvitations: {
+                        limit  : 9,
+                        all    : false,
+                        orderBy: false,
+                        types  : [
+                            {
+                                id      : 0,
+                                selected: true
+                            },
+                            {
+                                id      : 1,
+                                selected: true
+                            },
+                            {
+                                id      : 2,
+                                selected: true
+                            }
+                        ]
                     }
                 }
             },
@@ -451,19 +489,21 @@
             setUserInLocalStorage: setUserInLocalStorage,
             getFriends           : getFriends,
             httpRequest          : {
-                getUser                        : httpRequestGetUser,
-                register                       : httpRequestRegister,
-                login                          : httpRequestLogin,
-                logout                         : httpRequestLogout,
-                updateSettings                 : httpRequestUpdateSettings,
-                updateSettingsLog              : httpRequestUpdateSettingsLog,
-                updateSettingsAllGroups        : httpRequestUpdateSettingsAllGroups,
-                updateSettingsGroupsMembers    : httpRequestUpdateSettingsGroupsMembers,
-                updateSettingsGroupsInvitations: httpRequestUpdateSettingsGroupsInvitations,
-                updateSettingsGroupsLogs       : httpRequestUpdateSettingsGroupsLogs,
-                updateUser                     : httpRequestUpdateUser,
-                updateNotifications            : httpRequestUpdateNotifications,
-                updateSettingsAllChannels      : httpRequestUpdateSettingsAllChannels
+                getUser                          : httpRequestGetUser,
+                register                         : httpRequestRegister,
+                login                            : httpRequestLogin,
+                logout                           : httpRequestLogout,
+                updateSettings                   : httpRequestUpdateSettings,
+                updateSettingsLog                : httpRequestUpdateSettingsLog,
+                updateSettingsAllGroups          : httpRequestUpdateSettingsAllGroups,
+                updateSettingsGroupsMembers      : httpRequestUpdateSettingsGroupsMembers,
+                updateSettingsGroupsInvitations  : httpRequestUpdateSettingsGroupsInvitations,
+                updateSettingsGroupsLogs         : httpRequestUpdateSettingsGroupsLogs,
+                updateUser                       : httpRequestUpdateUser,
+                updateNotifications              : httpRequestUpdateNotifications,
+                updateSettingsAllChannels        : httpRequestUpdateSettingsAllChannels,
+                updateSettingsChannelsMembers    : httpRequestUpdateSettingsChannelsMembers,
+                updateSettingsChannelsInvitations: httpRequestUpdateSettingsChannelsInvitations
             }
         };
 
@@ -563,6 +603,40 @@
                 else {
                     event.name  = 'account_event_channel';
                     event.icon  = 'fa fa-fw icons8-channel-mosaic';
+                    event.color = 'green';
+                }
+            });
+            angular.forEach($user.settings.preferences.channelsMembers.status, function (event) {
+                if (event.id == 'kicked') {
+                    event.name  = 'groups_kicked';
+                    event.icon  = 'fa fa-fw icons8-lock';
+                    event.color = 'yellow';
+                }
+                else if (event.id == 'banned') {
+                    event.name  = 'groups_banned';
+                    event.icon  = 'fa fa-fw icons8-lock';
+                    event.color = 'yellow';
+                }
+                else {
+                    event.name  = 'groups_admin';
+                    event.icon  = 'fa fa-fw icons8-user-male';
+                    event.color = 'purple';
+                }
+            });
+            angular.forEach($user.settings.preferences.channelsInvitations.types, function (event) {
+                if (event.id == 0) {
+                    event.name  = 'popup_groupsInvitations_filter_body_rejected';
+                    event.icon  = 'fa fa-fw icons8-event-declined-filled';
+                    event.color = 'error';
+                }
+                else if (event.id == 1) {
+                    event.name  = 'popup_groupsInvitations_filter_body_waiting';
+                    event.icon  = 'fa fa-fw icons8-event-accepted-tentatively-filled';
+                    event.color = 'info';
+                }
+                else {
+                    event.name  = 'popup_groupsInvitations_filter_body_accepted';
+                    event.icon  = 'fa fa-fw icons8-event-accepted-filled';
                     event.color = 'green';
                 }
             });
@@ -687,6 +761,24 @@
 
         function httpRequestUpdateSettingsAllChannels(data, callbackSuccess, callbackError) {
             httpRequest.requestPut('user/' + user.username + '/settings/all-channels', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsChannelsMembers(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/channels-members', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsChannelsInvitations(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/channels-invitations', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);

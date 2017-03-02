@@ -22,11 +22,15 @@
 
         // Methods
         vm.methods = {
-            onInit       : onInit,
-            onInitAll    : onInitAll,
-            onInitDetails: onInitDetails,
-            leaveChannel : leaveChannel,
-            joinChannel  : joinChannel
+            onInit           : onInit,
+            onInitAll        : onInitAll,
+            onInitDetails    : onInitDetails,
+            leaveChannel     : leaveChannel,
+            joinChannel      : joinChannel,
+            onInitMembers    : onInitMembers,
+            getKickedTime    : Utils.getKickedTime,
+            getUserFullName  : usersFactory.getUserFullName,
+            onInitInvitations: onInitInvitations
         };
 
         // Common data
@@ -58,6 +62,22 @@
 
         function joinChannel(channelId) {
 
+        }
+
+        function onInitMembers() {
+            vm.methods.onInit();
+            vm.channel         = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
+            vm.channel         = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.members         = usersFactory.addUsersFullNames(vm.channel.users);
+            vm.membersSettings = angular.copy(vm.user.settings.preferences.channelsMembers);
+        }
+
+        function onInitInvitations() {
+            vm.methods.onInit();
+            vm.channel             = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
+            vm.channel             = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.invitations         = vm.channel.invitations;
+            vm.invitationsSettings = angular.copy(vm.user.settings.preferences.channelsInvitations);
         }
     }
 
