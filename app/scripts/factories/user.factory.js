@@ -136,7 +136,8 @@
                         orderBy        : false,
                         myChannels     : false,
                         myChannelsAdmin: false,
-                        privateChannels: false
+                        privateChannels: false,
+                        defaultChannels: false
                     }
                 }
             },

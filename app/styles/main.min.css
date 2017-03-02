@@ -118,6 +118,7 @@ mark.atom-mark {
   font-weight: 400;
   color: #ffffff;
 }
+mark.atom-mark.default,
 mark.atom-mark.creator {
   background-color: #2c9fdd;
 }
@@ -377,16 +378,6 @@ div.atom-profile div.profile-card div.text h3 {
 div.atom-profile div.profile-card div.text h3 small {
   color: #8c8c8c;
 }
-div.atom-profile div.profile-card div.text i.eye {
-  cursor: pointer;
-  -webkit-transition: all 80ms ease-out;
-  transition: all 80ms ease-out;
-  vertical-align: baseline;
-  color: #9c27b0;
-}
-div.atom-profile div.profile-card div.text i.eye:hover {
-  color: #b92ed1;
-}
 div.atom-profile div.profile-card img {
   width: 70px;
   height: 70px;
@@ -397,6 +388,16 @@ div.atom-profile div.profile-card img.img-thumbnail {
 div.atom-profile hr {
   margin-top: 12px;
   margin-bottom: 12px;
+}
+i.eye {
+  cursor: pointer;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+  vertical-align: baseline;
+  color: #9c27b0;
+}
+i.eye:hover {
+  color: #b92ed1;
 }
 .audioRecorder-analyzer {
   border: 1px solid #d6dbdb;

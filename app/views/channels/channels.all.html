@@ -38,7 +38,9 @@
                      ng-repeat="channel in vm.channels
                        | orderBy: 'name':vm.allChannels.orderBy
                        | filter: vm.allChannels.search
-                       | myChannels:vm.params.groupName:vm.user.username:vm.allChannels.myChannels:vm.allChannels.myChannelsAdmin:vm.allChannels.privateChannels
+                       | myChannels:vm.params.groupName:vm.user.username:vm.allChannels.myChannels:vm.allChannels.myChannelsAdmin
+                       | privateChannels:vm.allChannels.privateChannels
+                       | defaultChannels:vm.allChannels.defaultChannels
                        | startFrom: (vm.allChannels.currentPage - 1) * vm.allChannels.limit
                        | limitTo: vm.allChannels.limit
                        as allChannelsFilter track by $index">
@@ -52,35 +54,46 @@
                                ng-click="goTo.view('app.channels.details', {channelName: channel.name}, null)"
                                ui-sref="app.channels.details({channelName: channel.name})">
                             </a>
-                            <cozen-tooltip ng-show="channel.userRoles.isMember"
+                            <cozen-tooltip ng-show="channel.default"
                                            cozen-tooltip-placement="auto bottom"
-                                           cozen-tooltip-label="'channels_member_since' | translate:{'date': (channel.userRoles.joined | date: 'EEEE dd MMMM yyyy')}">
+                                           cozen-tooltip-label="'channels_by_default_tp' | translate">
+                                <mark class="atom-mark default">{{ 'channels_by_default' | translate }}</mark>
+                            </cozen-tooltip>
+                            <cozen-tooltip ng-show="channel.isMember"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'channels_member_since' | translate:{'date': (channel.joined | date: 'EEEE dd MMMM yyyy')}">
                                 <mark class="atom-mark member">{{ 'channels_member' | translate }}</mark>
                             </cozen-tooltip>
-                            <cozen-tooltip ng-show="channel.userRoles.isCreator"
+                            <cozen-tooltip ng-show="channel.isCreator"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-label="'channels_creator_in' | translate:{'date': (channel.date.creation | date: 'EEEE dd MMMM yyyy')}">
                                 <mark class="atom-mark creator">{{ 'channels_creator' | translate }}</mark>
                             </cozen-tooltip>
-                            <cozen-tooltip ng-show="channel.userRoles.isAdmin"
+                            <cozen-tooltip ng-show="channel.isAdmin"
                                            cozen-tooltip-placement="auto bottom"
-                                           cozen-tooltip-label="'channels_member_since' | translate:{'date': (channel.userRoles.joined | date: 'EEEE dd MMMM yyyy')}">
+                                           cozen-tooltip-label="'channels_member_since' | translate:{'date': (channel.joined | date: 'EEEE dd MMMM yyyy')}">
                                 <mark class="atom-mark admin">{{ 'channels_admin' | translate }}</mark>
                             </cozen-tooltip>
-                            <cozen-tooltip ng-show="channel.userRoles.isBanned"
+                            <cozen-tooltip ng-show="channel.isBanned"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-type-html
-                                           cozen-tooltip-label="'channels_banned_since' | translate:{'date': (channel.userRoles.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': channel.userRoles.banned.by, 'for': methods.getKickBanFor(channel.userRoles.banned.for)}">
+                                           cozen-tooltip-label="'channels_banned_since' | translate:{'date': (channel.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': channel.banned.by, 'for': methods.getKickBanFor(channel.banned.for)}">
                                 <mark class="atom-mark banned">{{ 'channels_banned' | translate }}</mark>
                             </cozen-tooltip>
-                            <cozen-tooltip ng-show="channel.userRoles.isKicked"
+                            <cozen-tooltip ng-show="channel.isKicked"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-type-html
-                                           cozen-tooltip-label="'channels_kicked_since' | translate:{'date': (channel.userRoles.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': channel.userRoles.kicked.by, 'for': methods.getKickBanFor(channel.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(channel.userRoles.kicked.time).key | translate)}">
+                                           cozen-tooltip-label="'channels_kicked_since' | translate:{'date': (channel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': channel.kicked.by, 'for': methods.getKickBanFor(channel.kicked.for), 'time': (vm.methods.getKickedTime(channel.kicked.time).key | translate)}">
                                 <mark class="atom-mark kicked">{{ 'channels_kicked' | translate }}</mark>
                             </cozen-tooltip>
                         </p>
-                        <p class="help-text">{{ channel.description }}</p>
+                        <div>
+                            <p class="help-text inline-block">{{ channel.description }}</p>
+                            <cozen-tooltip cozen-tooltip-label="'channels_details_private_tp'"
+                                           ng-if="channel.private">
+                                <i class="fa fa-fw eye fa-eye-slash"></i>
+                            </cozen-tooltip>
+                        </div>
                     </div>
                 </div>
 
@@ -88,7 +101,9 @@
                 <div style="display: none;"
                      ng-repeat="channel in vm.channels
                        | filter: vm.allChannels.search
-                       | myChannels:vm.params.groupName:vm.user.username:vm.allChannels.myChannels:vm.allChannels.myChannelsAdmin:vm.allChannels.privateChannels
+                       | myChannels:vm.params.groupName:vm.user.username:vm.allChannels.myChannels:vm.allChannels.myChannelsAdmin
+                       | privateChannels:vm.allChannels.privateChannels
+                       | defaultChannels:vm.allChannels.defaultChannels
                        as fakeAllChannelsFilter track by $index">
                 </div>
             </div>

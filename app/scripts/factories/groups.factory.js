@@ -382,9 +382,36 @@
                             creation  : 1484561615,
                             lastUpdate: 1484561615
                         },
-                        creator    : 'C0ZEN',
+                        creator    : 'C0ZEgN',
                         description: 'Une description',
                         default    : true,
+                        users      : [
+                            {
+                                username: 'C0ZEN',
+                                joined  : 1484661615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        id         : 'aa',
+                        name       : 'Membre public admin',
+                        private    : false,
+                        picture    : {},
+                        date       : {
+                            creation  : 1484561615,
+                            lastUpdate: 1484561615
+                        },
+                        creator    : 'C0ZEgN',
+                        description: 'Une description',
+                        default    : false,
                         users      : [
                             {
                                 username: 'C0ZEN',
@@ -409,9 +436,9 @@
                             creation  : 1484561615,
                             lastUpdate: 1484561615
                         },
-                        creator    : 'C0ZEN',
+                        creator    : 'C0ZgEN',
                         description: 'Une description',
-                        default    : true,
+                        default    : false,
                         users      : [
                             {
                                 username: 'C0ZEN',
@@ -436,12 +463,12 @@
                             creation  : 1484561615,
                             lastUpdate: 1484561615
                         },
-                        creator    : 'C0ZEN',
+                        creator    : 'C0ZEgN',
                         description: 'Une description',
                         default    : true,
                         users      : [
                             {
-                                username: 'C0ZEN',
+                                username: 'C0ZEgegN',
                                 joined  : 1484661615,
                                 admin   : true,
                                 hasLeft : 0,
@@ -463,12 +490,12 @@
                             creation  : 1484561615,
                             lastUpdate: 1484561615
                         },
-                        creator    : 'C0ZEN',
+                        creator    : 'C0ZEgregN',
                         description: 'Une description',
                         default    : true,
                         users      : [
                             {
-                                username: 'C0ZEN',
+                                username: 'C0ZEggN',
                                 joined  : 1484661615,
                                 admin   : true,
                                 hasLeft : 0,

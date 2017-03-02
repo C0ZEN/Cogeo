@@ -62,15 +62,6 @@ div.atom-profile {
                     color : @atom-color-label;
                 }
             }
-            i.eye {
-                cursor         : pointer;
-                transition     : @atom-transition;
-                vertical-align : baseline;
-                color          : @atom-color-purple;
-                &:hover {
-                    color : @atom-color-purple-active;
-                }
-            }
         }
         img {
             width  : 70px;
@@ -83,6 +74,15 @@ div.atom-profile {
     hr {
         margin-top    : @atom-space-base;
         margin-bottom : @atom-space-base;
+    }
+}
+i.eye {
+    cursor         : pointer;
+    transition     : @atom-transition;
+    vertical-align : baseline;
+    color          : @atom-color-purple;
+    &:hover {
+        color : @atom-color-purple-active;
     }
 }
 .audioRecorder-analyzer {

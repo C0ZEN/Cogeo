@@ -6,6 +6,8 @@
     "channels_banned": "Banni",
     "channels_kicked": "Expulsé",
     "channels_creator_in": "Crée le {{date}}",
+    "channels_by_default": "Défaut",
+    "channels_by_default_tp": "Channel par défaut",
     "channels_member_since": "Membre depuis le {{date}}",
     "channels_banned_since": "Banni le {{date}} par <strong>{{userName}}</strong> pour le motif suivant: {{for}}",
     "channels_kicked_since": "Expulsé le {{date}} pour une durée de {{time}} par <strong>{{userName}}</strong> pour le motif suivant: {{for}}",

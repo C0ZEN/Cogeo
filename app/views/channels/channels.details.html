@@ -12,6 +12,11 @@
                         <div class="text">
                             <div class="center-flex-content flex-start">
                                 <h3>{{ vm.channel.name }}</h3>
+                                <cozen-tooltip ng-show="vm.channel.default"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_by_default_tp' | translate">
+                                    <mark class="atom-mark default space-small-left">{{ 'channels_by_default' | translate }}</mark>
+                                </cozen-tooltip>
                                 <cozen-tooltip ng-show="vm.channel.isMember"
                                                cozen-tooltip-placement="auto bottom"
                                                cozen-tooltip-label="'channels_member_since' | translate:{'date': (vm.channel.joined | date: 'EEEE dd MMMM yyyy')}">
