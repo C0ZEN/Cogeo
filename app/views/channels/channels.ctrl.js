@@ -30,7 +30,9 @@
             onInitMembers    : onInitMembers,
             getKickedTime    : Utils.getKickedTime,
             getUserFullName  : usersFactory.getUserFullName,
-            onInitInvitations: onInitInvitations
+            onInitInvitations: onInitInvitations,
+            onInitLogs       : onInitLogs,
+            getAllLogs       : getAllLogs
         };
 
         // Common data
@@ -77,7 +79,21 @@
             vm.channel             = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel             = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
             vm.invitations         = vm.channel.invitations;
+            vm.invitations         = usersFactory.addUsersFullNames(vm.invitations);
             vm.invitationsSettings = angular.copy(vm.user.settings.preferences.channelsInvitations);
+        }
+
+        function onInitLogs() {
+            vm.methods.onInit();
+            vm.channel        = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
+            vm.channel        = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.logs           = vm.channels.logs;
+            vm.logsSettings   = angular.copy(vm.user.settings.preferences.channelsLogs);
+            vm.allLogsDisplay = false;
+        }
+
+        function getAllLogs() {
+            vm.allLogsDisplay = true;
         }
     }
 

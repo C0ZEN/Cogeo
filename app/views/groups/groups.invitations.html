@@ -37,12 +37,12 @@
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
                      ng-class="{'border-bottom': $last, 'waiting': invitation.status.response == 1, 'accepted': invitation.status.response == 2, 'rejected': invitation.status.response == 0}"
                      ng-repeat="invitation in vm.groupInvitations
-           | orderBy: 'date':vm.invitations.orderBy
-           | filter: vm.invitations.search
-           | groupsInvitationsTypes: vm.invitations.types
-           | startFrom: (vm.invitations.currentPage - 1) * vm.invitations.limit
-           | limitTo: vm.invitations.limit
-           as invitationsFilter track by $index">
+                       | orderBy: 'date':vm.invitations.orderBy
+                       | filter: vm.invitations.search
+                       | groupsInvitationsTypes: vm.invitations.types
+                       | startFrom: (vm.invitations.currentPage - 1) * vm.invitations.limit
+                       | limitTo: vm.invitations.limit
+                       as invitationsFilter track by $index">
                     <div class="icon">
                         <i class="fa fa-fw"
                            ng-class="{'icons8-event-declined-filled': invitation.status.response == 0, 'icons8-event-accepted-filled': invitation.status.response == 2, 'icons8-event-accepted-tentatively-filled': invitation.status.response == 1}">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="text">
                         <p>
-                            {{ vm.methods.getUserFullName(invitation.username) }}
+                            {{ invitation.givenName }} {{ invitation.surname }}
                             <small>
                                 <a href
                                    ng-click="goTo.view('app.profiles.user', {username: invitation.username}, $event)"
@@ -67,9 +67,9 @@
                 <!-- Invitations fake (for actual length) -->
                 <div style="display: none;"
                      ng-repeat="group in vm.groupInvitations
-           | filter: vm.invitations.search
-           | groupsInvitationsTypes: vm.invitations.types
-           as fakeInvitationsFilter track by $index">
+                       | filter: vm.invitations.search
+                       | groupsInvitationsTypes: vm.invitations.types
+                       as fakeInvitationsFilter track by $index">
                 </div>
             </div>
 

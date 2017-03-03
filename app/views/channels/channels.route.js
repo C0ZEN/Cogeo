@@ -55,11 +55,11 @@
                     pageTitle: 'channels_invitations'
                 }
             })
-            .state('app.channels.log', {
-                url        : '/log/:channelName',
-                templateUrl: 'views/channels/channels.log.html',
+            .state('app.channels.logs', {
+                url        : '/logs/:channelName',
+                templateUrl: 'views/channels/channels.logs.html',
                 data       : {
-                    pageTitle: 'channels_log'
+                    pageTitle: 'channels_logs'
                 }
             })
             .state('app.channels.new', {

@@ -176,6 +176,21 @@
                                 selected: true
                             }
                         ]
+                    },
+                    channelsLogs       : {
+                        limit  : 9,
+                        all    : false,
+                        orderBy: true,
+                        events : [
+                            {
+                                id      : 'group',
+                                selected: true
+                            },
+                            {
+                                id      : 'channel',
+                                selected: true
+                            }
+                        ]
                     }
                 }
             },
@@ -503,7 +518,8 @@
                 updateNotifications              : httpRequestUpdateNotifications,
                 updateSettingsAllChannels        : httpRequestUpdateSettingsAllChannels,
                 updateSettingsChannelsMembers    : httpRequestUpdateSettingsChannelsMembers,
-                updateSettingsChannelsInvitations: httpRequestUpdateSettingsChannelsInvitations
+                updateSettingsChannelsInvitations: httpRequestUpdateSettingsChannelsInvitations,
+                updateSettingsChannelsLogs       : httpRequestUpdateSettingsChannelsLogs
             }
         };
 
@@ -637,6 +653,18 @@
                 else {
                     event.name  = 'popup_groupsInvitations_filter_body_accepted';
                     event.icon  = 'fa fa-fw icons8-event-accepted-filled';
+                    event.color = 'green';
+                }
+            });
+            angular.forEach($user.settings.preferences.channelsLogs.events, function (event) {
+                if (event.id == 'group') {
+                    event.name  = 'account_event_group';
+                    event.icon  = 'fa fa-fw icons8-google-groups';
+                    event.color = 'blue';
+                }
+                else {
+                    event.name  = 'account_event_channel';
+                    event.icon  = 'fa fa-fw icons8-channel-mosaic';
                     event.color = 'green';
                 }
             });
@@ -779,6 +807,15 @@
 
         function httpRequestUpdateSettingsChannelsInvitations(data, callbackSuccess, callbackError) {
             httpRequest.requestPut('user/' + user.username + '/settings/channels-invitations', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsChannelsLogs(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/channels-logs', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);

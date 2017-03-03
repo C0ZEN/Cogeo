@@ -80,7 +80,7 @@
                 vm.details.userIsAdmin   = vm.details.user != null ? vm.details.user.admin : false;
                 vm.details.userHasRights = groupsFactory.doesUserHasRights(vm.details.user);
                 vm.edit                  = angular.copy(group);
-                vm.groupInvitations      = angular.copy(group.invitations);
+                vm.groupInvitations      = usersFactory.addUsersFullNames(group.invitations);
                 vm.groupMembers          = usersFactory.addUsersFullNames(group.users);
                 vm.logs                  = angular.copy(group.logs);
                 if (!Methods.isNullOrEmpty(vm.logs)) {

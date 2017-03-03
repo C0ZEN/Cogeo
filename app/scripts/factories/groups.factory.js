@@ -486,6 +486,152 @@
                                     active: true
                                 }
                             }
+                        ],
+                        invitations: [
+                            {
+                                _id     : 'zfzefzfz',
+                                username: 'Totzefzeo',
+                                sentBy  : 'C0ZEN',
+                                status  : {
+                                    date    : 1484561615,
+                                    response: 1
+                                }
+                            },
+                            {
+                                _id     : 'zfzefzfz',
+                                username: 'User1',
+                                sentBy  : 'C0ZEN',
+                                status  : {
+                                    date    : 1484561615,
+                                    response: 0
+                                }
+                            },
+                            {
+                                _id     : 'zfzefzfz',
+                                username: 'Totfzefzefzefo',
+                                sentBy  : 'C0ZEN',
+                                status  : {
+                                    date    : 1484561615,
+                                    response: 0
+                                }
+                            },
+                            {
+                                _id     : 'zfzefzfz',
+                                username: 'Toto',
+                                sentBy  : 'C0ZEN',
+                                status  : {
+                                    date    : 1484561615,
+                                    response: 2
+                                }
+                            }
+                        ],
+                        logs       : [
+                            {
+                                date    : 1484561916,
+                                type    : "newChannelCreated",
+                                category: 'channel',
+                                values  : {
+                                    name    : "Bar",
+                                    userName: "@C0ZEN"
+                                }
+                            },
+                            {
+                                date    : 1484561917,
+                                type    : "newChannelJoined",
+                                category: 'channel',
+                                values  : {
+                                    name    : "Bar",
+                                    userName: "@C0ZEN"
+                                }
+                            },
+                            {
+                                date    : 1484561997,
+                                type    : "channelEdited",
+                                category: 'channel',
+                                values  : {
+                                    name    : "Bar",
+                                    userName: "@C0ZEN"
+                                }
+                            },
+                            {
+                                date    : 1484562017,
+                                type    : "channelLeft",
+                                category: 'channel',
+                                values  : {
+                                    name    : "Bar",
+                                    userName: "@C0ZEN"
+                                }
+                            },
+                            {
+                                date    : 1484564117,
+                                type    : "channelInvitationSentOne",
+                                category: 'channel',
+                                values  : {
+                                    name            : "Lol",
+                                    userName        : "@C0ZEN",
+                                    userEmailInvited: "170862@supinfo.com"
+                                }
+                            },
+                            {
+                                date    : 1484564117,
+                                type    : "channelInvitationSentMany",
+                                category: 'channel',
+                                values  : {
+                                    name    : "Lol",
+                                    userName: "@C0ZEN",
+                                    quantity: 4
+                                }
+                            },
+                            {
+                                date    : 1484564127,
+                                type    : "channelPermissionsGranted",
+                                category: 'channel',
+                                values  : {
+                                    userName       : "@C0ZEN",
+                                    userNameGranted: "@Marco",
+                                    name           : "Les junkies"
+                                }
+                            },
+                            {
+                                date    : 1484564127,
+                                type    : "channelPermissionsRevoked",
+                                category: 'channel',
+                                values  : {
+                                    userName       : "@C0ZEN",
+                                    userNameRevoked: "@Marco",
+                                    name           : "Les junkies"
+                                }
+                            },
+                            {
+                                date    : 1484564127,
+                                type    : "channelUserKicked",
+                                category: 'channel',
+                                values  : {
+                                    userName      : "@C0ZEN",
+                                    userNameKicked: "@Marco",
+                                    name          : "Les junkies"
+                                }
+                            },
+                            {
+                                date    : 1484564127,
+                                type    : "channelUserBanned",
+                                category: 'channel',
+                                values  : {
+                                    userName      : "@C0ZEN",
+                                    userNameBanned: "@Marco",
+                                    name          : "Les junkies"
+                                }
+                            },
+                            {
+                                date    : 1484564127,
+                                type    : "channelUserUnbanned",
+                                category: 'channel',
+                                values  : {
+                                    userName        : "@C0ZEN",
+                                    userNameUnbanned: "@Marco",
+                                    name            : "Les junkies"
+                                }
+                            }
                         ]
                     },
                     {

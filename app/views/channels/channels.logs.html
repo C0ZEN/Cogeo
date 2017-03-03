@@ -1,0 +1,90 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.onInitLogs()">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+
+                <!-- Filter -->
+                <cozen-form cozen-form-name="log"
+                            cozen-form-ctrl="vm"
+                            cozen-form-model="form">
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-input cozen-input-model="vm.logsSettings.search"
+                                     cozen-input-name="search"
+                                     cozen-input-success-design="false"
+                                     cozen-input-error-design="false"
+                                     cozen-input-icon-left="fa fa-search"
+                                     cozen-input-placeholder="account_log_search_pc"
+                                     cozen-input-auto-complete="off"
+                                     cozen-input-class="atom-search-input">
+                        </cozen-input>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-pagination cozen-pagination-model="vm.logsSettings.currentPage"
+                                          cozen-pagination-class="flex-end"
+                                          cozen-pagination-limit-per-page="vm.logsSettings.limit"
+                                          cozen-pagination-total-elements="fakeLogFilter.length"
+                                          cozen-pagination-auto-hide="true">
+                        </cozen-pagination>
+                    </div>
+                </cozen-form>
+            </div>
+
+            <!-- Logs -->
+            <div class="atom-logs space-base-before space-base-after">
+                <div class="atom-log"
+                     style="animation-delay: {{ 50 * $index + 'ms' }};"
+                     ng-class="[log.category, $last ? 'border-bottom' : '']"
+                     ng-repeat="log in vm.logs
+			           | orderBy: 'date':vm.logsSettings.orderBy
+			           | filter: vm.logsSettings.search
+			           | logsEvents: vm.logsSettings.events
+			           | startFrom: (vm.logsSettings.currentPage - 1) * vm.logsSettings.limit
+			           | limitTo: vm.logsSettings.limit
+			           as logFilter track by $index">
+                    <div class="icon">
+                        <i ng-class="[vm.methods.getLogSrc(log.type)]"
+                           class="fa fa-fw">
+                        </i>
+                    </div>
+                    <div class="text">
+                        <p compile="log.text"></p>
+                        <p class="help-text">{{ log.formattedDate | capitalize }}</p>
+                    </div>
+                </div>
+
+                <!-- Logs fake (for actual length) -->
+                <div style="display: none;"
+                     ng-repeat="log in vm.logs
+			           | filter: vm.logsSettings.search
+			           | logsEvents: vm.logsSettings.events
+			           as fakeLogFilter track by $index">
+                </div>
+            </div>
+
+            <div class="space-medium-after center-flex-content">
+
+                <!-- More filter -->
+                <a href
+                   onclick="this.blur()"
+                   ng-click="methods.showPopup($event, 'channelsLogsFilter', vm.logsSettings)">
+                    {{ 'account_log_show_filter' | translate }}
+                </a>
+
+                <!-- Display all -->
+                <a href
+                   onclick="this.blur()"
+                   ng-if="!vm.allLogsDisplay"
+                   ng-click="vm.methods.getAllLogs()">
+                    {{ 'account_log_get_all' | translate }}
+                </a>
+
+                <!-- Total -->
+                <p ng-show="vm.allLogsDisplay"
+                   class="no-margin help-text animated fadeInUp">
+                    {{ 'account_log_total' | translate:{total: vm.logs.length, date: (vm.user.date.register | date: 'MMMM yyyy')} }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

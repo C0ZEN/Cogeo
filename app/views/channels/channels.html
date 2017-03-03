@@ -16,6 +16,7 @@
                          cozen-pills-auto-update-model="false">
                 <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_all"
                                          cozen-pills-item-simple-on-click="goTo.view('app.channels.all')"
+                                         cozen-pills-item-simple-type-purple
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.all')">
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_details"
@@ -40,9 +41,9 @@
                                          cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.channels.invitations', 'app.channels.recruit')">
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_log"
-                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.log', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.logs', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
                                          cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null"
-                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.log')">
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.logs')">
                 </cozen-pills-item-simple>
             </cozen-pills>
 

@@ -50,7 +50,7 @@
                     </div>
                     <div class="text">
                         <p>
-                            {{ vm.methods.getUserFullName(invitation.username) }}
+                            {{ invitation.givenName }} {{ invitation.surname }}
                             <small>
                                 <a href
                                    ng-click="goTo.view('app.profiles.user', {username: invitation.username}, $event)"
