@@ -962,6 +962,8 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item {
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item div.img img {
   margin-right: 6px;
   height: 22px;
+  width: 22px;
+  padding: 2px;
 }
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item.active,
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:focus,
@@ -988,6 +990,14 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item div.sub-li
   border-bottom-right-radius: 3px;
   min-width: 200px;
   height: auto;
+}
+nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-separator {
   background-color: #d6dbdb;

@@ -114,6 +114,8 @@ nav.atom-navbar {
                     div.img img {
                         margin-right : @atom-space-small;
                         height       : 22px;
+                        width        : 22px;
+                        padding      : 2px;
                     }
                     &.active,
                     &:focus,
@@ -133,6 +135,14 @@ nav.atom-navbar {
                         border-bottom-right-radius : @atom-radius;
                         min-width                  : 200px;
                         height                     : auto;
+                    }
+                    span {
+                        overflow           : hidden;
+                        text-overflow      : ellipsis;
+                        -webkit-line-clamp : 1;
+                        display            : -webkit-box;
+                        -webkit-box-orient : vertical;
+                        word-break         : break-all;
                     }
                 }
                 div.link-dropdown-separator {

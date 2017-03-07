@@ -40,7 +40,8 @@
                      ng-mouseleave="group.showChannels = false"
                      tabindex="0">
                     <div class="img">
-                        <img ng-src="{{ methods.getGroupPicture(group.name) }}">
+                        <img class="img-circle img-thumbnail"
+                             ng-src="{{ methods.getGroupPicture(group.name) }}">
                     </div>
                     <span>{{ group.name }}</span>
 
@@ -52,7 +53,8 @@
                              ng-click="$event.stopPropagation(); goTo.view('app.channels.details', {groupName: group.name, channelName: channel.name})"
                              tabindex="0">
                             <div class="img">
-                                <img ng-src="{{ methods.getChannelPicture(group.name, channel.id) }}">
+                                <img class="img-circle img-thumbnail"
+                                     ng-src="{{ methods.getChannelPicture(group.name, channel.id) }}">
                             </div>
                             <span>{{ channel.name }}</span>
                         </div>
