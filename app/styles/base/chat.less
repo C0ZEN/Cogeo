@@ -1,6 +1,86 @@
 div.atom-chat {
+    height         : ~"calc(100vh - 60px)";
+    display        : flex;
+    flex-direction : row;
+    padding        : 0;
 
     // Col with groups
     div.atom-chat-groups-container {
+        height           : inherit;
+        width            : 50px;
+        background-color : @atom-color-line-rule-light;
+        padding          : @atom-space-small;
+        border-right     : 1px solid @atom-color-line-rule;
+        z-index          : 2;
+        div.atom-chat-group {
+            margin-bottom       : @atom-space-small;
+            cursor              : pointer;
+            outline             : @atom-outline;
+            animation-fill-mode : @atom-animation-fill;
+            animation-duration  : 800ms;
+            filter              : grayscale(100%);
+            opacity             : 0.6;
+            transition          : @atom-transition;
+            img {
+                padding    : 3px;
+                transition : @atom-transition;
+            }
+            &:focus,
+            &:hover {
+                opacity : 0.7;
+            }
+            &.active {
+                filter  : grayscale(0);
+                opacity : 1;
+                &:focus,
+                &:hover {
+                    opacity : 1;
+                }
+            }
+        }
+    }
+
+    // Col with channels
+    div.atom-chat-channels-container {
+        height           : inherit;
+        background-color : @atom-color-line-rule-light;
+        padding          : @atom-space-small;
+        border-right     : 1px solid @atom-color-line-rule;
+        z-index          : 1;
+        width            : 215px;
+        h3.chat-subtitle {
+            font-size     : 18px;
+            font-weight   : 500;
+            margin-top    : @atom-space-base;
+            margin-bottom : 2px;
+            &:first-of-type {
+                margin-top : 0;
+            }
+        }
+        div.atom-chat-channel {
+            transition      : @atom-transition;
+            display         : flex;
+            flex-direction  : row;
+            justify-content : space-between;
+            span {
+                cursor     : pointer;
+                outline    : @atom-outline;
+                transition : @atom-transition;
+                &:hover,
+                &:focus {
+                    color : @atom-color-blue;
+                }
+            }
+            div.empty-star {
+                i {
+                    cursor : pointer;
+                    color  : @atom-color-label;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-yellow;
+                    }
+                }
+            }
+        }
     }
 }

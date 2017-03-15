@@ -38,6 +38,9 @@
                 url   : "http://res.cloudinary.com/cozen/image/upload/v1485115972/ygfsbbfylq91lq753jyo.jpg"
             },
             bio          : 'ma bio',
+            starredChannels: [
+                "a"
+            ],
             settings     : {
                 ports       : {
                     first : 28,
