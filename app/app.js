@@ -41,6 +41,7 @@
             'socialLogin',
             'anim-in-out',
             'angular-loading-bar',
+            'dibari.angular-ellipsis',
             'cozenLib'
         ])
         .config(config)

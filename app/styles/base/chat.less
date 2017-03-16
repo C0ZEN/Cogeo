@@ -47,7 +47,8 @@ div.atom-chat {
         padding          : @atom-space-small;
         border-right     : 1px solid @atom-color-line-rule;
         z-index          : 1;
-        width            : 215px;
+        width            : 213px;
+        position         : relative;
         h3.chat-subtitle {
             font-size     : 18px;
             font-weight   : 500;
@@ -57,27 +58,86 @@ div.atom-chat {
                 margin-top : 0;
             }
         }
+        div.close-btn {
+            position   : absolute;
+            top        : 1px;
+            right      : 0;
+            cursor     : pointer;
+            transition : @atom-transition;
+            outline    : @atom-outline;
+            &:hover,
+            &:focus {
+                color : @atom-color-blue;
+            }
+        }
         div.atom-chat-channel {
             transition      : @atom-transition;
             display         : flex;
             flex-direction  : row;
             justify-content : space-between;
             span {
-                cursor     : pointer;
-                outline    : @atom-outline;
-                transition : @atom-transition;
+                cursor        : pointer;
+                outline       : @atom-outline;
+                transition    : @atom-transition;
+                width         : 200px;
+                text-overflow : ellipsis;
+                white-space   : nowrap;
+                overflow      : hidden;
                 &:hover,
                 &:focus {
                     color : @atom-color-blue;
                 }
             }
+            div.full-star,
             div.empty-star {
+                outline : @atom-outline;
+                cursor  : pointer;
+                color   : @atom-color-label;
+                z-index : 1;
                 i {
-                    cursor : pointer;
-                    color  : @atom-color-label;
+                    cursor : inherit;
+                    color  : inherit;
+                }
+                &:hover,
+                &:focus {
+                    color : @atom-color-yellow;
+                }
+                &.disabled {
+                    cursor : not-allowed;
                     &:hover,
                     &:focus {
-                        color : @atom-color-yellow;
+                        color : @atom-color-label;
+                    }
+                }
+            }
+            &.ng-leave {
+                display : none !important;
+            }
+        }
+    }
+
+    // Messages
+    div.channel-messages {
+        div.messages {
+            div.message {
+                &.user {
+                    div.user-image {
+                        img {
+
+                        }
+                    }
+                    div.message-content {
+                        div.from {
+                            span.user-username {
+
+                            }
+                            span.sent-date {
+
+                            }
+                        }
+                        span.message-body {
+
+                        }
                     }
                 }
             }

@@ -36,12 +36,12 @@
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
                      ng-class="[$last ? 'border-bottom' : '']"
                      ng-repeat="group in vm.groups
-           | orderBy: 'name':vm.all.orderBy
-           | filter: vm.all.search
-           | myGroups:vm.user.username:vm.all.myGroups:vm.all.myGroupsAdmin
-           | startFrom: (vm.all.currentPage - 1) * vm.all.limit
-           | limitTo: vm.all.limit
-           as allGroupsFilter track by $index">
+                       | orderBy: 'name':vm.all.orderBy
+                       | filter: vm.all.search
+                       | myGroups:vm.user.username:vm.all.myGroups:vm.all.myGroupsAdmin
+                       | startFrom: (vm.all.currentPage - 1) * vm.all.limit
+                       | limitTo: vm.all.limit
+                       as allGroupsFilter track by $index">
                     <div class="img">
                         <img ng-src="{{ methods.getGroupPicture(group.name) }}">
                     </div>
@@ -87,9 +87,9 @@
                 <!-- Groups fake (for actual length) -->
                 <div style="display: none;"
                      ng-repeat="group in vm.groups
-           | filter: vm.all.search
-           | myGroups:vm.user.username:vm.all.myGroups:vm.all.myGroupsAdmin
-           as fakeAllGroupsFilter track by $index">
+                       | filter: vm.all.search
+                       | myGroups:vm.user.username:vm.all.myGroups:vm.all.myGroupsAdmin
+                       as fakeAllGroupsFilter track by $index">
                 </div>
             </div>
 

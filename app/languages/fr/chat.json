@@ -2,6 +2,9 @@
     "chat_starred_channels": "Channels favoris",
     "chat_others_channels": "Autres channels",
     "chat_add_to_starred": "Ajouter aux favoris",
+    "chat_remove_to_starred": "Supprimer des favoris",
+    "chat_close_channels": "Fermer",
+    "chat_message_edited_on": "Modifer à",
     "chat_channel": "Discussion dans un channel",
     "chat_user": "Discussion avec un ami"
 }

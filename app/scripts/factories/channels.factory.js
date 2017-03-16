@@ -27,7 +27,8 @@
             getChannelWithUserRoles : getChannelWithUserRoles,
             getMyChannels           : getMyChannels,
             getMyStarredChannels    : getMyStarredChannels,
-            getMyOthersChannels     : getMyOthersChannels
+            getMyOthersChannels     : getMyOthersChannels,
+            getMessages             : getMessages
         };
 
         function getChannelPicture(groupName, channelId) {
@@ -154,6 +155,16 @@
             else {
                 return null;
             }
+        }
+
+        function getMessages(groupName, channelId, quantity) {
+            var channel = groupsFactory.getChannelById(groupName, channelId);
+            if (!Methods.isNullOrEmpty(channel)) {
+                if (channel.messages != null) {
+                    return channel.messages.slice(0, quantity);
+                }
+            }
+            return [];
         }
     }
 

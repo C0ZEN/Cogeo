@@ -16,14 +16,37 @@
         </div>
     </div>
 
-    <div class="atom-chat-channels-container animated fadeInLeft">
+    <!-- Channels -->
+    <div class="atom-chat-channels-container animated"
+         id="atom-chat-channels-container">
+
+        <!-- Close btn -->
+        <div class="close-btn"
+             ng-click="vm.methods.hideChannels($event)">
+            <cozen-tooltip cozen-tooltip-label="'chat_close_channels'">
+                <i class="fa fa-fw fa-times"></i>
+            </cozen-tooltip>
+        </div>
 
         <!-- Starred channels -->
-        <h3 class="chat-subtitle">{{ 'chat_starred_channels' | translate }}</h3>
-        <div ng-repeat="channel in vm.starredChannels track by $index"
+        <h3 ng-if-start="vm.starredChannels.length > 0"
+            class="chat-subtitle">
+            {{ 'chat_starred_channels' | translate }}
+        </h3>
+        <div ng-if-end
+             ng-repeat="channel in vm.starredChannels track by $index"
              ng-class="{active: channel.name == vm.activeChannel}"
+             ng-mouseenter="channel.onHoverChannel = true"
+             ng-mouseleave="channel.onHoverChannel = false"
              class="atom-chat-channel">
-            <span ng-click="vm.methods.setActiveChannel(channel.name)">{{ channel.name }}</span>
+            <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
+            <div ng-show="channel.onHoverChannel"
+                 ng-click="vm.methods.removeToStarred($event, channel.id)"
+                 class="full-star">
+                <cozen-tooltip cozen-tooltip-label="'chat_remove_to_starred'">
+                    <i class="fa fa-fw fa-star"></i>
+                </cozen-tooltip>
+            </div>
         </div>
 
         <!-- Others channels -->
@@ -33,8 +56,10 @@
              ng-mouseenter="channel.onHoverChannel = true"
              ng-mouseleave="channel.onHoverChannel = false"
              class="atom-chat-channel">
-            <span ng-click="vm.methods.setActiveChannel(channel.name)">{{ channel.name }}</span>
+            <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
             <div ng-show="channel.onHoverChannel"
+                 ng-class="{disabled: vm.starredChannels.length >= 5}"
+                 ng-click="vm.methods.addToStarred($event, channel.id)"
                  class="empty-star">
                 <cozen-tooltip cozen-tooltip-label="'chat_add_to_starred'">
                     <i class="fa fa-fw fa-star-o"></i>

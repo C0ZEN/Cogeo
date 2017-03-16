@@ -1018,7 +1018,7 @@ div.atom-logs div.atom-log {
   -webkit-animation-duration: 300ms;
           animation-duration: 300ms;
   -webkit-animation-name: fadeInLeft-12;
-  animation-name: fadeInLeft-12;
+          animation-name: fadeInLeft-12;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1037,24 +1037,24 @@ div.atom-logs div.atom-log {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
   }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none;
+            transform: none;
   }
 }
 @keyframes fadeInLeft-12 {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
   }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none;
+            transform: none;
   }
 }
 div.atom-logs div.atom-log.ng-leave-active {
@@ -1113,7 +1113,7 @@ div.atom-groups div.atom-group {
   -webkit-animation-duration: 300ms;
           animation-duration: 300ms;
   -webkit-animation-name: fadeInLeft-12;
-  animation-name: fadeInLeft-12;
+          animation-name: fadeInLeft-12;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1132,24 +1132,24 @@ div.atom-groups div.atom-group {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
   }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none;
+            transform: none;
   }
 }
 @keyframes fadeInLeft-12 {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
   }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none;
+            transform: none;
   }
 }
 div.atom-groups div.atom-group.ng-leave-active {
@@ -1196,7 +1196,7 @@ div.atom-invitations div.atom-invitation {
   -webkit-animation-duration: 300ms;
           animation-duration: 300ms;
   -webkit-animation-name: fadeInLeft-12;
-  animation-name: fadeInLeft-12;
+          animation-name: fadeInLeft-12;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1215,24 +1215,24 @@ div.atom-invitations div.atom-invitation {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
   }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none;
+            transform: none;
   }
 }
 @keyframes fadeInLeft-12 {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
   }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none;
+            transform: none;
   }
 }
 div.atom-invitations div.atom-invitation.ng-leave-active {
@@ -1355,7 +1355,7 @@ div.atom-inline-list div.atom-list-item-container div.atom-inline-item {
   -webkit-animation-duration: 300ms;
           animation-duration: 300ms;
   -webkit-animation-name: fadeInLeft-12;
-  animation-name: fadeInLeft-12;
+          animation-name: fadeInLeft-12;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1377,24 +1377,24 @@ div.atom-inline-list div.atom-list-item-container div.atom-inline-item {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
   }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none;
+            transform: none;
   }
 }
 @keyframes fadeInLeft-12 {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-12px, 0, 0);
-    transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
   }
   to {
     opacity: 1;
     -webkit-transform: none;
-    transform: none;
+            transform: none;
   }
 }
 div.atom-inline-list div.atom-list-item-container div.atom-inline-item.ng-leave-active {
@@ -1627,7 +1627,8 @@ div.atom-chat div.atom-chat-channels-container {
   padding: 6px;
   border-right: 1px solid #d6dbdb;
   z-index: 1;
-  width: 215px;
+  width: 213px;
+  position: relative;
 }
 div.atom-chat div.atom-chat-channels-container h3.chat-subtitle {
   font-size: 18px;
@@ -1637,6 +1638,19 @@ div.atom-chat div.atom-chat-channels-container h3.chat-subtitle {
 }
 div.atom-chat div.atom-chat-channels-container h3.chat-subtitle:first-of-type {
   margin-top: 0;
+}
+div.atom-chat div.atom-chat-channels-container div.close-btn {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  cursor: pointer;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+  outline: 0;
+}
+div.atom-chat div.atom-chat-channels-container div.close-btn:hover,
+div.atom-chat div.atom-chat-channels-container div.close-btn:focus {
+  color: #2c9fdd;
 }
 div.atom-chat div.atom-chat-channels-container div.atom-chat-channel {
   -webkit-transition: all 80ms ease-out;
@@ -1657,18 +1671,45 @@ div.atom-chat div.atom-chat-channels-container div.atom-chat-channel span {
   outline: 0;
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
+  width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 div.atom-chat div.atom-chat-channels-container div.atom-chat-channel span:hover,
 div.atom-chat div.atom-chat-channels-container div.atom-chat-channel span:focus {
   color: #2c9fdd;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star i {
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star {
+  outline: 0;
   cursor: pointer;
   color: #8c8c8c;
+  z-index: 1;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star i:hover,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star i:focus {
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star i,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star i {
+  cursor: inherit;
+  color: inherit;
+}
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star:hover,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star:hover,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star:focus,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star:focus {
   color: #feb909;
+}
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star.disabled,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star.disabled {
+  cursor: not-allowed;
+}
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star.disabled:hover,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star.disabled:hover,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star.disabled:focus,
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star.disabled:focus {
+  color: #8c8c8c;
+}
+div.atom-chat div.atom-chat-channels-container div.atom-chat-channel.ng-leave {
+  display: none !important;
 }
 section {
   padding: 84px 0;
