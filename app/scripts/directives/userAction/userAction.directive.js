@@ -7,17 +7,17 @@
  * @description
  *
  * [Scope params]
- * @param {boolean} userActionKicked    = true > Display the kicked action
- * @param {boolean} userActionBanned    = true > Display the banned action
- * @param {boolean} userActionUnbanned  = true > Display the unbanned action
- * @param {boolean} userActionRevoked   = true > Display the revoked action
- * @param {boolean} userActionGranted   = true > Display the granted action
- * @param {boolean} userActionIsVisible = true > Show/hide the actions
- * @param {object}  userActionGrantedData      > Data required by the popup
- * @param {object}  userActionRevokedData      > Data required by the popup
- * @param {object}  userActionKickedData       > Data required by the popup
- * @param {object}  userActionBannedData       > Data required by the popup
- * @param {object}  userActionUnbannedData     > Data required by the popup
+ * @param {boolean} userActionKicked       = true > Display the kicked action
+ * @param {boolean} userActionBanned       = true > Display the banned action
+ * @param {boolean} userActionUnbanned     = true > Display the unbanned action
+ * @param {boolean} userActionRevoked      = true > Display the revoked action
+ * @param {boolean} userActionGranted      = true > Display the granted action
+ * @param {boolean} userActionIsVisible    = true > Show/hide the actions
+ * @param {object}  userActionGrantedData         > Data required by the popup
+ * @param {object}  userActionRevokedData         > Data required by the popup
+ * @param {object}  userActionKickedData          > Data required by the popup
+ * @param {object}  userActionBannedData          > Data required by the popup
+ * @param {object}  userActionUnbannedData        > Data required by the popup
  *
  */
 (function (angular) {

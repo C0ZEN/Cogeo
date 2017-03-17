@@ -1,8 +1,9 @@
 <div class="container-fluid atom-chat"
+     ng-class="vm.chatTheme"
      ng-init="vm.methods.onInit();">
 
     <!-- Groups -->
-    <div class="atom-chat-groups-container animated fadeInLeft"
+    <div class="atom-chat-groups-container animated"
          ng-show="vm.hasGroup">
         <div ng-repeat="group in vm.groups track by $index"
              ng-click="vm.methods.setActiveGroup(group.name)"
@@ -18,56 +19,142 @@
 
     <!-- Channels -->
     <div class="atom-chat-channels-container animated"
+         ng-mouseenter="vm.onHoverChannelContainer = true"
+         ng-mouseleave="vm.onHoverChannelContainer = false"
          id="atom-chat-channels-container">
 
         <!-- Close btn -->
-        <div class="close-btn"
+        <div ng-show="vm.onHoverChannelContainer"
+             class="close-btn"
              ng-click="vm.methods.hideChannels($event)">
             <cozen-tooltip cozen-tooltip-label="'chat_close_channels'">
                 <i class="fa fa-fw fa-times"></i>
             </cozen-tooltip>
         </div>
 
-        <!-- Starred channels -->
-        <h3 ng-if-start="vm.starredChannels.length > 0"
-            class="chat-subtitle">
-            {{ 'chat_starred_channels' | translate }}
-        </h3>
-        <div ng-if-end
-             ng-repeat="channel in vm.starredChannels track by $index"
-             ng-class="{active: channel.name == vm.activeChannel}"
-             ng-mouseenter="channel.onHoverChannel = true"
-             ng-mouseleave="channel.onHoverChannel = false"
-             class="atom-chat-channel">
-            <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
-            <div ng-show="channel.onHoverChannel"
-                 ng-click="vm.methods.removeToStarred($event, channel.id)"
-                 class="full-star">
-                <cozen-tooltip cozen-tooltip-label="'chat_remove_to_starred'">
-                    <i class="fa fa-fw fa-star"></i>
+        <!-- Active group -->
+        <div class="chat-active-group">
+            <a href
+               ui-sref="app.groups.details({groupName: vm.activeGroup})"
+               ng-click="goTo.view('app.groups.details', {groupName: vm.activeGroup})"
+               class="group-name hover-link">
+                {{ vm.activeGroup }}
+            </a>
+            <div class="user-profile">
+                <cozen-tooltip cozen-tooltip-label="vm.status.name"
+                               cozen-tooltip-placement="auto top">
+                    <div class="status"
+                         ng-style="{'background-color': vm.status.color}">
+                    </div>
                 </cozen-tooltip>
+                <a href
+                   ui-sref="app.profiles.user({username: vm.user.username})"
+                   ng-click="goTo.view('app.profiles.user', {username: vm.user.username})"
+                   class="username hover-link">
+                    @{{ vm.user.username }}
+                </a>
             </div>
         </div>
 
-        <!-- Others channels -->
-        <h3 class="chat-subtitle">{{ 'chat_others_channels' | translate }}</h3>
-        <div ng-repeat="channel in vm.othersChannels track by $index"
-             ng-class="{active: channel.name == vm.activeChannel}"
-             ng-mouseenter="channel.onHoverChannel = true"
-             ng-mouseleave="channel.onHoverChannel = false"
-             class="atom-chat-channel">
-            <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
-            <div ng-show="channel.onHoverChannel"
-                 ng-class="{disabled: vm.starredChannels.length >= 5}"
-                 ng-click="vm.methods.addToStarred($event, channel.id)"
-                 class="empty-star">
-                <cozen-tooltip cozen-tooltip-label="'chat_add_to_starred'">
-                    <i class="fa fa-fw fa-star-o"></i>
-                </cozen-tooltip>
+        <!-- Channels and friends -->
+        <div class="chat-list">
+
+            <!-- Starred channels -->
+            <div ng-if-start="vm.starredChannels.length > 0"
+                 ng-mouseenter="channel.onHoverStarredChannels = true"
+                 ng-mouseleave="channel.onHoverStarredChannels = false"
+                 class="chat-subtitle">
+
+                <!-- Title -->
+                <h3>
+                    {{ 'chat_starred_channels' | translate }}
+                    <small>({{ vm.starredChannels.length }})</small>
+                </h3>
+
+                <!-- New channel -->
+                <div ng-show="channel.onHoverStarredChannels"
+                     ui-sref="app.channels.new({groupName: vm.activeGroup})"
+                     ng-click="goTo.view('app.channels.new', {groupName: vm.activeGroup})"
+                     class="add-icon">
+                    <cozen-tooltip cozen-tooltip-label="'chat_new_channel'">
+                        <i class="fa fa-plus-circle"></i>
+                    </cozen-tooltip>
+                </div>
             </div>
+            <div ng-repeat="channel in vm.starredChannels
+                    | filter: vm.searchValue as starredChannelsFilter track by $index"
+                 ng-class="{active: channel.name == vm.activeChannel}"
+                 ng-mouseenter="channel.onHoverChannel = true"
+                 ng-mouseleave="channel.onHoverChannel = false"
+                 class="atom-chat-channel">
+                <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
+                <div ng-show="channel.onHoverChannel"
+                     ng-click="vm.methods.removeToStarred($event, channel.id)"
+                     class="full-star">
+                    <cozen-tooltip cozen-tooltip-label="'chat_remove_to_starred'">
+                        <i class="fa fa-fw fa-star"></i>
+                    </cozen-tooltip>
+                </div>
+            </div>
+
+            <!-- No result -->
+            <span ng-if-end
+                  ng-show="starredChannelsFilter.length == 0"
+                  class="no-result">
+                {{ 'chat_no_result' | translate }}
+            </span>
+
+            <!-- Others channels -->
+            <div class="chat-subtitle"
+                 ng-mouseenter="vm.onHoverChannelTitle = true"
+                 ng-mouseleave="vm.onHoverChannelTitle = false">
+                <h3>
+                    {{ 'chat_others_channels' | translate }}
+                    <small>({{ vm.othersChannels.length }})</small>
+                </h3>
+            </div>
+            <div ng-repeat="channel in vm.othersChannels
+                    | filter: vm.searchValue as otherChannelsFilter track by $index"
+                 ng-class="{active: channel.name == vm.activeChannel}"
+                 ng-mouseenter="channel.onHoverChannel = true"
+                 ng-mouseleave="channel.onHoverChannel = false"
+                 class="atom-chat-channel">
+                <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
+                <div ng-show="channel.onHoverChannel"
+                     ng-class="{disabled: vm.starredChannels.length >= 5}"
+                     ng-click="vm.methods.addToStarred($event, channel.id)"
+                     class="empty-star">
+                    <cozen-tooltip cozen-tooltip-label="'chat_add_to_starred'">
+                        <i class="fa fa-fw fa-star-o"></i>
+                    </cozen-tooltip>
+                </div>
+            </div>
+
+            <!-- No result -->
+            <span ng-show="otherChannelsFilter.length == 0"
+                  class="no-result">
+                {{ 'chat_no_result' | translate }}
+            </span>
+        </div>
+
+        <!-- Search bar -->
+        <div class="chat-search-bar">
+            <cozen-form cozen-form-ctrl="vm"
+                        cozen-form-model="form"
+                        cozen-form-name="search">
+                <cozen-input cozen-input-model="vm.searchValue"
+                             cozen-input-size-small
+                             cozen-input-name="search"
+                             cozen-input-success-design="false"
+                             cozen-input-error-design="false"
+                             cozen-input-icon-left="fa fa-search"
+                             cozen-input-placeholder="chat_search_placeholder"
+                             cozen-input-auto-complete="off">
+                </cozen-input>
+            </cozen-form>
         </div>
     </div>
-</div>
 
-<!-- Content -->
-<div class="ui-view"></div>
+    <!-- Content -->
+    <div class="ui-view chat-messages-container"></div>
+</div>

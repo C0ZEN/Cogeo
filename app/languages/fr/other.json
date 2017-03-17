@@ -1,5 +1,9 @@
 {
     "other_loading": "Chargement...",
+    "other_status_online": "En ligne",
+    "other_status_absent": "Absent",
+    "other_status_busy": "Occupé",
+    "other_status_off": "Déconnecté",
     "other_time_300": "5 minutes",
     "other_time_900": "15 minutes",
     "other_time_1800": "30 minutes",

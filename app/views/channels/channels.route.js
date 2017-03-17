@@ -63,7 +63,7 @@
                 }
             })
             .state('app.channels.new', {
-                url        : '/new/:channelName',
+                url        : '/new',
                 templateUrl: 'views/channels/channels.new.html',
                 data       : {
                     pageTitle: 'channels_new'

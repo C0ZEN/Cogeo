@@ -6,7 +6,10 @@
             <h1 ng-show="goTo.isCurrentView('app.channels.all')"
                 compile="'channels_channels_title' | translate:{groupName: vm.params.groupName}">
             </h1>
-            <h1 ng-show="!goTo.isCurrentView('app.channels.all')"
+            <h1 ng-show="goTo.isCurrentView('app.channels.new')"
+                compile="'channels_channels_title_new' | translate:{groupName: vm.params.groupName}">
+            </h1>
+            <h1 ng-show="!goTo.isCurrentView('app.channels.all') && !goTo.isCurrentView('app.channels.new')"
                 compile="'channels_channels_title_name' | translate:{groupName: vm.params.groupName, channelName: vm.params.channelName}">
             </h1>
             <p class="help-text space-medium-after">{{ 'channels_channels_subtitle' | translate }}</p>
@@ -21,29 +24,33 @@
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_details"
                                          cozen-pills-item-simple-on-click="goTo.view('app.channels.details', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
-                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all')"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || goTo.isCurrentView('app.channels.new')"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.details')">
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple ng-show="vm.details.userIsAdmin"
                                          cozen-pills-item-simple-label="channels_pills_edit"
                                          cozen-pills-item-simple-on-click="goTo.view('app.channels.edit', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
-                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || !vm.details.userIsAdmin || vm.params.channelName == null"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || !vm.details.userIsAdmin || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.edit')">
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_members"
                                          cozen-pills-item-simple-on-click="goTo.view('app.channels.members', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
-                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.members')">
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_invitations"
                                          cozen-pills-item-simple-on-click="goTo.view('app.channels.invitations', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
-                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
                                          cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.channels.invitations', 'app.channels.recruit')">
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_log"
                                          cozen-pills-item-simple-on-click="goTo.view('app.channels.logs', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
-                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.logs')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_new"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.new', {'groupName': vm.params.groupName})"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.new')">
                 </cozen-pills-item-simple>
             </cozen-pills>
 

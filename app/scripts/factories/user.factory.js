@@ -16,32 +16,32 @@
 
     function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope, goTo) {
 
-        var user = {
-            givenName    : 'Geoffrey',
-            surname      : 'Testelin',
-            email        : 'geoffrey.testelin@gmail.com',
-            username     : 'C0ZEN',
-            superAdmin   : true,
-            hidden       : {
+        var user   = {
+            givenName      : 'Geoffrey',
+            surname        : 'Testelin',
+            email          : 'geoffrey.testelin@gmail.com',
+            username       : 'C0ZEN',
+            superAdmin     : true,
+            hidden         : {
                 profile: true
             },
-            type         : 'user',
-            date         : {
+            type           : 'user',
+            date           : {
                 register  : 1484561615,
                 lastUpdate: 1484561615
             },
-            picture      : {
+            picture        : {
                 name  : "3.jpg",
                 width : 600,
                 height: 600,
                 format: "jpg",
                 url   : "http://res.cloudinary.com/cozen/image/upload/v1485115972/ygfsbbfylq91lq753jyo.jpg"
             },
-            bio          : 'ma bio',
+            bio            : 'ma bio',
             starredChannels: [
                 "a"
             ],
-            settings     : {
+            settings       : {
                 ports       : {
                     first : 28,
                     second: 32
@@ -197,7 +197,7 @@
                     }
                 }
             },
-            notifications: {
+            notifications  : {
                 groups       : {
                     creation    : true,
                     edit        : true,
@@ -221,7 +221,7 @@
                     newFriend: true
                 }
             },
-            logs         : [
+            logs           : [
                 {
                     date    : 1484561615,
                     type    : "newGroupCreated",
@@ -496,6 +496,32 @@
                 }
             ]
         };
+        var status = [
+            {
+                id    : 0,
+                name  : 'other_status_online',
+                active: true,
+                color : '#2ecc71'
+            },
+            {
+                id    : 1,
+                name  : 'other_status_absent',
+                active: false,
+                color : '#e67e22'
+            },
+            {
+                id    : 2,
+                name  : 'other_status_busy',
+                active: false,
+                color : '#e74c3c'
+            },
+            {
+                id    : 3,
+                name  : 'other_status_off',
+                active: false,
+                color : '#95a5a6'
+            }
+        ];
 
         // Public functions
         return {
@@ -506,6 +532,8 @@
             logout               : logout,
             setUserInLocalStorage: setUserInLocalStorage,
             getFriends           : getFriends,
+            getStatus            : getStatus,
+            setStatus            : setStatus,
             httpRequest          : {
                 getUser                          : httpRequestGetUser,
                 register                         : httpRequestRegister,
@@ -683,6 +711,21 @@
 
         function getFriends() {
             return [];
+        }
+
+        function getStatus() {
+            for (var i = 0, length = status.length; i < length; i++) {
+                if (status[i].active) {
+                    return status[i];
+                }
+            }
+        }
+
+        function setStatus(status) {
+            for (var i = 0, length = status.length; i < length; i++) {
+                status[i].active = false;
+            }
+            status[status].active = true;
         }
 
         /// HTTP REQUEST ///

@@ -28,7 +28,8 @@
             getMyChannels           : getMyChannels,
             getMyStarredChannels    : getMyStarredChannels,
             getMyOthersChannels     : getMyOthersChannels,
-            getMessages             : getMessages
+            getMessages             : getMessages,
+            getChannelIdByName      : getChannelIdByName
         };
 
         function getChannelPicture(groupName, channelId) {
@@ -165,6 +166,14 @@
                 }
             }
             return [];
+        }
+
+        function getChannelIdByName(groupName, channelName) {
+            var channel = groupsFactory.getChannelByName(groupName, channelName);
+            if (!Methods.isNullOrEmpty(channel)) {
+                return channel.id;
+            }
+            return null;
         }
     }
 

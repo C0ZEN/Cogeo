@@ -32,7 +32,8 @@
             getUserFullName  : usersFactory.getUserFullName,
             onInitInvitations: onInitInvitations,
             onInitLogs       : onInitLogs,
-            getAllLogs       : getAllLogs
+            getAllLogs       : getAllLogs,
+            onInitNew        : onInitNew
         };
 
         // Common data
@@ -94,6 +95,10 @@
 
         function getAllLogs() {
             vm.allLogsDisplay = true;
+        }
+
+        function onInitNew() {
+            vm.methods.onInit();
         }
     }
 

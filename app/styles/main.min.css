@@ -41,7 +41,7 @@
           align-items: center;
 }
 .img-thumbnail {
-  border: 1px solid #d6dbdb;
+  border: 1px solid #D6DBDB;
   padding: 12px;
 }
 /**********************/
@@ -49,23 +49,23 @@
 /**********************/
 body {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #4c596b;
+  color: #4C596B;
 }
 h1 {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #4c596b;
+  color: #4C596B;
 }
 h2 {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #4c596b;
+  color: #4C596B;
 }
 h3 {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #4c596b;
+  color: #4C596B;
 }
 h4 {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #4c596b;
+  color: #4C596B;
   font-weight: 400;
 }
 h4 strong {
@@ -76,30 +76,39 @@ span {
 }
 p {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #4c596b;
+  color: #4C596B;
 }
 label {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #8c8c8c;
+  color: #8C8C8C;
 }
 small {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #8c8c8c;
+  color: #8C8C8C;
 }
 a {
   font-family: 'Catamaran', Arial, sans-serif;
-  color: #2c9fdd;
+  color: #2C9FDD;
   outline: 0;
 }
 a:active,
 a:focus,
 a:hover {
-  color: #32afe3;
+  color: #32AFE3;
+  outline: 0;
+}
+a.hover-link {
+  color: #4C596B;
+}
+a.hover-link:active,
+a.hover-link:focus,
+a.hover-link:hover {
+  color: #32AFE3;
   outline: 0;
 }
 label.atom-label {
   font-size: 16px;
-  color: #8c8c8c;
+  color: #8C8C8C;
   padding: 0;
   font-weight: 400;
   line-height: 1;
@@ -107,7 +116,7 @@ label.atom-label {
 }
 span.atom-value {
   font-size: 16px;
-  color: #4c596b;
+  color: #4C596B;
   padding: 0;
   font-weight: 400;
 }
@@ -116,21 +125,21 @@ mark.atom-mark {
   padding: 0 6px;
   font-size: 12px;
   font-weight: 400;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 mark.atom-mark.default,
 mark.atom-mark.creator {
-  background-color: #2c9fdd;
+  background-color: #2C9FDD;
 }
 mark.atom-mark.member {
-  background-color: #4ac291;
+  background-color: #4AC291;
 }
 mark.atom-mark.admin {
-  background-color: #9c27b0;
+  background-color: #9C27B0;
 }
 mark.atom-mark.kicked,
 mark.atom-mark.banned {
-  background-color: #feb909;
+  background-color: #FEB909;
 }
 .flex-1 {
   -webkit-box-flex: 1;
@@ -297,15 +306,15 @@ mark.atom-mark.banned {
 /**   HR   **/
 /************/
 hr {
-  border-top: 1px solid #d6dbdb;
+  border-top: 1px solid #D6DBDB;
 }
 hr.small {
-  border-color: #d6dbdb;
+  border-color: #D6DBDB;
   border-width: 3px;
   max-width: 50px;
 }
 hr.small.light {
-  border-color: #ffffff;
+  border-color: #FFFFFF;
 }
 /******************/
 /**   ATOM BTN   **/
@@ -316,7 +325,7 @@ div.atom-btn-container {
 }
 p.help-text {
   margin: 0;
-  color: #8c8c8c;
+  color: #8C8C8C;
   text-align: justify;
 }
 .form-left-img {
@@ -339,8 +348,8 @@ body {
   overflow-x: hidden;
 }
 div.atom-profile {
-  background-color: #ffffff;
-  border: 1px solid #d6dbdb;
+  background-color: #FFFFFF;
+  border: 1px solid #D6DBDB;
   border-radius: 3px;
   padding: 12px 24px;
   margin-bottom: 12px;
@@ -376,7 +385,7 @@ div.atom-profile div.profile-card div.text h3 {
   margin: 0;
 }
 div.atom-profile div.profile-card div.text h3 small {
-  color: #8c8c8c;
+  color: #8C8C8C;
 }
 div.atom-profile div.profile-card img {
   width: 70px;
@@ -394,13 +403,13 @@ i.eye {
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
   vertical-align: baseline;
-  color: #9c27b0;
+  color: #9C27B0;
 }
 i.eye:hover {
-  color: #b92ed1;
+  color: #B92ED1;
 }
 .audioRecorder-analyzer {
-  border: 1px solid #d6dbdb;
+  border: 1px solid #D6DBDB;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -408,7 +417,7 @@ i.eye:hover {
   box-sizing: border-box;
 }
 .waveSurfer {
-  border: 1px solid #d6dbdb;
+  border: 1px solid #D6DBDB;
 }
 videogular div.my-logo-layer {
   position: absolute;
@@ -441,19 +450,19 @@ div.cozen-input.atom-search-input div.cozen-input-icon.left {
           justify-content: flex-start !important;
 }
 i.atom-icon-btn {
-  color: #2c9fdd;
+  color: #2C9FDD;
   cursor: pointer;
 }
 i.atom-icon-btn:focus,
 i.atom-icon-btn:hover {
-  color: #32afe3;
+  color: #32AFE3;
 }
 i.atom-icon-btn.purple {
-  color: #9c27b0;
+  color: #9C27B0;
 }
 i.atom-icon-btn.purple:focus,
 i.atom-icon-btn.purple:hover {
-  color: #b92ed1;
+  color: #B92ED1;
 }
 .inherit-height {
   height: inherit;
@@ -515,7 +524,7 @@ i.atom-icon-btn.purple:hover {
   margin: auto;
 }
 .full-center-content > .row > div:nth-child(2) {
-  border-left: 6px solid #d6dbdb;
+  border-left: 6px solid #D6DBDB;
 }
 @media (max-width: 991px) {
   .full-center-content {
@@ -720,43 +729,43 @@ i.atom-icon-btn.purple:hover {
 /**   COLOR   **/
 /***************/
 .blue {
-  color: #2c9fdd;
+  color: #2C9FDD;
 }
 .green {
-  color: #4ac291;
+  color: #4AC291;
 }
 .purple {
-  color: #9c27b0;
+  color: #9C27B0;
 }
 .yellow {
-  color: #feb909;
+  color: #FEB909;
 }
 .info {
-  color: #1e88e5;
+  color: #1E88E5;
 }
 .error {
-  color: #e53935;
+  color: #E53935;
 }
 .success {
-  color: #7cb342;
+  color: #7CB342;
 }
 /******************/
 /**   BG COLOR   **/
 /******************/
 .background-blue {
-  background-color: #2c9fdd;
+  background-color: #2C9FDD;
 }
 .background-green {
-  background-color: #4ac291;
+  background-color: #4AC291;
 }
 .background-purple {
-  background-color: #9c27b0;
+  background-color: #9C27B0;
 }
 .background-yellow {
-  background-color: #feb909;
+  background-color: #FEB909;
 }
 .background-grey-light {
-  background-color: #f8f8f8;
+  background-color: #F8F8F8;
 }
 .background-blue-flat {
   background-color: #3498db;
@@ -774,13 +783,13 @@ i.atom-icon-btn.purple:hover {
 /**   BORDER   **/
 /****************/
 .border-bottom-small {
-  border-bottom: 1px solid #d6dbdb;
+  border-bottom: 1px solid #D6DBDB;
 }
 .border-bottom-normal {
-  border-bottom: 3px solid #d6dbdb;
+  border-bottom: 3px solid #D6DBDB;
 }
 .border-bottom-large {
-  border-bottom: 6px solid #d6dbdb;
+  border-bottom: 6px solid #D6DBDB;
 }
 nav.atom-navbar {
   display: -webkit-box;
@@ -802,8 +811,8 @@ nav.atom-navbar {
   padding: 0 12px;
   width: 100%;
   z-index: 1000;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #d6dbdb;
+  background-color: #F8F8F8;
+  border-bottom: 1px solid #D6DBDB;
   height: 60px;
 }
 nav.atom-navbar div {
@@ -837,7 +846,7 @@ nav.atom-navbar div div.link {
   cursor: pointer;
   position: relative;
   outline: 0;
-  color: #4c596b;
+  color: #4C596B;
   font-size: 15px;
   font-weight: 600;
   -webkit-transition: all 80ms ease-out;
@@ -850,7 +859,7 @@ nav.atom-navbar div div.link:after {
   width: 100%;
   height: 0;
   content: '';
-  background-color: #f8f8f8;
+  background-color: #F8F8F8;
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
 }
@@ -864,55 +873,55 @@ nav.atom-navbar div div.link:hover.link-blue,
 nav.atom-navbar div div.link:focus.link-blue,
 nav.atom-navbar div div.link:active.link-blue,
 nav.atom-navbar div div.link.active.link-blue {
-  color: #2c9fdd;
+  color: #2C9FDD;
 }
 nav.atom-navbar div div.link:hover.link-blue:after,
 nav.atom-navbar div div.link:focus.link-blue:after,
 nav.atom-navbar div div.link:active.link-blue:after,
 nav.atom-navbar div div.link.active.link-blue:after {
-  background-color: #2c9fdd;
+  background-color: #2C9FDD;
 }
 nav.atom-navbar div div.link:hover.link-green,
 nav.atom-navbar div div.link:focus.link-green,
 nav.atom-navbar div div.link:active.link-green,
 nav.atom-navbar div div.link.active.link-green {
-  color: #4ac291;
+  color: #4AC291;
 }
 nav.atom-navbar div div.link:hover.link-green:after,
 nav.atom-navbar div div.link:focus.link-green:after,
 nav.atom-navbar div div.link:active.link-green:after,
 nav.atom-navbar div div.link.active.link-green:after {
-  background-color: #4ac291;
+  background-color: #4AC291;
 }
 nav.atom-navbar div div.link:hover.link-purple,
 nav.atom-navbar div div.link:focus.link-purple,
 nav.atom-navbar div div.link:active.link-purple,
 nav.atom-navbar div div.link.active.link-purple {
-  color: #9c27b0;
+  color: #9C27B0;
 }
 nav.atom-navbar div div.link:hover.link-purple:after,
 nav.atom-navbar div div.link:focus.link-purple:after,
 nav.atom-navbar div div.link:active.link-purple:after,
 nav.atom-navbar div div.link.active.link-purple:after {
-  background-color: #9c27b0;
+  background-color: #9C27B0;
 }
 nav.atom-navbar div div.link:hover.link-yellow,
 nav.atom-navbar div div.link:focus.link-yellow,
 nav.atom-navbar div div.link:active.link-yellow,
 nav.atom-navbar div div.link.active.link-yellow {
-  color: #feb909;
+  color: #FEB909;
 }
 nav.atom-navbar div div.link:hover.link-yellow:after,
 nav.atom-navbar div div.link:focus.link-yellow:after,
 nav.atom-navbar div div.link:active.link-yellow:after,
 nav.atom-navbar div div.link.active.link-yellow:after {
-  background-color: #feb909;
+  background-color: #FEB909;
 }
 nav.atom-navbar div div.link div.link-dropdown {
   position: absolute;
   top: 100%;
   right: 0;
-  border: 1px solid #d6dbdb;
+  border: 1px solid #D6DBDB;
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -935,13 +944,13 @@ nav.atom-navbar div div.link div.link-dropdown.down {
   display: flex;
 }
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item {
-  color: #4c596b;
+  color: #4C596B;
   font-size: 16px;
   font-weight: 500;
   padding: 6px 12px;
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   width: 100%;
   outline: 0;
   display: -webkit-box;
@@ -968,14 +977,14 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item div.img im
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item.active,
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:focus,
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item:hover {
-  color: #2c9fdd;
-  background-color: #f8f8f8;
+  color: #2C9FDD;
+  background-color: #F8F8F8;
 }
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item div.sub-links {
   position: absolute;
   top: 0;
   left: 100%;
-  border: 1px solid #d6dbdb;
+  border: 1px solid #D6DBDB;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1000,7 +1009,7 @@ nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-item span {
   word-break: break-all;
 }
 nav.atom-navbar div div.link div.link-dropdown div.link-dropdown-separator {
-  background-color: #d6dbdb;
+  background-color: #D6DBDB;
   height: 1px;
   width: 100%;
   padding: 0 12px;
@@ -1010,8 +1019,8 @@ body {
   padding-top: 60px;
 }
 div.atom-logs div.atom-log {
-  border-top: 1px solid #d6dbdb;
-  border-right: 1px solid #d6dbdb;
+  border-top: 1px solid #D6DBDB;
+  border-right: 1px solid #D6DBDB;
   padding: 6px 12px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -1063,25 +1072,25 @@ div.atom-logs div.atom-log.ng-leave-active {
           animation-duration: 0ms;
 }
 div.atom-logs div.atom-log.group {
-  border-left: 3px solid #2c9fdd;
+  border-left: 3px solid #2C9FDD;
 }
 div.atom-logs div.atom-log.group div.icon {
-  color: #2c9fdd;
+  color: #2C9FDD;
 }
 div.atom-logs div.atom-log.channel {
-  border-left: 3px solid #4ac291;
+  border-left: 3px solid #4AC291;
 }
 div.atom-logs div.atom-log.channel div.icon {
-  color: #4ac291;
+  color: #4AC291;
 }
 div.atom-logs div.atom-log.social {
-  border-left: 3px solid #9c27b0;
+  border-left: 3px solid #9C27B0;
 }
 div.atom-logs div.atom-log.social div.icon {
-  color: #9c27b0;
+  color: #9C27B0;
 }
 div.atom-logs div.atom-log.border-bottom {
-  border-bottom: 1px solid #d6dbdb;
+  border-bottom: 1px solid #D6DBDB;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -1104,9 +1113,9 @@ div.atom-logs > :first-child {
   border-top-right-radius: 3px;
 }
 div.atom-groups div.atom-group {
-  border-top: 1px solid #d6dbdb;
-  border-right: 1px solid #d6dbdb;
-  border-left: 1px solid #d6dbdb;
+  border-top: 1px solid #D6DBDB;
+  border-right: 1px solid #D6DBDB;
+  border-left: 1px solid #D6DBDB;
   padding: 6px 12px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -1158,7 +1167,7 @@ div.atom-groups div.atom-group.ng-leave-active {
           animation-duration: 0ms;
 }
 div.atom-groups div.atom-group.border-bottom {
-  border-bottom: 1px solid #d6dbdb;
+  border-bottom: 1px solid #D6DBDB;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -1188,8 +1197,8 @@ div.atom-groups > :first-child {
   border-top-right-radius: 3px;
 }
 div.atom-invitations div.atom-invitation {
-  border-top: 1px solid #d6dbdb;
-  border-right: 1px solid #d6dbdb;
+  border-top: 1px solid #D6DBDB;
+  border-right: 1px solid #D6DBDB;
   padding: 6px 12px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -1241,25 +1250,25 @@ div.atom-invitations div.atom-invitation.ng-leave-active {
           animation-duration: 0ms;
 }
 div.atom-invitations div.atom-invitation.waiting {
-  border-left: 3px solid #1e88e5;
+  border-left: 3px solid #1E88E5;
 }
 div.atom-invitations div.atom-invitation.waiting div.icon {
-  color: #1e88e5;
+  color: #1E88E5;
 }
 div.atom-invitations div.atom-invitation.accepted {
-  border-left: 3px solid #7cb342;
+  border-left: 3px solid #7CB342;
 }
 div.atom-invitations div.atom-invitation.accepted div.icon {
-  color: #7cb342;
+  color: #7CB342;
 }
 div.atom-invitations div.atom-invitation.rejected {
-  border-left: 3px solid #e53935;
+  border-left: 3px solid #E53935;
 }
 div.atom-invitations div.atom-invitation.rejected div.icon {
-  color: #e53935;
+  color: #E53935;
 }
 div.atom-invitations div.atom-invitation.border-bottom {
-  border-bottom: 1px solid #d6dbdb;
+  border-bottom: 1px solid #D6DBDB;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -1296,39 +1305,39 @@ div.actions-list {
 div.actions-list div.action-item {
   border-radius: 50%;
   padding: 1px 3px;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   cursor: pointer;
   font-size: 18px;
   margin-left: 6px;
-  border: 1px solid #d6dbdb;
-  color: #d6dbdb;
+  border: 1px solid #D6DBDB;
+  color: #D6DBDB;
   outline: 0;
 }
 div.actions-list div.action-item i {
   vertical-align: middle;
 }
 div.actions-list div.action-item:hover {
-  background-color: #f8f8f8;
+  background-color: #F8F8F8;
 }
 div.actions-list div.action-item:hover.granted {
-  border: 1px solid #2c9fdd;
-  color: #2c9fdd;
+  border: 1px solid #2C9FDD;
+  color: #2C9FDD;
 }
 div.actions-list div.action-item:hover.revoked {
-  border: 1px solid #9c27b0;
-  color: #9c27b0;
+  border: 1px solid #9C27B0;
+  color: #9C27B0;
 }
 div.actions-list div.action-item:hover.kicked {
-  border: 1px solid #feb909;
-  color: #feb909;
+  border: 1px solid #FEB909;
+  color: #FEB909;
 }
 div.actions-list div.action-item:hover.banned {
-  border: 1px solid #e53935;
-  color: #e53935;
+  border: 1px solid #E53935;
+  color: #E53935;
 }
 div.actions-list div.action-item:hover.unbanned {
-  border: 1px solid #4ac291;
-  color: #4ac291;
+  border: 1px solid #4AC291;
+  color: #4AC291;
 }
 div.atom-inline-list div.atom-list-item-container {
   display: -webkit-box;
@@ -1346,9 +1355,9 @@ div.atom-inline-list div.atom-list-item-container {
           align-items: center;
 }
 div.atom-inline-list div.atom-list-item-container div.atom-inline-item {
-  border-top: 1px solid #d6dbdb;
-  border-left: 1px solid #d6dbdb;
-  border-right: 1px solid #d6dbdb;
+  border-top: 1px solid #D6DBDB;
+  border-left: 1px solid #D6DBDB;
+  border-right: 1px solid #D6DBDB;
   padding: 6px 12px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -1407,7 +1416,7 @@ div.atom-inline-list > :first-child div.atom-inline-item {
   border-top-right-radius: 3px;
 }
 div.atom-inline-list > :last-child div.atom-inline-item {
-  border-bottom: 1px solid #d6dbdb;
+  border-bottom: 1px solid #D6DBDB;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -1418,7 +1427,7 @@ div.atom-remove-btn {
   padding-right: 12px;
   cursor: pointer;
   font-size: 16px;
-  color: #8c8c8c;
+  color: #8C8C8C;
   -webkit-transition: none;
   transition: none;
   outline: 0;
@@ -1430,7 +1439,7 @@ div.atom-add-btn:active,
 div.atom-remove-btn:active,
 div.atom-add-btn:hover,
 div.atom-remove-btn:hover {
-  color: #2c9fdd;
+  color: #2C9FDD;
 }
 div.atom-add-btn i,
 div.atom-remove-btn i {
@@ -1439,7 +1448,7 @@ div.atom-remove-btn i {
 div.atom-add-btn.disabled,
 div.atom-remove-btn.disabled {
   cursor: not-allowed;
-  color: #d6dbdb;
+  color: #D6DBDB;
 }
 div.atom-add-btn.disabled:focus,
 div.atom-remove-btn.disabled:focus,
@@ -1447,7 +1456,7 @@ div.atom-add-btn.disabled:active,
 div.atom-remove-btn.disabled:active,
 div.atom-add-btn.disabled:hover,
 div.atom-remove-btn.disabled:hover {
-  color: #d6dbdb;
+  color: #D6DBDB;
 }
 div.atom-email-list {
   display: -webkit-box;
@@ -1479,19 +1488,19 @@ div.atom-email-list div.atom-email-btn > div {
 }
 .rzslider .rz-pointer {
   outline: 0;
-  background-color: #2c9fdd;
+  background-color: #2C9FDD;
 }
 .rzslider .rz-pointer.rz-active {
-  background-color: #32afe3;
+  background-color: #32AFE3;
 }
 .rzslider .rz-pointer.rz-active:after {
-  background-color: #ffffff;
+  background-color: #FFFFFF;
 }
 .rzslider .rz-bar {
   background: #e4e7e7;
 }
 .rzslider .rz-tick {
-  background: #d6dbdb;
+  background: #D6DBDB;
 }
 div.atom-loader {
   width: 120px;
@@ -1512,7 +1521,7 @@ div.atom-loader:after {
   position: absolute;
   top: 0;
   left: calc(40%);
-  background-color: #2c9fdd;
+  background-color: #2C9FDD;
   -webkit-animation: squaremove 1s ease-in-out infinite;
           animation: squaremove 1s ease-in-out infinite;
 }
@@ -1560,15 +1569,15 @@ div.atom-loader:after {
   }
 }
 #loading-bar .bar {
-  background: #2c9fdd;
+  background: #2C9FDD;
   height: 3px;
 }
 #loading-bar .peg {
-  box-shadow: #2c9fdd 1px 0 6px 1px;
+  box-shadow: #2C9FDD 1px 0 6px 1px;
 }
 #loading-bar-spinner .spinner-icon {
-  border-top-color: #2c9fdd;
-  border-left-color: #2c9fdd;
+  border-top-color: #2C9FDD;
+  border-left-color: #2C9FDD;
 }
 div.atom-chat {
   height: calc(100vh - 60px);
@@ -1583,10 +1592,9 @@ div.atom-chat {
 }
 div.atom-chat div.atom-chat-groups-container {
   height: inherit;
-  width: 50px;
-  background-color: #f8f8f8;
-  padding: 6px;
-  border-right: 1px solid #d6dbdb;
+  background-color: #F8F8F8;
+  padding: 12px;
+  border-right: 1px solid #D6DBDB;
   z-index: 2;
 }
 div.atom-chat div.atom-chat-groups-container div.atom-chat-group {
@@ -1602,11 +1610,14 @@ div.atom-chat div.atom-chat-groups-container div.atom-chat-group {
   opacity: 0.6;
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
+  width: 45px;
+  height: 45px;
 }
 div.atom-chat div.atom-chat-groups-container div.atom-chat-group img {
-  padding: 3px;
+  padding: 4px;
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
+  border: 2px solid #D6DBDB;
 }
 div.atom-chat div.atom-chat-groups-container div.atom-chat-group:focus,
 div.atom-chat div.atom-chat-groups-container div.atom-chat-group:hover {
@@ -1621,23 +1632,56 @@ div.atom-chat div.atom-chat-groups-container div.atom-chat-group.active:focus,
 div.atom-chat div.atom-chat-groups-container div.atom-chat-group.active:hover {
   opacity: 1;
 }
+div.atom-chat div.atom-chat-groups-container div.atom-chat-group.active img {
+  border: 2px solid #D6DBDB;
+}
 div.atom-chat div.atom-chat-channels-container {
   height: inherit;
-  background-color: #f8f8f8;
-  padding: 6px;
-  border-right: 1px solid #d6dbdb;
+  border-right: 1px solid #D6DBDB;
   z-index: 1;
-  width: 213px;
+  width: 250px;
+  min-width: 250px;
   position: relative;
+  background-color: #F8F8F8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
-div.atom-chat div.atom-chat-channels-container h3.chat-subtitle {
-  font-size: 18px;
+div.atom-chat div.atom-chat-channels-container div.chat-active-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 12px;
+  background-color: #F8F8F8;
+  border-bottom: 1px solid #D6DBDB;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-active-group a.group-name {
+  font-size: 22px;
   font-weight: 500;
-  margin-top: 12px;
-  margin-bottom: 2px;
+  display: inline-table;
 }
-div.atom-chat div.atom-chat-channels-container h3.chat-subtitle:first-of-type {
-  margin-top: 0;
+div.atom-chat div.atom-chat-channels-container div.chat-active-group div.user-profile div.status {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-active-group div.user-profile a.username {
+  padding-left: 3px;
 }
 div.atom-chat div.atom-chat-channels-container div.close-btn {
   position: absolute;
@@ -1650,9 +1694,53 @@ div.atom-chat div.atom-chat-channels-container div.close-btn {
 }
 div.atom-chat div.atom-chat-channels-container div.close-btn:hover,
 div.atom-chat div.atom-chat-channels-container div.close-btn:focus {
-  color: #2c9fdd;
+  color: #2C9FDD;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel {
+div.atom-chat div.atom-chat-channels-container div.chat-list {
+  padding: 12px;
+  background-color: #F8F8F8;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 12px;
+  margin-bottom: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle h3 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle h3 small {
+  font-size: 80%;
+  color: #4C596B;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle:first-of-type {
+  margin-top: 0;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
+  cursor: pointer;
+  outline: 0;
+  font-size: 14px;
+  line-height: 0;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+  margin-right: 3px;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel {
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
   display: -webkit-box;
@@ -1666,50 +1754,253 @@ div.atom-chat div.atom-chat-channels-container div.atom-chat-channel {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel span {
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel span {
   cursor: pointer;
   outline: 0;
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
-  width: 200px;
+  width: calc(226px);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel span:hover,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel span:focus {
-  color: #2c9fdd;
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:hover,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:focus {
+  color: #2C9FDD;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star {
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span {
+  color: #2C9FDD;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:hover,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:focus {
+  color: #32AFE3;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star {
   outline: 0;
   cursor: pointer;
-  color: #8c8c8c;
+  color: #8C8C8C;
   z-index: 1;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star i,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star i {
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star i,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star i {
   cursor: inherit;
   color: inherit;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star:hover,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star:hover,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star:focus,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star:focus {
-  color: #feb909;
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:hover,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:hover,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:focus,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:focus {
+  color: #FEB909;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star.disabled,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star.disabled {
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled {
   cursor: not-allowed;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star.disabled:hover,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star.disabled:hover,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.full-star.disabled:focus,
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel div.empty-star.disabled:focus {
-  color: #8c8c8c;
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:hover,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:hover,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:focus,
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:focus {
+  color: #8C8C8C;
 }
-div.atom-chat div.atom-chat-channels-container div.atom-chat-channel.ng-leave {
+div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel.ng-leave {
   display: none !important;
+}
+div.atom-chat div.atom-chat-channels-container div.chat-search-bar {
+  padding: 12px;
+  background-color: #F8F8F8;
+  border-top: 1px solid #D6DBDB;
+  margin-top: auto;
+}
+div.atom-chat div.chat-messages-container {
+  width: 100%;
+  padding: 6px;
+}
+div.atom-chat.channel-theme div.atom-chat-groups-container {
+  color: #E2E9E6;
+  background-color: #305043;
+  border-right: 1px solid #13201B;
+}
+div.atom-chat.channel-theme div.atom-chat-groups-container a {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.atom-chat-groups-container a:hover,
+div.atom-chat.channel-theme div.atom-chat-groups-container a:focus,
+div.atom-chat.channel-theme div.atom-chat-groups-container a:active {
+  color: #bfd9cf;
+}
+div.atom-chat.channel-theme div.atom-chat-groups-container h3 {
+  color: #E4E7E6;
+}
+div.atom-chat.channel-theme div.atom-chat-groups-container div.atom-chat-group img {
+  border: 2px solid #1D3028;
+}
+div.atom-chat.channel-theme div.atom-chat-groups-container div.atom-chat-group.active img {
+  border: 2px solid #FEB909;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container {
+  color: #E2E9E6;
+  border-right: 1px solid #13201B;
+  background-color: #43705E;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container a {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container a:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container a:focus,
+div.atom-chat.channel-theme div.atom-chat-channels-container a:active {
+  color: #bfd9cf;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container h3 {
+  color: #E4E7E6;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-active-group {
+  background-color: #396050;
+  border-bottom: 1px solid #13201B;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-active-group a.group-name {
+  color: #E4E7E6;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.close-btn:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.close-btn:focus {
+  color: #bfd9cf;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list {
+  background-color: #43705E;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle h3 small {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon:focus {
+  color: #bfd9cf;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:focus {
+  color: #bfd9cf;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:focus {
+  color: #bfd9cf;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:focus,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:focus {
+  color: #FEB909;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:hover,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:focus,
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:focus {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-search-bar {
+  background-color: #396050;
+  border-top: 1px solid #13201B;
+}
+div.atom-chat.social-theme div.atom-chat-groups-container {
+  color: #EBDEED;
+  background-color: #4D2D53;
+  border-right: 1px solid #1F1221;
+}
+div.atom-chat.social-theme div.atom-chat-groups-container a {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.atom-chat-groups-container a:hover,
+div.atom-chat.social-theme div.atom-chat-groups-container a:focus,
+div.atom-chat.social-theme div.atom-chat-groups-container a:active {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.atom-chat-groups-container h3 {
+  color: #F5EFF6;
+}
+div.atom-chat.social-theme div.atom-chat-groups-container div.atom-chat-group img {
+  border: 2px solid #2E1B32;
+}
+div.atom-chat.social-theme div.atom-chat-groups-container div.atom-chat-group.active img {
+  border: 2px solid #FEB909;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container {
+  color: #EBDEED;
+  border-right: 1px solid #1F1221;
+  background-color: #6C3E74;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container a {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container a:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container a:focus,
+div.atom-chat.social-theme div.atom-chat-channels-container a:active {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container h3 {
+  color: #F5EFF6;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-active-group {
+  background-color: #5D3663;
+  border-bottom: 1px solid #1F1221;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-active-group a.group-name {
+  color: #F5EFF6;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.close-btn:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container div.close-btn:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list {
+  background-color: #6C3E74;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle h3 small {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:focus,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:focus {
+  color: #FEB909;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:hover,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:focus,
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:focus {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.atom-chat-channels-container div.chat-search-bar {
+  background-color: #5D3663;
+  border-top: 1px solid #1F1221;
 }
 section {
   padding: 84px 0;
@@ -1795,7 +2086,7 @@ header .header-content .header-content-inner h2 {
   margin: 0 auto;
 }
 .portfolio-box .portfolio-box-caption {
-  color: #ffffff;
+  color: #FFFFFF;
   opacity: 0;
   display: block;
   background: rgba(44, 159, 221, 0.9);
@@ -1838,7 +2129,7 @@ header .header-content .header-content-inner h2 {
   margin: 0 auto 24px;
 }
 .text-primary {
-  color: #2c9fdd;
+  color: #2C9FDD;
 }
 .no-gutter > [class*='col-'] {
   padding-right: 0;
@@ -1902,7 +2193,7 @@ aside#footer div.links h4 {
   font-weight: 600;
 }
 aside#footer div.links a {
-  color: #4c596b;
+  color: #4C596B;
   margin-bottom: 6px;
   display: table;
   outline: 0;
@@ -1911,7 +2202,7 @@ aside#footer div.links a {
 aside#footer div.links a:active,
 aside#footer div.links a:focus,
 aside#footer div.links a:hover {
-  color: #2c9fdd;
+  color: #2C9FDD;
   text-decoration: underline;
 }
 /*!

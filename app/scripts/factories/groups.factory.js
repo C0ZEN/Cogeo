@@ -652,7 +652,7 @@
                     },
                     {
                         id         : 'daddaa',
-                        name       : 'Membre public super long pour test',
+                        name       : 'Membre public super long pour test la longueur',
                         private    : false,
                         picture    : {},
                         date       : {

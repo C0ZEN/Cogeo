@@ -50,6 +50,15 @@ a {
         color   : @atom-color-blue-active;
         outline : @atom-outline;
     }
+    &.hover-link {
+        color : @atom-color-font;
+        &:active,
+        &:focus,
+        &:hover {
+            color   : @atom-color-blue-active;
+            outline : @atom-outline;
+        }
+    }
 }
 label.atom-label {
     font-size     : @atom-font-h3;

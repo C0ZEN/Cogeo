@@ -12,10 +12,11 @@
         '$state',
         'channelsFactory',
         '$animate',
-        'goTo'
+        'goTo',
+        '$rootScope'
     ];
 
-    function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, $animate, goTo) {
+    function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, $animate, goTo, $rootScope) {
         var vm = this;
 
         // Methods
@@ -39,9 +40,10 @@
             vm.groups   = groupsFactory.getUserGroups(vm.user.username);
             vm.hasGroup = vm.groups.length > 0;
             vm.methods.showChannels();
+            vm.status = userFactory.getStatus();
             if (vm.hasGroup) {
                 vm.methods.setActiveGroup(vm.params.groupName);
-                vm.methods.setActiveChannel(vm.params.channelName)
+                vm.methods.setActiveChannel(vm.params.channelName, channelsFactory.getChannelIdByName(vm.params.groupName, vm.params.channelName));
             }
         }
 
@@ -55,9 +57,13 @@
         function setActiveChannel(channelName, channelId) {
             vm.activeChannel = channelName;
             vm.messages      = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
+            vm.chatTheme     = 'channel-theme';
             goTo.view('app.chat.channel', {
                 groupName  : vm.activeGroup,
                 channelName: vm.activeChannel
+            });
+            $rootScope.$broadcast('setChatTheme', {
+                theme: vm.chatTheme
             });
         }
 
