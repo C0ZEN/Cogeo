@@ -92,6 +92,7 @@
             forgottenPassword   : forgottenPassword,
             onPlayerReady       : onPlayerReady,
             onPopupSettingsClose: onPopupSettingsClose,
+            onInitChatSetStatus : onInitChatSetStatus,
             userAction          : {
                 granted : userActionGranted,
                 revoked : userActionRevoked,
@@ -176,6 +177,12 @@
 
         function userActionUnbanned() {
             popup.methods.closePopup('userActionUnbanned');
+        }
+
+        function onInitChatSetStatus() {
+            popup.chatSetStatus = {
+                status: userFactory.getAllStatus()
+            }
         }
     }
 

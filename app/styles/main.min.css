@@ -768,16 +768,16 @@ i.atom-icon-btn.purple:hover {
   background-color: #F8F8F8;
 }
 .background-blue-flat {
-  background-color: #3498db;
+  background-color: #3498DB;
 }
 .background-green-flat {
-  background-color: #2ecc71;
+  background-color: #2ECC71;
 }
 .background-purple-flat {
-  background-color: #9b59b6;
+  background-color: #9B59B6;
 }
 .background-yellow-flat {
-  background-color: #f1c40f;
+  background-color: #F1C40F;
 }
 /****************/
 /**   BORDER   **/
@@ -1497,7 +1497,7 @@ div.atom-email-list div.atom-email-btn > div {
   background-color: #FFFFFF;
 }
 .rzslider .rz-bar {
-  background: #e4e7e7;
+  background: #E4E7E7;
 }
 .rzslider .rz-tick {
   background: #D6DBDB;
@@ -1590,14 +1590,17 @@ div.atom-chat {
           flex-direction: row;
   padding: 0;
 }
-div.atom-chat div.atom-chat-groups-container {
+div.atom-chat div.chat-groups-container {
   height: inherit;
   background-color: #F8F8F8;
   padding: 12px;
   border-right: 1px solid #D6DBDB;
   z-index: 2;
+  min-width: 70px;
+  max-width: 70px;
+  width: 70px;
 }
-div.atom-chat div.atom-chat-groups-container div.atom-chat-group {
+div.atom-chat div.chat-groups-container div.chat-group {
   margin-bottom: 6px;
   cursor: pointer;
   outline: 0;
@@ -1613,29 +1616,29 @@ div.atom-chat div.atom-chat-groups-container div.atom-chat-group {
   width: 45px;
   height: 45px;
 }
-div.atom-chat div.atom-chat-groups-container div.atom-chat-group img {
+div.atom-chat div.chat-groups-container div.chat-group img {
   padding: 4px;
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
   border: 2px solid #D6DBDB;
 }
-div.atom-chat div.atom-chat-groups-container div.atom-chat-group:focus,
-div.atom-chat div.atom-chat-groups-container div.atom-chat-group:hover {
+div.atom-chat div.chat-groups-container div.chat-group:focus,
+div.atom-chat div.chat-groups-container div.chat-group:hover {
   opacity: 0.7;
 }
-div.atom-chat div.atom-chat-groups-container div.atom-chat-group.active {
+div.atom-chat div.chat-groups-container div.chat-group.active {
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
   opacity: 1;
 }
-div.atom-chat div.atom-chat-groups-container div.atom-chat-group.active:focus,
-div.atom-chat div.atom-chat-groups-container div.atom-chat-group.active:hover {
+div.atom-chat div.chat-groups-container div.chat-group.active:focus,
+div.atom-chat div.chat-groups-container div.chat-group.active:hover {
   opacity: 1;
 }
-div.atom-chat div.atom-chat-groups-container div.atom-chat-group.active img {
+div.atom-chat div.chat-groups-container div.chat-group.active img {
   border: 2px solid #D6DBDB;
 }
-div.atom-chat div.atom-chat-channels-container {
+div.atom-chat div.chat-channels-container {
   height: inherit;
   border-right: 1px solid #D6DBDB;
   z-index: 1;
@@ -1654,7 +1657,7 @@ div.atom-chat div.atom-chat-channels-container {
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-active-group {
+div.atom-chat div.chat-channels-container div.chat-active-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1666,12 +1669,12 @@ div.atom-chat div.atom-chat-channels-container div.chat-active-group {
   background-color: #F8F8F8;
   border-bottom: 1px solid #D6DBDB;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-active-group a.group-name {
+div.atom-chat div.chat-channels-container div.chat-active-group a.group-name {
   font-size: 22px;
   font-weight: 500;
   display: inline-table;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-active-group div.user-profile div.status {
+div.atom-chat div.chat-channels-container div.chat-active-group div.user-profile div.status {
   border-radius: 50%;
   width: 10px;
   height: 10px;
@@ -1680,10 +1683,10 @@ div.atom-chat div.atom-chat-channels-container div.chat-active-group div.user-pr
   display: -ms-flexbox;
   display: flex;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-active-group div.user-profile a.username {
+div.atom-chat div.chat-channels-container div.chat-active-group div.user-profile a.username {
   padding-left: 3px;
 }
-div.atom-chat div.atom-chat-channels-container div.close-btn {
+div.atom-chat div.chat-channels-container div.close-btn {
   position: absolute;
   top: 1px;
   right: 0;
@@ -1692,15 +1695,15 @@ div.atom-chat div.atom-chat-channels-container div.close-btn {
   transition: all 80ms ease-out;
   outline: 0;
 }
-div.atom-chat div.atom-chat-channels-container div.close-btn:hover,
-div.atom-chat div.atom-chat-channels-container div.close-btn:focus {
+div.atom-chat div.chat-channels-container div.close-btn:hover,
+div.atom-chat div.chat-channels-container div.close-btn:focus {
   color: #2C9FDD;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list {
+div.atom-chat div.chat-channels-container div.chat-list {
   padding: 12px;
   background-color: #F8F8F8;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-subtitle {
   font-size: 18px;
   font-weight: 500;
   margin-top: 12px;
@@ -1719,19 +1722,19 @@ div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle {
       -ms-flex-align: center;
           align-items: center;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle h3 {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-subtitle h3 {
   font-size: inherit;
   font-weight: inherit;
   margin: 0;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle h3 small {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-subtitle h3 small {
   font-size: 80%;
   color: #4C596B;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle:first-of-type {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-subtitle:first-of-type {
   margin-top: 0;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
   cursor: pointer;
   outline: 0;
   font-size: 14px;
@@ -1740,7 +1743,7 @@ div.atom-chat div.atom-chat-channels-container div.chat-list div.chat-subtitle d
   transition: all 80ms ease-out;
   margin-right: 3px;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel {
   -webkit-transition: all 80ms ease-out;
   transition: all 80ms ease-out;
   display: -webkit-box;
@@ -1754,7 +1757,7 @@ div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-chann
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel span {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel span {
   cursor: pointer;
   outline: 0;
   -webkit-transition: all 80ms ease-out;
@@ -1764,49 +1767,114 @@ div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-chann
   white-space: nowrap;
   overflow: hidden;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:hover,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:focus {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel span:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel span:focus {
   color: #2C9FDD;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.active span {
   color: #2C9FDD;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:hover,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:focus {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.active span:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.active span:focus {
   color: #32AFE3;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star {
   outline: 0;
   cursor: pointer;
   color: #8C8C8C;
   z-index: 1;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star i,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star i {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star i,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star i {
   cursor: inherit;
   color: inherit;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:hover,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:hover,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:focus,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:focus {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star:focus,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star:focus {
   color: #FEB909;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled {
   cursor: not-allowed;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:hover,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:hover,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:focus,
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:focus {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:focus,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:focus {
   color: #8C8C8C;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-list div.atom-chat-channel.ng-leave {
-  display: none !important;
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel i.channel-icon {
+  margin-right: 2px;
+  font-size: 13px;
 }
-div.atom-chat div.atom-chat-channels-container div.chat-search-bar {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.ng-enter-active {
+  -webkit-animation-name: fadeInLeft-24;
+          animation-name: fadeInLeft-24;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 600ms;
+          animation-duration: 600ms;
+}
+@-webkit-keyframes fadeInLeft-24 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-24px, 0, 0);
+            transform: translate3d(-24px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInLeft-24 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-24px, 0, 0);
+            transform: translate3d(-24px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.ng-leave-active {
+  -webkit-animation-name: fadeOutLeft-24;
+          animation-name: fadeOutLeft-24;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 600ms;
+          animation-duration: 600ms;
+}
+@-webkit-keyframes fadeOutLeft-24 {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-24px, 0, 0);
+            transform: translate3d(-24px, 0, 0);
+  }
+}
+@keyframes fadeOutLeft-24 {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-24px, 0, 0);
+            transform: translate3d(-24px, 0, 0);
+  }
+}
+div.atom-chat div.chat-channels-container div.chat-search-bar {
   padding: 12px;
   background-color: #F8F8F8;
   border-top: 1px solid #D6DBDB;
@@ -1816,189 +1884,197 @@ div.atom-chat div.chat-messages-container {
   width: 100%;
   padding: 6px;
 }
-div.atom-chat.channel-theme div.atom-chat-groups-container {
+div.atom-chat.channel-theme div.chat-groups-container {
   color: #E2E9E6;
   background-color: #305043;
   border-right: 1px solid #13201B;
 }
-div.atom-chat.channel-theme div.atom-chat-groups-container a {
+div.atom-chat.channel-theme div.chat-groups-container a {
   color: #E2E9E6;
 }
-div.atom-chat.channel-theme div.atom-chat-groups-container a:hover,
-div.atom-chat.channel-theme div.atom-chat-groups-container a:focus,
-div.atom-chat.channel-theme div.atom-chat-groups-container a:active {
-  color: #bfd9cf;
+div.atom-chat.channel-theme div.chat-groups-container a:hover,
+div.atom-chat.channel-theme div.chat-groups-container a:focus,
+div.atom-chat.channel-theme div.chat-groups-container a:active {
+  color: #BFD9CF;
 }
-div.atom-chat.channel-theme div.atom-chat-groups-container h3 {
+div.atom-chat.channel-theme div.chat-groups-container h3 {
   color: #E4E7E6;
 }
-div.atom-chat.channel-theme div.atom-chat-groups-container div.atom-chat-group img {
+div.atom-chat.channel-theme div.chat-groups-container div.chat-group img {
   border: 2px solid #1D3028;
 }
-div.atom-chat.channel-theme div.atom-chat-groups-container div.atom-chat-group.active img {
+div.atom-chat.channel-theme div.chat-groups-container div.chat-group.active img {
   border: 2px solid #FEB909;
 }
-div.atom-chat.channel-theme div.atom-chat-channels-container {
+div.atom-chat.channel-theme div.chat-channels-container {
   color: #E2E9E6;
   border-right: 1px solid #13201B;
   background-color: #43705E;
 }
-div.atom-chat.channel-theme div.atom-chat-channels-container a {
+div.atom-chat.channel-theme div.chat-channels-container a {
   color: #E2E9E6;
 }
-div.atom-chat.channel-theme div.atom-chat-channels-container a:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container a:focus,
-div.atom-chat.channel-theme div.atom-chat-channels-container a:active {
-  color: #bfd9cf;
+div.atom-chat.channel-theme div.chat-channels-container a:hover,
+div.atom-chat.channel-theme div.chat-channels-container a:focus,
+div.atom-chat.channel-theme div.chat-channels-container a:active {
+  color: #BFD9CF;
 }
-div.atom-chat.channel-theme div.atom-chat-channels-container h3 {
+div.atom-chat.channel-theme div.chat-channels-container h3 {
   color: #E4E7E6;
 }
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-active-group {
+div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group {
   background-color: #396050;
   border-bottom: 1px solid #13201B;
 }
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-active-group a.group-name {
-  color: #E4E7E6;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.close-btn:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.close-btn:focus {
-  color: #bfd9cf;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list {
-  background-color: #43705E;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle h3 small {
-  color: #E2E9E6;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
-  color: #E2E9E6;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon:focus {
-  color: #bfd9cf;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:focus {
-  color: #bfd9cf;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span {
-  color: #E2E9E6;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:focus {
-  color: #bfd9cf;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star {
-  color: #E2E9E6;
-}
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:focus,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:focus {
+div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group a.group-name {
   color: #FEB909;
 }
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:hover,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:focus,
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:focus {
+div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group a.group-name:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group a.group-name:focus {
+  color: #FEC534;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.close-btn:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.close-btn:focus {
+  color: #BFD9CF;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list {
+  background-color: #43705E;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-subtitle h3 small {
   color: #E2E9E6;
 }
-div.atom-chat.channel-theme div.atom-chat-channels-container div.chat-search-bar {
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-subtitle div.add-icon:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-subtitle div.add-icon:focus {
+  color: #BFD9CF;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel span:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel span:focus {
+  color: #BFD9CF;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel.active span {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel.active span:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel.active span:focus {
+  color: #BFD9CF;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star:focus,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star:focus {
+  color: #FEB909;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:focus,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:focus {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-search-bar {
   background-color: #396050;
   border-top: 1px solid #13201B;
 }
-div.atom-chat.social-theme div.atom-chat-groups-container {
+div.atom-chat.social-theme div.chat-groups-container {
   color: #EBDEED;
   background-color: #4D2D53;
   border-right: 1px solid #1F1221;
 }
-div.atom-chat.social-theme div.atom-chat-groups-container a {
+div.atom-chat.social-theme div.chat-groups-container a {
   color: #EBDEED;
 }
-div.atom-chat.social-theme div.atom-chat-groups-container a:hover,
-div.atom-chat.social-theme div.atom-chat-groups-container a:focus,
-div.atom-chat.social-theme div.atom-chat-groups-container a:active {
+div.atom-chat.social-theme div.chat-groups-container a:hover,
+div.atom-chat.social-theme div.chat-groups-container a:focus,
+div.atom-chat.social-theme div.chat-groups-container a:active {
   color: #D7BDDB;
 }
-div.atom-chat.social-theme div.atom-chat-groups-container h3 {
+div.atom-chat.social-theme div.chat-groups-container h3 {
   color: #F5EFF6;
 }
-div.atom-chat.social-theme div.atom-chat-groups-container div.atom-chat-group img {
+div.atom-chat.social-theme div.chat-groups-container div.chat-group img {
   border: 2px solid #2E1B32;
 }
-div.atom-chat.social-theme div.atom-chat-groups-container div.atom-chat-group.active img {
+div.atom-chat.social-theme div.chat-groups-container div.chat-group.active img {
   border: 2px solid #FEB909;
 }
-div.atom-chat.social-theme div.atom-chat-channels-container {
+div.atom-chat.social-theme div.chat-channels-container {
   color: #EBDEED;
   border-right: 1px solid #1F1221;
   background-color: #6C3E74;
 }
-div.atom-chat.social-theme div.atom-chat-channels-container a {
+div.atom-chat.social-theme div.chat-channels-container a {
   color: #EBDEED;
 }
-div.atom-chat.social-theme div.atom-chat-channels-container a:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container a:focus,
-div.atom-chat.social-theme div.atom-chat-channels-container a:active {
+div.atom-chat.social-theme div.chat-channels-container a:hover,
+div.atom-chat.social-theme div.chat-channels-container a:focus,
+div.atom-chat.social-theme div.chat-channels-container a:active {
   color: #D7BDDB;
 }
-div.atom-chat.social-theme div.atom-chat-channels-container h3 {
+div.atom-chat.social-theme div.chat-channels-container h3 {
   color: #F5EFF6;
 }
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-active-group {
+div.atom-chat.social-theme div.chat-channels-container div.chat-active-group {
   background-color: #5D3663;
   border-bottom: 1px solid #1F1221;
 }
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-active-group a.group-name {
-  color: #F5EFF6;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.close-btn:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container div.close-btn:focus {
-  color: #D7BDDB;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list {
-  background-color: #6C3E74;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle h3 small {
-  color: #EBDEED;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
-  color: #EBDEED;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.chat-subtitle div.add-icon:focus {
-  color: #D7BDDB;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel span:focus {
-  color: #D7BDDB;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span {
-  color: #EBDEED;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel.active span:focus {
-  color: #D7BDDB;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star {
-  color: #EBDEED;
-}
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star:focus,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star:focus {
+div.atom-chat.social-theme div.chat-channels-container div.chat-active-group a.group-name {
   color: #FEB909;
 }
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:hover,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.full-star.disabled:focus,
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-list div.atom-chat-channel div.empty-star.disabled:focus {
+div.atom-chat.social-theme div.chat-channels-container div.chat-active-group a.group-name:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-active-group a.group-name:focus {
+  color: #FEC534;
+}
+div.atom-chat.social-theme div.chat-channels-container div.close-btn:hover,
+div.atom-chat.social-theme div.chat-channels-container div.close-btn:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list {
+  background-color: #6C3E74;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-subtitle h3 small {
   color: #EBDEED;
 }
-div.atom-chat.social-theme div.atom-chat-channels-container div.chat-search-bar {
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-subtitle div.add-icon {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-subtitle div.add-icon:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-subtitle div.add-icon:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel span:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel span:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel.active span {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel.active span:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel.active span:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star:focus,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star:focus {
+  color: #FEB909;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:focus,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:focus {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-search-bar {
   background-color: #5D3663;
   border-top: 1px solid #1F1221;
 }

@@ -23,4 +23,31 @@
     }
     animation-name : @name;
 }
+.animation-fadeOutLeft(@end-length) {
+    @start-length-cleaned : unit(@end-length);
+    @name : ~ "fadeOutLeft@{start-length-cleaned}";
+    @-webkit-keyframes @name {
+        from {
+            opacity   : 1;
+            transform : none;
+        }
+        to {
+            opacity   : 0;
+            transform : translate3d(@end-length, 0, 0);
+        }
+    }
+    @keyframes @name {
+        from {
+            opacity   : 1;
+            transform : none;
+        }
+        to {
+            opacity   : 0;
+            transform : translate3d(@end-length, 0, 0);
+        }
+    }
+    animation-name : @name;
+}
+
+
 

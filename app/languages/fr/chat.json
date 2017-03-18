@@ -9,5 +9,7 @@
     "chat_new_channel": "Nouveau channel",
     "chat_message_edited_on": "Modifer à",
     "chat_channel": "Discussion dans un channel",
+    "chat_public_channel": "Publique",
+    "chat_private_channel": "Privé",
     "chat_user": "Discussion avec un ami"
 }

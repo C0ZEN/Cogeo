@@ -1,0 +1,22 @@
+<a href
+   ui-sref="app.groups.details({groupName: vm.activeGroup})"
+   ng-click="goTo.view('app.groups.details', {groupName: vm.activeGroup})"
+   class="group-name hover-link animated fadeInRight">
+    {{ vm.activeGroup }}
+</a>
+<div class="user-profile">
+    <cozen-tooltip cozen-tooltip-label="vm.status.name"
+                   cozen-tooltip-placement="auto top">
+        <div class="status animated zoomIn"
+             onclick="this.blur()"
+             ng-click="methods.showPopup($event, 'chatSetStatus', {})"
+             ng-style="{'background-color': vm.status.color}">
+        </div>
+    </cozen-tooltip>
+    <a href
+       ui-sref="app.profiles.user({username: vm.user.username})"
+       ng-click="goTo.view('app.profiles.user', {username: vm.user.username})"
+       class="username hover-link animated fadeInRight">
+        @{{ vm.user.username }}
+    </a>
+</div>

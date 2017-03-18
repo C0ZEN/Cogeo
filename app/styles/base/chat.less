@@ -5,13 +5,16 @@ div.atom-chat {
     padding        : 0;
 
     // Col with groups
-    div.atom-chat-groups-container {
+    div.chat-groups-container {
         height           : inherit;
         background-color : @atom-color-line-rule-light;
         padding          : @atom-space-base;
         border-right     : 1px solid @atom-color-line-rule;
         z-index          : 2;
-        div.atom-chat-group {
+        min-width        : 70px;
+        max-width        : 70px;
+        width            : 70px;
+        div.chat-group {
             margin-bottom       : @atom-space-small;
             cursor              : pointer;
             outline             : @atom-outline;
@@ -48,7 +51,7 @@ div.atom-chat {
     // Col with channels
     @atom-chat-channels-container-width : 250px;
     @atom-chat-channels-container-padding : @atom-space-base;
-    div.atom-chat-channels-container {
+    div.chat-channels-container {
         height           : inherit;
         border-right     : 1px solid @atom-color-line-rule;
         z-index          : 1;
@@ -130,7 +133,7 @@ div.atom-chat {
             }
             span.no-result {
             }
-            div.atom-chat-channel {
+            div.chat-channel {
                 transition      : @atom-transition;
                 display         : flex;
                 flex-direction  : row;
@@ -179,8 +182,19 @@ div.atom-chat {
                         }
                     }
                 }
-                &.ng-leave {
-                    display : none !important;
+                i.channel-icon {
+                    margin-right : 2px;
+                    font-size    : 13px;
+                }
+                &.ng-enter-active {
+                    .animation-fadeInLeft(-@atom-space-medium);
+                    animation-fill-mode : @atom-animation-fill;
+                    animation-duration  : @atom-animation-duration-in;
+                }
+                &.ng-leave-active {
+                    .animation-fadeOutLeft(-@atom-space-medium);
+                    animation-fill-mode : @atom-animation-fill;
+                    animation-duration  : @atom-animation-duration-in;
                 }
             }
         }
@@ -190,6 +204,11 @@ div.atom-chat {
             border-top       : 1px solid @atom-color-line-rule;
             margin-top       : auto;
         }
+    }
+
+    // Context
+    div.chat-context-container {
+
     }
 
     // Messages
@@ -202,20 +221,16 @@ div.atom-chat {
                     &.user {
                         div.user-image {
                             img {
-
                             }
                         }
                         div.message-content {
                             div.from {
                                 span.user-username {
-
                                 }
                                 span.sent-date {
-
                                 }
                             }
                             span.message-body {
-
                             }
                         }
                     }
@@ -224,8 +239,9 @@ div.atom-chat {
         }
     }
 
+    //////////////////// Channel Theme ////////////////////
     &.channel-theme {
-        div.atom-chat-groups-container {
+        div.chat-groups-container {
             color            : @atom-color-green-text;
             a {
                 color : @atom-color-green-text;
@@ -240,7 +256,7 @@ div.atom-chat {
             }
             background-color : @atom-color-green-background2;
             border-right     : 1px solid @atom-color-green-border1;
-            div.atom-chat-group {
+            div.chat-group {
                 img {
                     border : 2px solid @atom-color-green-border2;
                 }
@@ -251,7 +267,7 @@ div.atom-chat {
                 }
             }
         }
-        div.atom-chat-channels-container {
+        div.chat-channels-container {
             color            : @atom-color-green-text;
             a {
                 color : @atom-color-green-text;
@@ -270,7 +286,11 @@ div.atom-chat {
                 background-color : @atom-color-green-background3;
                 border-bottom    : 1px solid @atom-color-green-border1;
                 a.group-name {
-                    color : @atom-color-green-title;
+                    color : @atom-color-yellow;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-yellow-active;
+                    }
                 }
             }
             div.close-btn {
@@ -295,7 +315,7 @@ div.atom-chat {
                         }
                     }
                 }
-                div.atom-chat-channel {
+                div.chat-channel {
                     span {
                         &:hover,
                         &:focus {
@@ -334,8 +354,9 @@ div.atom-chat {
         }
     }
 
+    //////////////////// Social Theme ////////////////////
     &.social-theme {
-        div.atom-chat-groups-container {
+        div.chat-groups-container {
             color            : @atom-color-purple-text;
             a {
                 color : @atom-color-purple-text;
@@ -350,7 +371,7 @@ div.atom-chat {
             }
             background-color : @atom-color-purple-background2;
             border-right     : 1px solid @atom-color-purple-border1;
-            div.atom-chat-group {
+            div.chat-group {
                 img {
                     border : 2px solid @atom-color-purple-border2;
                 }
@@ -361,7 +382,7 @@ div.atom-chat {
                 }
             }
         }
-        div.atom-chat-channels-container {
+        div.chat-channels-container {
             color            : @atom-color-purple-text;
             a {
                 color : @atom-color-purple-text;
@@ -380,7 +401,11 @@ div.atom-chat {
                 background-color : @atom-color-purple-background3;
                 border-bottom    : 1px solid @atom-color-purple-border1;
                 a.group-name {
-                    color : @atom-color-purple-title;
+                    color : @atom-color-yellow;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-yellow-active;
+                    }
                 }
             }
             div.close-btn {
@@ -405,7 +430,7 @@ div.atom-chat {
                         }
                     }
                 }
-                div.atom-chat-channel {
+                div.chat-channel {
                     span {
                         &:hover,
                         &:focus {

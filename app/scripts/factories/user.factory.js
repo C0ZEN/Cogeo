@@ -498,28 +498,28 @@
         };
         var status = [
             {
-                id    : 0,
-                name  : 'other_status_online',
-                active: true,
-                color : '#2ecc71'
+                id      : 'online',
+                name    : 'other_status_online',
+                selected: true,
+                color   : '#2ecc71'
             },
             {
-                id    : 1,
-                name  : 'other_status_absent',
-                active: false,
-                color : '#e67e22'
+                id      : 'absent',
+                name    : 'other_status_absent',
+                selected: false,
+                color   : '#e67e22'
             },
             {
-                id    : 2,
-                name  : 'other_status_busy',
-                active: false,
-                color : '#e74c3c'
+                id      : 'busy',
+                name    : 'other_status_busy',
+                selected: false,
+                color   : '#e74c3c'
             },
             {
-                id    : 3,
-                name  : 'other_status_off',
-                active: false,
-                color : '#95a5a6'
+                id      : 'off',
+                name    : 'other_status_off',
+                selected: false,
+                color   : '#95a5a6'
             }
         ];
 
@@ -534,6 +534,7 @@
             getFriends           : getFriends,
             getStatus            : getStatus,
             setStatus            : setStatus,
+            getAllStatus         : getAllStatus,
             httpRequest          : {
                 getUser                          : httpRequestGetUser,
                 register                         : httpRequestRegister,
@@ -715,7 +716,7 @@
 
         function getStatus() {
             for (var i = 0, length = status.length; i < length; i++) {
-                if (status[i].active) {
+                if (status[i].selected) {
                     return status[i];
                 }
             }
@@ -723,9 +724,13 @@
 
         function setStatus(status) {
             for (var i = 0, length = status.length; i < length; i++) {
-                status[i].active = false;
+                status[i].selected = false;
             }
-            status[status].active = true;
+            status[status].selected = true;
+        }
+
+        function getAllStatus() {
+            return status;
         }
 
         /// HTTP REQUEST ///

@@ -82,7 +82,7 @@
             $event.stopPropagation();
             if (vm.showChannels && !vm.showChannelsBlocked) {
                 vm.showChannels        = false;
-                var channels           = angular.element(document.querySelector('#atom-chat-channels-container'));
+                var channels           = angular.element(document.querySelector('#chat-channels-container'));
                 vm.showChannelsBlocked = true;
                 $animate.addClass(channels, 'slideOutLeft').then(function () {
                     $animate.addClass(channels, 'hide');
@@ -95,7 +95,7 @@
         function showChannels() {
             if (!vm.showChannels && !vm.showChannelsBlocked) {
                 vm.showChannels        = true;
-                var channels           = angular.element(document.querySelector('#atom-chat-channels-container'));
+                var channels           = angular.element(document.querySelector('#chat-channels-container'));
                 vm.showChannelsBlocked = true;
                 $animate.removeClass(channels, 'hide');
                 $animate.addClass(channels, 'slideInLeft').then(function () {
