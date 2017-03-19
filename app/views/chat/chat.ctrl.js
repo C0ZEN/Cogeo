@@ -55,12 +55,13 @@
         }
 
         function setActiveChannel(channelName, channelId) {
-            vm.activeChannel = channelName;
+            vm.activeChannel = groupsFactory.getChannelById(vm.activeGroup, channelId);
+            vm.activeChannel = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
             vm.messages      = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
             vm.chatTheme     = 'channel-theme';
             goTo.view('app.chat.channel', {
                 groupName  : vm.activeGroup,
-                channelName: vm.activeChannel
+                channelName: channelName
             });
             $rootScope.$broadcast('setChatTheme', {
                 theme: vm.chatTheme

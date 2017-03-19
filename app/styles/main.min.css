@@ -546,6 +546,12 @@ i.atom-icon-btn.purple:hover {
 .inline-block {
   display: inline-block;
 }
+.vertical-align-sub {
+  vertical-align: sub;
+}
+.vertical-align-middle {
+  vertical-align: middle;
+}
 /********************/
 /**   TEXT ALIGN   **/
 /********************/
@@ -1668,6 +1674,9 @@ div.atom-chat div.chat-channels-container div.chat-active-group {
   padding: 12px;
   background-color: #F8F8F8;
   border-bottom: 1px solid #D6DBDB;
+  height: 76px;
+  max-height: 76px;
+  min-height: 76px;
 }
 div.atom-chat div.chat-channels-container div.chat-active-group a.group-name {
   font-size: 22px;
@@ -1739,8 +1748,6 @@ div.atom-chat div.chat-channels-container div.chat-list div.chat-subtitle div.ad
   outline: 0;
   font-size: 14px;
   line-height: 0;
-  -webkit-transition: all 80ms ease-out;
-  transition: all 80ms ease-out;
   margin-right: 3px;
 }
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel {
@@ -1777,34 +1784,6 @@ div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.active 
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.active span:hover,
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.active span:focus {
   color: #32AFE3;
-}
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star {
-  outline: 0;
-  cursor: pointer;
-  color: #8C8C8C;
-  z-index: 1;
-}
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star i,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star i {
-  cursor: inherit;
-  color: inherit;
-}
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star:hover,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star:hover,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star:focus,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star:focus {
-  color: #FEB909;
-}
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled {
-  cursor: not-allowed;
-}
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:hover,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:hover,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:focus,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:focus {
-  color: #8C8C8C;
 }
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel i.channel-icon {
   margin-right: 2px;
@@ -1880,9 +1859,100 @@ div.atom-chat div.chat-channels-container div.chat-search-bar {
   border-top: 1px solid #D6DBDB;
   margin-top: auto;
 }
-div.atom-chat div.chat-messages-container {
+div.atom-chat div.chat-col {
+  width: 100%;
+}
+div.atom-chat div.chat-col div.chat-context-container {
+  background-color: #F8F8F8;
+  border-bottom: 1px solid #D6DBDB;
+  height: 76px;
+  max-height: 76px;
+  min-height: 76px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 12px;
+}
+div.atom-chat div.chat-col div.chat-context-container div.channel-description a.channel-name {
+  font-size: 22px;
+  font-weight: 500;
+  display: inline-table;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+div.atom-chat div.chat-col div.chat-context-container div.channel-description mark.atom-mark {
+  margin-right: 3px;
+}
+div.atom-chat div.chat-col div.chat-context-container div.channel-description div.line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+div.atom-chat div.chat-col div.chat-context-container div.channel-description div.line a.total-members {
+  text-decoration: none;
+  line-height: normal;
+}
+div.atom-chat div.chat-col div.chat-context-container div.channel-description div.line a.total-members i {
+  margin-right: 2px;
+}
+div.atom-chat div.chat-col div.chat-context-container div.channel-description div.line div.vertical-separator {
+  height: 12px;
+  width: 1px;
+  background-color: #D6DBDB;
+  margin: 0 12px;
+}
+div.atom-chat div.chat-col div.chat-messages-container {
   width: 100%;
   padding: 6px;
+}
+div.atom-chat div.full-star,
+div.atom-chat div.empty-star {
+  outline: 0;
+  cursor: pointer;
+  color: #8C8C8C;
+  z-index: 1;
+}
+div.atom-chat div.full-star i,
+div.atom-chat div.empty-star i {
+  cursor: inherit;
+  color: inherit;
+}
+div.atom-chat div.full-star:hover,
+div.atom-chat div.empty-star:hover,
+div.atom-chat div.full-star:focus,
+div.atom-chat div.empty-star:focus {
+  color: #FEB909;
+}
+div.atom-chat div.full-star.disabled,
+div.atom-chat div.empty-star.disabled {
+  cursor: not-allowed;
+}
+div.atom-chat div.full-star.disabled:hover,
+div.atom-chat div.empty-star.disabled:hover,
+div.atom-chat div.full-star.disabled:focus,
+div.atom-chat div.empty-star.disabled:focus {
+  color: #8C8C8C;
 }
 div.atom-chat.channel-theme div.chat-groups-container {
   color: #E2E9E6;
@@ -1961,25 +2031,43 @@ div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-c
 div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel.active span:focus {
   color: #BFD9CF;
 }
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star,
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star {
-  color: #E2E9E6;
-}
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star:hover,
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star:hover,
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star:focus,
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star:focus {
-  color: #FEB909;
-}
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:hover,
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:hover,
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:focus,
-div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:focus {
-  color: #E2E9E6;
-}
 div.atom-chat.channel-theme div.chat-channels-container div.chat-search-bar {
   background-color: #396050;
   border-top: 1px solid #13201B;
+}
+div.atom-chat.channel-theme div.chat-col div.chat-context-container {
+  background-color: #4D806B;
+  border-bottom: 1px solid #13201B;
+}
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.channel-description a.channel-name {
+  color: #E4E7E6;
+}
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.channel-description a.channel-name:hover,
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.channel-description a.channel-name:focus {
+  color: #BFD9CF;
+}
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.channel-description div.line a.total-members {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.channel-description div.line a.total-members:hover,
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.channel-description div.line a.total-members:focus {
+  color: #BFD9CF;
+}
+div.atom-chat.channel-theme div.full-star,
+div.atom-chat.channel-theme div.empty-star {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.full-star:hover,
+div.atom-chat.channel-theme div.empty-star:hover,
+div.atom-chat.channel-theme div.full-star:focus,
+div.atom-chat.channel-theme div.empty-star:focus {
+  color: #FEB909;
+}
+div.atom-chat.channel-theme div.full-star.disabled:hover,
+div.atom-chat.channel-theme div.empty-star.disabled:hover,
+div.atom-chat.channel-theme div.full-star.disabled:focus,
+div.atom-chat.channel-theme div.empty-star.disabled:focus {
+  color: #E2E9E6;
 }
 div.atom-chat.social-theme div.chat-groups-container {
   color: #EBDEED;
@@ -2058,25 +2146,25 @@ div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-ch
 div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel.active span:focus {
   color: #D7BDDB;
 }
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star,
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star {
-  color: #EBDEED;
-}
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star:hover,
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star:hover,
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star:focus,
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star:focus {
-  color: #FEB909;
-}
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:hover,
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:hover,
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.full-star.disabled:focus,
-div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel div.empty-star.disabled:focus {
-  color: #EBDEED;
-}
 div.atom-chat.social-theme div.chat-channels-container div.chat-search-bar {
   background-color: #5D3663;
   border-top: 1px solid #1F1221;
+}
+div.atom-chat.social-theme div.full-star,
+div.atom-chat.social-theme div.empty-star {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.full-star:hover,
+div.atom-chat.social-theme div.empty-star:hover,
+div.atom-chat.social-theme div.full-star:focus,
+div.atom-chat.social-theme div.empty-star:focus {
+  color: #FEB909;
+}
+div.atom-chat.social-theme div.full-star.disabled:hover,
+div.atom-chat.social-theme div.empty-star.disabled:hover,
+div.atom-chat.social-theme div.full-star.disabled:focus,
+div.atom-chat.social-theme div.empty-star.disabled:focus {
+  color: #EBDEED;
 }
 section {
   padding: 84px 0;

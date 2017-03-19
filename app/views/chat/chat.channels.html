@@ -22,7 +22,7 @@
 </div>
 <div ng-repeat="channel in vm.starredChannels
                     | filter: vm.searchValue as starredChannelsFilter track by $index"
-     ng-class="{active: channel.name == vm.activeChannel}"
+     ng-class="{active: channel.name == vm.activeChannel.name}"
      ng-mouseenter="channel.onHoverChannel = true"
      ng-mouseleave="channel.onHoverChannel = false"
      class="chat-channel">
@@ -78,7 +78,7 @@
 </div>
 <div ng-repeat="channel in vm.othersChannels
                     | filter: vm.searchValue as otherChannelsFilter track by $index"
-     ng-class="{active: channel.name == vm.activeChannel}"
+     ng-class="{active: channel.name == vm.activeChannel.name}"
      ng-mouseenter="channel.onHoverChannel = true"
      ng-mouseleave="channel.onHoverChannel = false"
      class="chat-channel">
