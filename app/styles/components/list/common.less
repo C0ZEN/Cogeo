@@ -1,0 +1,29 @@
+div.atom-add-btn,
+div.atom-remove-btn {
+    margin-left    : auto;
+    padding-left   : @atom-space-base;
+    padding-right  : @atom-space-base;
+    cursor         : pointer;
+    font-size      : @atom-font-h3;
+    color          : @atom-color-label;
+    transition     : none;
+    outline        : @atom-outline;
+    vertical-align : middle;
+    &:focus,
+    &:active,
+    &:hover {
+        color : @atom-color-blue;
+    }
+    i {
+        vertical-align : inherit;
+    }
+    &.disabled {
+        cursor : not-allowed;
+        color  : @atom-color-line-rule;
+        &:focus,
+        &:active,
+        &:hover {
+            color : @atom-color-line-rule;
+        }
+    }
+}

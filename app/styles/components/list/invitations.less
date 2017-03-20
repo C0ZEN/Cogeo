@@ -1,0 +1,61 @@
+div.atom-invitations {
+    div.atom-invitation {
+        border-top          : 1px solid @atom-color-line-rule;
+        border-right        : 1px solid @atom-color-line-rule;
+        padding             : @atom-space-small @atom-space-base;
+        animation-fill-mode : @atom-animation-fill;
+        animation-duration  : @atom-animation-duration-in-fast;
+        .animation-fadeInLeft(-@atom-space-base);
+        display             : flex;
+        flex-direction      : row;
+        justify-content     : flex-start;
+        align-items         : center;
+        &.ng-leave-active {
+            display            : none;
+            animation-duration : 0ms;
+        }
+        &.waiting {
+            border-left : 3px solid @atom-color-info;
+            div.icon {
+                color : @atom-color-info;
+            }
+        }
+        &.accepted {
+            border-left : 3px solid @atom-color-success;
+            div.icon {
+                color : @atom-color-success;
+            }
+        }
+        &.rejected {
+            border-left : 3px solid @atom-color-error;
+            div.icon {
+                color : @atom-color-error;
+            }
+        }
+        &.border-bottom {
+            border-bottom              : 1px solid @atom-color-line-rule;
+            border-bottom-left-radius  : @atom-radius;
+            border-bottom-right-radius : @atom-radius;
+        }
+        div.icon {
+            padding-right : @atom-space-base;
+            font-size     : 24px;
+            i {
+                vertical-align : middle;
+                font-size      : inherit;
+            }
+        }
+        div.text {
+            p {
+                margin : 0;
+                &:first-of-type {
+                    font-size : @atom-font-h3;
+                }
+            }
+        }
+    }
+    > :first-child {
+        border-top-left-radius  : @atom-radius;
+        border-top-right-radius : @atom-radius;
+    }
+}

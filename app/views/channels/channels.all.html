@@ -45,7 +45,8 @@
                        | limitTo: vm.allChannels.limit
                        as allChannelsFilter track by $index">
                     <div class="img">
-                        <img ng-src="{{ methods.getGroupPicture(channel.name) }}">
+                        <img class="img-circle img-thumbnail"
+                             ng-src="{{ methods.getGroupPicture(channel.name) }}">
                     </div>
                     <div class="text">
                         <p>
