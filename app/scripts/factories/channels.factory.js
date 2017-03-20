@@ -29,9 +29,12 @@
             getMyStarredChannels    : getMyStarredChannels,
             getMyOthersChannels     : getMyOthersChannels,
             getMessages             : getMessages,
-            getChannelIdByName      : getChannelIdByName
+            getChannelIdByName      : getChannelIdByName,
+            isStarredChannel        : isStarredChannel,
+            getActiveMembers        : getActiveMembers
         };
 
+        // Get the picture for this channel
         function getChannelPicture(groupName, channelId) {
             var channel = groupsFactory.getChannelById(groupName, channelId);
             if (!Methods.isNullOrEmpty(channel) && !Methods.isNullOrEmpty(channel.picture) && !Methods.isNullOrEmpty(channel.picture.url)) {
@@ -42,6 +45,7 @@
             }
         }
 
+        // Check if the user is an active member of this channel (not banned, not left, not kicked)
         function isActiveMember(userName, groupName, channelId) {
             var channel = groupsFactory.getChannelById(groupName, channelId);
             if (!Methods.isNullOrEmpty(channel)) {
@@ -58,6 +62,7 @@
             return false;
         }
 
+        // Return the user (from users) for this channel
         function getUserByName(userName, groupName, channelId) {
             var channel = groupsFactory.getChannelById(groupName, channelId);
             if (!Methods.isNullOrEmpty(channel)) {
@@ -70,6 +75,7 @@
             return null;
         }
 
+        // Add the roles for all the channels (isMember, isBanned...)
         function getChannelsWithUserRoles(groupName, userName) {
             var group    = groupsFactory.getGroupByName(groupName);
             var user     = usersFactory.getUserByUsername(userName);
@@ -83,6 +89,7 @@
             return null;
         }
 
+        // Add the roles for this channel (isMember, isBanned...)
         function getChannelWithUserRoles(channel, user) {
             channel.isCreator = channel.creator == user.username;
             for (var i = 0, length = channel.users.length; i < length; i++) {
@@ -98,6 +105,7 @@
             return channel;
         }
 
+        // Return all the channels of the current user from this group
         function getMyChannels(groupName) {
             var group    = groupsFactory.getGroupByName(groupName);
             var user     = userFactory.getUser();
@@ -115,6 +123,7 @@
             }
         }
 
+        // Return all the starred channels of the current user for this group
         function getMyStarredChannels(groupName) {
             var channels        = getMyChannels(groupName);
             var user            = userFactory.getUser();
@@ -134,6 +143,7 @@
             }
         }
 
+        // Return all the unstarred channels of the current user for this group
         function getMyOthersChannels(groupName) {
             var channels       = getMyChannels(groupName);
             var user           = userFactory.getUser();
@@ -158,22 +168,54 @@
             }
         }
 
+        // Get the messages from this channel by quantity
         function getMessages(groupName, channelId, quantity) {
             var channel = groupsFactory.getChannelById(groupName, channelId);
             if (!Methods.isNullOrEmpty(channel)) {
                 if (channel.messages != null) {
-                    return channel.messages.slice(0, quantity);
+                    // return channel.messages.slice(0, quantity);
+                    return channel.messages;
                 }
             }
             return [];
         }
 
+        // Find the id of a channel by his name
         function getChannelIdByName(groupName, channelName) {
             var channel = groupsFactory.getChannelByName(groupName, channelName);
             if (!Methods.isNullOrEmpty(channel)) {
                 return channel.id;
             }
             return null;
+        }
+
+        // Check if this channel is starred for this user
+        function isStarredChannel(username, channelId) {
+            var user = usersFactory.getUserByUsername(username);
+            if (user != null) {
+                for (var i = 0, length = user.starredChannels.length; i < length; i++) {
+                    if (user.starredChannels[i] == channelId) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        // Get the list of actives members
+        function getActiveMembers(groupName, channelId) {
+            var channel = groupsFactory.getChannelById(groupName, channelId);
+            var users   = [];
+            if (!Methods.isNullOrEmpty(channel)) {
+                for (var i = 0, length = channel.users.length; i < length; i++) {
+                    if (channel.users[i].hasLeft == 0) {
+                        if (!channel.users[i].kicked.active && !channel.users[i].banned.active) {
+                            users.push(channel.users[i]);
+                        }
+                    }
+                }
+            }
+            return [];
         }
     }
 

@@ -1,0 +1,105 @@
+div.atom-chat div.chat-col {
+    width : 100%;
+
+    // Context
+    div.chat-context-container {
+        background-color : @atom-color-line-rule-light;
+        border-bottom    : 1px solid @atom-color-line-rule;
+        height           : 76px;
+        max-height       : 76px;
+        min-height       : 76px;
+        width            : 100%;
+        display          : flex;
+        flex-direction   : row;
+        justify-content  : space-between;
+        align-items      : center;
+        padding          : @atom-chat-channels-container-padding;
+        div.channel-description {
+            a.channel-name {
+                font-size      : 22px;
+                font-weight    : 500;
+                display        : inline-table;
+                vertical-align : middle;
+                margin-right   : @atom-space-small;
+            }
+            mark.atom-mark {
+                margin-right : @atom-space-small / 2;
+            }
+            div.line {
+                display         : flex;
+                flex-direction  : row;
+                justify-content : flex-start;
+                align-items     : center;
+                a.total-members {
+                    text-decoration : none;
+                    line-height     : normal;
+                    i {
+                        margin-right : 2px;
+                    }
+                }
+                div.vertical-separator {
+                    height           : @atom-space-base;
+                    width            : 1px;
+                    background-color : @atom-color-line-rule;
+                    margin           : 0 @atom-space-base;
+                }
+                span.description {
+                    vertical-align : middle;
+                    text-overflow  : ellipsis;
+                    white-space    : nowrap;
+                    overflow       : hidden;
+                }
+            }
+        }
+        div.chat-action-bar {
+            display         : flex;
+            flex-direction  : row;
+            align-items     : center;
+            justify-content : flex-end;
+            div.action {
+                cursor      : pointer;
+                color       : @atom-color-blue;
+                outline     : @atom-outline;
+                transition  : @atom-transition;
+                font-size   : @atom-font-h2;
+                margin-left : @atom-space-base;
+                position    : relative;
+                &:hover,
+                &:focus {
+                    color : @atom-color-blue-active;
+                }
+                &:first-of-type {
+                    margin-left : 0;
+                }
+            }
+        }
+    }
+
+    // Messages
+    div.chat-messages-container {
+        width   : 100%;
+        padding : @atom-space-small;
+        div.chat-messages {
+            div.messages {
+                div.message {
+                    &.user {
+                        div.user-image {
+                            img {
+                            }
+                        }
+                        div.message-content {
+                            div.from {
+                                span.user-username {
+                                }
+                                span.sent-date {
+                                }
+                            }
+                            span.message-body {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

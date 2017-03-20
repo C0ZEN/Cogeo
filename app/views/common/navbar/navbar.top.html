@@ -21,7 +21,7 @@
              tabindex="0">
             {{ 'navbar_groups' | translate }}
             <div class="link-dropdown dropdown-right"
-                 ng-class="{'down': vm.group.hover}">
+                 ng-show="vm.group.hover">
 
                 <!-- See all groups link -->
                 <div class="link-dropdown-item"
@@ -136,7 +136,7 @@
              tabindex="0">
             {{ 'navbar_other' | translate }}
             <div class="link-dropdown"
-                 ng-class="{'down': vm.other.hover}">
+                 ng-show="vm.other.hover">
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.profile', 'app.account.profileEdit', 'app.account.profileEditPassword')}"
                      ng-click="goTo.view('app.account.profile')"

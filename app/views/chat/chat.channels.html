@@ -20,25 +20,35 @@
         </cozen-tooltip>
     </div>
 </div>
+
+<!-- Starred channels -->
 <div ng-repeat="channel in vm.starredChannels
                     | filter: vm.searchValue as starredChannelsFilter track by $index"
      ng-class="{active: channel.name == vm.activeChannel.name}"
      ng-mouseenter="channel.onHoverChannel = true"
      ng-mouseleave="channel.onHoverChannel = false"
      class="chat-channel">
+
+    <!-- Icon public -->
     <cozen-tooltip ng-show="!channel.private"
                    cozen-tooltip-label="'chat_public_channel'"
                    cozen-tooltip-placement="auto top"
                    cozen-tooltip-display-child="flex">
         <i class="fa fa-fw fa-eye channel-icon"></i>
     </cozen-tooltip>
+
+    <!-- Icon private -->
     <cozen-tooltip ng-show="channel.private"
                    cozen-tooltip-label="'chat_private_channel'"
                    cozen-tooltip-placement="auto top"
                    cozen-tooltip-display-child="flex">
         <i class="fa fa-fw fa-eye-slash channel-icon"></i>
     </cozen-tooltip>
+
+    <!-- Name -->
     <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
+
+    <!-- Icon unstar -->
     <div ng-show="channel.onHoverChannel"
          ng-click="vm.methods.removeToStarred($event, channel.id)"
          class="full-star">
@@ -76,25 +86,35 @@
         </cozen-tooltip>
     </div>
 </div>
+
+<!-- Others channels -->
 <div ng-repeat="channel in vm.othersChannels
                     | filter: vm.searchValue as otherChannelsFilter track by $index"
      ng-class="{active: channel.name == vm.activeChannel.name}"
      ng-mouseenter="channel.onHoverChannel = true"
      ng-mouseleave="channel.onHoverChannel = false"
      class="chat-channel">
+
+    <!-- Icon public -->
     <cozen-tooltip ng-show="!channel.private"
                    cozen-tooltip-label="'chat_public_channel'"
                    cozen-tooltip-placement="auto top"
                    cozen-tooltip-display-child="flex">
         <i class="fa fa-fw fa-eye channel-icon"></i>
     </cozen-tooltip>
+
+    <!-- Icon private -->
     <cozen-tooltip ng-show="channel.private"
                    cozen-tooltip-label="'chat_private_channel'"
                    cozen-tooltip-placement="auto top"
                    cozen-tooltip-display-child="flex">
         <i class="fa fa-fw fa-eye-slash channel-icon"></i>
     </cozen-tooltip>
+
+    <!-- Name -->
     <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
+
+    <!-- Icon star -->
     <div ng-show="channel.onHoverChannel"
          ng-class="{disabled: vm.starredChannels.length >= 5}"
          ng-click="vm.methods.addToStarred($event, channel.id)"

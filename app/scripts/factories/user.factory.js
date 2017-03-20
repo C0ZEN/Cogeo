@@ -535,6 +535,8 @@
             getStatus            : getStatus,
             setStatus            : setStatus,
             getAllStatus         : getAllStatus,
+            addToStarred         : addToStarred,
+            removeToStarred      : removeToStarred,
             httpRequest          : {
                 getUser                          : httpRequestGetUser,
                 register                         : httpRequestRegister,
@@ -551,31 +553,39 @@
                 updateSettingsAllChannels        : httpRequestUpdateSettingsAllChannels,
                 updateSettingsChannelsMembers    : httpRequestUpdateSettingsChannelsMembers,
                 updateSettingsChannelsInvitations: httpRequestUpdateSettingsChannelsInvitations,
-                updateSettingsChannelsLogs       : httpRequestUpdateSettingsChannelsLogs
+                updateSettingsChannelsLogs       : httpRequestUpdateSettingsChannelsLogs,
+                addToStarred                     : httpRequestAddToStarred,
+                removeToStarred                  : httpRequestRemoveToStarred
             }
         };
 
+        // Subscribe to the notify on this factory for the user
         function subscribe(scope, callback) {
-            var handler = $rootScope.$on('notifying-service-event', callback);
+            var handler = $rootScope.$on('userFactoryUserChanged', callback);
             scope.$on('$destroy', handler);
         }
 
+        // Notify the send message when subscribe is on
         function _notify() {
-            $rootScope.$emit('notifying-service-event');
+            $rootScope.$emit('userFactoryUserChanged');
         }
 
+        // Return the current user
         function getUser() {
             return user;
         }
 
+        // Get the settings for the current user
         function getSettings() {
             return user.settings;
         }
 
+        // Check if the user is connected
         function isConnected() {
             return user != null;
         }
 
+        // Logout
         function logout(callback) {
             httpRequestLogout(user.username, callback, callback);
             localStorageService.set('currentUser', {});
@@ -585,11 +595,13 @@
             _notify();
         }
 
+        // Update the current user
         function setUser(response) {
             user = formatUserData(response);
             _notify();
         }
 
+        // Add custom info when updating the current user
         function formatUserData($user) {
             angular.forEach($user.settings.preferences.logs.events, function (event) {
                 if (event.id == 'group') {
@@ -703,6 +715,7 @@
             return $user;
         }
 
+        // Update the current user for the local storage module
         function setUserInLocalStorage(userData) {
             localStorageService.set('currentUser', {
                 username: userData.username,
@@ -710,10 +723,12 @@
             });
         }
 
+        // Return the friends of the current user
         function getFriends() {
             return [];
         }
 
+        // Return the status of the current user
         function getStatus() {
             for (var i = 0, length = status.length; i < length; i++) {
                 if (status[i].selected) {
@@ -722,6 +737,7 @@
             }
         }
 
+        // Update the status for the current user
         function setStatus(status) {
             for (var i = 0, length = status.length; i < length; i++) {
                 status[i].selected = false;
@@ -729,8 +745,32 @@
             status[status].selected = true;
         }
 
+        // Return the status
         function getAllStatus() {
             return status;
+        }
+
+        // Add a channel to the starred
+        function addToStarred(channelId) {
+            httpRequestAddToStarred({
+                id: channelId
+            });
+            user.starredChannels.push(channelId);
+            usersFactory.updateUser(user);
+            _notify();
+        }
+
+        // Remove a channel to the starred
+        function removeToStarred(channelId) {
+            httpRequestAddToStarred({
+                id: channelId
+            });
+            var index = user.starredChannels.indexOf(channelId);
+            if (index >= 0) {
+                user.starredChannels.splice(index, 1);
+                usersFactory.updateUser(user);
+                _notify();
+            }
         }
 
         /// HTTP REQUEST ///
@@ -740,7 +780,8 @@
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
-                });
+                })
+            ;
         }
 
         function httpRequestRegister(data, callbackSuccess, callbackError) {
@@ -872,6 +913,14 @@
                     setUserInLocalStorage(response.data.data);
                 })
             ;
+        }
+
+        function httpRequestAddToStarred(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/starredChannels', data, callbackSuccess, callbackError);
+        }
+
+        function httpRequestRemoveToStarred(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/starredChannels', data, callbackSuccess, callbackError);
         }
     }
 

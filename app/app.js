@@ -56,12 +56,13 @@
         'tmhDynamicLocaleProvider',
         '$httpProvider',
         '$qProvider',
-        'socialProvider'
+        'socialProvider',
+        'cfpLoadingBarProvider'
     ];
 
     // Global configuration
     function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider,
-                    $httpProvider, $qProvider, socialProvider) {
+                    $httpProvider, $qProvider, socialProvider, cfpLoadingBarProvider) {
 
         // Override the CONFIG for the Atom theme
         ThemesProvider.setActiveTheme('atom');
@@ -133,6 +134,9 @@
                 }
             }
         };
+
+        // Configure the loading bar
+        cfpLoadingBarProvider.includeSpinner = false;
     }
 
     run.$inject = [
