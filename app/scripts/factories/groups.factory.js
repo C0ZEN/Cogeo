@@ -1015,7 +1015,7 @@
                         ]
                     },
                     {
-                        id         : 'aa',
+                        id         : 'aadazdad',
                         name       : 'Membre public admin créateur',
                         private    : false,
                         picture    : {},
@@ -1675,12 +1675,12 @@
         };
 
         function subscribe(scope, callback) {
-            var handler = $rootScope.$on('notifying-service-event', callback);
+            var handler = $rootScope.$on('groupsFactoryUsersChanged', callback);
             scope.$on('$destroy', handler);
         }
 
         function _notify() {
-            $rootScope.$emit('notifying-service-event');
+            $rootScope.$emit('groupsFactoryUsersChanged');
         }
 
         function getGroups() {

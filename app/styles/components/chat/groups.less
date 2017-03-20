@@ -1,0 +1,43 @@
+// Col with groups
+div.atom-chat div.chat-groups-container {
+    height           : inherit;
+    background-color : @atom-color-line-rule-light;
+    padding          : @atom-space-base;
+    border-right     : 1px solid @atom-color-line-rule;
+    z-index          : 2;
+    min-width        : 70px;
+    max-width        : 70px;
+    width            : 70px;
+    div.chat-group {
+        margin-bottom       : @atom-space-small;
+        cursor              : pointer;
+        outline             : @atom-outline;
+        animation-fill-mode : @atom-animation-fill;
+        animation-duration  : 800ms;
+        filter              : grayscale(100%);
+        opacity             : 0.6;
+        transition          : @atom-transition;
+        width               : 45px;
+        height              : 45px;
+        img {
+            padding    : 4px;
+            transition : @atom-transition;
+            border     : 2px solid @atom-color-line-rule;
+        }
+        &:focus,
+        &:hover {
+            opacity : 0.7;
+        }
+        &.active {
+            filter  : grayscale(0);
+            opacity : 1;
+            &:focus,
+            &:hover {
+                opacity : 1;
+            }
+            img {
+                border : 2px solid @atom-color-line-rule;
+            }
+        }
+    }
+}

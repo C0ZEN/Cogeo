@@ -1,0 +1,137 @@
+// Col with channels
+@atom-chat-channels-container-width : 250px;
+@atom-chat-channels-container-padding : @atom-space-base;
+div.atom-chat div.chat-channels-container {
+    height           : inherit;
+    border-right     : 1px solid @atom-color-line-rule;
+    z-index          : 1;
+    width            : @atom-chat-channels-container-width;
+    min-width        : @atom-chat-channels-container-width;
+    position         : relative;
+    background-color : @atom-color-line-rule-light;
+    display          : flex;
+    flex-direction   : column;
+    justify-content  : flex-start;
+    div.chat-active-group {
+        display          : flex;
+        flex-direction   : column;
+        padding          : @atom-chat-channels-container-padding;
+        background-color : @atom-color-line-rule-light;
+        border-bottom    : 1px solid @atom-color-line-rule;
+        height           : 76px;
+        max-height       : 76px;
+        min-height       : 76px;
+        a.group-name {
+            font-size   : 22px;
+            font-weight : 500;
+            display     : inline-table;
+        }
+        div.user-profile {
+            div.status {
+                border-radius : 50%;
+                width         : 10px;
+                height        : 10px;
+                cursor        : pointer;
+                display       : flex;
+            }
+            a.username {
+                padding-left : 3px;
+            }
+        }
+    }
+    div.close-btn {
+        position   : absolute;
+        top        : 1px;
+        right      : 0;
+        cursor     : pointer;
+        transition : @atom-transition;
+        outline    : @atom-outline;
+        &:hover,
+        &:focus {
+            color : @atom-color-blue;
+        }
+    }
+    div.chat-list {
+        padding          : @atom-chat-channels-container-padding;
+        background-color : @atom-color-line-rule-light;
+        div.chat-subtitle {
+            font-size       : 18px;
+            font-weight     : 500;
+            margin-top      : @atom-space-base;
+            margin-bottom   : 2px;
+            display         : flex;
+            flex-direction  : row;
+            justify-content : space-between;
+            align-items     : center;
+            h3 {
+                font-size   : inherit;
+                font-weight : inherit;
+                margin      : 0;
+                small {
+                    font-size : 80%;
+                    color     : @atom-color-font;
+                }
+            }
+            &:first-of-type {
+                margin-top : 0;
+            }
+            div.add-icon {
+                cursor       : pointer;
+                outline      : @atom-outline;
+                font-size    : @atom-font-body;
+                line-height  : 0;
+                margin-right : 3px;
+            }
+        }
+        span.no-result {
+        }
+        div.chat-channel {
+            transition      : @atom-transition;
+            display         : flex;
+            flex-direction  : row;
+            justify-content : space-between;
+            span {
+                cursor        : pointer;
+                outline       : @atom-outline;
+                transition    : @atom-transition;
+                width         : calc(@atom-chat-channels-container-width - @atom-chat-channels-container-padding * 2);
+                text-overflow : ellipsis;
+                white-space   : nowrap;
+                overflow      : hidden;
+                &:hover,
+                &:focus {
+                    color : @atom-color-blue;
+                }
+            }
+            &.active {
+                span {
+                    color : @atom-color-blue;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-blue-active;
+                    }
+                }
+            }
+            i.channel-icon {
+                margin-right : 2px;
+                font-size    : 13px;
+            }
+            &.ng-enter-active {
+                .animation-fadeInLeft(-@atom-space-medium);
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in;
+            }
+            &.ng-leave-active {
+                .animation-fadeOutLeft(-@atom-space-medium);
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in;
+            }
+        }
+    }
+    div.chat-search-bar {
+        padding          : @atom-chat-channels-container-padding;
+        background-color : @atom-color-line-rule-light;
+        border-top       : 1px solid @atom-color-line-rule;
+        margin-top       : auto;
+    }
+}

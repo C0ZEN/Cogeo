@@ -1,0 +1,30 @@
+div.atom-chat {
+    height         : ~"calc(100vh - 60px)";
+    display        : flex;
+    flex-direction : row;
+    padding        : 0;
+
+    // Stars
+    div.full-star,
+    div.empty-star {
+        outline : @atom-outline;
+        cursor  : pointer;
+        color   : @atom-color-label;
+        z-index : 1;
+        i {
+            cursor : inherit;
+            color  : inherit;
+        }
+        &:hover,
+        &:focus {
+            color : @atom-color-yellow;
+        }
+        &.disabled {
+            cursor : not-allowed;
+            &:hover,
+            &:focus {
+                color : @atom-color-label;
+            }
+        }
+    }
+}

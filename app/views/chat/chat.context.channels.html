@@ -1,54 +1,62 @@
 <div class="channel-description">
+
+    <!-- Current channel name -->
     <a href
        ui-sref="app.channels.details({groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
        ng-click="goTo.view('app.channels.details', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
        class="channel-name hover-link animated fadeInDown">
-        {{ vm.activeGroup }}
+        {{ vm.activeChannel.name }}
     </a>
+
+    <!-- Marks -->
     <cozen-tooltip ng-show="!vm.activeChannel.private"
                    cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'chat_public_channel' | translate">
-        <mark class="atom-mark default animated zoomIn">{{ 'chat_public_channel' | translate }}</mark>
+        <mark class="atom-mark default">{{ 'chat_public_channel' | translate }}</mark>
     </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.private"
                    cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'chat_private_channel' | translate">
-        <mark class="atom-mark default animated zoomIn">{{ 'chat_private_channel' | translate }}</mark>
+        <mark class="atom-mark default">{{ 'chat_private_channel' | translate }}</mark>
     </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.default"
                    cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'channels_by_default_tp' | translate">
-        <mark class="atom-mark default animated zoomIn">{{ 'channels_by_default' | translate }}</mark>
+        <mark class="atom-mark default">{{ 'channels_by_default' | translate }}</mark>
     </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.isMember"
                    cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'channels_member_since' | translate:{'date': (vm.activeChannel.joined | date: 'EEEE dd MMMM yyyy')}">
-        <mark class="atom-mark member animated zoomIn">{{ 'channels_member' | translate }}</mark>
+        <mark class="atom-mark member">{{ 'channels_member' | translate }}</mark>
     </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.isCreator"
                    cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'channels_creator_in' | translate:{'date': (vm.activeChannel.date.creation | date: 'EEEE dd MMMM yyyy')}">
-        <mark class="atom-mark creator animated zoomIn">{{ 'channels_creator' | translate }}</mark>
+        <mark class="atom-mark creator">{{ 'channels_creator' | translate }}</mark>
     </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.isAdmin"
                    cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'channels_member_since' | translate:{'date': (vm.activeChannel.joined | date: 'EEEE dd MMMM yyyy')}">
-        <mark class="atom-mark admin animated zoomIn">{{ 'channels_admin' | translate }}</mark>
+        <mark class="atom-mark admin">{{ 'channels_admin' | translate }}</mark>
     </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.isBanned"
                    cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-type-html
                    cozen-tooltip-label="'channels_banned_since' | translate:{'date': (vm.activeChannel.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.activeChannel.banned.by, 'for': methods.getKickBanFor(vm.activeChannel.banned.for)}">
-        <mark class="atom-mark banned animated zoomIn">{{ 'channels_banned' | translate }}</mark>
+        <mark class="atom-mark banned">{{ 'channels_banned' | translate }}</mark>
     </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.isKicked"
                    cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-type-html
                    cozen-tooltip-label="'channels_kicked_since' | translate:{'date': (vm.activeChannel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.activeChannel.kicked.by, 'for': methods.getKickBanFor(vm.activeChannel.kicked.for), 'time': (vm.methods.getKickedTime(vm.activeChannel.kicked.time).key | translate)}">
-        <mark class="atom-mark kicked animated zoomIn">{{ 'channels_kicked' | translate }}</mark>
+        <mark class="atom-mark kicked">{{ 'channels_kicked' | translate }}</mark>
     </cozen-tooltip>
+
+    <!-- Other info -->
     <div class="line">
-        <div ng-show="vm.starredChannels.length < 5"
+
+        <!-- Icon star -->
+        <div ng-show="!vm.activeChannel.isStarredChannel && vm.starredChannels.length < 5"
              ng-click="vm.methods.addToStarred($event, vm.activeChannel.id)"
              class="empty-star">
             <cozen-tooltip cozen-tooltip-label="'chat_add_to_starred'"
@@ -56,7 +64,19 @@
                 <i class="fa fa-star-o vertical-align-middle"></i>
             </cozen-tooltip>
         </div>
+
+        <!-- Icon unstar -->
+        <div ng-show="vm.activeChannel.isStarredChannel"
+             ng-click="vm.methods.removeToStarred($event, vm.activeChannel.id)"
+             class="full-star">
+            <cozen-tooltip cozen-tooltip-label="'chat_remove_to_starred'"
+                           cozen-tooltip-placement="auto bottom">
+                <i class="fa fa-star vertical-align-middle"></i>
+            </cozen-tooltip>
+        </div>
         <div class="vertical-separator"></div>
+
+        <!-- Total members -->
         <cozen-tooltip cozen-tooltip-label="'chat_total_members' | translate:{total: vm.activeChannel.users.length}"
                        cozen-tooltip-placement="auto bottom">
             <a href
@@ -67,8 +87,38 @@
                 {{ vm.activeChannel.users.length }}
             </a>
         </cozen-tooltip>
+        <div class="vertical-separator"></div>
+
+        <!-- Description -->
+        <span class="description">{{ vm.activeChannel.description }}</span>
     </div>
 </div>
-<div class="chat-action-bar">
 
+<!-- Action bar -->
+<div class="chat-action-bar">
+    <div ng-show="vm.activeMembers.length >= 2"
+         class="action phone animated zoomIn">
+        <cozen-tooltip cozen-tooltip-label="'chat_actionBar_phone'"
+                       cozen-tooltip-placement="auto top">
+            <i class="fa fa-phone"></i>
+        </cozen-tooltip>
+    </div>
+    <div class="action options animated zoomIn"
+         ng-click="vm.methods.onActionClick($event, 'options');">
+        <cozen-tooltip cozen-tooltip-label="'chat_actionBar_options'"
+                       cozen-tooltip-placement="auto top">
+            <i class="fa fa-cog"></i>
+        </cozen-tooltip>
+
+        <!-- Options dropdown -->
+        <div class="link-dropdown link-floating"
+             ng-show="vm.actionBar.options.down">
+            <div class="link-dropdown-item"
+                 ng-class="{'active': goTo.isOneOfThoseViews('app.account.profile', 'app.account.profileEdit', 'app.account.profileEditPassword')}"
+                 ng-click="goTo.view('app.account.profile')"
+                 tabindex="0">
+                {{ 'navbar_other_profile' | translate }}
+            </div>
+        </div>
+    </div>
 </div>
