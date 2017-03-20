@@ -1,23 +1,37 @@
 .atom-chat-theme(@name, @color) {
-    div.atom-chat.@{name}-theme {
+
+    // Generated variables
+    @background2 : "atom-color-@{color}-background2";
+    @background3 : "atom-color-@{color}-background3";
+    @background4 : "atom-color-@{color}-background4";
+    @background5 : "atom-color-@{color}-background5";
+    @border1 : "atom-color-@{color}-border1";
+    @border2 : "atom-color-@{color}-border2";
+    @title : "atom-color-@{color}-title";
+    @title-hover : "atom-color-@{color}-title-hover";
+    @text : "atom-color-@{color}-text";
+    @text-hover : "atom-color-@{color}-text-hover";
+
+    // Theme
+    &.@{name}-theme {
         div.chat-groups-container {
-            color            : @atom-color-green-text;
+            color            : @@text;
             a {
-                color : @atom-color-green-text;
+                color : @@text;
                 &:hover,
                 &:focus,
                 &:active {
-                    color : @atom-color-green-text-hover;
+                    color : @@text-hover;
                 }
             }
             h3 {
-                color : @atom-color-green-title;
+                color : @@title;
             }
-            background-color : @atom-color-green-background2;
-            border-right     : 1px solid @atom-color-green-border1;
+            background-color : @@background2;
+            border-right     : 1px solid @@border1;
             div.chat-group {
                 img {
-                    border : 2px solid @atom-color-green-border2;
+                    border : 2px solid @@border2;
                 }
                 &.active {
                     img {
@@ -27,23 +41,23 @@
             }
         }
         div.chat-channels-container {
-            color            : @atom-color-green-text;
+            color            : @@text;
             a {
-                color : @atom-color-green-text;
+                color : @@text;
                 &:hover,
                 &:focus,
                 &:active {
-                    color : @atom-color-green-text-hover;
+                    color : @@text-hover;
                 }
             }
             h3 {
-                color : @atom-color-green-title;
+                color : @@title;
             }
-            border-right     : 1px solid @atom-color-green-border1;
-            background-color : @atom-color-green-background4;
+            border-right     : 1px solid @@border1;
+            background-color : @@background4;
             div.chat-active-group {
-                background-color : @atom-color-green-background3;
-                border-bottom    : 1px solid @atom-color-green-border1;
+                background-color : @@background3;
+                border-bottom    : 1px solid @@border1;
                 a.group-name {
                     color : @atom-color-yellow;
                     &:hover,
@@ -55,22 +69,22 @@
             div.close-btn {
                 &:hover,
                 &:focus {
-                    color : @atom-color-green-text-hover;
+                    color : @@text-hover;
                 }
             }
             div.chat-list {
-                background-color : @atom-color-green-background4;
+                background-color : @@background4;
                 div.chat-subtitle {
                     h3 {
                         small {
-                            color : @atom-color-green-text;
+                            color : @@text;
                         }
                     }
                     div.add-icon {
-                        color : @atom-color-green-text;
+                        color : @@text;
                         &:hover,
                         &:focus {
-                            color : @atom-color-green-text-hover;
+                            color : @@text-hover;
                         }
                     }
                 }
@@ -78,56 +92,56 @@
                     span {
                         &:hover,
                         &:focus {
-                            color : @atom-color-green-text-hover;
+                            color : @@text-hover;
                         }
                     }
                     &.active {
                         span {
-                            color : @atom-color-green-text;
+                            color : @@text;
                             &:hover,
                             &:focus {
-                                color : @atom-color-green-text-hover;
+                                color : @@text-hover;
                             }
                         }
                     }
                 }
             }
             div.chat-search-bar {
-                background-color : @atom-color-green-background3;
-                border-top       : 1px solid @atom-color-green-border1;
+                background-color : @@background3;
+                border-top       : 1px solid @@border1;
             }
         }
         div.chat-col {
             div.chat-context-container {
-                background-color : @atom-color-green-background5;
-                border-bottom    : 1px solid @atom-color-green-border1;
+                background-color : @@background5;
+                border-bottom    : 1px solid @@border1;
                 div.channel-description {
                     a.channel-name {
-                        color : @atom-color-green-title;
+                        color : @@title;
                         &:hover,
                         &:focus {
-                            color : @atom-color-green-title-hover;
+                            color : @@title-hover;
                         }
                     }
                     div.line {
                         a.total-members {
-                            color : @atom-color-green-text;
+                            color : @@text;
                             &:hover,
                             &:focus {
-                                color : @atom-color-green-text-hover;
+                                color : @@text-hover;
                             }
                         }
                         span.description {
-                            color : @atom-color-green-text;
+                            color : @@text;
                         }
                     }
                 }
                 div.chat-action-bar {
                     div.action {
-                        color : @atom-color-green-text;
+                        color : @@text;
                         &:hover,
                         &:focus {
-                            color : @atom-color-green-text-hover;
+                            color : @@text-hover;
                         }
                     }
                 }
@@ -135,14 +149,13 @@
         }
         div.full-star,
         div.empty-star {
-            color : @atom-color-green-text;
+            color : @@text;
             &.disabled {
                 &:hover,
                 &:focus {
-                    color : @atom-color-green-text;
+                    color : @@text;
                 }
             }
         }
     }
 }
-.atom-chat-theme('channel', 'purple');

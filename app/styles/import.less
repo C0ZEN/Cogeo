@@ -1,23 +1,24 @@
-// Auto import less files by <less_imports> grunt task
-
-@import (less) "components/chat.less";
+// Common var
+@import (less) "global/variables.less";
+// Override
+@import (less) "override/bootstrap.less";
+@import (less) "override/slider.less";
+// Basic stuff
+@import (less) "global/style.less";
+@import (less) "global/space.less";
+@import (less) "global/other.less";
+@import (less) "global/align.less";
+@import (less) "global/color.less";
+@import (less) "global/border.less";
+@import (less) "global/animation.less";
+// Components
 @import (less) "components/dropdown.less";
 @import (less) "components/home.less";
 @import (less) "components/list.less";
 @import (less) "components/loader.less";
 @import (less) "components/navbar.less";
-@import (less) "fonts/core.less";
-@import (less) "fonts/icons.less";
-@import (less) "fonts/path.less";
-@import (less) "fonts/styles.less";
-@import (less) "fonts/variables.less";
-@import (less) "global/align.less";
-@import (less) "global/animation.less";
-@import (less) "global/border.less";
-@import (less) "global/color.less";
-@import (less) "global/other.less";
-@import (less) "global/space.less";
-@import (less) "global/style.less";
-@import (less) "global/variables.less";
-@import (less) "override/bootstrap.less";
-@import (less) "override/slider.less";
+@import (less) "components/chat/theme.less";
+@import (less) "components/chat/base.less";
+@import (less) "components/chat/channels.less";
+@import (less) "components/chat/chat.less";
+@import (less) "components/chat/groups.less";
