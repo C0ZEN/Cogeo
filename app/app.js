@@ -146,10 +146,11 @@
         'cozenPopupFactory',
         'groupsFactory',
         '$filter',
-        'channelsFactory'
+        'channelsFactory',
+        'botFactory'
     ];
 
-    function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory) {
+    function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory) {
 
         // Public global data
         $rootScope.data = {
@@ -157,8 +158,9 @@
         };
 
         // Public global services
-        $rootScope.$state = $state;
-        $rootScope.goTo   = goTo;
+        $rootScope.$state     = $state;
+        $rootScope.goTo       = goTo;
+        $rootScope.botFactory = botFactory;
 
         // Public global functions
         $rootScope.methods = {

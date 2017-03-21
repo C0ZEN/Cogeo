@@ -31,7 +31,11 @@
             getMessages             : getMessages,
             getChannelIdByName      : getChannelIdByName,
             isStarredChannel        : isStarredChannel,
-            getActiveMembers        : getActiveMembers
+            getActiveMembers        : getActiveMembers,
+            isAdmin                 : isAdmin,
+            isActiveAdmin           : isActiveAdmin,
+            getAvailableUsers       : getAvailableUsers,
+            getDefaultChannels      : getDefaultChannels
         };
 
         // Get the picture for this channel
@@ -46,11 +50,11 @@
         }
 
         // Check if the user is an active member of this channel (not banned, not left, not kicked)
-        function isActiveMember(userName, groupName, channelId) {
+        function isActiveMember(username, groupName, channelId) {
             var channel = groupsFactory.getChannelById(groupName, channelId);
             if (!Methods.isNullOrEmpty(channel)) {
                 for (var i = 0, length = channel.users.length; i < length; i++) {
-                    if (channel.users[i].username == userName) {
+                    if (channel.users[i].username == username) {
                         if (channel.users[i].hasLeft == 0) {
                             if (!channel.users[i].kicked.active && !channel.users[i].banned.active) {
                                 return true;
@@ -63,11 +67,11 @@
         }
 
         // Return the user (from users) for this channel
-        function getUserByName(userName, groupName, channelId) {
+        function getUserByName(username, groupName, channelId) {
             var channel = groupsFactory.getChannelById(groupName, channelId);
             if (!Methods.isNullOrEmpty(channel)) {
                 for (var i = 0, length = channel.users.length; i < length; i++) {
-                    if (channel.users[i].username == userName) {
+                    if (channel.users[i].username == username) {
                         return channel.users[i];
                     }
                 }
@@ -76,9 +80,9 @@
         }
 
         // Add the roles for all the channels (isMember, isBanned...)
-        function getChannelsWithUserRoles(groupName, userName) {
+        function getChannelsWithUserRoles(groupName, username) {
             var group    = groupsFactory.getGroupByName(groupName);
-            var user     = usersFactory.getUserByUsername(userName);
+            var user     = usersFactory.getUserByUsername(username);
             var channels = [];
             if (group != null && user != null) {
                 for (var i = 0, length = group.channels.length; i < length; i++) {
@@ -217,7 +221,71 @@
             }
             return [];
         }
+
+        // Check if the user is admin
+        function isAdmin(username, groupName, channelId) {
+            var channel = groupsFactory.getChannelById(groupName, channelId);
+            if (!Methods.isNullOrEmpty(channel)) {
+                for (var i = 0, length = channel.users.length; i < length; i++) {
+                    if (channel.users[i].username == username) {
+                        return channel.users[i].admin;
+                    }
+                }
+            }
+            return false;
+        }
+
+        // Check if the user is an active member and is admin
+        function isActiveAdmin(username, groupName, channelId) {
+            var channel = groupsFactory.getChannelById(groupName, channelId);
+            if (!Methods.isNullOrEmpty(channel)) {
+                for (var i = 0, length = channel.users.length; i < length; i++) {
+                    if (channel.users[i].username == username) {
+                        if (channel.users[i].hasLeft == 0) {
+                            if (!channel.users[i].kicked.active && !channel.users[i].banned.active) {
+                                return channel.users[i].admin;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        // Return the list of users which can be recruited
+        function getAvailableUsers(groupName, channelId) {
+            var activeMembers  = getActiveMembers(groupName, channelId);
+            var groupMembers   = groupsFactory.getActiveUsers(groupName);
+            var availableUsers = [], match;
+            groupMembers.forEach(function (groupMember) {
+                match = false;
+                activeMembers.forEach(function (channelMember) {
+                    if (groupMember.username == channelMember.username) {
+                        match = true;
+                    }
+                });
+                if (!match) {
+                    availableUsers.push(groupMember);
+                }
+            });
+            return availableUsers;
+        }
+
+        // Return the list of default channels for this group
+        function getDefaultChannels(groupName) {
+            var group           = groupsFactory.getGroupByName(groupName);
+            var defaultChannels = [];
+            if (!Methods.isNullOrEmpty(group) && !Methods.isNullOrEmpty(group.channels)) {
+                for (var i = 0, length = group.channels.length; i < length; i++) {
+                    if (group.channels[i].default) {
+                        defaultChannels.push(group.channels[i]);
+                    }
+                }
+            }
+            return defaultChannels;
+        }
     }
 
-})(window.angular);
+})
+(window.angular);
 

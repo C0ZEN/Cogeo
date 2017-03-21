@@ -114,10 +114,8 @@
         <div class="link-dropdown link-floating"
              ng-show="vm.actionBar.options.down">
             <div class="link-dropdown-item"
-                 ng-class="{'active': goTo.isOneOfThoseViews('app.account.profile', 'app.account.profileEdit', 'app.account.profileEditPassword')}"
-                 ng-click="goTo.view('app.account.profile')"
-                 tabindex="0">
-                {{ 'navbar_other_profile' | translate }}
+                 ng-click="goTo.view('app.channels.profile')">
+                {{ 'chat_actionBar_options_invite' | translate }}
             </div>
         </div>
     </div>

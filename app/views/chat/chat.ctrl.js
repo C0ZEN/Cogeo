@@ -15,10 +15,12 @@
         'goTo',
         '$rootScope',
         '$scope',
-        'cozenOnClickService'
+        'cozenOnClickService',
+        'usersFactory'
     ];
 
-    function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, $animate, goTo, $rootScope, $scope, cozenOnClickService) {
+    function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, $animate, goTo, $rootScope, $scope,
+                      cozenOnClickService, usersFactory) {
         var vm = this;
 
         // Methods
@@ -30,7 +32,8 @@
             addToStarred    : addToStarred,
             hideChannels    : hideChannels,
             showChannels    : showChannels,
-            onActionClick   : onActionClick
+            onActionClick   : onActionClick,
+            getUserImage    : usersFactory.getUserImage
         };
 
         // Common data
@@ -130,7 +133,7 @@
 
         // When the user click on an option in the action bar
         function onActionClick($event, target) {
-            if ($event != null) {
+            if ($event !== null) {
                 $event.stopPropagation();
             }
             switch (target) {

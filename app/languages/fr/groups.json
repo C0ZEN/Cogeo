@@ -43,7 +43,7 @@
     "groups_recruit_cogeoUsers_dropdown_search_empty": "Aucun membre Cogeo ne correspond à votre recherche",
     "groups_recruit_cogeoUsers_dropdown_allSelectedText": "Tous les membres Cogeo sélectionnés",
     "groups_recruit_cogeoUsers_dropdown_countText": "{{selected}} membres Cogeo sélectionnés sur {{total}}",
-    "groups_recruit_cogeoUsers_dropdown_help": "Seul les membres qui ne sont pas dans le groupe et qui ne sont pas banni sont visibles",
+    "groups_recruit_cogeoUsers_dropdown_help": "Seul les membres qui ne sont pas dans le groupe et qui ne sont pas banni sont visibles.",
     "groups_recruit_cogeoUsers_selected_user": "Membre Cogeo à inviter",
     "groups_recruit_cogeoUsers_selected_users": "Membres Cogeo à inviter",
     "groups_recruit_cogeoUsers_submit_user": "Inviter {{username}}",

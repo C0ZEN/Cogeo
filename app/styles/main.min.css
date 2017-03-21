@@ -2118,10 +2118,6 @@ div.atom-chat div.chat-col div.chat-context-container div.chat-action-bar div.ac
 div.atom-chat div.chat-col div.chat-context-container div.chat-action-bar div.action:first-of-type {
   margin-left: 0;
 }
-div.atom-chat div.chat-col div.chat-messages-container {
-  width: 100%;
-  padding: 6px;
-}
 div.atom-chat div.chat-groups-container {
   height: inherit;
   background-color: #F8F8F8;
@@ -2169,6 +2165,173 @@ div.atom-chat div.chat-groups-container div.chat-group.active:hover {
 }
 div.atom-chat div.chat-groups-container div.chat-group.active img {
   border: 2px solid #D6DBDB;
+}
+div.atom-chat div.chat-col div.chat-messages-container {
+  width: 100%;
+  padding: 6px 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 2px 12px;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.user-image {
+  width: 42px;
+  height: 42px;
+  padding: 3px;
+  margin-right: 6px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: zoomIn;
+          animation-name: zoomIn;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.user-image img {
+  padding: 0;
+  border: none;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content {
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content div.from {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content div.from a.user-username {
+  font-weight: 600;
+  font-size: 16px;
+  margin-right: 6px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content div.from span.sent-date {
+  color: #8C8C8C;
+  font-weight: 400;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content div.from span.edited {
+  color: #8C8C8C;
+  font-weight: 400;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content span.message-body {
+  color: #4C596B;
+  font-weight: 400;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user:hover {
+  background-color: #F8F8F8;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 2px 12px;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.bot-image {
+  width: 42px;
+  height: 42px;
+  padding: 3px;
+  margin-right: 6px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: zoomIn;
+          animation-name: zoomIn;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.bot-image img {
+  padding: 0;
+  border: none;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content {
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name {
+  font-weight: 600;
+  font-size: 16px;
+  margin-right: 6px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name.purple {
+  color: #9C27B0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name.purple:hover,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name.purple:focus {
+  color: #B92ED1;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name.green {
+  color: #4AC291;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name.green:hover,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name.green:focus {
+  color: #66CCA3;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from span.sent-date {
+  color: #8C8C8C;
+  font-weight: 400;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content span.message-body {
+  color: #4C596B;
+  font-weight: 400;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot:hover {
+  background-color: #F8F8F8;
 }
 div.actions-list {
   display: -webkit-box;

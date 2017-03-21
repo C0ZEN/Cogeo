@@ -556,10 +556,12 @@
         return {
             getUserFullName  : getUserFullName,
             addUsersFullNames: addUsersFullNames,
+            addUserFullName  : addUserFullName,
             getUserByUsername: getUserByUsername,
             getUsers         : getUsers,
             formatUserData   : formatUserData,
             updateUser       : updateUser,
+            getUserImage     : getUserImage,
             httpRequest      : {
                 getAll: httpRequestGetAll
             }
@@ -574,7 +576,7 @@
             }
         }
 
-        // Add the full name of the user
+        // Add the full name for the users
         function addUsersFullNames(objects) {
             var user;
             angular.forEach(objects, function (object) {
@@ -585,6 +587,16 @@
                 }
             });
             return objects;
+        }
+
+        // Add the full name for the user
+        function addUserFullName(user) {
+            var user2 = getUserByUsername(user.username);
+            if (user2 != null) {
+                user.givenName = user2.givenName;
+                user.surname   = user2.surname;
+            }
+            return user;
         }
 
         // Find a user by his username
@@ -687,7 +699,23 @@
             }
         }
 
+        // Get the image profile for this user
+        function getUserImage(username) {
+            for (var i = 0, length = users.length; i < length; i++) {
+                if (users[i].username == username) {
+                    if (!Methods.isNullOrEmpty(users[i].picture.url)) {
+                        return users[i].picture.url;
+                    }
+                    else {
+                        return 'images/groups/' + username.slice(0, 1).toUpperCase() + '.png';
+                    }
+                }
+            }
+            return 'images/other/Cat.png';
+        }
+
         /// HTTP REQUEST ///
+
         function httpRequestGetAll(callbackSuccess, callbackError) {
             httpRequest.requestGet('user', callbackSuccess, callbackError)
                 .then(function (response) {

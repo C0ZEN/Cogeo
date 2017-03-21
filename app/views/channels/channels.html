@@ -28,11 +28,11 @@
                                          cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || goTo.isCurrentView('app.channels.new')"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.details')">
                 </cozen-pills-item-simple>
-                <cozen-pills-item-simple ng-show="vm.details.userIsAdmin"
+                <cozen-pills-item-simple ng-show="vm.channel.isAdmin"
                                          cozen-pills-item-simple-label="channels_pills_edit"
                                          cozen-pills-item-simple-type-green
                                          cozen-pills-item-simple-on-click="goTo.view('app.channels.edit', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
-                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || !vm.details.userIsAdmin || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || !vm.channel.isAdmin || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.edit')">
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_members"

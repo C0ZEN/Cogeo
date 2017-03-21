@@ -55,7 +55,7 @@
                         }
                     },
                     {
-                        username: 'Toto59',
+                        username: 'Toto1',
                         joined  : 1484561615,
                         admin   : false,
                         hasLeft : 0,
@@ -74,7 +74,7 @@
                         }
                     },
                     {
-                        username: 'Toto59',
+                        username: 'Toto2',
                         joined  : 1484561615,
                         admin   : false,
                         hasLeft : 0,
@@ -93,7 +93,7 @@
                         }
                     },
                     {
-                        username: 'Toto59',
+                        username: 'Toto3',
                         joined  : 1484561615,
                         admin   : false,
                         hasLeft : 0,
@@ -112,7 +112,7 @@
                         }
                     },
                     {
-                        username: 'Toto59',
+                        username: 'Toto4',
                         joined  : 1484561615,
                         admin   : false,
                         hasLeft : 0,
@@ -647,6 +647,12 @@
                                 content: 'Hello, ça va ?!?',
                                 edited : 1484562915,
                                 type   : 'user'
+                            },
+                            {
+                                sender : 'Spamobot',
+                                sent   : 1484562715,
+                                content: 'Bienvenu !',
+                                type   : 'bot'
                             }
                         ]
                     },
@@ -925,6 +931,18 @@
                         default    : false,
                         users      : [
                             {
+                                username: 'user1',
+                                joined  : 1484661615,
+                                admin   : false,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
+                            },
+                            {
                                 username: 'C0ZEN',
                                 joined  : 1484661615,
                                 admin   : true,
@@ -1098,6 +1116,33 @@
                     {
                         id         : 'd',
                         name       : 'Non membre privé',
+                        private    : true,
+                        picture    : {},
+                        date       : {
+                            creation  : 1484561615,
+                            lastUpdate: 1484561615
+                        },
+                        creator    : 'C0ZEgregN',
+                        description: 'Une description',
+                        default    : true,
+                        users      : [
+                            {
+                                username: 'C0ZEggN',
+                                joined  : 1484661615,
+                                admin   : true,
+                                hasLeft : 0,
+                                kicked  : {
+                                    active: false
+                                },
+                                banned  : {
+                                    active: false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        id         : 'dazdazdazdazsa',
+                        name       : 'Non membre privé 2',
                         private    : true,
                         picture    : {},
                         date       : {
@@ -1668,6 +1713,7 @@
             getChannelById               : getChannelById,
             getChannelByName             : getChannelByName,
             isUserAdmin                  : isUserAdmin,
+            getActiveUsers               : getActiveUsers,
             httpRequest                  : {
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName
@@ -1886,9 +1932,25 @@
         function isUserAdmin(groupName, userName) {
             var group = getGroupByName(groupName);
             for (var i = 0, length = group.users.length; i < length; i++) {
-                return !!(group.users[i].username == userName && group.users[i].admin);
+                if (group.users[i].username == userName) {
+                    return group.users[i].admin;
+                }
             }
             return false;
+        }
+
+        function getActiveUsers(groupName) {
+            var group       = getGroupByName(groupName);
+            var activeUsers = [];
+            for (var i = 0, length = group.users.length; i < length; i++) {
+                if (group.users[i].hasLeft == 0) {
+                    if (!group.users[i].kicked.active && !group.users[i].banned.active) {
+                        group.users[i] = usersFactory.addUserFullName(group.users[i]);
+                        activeUsers.push(group.users[i]);
+                    }
+                }
+            }
+            return activeUsers;
         }
 
         /// HTTP REQUEST ///

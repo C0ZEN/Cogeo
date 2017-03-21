@@ -1,0 +1,29 @@
+<!-- Profile picture -->
+<div class="bot-image">
+    <img class="img-thumbnail img-circle"
+         ng-src="{{ botFactory.getBotByName(message.sender).picture }}">
+</div>
+
+<!-- Content -->
+<div class="message-content">
+
+    <!-- Sender -->
+    <div class="from">
+
+        <!-- Bot name -->
+        <a href
+           ng-click="goTo.view('app.profiles.user', {username: message.sender})"
+           class="atom-link bot-name"
+           ng-class="botFactory.getBotByName(message.sender).color">
+            {{ message.sender }}
+        </a>
+
+        <!-- Send date -->
+        <span class="sent-date">{{ message.sent | date: 'HH:mm' }}</span>
+    </div>
+
+    <!-- Message content -->
+    <span class="message-body"
+          cozen-compile="message.content">
+    </span>
+</div>

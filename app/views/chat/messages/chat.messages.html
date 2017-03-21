@@ -1,0 +1,22 @@
+<div class="chat-messages">
+
+    <!-- Message -->
+    <div ng-repeat="message in vm.messages track by $index"
+         class="message"
+         ng-switch="message.type">
+
+        <!-- Message from a user -->
+        <ng-switch ng-switch-when="user">
+            <div ng-include="'views/chat/messages/chat.messages.user.html'"
+                 ng-class="message.type">
+            </div>
+        </ng-switch>
+
+        <!-- Message from a bot -->
+        <ng-switch ng-switch-when="bot">
+            <div ng-include="'views/chat/messages/chat.messages.bot.html'"
+                 ng-class="message.type">
+            </div>
+        </ng-switch>
+    </div>
+</div>

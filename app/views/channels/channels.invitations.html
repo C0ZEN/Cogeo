@@ -77,17 +77,17 @@
             <cozen-alert cozen-alert-display="vm.invitations == null"
                          cozen-alert-label="'groups_invitations_empty'"
                          cozen-alert-close-btn="false"
-                         cozen-alert-class="space-medium-before space-base-after"
+                         cozen-alert-class="space-base-before space-base-after"
                          cozen-alert-type-info>
             </cozen-alert>
 
             <div class="space-medium-after center-flex-content">
 
                 <!-- Add members btn -->
-                <cozen-btn ng-show="vm.details.userIsInGroup"
+                <cozen-btn ng-show="vm.userCanRecruit"
                            cozen-btn-label="'groups_invitations_invite_group'"
                            cozen-btn-auto-sizing="true"
-                           cozen-btn-on-click="goTo.view('app.groups.recruit', {'groupName': vm.details.group.name})">
+                           cozen-btn-on-click="goTo.view('app.channels.recruit', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})">
                 </cozen-btn>
 
                 <!-- More filter -->

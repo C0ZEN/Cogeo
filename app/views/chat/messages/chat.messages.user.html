@@ -1,0 +1,36 @@
+<!-- Profile picture -->
+<div class="user-image">
+    <img class="img-thumbnail img-circle"
+         ng-src="{{ vm.methods.getUserImage(message.sender) }}">
+</div>
+
+<!-- Content -->
+<div class="message-content">
+
+    <!-- Sender -->
+    <div class="from">
+
+        <!-- Username -->
+        <a href
+           ui-sref="app.profiles.user({username: message.sender})"
+           ng-click="goTo.view('app.profiles.user', {username: message.sender})"
+           class="atom-link user-username">
+            @{{ message.sender }}
+        </a>
+
+        <!-- Send date -->
+        <span class="sent-date">{{ message.sent | date: 'HH:mm' }}</span>
+
+        <!-- When edited -->
+        <span ng-show="message.edited != 0"
+              class="edited">
+            {{ 'chat_message_edited_on' | translate }}
+            {{ message.edited | date: 'HH:mm' }}
+        </span>
+    </div>
+
+    <!-- Message content -->
+    <span class="message-body"
+          cozen-compile="message.content">
+    </span>
+</div>

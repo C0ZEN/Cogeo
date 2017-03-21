@@ -22,14 +22,14 @@
             })
             .state('app.chat.channel', {
                 url        : '/:groupName/:channelName',
-                templateUrl: 'views/chat/chat.context.channels.html',
+                templateUrl: 'views/chat/context/chat.context.channels.html',
                 data       : {
                     pageTitle: 'chat_channel'
                 }
             })
             .state('app.chat.user', {
                 url        : '/:userName',
-                templateUrl: 'views/chat/chat.context.users.html',
+                templateUrl: 'views/chat/context/chat.context.users.html',
                 data       : {
                     pageTitle: 'chat_user'
                 }
