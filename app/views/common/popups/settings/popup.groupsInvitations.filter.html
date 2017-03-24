@@ -1,34 +1,34 @@
-<cozen-popup cozen-popup-name="groupsLogsFilter"
+<cozen-popup cozen-popup-name="groupsInvitationsFilter"
              cozen-popup-type-info
              cozen-popup-size-small
-             cozen-popup-data="popup.groupsLogsFilter.data"
-             cozen-popup-header-title="popup_logs_filter_header_title"
+             cozen-popup-data="popup.groupsInvitationsFilter.data"
+             cozen-popup-header-title="'popup_groupsInvitations_filter_header_title'"
              cozen-popup-on-hide="popup.methods.onPopupSettingsClose(id, name)">
     <div class="row">
         <div class="col-xs-10 col-xs-push-1 space-large-before space-large-after">
-            <cozen-form cozen-form-name="groupsLogsFilter"
+            <cozen-form cozen-form-name="groupsInvitationsFilter"
                         cozen-form-ctrl="popup"
                         cozen-form-model="form">
 
-                <!-- Events -->
-                <cozen-dropdown cozen-dropdown-model="popup.groupsLogsFilter.trash"
+                <!-- Invitations -->
+                <cozen-dropdown cozen-dropdown-model="popup.groupsInvitationsFilter.trash"
                                 cozen-dropdown-validator-all
                                 cozen-dropdown-multiple="true"
                                 cozen-dropdown-model-enhanced="2"
                                 cozen-dropdown-class="space-medium-after"
-                                cozen-dropdown-label="popup_logs_filter_body_event"
-                                cozen-dropdown-placeholder="popup_logs_filter_body_event_pc"
-                                cozen-dropdown-all-selected-text="popup_logs_filter_body_event_all_selected">
-                    <cozen-dropdown-item-simple ng-repeat="event in popup.groupsLogsFilter.data.events track by $index"
-                                                cozen-dropdown-item-simple-value="event.id"
-                                                cozen-dropdown-item-simple-label="{{ event.name }}"
-                                                cozen-dropdown-item-simple-icon-left="{{ event.icon }} {{ event.color }}"
-                                                cozen-dropdown-item-simple-selected="event.selected">
+                                cozen-dropdown-label="popup_groupsInvitations_filter_body_invitationsType"
+                                cozen-dropdown-placeholder="popup_groupsInvitations_filter_body_invitationsType_pc"
+                                cozen-dropdown-all-selected-text="popup_groupsInvitations_filter_body_invitationsType_allSelected">
+                    <cozen-dropdown-item-simple ng-repeat="type in popup.groupsInvitationsFilter.data.types track by $index"
+                                                cozen-dropdown-item-simple-value="type.id"
+                                                cozen-dropdown-item-simple-label="{{ type.name }}"
+                                                cozen-dropdown-item-simple-icon-left="{{ type.icon }} {{ type.color }}"
+                                                cozen-dropdown-item-simple-selected="type.selected">
                     </cozen-dropdown-item-simple>
                 </cozen-dropdown>
 
                 <!-- Limit per page -->
-                <cozen-input cozen-input-model="popup.groupsLogsFilter.data.limit"
+                <cozen-input cozen-input-model="popup.groupsInvitationsFilter.data.limit"
                              cozen-input-name="limit"
                              cozen-input-min="1"
                              cozen-input-max="100"
@@ -43,7 +43,7 @@
                 </cozen-input>
 
                 <!-- Order by -->
-                <cozen-btn-toggle cozen-btn-toggle-model="popup.groupsLogsFilter.data.orderBy"
+                <cozen-btn-toggle cozen-btn-toggle-model="popup.groupsInvitationsFilter.data.orderBy"
                                   cozen-btn-toggle-label="popup_logs_filter_body_order_by"
                                   cozen-btn-toggle-tooltip="popup_logs_filter_body_order_by_tooltip">
                 </cozen-btn-toggle>

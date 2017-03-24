@@ -1,0 +1,50 @@
+<cozen-popup cozen-popup-name="botProfileSpamobot"
+             cozen-popup-type-purple
+             cozen-popup-data="popup.botProfileFriendybot.data"
+             cozen-popup-header-title="'Spamobot'">
+    <div class="row">
+        <div class="col-xs-10 col-xs-push-1 space-large-before space-large-after">
+
+            <!-- Title -->
+            <h3 class="no-margin-top">{{ 'other_bot_spamobot_title' | translate }}</h3>
+            <p class="help-text">{{ 'other_bot_spamobot_description_1' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_spamobot_description_2' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_spamobot_description_3' | translate }}</p>
+
+            <!-- Profile card -->
+            <div class="atom-profile space-medium-before space-medium-after">
+                <div class="profile-card">
+                    <img class="img-circle img-thumbnail"
+                         ng-src="{{ popup.bot.spamobot.picture }}">
+                    <div class="text">
+                        <h3>{{ popup.bot.spamobot.name }}</h3>
+                        <p class="help-text">{{ popup.bot.spamobot.role | translate }}</p>
+                        <h4>
+                            <span class="atom-hashtag purple">{{ 'other_bot_spamobot_hashtag_1' | translate }}</span>
+                            <span class="atom-hashtag purple">{{ 'other_bot_spamobot_hashtag_2' | translate }}</span>
+                            <span class="atom-hashtag purple">{{ 'other_bot_spamobot_hashtag_3' | translate }}</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details -->
+            <h3 class="no-margin-top">{{ 'other_bot_spamobot_details_title_1' | translate }}</h3>
+            <p class="help-text">{{ 'other_bot_spamobot_details_description_1' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_spamobot_details_description_2' | translate }}</p>
+            <h3 class="space-medium-before">{{ 'other_bot_spamobot_details_title_2' | translate }}</h3>
+            <p class="help-text">{{ 'other_bot_spamobot_details_description_3' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_spamobot_details_description_4' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_spamobot_details_description_5' | translate }}</p>
+
+            <!-- Chat btn -->
+            <cozen-btn cozen-btn-auto-sizing="true"
+                       cozen-btn-type-purple
+                       cozen-btn-class="space-medium-before"
+                       cozen-btn-icon-left="fa fa-fw icons8-chat"
+                       cozen-btn-on-click="vm.methods.closePopup('botProfileSpamobot'); goTo.view('app.chat.user', {userName: 'Spamobot'});"
+                       cozen-btn-label="'other_bot_spamobot_chat'">
+            </cozen-btn>
+        </div>
+    </div>
+</cozen-popup>

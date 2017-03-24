@@ -82,6 +82,7 @@
     "popup_channelsMembers_filter_header_title": "Filtrer les membres",
     "popup_members_filter_body_limit": "Membres par page",
     "popup_members_filter_body_limit_pc": "Nombre de membres par page",
+    "popup_bot_profile_header_title": "Nombre de membres par page",
     "popup_groupsMembers_filter_header_title": "Filtrer les membres",
     "popup_groupsMembers_filter_body_invitationsType": "Membres",
     "popup_groupsMembers_filter_body_invitationsType_pc": "Membre(s) affiché(s)",

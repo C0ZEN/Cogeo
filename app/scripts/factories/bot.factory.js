@@ -14,25 +14,38 @@
                 id     : 'spamobot',
                 name   : 'Spamobot',
                 color  : 'purple',
-                picture: 'images/bot/Spamobot.png'
+                picture: 'images/bot/Spamobot.png',
+                role   : 'other_bot_spamobot_role'
             },
             {
                 id     : 'friendybot',
                 name   : 'Friendybot',
                 color  : 'green',
-                picture: 'images/bot/Friendybot.png'
+                picture: 'images/bot/Friendybot.png',
+                role   : 'other_bot_friendybot_role'
             }
         ];
 
         // Public functions
         return {
             getBots     : getBots,
+            getBotById  : getBotById,
             getBotByName: getBotByName
         };
 
         // Return the bots
         function getBots() {
             return bots;
+        }
+
+        // Find a bot by id
+        function getBotById(botId) {
+            for (var i = 0, length = bots.length; i < length; i++) {
+                if (bots[i].id == botId) {
+                    return bots[i];
+                }
+            }
+            return null;
         }
 
         // Find a bot by name

@@ -12,7 +12,7 @@
 
         <!-- Bot name -->
         <a href
-           ng-click="goTo.view('app.profiles.user', {username: message.sender})"
+           ng-click="methods.showPopup($event, 'botProfile' + message.sender, {})"
            class="atom-link bot-name"
            ng-class="botFactory.getBotByName(message.sender).color">
             {{ message.sender }}

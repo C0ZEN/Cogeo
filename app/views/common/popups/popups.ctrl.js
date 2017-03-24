@@ -10,11 +10,29 @@
         'CONFIG',
         '$scope',
         '$rootScope',
-        'userFactory'
+        'userFactory',
+        'botFactory'
     ];
 
-    function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory) {
+    function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory) {
         var popup = this;
+
+        // Methods
+        popup.methods = {
+            closePopup          : closePopup,
+            logout              : logout,
+            forgottenPassword   : forgottenPassword,
+            onPlayerReady       : onPlayerReady,
+            onPopupSettingsClose: onPopupSettingsClose,
+            onInitChatSetStatus : onInitChatSetStatus,
+            userAction          : {
+                granted : userActionGranted,
+                revoked : userActionRevoked,
+                kicked  : userActionKicked,
+                banned  : userActionBanned,
+                unbanned: userActionUnbanned
+            }
+        };
 
         // Common data
         popup.CONFIG = CONFIG;
@@ -85,21 +103,10 @@
         // logsFilter
         popup.logsFilter = {};
 
-        // Methods
-        popup.methods = {
-            closePopup          : closePopup,
-            logout              : logout,
-            forgottenPassword   : forgottenPassword,
-            onPlayerReady       : onPlayerReady,
-            onPopupSettingsClose: onPopupSettingsClose,
-            onInitChatSetStatus : onInitChatSetStatus,
-            userAction          : {
-                granted : userActionGranted,
-                revoked : userActionRevoked,
-                kicked  : userActionKicked,
-                banned  : userActionBanned,
-                unbanned: userActionUnbanned
-            }
+        // Bot
+        popup.bot = {
+            spamobot  : botFactory.getBotById('spamobot'),
+            friendybot: botFactory.getBotById('friendybot')
         };
 
         function closePopup(name) {

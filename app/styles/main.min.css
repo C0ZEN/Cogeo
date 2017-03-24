@@ -735,6 +735,9 @@ i.atom-icon-btn.purple:hover {
 .vertical-align-middle {
   vertical-align: middle;
 }
+.atom-hashtag:before {
+  content: "#";
+}
 /********************/
 /**   TEXT ALIGN   **/
 /********************/
