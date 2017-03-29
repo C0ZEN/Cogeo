@@ -1,6 +1,7 @@
-<cozen-popup cozen-popup-name="botProfileSpamobot"
+<cozen-popup cozen-popup-id="botProfileSpamobot"
+             cozen-popup-name="botProfileSpamobot"
              cozen-popup-type-purple
-             cozen-popup-data="popup.botProfileFriendybot.data"
+             cozen-popup-data="popup.botProfileSpamobot.data"
              cozen-popup-header-title="'Spamobot'">
     <div class="row">
         <div class="col-xs-10 col-xs-push-1 space-large-before space-large-after">
@@ -42,7 +43,7 @@
                        cozen-btn-type-purple
                        cozen-btn-class="space-medium-before"
                        cozen-btn-icon-left="fa fa-fw icons8-chat"
-                       cozen-btn-on-click="vm.methods.closePopup('botProfileSpamobot'); goTo.view('app.chat.user', {userName: 'Spamobot'});"
+                       cozen-btn-on-click="popup.methods.closePopup('botProfileSpamobot'); goTo.view('app.chat.user', {userName: 'Spamobot'});"
                        cozen-btn-label="'other_bot_spamobot_chat'">
             </cozen-btn>
         </div>

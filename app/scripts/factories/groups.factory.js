@@ -653,6 +653,12 @@
                                 sent   : 1484562715,
                                 content: 'Bienvenu !',
                                 type   : 'bot'
+                            },
+                            {
+                                sender : 'Friendybot',
+                                sent   : 1484562715,
+                                content: 'Yo !',
+                                type   : 'bot'
                             }
                         ]
                     },

@@ -1,10 +1,51 @@
-<cozen-popup cozen-popup-name="botProfileFriendybot"
+<cozen-popup cozen-popup-id="botProfileFriendybot"
+             cozen-popup-name="botProfileFriendybot"
              cozen-popup-type-green
              cozen-popup-data="popup.botProfileFriendybot.data"
              cozen-popup-header-title="'Friendybot'">
     <div class="row">
         <div class="col-xs-10 col-xs-push-1 space-large-before space-large-after">
-            <pre>{{popup.botProfile.data |json}}</pre>
+
+            <!-- Title -->
+            <h3 class="no-margin-top">{{ 'other_bot_friendybot_title' | translate }}</h3>
+            <p class="help-text">{{ 'other_bot_friendybot_description_1' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_friendybot_description_2' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_friendybot_description_3' | translate }}</p>
+
+            <!-- Profile card -->
+            <div class="atom-profile space-medium-before space-medium-after">
+                <div class="profile-card">
+                    <img class="img-circle img-thumbnail"
+                         ng-src="{{ popup.bot.friendybot.picture }}">
+                    <div class="text">
+                        <h3>{{ popup.bot.friendybot.name }}</h3>
+                        <p class="help-text">{{ popup.bot.friendybot.role | translate }}</p>
+                        <h4>
+                            <span class="atom-hashtag green">{{ 'other_bot_friendybot_hashtag_1' | translate }}</span>
+                            <span class="atom-hashtag green">{{ 'other_bot_friendybot_hashtag_2' | translate }}</span>
+                            <span class="atom-hashtag green">{{ 'other_bot_friendybot_hashtag_3' | translate }}</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details -->
+            <h3 class="no-margin-top">{{ 'other_bot_friendybot_details_title_1' | translate }}</h3>
+            <p class="help-text">{{ 'other_bot_friendybot_details_description_1' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_friendybot_details_description_2' | translate }}</p>
+            <h3 class="space-medium-before">{{ 'other_bot_friendybot_details_title_2' | translate }}</h3>
+            <p class="help-text">{{ 'other_bot_friendybot_details_description_3' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_friendybot_details_description_4' | translate }}</p>
+            <p class="help-text">{{ 'other_bot_friendybot_details_description_5' | translate }}</p>
+
+            <!-- Chat btn -->
+            <cozen-btn cozen-btn-auto-sizing="true"
+                       cozen-btn-type-green
+                       cozen-btn-class="space-medium-before"
+                       cozen-btn-icon-left="fa fa-fw icons8-chat"
+                       cozen-btn-on-click="popup.methods.closePopup('botProfileFriendybot'); goTo.view('app.chat.user', {userName: 'Friendybot'});"
+                       cozen-btn-label="'other_bot_friendybot_chat'">
+            </cozen-btn>
         </div>
     </div>
 </cozen-popup>
