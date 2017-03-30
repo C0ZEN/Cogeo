@@ -188,6 +188,7 @@
 	"chat_channel": "Discussion dans un channel",
 	"chat_public_channel": "Public",
 	"chat_private_channel": "Privé",
+	"chat_actionBar_answer": "Répondre",
 	"chat_user": "Discussion avec un ami",
 	"errors_200": "<span>Ce nom de groupe est déjà utilisé ! <small>{{date}}</small></span>",
 	"errors_undefined": "<span>Une erreur inconnu est survenu ! <small>{{date}}</small></span>",

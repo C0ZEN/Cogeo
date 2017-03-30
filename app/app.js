@@ -42,7 +42,9 @@
             'anim-in-out',
             'angular-loading-bar',
             'dibari.angular-ellipsis',
-            'cozenLib'
+            'cozenLib',
+
+            '4pjtApp.actionBar'
         ])
         .config(config)
         .run(run);

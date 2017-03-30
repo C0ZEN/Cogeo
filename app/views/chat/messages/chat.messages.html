@@ -3,6 +3,9 @@
     <!-- Message -->
     <div ng-repeat="message in vm.messages track by $index"
          class="message"
+         ng-mouseenter="message.isHover = true"
+         ng-mouseleave="message.isHover = false"
+         ng-class="{'is-hover': message.isHover}"
          ng-switch="message.type">
 
         <!-- Message from a user -->

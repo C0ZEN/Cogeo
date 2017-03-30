@@ -4,8 +4,12 @@ div.atom-chat div.chat-col {
         padding : @atom-space-small 0;
         div.chat-messages {
             div.message {
+                position : relative;
+
+                // Imports
                 @import (less) "user.less";
                 @import (less) "bot.less";
+                @import (less) "actionBar.less";
             }
         }
     }

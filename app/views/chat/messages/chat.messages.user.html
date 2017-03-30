@@ -14,7 +14,8 @@
         <a href
            ui-sref="app.profiles.user({username: message.sender})"
            ng-click="goTo.view('app.profiles.user', {username: message.sender})"
-           class="atom-link user-username">
+           class="atom-link user-username"
+           ng-class="{'atom-link-yellow': message.sender == vm.user.username}">
             @{{ message.sender }}
         </a>
 
@@ -33,4 +34,9 @@
     <span class="message-body"
           cozen-compile="message.content">
     </span>
+</div>
+
+<!-- Action bar -->
+<div class="action-bar">
+    <answer-action answer-action-display="message.sender != vm.user.username"></answer-action>
 </div>

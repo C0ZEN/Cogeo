@@ -15,5 +15,6 @@
     "chat_channel": "Discussion dans un channel",
     "chat_public_channel": "Public",
     "chat_private_channel": "Privé",
+    "chat_actionBar_answer": "Répondre",
     "chat_user": "Discussion avec un ami"
 }
