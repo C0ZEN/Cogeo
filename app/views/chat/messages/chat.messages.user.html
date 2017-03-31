@@ -1,7 +1,7 @@
 <!-- Profile picture -->
 <div class="user-image">
     <img class="img-thumbnail img-circle"
-         ng-src="{{ vm.methods.getUserImage(message.sender) }}">
+         ng-src="{{ usersFactory.getUserImage(message.sender) }}">
 </div>
 
 <!-- Content -->
@@ -39,4 +39,7 @@
 <!-- Action bar -->
 <div class="action-bar">
     <answer-action answer-action-display="message.sender != vm.user.username"></answer-action>
+    <chat-action chat-action-display="message.sender != vm.user.username"
+                 chat-action-on-click="goTo.view('app.chat.user', {userName: message.sender})">
+    </chat-action>
 </div>

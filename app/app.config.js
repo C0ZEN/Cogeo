@@ -1,53 +1,9 @@
 (function (angular) {
     'use strict';
 
-    /**
-     * @ngdoc overview
-     * @name 4pjtApp
-     * @description
-     * # 4pjtApp
-     *
-     * Main module of the application.
-     */
     angular
-        .module('4pjtApp', [
-            'ngAnimate',
-            'ngAria',
-            'ngCookies',
-            'ngMessages',
-            'ngResource',
-            'ngRoute',
-            'ngSanitize',
-            'ngTouch',
-            'ui.router',
-            'pascalprecht.translate',
-            'ui.bootstrap',
-            'ui.bootstrap.tooltip',
-            'ngScrollbars',
-            'uuid',
-            'monospaced.elastic',
-            'duScroll',
-            'rzModule',
-            'tmh.dynamicLocale',
-            'angularAudioRecorder',
-            'com.2fdevs.videogular',
-            'com.2fdevs.videogular.plugins.controls',
-            'com.2fdevs.videogular.plugins.overlayplay',
-            'com.2fdevs.videogular.plugins.poster',
-            'com.2fdevs.videogular.plugins.imaads',
-            'com.2fdevs.videogular.plugins.buffering',
-            'ngclipboard',
-            'LocalStorageModule',
-            'socialLogin',
-            'anim-in-out',
-            'angular-loading-bar',
-            'dibari.angular-ellipsis',
-            'cozenLib',
-
-            '4pjtApp.actionBar'
-        ])
-        .config(config)
-        .run(run);
+        .module('4pjtApp')
+        .config(config);
 
     config.$inject = [
         '$locationProvider',
@@ -139,54 +95,6 @@
 
         // Configure the loading bar
         cfpLoadingBarProvider.includeSpinner = false;
-    }
-
-    run.$inject = [
-        '$rootScope',
-        '$state',
-        'goTo',
-        'cozenPopupFactory',
-        'groupsFactory',
-        '$filter',
-        'channelsFactory',
-        'botFactory'
-    ];
-
-    function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory) {
-
-        // Public global data
-        $rootScope.data = {
-            innerHeight: window.innerHeight
-        };
-
-        // Public global services
-        $rootScope.$state     = $state;
-        $rootScope.goTo       = goTo;
-        $rootScope.botFactory = botFactory;
-
-        // Public global functions
-        $rootScope.methods = {
-            showPopup        : showPopup,
-            getKickBanFor    : getKickBanFor,
-            getGroupPicture  : groupsFactory.getGroupPicture,
-            getChannelPicture: channelsFactory.getChannelPicture
-        };
-
-        function showPopup($event, name, data) {
-
-            // Required to avoid an show and hide behavior
-            $event.stopPropagation();
-
-            // Show the popup
-            cozenPopupFactory.show({
-                name: name,
-                data: data
-            });
-        }
-
-        function getKickBanFor(forValue) {
-            return $filter('translate')('other_kicked_reason_' + forValue);
-        }
     }
 
 })(window.angular, window);

@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name answer-action
+ * @name download-action
  * @scope
  * @restrict E
  * @replace false
@@ -8,32 +8,32 @@
  * @description
  *
  * [Scope params]
- * @param {boolean}  answerActionDisplay = true > Hide or show the action
- * @param {function} answerActionOnClick        > Callback function called on click
+ * @param {boolean}  downloadActionDisplay = true > Hide or show the action
+ * @param {function} downloadActionOnClick        > Callback function called on click
  *
  */
 (function (angular) {
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.answer', [])
-        .directive('answerAction', answerAction);
+        .module('4pjtApp.actionBar.download', [])
+        .directive('downloadAction', downloadAction);
 
-    answerAction.$inject = [
+    downloadAction.$inject = [
         'CONFIG'
     ];
 
-    function answerAction(CONFIG) {
+    function downloadAction(CONFIG) {
         return {
             link       : link,
             restrict   : 'E',
             replace    : false,
             transclude : false,
             scope      : {
-                answerActionDisplay: '=?',
-                answerActionOnClick: '&'
+                downloadActionDisplay: '=?',
+                downloadActionOnClick: '&'
             },
-            templateUrl: 'views/chat/messages/action-bar/answer/actionBar.answer.template.html'
+            templateUrl: 'views/chat/messages/action-bar/download/actionBar.download.template.html'
         };
 
         function link(scope, element, attrs) {
@@ -53,7 +53,7 @@
                 };
 
                 // Default values (scope)
-                angular.isUndefined(attrs.answerActionDisplay) ? scope.answerActionDisplay = true : null;
+                angular.isUndefined(attrs.downloadActionDisplay) ? scope.downloadActionDisplay = true : null;
 
                 // Init stuff
                 element.on('$destroy', methods.destroy);
@@ -65,10 +65,10 @@
 
             function onClick($event) {
                 if (CONFIG.debug) {
-                    Methods.directiveCallbackLog('answerAction', 'onClick');
+                    Methods.directiveCallbackLog('downloadAction', 'onClick');
                 }
-                if (Methods.isFunction(scope.answerActionOnClick)) {
-                    scope.answerActionOnClick();
+                if (Methods.isFunction(scope.downloadActionOnClick)) {
+                    scope.downloadActionOnClick();
                 }
             }
         }

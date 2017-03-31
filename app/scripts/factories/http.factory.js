@@ -40,9 +40,14 @@
             }
             $http.get(CONFIG.internal.API + url)
                 .then(function (response) {
-                    deferred.resolve(response);
-                    if (Methods.isFunction(callbackSuccess)) {
-                        callbackSuccess();
+                    if (response.data.error != 0) {
+                        deferred.reject(response, 200);
+                    }
+                    else {
+                        deferred.resolve(response);
+                        if (Methods.isFunction(callbackSuccess)) {
+                            callbackSuccess();
+                        }
                     }
                 })
                 .catch(function (response) {
@@ -72,9 +77,14 @@
                 data   : params,
                 session: {}
             }).then(function (response) {
-                deferred.resolve(response);
-                if (Methods.isFunction(callbackSuccess)) {
-                    callbackSuccess();
+                if (response.data.error != 0) {
+                    deferred.reject(response, 200);
+                }
+                else {
+                    deferred.resolve(response);
+                    if (Methods.isFunction(callbackSuccess)) {
+                        callbackSuccess();
+                    }
                 }
             }).catch(function (response) {
                 deferred.reject(response, 200);
@@ -102,9 +112,14 @@
                 data   : params,
                 session: {}
             }).then(function (response) {
-                deferred.resolve(response);
-                if (Methods.isFunction(callbackSuccess)) {
-                    callbackSuccess();
+                if (response.data.error != 0) {
+                    deferred.reject(response, 200);
+                }
+                else {
+                    deferred.resolve(response);
+                    if (Methods.isFunction(callbackSuccess)) {
+                        callbackSuccess();
+                    }
                 }
             }).catch(function (response) {
                 deferred.reject(response, 200);
@@ -116,6 +131,7 @@
             return deferred.promise;
         }
 
+        // Shake the button on error
         function shakeElement(element) {
             $timeout(function () {
                 $animate.addClass(element, 'animated shake').then(function () {
@@ -125,17 +141,32 @@
         }
 
         function displayError(response) {
-            var type = '';
-            switch (response.data.data) {
+            console.log('displayError', response);
+            var type = '', username = '', email = '';
+
+            // Look at the error and set the type and custom data
+            switch (response.data.error) {
+                case 103:
+                    type     = 'error';
+                    username = response.data.data.username;
+                    break;
+                case 104:
+                    type  = 'error';
+                    email = response.data.data.email;
+                    break;
                 case 200:
                     type = 'error';
                     break;
                 default:
                     type = 'error';
             }
+
+            // Send an alert
             cozenFloatingFeedFactory.addAlert({
-                label: $filter('translate')('errors_' + response.data.data, {
-                    date: $filter('date')(response.data.date, 'HH:mm')
+                label: $filter('translate')('errors_' + response.data.error, {
+                    date    : $filter('date')(response.data.date, 'HH:mm'),
+                    username: username,
+                    email   : email
                 }),
                 type : type
             });

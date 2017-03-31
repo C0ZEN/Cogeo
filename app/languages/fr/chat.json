@@ -16,5 +16,7 @@
     "chat_public_channel": "Public",
     "chat_private_channel": "Privé",
     "chat_actionBar_answer": "Répondre",
+    "chat_actionBar_download": "Télécharger",
+    "chat_actionBar_chat": "Discutter",
     "chat_user": "Discussion avec un ami"
 }

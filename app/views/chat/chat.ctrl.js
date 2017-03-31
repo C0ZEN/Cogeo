@@ -32,8 +32,7 @@
             addToStarred    : addToStarred,
             hideChannels    : hideChannels,
             showChannels    : showChannels,
-            onActionClick   : onActionClick,
-            getUserImage    : usersFactory.getUserImage
+            onActionClick   : onActionClick
         };
 
         // Common data

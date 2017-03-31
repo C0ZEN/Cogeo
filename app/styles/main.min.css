@@ -2372,10 +2372,8 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  top: 50%;
+  top: 8px;
   right: 12px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.action-bar div.action {
   border-radius: 50%;
