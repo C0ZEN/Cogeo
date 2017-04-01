@@ -11,10 +11,11 @@
         'localStorageService',
         'socialLoginService',
         '$rootScope',
-        'goTo'
+        'goTo',
+        'cozenFloatingFeedFactory'
     ];
 
-    function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope, goTo) {
+    function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope, goTo, cozenFloatingFeedFactory) {
 
         // var user   = {
         //     givenName      : 'Geoffrey',
@@ -496,7 +497,7 @@
         //         }
         //     ]
         // };
-        var user = {};
+        var user   = null;
         var status = [
             {
                 id      : 'online',
@@ -550,6 +551,7 @@
                 updateSettingsGroupsInvitations  : httpRequestUpdateSettingsGroupsInvitations,
                 updateSettingsGroupsLogs         : httpRequestUpdateSettingsGroupsLogs,
                 updateUser                       : httpRequestUpdateUser,
+                updateUserPassword               : httpRequestUpdateUserPassword,
                 updateNotifications              : httpRequestUpdateNotifications,
                 updateSettingsAllChannels        : httpRequestUpdateSettingsAllChannels,
                 updateSettingsChannelsMembers    : httpRequestUpdateSettingsChannelsMembers,
@@ -718,9 +720,10 @@
 
         // Update the current user for the local storage module
         function setUserInLocalStorage(userData) {
+            var localUser = localStorageService.get('currentUser');
             localStorageService.set('currentUser', {
-                username: userData.username,
-                token   : userData.token.login
+                username: Methods.isNullOrEmpty(userData.username) ? localUser.username : userData.username,
+                token   : Methods.isNullOrEmpty(userData.token) ? localUser.token : userData.token
             });
         }
 
@@ -791,6 +794,14 @@
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
                     usersFactory.httpRequest.getAll();
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'success',
+                        label      : 'alerts_success_register',
+                        labelValues: {
+                            username: response.data.data.username
+                        }
+                    });
+                    goTo.view('app.account.profile');
                 })
             ;
         }
@@ -798,14 +809,29 @@
         function httpRequestLogin(data, callbackSuccess, callbackError) {
             httpRequest.requestPost('login', data, callbackSuccess, callbackError)
                 .then(function (response) {
+                    console.log('login', response);
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'success',
+                        label      : 'alerts_success_login',
+                        labelValues: {
+                            username: response.data.data.username
+                        }
+                    });
                 })
             ;
         }
 
         function httpRequestLogout(username, callbackSuccess, callbackError) {
-            httpRequest.requestGet('logout/' + username, callbackSuccess, callbackError);
+            httpRequest.requestGet('logout/' + username, callbackSuccess, callbackError)
+                .then(function (response) {
+                    cozenFloatingFeedFactory.addAlert({
+                        type : 'info',
+                        label: 'alerts_info_logout'
+                    });
+                })
+            ;
         }
 
         function httpRequestUpdateSettings(data, callbackSuccess, callbackError) {
@@ -867,6 +893,23 @@
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type : 'success',
+                        label: 'alerts_success_update_user'
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUpdateUserPassword(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/password', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type : 'success',
+                        label: 'alerts_success_update_user_password'
+                    });
                 })
             ;
         }

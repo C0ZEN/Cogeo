@@ -11,15 +11,20 @@
 
     function config($stateProvider) {
 
-        // Error route
+        // Error routes
         $stateProvider
             .state('app.error', {
+                abstract    : true,
                 url         : '/error',
                 templateUrl : 'views/common/error/error.html',
                 controller  : 'ErrorCtrl',
-                controllerAs: 'vm',
-                data        : {
-                    pageTitle: 'error'
+                controllerAs: 'vm'
+            })
+            .state('app.error.disconnected', {
+                url        : '/disconnected',
+                templateUrl: 'views/common/error/error.disconnected.html',
+                data       : {
+                    pageTitle: 'errors_disconnected'
                 }
             });
     }

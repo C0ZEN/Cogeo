@@ -14,10 +14,11 @@
         'userFactory',
         'usersFactory',
         '$filter',
-        '$scope'
+        '$scope',
+        '$timeout'
     ];
 
-    function GroupsCtrl(CONFIG, goTo, $rootScope, $state, groupsFactory, userFactory, usersFactory, $filter, $scope) {
+    function GroupsCtrl(CONFIG, goTo, $rootScope, $state, groupsFactory, userFactory, usersFactory, $filter, $scope, $timeout) {
         var vm = this;
 
         // Methods
@@ -33,7 +34,9 @@
             getLogSrc       : getLogSrc,
             onRecruitInit   : onRecruitInit,
             recruit         : recruit,
-            toggleRecruitMod: toggleRecruitMod
+            toggleRecruitMod: toggleRecruitMod,
+            startLoading    : startLoading,
+            stopLoading     : stopLoading
         };
 
         // Common data
@@ -61,9 +64,15 @@
             vm.loading = true;
             switch (form) {
                 case 'edit':
-                    vm.loading = false;
-                    groupsFactory.updateGroup(vm.edit);
-                    goTo.view('app.groups.details', {groupName: vm.details.name});
+                    var updatedGroup = {
+                        name       : vm.edit.name,
+                        description: vm.edit.description,
+                        picture    : vm.edit.picture
+                    };
+                    groupsFactory.httpRequest.updateGroup(vm.details.group.name, updatedGroup, function () {
+                        vm.methods.stopLoading();
+                        goTo.view('app.groups.details', {groupName: updatedGroup.name});
+                    }, vm.methods.stopLoading);
                     break;
             }
         }
@@ -182,6 +191,14 @@
 
         function toggleRecruitMod() {
             vm.recruitMod = vm.recruitMod == 'users' ? 'email' : 'users';
+        }
+
+        function startLoading() {
+            vm.loading = true;
+        }
+
+        function stopLoading() {
+            vm.loading = false;
         }
     }
 

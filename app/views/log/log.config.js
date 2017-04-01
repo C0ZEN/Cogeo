@@ -15,13 +15,13 @@
             surname      : {
                 length  : 30,
                 required: true,
-                pattern : 'name',
+                pattern : 'words',
                 name    : 'lastname'
             },
             givenName    : {
                 length  : 30,
                 required: true,
-                pattern : 'name',
+                pattern : 'words',
                 name    : 'firstname'
             },
             username     : {

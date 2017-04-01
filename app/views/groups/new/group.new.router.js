@@ -27,13 +27,23 @@
                 url         : '/groups/new',
                 controller  : 'GroupNewCtrl',
                 controllerAs: 'vm',
-                templateUrl : 'views/groups/new/group.html'
+                templateUrl : 'views/groups/new/group.html',
+                resolve     : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
+                }
             })
             .state('app.groupNew.firstStep', {
                 url        : '/groups/new/name',
                 templateUrl: 'views/groups/new/group.step1.html',
                 data       : {
                     pageTitle: 'group_new'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.groupNew.secondStep', {
@@ -41,6 +51,11 @@
                 templateUrl: 'views/groups/new/group.step2.html',
                 data       : {
                     pageTitle: 'group_new'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.groupNew.thirdStep', {
@@ -48,6 +63,11 @@
                 templateUrl: 'views/groups/new/group.step3.html',
                 data       : {
                     pageTitle: 'group_new'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             });
     }

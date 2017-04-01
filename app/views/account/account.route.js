@@ -18,13 +18,23 @@
                 url         : '/account',
                 templateUrl : 'views/account/account.html',
                 controller  : 'AccountCtrl',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve     : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
+                }
             })
             .state('app.account.profile', {
                 url        : '/profile',
                 templateUrl: 'views/account/account.profile.html',
                 data       : {
                     pageTitle: 'account_profile'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.account.profileEdit', {
@@ -32,6 +42,11 @@
                 templateUrl: 'views/account/account.profile.edit.html',
                 data       : {
                     pageTitle: 'account_profile_edit'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.account.profileEditPassword', {
@@ -39,6 +54,11 @@
                 templateUrl: 'views/account/account.profile.edit.password.html',
                 data       : {
                     pageTitle: 'account_profile_edit_password'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.account.notifications', {
@@ -46,6 +66,11 @@
                 templateUrl: 'views/account/account.notifications.html',
                 data       : {
                     pageTitle: 'account_notifications'
+                },
+                resolve: {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.account.notificationsEdit', {
@@ -53,6 +78,11 @@
                 templateUrl: 'views/account/account.notifications.edit.html',
                 data       : {
                     pageTitle: 'account_notifications_edit_title'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.account.settings', {
@@ -60,6 +90,11 @@
                 templateUrl: 'views/account/account.settings.html',
                 data       : {
                     pageTitle: 'account_settings'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.account.settingsEdit', {
@@ -67,6 +102,11 @@
                 templateUrl: 'views/account/account.settings.edit.html',
                 data       : {
                     pageTitle: 'account_settings_edit'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.account.log', {
@@ -74,6 +114,11 @@
                 templateUrl: 'views/account/account.log.html',
                 data       : {
                     pageTitle: 'account_log'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             });
     }

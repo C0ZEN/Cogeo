@@ -28,7 +28,7 @@
             .scrollsBar(false)
             .debug(true)
             .dropdownAutoCloseOthers(true)
-            .inputDisplayModelLength(true)
+            .inputModelLengthType('focus')
             .textareaDisplayModelLength(true)
             .dropdownDisplayModelLength(true)
             .requiredType('icon')
@@ -37,7 +37,8 @@
             .popupAnimationInAnimation('zoomIn')
             .popupAnimationOutAnimation('zoomOut')
             .popupFooter(false)
-            .btnToggleStartRight(false);
+            .btnToggleStartRight(false)
+            .floatingFeedTimeout(14000);
 
         // Configure the location provider
         $locationProvider.html5Mode({

@@ -53,6 +53,7 @@
 
         function save(form) {
             vm.methods.startLoading();
+            var updateUser;
             switch (form) {
                 case 'settings':
                     userFactory.httpRequest.updateSettings(vm.settings, function () {
@@ -61,7 +62,7 @@
                     }, vm.methods.stopLoading);
                     break;
                 case 'profile':
-                    var updateUser = {
+                    updateUser = {
                         givenName: vm.userCopy.givenName,
                         surname  : vm.userCopy.surname,
                         email    : vm.userCopy.email,
@@ -75,7 +76,14 @@
                     }, vm.methods.stopLoading);
                     break;
                 case 'profile-password':
-                    goTo.view('app.account.profile');
+                    updateUser = {
+                        currentPassword: vm.userCopy.currentPassword,
+                        newPassword    : vm.userCopy.newPassword
+                    };
+                    userFactory.httpRequest.updateUserPassword(updateUser, function () {
+                        vm.methods.stopLoading();
+                        goTo.view('app.account.profile');
+                    }, vm.methods.stopLoading);
                     break;
                 case 'notifications':
                     userFactory.httpRequest.updateNotifications(vm.notifications, function () {
@@ -158,32 +166,25 @@
         }
 
         function initSettings(user) {
-            if (user != null) {
-                vm.settings = angular.copy(user.settings);
+            if (user == null) {
+                user = userFactory.getUser();
             }
-            else {
-                vm.settings = angular.copy(userFactory.getUser().settings);
-            }
+            vm.settings = angular.copy(user.settings);
         }
 
         function initNotifications(user) {
-            if (user != null) {
-                vm.notifications = angular.copy(user.notifications);
+            if (user == null) {
+                user = userFactory.getUser();
             }
-            else {
-                vm.notifications = angular.copy(userFactory.getUser().notifications);
-            }
+            vm.notifications = angular.copy(user.notifications);
         }
 
         function initLogs(user) {
-            if (user != null) {
-                vm.logs         = angular.copy(user.logs);
-                vm.settingsLogs = angular.copy(user.settings.preferences.log);
+            if (user == null) {
+                user = userFactory.getUser();
             }
-            else {
-                vm.logs         = angular.copy(userFactory.getUser().logs);
-                vm.settingsLogs = angular.copy(userFactory.getUser().settings.preferences.log);
-            }
+            vm.logs         = angular.copy(user.logs);
+            vm.settingsLogs = angular.copy(user.settings.preferences.log);
 
             // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
             vm.logs.forEach(function (log) {

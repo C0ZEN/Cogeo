@@ -2377,10 +2377,10 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.action-bar div.action {
   border-radius: 50%;
-  padding: 1px 3px;
+  padding: 2px 3px;
   background-color: #FFFFFF;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   margin-left: 6px;
   border: 1px solid #D6DBDB;
   color: #D6DBDB;
@@ -2395,6 +2395,10 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.action-bar div.action:hover.blue-hover {
   border: 1px solid #2C9FDD;
   color: #2C9FDD;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.action-bar div.action:hover.purple-hover {
+  border: 1px solid #9C27B0;
+  color: #9C27B0;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message.is-hover div.action-bar {
   display: -webkit-box;
@@ -2415,10 +2419,10 @@ div.actions-list {
 }
 div.actions-list div.action-item {
   border-radius: 50%;
-  padding: 1px 3px;
+  padding: 2px 3px;
   background-color: #FFFFFF;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   margin-left: 6px;
   border: 1px solid #D6DBDB;
   color: #D6DBDB;

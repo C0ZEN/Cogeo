@@ -14,10 +14,11 @@
         '$filter',
         'channelsFactory',
         'botFactory',
-        'usersFactory'
+        'usersFactory',
+        'rfc4122'
     ];
 
-    function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory, usersFactory) {
+    function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory, usersFactory, rfc4122) {
 
         // Public global data
         $rootScope.data = {
@@ -35,7 +36,8 @@
             showPopup        : showPopup,
             getKickBanFor    : getKickBanFor,
             getGroupPicture  : groupsFactory.getGroupPicture,
-            getChannelPicture: channelsFactory.getChannelPicture
+            getChannelPicture: channelsFactory.getChannelPicture,
+            generateUuid     : rfc4122.v4
         };
 
         function showPopup($event, name, data) {

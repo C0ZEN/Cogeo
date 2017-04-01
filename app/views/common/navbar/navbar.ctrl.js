@@ -9,11 +9,19 @@
         '$document',
         '$rootScope',
         'groupsFactory',
-        'userFactory'
+        'userFactory',
+        '$scope'
     ];
 
-    function NavbarCtrl($document, $rootScope, groupsFactory, userFactory) {
+    function NavbarCtrl($document, $rootScope, groupsFactory, userFactory, $scope) {
         var vm = this;
+
+        // Methods
+        vm.methods = {
+            scrollToElement: scrollToElement,
+            isConnected    : userFactory.isConnected,
+            onGroupsChanged: onGroupsChanged
+        };
 
         // Common data
         vm.data  = {
@@ -31,19 +39,20 @@
 
         // Get the current user
         var user = userFactory.getUser();
-        if (user != null) {
-            vm.groups = groupsFactory.getUserGroups(user.username);
-        }
+        vm.methods.onGroupsChanged();
 
-        // Methods
-        vm.methods = {
-            scrollToElement: scrollToElement,
-            isConnected    : userFactory.isConnected
-        };
+        // Listeners
+        groupsFactory.subscribe($scope, vm.methods.onGroupsChanged);
 
         function scrollToElement(element) {
             var div = angular.element(document.getElementById(element));
             $document.scrollToElement(div, vm.data.offset, vm.data.duration);
+        }
+
+        function onGroupsChanged() {
+            if (user != null) {
+                vm.groups = groupsFactory.getUserGroups(user.username);
+            }
         }
     }
 

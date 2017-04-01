@@ -1,0 +1,9 @@
+{
+    "alerts_info_logout": "Tu es maintenant déconnecté.<br>Merci et à la prochaine !",
+    "alerts_success_login": "Salut <strong>{{username}}</strong> !<br>Bon retour sur Cogeo !",
+    "alerts_success_register": "Félicitations <strong>{{username}}</strong> !<br>Tu es maintenant inscrit sur Cogeo !",
+    "alerts_success_update_user": "Les informations de ton profil ont correctement étaient sauvegardées.",
+    "alerts_success_update_user_password": "Ton mot de passe à était correctement modifié.",
+    "alerts_success_post_group": "Le groupe <strong>{{groupName}}</strong> à été créer avec succès.",
+    "alerts_success_update_group": "Le groupe <strong>{{groupName}}</strong> à été modifié avec succès."
+}

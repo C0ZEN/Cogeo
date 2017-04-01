@@ -5,6 +5,8 @@
             <cozen-form cozen-form-name="edit"
                         cozen-form-ctrl="vm"
                         cozen-form-model="form">
+
+                <!-- Group name -->
                 <cozen-input cozen-input-model="vm.edit.name"
                              cozen-input-name="{{ vm.CONFIG.internal.group.name.name }}"
                              cozen-input-max-length="{{ vm.CONFIG.internal.group.name.length }}"
@@ -18,6 +20,8 @@
                     {{ 'groups_register_quicklink_preview' | translate }}:
                     <span style="font-style:italic;">{{ vm.CONFIG.internal.group.quicklink + vm.edit.name }}</span>
                 </p>
+
+                <!-- Description -->
                 <cozen-textarea cozen-textarea-model="vm.edit.description"
                                 cozen-textarea-name="{{ vm.CONFIG.internal.group.description.name }}"
                                 cozen-textarea-max-length="{{ vm.CONFIG.internal.group.description.maxLength }}"
@@ -31,6 +35,8 @@
                                 cozen-textarea-required="{{ vm.CONFIG.internal.group.description.required }}"
                                 cozen-textarea-class="space-medium-after">
                 </cozen-textarea>
+
+                <!-- Picture -->
                 <cozen-btn cozen-btn-upload-model="vm.edit.picture"
                            cozen-btn-is-upload="true"
                            cozen-btn-upper-label="groups_register_profile_picture"

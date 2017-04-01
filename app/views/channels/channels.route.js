@@ -18,13 +18,23 @@
                 url         : '/groups/:groupName/channels',
                 templateUrl : 'views/channels/channels.html',
                 controller  : 'ChannelsCtrl',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve     : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
+                }
             })
             .state('app.channels.all', {
                 url        : '/all',
                 templateUrl: 'views/channels/channels.all.html',
                 data       : {
                     pageTitle: 'channels_all'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.channels.details', {
@@ -32,6 +42,11 @@
                 templateUrl: 'views/channels/channels.details.html',
                 data       : {
                     pageTitle: 'channels_details'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.channels.edit', {
@@ -39,6 +54,11 @@
                 templateUrl: 'views/channels/channels.edit.html',
                 data       : {
                     pageTitle: 'channels_edit'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.channels.members', {
@@ -46,6 +66,11 @@
                 templateUrl: 'views/channels/channels.members.html',
                 data       : {
                     pageTitle: 'channels_members'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.channels.invitations', {
@@ -53,6 +78,11 @@
                 templateUrl: 'views/channels/channels.invitations.html',
                 data       : {
                     pageTitle: 'channels_invitations'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.channels.logs', {
@@ -60,6 +90,11 @@
                 templateUrl: 'views/channels/channels.logs.html',
                 data       : {
                     pageTitle: 'channels_logs'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.channels.new', {
@@ -67,6 +102,11 @@
                 templateUrl: 'views/channels/channels.new.html',
                 data       : {
                     pageTitle: 'channels_new'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             })
             .state('app.channels.recruit', {
@@ -74,6 +114,11 @@
                 templateUrl: 'views/channels/channels.recruit.html',
                 data       : {
                     pageTitle: 'channels_recruit'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
                 }
             });
     }

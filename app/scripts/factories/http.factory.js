@@ -40,14 +40,9 @@
             }
             $http.get(CONFIG.internal.API + url)
                 .then(function (response) {
-                    if (response.data.error != 0) {
-                        deferred.reject(response, 200);
-                    }
-                    else {
-                        deferred.resolve(response);
-                        if (Methods.isFunction(callbackSuccess)) {
-                            callbackSuccess();
-                        }
+                    deferred.resolve(response);
+                    if (Methods.isFunction(callbackSuccess)) {
+                        callbackSuccess();
                     }
                 })
                 .catch(function (response) {
@@ -77,14 +72,9 @@
                 data   : params,
                 session: {}
             }).then(function (response) {
-                if (response.data.error != 0) {
-                    deferred.reject(response, 200);
-                }
-                else {
-                    deferred.resolve(response);
-                    if (Methods.isFunction(callbackSuccess)) {
-                        callbackSuccess();
-                    }
+                deferred.resolve(response);
+                if (Methods.isFunction(callbackSuccess)) {
+                    callbackSuccess();
                 }
             }).catch(function (response) {
                 deferred.reject(response, 200);
@@ -112,14 +102,9 @@
                 data   : params,
                 session: {}
             }).then(function (response) {
-                if (response.data.error != 0) {
-                    deferred.reject(response, 200);
-                }
-                else {
-                    deferred.resolve(response);
-                    if (Methods.isFunction(callbackSuccess)) {
-                        callbackSuccess();
-                    }
+                deferred.resolve(response);
+                if (Methods.isFunction(callbackSuccess)) {
+                    callbackSuccess();
                 }
             }).catch(function (response) {
                 deferred.reject(response, 200);
@@ -141,11 +126,20 @@
         }
 
         function displayError(response) {
-            console.log('displayError', response);
-            var type = '', username = '', email = '';
+            var type = '', username = '', email = '', groupName = '';
 
             // Look at the error and set the type and custom data
             switch (response.data.error) {
+                case 1:
+                    type = 'error';
+                    break;
+                case 2:
+                    type = 'error';
+                    break;
+                case 3:
+                    type     = 'error';
+                    username = response.data.data.username;
+                    break;
                 case 103:
                     type     = 'error';
                     username = response.data.data.username;
@@ -154,8 +148,12 @@
                     type  = 'error';
                     email = response.data.data.email;
                     break;
-                case 200:
+                case 105:
                     type = 'error';
+                    break;
+                case 200:
+                    type      = 'error';
+                    groupName = response.data.data.groupName;
                     break;
                 default:
                     type = 'error';
@@ -164,9 +162,10 @@
             // Send an alert
             cozenFloatingFeedFactory.addAlert({
                 label: $filter('translate')('errors_' + response.data.error, {
-                    date    : $filter('date')(response.data.date, 'HH:mm'),
-                    username: username,
-                    email   : email
+                    date     : $filter('date')(response.data.date, 'HH:mm'),
+                    username : username,
+                    email    : email,
+                    groupName: groupName
                 }),
                 type : type
             });

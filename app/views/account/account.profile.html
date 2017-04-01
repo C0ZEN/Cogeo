@@ -7,7 +7,7 @@
                 <!-- Profile card -->
                 <div class="profile-card">
                     <img class="img-circle img-thumbnail"
-                         ng-src="{{ vm.user.picture.url }}">
+                         ng-src="{{ usersFactory.getUserImage(vm.user.username) }}">
                     <div class="text">
                         <h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>
                         <p class="help-text">@{{ vm.user.username }}</p>
@@ -23,9 +23,7 @@
 
                 <!-- Info -->
                 <h3 class="space-medium-before space-base-after">{{ 'account_profile_data' | translate }}</h3>
-                <h4>
-                    {{ vm.user.bio }}
-                </h4>
+                <h4>{{ vm.user.bio }}</h4>
                 <h4>
                     <strong>{{ 'account_profile_username' | translate }}:</strong>
                     {{ vm.user.username }}
@@ -39,8 +37,9 @@
                     {{ vm.user.birthday > 0 ? (vm.user.birthday | date: 'dd/mm/yyyy') : ('account_undefined' | translate) }}
                 </h4>
                 <p class="help-block no-margin-bottom">
-                    {{ 'account_profile_date_register' | translate:"{date:'" + (vm.user.date.register | date: 'EEEE dd MMMM yyyy') +
-                    "'}" }}
+                    {{ 'account_profile_date_register'
+                    | translate:"{date:'" + (vm.user.date.register
+                    | date: 'EEEE dd MMMM yyyy') + "'}" }}
                 </p>
             </div>
         </div>

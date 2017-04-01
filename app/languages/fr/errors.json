@@ -1,7 +1,12 @@
 {
-    "errors_200": "<span>Ce nom de groupe est déjà utilisé ! <small>{{date}}</small></span>",
+    "errors_1": "<span>Tu n'es pas connecté ! <small>{{date}}</small></span>",
+    "errors_2": "<span>Le mot de passe saisi n'est pas le bon ! <small>{{date}}</small></span>",
+    "errors_3": "<span>Le username <strong>{{username}}</strong> n'existe pas ! <small>{{date}}</small></span>",
+    "errors_200": "<span>Le groupe <strong>{{groupName}}</strong> est déjà utilisé ! <small>{{date}}</small></span>",
     "errors_103": "<span>Le username <strong>{{username}}</strong> est déjà utilisé ! <small>{{date}}</small></span>",
     "errors_104": "<span>L'adresse mail <strong>{{email}}</strong> est déjà utilisée ! <small>{{date}}</small></span>",
+    "errors_105": "<span>Le mot de passe actuel n'est pas le bon ! <small>{{date}}</small></span>",
     "errors_undefined": "<span>Une erreur inconnu est survenu ! <small>{{date}}</small></span>",
-    "errors_": "<span>Une erreur inconnu est survenu ! <small>{{date}}</small></span>"
+    "errors_": "<span>Une erreur inconnu est survenu ! <small>{{date}}</small></span>",
+    "errors_disconnected": "Déconnecté"
 }

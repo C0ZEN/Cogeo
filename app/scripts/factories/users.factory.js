@@ -687,6 +687,52 @@
                     event.color = 'green';
                 }
             });
+            angular.forEach($user.settings.preferences.channelsMembers.status, function (event) {
+                if (event.id == 'kicked') {
+                    event.name  = 'groups_kicked';
+                    event.icon  = 'fa fa-fw icons8-lock';
+                    event.color = 'yellow';
+                }
+                else if (event.id == 'banned') {
+                    event.name  = 'groups_banned';
+                    event.icon  = 'fa fa-fw icons8-lock';
+                    event.color = 'yellow';
+                }
+                else {
+                    event.name  = 'groups_admin';
+                    event.icon  = 'fa fa-fw icons8-user-male';
+                    event.color = 'purple';
+                }
+            });
+            angular.forEach($user.settings.preferences.channelsInvitations.types, function (event) {
+                if (event.id == 0) {
+                    event.name  = 'popup_groupsInvitations_filter_body_rejected';
+                    event.icon  = 'fa fa-fw icons8-event-declined-filled';
+                    event.color = 'error';
+                }
+                else if (event.id == 1) {
+                    event.name  = 'popup_groupsInvitations_filter_body_waiting';
+                    event.icon  = 'fa fa-fw icons8-event-accepted-tentatively-filled';
+                    event.color = 'info';
+                }
+                else {
+                    event.name  = 'popup_groupsInvitations_filter_body_accepted';
+                    event.icon  = 'fa fa-fw icons8-event-accepted-filled';
+                    event.color = 'green';
+                }
+            });
+            angular.forEach($user.settings.preferences.channelsLogs.events, function (event) {
+                if (event.id == 'group') {
+                    event.name  = 'account_event_group';
+                    event.icon  = 'fa fa-fw icons8-google-groups';
+                    event.color = 'blue';
+                }
+                else {
+                    event.name  = 'account_event_channel';
+                    event.icon  = 'fa fa-fw icons8-channel-mosaic';
+                    event.color = 'green';
+                }
+            });
             return $user;
         }
 
