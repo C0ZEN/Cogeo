@@ -38,6 +38,7 @@
             .popupAnimationOutAnimation('zoomOut')
             .popupFooter(false)
             .btnToggleStartRight(false)
+            .floatingFeedWidth(520)
             .floatingFeedTimeout(14000);
 
         // Configure the location provider

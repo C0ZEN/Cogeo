@@ -19,11 +19,12 @@
     function httpRequest($http, CONFIG, $q, goTo, $animate, $timeout, cozenFloatingFeedFactory, $filter) {
 
         return {
-            requestGet  : requestGet,
-            requestPost : requestPost,
-            requestPut  : requestPut,
-            shakeElement: shakeElement,
-            displayError: displayError
+            requestGet   : requestGet,
+            requestPost  : requestPost,
+            requestPut   : requestPut,
+            shakeElement : shakeElement,
+            displayError : displayError,
+            customRequest: customRequest
         };
 
         function requestGet(url, callbackSuccess, callbackError) {
@@ -169,6 +170,38 @@
                 }),
                 type : type
             });
+        }
+
+        function customRequest(method, url, params, callbackSuccess, callbackError) {
+            var deferred = $q.defer();
+            if (CONFIG.debug) {
+                Methods.httpRequestLog({
+                    methods: method,
+                    url    : url,
+                    data   : {
+                        session: {},
+                        data   : params
+                    }
+                });
+            }
+            $http({
+                methods: method,
+                url    : url,
+                data   : params,
+                session: {}
+            }).then(function (response) {
+                deferred.resolve(response);
+                if (Methods.isFunction(callbackSuccess)) {
+                    callbackSuccess();
+                }
+            }).catch(function (response) {
+                deferred.reject(response, 200);
+                if (Methods.isFunction(callbackError)) {
+                    callbackError();
+                }
+                displayError(response);
+            });
+            return deferred.promise;
         }
     }
 

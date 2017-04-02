@@ -120,6 +120,18 @@
                         return navigationFactory.isAllowed();
                     }
                 }
+            })
+            .state('app.account.logins', {
+                url        : '/logins',
+                templateUrl: 'views/account/account.logins.html',
+                data       : {
+                    pageTitle: 'account_logins'
+                },
+                resolve    : {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
+                }
             });
     }
 

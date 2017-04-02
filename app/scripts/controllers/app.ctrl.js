@@ -47,6 +47,7 @@
                 groupsFactory.httpRequest.getAllGroups(isDone, isDone);
             }
             else {
+                userFactory.setUser(null);
                 isDone(3);
             }
 

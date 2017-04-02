@@ -12,10 +12,14 @@
         'socialLoginService',
         '$rootScope',
         'goTo',
-        'cozenFloatingFeedFactory'
+        'cozenFloatingFeedFactory',
+        'accessLog',
+        '$filter',
+        '$timeout'
     ];
 
-    function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope, goTo, cozenFloatingFeedFactory) {
+    function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope,
+                         goTo, cozenFloatingFeedFactory, accessLog, $filter, $timeout) {
 
         // var user   = {
         //     givenName      : 'Geoffrey',
@@ -497,7 +501,7 @@
         //         }
         //     ]
         // };
-        var user   = null;
+        var user   = [];
         var status = [
             {
                 id      : 'online',
@@ -532,6 +536,7 @@
             getSettings          : getSettings,
             isConnected          : isConnected,
             logout               : logout,
+            setUser              : setUser,
             setUserInLocalStorage: setUserInLocalStorage,
             getFriends           : getFriends,
             getStatus            : getStatus,
@@ -558,7 +563,8 @@
                 updateSettingsChannelsInvitations: httpRequestUpdateSettingsChannelsInvitations,
                 updateSettingsChannelsLogs       : httpRequestUpdateSettingsChannelsLogs,
                 addToStarred                     : httpRequestAddToStarred,
-                removeToStarred                  : httpRequestRemoveToStarred
+                removeToStarred                  : httpRequestRemoveToStarred,
+                addAccessLog                     : httpRequestAddAccessLog
             }
         };
 
@@ -600,7 +606,13 @@
 
         // Update the current user
         function setUser(response) {
-            user = formatUserData(response);
+            if (response == null) {
+                user = null;
+            }
+            else {
+                user = formatUserData(response);
+                usersFactory.updateUser(user);
+            }
             _notify();
         }
 
@@ -801,6 +813,11 @@
                             username: response.data.data.username
                         }
                     });
+                    accessLog.getAccessLog()
+                        .then(function (response) {
+                            httpRequestAddAccessLog(response);
+                        })
+                    ;
                     goTo.view('app.account.profile');
                 })
             ;
@@ -809,16 +826,25 @@
         function httpRequestLogin(data, callbackSuccess, callbackError) {
             httpRequest.requestPost('login', data, callbackSuccess, callbackError)
                 .then(function (response) {
-                    console.log('login', response);
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
                     cozenFloatingFeedFactory.addAlert({
                         type       : 'success',
                         label      : 'alerts_success_login',
                         labelValues: {
-                            username: response.data.data.username
+                            username : response.data.data.username,
+                            lastLogin: $filter('date')(response.data.data.date.lastLogin, 'EEEE dd MMMM yyyy')
                         }
                     });
+                })
+                .catch(function (response) {
+
+                    // The null is important here
+                    // By default, the user is equal []
+                    // When a resolve occur with checking if connected, [] tell us that we don"t know yet
+                    // Null say that we are offline
+                    // So basically, this will avoid to redirect to the error offline page
+                    user = null;
                 })
             ;
         }
@@ -839,6 +865,10 @@
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type : 'success',
+                        label: 'alerts_success_update_user_settings'
+                    });
                 })
             ;
         }
@@ -919,6 +949,10 @@
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type : 'success',
+                        label: 'alerts_success_update_user_notifications'
+                    });
                 })
             ;
         }
@@ -965,6 +999,15 @@
 
         function httpRequestRemoveToStarred(data, callbackSuccess, callbackError) {
             httpRequest.requestPut('user/' + user.username + '/starredChannels', data, callbackSuccess, callbackError);
+        }
+
+        function httpRequestAddAccessLog(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/accessLog', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
         }
     }
 

@@ -42,6 +42,7 @@
             'anim-in-out',
             'angular-loading-bar',
             'dibari.angular-ellipsis',
+            'ng.deviceDetector',
             'cozenLib',
 
             '4pjtApp.actionBar'

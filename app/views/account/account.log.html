@@ -1,5 +1,5 @@
 <div class="animated fadeIn"
-     ng-init="vm.methods.initLog()">
+     ng-init="vm.methods.initLogs()">
     <div class="row">
         <div class="col-xs-12">
             <div class="row">
@@ -61,6 +61,13 @@
 			           as fakeLogFilter track by $index">
                 </div>
             </div>
+
+            <!-- Alert info no logs -->
+            <cozen-alert ng-if="vm.logs.length == 0"
+                         cozen-alert-label="'account_log_no_log'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-before space-base-after">
+            </cozen-alert>
 
             <div class="space-medium-after center-flex-content">
 

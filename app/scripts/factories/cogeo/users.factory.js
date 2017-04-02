@@ -6,10 +6,11 @@
         .factory('usersFactory', usersFactory);
 
     usersFactory.$inject = [
-        'httpRequest'
+        'httpRequest',
+        '$rootScope'
     ];
 
-    function usersFactory(httpRequest) {
+    function usersFactory(httpRequest, $rootScope) {
 
         var users = [
             {
@@ -554,6 +555,7 @@
 
         // Public functions
         return {
+            subscribe        : subscribe,
             getUserFullName  : getUserFullName,
             addUsersFullNames: addUsersFullNames,
             addUserFullName  : addUserFullName,
@@ -566,6 +568,17 @@
                 getAll: httpRequestGetAll
             }
         };
+
+        // Subscribe to the notify on this factory for the user
+        function subscribe(scope, callback) {
+            var handler = $rootScope.$on('usersFactoryUserChanged', callback);
+            scope.$on('$destroy', handler);
+        }
+
+        // Notify the send message when subscribe is on
+        function _notify() {
+            $rootScope.$emit('usersFactoryUserChanged');
+        }
 
         // Return the name of the user formatted
         function getUserFullName(userName) {
@@ -620,6 +633,7 @@
                 response[i] = formatUserData(response[i]);
             }
             users = response;
+            _notify();
         }
 
         // Add custom data to the users
@@ -741,6 +755,7 @@
             for (var i = 0, length = users.length; i < length; i++) {
                 if (users[i].username == user.username) {
                     users[i] = user;
+                    _notify();
                 }
             }
         }

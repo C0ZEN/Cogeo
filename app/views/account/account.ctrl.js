@@ -37,7 +37,8 @@
             stopLoading           : stopLoading,
             initSettings          : initSettings,
             initNotifications     : initNotifications,
-            initLogs              : initLogs
+            initLogs              : initLogs,
+            initLogins: initLogins
         };
 
         // When a change occur into the popup of test
@@ -51,6 +52,7 @@
             vm.methods.initLogs(vm.user);
         });
 
+        // On submit, start loading, send request then stop loading
         function save(form) {
             vm.methods.startLoading();
             var updateUser;
@@ -94,22 +96,27 @@
             }
         }
 
+        // When the password change, check the matching
         function onPasswordChange(newModel) {
             vm.userCopy.passwordMismatch = newModel != vm.userCopy.checkPassword;
         }
 
+        // When the check password change, check the matching
         function onCheckPasswordChange(newModel) {
             vm.userCopy.passwordMismatch = vm.userCopy.newPassword != newModel;
         }
 
+        // When the volume of the speaker change
         function onNewVolumeSetFromTest(event, eventData) {
             vm.settings.speaker.volume = eventData.newVolume;
         }
 
+        // Return the list of all logs
         function getAllLogs() {
             vm.settingsLogs.all = true;
         }
 
+        // Return the icon of a log based on the type
         function getLogSrc(type) {
             switch (type) {
                 case 'newGroupCreated':
@@ -152,45 +159,67 @@
             }
         }
 
+        // Called on init edit
         function onDisplayEdit() {
             vm.userCopy                  = angular.copy(userFactory.getUser());
             vm.userCopy.passwordMismatch = false;
         }
 
+        // Start the loader for submit btn
         function startLoading() {
             vm.loading = true;
         }
 
+        // Stop the loader for submit btn
         function stopLoading() {
             vm.loading = false;
         }
 
+        // Called on init settings
         function initSettings(user) {
             if (user == null) {
                 user = userFactory.getUser();
             }
-            vm.settings = angular.copy(user.settings);
+            if (user != null) {
+                vm.settings = angular.copy(user.settings);
+            }
         }
 
+        // Called on init notifications
         function initNotifications(user) {
             if (user == null) {
                 user = userFactory.getUser();
             }
-            vm.notifications = angular.copy(user.notifications);
+            if (user != null) {
+                vm.notifications = angular.copy(user.notifications);
+            }
         }
 
+        // Called on init logs
         function initLogs(user) {
             if (user == null) {
                 user = userFactory.getUser();
             }
-            vm.logs         = angular.copy(user.logs);
-            vm.settingsLogs = angular.copy(user.settings.preferences.log);
+            if (user != null) {
+                vm.logs         = angular.copy(user.logs);
+                vm.settingsLogs = angular.copy(user.settings.preferences.log);
+            }
 
             // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
             vm.logs.forEach(function (log) {
                 log.text          = $filter('translate')('account_log_' + log.type, log.values);
                 log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy à HH:mm');
             });
+        }
+
+        // Called on init logins
+        function initLogins(user) {
+            if (user == null) {
+                user = userFactory.getUser();
+            }
+            if (user != null) {
+                vm.accessLogs = angular.copy(user.accessLogs);
+            }
         }
     }
 

@@ -9,10 +9,12 @@
         '$timeout',
         'CONFIG',
         'userFactory',
-        '$rootScope'
+        '$rootScope',
+        'goTo',
+        'accessLog'
     ];
 
-    function LogCtrl($timeout, CONFIG, userFactory, $rootScope) {
+    function LogCtrl($timeout, CONFIG, userFactory, $rootScope, goTo, accessLog) {
         var vm = this;
 
         // Common data
@@ -68,7 +70,25 @@
                 username: vm.login.username,
                 password: vm.login.password
             };
-            userFactory.httpRequest.login(data, vm.methods.stopLoading, vm.methods.stopLoading);
+
+            userFactory.httpRequest.login(data, function () {
+
+                // Log the connexion
+                accessLog.getAccessLog()
+                    .then(function (response) {
+                        userFactory.httpRequest.addAccessLog(response, callback, callback);
+                    })
+                ;
+            }, vm.methods.stopLoading);
+
+            // The timeout avoid empty user in the userFactory because we need to wait 1 digest before changing view
+            // If not, the resolve with connected will fire as false
+            function callback() {
+                $timeout(function () {
+                    vm.methods.stopLoading();
+                    goTo.view('app.account.profile');
+                });
+            }
         }
 
         function newPassword() {

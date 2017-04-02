@@ -94,6 +94,13 @@
                 </div>
             </div>
 
+            <!-- Alert info no groups -->
+            <cozen-alert ng-if="vm.groups.length == 0"
+                         cozen-alert-label="'groups_all_no_group'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-before space-base-after">
+            </cozen-alert>
+
             <div class="center-flex-content space-medium-after">
 
                 <!-- More filter -->

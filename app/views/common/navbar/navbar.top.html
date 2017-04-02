@@ -161,6 +161,12 @@
                      tabindex="0">
                     {{ 'navbar_other_log' | translate }}
                 </div>
+                <div class="link-dropdown-item"
+                     ng-class="{'active': goTo.isOneOfThoseViews('app.account.logins')}"
+                     ng-click="goTo.view('app.account.logins')"
+                     tabindex="0">
+                    {{ 'navbar_other_logins' | translate }}
+                </div>
             </div>
         </div>
     </div>
