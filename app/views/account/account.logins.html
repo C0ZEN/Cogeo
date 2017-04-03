@@ -31,25 +31,43 @@
             </div>
 
             <!-- Access logs -->
-            <div class="atom-logs space-base-before space-base-after">
-                <div class="atom-log"
+            <!--"ip": "128.79.237.125",-->
+            <!--"hostname": "No Hostname",-->
+            <!--"city": "Tourcoing",-->
+            <!--"region": "Hauts-de-France",-->
+            <!--"country": "FR",-->
+            <!--"loc": "50.7239,3.1612",-->
+            <!--"org": "AS5410 Bouygues Telecom SA",-->
+            <!--"postal": "59200",-->
+            <!--"appLanguage": "fr",-->
+            <!--"browserName": "Chrome",-->
+            <!--"browserVersion": "57.0.2987.133",-->
+            <!--"osName": "Windows",-->
+            <!--"osVersion": "Windows",-->
+            <!--"date": 1491244588573,-->
+            <div class="atom-access-logs space-base-before space-base-after">
+                <div class="atom-access-log"
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
                      ng-class="[accessLog.category, $last ? 'border-bottom' : '']"
                      ng-repeat="accessLog in vm.accessLogs
 			           | orderBy: 'date':vm.settingsLogins.orderBy
 			           | filter: vm.settingsLogins.search
-			           | logsEvents: vm.settingsLogins.events
 			           | startFrom: (vm.settingsLogins.currentPage - 1) * vm.settingsLogins.limit
 			           | limitTo: vm.settingsLogins.limit
 			           as accessLogFilter track by $index">
-                    <div class="icon">
-                        <i ng-class="[vm.methods.getLogSrc(accessLog.type)]"
-                           class="fa fa-fw">
-                        </i>
-                    </div>
                     <div class="text">
-                        <p compile="accessLog.text"></p>
-                        <p class="help-text">{{ accessLog.formattedDate | capitalize }}</p>
+                        <p>
+                            {{ 'account_logins_login_on_os' | translate }}
+                            {{ accessLog.osName }}
+                            <small>({{ accessLog.osVersion }})</small>
+                            {{ 'account_logins_login_on_browser' | translate }}
+                            {{ accessLog.browserName }}
+                            <small>({{ accessLog.browserVersion }})</small>
+                        </p>
+                        <p class="help-text">
+                            {{ 'account_logins_login_date' | translate:{date: (accessLog.date | date: 'EEEE dd MMMM yyyy')} }}
+                            {{ 'account_logins_login_hour' | translate:{date: (accessLog.date | date: 'HH:mm')} }}
+                        </p>
                     </div>
                 </div>
 
@@ -57,7 +75,6 @@
                 <div style="display: none;"
                      ng-repeat="accessLog in vm.accessLogs
 			           | filter: vm.settingsLogins.search
-			           | logsEvents: vm.settingsLogins.events
 			           as fakeAccessLogFilter track by $index">
                 </div>
             </div>
@@ -74,7 +91,7 @@
                 <!-- More filter -->
                 <a href
                    onclick="this.blur()"
-                   ng-click="methods.showPopup($event, 'logsFilter', vm.settingsLogins)">
+                   ng-click="methods.showPopup($event, 'accessLogsFilter', vm.settingsLogins)">
                     {{ 'account_log_show_filter' | translate }}
                 </a>
             </div>

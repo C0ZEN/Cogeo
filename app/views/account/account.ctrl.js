@@ -11,10 +11,11 @@
         'goTo',
         '$rootScope',
         '$filter',
-        'userFactory'
+        'userFactory',
+        'httpRequest'
     ];
 
-    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory) {
+    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest) {
         var vm = this;
 
         // Common data
@@ -38,7 +39,7 @@
             initSettings          : initSettings,
             initNotifications     : initNotifications,
             initLogs              : initLogs,
-            initLogins: initLogins
+            initLogins            : initLogins
         };
 
         // When a change occur into the popup of test
@@ -61,7 +62,11 @@
                     userFactory.httpRequest.updateSettings(vm.settings, function () {
                         vm.methods.stopLoading();
                         goTo.view('app.account.settings');
-                    }, vm.methods.stopLoading);
+                    }, function () {
+                        vm.methods.stopLoading();
+                        var btn = angular.element(document.querySelector('#submit-edit-account-settings'));
+                        httpRequest.shakeElement(btn);
+                    });
                     break;
                 case 'profile':
                     updateUser = {
@@ -75,7 +80,11 @@
                     userFactory.httpRequest.updateUser(updateUser, function () {
                         vm.methods.stopLoading();
                         goTo.view('app.account.profile');
-                    }, vm.methods.stopLoading);
+                    }, function () {
+                        vm.methods.stopLoading();
+                        var btn = angular.element(document.querySelector('#submit-edit-account-profile'));
+                        httpRequest.shakeElement(btn);
+                    });
                     break;
                 case 'profile-password':
                     updateUser = {
@@ -85,13 +94,21 @@
                     userFactory.httpRequest.updateUserPassword(updateUser, function () {
                         vm.methods.stopLoading();
                         goTo.view('app.account.profile');
-                    }, vm.methods.stopLoading);
+                    }, function () {
+                        vm.methods.stopLoading();
+                        var btn = angular.element(document.querySelector('#submit-edit-account-profile-password'));
+                        httpRequest.shakeElement(btn);
+                    });
                     break;
                 case 'notifications':
                     userFactory.httpRequest.updateNotifications(vm.notifications, function () {
                         vm.methods.stopLoading();
                         goTo.view('app.account.notifications');
-                    }, vm.methods.stopLoading);
+                    }, function () {
+                        vm.methods.stopLoading();
+                        var btn = angular.element(document.querySelector('#submit-edit-account-notifications'));
+                        httpRequest.shakeElement(btn);
+                    });
                     break;
             }
         }
@@ -116,9 +133,9 @@
             vm.settingsLogs.all = true;
         }
 
-        // Return the icon of a log based on the type
-        function getLogSrc(type) {
-            switch (type) {
+        // Return the icon of a log based on the tag
+        function getLogSrc(tag) {
+            switch (tag) {
                 case 'newGroupCreated':
                 case 'newGroupJoined':
                 case 'newChannelCreated':
@@ -202,12 +219,12 @@
             }
             if (user != null) {
                 vm.logs         = angular.copy(user.logs);
-                vm.settingsLogs = angular.copy(user.settings.preferences.log);
+                vm.settingsLogs = angular.copy(user.settings.preferences.logs);
             }
 
             // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
             vm.logs.forEach(function (log) {
-                log.text          = $filter('translate')('account_log_' + log.type, log.values);
+                log.text          = $filter('translate')('account_log_' + log.tag, log.values);
                 log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy à HH:mm');
             });
         }
@@ -218,7 +235,9 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
-                vm.accessLogs = angular.copy(user.accessLogs);
+                vm.accessLogs     = angular.copy(user.accessLogs);
+                vm.settingsLogins = angular.copy(user.settings.preferences.accessLogs);
+                console.log(vm.settingsLogins);
             }
         }
     }

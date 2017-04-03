@@ -11,10 +11,12 @@
         'userFactory',
         '$rootScope',
         'goTo',
-        'accessLog'
+        'accessLog',
+        'httpRequest',
+        'groupsFactory'
     ];
 
-    function LogCtrl($timeout, CONFIG, userFactory, $rootScope, goTo, accessLog) {
+    function LogCtrl($timeout, CONFIG, userFactory, $rootScope, goTo, accessLog, httpRequest, groupsFactory) {
         var vm = this;
 
         // Common data
@@ -79,7 +81,14 @@
                         userFactory.httpRequest.addAccessLog(response, callback, callback);
                     })
                 ;
-            }, vm.methods.stopLoading);
+
+                // Get all the groups
+                groupsFactory.httpRequest.getAllGroups();
+            }, function () {
+                vm.methods.stopLoading();
+                var btn = angular.element(document.querySelector('#submit-login-btn'));
+                httpRequest.shakeElement(btn);
+            });
 
             // The timeout avoid empty user in the userFactory because we need to wait 1 digest before changing view
             // If not, the resolve with connected will fire as false

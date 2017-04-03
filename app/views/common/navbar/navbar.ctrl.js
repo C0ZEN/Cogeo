@@ -50,6 +50,7 @@
         }
 
         function onGroupsChanged() {
+            var user = userFactory.getUser();
             if (user != null) {
                 vm.groups = groupsFactory.getUserGroups(user.username);
             }

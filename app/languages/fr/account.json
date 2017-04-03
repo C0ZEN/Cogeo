@@ -108,6 +108,10 @@
     "account_log_no_log": "Il n'y a aucun historique pour le moment sur ton compte Cogeo.<br>Invite des amis ou rejoins des groupes et channels pour le visualiser.",
     "account_logins_search_pc": "Rechercher une connexion particulière",
     "account_logins_no_accessLog": "Il n'y a aucun connexion enregistrer pour le moment.",
+    "account_logins_login_date": "Connexion le {{date}}",
+    "account_logins_login_hour": "à {{date}}",
+    "account_logins_login_on_os": "Sur l'OS",
+    "account_logins_login_on_browser": "du navigateur",
     "account_event_group": "Groupe",
     "account_event_channel": "Channel",
     "account_event_social": "Social"

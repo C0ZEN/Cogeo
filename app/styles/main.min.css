@@ -2874,3 +2874,72 @@ div.atom-logs > :first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
+div.atom-access-logs div.atom-access-log {
+  border-top: 1px solid #D6DBDB;
+  border-right: 1px solid #D6DBDB;
+  border-left: 3px solid #2C9FDD;
+  padding: 6px 12px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeInLeft-12;
+          animation-name: fadeInLeft-12;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@-webkit-keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+div.atom-access-logs div.atom-access-log.ng-leave-active {
+  display: none;
+  -webkit-animation-duration: 0ms;
+          animation-duration: 0ms;
+}
+div.atom-access-logs div.atom-access-log.border-bottom {
+  border-bottom: 1px solid #D6DBDB;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+div.atom-access-logs div.atom-access-log div.text p {
+  margin: 0;
+}
+div.atom-access-logs div.atom-access-log div.text p:first-of-type {
+  font-size: 16px;
+}
+div.atom-access-logs > :first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}

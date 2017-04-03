@@ -764,7 +764,7 @@
         function getUserImage(username) {
             for (var i = 0, length = users.length; i < length; i++) {
                 if (users[i].username == username) {
-                    if (!Methods.isNullOrEmpty(users[i].picture.url)) {
+                    if (!Methods.isNullOrEmpty(users[i].picture) && !Methods.isNullOrEmpty(users[i].picture.url)) {
                         return users[i].picture.url;
                     }
                     else {
@@ -780,7 +780,7 @@
         function httpRequestGetAll(callbackSuccess, callbackError) {
             httpRequest.requestGet('user', callbackSuccess, callbackError)
                 .then(function (response) {
-                    setUsers(response);
+                    setUsers(response.data.data);
                 })
             ;
         }

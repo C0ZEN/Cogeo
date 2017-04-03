@@ -11,11 +11,7 @@
         .module('4pjtApp')
         .filter('capitalize', capitalize);
 
-    capitalize.$inject = [
-        'PublicMethods'
-    ];
-
-    function capitalize(PublicMethods) {
+    function capitalize() {
         return capitalizeFilter;
 
         /**
@@ -25,7 +21,7 @@
          */
         function capitalizeFilter(text, all, firstCharOnly) {
             var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
-            if (!PublicMethods.isNullOrEmpty(text)) {
+            if (text != '' && text != null) {
                 if (firstCharOnly) {
                     text = text.toLowerCase();
                     text = text.charAt(0).toUpperCase() + text.slice(1);

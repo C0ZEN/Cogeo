@@ -18,21 +18,21 @@
         /**
          * Evaluate the timestamp
          * Return a string which represent a verbose value comparing date with now
-         * @param  {number}  timestamp = null     > The timestamp
-         * @param  {string}  prefix    = 'Il y a' > Prefix the text
-         * @param  {boolean} short     = false    > Short version (without less)
+         * @param  {number}  timestamp                      > The timestamp
+         * @param  {string}  prefix    = other_time_thereIs > Prefix the text
+         * @param  {boolean} short     = false              > Short version (without less)
          * @return {string}  a verbose equivalent
          */
         function convertTimestamp(timestamp, prefix, short) {
             var text       = '';
             var now        = moment();
             var diff       = now.diff(timestamp, 'minutes');
-            var prefixCopy = prefix;
+            var prefixCopy = $filter('translate')(prefix);
             if (short == null) {
                 short = false;
             }
             if (prefix == null) {
-                prefix = $filter('translate')('other_time_thereIsLess');
+                prefix = $filter('translate')('other_time_thereIs');
             }
             else if (!short) {
                 prefix += $filter('translate')('other_time_less');
@@ -322,7 +322,7 @@
                 case diff < 10080:
                     text = prefix;
                     if (!short) {
-                        text += 'd\'';
+                        text += $filter('translate')('other_time_than_short');
                     }
                     text += $filter('translate')('other_time_hours_1') + ' ' + $filter('translate')('other_time_week');
                     break;

@@ -14,12 +14,12 @@
         'goTo',
         'cozenFloatingFeedFactory',
         'accessLog',
-        '$filter',
-        '$timeout'
+        'readableTime',
+        '$filter'
     ];
 
     function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope,
-                         goTo, cozenFloatingFeedFactory, accessLog, $filter, $timeout) {
+                         goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter) {
 
         // var user   = {
         //     givenName      : 'Geoffrey',
@@ -551,6 +551,7 @@
                 logout                           : httpRequestLogout,
                 updateSettings                   : httpRequestUpdateSettings,
                 updateSettingsLog                : httpRequestUpdateSettingsLog,
+                updateSettingsAccessLogs         : httpRequestUpdateSettingsAccessLogs,
                 updateSettingsAllGroups          : httpRequestUpdateSettingsAllGroups,
                 updateSettingsGroupsMembers      : httpRequestUpdateSettingsGroupsMembers,
                 updateSettingsGroupsInvitations  : httpRequestUpdateSettingsGroupsInvitations,
@@ -833,7 +834,7 @@
                         label      : 'alerts_success_login',
                         labelValues: {
                             username : response.data.data.username,
-                            lastLogin: $filter('date')(response.data.data.date.lastLogin, 'EEEE dd MMMM yyyy')
+                            lastLogin: $filter('capitalize')(readableTime.convertTimestamp(response.data.data.date.lastLogin), true, true)
                         }
                     });
                 })
@@ -875,6 +876,15 @@
 
         function httpRequestUpdateSettingsLog(data, callbackSuccess, callbackError) {
             httpRequest.requestPut('user/' + user.username + '/settings/log', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsAccessLogs(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/accessLogs', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);

@@ -13,10 +13,10 @@
         'usersFactory',
         'userFactory',
         'httpRequest',
-        '$rootScope'
+        'cozenFloatingFeedFactory'
     ];
 
-    function channelsFactory(groupsFactory, CONFIG, $stateParams, $filter, usersFactory, userFactory, httpRequest, $rootScope) {
+    function channelsFactory(groupsFactory, CONFIG, $stateParams, $filter, usersFactory, userFactory, httpRequest, cozenFloatingFeedFactory) {
 
         // Public functions
         return {
@@ -35,7 +35,11 @@
             isAdmin                 : isAdmin,
             isActiveAdmin           : isActiveAdmin,
             getAvailableUsers       : getAvailableUsers,
-            getDefaultChannels      : getDefaultChannels
+            getDefaultChannels      : getDefaultChannels,
+            httpRequest             : {
+                updateChannel: httpRequestUpdateChannel,
+                addChannel   : httpRequestAddChannel
+            }
         };
 
         // Get the picture for this channel
@@ -283,6 +287,40 @@
                 }
             }
             return defaultChannels;
+        }
+
+        /// HTTP REQUEST ///
+
+        function httpRequestUpdateChannel(groupName, channelName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/channel/' + channelName, data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'success',
+                        label      : 'alerts_success_update_channel',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: data.name
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestAddChannel(groupName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/channel', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'success',
+                        label      : 'alerts_success_post_channel',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: data.name
+                        }
+                    });
+                })
+            ;
         }
     }
 

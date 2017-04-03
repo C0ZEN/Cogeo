@@ -24,10 +24,10 @@
         function getAccessLog() {
             var accessLog = {
                 appLanguage   : CONFIG.currentLanguage,
-                browserName   : $filter('capitalize')(deviceDetector.browser),
-                browserVersion: $filter('capitalize')(deviceDetector.browser_version),
-                osName        : $filter('capitalize')(deviceDetector.os),
-                osVersion     : $filter('capitalize')(deviceDetector.os_version)
+                browserName   : $filter('capitalize')(deviceDetector.browser, true, true),
+                browserVersion: $filter('capitalize')(deviceDetector.browser_version, true, true),
+                osName        : $filter('capitalize')(deviceDetector.os, true, true),
+                osVersion     : $filter('capitalize')(deviceDetector.os_version, true, true)
             };
             var deferred  = $q.defer();
             httpRequest.customRequest('GET', 'http://ipinfo.io')

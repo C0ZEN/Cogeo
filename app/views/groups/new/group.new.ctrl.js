@@ -94,6 +94,9 @@
             vm.newGroup.creator = userFactory.getUser().username;
             groupsFactory.httpRequest.addGroup(vm.newGroup, function () {
                 vm.methods.stopLoading();
+                goTo.view('app.groups.details', {
+                    groupName: vm.newGroup.name
+                });
             }, function (response) {
                 vm.methods.stopLoading();
                 var btn = angular.element(document.querySelector('#submit-btn-new-group-step-3'));

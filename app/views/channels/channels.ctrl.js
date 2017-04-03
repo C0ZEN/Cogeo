@@ -14,10 +14,10 @@
         'userFactory',
         'usersFactory',
         'goTo',
-        '$scope'
+        'httpRequest'
     ];
 
-    function ChannelsCtrl(CONFIG, channelsFactory, $rootScope, $state, groupsFactory, userFactory, usersFactory, goTo, $scope) {
+    function ChannelsCtrl(CONFIG, channelsFactory, $rootScope, $state, groupsFactory, userFactory, usersFactory, goTo, httpRequest) {
         var vm = this;
 
         // Methods
@@ -38,7 +38,9 @@
             onInitRecruit    : onInitRecruit,
             onInitEdit       : onInitEdit,
             newChannel       : newChannel,
-            updateChannel    : updateChannel
+            updateChannel    : updateChannel,
+            startLoading     : startLoading,
+            stopLoading      : stopLoading
         };
 
         // Common data
@@ -151,22 +153,61 @@
 
         // Create a new channel
         function newChannel() {
-            vm.loading = true;
-            vm.loading = false;
-            goTo.view('app.channels.recruit', {
+            startLoading();
+            var newChannel = {
+                name       : vm.newChannel.name,
+                description: vm.newChannel.description,
+                picture    : vm.newChannel.picture,
+                private    : vm.newChannel.private,
+                default    : vm.newChannel.default,
                 groupName  : vm.params.groupName,
-                channelName: vm.newChannel.name
+                creator    : vm.user.username
+            };
+            channelsFactory.httpRequest.addChannel(vm.params.groupName, newChannel, function () {
+                vm.methods.stopLoading();
+                goTo.view('app.channels.details', {
+                    groupName  : vm.params.groupName,
+                    channelName: newChannel.name
+                });
+            }, function () {
+                vm.methods.stopLoading();
+                var btn = angular.element(document.querySelector('#submit-new-channel-btn'));
+                httpRequest.shakeElement(btn);
             });
         }
 
-        // Update the channel
+        // Update a channel
         function updateChannel() {
-            vm.loading = true;
-            vm.loading = false;
-            goTo.view('app.channels.details', {
-                groupName  : vm.params.groupName,
-                channelName: vm.editedChannel.name
+            startLoading();
+            var updatedChannel = {
+                name       : vm.editedChannel.name,
+                description: vm.editedChannel.description,
+                picture    : vm.editedChannel.picture,
+                private    : vm.editedChannel.private,
+                default    : vm.editedChannel.default,
+                groupName  : vm.params.groupName
+            };
+            channelsFactory.httpRequest.updateChannel(vm.params.groupName, vm.params.channelName, updatedChannel, function () {
+                vm.methods.stopLoading();
+                goTo.view('app.channels.details', {
+                    groupName  : vm.params.groupName,
+                    channelName: updatedChannel.name
+                });
+            }, function () {
+                vm.methods.stopLoading();
+                var btn = angular.element(document.querySelector('#submit-edit-channel-btn'));
+                httpRequest.shakeElement(btn);
             });
+        }
+
+        // Start loading
+        function startLoading() {
+            vm.loading = true;
+        }
+
+        // Stop loading
+        function stopLoading() {
+            vm.loading = false;
         }
     }
 

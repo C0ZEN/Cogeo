@@ -8,7 +8,7 @@
     GroupsCtrl.$inject = [
         'CONFIG',
         'goTo',
-        '$rootScope',
+        'httpRequest',
         '$state',
         'groupsFactory',
         'userFactory',
@@ -18,7 +18,7 @@
         '$timeout'
     ];
 
-    function GroupsCtrl(CONFIG, goTo, $rootScope, $state, groupsFactory, userFactory, usersFactory, $filter, $scope, $timeout) {
+    function GroupsCtrl(CONFIG, goTo, httpRequest, $state, groupsFactory, userFactory, usersFactory, $filter, $scope, $timeout) {
         var vm = this;
 
         // Methods
@@ -61,7 +61,7 @@
         });
 
         function save(form) {
-            vm.loading = true;
+            startLoading();
             switch (form) {
                 case 'edit':
                     var updatedGroup = {
@@ -72,7 +72,11 @@
                     groupsFactory.httpRequest.updateGroup(vm.details.group.name, updatedGroup, function () {
                         vm.methods.stopLoading();
                         goTo.view('app.groups.details', {groupName: updatedGroup.name});
-                    }, vm.methods.stopLoading);
+                    }, function () {
+                        vm.methods.stopLoading();
+                        var btn = angular.element(document.querySelector('#submit-edit-group-btn'));
+                        httpRequest.shakeElement(btn);
+                    });
                     break;
             }
         }

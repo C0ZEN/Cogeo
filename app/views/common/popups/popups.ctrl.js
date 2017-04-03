@@ -148,6 +148,9 @@
                 case 'logsFilter':
                     userFactory.httpRequest.updateSettingsLog(popup.logsFilter.data);
                     break;
+                case 'accessLogsFilter':
+                    userFactory.httpRequest.updateSettingsAccessLogs(popup.accessLogsFilter.data);
+                    break;
                 case 'groupsLogsFilter':
                     userFactory.httpRequest.updateSettingsGroupsLogs(popup.groupsLogsFilter.data);
                     break;
