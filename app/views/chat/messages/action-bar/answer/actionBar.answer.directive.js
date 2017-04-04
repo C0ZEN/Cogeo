@@ -20,10 +20,11 @@
         .directive('answerAction', answerAction);
 
     answerAction.$inject = [
-        'CONFIG'
+        'CONFIG',
+        'cozenEnhancedLogs'
     ];
 
-    function answerAction(CONFIG) {
+    function answerAction(CONFIG, cozenEnhancedLogs) {
         return {
             link       : link,
             restrict   : 'E',
@@ -64,9 +65,7 @@
             }
 
             function onClick($event) {
-                if (CONFIG.debug) {
-                    Methods.directiveCallbackLog('answerAction', 'onClick');
-                }
+                cozenEnhancedLogs.info.functionCalled('answerAction', 'onClick');
                 if (Methods.isFunction(scope.answerActionOnClick)) {
                     scope.answerActionOnClick();
                 }

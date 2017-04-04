@@ -12,10 +12,11 @@
         'localStorageService',
         '$window',
         'usersFactory',
-        'groupsFactory'
+        'groupsFactory',
+        'cozenEnhancedLogs'
     ];
 
-    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory, groupsFactory) {
+    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory, groupsFactory, cozenEnhancedLogs) {
         var app = this;
 
         // Common data
@@ -32,7 +33,7 @@
 
         function onInit() {
             var requestQuantity = 3;
-            Methods.firstLoadLog(true);
+            cozenEnhancedLogs.wrap.starting();
 
             // Get the stuff about the current connected user (to avoid login)
             var user = localStorageService.get('currentUser');
@@ -58,7 +59,7 @@
                 requestQuantity = requestQuantity - quantity;
                 if (requestQuantity <= 0) {
                     app.isReady = true;
-                    Methods.firstLoadLog(false);
+                    cozenEnhancedLogs.wrap.end();
                     Methods.safeApply($scope);
                 }
             }

@@ -20,10 +20,11 @@
         .directive('chatAction', chatAction);
 
     chatAction.$inject = [
-        'CONFIG'
+        'CONFIG',
+        'cozenEnhancedLogs'
     ];
 
-    function chatAction(CONFIG) {
+    function chatAction(CONFIG, cozenEnhancedLogs) {
         return {
             link       : link,
             restrict   : 'E',
@@ -64,9 +65,7 @@
             }
 
             function onClick($event) {
-                if (CONFIG.debug) {
-                    Methods.directiveCallbackLog('chatAction', 'onClick');
-                }
+                cozenEnhancedLogs.info.functionCalled('chatAction', 'onClick');
                 if (Methods.isFunction(scope.chatActionOnClick)) {
                     scope.chatActionOnClick();
                 }

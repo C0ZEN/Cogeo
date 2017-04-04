@@ -8,10 +8,11 @@
     goTo.$inject = [
         '$state',
         'CONFIG',
-        '$stateParams'
+        '$stateParams',
+        'cozenEnhancedLogs'
     ];
 
-    function goTo($state, CONFIG, $stateParams) {
+    function goTo($state, CONFIG, $stateParams, cozenEnhancedLogs) {
 
         // Public functions
         return {
@@ -33,9 +34,7 @@
                 lang: CONFIG.currentLanguage
             });
 
-            if (CONFIG.debug) {
-                Methods.changeRouteLog('goTo', view, param);
-            }
+            cozenEnhancedLogs.info.changeRouteWithParams('goTo', view, param);
             $state.go(view, param);
         }
 
@@ -67,9 +66,7 @@
         }
 
         function getCurrentParam(param, formatted) {
-            if (CONFIG.debug) {
-                Methods.directiveCallbackLog('goTo', 'getCurrentParam');
-            }
+            cozenEnhancedLogs.info.functionCalled('goTo', 'getCurrentParam');
             if (formatted) {
                 var data    = {};
                 data[param] = $stateParams[param];

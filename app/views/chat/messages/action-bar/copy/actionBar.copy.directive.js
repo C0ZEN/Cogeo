@@ -21,10 +21,11 @@
         .directive('copyAction', copyAction);
 
     copyAction.$inject = [
-        'CONFIG'
+        'CONFIG',
+        'cozenEnhancedLogs'
     ];
 
-    function copyAction(CONFIG) {
+    function copyAction(CONFIG, cozenEnhancedLogs) {
         return {
             link       : link,
             restrict   : 'E',
@@ -66,9 +67,7 @@
             }
 
             function onClick($event) {
-                if (CONFIG.debug) {
-                    Methods.directiveCallbackLog('copyAction', 'onClick');
-                }
+                cozenEnhancedLogs.info.functionCalled('copyAction', 'onClick');
                 if (Methods.isFunction(scope.copyActionOnClick)) {
                     scope.copyActionOnClick();
                 }

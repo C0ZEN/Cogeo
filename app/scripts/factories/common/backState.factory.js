@@ -7,10 +7,11 @@
 
     backState.$inject = [
         'goTo',
-        'CONFIG'
+        'CONFIG',
+        'cozenEnhancedLogs'
     ];
 
-    function backState(goTo, CONFIG) {
+    function backState(goTo, CONFIG, cozenEnhancedLogs) {
 
         // Internal variables
         var backStates = [];
@@ -24,9 +25,7 @@
         };
 
         function addBackState(ev, to, toParams, from, fromParams) {
-            if (CONFIG.debug) {
-                Methods.directiveCallbackLog('backState', 'addBackState');
-            }
+            cozenEnhancedLogs.info.functionCalled('backState', 'addBackState');
             backStates.push({
                 ev        : ev,
                 to        : to,
@@ -37,16 +36,12 @@
         }
 
         function getBackStates() {
-            if (CONFIG.debug) {
-                Methods.directiveCallbackLog('backState', 'getBackStates');
-            }
+            cozenEnhancedLogs.info.functionCalled('backState', 'getBackStates');
             return backStates;
         }
 
         function goToLastState() {
-            if (CONFIG.debug) {
-                Methods.directiveCallbackLog('backState', 'goToLastState');
-            }
+            cozenEnhancedLogs.info.functionCalled('backState', 'goToLastState');
             if (!isBackAvailable()) {
                 return;
             }
@@ -55,9 +50,7 @@
         }
 
         function isBackAvailable() {
-            if (CONFIG.debug) {
-                Methods.directiveCallbackLog('backState', 'isBackAvailable');
-            }
+            cozenEnhancedLogs.info.functionCalled('backState', 'isBackAvailable');
             var length = backStates.length;
             if (length == 0) {
                 return false;

@@ -20,10 +20,11 @@
         .directive('downloadAction', downloadAction);
 
     downloadAction.$inject = [
-        'CONFIG'
+        'CONFIG',
+        'cozenEnhancedLogs'
     ];
 
-    function downloadAction(CONFIG) {
+    function downloadAction(CONFIG, cozenEnhancedLogs) {
         return {
             link       : link,
             restrict   : 'E',
@@ -64,9 +65,7 @@
             }
 
             function onClick($event) {
-                if (CONFIG.debug) {
-                    Methods.directiveCallbackLog('downloadAction', 'onClick');
-                }
+                cozenEnhancedLogs.info.functionCalled('downloadAction', 'onClick');
                 if (Methods.isFunction(scope.downloadActionOnClick)) {
                     scope.downloadActionOnClick();
                 }

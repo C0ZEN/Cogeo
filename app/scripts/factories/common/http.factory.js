@@ -9,14 +9,14 @@
         '$http',
         'CONFIG',
         '$q',
-        'goTo',
+        'cozenEnhancedLogs',
         '$animate',
         '$timeout',
         'cozenFloatingFeedFactory',
         '$filter'
     ];
 
-    function httpRequest($http, CONFIG, $q, goTo, $animate, $timeout, cozenFloatingFeedFactory, $filter) {
+    function httpRequest($http, CONFIG, $q, cozenEnhancedLogs, $animate, $timeout, cozenFloatingFeedFactory, $filter) {
 
         return {
             requestGet   : requestGet,
@@ -29,16 +29,14 @@
 
         function requestGet(url, callbackSuccess, callbackError) {
             var deferred = $q.defer();
-            if (CONFIG.debug) {
-                Methods.httpRequestLog({
-                    methods: 'GET',
-                    url    : CONFIG.internal.API + url,
-                    data   : {
-                        session: null,
-                        data   : null
-                    }
-                });
-            }
+            cozenEnhancedLogs.info.httpRequest({
+                methods: 'GET',
+                url    : CONFIG.internal.API + url,
+                data   : {
+                    session: null,
+                    data   : null
+                }
+            });
             $http.get(CONFIG.internal.API + url)
                 .then(function (response) {
                     deferred.resolve(response);
@@ -59,16 +57,14 @@
 
         function requestPost(url, params, callbackSuccess, callbackError) {
             var deferred = $q.defer();
-            if (CONFIG.debug) {
-                Methods.httpRequestLog({
-                    methods: 'POST',
-                    url    : CONFIG.internal.API + url,
-                    data   : {
-                        session: {},
-                        data   : params
-                    }
-                });
-            }
+            cozenEnhancedLogs.info.httpRequest({
+                methods: 'POST',
+                url    : CONFIG.internal.API + url,
+                data   : {
+                    session: {},
+                    data   : params
+                }
+            });
             $http.post(CONFIG.internal.API + url, {
                 data   : params,
                 session: {}
@@ -89,16 +85,14 @@
 
         function requestPut(url, params, callbackSuccess, callbackError) {
             var deferred = $q.defer();
-            if (CONFIG.debug) {
-                Methods.httpRequestLog({
-                    methods: 'PUT',
-                    url    : CONFIG.internal.API + url,
-                    data   : {
-                        session: {},
-                        data   : params
-                    }
-                });
-            }
+            cozenEnhancedLogs.info.httpRequest({
+                methods: 'PUT',
+                url    : CONFIG.internal.API + url,
+                data   : {
+                    session: {},
+                    data   : params
+                }
+            });
             $http.put(CONFIG.internal.API + url, {
                 data   : params,
                 session: {}
@@ -174,16 +168,14 @@
 
         function customRequest(method, url, params, callbackSuccess, callbackError) {
             var deferred = $q.defer();
-            if (CONFIG.debug) {
-                Methods.httpRequestLog({
-                    methods: method,
-                    url    : url,
-                    data   : {
-                        session: {},
-                        data   : params
-                    }
-                });
-            }
+            cozenEnhancedLogs.info.httpRequest({
+                methods: method,
+                url    : url,
+                data   : {
+                    session: {},
+                    data   : params
+                }
+            });
             $http({
                 methods: method,
                 url    : url,

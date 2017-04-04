@@ -39,7 +39,7 @@
             .popupFooter(false)
             .btnToggleStartRight(false)
             .floatingFeedWidth(520)
-            .floatingFeedTimeout(14000);
+            .floatingFeedTimeoutTime(14000);
 
         // Configure the location provider
         $locationProvider.html5Mode({

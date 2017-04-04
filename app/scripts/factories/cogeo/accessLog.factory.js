@@ -10,10 +10,11 @@
         'httpRequest',
         '$q',
         'deviceDetector',
-        '$filter'
+        '$filter',
+        'cozenEnhancedLogs'
     ];
 
-    function accessLog(CONFIG, httpRequest, $q, deviceDetector, $filter) {
+    function accessLog(CONFIG, httpRequest, $q, deviceDetector, $filter, cozenEnhancedLogs) {
         return {
             getAccessLog: getAccessLog
         };
@@ -55,9 +56,7 @@
 
             // Just a log
             function sendLog(accessLog) {
-                if (CONFIG.debug) {
-                    Methods.infoObjectLog('accessLog', 'getAccessLog digging result', accessLog);
-                }
+                cozenEnhancedLogs.info.explodeObject('accessLog', 'getAccessLog digging result', accessLog);
             }
         }
     }
