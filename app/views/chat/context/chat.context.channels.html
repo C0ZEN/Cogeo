@@ -57,7 +57,7 @@
 
         <!-- Icon star -->
         <div ng-show="!vm.activeChannel.isStarredChannel && vm.starredChannels.length < 5"
-             ng-click="vm.methods.addToStarred($event, vm.activeChannel.id)"
+             ng-click="vm.methods.addToStarred($event, vm.activeChannel._id)"
              class="empty-star">
             <cozen-tooltip cozen-tooltip-label="'chat_add_to_starred'"
                            cozen-tooltip-placement="auto bottom">
@@ -67,7 +67,7 @@
 
         <!-- Icon unstar -->
         <div ng-show="vm.activeChannel.isStarredChannel"
-             ng-click="vm.methods.removeToStarred($event, vm.activeChannel.id)"
+             ng-click="vm.methods.removeToStarred($event, vm.activeChannel._id)"
              class="full-star">
             <cozen-tooltip cozen-tooltip-label="'chat_remove_to_starred'"
                            cozen-tooltip-placement="auto bottom">

@@ -33,7 +33,7 @@
 
         function onInit() {
             var requestQuantity = 3;
-            cozenEnhancedLogs.wrap.starting();
+            cozenEnhancedLogs.wrap.starting('onInit');
 
             // Get the stuff about the current connected user (to avoid login)
             var user = localStorageService.get('currentUser');
@@ -59,7 +59,7 @@
                 requestQuantity = requestQuantity - quantity;
                 if (requestQuantity <= 0) {
                     app.isReady = true;
-                    cozenEnhancedLogs.wrap.end();
+                    cozenEnhancedLogs.wrap.end('onInit');
                     Methods.safeApply($scope);
                 }
             }

@@ -46,11 +46,11 @@
     </cozen-tooltip>
 
     <!-- Name -->
-    <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
+    <span ng-click="vm.methods.setActiveChannel(channel.name, channel._id)">{{ channel.name }}</span>
 
     <!-- Icon unstar -->
     <div ng-show="channel.onHoverChannel"
-         ng-click="vm.methods.removeToStarred($event, channel.id)"
+         ng-click="vm.methods.removeToStarred($event, channel._id)"
          class="full-star">
         <cozen-tooltip cozen-tooltip-label="'chat_remove_to_starred'">
             <i class="fa fa-fw fa-star"></i>
@@ -112,12 +112,12 @@
     </cozen-tooltip>
 
     <!-- Name -->
-    <span ng-click="vm.methods.setActiveChannel(channel.name, channel.id)">{{ channel.name }}</span>
+    <span ng-click="vm.methods.setActiveChannel(channel.name, channel._id)">{{ channel.name }}</span>
 
     <!-- Icon star -->
     <div ng-show="channel.onHoverChannel"
          ng-class="{disabled: vm.starredChannels.length >= 5}"
-         ng-click="vm.methods.addToStarred($event, channel.id)"
+         ng-click="vm.methods.addToStarred($event, channel._id)"
          class="empty-star">
         <cozen-tooltip cozen-tooltip-label="'chat_add_to_starred'">
             <i class="fa fa-fw fa-star-o"></i>

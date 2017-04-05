@@ -1956,7 +1956,7 @@
         function getChannelById(groupName, channelId) {
             var group = getGroupByName(groupName);
             for (var i = 0, length = group.channels.length; i < length; i++) {
-                if (group.channels[i].id == channelId) {
+                if (group.channels[i]._id == channelId) {
                     return group.channels[i];
                 }
             }

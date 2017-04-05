@@ -126,15 +126,14 @@
             // Look at the error and set the type and custom data
             switch (response.data.error) {
                 case 1:
-                    type = 'error';
-                    break;
                 case 2:
+                case 105:
+                case 300:
+                case 301:
+                case 302:
                     type = 'error';
                     break;
                 case 3:
-                    type     = 'error';
-                    username = response.data.data.username;
-                    break;
                 case 103:
                     type     = 'error';
                     username = response.data.data.username;
@@ -143,13 +142,7 @@
                     type  = 'error';
                     email = response.data.data.email;
                     break;
-                case 105:
-                    type = 'error';
-                    break;
                 case 200:
-                    type      = 'error';
-                    groupName = response.data.data.groupName;
-                    break;
                 default:
                     type = 'error';
             }

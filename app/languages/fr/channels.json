@@ -64,6 +64,7 @@
     "channels_register_default_tp_disabled": "La limite est de 5 channel par défaut pour un groupe.",
     "channels_add_submit": "Valider la création du nouveau channel",
     "channels_add_new": "Nouveau channel",
+    "channels_log_channelEdited": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">{{username}}</a></strong> à modifier le channel.",
     "channels_pills_all": "Tous",
     "account_pills_new": "Nouveau",
     "channels_pills_details": "Détails",

@@ -15,10 +15,12 @@
         'channelsFactory',
         'botFactory',
         'usersFactory',
-        'rfc4122'
+        'rfc4122',
+        'logs'
     ];
 
-    function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory, usersFactory, rfc4122) {
+    function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory, usersFactory,
+                 rfc4122, logs) {
 
         // Public global data
         $rootScope.data = {
@@ -30,6 +32,7 @@
         $rootScope.goTo         = goTo;
         $rootScope.botFactory   = botFactory;
         $rootScope.usersFactory = usersFactory;
+        $rootScope.logsFactory  = logs;
 
         // Public global functions
         $rootScope.methods = {

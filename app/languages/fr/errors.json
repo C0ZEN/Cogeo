@@ -8,6 +8,7 @@
     "errors_105": "Le mot de passe actuel n'est pas le bon ! <small>{{date}}</small>",
     "errors_300": "Un channel identique pour le groupe {{groupName}} existe déjà avec le même nom ! <small>{{date}}</small>",
     "errors_301": "Le nom du channel n'est pas renseigné ! <small>{{date}}</small>",
+    "errors_302": "Au moins un channel doit être par défaut par groupe ! <small>{{date}}</small>",
     "errors_undefined": "Une erreur inconnu est survenu ! <small>{{date}}</small>",
     "errors_": "Une erreur inconnu est survenu ! <small>{{date}}</small>",
     "errors_disconnected": "Déconnecté"

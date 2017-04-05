@@ -43,7 +43,7 @@
 			           | limitTo: vm.logsSettings.limit
 			           as logFilter track by $index">
                     <div class="icon">
-                        <i ng-class="[vm.methods.getLogSrc(log.type)]"
+                        <i ng-class="[logsFactory.getLogSrc(log.tag)]"
                            class="fa fa-fw">
                         </i>
                     </div>

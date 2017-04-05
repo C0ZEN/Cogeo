@@ -834,7 +834,7 @@
                         label      : 'alerts_success_login',
                         labelValues: {
                             username : response.data.data.username,
-                            lastLogin: $filter('capitalize')(readableTime.convertTimestamp(response.data.data.date.lastLogin), true, true)
+                            lastLogin: readableTime.convertTimestamp(response.data.data.date.lastLogin, $filter('translate')('other_time_thereIsLess_lower'))
                         }
                     });
                 })

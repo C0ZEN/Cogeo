@@ -111,7 +111,7 @@
             })
             .state('app.account.log', {
                 url        : '/log',
-                templateUrl: 'views/account/account.log.html',
+                templateUrl: 'views/account/account.logs.html',
                 data       : {
                     pageTitle: 'account_log'
                 },

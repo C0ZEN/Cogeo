@@ -8,7 +8,7 @@
                     <!-- Profile card -->
                     <div class="profile-card">
                         <img class="img-circle img-thumbnail"
-                             ng-src="{{ methods.getChannelPicture(vm.params.groupName, vm.channel.id) }}">
+                             ng-src="{{ methods.getChannelPicture(vm.params.groupName, vm.channel._id) }}">
                         <div class="text">
                             <div class="center-flex-content flex-start">
                                 <h3>{{ vm.channel.name }}</h3>
@@ -98,6 +98,13 @@
                         <strong>{{ 'channels_details_memberLength' | translate }}:</strong>
                         {{ vm.channel.users.length }}
                     </h4>
+
+                    <!-- Graph -->
+                    <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.members.id"
+                                      cozen-draw-chart-data="vm.googleGraph.members.data()"
+                                      cozen-draw-chart-options="vm.googleGraph.members.options"
+                                      cozen-draw-chart-type="vm.googleGraph.members.type">
+                    </cozen-draw-chart>
                 </div>
 
                 <!-- Warning message for banned -->
@@ -125,7 +132,7 @@
                     <cozen-btn ng-show="!vm.channel.isBanned && !vm.channel.isKicked && !vm.channel.private"
                                cozen-btn-label="'channels_details_join_channel'"
                                cozen-btn-auto-sizing="true"
-                               cozen-btn-on-click="vm.methods.joinChannel(vm.channel.id)">
+                               cozen-btn-on-click="vm.methods.joinChannel(vm.channel._id)">
                     </cozen-btn>
                 </div>
 
@@ -142,7 +149,7 @@
                     <!-- Leave btn -->
                     <a href
                        onclick="this.blur()"
-                       ng-click="vm.methods.leaveChannel(vm.channel.id)">
+                       ng-click="vm.methods.leaveChannel(vm.channel._id)">
                         {{ 'channels_details_leave_channel' | translate }}
                     </a>
                 </div>

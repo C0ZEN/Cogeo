@@ -8,16 +8,18 @@
     ChannelsCtrl.$inject = [
         'CONFIG',
         'channelsFactory',
-        '$rootScope',
+        'googleGraphChannelMembers',
         '$state',
         'groupsFactory',
         'userFactory',
         'usersFactory',
         'goTo',
-        'httpRequest'
+        'httpRequest',
+        '$filter'
     ];
 
-    function ChannelsCtrl(CONFIG, channelsFactory, $rootScope, $state, groupsFactory, userFactory, usersFactory, goTo, httpRequest) {
+    function ChannelsCtrl(CONFIG, channelsFactory, googleGraphChannelMembers, $state, groupsFactory, userFactory,
+                          usersFactory, goTo, httpRequest, $filter) {
         var vm = this;
 
         // Methods
@@ -44,8 +46,9 @@
         };
 
         // Common data
-        vm.CONFIG  = CONFIG;
-        vm.loading = false;
+        vm.CONFIG      = CONFIG;
+        vm.loading     = false;
+        vm.googleGraph = {};
 
         // Called on each view
         function onInit() {
@@ -67,6 +70,9 @@
             vm.methods.onInit();
             vm.channel = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+
+            // Get the google graph for members
+            vm.googleGraph.members = googleGraphChannelMembers.getChart();
         }
 
         // Leave a channel
@@ -104,9 +110,15 @@
             vm.methods.onInit();
             vm.channel        = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel        = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
-            vm.logs           = vm.channels.logs;
+            vm.logs           = vm.channel.logs;
             vm.logsSettings   = angular.copy(vm.user.settings.preferences.channelsLogs);
             vm.allLogsDisplay = false;
+
+            // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
+            vm.logs.forEach(function (log) {
+                log.text          = $filter('translate')('channels_log_' + log.tag, log.values);
+                log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy à HH:mm');
+            });
         }
 
         // Get all the logs
@@ -124,7 +136,7 @@
 
         // Check if the user can recruit members
         function canRecruit() {
-            return channelsFactory.isActiveAdmin(vm.user.username, vm.params.groupName, vm.channel.id);
+            return channelsFactory.isActiveAdmin(vm.user.username, vm.params.groupName, vm.channel._id);
         }
 
         // Called on recruit view
@@ -133,7 +145,7 @@
             vm.channel        = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel        = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
             vm.userCanRecruit = vm.methods.canRecruit();
-            vm.availableUsers = channelsFactory.getAvailableUsers(vm.params.groupName, vm.channel.id);
+            vm.availableUsers = channelsFactory.getAvailableUsers(vm.params.groupName, vm.channel._id);
         }
 
         // Called on edit view
@@ -160,8 +172,8 @@
                 picture    : vm.newChannel.picture,
                 private    : vm.newChannel.private,
                 default    : vm.newChannel.default,
-                groupName  : vm.params.groupName,
-                creator    : vm.user.username
+                creator    : vm.user.username,
+                groupName  : vm.params.groupName
             };
             channelsFactory.httpRequest.addChannel(vm.params.groupName, newChannel, function () {
                 vm.methods.stopLoading();
@@ -185,7 +197,8 @@
                 picture    : vm.editedChannel.picture,
                 private    : vm.editedChannel.private,
                 default    : vm.editedChannel.default,
-                groupName  : vm.params.groupName
+                groupName  : vm.params.groupName,
+                username   : vm.user.username
             };
             channelsFactory.httpRequest.updateChannel(vm.params.groupName, vm.params.channelName, updatedChannel, function () {
                 vm.methods.stopLoading();

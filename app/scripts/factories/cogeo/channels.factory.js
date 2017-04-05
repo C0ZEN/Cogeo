@@ -48,8 +48,11 @@
             if (!Methods.isNullOrEmpty(channel) && !Methods.isNullOrEmpty(channel.picture) && !Methods.isNullOrEmpty(channel.picture.url)) {
                 return channel.picture.url;
             }
-            else {
+            else if (!Methods.isNullOrEmpty(channel) && !Methods.isNullOrEmpty(channel.name)) {
                 return 'images/groups/' + channel.name.slice(0, 1) + '.png';
+            }
+            else {
+                return 'images/groups/other/Cat.png'
             }
         }
 
@@ -120,7 +123,7 @@
             var channels = [];
             if (group != null) {
                 for (var i = 0, length = group.channels.length; i < length; i++) {
-                    if (isActiveMember(user.username, groupName, group.channels[i].id)) {
+                    if (isActiveMember(user.username, groupName, group.channels[i]._id)) {
                         channels.push(group.channels[i]);
                     }
                 }
@@ -139,7 +142,7 @@
             if (channels != null) {
                 for (var i = 0, length = channels.length; i < length; i++) {
                     for (var y = 0, ylength = user.starredChannels.length; y < ylength; y++) {
-                        if (channels[i].id == user.starredChannels[y]) {
+                        if (channels[i]._id == user.starredChannels[y]) {
                             starredChannels.push(channels[i]);
                         }
                     }
@@ -161,7 +164,7 @@
                 for (var i = 0, length = channels.length; i < length; i++) {
                     isStarred = false;
                     for (var y = 0, ylength = user.starredChannels.length; y < ylength; y++) {
-                        if (channels[i].id == user.starredChannels[y]) {
+                        if (channels[i]._id == user.starredChannels[y]) {
                             isStarred = true;
                         }
                     }
@@ -192,7 +195,7 @@
         function getChannelIdByName(groupName, channelName) {
             var channel = groupsFactory.getChannelByName(groupName, channelName);
             if (!Methods.isNullOrEmpty(channel)) {
-                return channel.id;
+                return channel._id;
             }
             return null;
         }

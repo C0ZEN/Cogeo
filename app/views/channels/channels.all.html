@@ -46,7 +46,7 @@
                        as allChannelsFilter track by $index">
                     <div class="img">
                         <img class="img-circle img-thumbnail"
-                             ng-src="{{ methods.getGroupPicture(channel.name) }}">
+                             ng-src="{{ methods.getChannelPicture(vm.params.groupName, channel._id) }}">
                     </div>
                     <div class="text">
                         <p>

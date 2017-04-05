@@ -75,7 +75,7 @@
             vm.activeChannel                  = groupsFactory.getChannelById(vm.activeGroup, channelId);
             vm.activeChannel                  = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
             vm.messages                       = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
-            vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel.id);
+            vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel._id);
             vm.activeMembers                  = channelsFactory.getActiveMembers(vm.activeGroup, channelId);
             vm.chatTheme                      = 'channel-theme';
             goTo.view('app.chat.channel', {

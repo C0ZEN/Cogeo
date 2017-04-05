@@ -16,7 +16,7 @@
             if (isActivated) {
                 var newChannels = [], user;
                 channels.forEach(function (channel) {
-                    user = channelsFactory.getUserByName(userName, groupName, channel.id);
+                    user = channelsFactory.getUserByName(userName, groupName, channel._id);
                     if (user != null && user.hasLeft == 0) {
                         if (onlyAdminChannels) {
                             if (user.admin) {
