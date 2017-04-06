@@ -38,7 +38,8 @@
             initSettings          : initSettings,
             initNotifications     : initNotifications,
             initLogs              : initLogs,
-            initLogins            : initLogins
+            initLogins            : initLogins,
+            getAppLanguageFlag    : getAppLanguageFlag
         };
 
         // When a change occur into the popup of test
@@ -195,6 +196,11 @@
                 vm.settingsLogins = angular.copy(user.settings.preferences.accessLogs);
                 console.log(vm.settingsLogins);
             }
+        }
+
+        // Return the src for the flag for this app language
+        function getAppLanguageFlag(language) {
+            return 'images/flags/' + language + '.png';
         }
     }
 

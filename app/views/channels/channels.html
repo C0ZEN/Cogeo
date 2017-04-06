@@ -4,13 +4,13 @@
 
             <!-- Title -->
             <h1 ng-show="goTo.isCurrentView('app.channels.all')"
-                compile="'channels_channels_title' | translate:{groupName: vm.params.groupName}">
+                cozen-compile="'channels_channels_title' | translate:{groupName: vm.params.groupName}">
             </h1>
             <h1 ng-show="goTo.isCurrentView('app.channels.new')"
-                compile="'channels_channels_title_new' | translate:{groupName: vm.params.groupName}">
+                cozen-compile="'channels_channels_title_new' | translate:{groupName: vm.params.groupName}">
             </h1>
             <h1 ng-show="!goTo.isCurrentView('app.channels.all') && !goTo.isCurrentView('app.channels.new')"
-                compile="'channels_channels_title_name' | translate:{groupName: vm.params.groupName, channelName: vm.params.channelName}">
+                cozen-compile="'channels_channels_title_name' | translate:{groupName: vm.params.groupName, channelName: vm.params.channelName}">
             </h1>
             <p class="help-text space-medium-after">{{ 'channels_channels_subtitle' | translate }}</p>
 

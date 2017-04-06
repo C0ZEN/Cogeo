@@ -25,6 +25,7 @@
         function getAccessLog() {
             var accessLog = {
                 appLanguage   : CONFIG.currentLanguage,
+                appVersion    : CONFIG.internal.appVersion,
                 browserName   : $filter('capitalize')(deviceDetector.browser, true, true),
                 browserVersion: $filter('capitalize')(deviceDetector.browser_version, true, true),
                 osName        : $filter('capitalize')(deviceDetector.os, true, true),

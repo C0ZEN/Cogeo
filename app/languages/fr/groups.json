@@ -62,7 +62,7 @@
     "groups_pills_invitations": "Invitations",
     "groups_all_search_pc": "Rechercher un groupe en particulier",
     "groups_all_show_filter": "Plus de filtres",
-    "groups_all_no_group": "Il n'y a pas encore de groupe pour le moment !<br>Tu peux être le premier utilisateur Cogeo à en faire un !<br><small><strong>ProTip:</strong> C'est simple et rapide.</small>",
+    "groups_all_no_group": "Il n'y a pas encore de groupe pour le moment !<br>Tu peux être le premier utilisateur Cogeo à en faire un !<br><small><strong>ProTip:</strong> c'est simple et rapide.</small>",
     "groups_details_leave_group": "Quitter ce groupe",
     "groups_details_quicklink_tooltip": "Partage ce lien avec tes amis pour qu'ils rejoignent le groupe <strong>{{groupName}}</strong>",
     "groups_details_quicklink_copy": "Copier le lien",

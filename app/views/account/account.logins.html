@@ -30,21 +30,6 @@
                 </cozen-form>
             </div>
 
-            <!-- Access logs -->
-            <!--"ip": "128.79.237.125",-->
-            <!--"hostname": "No Hostname",-->
-            <!--"city": "Tourcoing",-->
-            <!--"region": "Hauts-de-France",-->
-            <!--"country": "FR",-->
-            <!--"loc": "50.7239,3.1612",-->
-            <!--"org": "AS5410 Bouygues Telecom SA",-->
-            <!--"postal": "59200",-->
-            <!--"appLanguage": "fr",-->
-            <!--"browserName": "Chrome",-->
-            <!--"browserVersion": "57.0.2987.133",-->
-            <!--"osName": "Windows",-->
-            <!--"osVersion": "Windows",-->
-            <!--"date": 1491244588573,-->
             <div class="atom-access-logs space-base-before space-base-after">
                 <div class="atom-access-log"
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
@@ -57,12 +42,33 @@
 			           as accessLogFilter track by $index">
                     <div class="text">
                         <p>
-                            {{ 'account_logins_login_on_os' | translate }}
+                            <strong>{{ 'account_logins_login_ip' | translate }}</strong>
+                            {{ accessLog.ip }}
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_hostname' | translate }}</strong>
+                            {{ accessLog.hostname }}
+                            <small>({{ accessLog.org }})</small>
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_address' | translate }}</strong>
+                            {{ accessLog.country }}, {{ accessLog.region }}, {{ accessLog.postal }}, {{ accessLog.city }}
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_on_os' | translate }}</strong>
                             {{ accessLog.osName }}
                             <small>({{ accessLog.osVersion }})</small>
-                            {{ 'account_logins_login_on_browser' | translate }}
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_on_browser' | translate }}</strong>
                             {{ accessLog.browserName }}
                             <small>({{ accessLog.browserVersion }})</small>
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_app' | translate }}</strong>
+                            {{ 'account_logins_login_app_version' | translate }}{{ accessLog.appVersion }}
+                            <img ng-src="{{ vm.methods.getAppLanguageFlag(accessLog.appLanguage) }}"
+                                 class="app-language-flag">
                         </p>
                         <p class="help-text">
                             {{ 'account_logins_login_date' | translate:{date: (accessLog.date | date: 'EEEE dd MMMM yyyy')} }}

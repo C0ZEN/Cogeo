@@ -82,10 +82,10 @@
             apiVersion: "v2.8"
         });
 
-        // 4pjt Config
+        // Cogeo Config
         CONFIG.internal = {
-            API  : 'https://qwirk.herokuapp.com/',
-            video: {
+            API       : 'https://qwirk.herokuapp.com/',
+            video     : {
                 theme  : "bower_components/videogular-themes-default/videogular.css",
                 plugins: {
                     controls: {
@@ -93,7 +93,8 @@
                         autoHideTime: 4000
                     }
                 }
-            }
+            },
+            appVersion: '1.0.0'
         };
 
         // Configure the loading bar

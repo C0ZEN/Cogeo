@@ -41,8 +41,8 @@ module.exports = function (grunt) {
                 tasks: [
                     'wiredep',
                     'languages',
-                    'newer:jshint:all',
-                    'newer:jscs:all'
+                    // 'newer:jshint:all',
+                    // 'newer:jscs:all'
                 ]
             },
             js        : {
@@ -52,8 +52,8 @@ module.exports = function (grunt) {
                 ],
                 tasks  : [
                     'angularFileLoader',
-                    'newer:jshint:all',
-                    'newer:jscs:all'
+                    // 'newer:jshint:all',
+                    // 'newer:jscs:all'
                 ],
                 options: {
                     livereload: '<%= connect.options.livereload %>'
@@ -62,8 +62,8 @@ module.exports = function (grunt) {
             jsTest    : {
                 files: ['test/spec/**/*.js'],
                 tasks: [
-                    'newer:jshint:test',
-                    'newer:jscs:test',
+                    // 'newer:jshint:test',
+                    // 'newer:jscs:test',
                     'karma'
                 ]
             },
@@ -571,8 +571,8 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'newer:jshint',
-        'newer:jscs',
+        // 'newer:jshint',
+        // 'newer:jscs',
         'test',
         'build'
     ]);

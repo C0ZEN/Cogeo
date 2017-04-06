@@ -48,7 +48,7 @@
                             <p class="help-text">{{ vm.channel.description }}</p>
                             <div>
                                 <p class="help-text inline-block"
-                                   compile="'channels_details_creation_by' | translate:{userName: vm.channel.creator, date: (vm.channel.date.creation | date:'EEEE dd MMMM yyyy')}">
+                                   cozen-compile="'channels_details_creation_by' | translate:{userName: vm.channel.creator, date: (vm.channel.date.creation | date:'EEEE dd MMMM yyyy')}">
                                 </p>
                                 <cozen-tooltip cozen-tooltip-label="vm.channel.private ? 'channels_details_private_tp' : 'channels_details_public_tp'">
                                     <i class="fa fa-fw eye"

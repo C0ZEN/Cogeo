@@ -749,6 +749,9 @@ i.atom-icon-btn.purple:hover {
 .atom-hashtag:before {
   content: "#";
 }
+.app-language-flag {
+  width: 16px;
+}
 /********************/
 /**   TEXT ALIGN   **/
 /********************/
