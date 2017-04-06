@@ -61,7 +61,7 @@
         });
 
         function save(form) {
-            startLoading();
+            vm.methods.startLoading();
             switch (form) {
                 case 'edit':
                     var updatedGroup = {
@@ -137,7 +137,7 @@
         }
 
         function recruit(type) {
-            startLoading();
+            vm.methods.startLoading();
 
             // Common data
             var data = {

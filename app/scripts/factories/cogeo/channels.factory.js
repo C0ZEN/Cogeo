@@ -37,8 +37,9 @@
             getAvailableUsers       : getAvailableUsers,
             getDefaultChannels      : getDefaultChannels,
             httpRequest             : {
-                updateChannel: httpRequestUpdateChannel,
-                addChannel   : httpRequestAddChannel
+                updateChannel  : httpRequestUpdateChannel,
+                addChannel     : httpRequestAddChannel,
+                sendInvitations: httpRequestSendInvitations
             }
         };
 
@@ -263,6 +264,7 @@
         function getAvailableUsers(groupName, channelId) {
             var activeMembers  = getActiveMembers(groupName, channelId);
             var groupMembers   = groupsFactory.getActiveUsers(groupName);
+            var currentUser    = userFactory.getUser();
             var availableUsers = [], match;
             groupMembers.forEach(function (groupMember) {
                 match = false;
@@ -275,6 +277,15 @@
                     availableUsers.push(groupMember);
                 }
             });
+            var userIndex = -1;
+            availableUsers.forEach(function (user, index) {
+                if (user.username == currentUser.username) {
+                    userIndex = index
+                }
+            });
+            if (userIndex != -1) {
+                availableUsers.splice(userIndex, 1);
+            }
             return availableUsers;
         }
 
@@ -322,6 +333,34 @@
                             channelName: data.name
                         }
                     });
+                })
+            ;
+        }
+
+        function httpRequestSendInvitations(groupName, channelName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/invitations/cogeo', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    if (data.invitations.length > 1) {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'success',
+                            label      : 'alerts_success_send_cogeo_groups_invitations',
+                            labelValues: {
+                                groupName: groupName,
+                                length   : data.invitations.length
+                            }
+                        });
+                    }
+                    else {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'success',
+                            label      : 'alerts_success_send_cogeo_groups_invitation',
+                            labelValues: {
+                                groupName: groupName,
+                                username : data.invitations[0]
+                            }
+                        });
+                    }
                 })
             ;
         }

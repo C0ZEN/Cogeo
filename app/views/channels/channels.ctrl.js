@@ -42,7 +42,8 @@
             newChannel       : newChannel,
             updateChannel    : updateChannel,
             startLoading     : startLoading,
-            stopLoading      : stopLoading
+            stopLoading      : stopLoading,
+            recruit          : recruit
         };
 
         // Common data
@@ -190,7 +191,7 @@
 
         // Update a channel
         function updateChannel() {
-            startLoading();
+            vm.methods.startLoading();
             var updatedChannel = {
                 name       : vm.editedChannel.name,
                 description: vm.editedChannel.description,
@@ -221,6 +222,26 @@
         // Stop loading
         function stopLoading() {
             vm.loading = false;
+        }
+
+        // Send invitations to recruit cogeo users
+        function recruit() {
+            vm.methods.startLoading();
+            var invitations = {
+                username   : vm.user.username,
+                invitations: vm.availableUsersSelected
+            };
+            channelsFactory.httpRequest.sendInvitations(vm.params.groupName, vm.params.channelName, data, function () {
+                vm.methods.stopLoading();
+                goTo.view('app.channels.invitations', {
+                    groupName  : vm.params.groupName,
+                    channelName: vm.params.channelName
+                });
+            }, function () {
+                vm.methods.stopLoading();
+                var btn = angular.element(document.querySelector('#submit-recruit-channel-btn'));
+                httpRequest.shakeElement(btn);
+            });
         }
     }
 

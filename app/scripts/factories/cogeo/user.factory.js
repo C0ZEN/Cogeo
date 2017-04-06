@@ -729,6 +729,23 @@
                     event.color = 'green';
                 }
             });
+            angular.forEach($user.settings.preferences.invitations.types, function (event) {
+                if (event.id == 0) {
+                    event.name  = 'popup_groupsInvitations_filter_body_rejected';
+                    event.icon  = 'fa fa-fw icons8-event-declined-filled';
+                    event.color = 'error';
+                }
+                else if (event.id == 1) {
+                    event.name  = 'popup_groupsInvitations_filter_body_waiting';
+                    event.icon  = 'fa fa-fw icons8-event-accepted-tentatively-filled';
+                    event.color = 'info';
+                }
+                else {
+                    event.name  = 'popup_groupsInvitations_filter_body_accepted';
+                    event.icon  = 'fa fa-fw icons8-event-accepted-filled';
+                    event.color = 'green';
+                }
+            });
             return $user;
         }
 
@@ -885,7 +902,7 @@
         }
 
         function httpRequestUpdateSettingsAccessLogs(data, callbackSuccess, callbackError) {
-            httpRequest.requestPut('user/' + user.username + '/settings/accessLogs', data, callbackSuccess, callbackError)
+            httpRequest.requestPut('user/' + user.username + '/settings/access-logs', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
