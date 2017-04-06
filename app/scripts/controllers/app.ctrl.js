@@ -32,8 +32,9 @@
         $window.onload = app.methods.onInit;
 
         function onInit() {
+            cozenEnhancedLogs.wrap.end('windowOnLoad');
+            cozenEnhancedLogs.wrap.starting('cogeoInit');
             var requestQuantity = 3;
-            cozenEnhancedLogs.wrap.starting('onInit');
 
             // Get the stuff about the current connected user (to avoid login)
             var user = localStorageService.get('currentUser');
@@ -59,7 +60,7 @@
                 requestQuantity = requestQuantity - quantity;
                 if (requestQuantity <= 0) {
                     app.isReady = true;
-                    cozenEnhancedLogs.wrap.end('onInit');
+                    cozenEnhancedLogs.wrap.end('cogeoInit');
                     Methods.safeApply($scope);
                 }
             }

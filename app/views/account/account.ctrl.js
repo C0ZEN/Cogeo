@@ -12,10 +12,11 @@
         '$rootScope',
         '$filter',
         'userFactory',
-        'httpRequest'
+        'httpRequest',
+        'invitationsFactory'
     ];
 
-    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest) {
+    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, invitationsFactory) {
         var vm = this;
 
         // Common data
@@ -39,7 +40,8 @@
             initNotifications     : initNotifications,
             initLogs              : initLogs,
             initLogins            : initLogins,
-            getAppLanguageFlag    : getAppLanguageFlag
+            getAppLanguageFlag    : getAppLanguageFlag,
+            initInvitations       : initInvitations
         };
 
         // When a change occur into the popup of test
@@ -194,13 +196,23 @@
             if (user != null) {
                 vm.accessLogs     = angular.copy(user.accessLogs);
                 vm.settingsLogins = angular.copy(user.settings.preferences.accessLogs);
-                console.log(vm.settingsLogins);
             }
         }
 
         // Return the src for the flag for this app language
         function getAppLanguageFlag(language) {
             return 'images/flags/' + language + '.png';
+        }
+
+        // Called on init invitations
+        function initInvitations(user) {
+            if (user == null) {
+                user = userFactory.getUser();
+            }
+            if (user != null) {
+                vm.invitations         = angular.copy(invitationsFactory.getMyInvitations());
+                vm.settingsInvitations = angular.copy(user.settings.preferences.invitations);
+            }
         }
     }
 

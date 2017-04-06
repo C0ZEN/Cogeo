@@ -39,6 +39,34 @@
             }
 
             switch (true) {
+                case diff < 1:
+                    text = prefix;
+                    if (!short) {
+                        text += $filter('translate')('other_time_than_short');
+                    }
+                    text += $filter('translate')('other_time_hours_1') + ' ' + $filter('translate')('other_time_minute');
+                    break;
+                case diff < 2:
+                    text = prefix;
+                    if (!short) {
+                        text += $filter('translate')('other_time_than');
+                    }
+                    text += '2 ' + $filter('translate')('other_time_minutes');
+                    break;
+                case diff < 3:
+                    text = prefix;
+                    if (!short) {
+                        text += $filter('translate')('other_time_than');
+                    }
+                    text += '3 ' + $filter('translate')('other_time_minutes');
+                    break;
+                case diff < 4:
+                    text = prefix;
+                    if (!short) {
+                        text += $filter('translate')('other_time_than');
+                    }
+                    text += '4 ' + $filter('translate')('other_time_minutes');
+                    break;
                 case diff < 5:
                     text = prefix;
                     if (!short) {

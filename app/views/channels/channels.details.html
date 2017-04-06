@@ -130,6 +130,7 @@
 
                     <!-- Join channel btn -->
                     <cozen-btn ng-show="!vm.channel.isBanned && !vm.channel.isKicked && !vm.channel.private"
+                               class="animated fadeInUp"
                                cozen-btn-label="'channels_details_join_channel'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-on-click="vm.methods.joinChannel(vm.channel._id)">
@@ -141,6 +142,7 @@
 
                     <!-- Edit btn -->
                     <cozen-btn ng-show="vm.channel.isAdmin"
+                               class="animated fadeInUp"
                                cozen-btn-label="'channels_details_edit_channel'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-on-click="goTo.view('app.channels.edit', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})">
@@ -148,6 +150,7 @@
 
                     <!-- Leave btn -->
                     <a href
+                       class="animated fadeInUp"
                        onclick="this.blur()"
                        ng-click="vm.methods.leaveChannel(vm.channel._id)">
                         {{ 'channels_details_leave_channel' | translate }}

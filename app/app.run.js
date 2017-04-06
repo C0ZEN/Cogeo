@@ -17,11 +17,13 @@
         'usersFactory',
         'rfc4122',
         'logs',
+        'cozenEnhancedLogs',
         'userFactory'
     ];
 
     function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory, usersFactory,
-                 rfc4122, logs, userFactory) {
+                 rfc4122, logs, cozenEnhancedLogs, userFactory) {
+        cozenEnhancedLogs.wrap.starting('windowOnLoad');
 
         // Public global data
         $rootScope.data = {
@@ -33,8 +35,8 @@
         $rootScope.goTo         = goTo;
         $rootScope.botFactory   = botFactory;
         $rootScope.usersFactory = usersFactory;
-        $rootScope.logsFactory  = logs;
         $rootScope.userFactory  = userFactory;
+        $rootScope.logsFactory  = logs;
 
         // Public global functions
         $rootScope.methods = {

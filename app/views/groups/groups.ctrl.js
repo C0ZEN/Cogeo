@@ -23,19 +23,20 @@
 
         // Methods
         vm.methods = {
-            save            : save,
-            onDisplayDetails: onDisplayDetails,
-            joinGroup       : joinGroup,
-            leaveGroup      : leaveGroup,
-            getKickedTime   : Utils.getKickedTime,
-            getUserFullName : usersFactory.getUserFullName,
-            onShowAll       : onShowAll,
-            getAllLogs      : getAllLogs,
-            onRecruitInit   : onRecruitInit,
-            recruit         : recruit,
-            toggleRecruitMod: toggleRecruitMod,
-            startLoading    : startLoading,
-            stopLoading     : stopLoading
+            save             : save,
+            onDisplayDetails : onDisplayDetails,
+            joinGroup        : joinGroup,
+            leaveGroup       : leaveGroup,
+            getKickedTime    : Utils.getKickedTime,
+            getUserFullName  : usersFactory.getUserFullName,
+            onShowAll        : onShowAll,
+            getAllLogs       : getAllLogs,
+            onRecruitInit    : onRecruitInit,
+            recruit          : recruit,
+            toggleRecruitMod : toggleRecruitMod,
+            startLoading     : startLoading,
+            stopLoading      : stopLoading,
+            isEmailDuplicated: isEmailDuplicated
         };
 
         // Common data
@@ -97,7 +98,7 @@
                 vm.logs                  = angular.copy(group.logs);
                 if (!Methods.isNullOrEmpty(vm.logs)) {
                     vm.logs.forEach(function (log) {
-                        log.text          = $filter('translate')('groups_log_' + log.type, log.values);
+                        log.text          = $filter('translate')('groups_log_' + log.tag, log.values);
                         log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy à HH:mm');
                     });
                 }
@@ -136,18 +137,36 @@
         }
 
         function recruit(type) {
+            startLoading();
+
+            // Common data
+            var data = {
+                username: vm.details.user.username
+            };
+
+            // Update the data
             switch (type) {
                 case 'cogeoUsers':
-                    vm.methods.onRecruitInit();
+                    data.invitations = vm.availableUsersSelected;
+                    data.request     = 'sendCogeoInvitations';
                     break;
                 case 'cogeoEmail':
-                    vm.recruitEmail = [
-                        {
-                            email: ''
-                        }
-                    ];
+                    data.invitations = vm.recruitEmail;
+                    data.request     = 'sendEmailInvitations';
                     break;
             }
+
+            // Execute the request
+            groupsFactory.httpRequest[data.request](vm.params.groupName, data, function () {
+                vm.methods.stopLoading();
+                goTo.view('app.groups.invitations', {
+                    groupName: vm.params.groupName
+                });
+            }, function () {
+                vm.methods.stopLoading();
+                var btn = angular.element(document.querySelector('#submit-recruit-group-btn'));
+                httpRequest.shakeElement(btn);
+            });
         }
 
         function toggleRecruitMod() {
@@ -160,6 +179,14 @@
 
         function stopLoading() {
             vm.loading = false;
+        }
+
+        function isEmailDuplicated() {
+            var emails = [];
+            angular.forEach(vm.recruitEmail, function (email) {
+                emails.push(email.email);
+            });
+            return Methods.hasDuplicates(emails);
         }
     }
 

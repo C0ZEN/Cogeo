@@ -142,6 +142,9 @@
                 case 'groupsInvitationsFilter':
                     userFactory.httpRequest.updateSettingsGroupsInvitations(popup.groupsInvitationsFilter.data);
                     break;
+                case 'invitationsFilter':
+                    userFactory.httpRequest.updateSettingsInvitations(popup.invitationsFilter.data);
+                    break;
                 case 'groupsMembersFilter':
                     userFactory.httpRequest.updateSettingsGroupsMembers(popup.groupsMembersFilter.data);
                     break;

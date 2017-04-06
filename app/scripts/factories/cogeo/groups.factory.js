@@ -6,9 +6,6 @@
         .factory('groupsFactory', groupsFactory);
 
     groupsFactory.$inject = [
-        '$state',
-        'CONFIG',
-        '$stateParams',
         '$filter',
         'usersFactory',
         'userFactory',
@@ -17,7 +14,7 @@
         'cozenFloatingFeedFactory'
     ];
 
-    function groupsFactory($state, CONFIG, $stateParams, $filter, usersFactory, userFactory, httpRequest, $rootScope, cozenFloatingFeedFactory) {
+    function groupsFactory($filter, usersFactory, userFactory, httpRequest, $rootScope, cozenFloatingFeedFactory) {
 
         // var groups = [
         //     {
@@ -1733,7 +1730,9 @@
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName,
                 getAllGroups        : httpRequestGetAllGroups,
-                updateGroup         : httpRequestUpdateGroup
+                updateGroup         : httpRequestUpdateGroup,
+                sendCogeoInvitations: httpRequestSendCogeoInvitations,
+                sendEmailInvitations: httpRequestSendEmailInvitations
             }
         };
 
@@ -2042,6 +2041,62 @@
                             groupName: response.data.data.name
                         }
                     });
+                })
+            ;
+        }
+
+        function httpRequestSendCogeoInvitations(groupName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/invitations/cogeo', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    if (data.invitations.length > 1) {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'success',
+                            label      : 'alerts_success_send_cogeo_groups_invitations',
+                            labelValues: {
+                                groupName: groupName,
+                                length   : data.invitations.length
+                            }
+                        });
+                    }
+                    else {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'success',
+                            label      : 'alerts_success_send_cogeo_groups_invitation',
+                            labelValues: {
+                                groupName: groupName,
+                                username : data.invitations[0]
+                            }
+                        });
+                    }
+                })
+            ;
+        }
+
+        function httpRequestSendEmailInvitations(groupName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/invitations/email', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    if (data.invitations.length > 1) {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'success',
+                            label      : 'alerts_success_send_email_groups_invitations',
+                            labelValues: {
+                                groupName: groupName,
+                                length   : data.invitations.length
+                            }
+                        });
+                    }
+                    else {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'success',
+                            label      : 'alerts_success_send_email_groups_invitation',
+                            labelValues: {
+                                groupName: groupName,
+                                email    : data.invitations[0].email
+                            }
+                        });
+                    }
                 })
             ;
         }

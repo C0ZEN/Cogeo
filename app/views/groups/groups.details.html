@@ -103,6 +103,7 @@
 
                     <!-- Join group btn -->
                     <cozen-btn ng-show="!vm.details.group.userRoles.isBanned && !vm.details.group.userRoles.isKicked"
+                               class="animated fadeInUp"
                                cozen-btn-label="'groups_details_join_group'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-on-click="vm.methods.joinGroup(vm.details.group.name)">
@@ -110,6 +111,7 @@
 
                     <!-- Go to Channels btn -->
                     <a href
+                       class="animated fadeInUp"
                        ui-sref="app.channels.all({groupName: vm.details.group.name})"
                        ng-click="goTo.view('app.channels.all', {groupName: vm.details.group.name})">
                         {{ 'groups_details_channels' | translate }}
@@ -121,6 +123,7 @@
 
                     <!-- Edit btn -->
                     <cozen-btn ng-show="vm.details.userIsAdmin"
+                               class="animated fadeInUp"
                                cozen-btn-label="'groups_details_edit_group'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-on-click="goTo.view('app.groups.edit', {'groupName': vm.details.group.name})">
@@ -128,6 +131,7 @@
 
                     <!-- Channels btn -->
                     <a href
+                       class="animated fadeInUp"
                        ui-sref="app.channels.all({groupName: vm.details.group.name})"
                        ng-click="goTo.view('app.channels.all', {groupName: vm.details.group.name})">
                         {{ 'groups_details_channels' | translate }}
@@ -135,6 +139,7 @@
 
                     <!-- Leave btn -->
                     <a href
+                       class="animated fadeInUp"
                        onclick="this.blur()"
                        ng-click="vm.methods.leaveGroup(vm.details.group.name)">
                         {{ 'groups_details_leave_group' | translate }}

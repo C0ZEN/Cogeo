@@ -80,6 +80,7 @@
 
                             <!-- Submit btn -->
                             <cozen-btn cozen-btn-icon-right="fa fa-fw icons8-message-filled"
+                                       cozen-btn-id="submit-recruit-group-btn"
                                        cozen-btn-label="vm.availableUsersSelected.length == 1 ? ('groups_recruit_cogeoUsers_submit_user' | translate:{username: vm.availableUsersSelected[0]}) : 'groups_recruit_cogeoUsers_submit_users'"
                                        cozen-btn-auto-sizing="true"
                                        cozen-btn-on-click="vm.methods.recruit('cogeoUsers')">
@@ -124,7 +125,8 @@
                                              cozen-input-pattern="{{ vm.CONFIG.internal.log.email.pattern }}"
                                              cozen-input-validator-empty="false"
                                              cozen-input-placeholder="{{ 'groups_recruit_email_pc' | translate:{index: $index + 1} }}"
-                                             cozen-input-required="false">
+                                             cozen-input-required="false"
+                                             cozen-input-has-error="email.email == vm.recruitEmail[$index - 1].email || email.email == vm.recruitEmail[$index + 1].email">
                                 </cozen-input>
                             </div>
 
@@ -132,8 +134,9 @@
 
                                 <!-- Add -->
                                 <div ng-if="$last"
+                                     ng-class="{disabled: vm.methods.isEmailDuplicated()}"
                                      class="atom-add-btn"
-                                     ng-click="vm.recruitEmail.push({email: ''})">
+                                     ng-click="!vm.methods.isEmailDuplicated() ? vm.recruitEmail.push({email: ''}) : null">
                                     <i class="fa fa-fw fa-plus-circle"></i>
                                 </div>
 

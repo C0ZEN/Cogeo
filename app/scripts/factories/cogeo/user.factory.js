@@ -565,7 +565,8 @@
                 updateSettingsChannelsLogs       : httpRequestUpdateSettingsChannelsLogs,
                 addToStarred                     : httpRequestAddToStarred,
                 removeToStarred                  : httpRequestRemoveToStarred,
-                addAccessLog                     : httpRequestAddAccessLog
+                addAccessLog                     : httpRequestAddAccessLog,
+                updateSettingsInvitations        : httpRequestUpdateSettingsInvitations
             }
         };
 
@@ -1013,6 +1014,15 @@
 
         function httpRequestAddAccessLog(data, callbackSuccess, callbackError) {
             httpRequest.requestPut('user/' + user.username + '/accessLog', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsInvitations(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/invitations', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);

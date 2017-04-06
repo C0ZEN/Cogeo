@@ -31,7 +31,7 @@
             </div>
 
             <!-- Invitations -->
-            <div ng-show="vm.groupInvitations != null"
+            <div ng-show="vm.groupInvitations != null && vm.groupInvitations.length > 0"
                  class="atom-invitations space-base-before space-base-after">
                 <div class="atom-invitation"
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
@@ -60,7 +60,7 @@
                             </small>
                         </p>
                         <p class="help-text"
-                           cozen-compile="('groups_invitations_status_' + invitation.status.response) | translate:{date: (invitation.status.date | date: 'EEEE dd MMMM yyyy - HH:mm'), userName: '@' + invitation.sentBy}"></p>
+                           cozen-compile="('groups_invitations_status_' + invitation.status.response) | translate:{date: (invitation.status.date | date: 'EEEE dd MMMM yyyy'), hour: (invitation.status.date | date: 'HH:mm'), userName: '@' + invitation.sentBy}"></p>
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@
             </div>
 
             <!-- Info message for empty invitations -->
-            <cozen-alert cozen-alert-display="vm.groupInvitations == null"
+            <cozen-alert cozen-alert-display="vm.groupInvitations == null || vm.groupInvitations.length == 0"
                          cozen-alert-label="'groups_invitations_empty'"
                          cozen-alert-close-btn="false"
                          cozen-alert-class="space-base-before space-base-after"
@@ -85,6 +85,7 @@
 
                 <!-- Add members btn -->
                 <cozen-btn ng-show="vm.details.userIsInGroup"
+                           class="animated fadeInUp"
                            cozen-btn-label="'groups_invitations_invite_group'"
                            cozen-btn-auto-sizing="true"
                            cozen-btn-on-click="goTo.view('app.groups.recruit', {'groupName': vm.details.group.name})">
