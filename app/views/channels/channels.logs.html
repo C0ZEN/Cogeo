@@ -66,6 +66,7 @@
 
                 <!-- More filter -->
                 <a href
+                   class="animated fadeInUp"
                    onclick="this.blur()"
                    ng-click="methods.showPopup($event, 'channelsLogsFilter', vm.logsSettings)">
                     {{ 'account_log_show_filter' | translate }}
@@ -73,6 +74,7 @@
 
                 <!-- Display all -->
                 <a href
+                   class="animated fadeInUp"
                    onclick="this.blur()"
                    ng-if="!vm.allLogsDisplay"
                    ng-click="vm.methods.getAllLogs()">

@@ -105,6 +105,7 @@
 
                 <!-- More filter -->
                 <a href
+                   class="animated fadeInUp"
                    onclick="this.blur()"
                    ng-click="methods.showPopup($event, 'allGroupsFilter', vm.all)">
                     {{ 'groups_all_show_filter' | translate }}
@@ -112,6 +113,7 @@
 
                 <!-- Add group -->
                 <a href
+                   class="animated fadeInUp"
                    onclick="this.blur()"
                    ng-click="goTo.view('app.groupNew.firstStep', null, $event)"
                    ui-sref="app.groupNew.firstStep">

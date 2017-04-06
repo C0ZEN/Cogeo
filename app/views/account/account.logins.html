@@ -97,9 +97,15 @@
                 <!-- More filter -->
                 <a href
                    onclick="this.blur()"
+                   class="animated fadeInUp"
                    ng-click="methods.showPopup($event, 'accessLogsFilter', vm.settingsLogins)">
                     {{ 'account_log_show_filter' | translate }}
                 </a>
+
+                <!-- Last login -->
+                <p class="no-margin help-text animated fadeInUp">
+                    {{ 'account_logins_last_login' | translate:{date: (vm.user.date.lastLogin | date: 'EEEE dd MMMM yyyy'), hour: (vm.user.date.lastLogin | date: 'HH:mm')} }}
+                </p>
             </div>
         </div>
     </div>

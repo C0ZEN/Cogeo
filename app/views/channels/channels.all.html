@@ -113,6 +113,7 @@
 
                 <!-- More filter -->
                 <a href
+                   class="animated fadeInUp"
                    onclick="this.blur()"
                    ng-click="methods.showPopup($event, 'allChannelsFilter', vm.allChannels)">
                     {{ 'channels_all_show_filter' | translate }}
@@ -121,6 +122,7 @@
                 <!-- Add channel -->
                 <a ng-show="vm.isGroupAdmin"
                    href
+                   class="animated fadeInUp"
                    onclick="this.blur()"
                    ng-click="goTo.view('app.channels.new', {groupName: vm.params.groupName}, $event)"
                    ui-sref="app.channels.new({groupName: vm.params.groupName})">

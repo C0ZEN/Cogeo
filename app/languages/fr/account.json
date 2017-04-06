@@ -117,6 +117,7 @@
     "account_logins_login_address": "Localisation:",
     "account_logins_login_app": "Cogeo:",
     "account_logins_login_app_version": "version ",
+    "account_logins_last_login": "Dernière connexion le {{date}} à {{hour}}",
     "account_event_group": "Groupe",
     "account_event_channel": "Channel",
     "account_event_social": "Social"
