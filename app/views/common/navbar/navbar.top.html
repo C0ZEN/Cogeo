@@ -124,9 +124,9 @@
             {{ 'navbar_logout' | translate }}
         </div>
 
-        <!-- Other -->
+        <!-- Profile -->
         <div ng-show="vm.methods.isConnected()"
-             class="link link-blue"
+             class="link link-purple"
              onclick="this.blur()"
              ng-mouseenter="vm.other.hover = true"
              ng-mouseleave="vm.other.hover = false"
@@ -134,7 +134,7 @@
              ng-click="vm.other.hover = true"
              ng-class="{'active': goTo.hasThisParent('app.account')}"
              tabindex="0">
-            {{ 'navbar_other' | translate }}
+            {{ userFactory.getUser().username }}
             <div class="link-dropdown"
                  ng-show="vm.other.hover">
                 <div class="link-dropdown-item"
