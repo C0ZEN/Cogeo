@@ -598,10 +598,10 @@
         // Logout
         function logout(callback) {
             httpRequestLogout(user.username, callback, callback);
+            goTo.view('app.home');
             localStorageService.set('currentUser', {});
             socialLoginService.logout();
             user = null;
-            goTo.view('app.home');
             _notify();
         }
 
