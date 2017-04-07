@@ -1131,6 +1131,18 @@ div.link-dropdown div.link-dropdown-item span {
   -webkit-box-orient: vertical;
   word-break: break-all;
 }
+div.link-dropdown div.link-dropdown-item.no-action {
+  cursor: default;
+  font-size: 14px;
+  color: #8C8C8C;
+}
+div.link-dropdown div.link-dropdown-item.no-action.active,
+div.link-dropdown div.link-dropdown-item.no-action:focus,
+div.link-dropdown div.link-dropdown-item.no-action:hover {
+  color: #8C8C8C;
+  background-color: #FFFFFF;
+  cursor: default;
+}
 div.link-dropdown div.link-dropdown-separator {
   background-color: #D6DBDB;
   height: 1px;

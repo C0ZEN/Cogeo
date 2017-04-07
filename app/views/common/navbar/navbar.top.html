@@ -61,6 +61,12 @@
                     </div>
                 </div>
 
+                <!-- No groups -->
+                <div ng-show="vm.groups.length == 0"
+                     class="link-dropdown-item no-action">
+                    {{ 'navbar_groups_no_groups' | translate }}
+                </div>
+
                 <!-- Add group link -->
                 <div class="link-dropdown-separator"></div>
                 <div class="link-dropdown-item"
@@ -154,6 +160,12 @@
                      ng-click="goTo.view('app.account.settings')"
                      tabindex="0">
                     {{ 'navbar_other_settings' | translate }}
+                </div>
+                <div class="link-dropdown-item"
+                     ng-class="{'active': goTo.isOneOfThoseViews('app.account.invitations', 'app.account.recruit')}"
+                     ng-click="goTo.view('app.account.invitations')"
+                     tabindex="0">
+                    {{ 'navbar_other_invitations' | translate }}
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.log')}"

@@ -566,7 +566,8 @@
                 addToStarred                     : httpRequestAddToStarred,
                 removeToStarred                  : httpRequestRemoveToStarred,
                 addAccessLog                     : httpRequestAddAccessLog,
-                updateSettingsInvitations        : httpRequestUpdateSettingsInvitations
+                updateSettingsInvitations        : httpRequestUpdateSettingsInvitations,
+                sendInvitations                  : httpRequestSendInvitations
             }
         };
 
@@ -1043,6 +1044,33 @@
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestSendInvitations(data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('user/' + user.username + '/invitations/cogeo', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                    if (data.invitations.length > 1) {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'success',
+                            label      : 'alerts_success_send_cogeo_user_invitations',
+                            labelValues: {
+                                length: data.invitations.length
+                            }
+                        });
+                    }
+                    else {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'success',
+                            label      : 'alerts_success_send_cogeo_user_invitation',
+                            labelValues: {
+                                username: data.invitations[0]
+                            }
+                        });
+                    }
                 })
             ;
         }

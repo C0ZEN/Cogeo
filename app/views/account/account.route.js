@@ -121,6 +121,18 @@
                     }
                 }
             })
+            .state('app.account.recruit', {
+                url        : '/recruit',
+                templateUrl: 'views/account/account.recruit.html',
+                data       : {
+                    pageTitle: 'account_recruit_pageTitle'
+                },
+                resolve: {
+                    isConnected: function (navigationFactory) {
+                        return navigationFactory.isAllowed();
+                    }
+                }
+            })
             .state('app.account.log', {
                 url        : '/log',
                 templateUrl: 'views/account/account.logs.html',

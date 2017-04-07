@@ -10,7 +10,9 @@
     "navbar_other_log": "Historique",
     "navbar_other_logins": "Connexions",
     "navbar_other_settings": "Paramètres",
+    "navbar_other_invitations": "Invitations",
     "navbar_groups": "Groupes",
     "navbar_groups_all": "Tous les groupes",
-    "navbar_groups_add": "Ajouter un groupe"
+    "navbar_groups_add": "Ajouter un groupe",
+    "navbar_groups_no_groups": "Présent dans aucun groupe"
 }

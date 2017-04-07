@@ -10,6 +10,8 @@
     "alerts_success_update_group": "Tes modifications sur le groupe <strong>{{groupName}}</strong> ont été sauvegardées.",
     "alerts_success_update_channel": "Tes modifications sur le channel <strong>{{channelName}}</strong> du groupe <strong>{{groupName}}</strong> ont été sauvegardées.",
     "alerts_success_post_channel": "Ton channel <strong>{{channelName}}</strong> pour le groupe <strong>{{groupName}}</strong> à bien été créer !",
+    "alerts_success_send_cogeo_user_invitation": "Une invitation à rejoindre vos amis à été envoyée à <strong>{{username}}</strong>",
+    "alerts_success_send_cogeo_user_invitations": "Les <strong>{{length}}</strong> invitations à rejoindre vos amis ont été envoyées.",
     "alerts_success_send_cogeo_groups_invitation": "Une invitation à rejoindre le groupe <strong>{{groupName}}</strong> à été envoyée à <strong>{{username}}</strong>",
     "alerts_success_send_cogeo_groups_invitations": "Les <strong>{{length}}</strong> invitations à rejoindre le groupe <strong>{{groupName}}</strong> ont été envoyées.",
     "alerts_success_send_email_groups_invitation": "Un email à rejoindre le groupe <strong>{{groupName}}</strong> à été envoyé à <strong>{{email}}</strong>.",

@@ -13,10 +13,10 @@
         '$filter',
         'userFactory',
         'httpRequest',
-        'invitationsFactory'
+        'usersFactory'
     ];
 
-    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, invitationsFactory) {
+    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, usersFactory) {
         var vm = this;
 
         // Common data
@@ -41,7 +41,9 @@
             initLogs              : initLogs,
             initLogins            : initLogins,
             getAppLanguageFlag    : getAppLanguageFlag,
-            initInvitations       : initInvitations
+            initInvitations       : initInvitations,
+            initRecruit           : initRecruit,
+            recruit               : recruit
         };
 
         // When a change occur into the popup of test
@@ -210,9 +212,36 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
-                vm.invitations         = angular.copy(invitationsFactory.getMyInvitations());
+                // vm.invitations         = angular.copy(user.invitations);
+                vm.invitations         = [];
                 vm.settingsInvitations = angular.copy(user.settings.preferences.invitations);
             }
+        }
+
+        // Called on init recruit
+        function initRecruit(user) {
+            if (user == null) {
+                user = userFactory.getUser();
+            }
+            if (user != null) {
+                vm.availableUsers = usersFactory.getAvailableUsers(user);
+            }
+        }
+
+        // Send invitations to recruit Cogeo users
+        function recruit() {
+            vm.methods.startLoading();
+            var invitations = {
+                invitations: vm.availableUsersSelected
+            };
+            userFactory.httpRequest.sendInvitations(invitations, function () {
+                vm.methods.stopLoading();
+                goTo.view('app.account.invitations');
+            }, function () {
+                vm.methods.stopLoading();
+                var btn = angular.element(document.querySelector('#submit-recruit-user-btn'));
+                httpRequest.shakeElement(btn);
+            });
         }
     }
 
