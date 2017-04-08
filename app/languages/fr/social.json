@@ -1,0 +1,12 @@
+{
+    "SOCIAL": {
+        "TITLE": "Mon aspect social",
+        "SUBTITLE": "Consulte, invite et gère tes amis.",
+        "FRIENDS": {
+            "SINCE": "Amis depuis le {{date}}",
+            "ALIAS": "alias {{alias}}",
+            "BLOCKED": "Bloqué",
+            "BLOCKED_SINCE": "Bloqué depuis le {{date}}"
+        }
+    }
+}

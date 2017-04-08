@@ -1,10 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
-        
-    </body>
-</html>
+<div class="animated fadeIn"
+     ng-init="vm.methods.initFriends()">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+
+                <!-- Filter -->
+                <cozen-form cozen-form-name="members"
+                            cozen-form-ctrl="vm"
+                            cozen-form-model="form">
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-input cozen-input-model="vm.settingsFriends.search"
+                                     cozen-input-name="search"
+                                     cozen-input-success-design="false"
+                                     cozen-input-error-design="false"
+                                     cozen-input-icon-left="fa fa-search"
+                                     cozen-input-placeholder="groups_members_search_pc"
+                                     cozen-input-auto-complete="off"
+                                     cozen-input-class="atom-search-input">
+                        </cozen-input>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-pagination cozen-pagination-model="vm.settingsFriends.currentPage"
+                                          cozen-pagination-class="flex-end"
+                                          cozen-pagination-limit-per-page="vm.settingsFriends.limit"
+                                          cozen-pagination-total-elements="fakeFriendsFilter.length"
+                                          cozen-pagination-auto-hide="true">
+                        </cozen-pagination>
+                    </div>
+                </cozen-form>
+            </div>
+
+            <!-- Members -->
+            <div ng-show="vm.friends.length > 0"
+                 class="atom-friends space-base-before space-base-after">
+                <div class="atom-friend"
+                     style="animation-delay: {{ 50 * $index + 'ms' }};"
+                     ng-class="{'border-bottom': $last}"
+                     ng-repeat="friend in vm.friends
+                       | orderBy: 'date':vm.settingsFriends.orderBy
+                       | filter: vm.settingsFriends.search
+                       | startFrom: (vm.settingsFriends.currentPage - 1) * vm.settingsFriends.limit
+                       | limitTo: vm.settingsFriends.limit
+                       as friendsFilter track by $index">
+                    <div class="text">
+                        <p>
+                            {{ friend.givenName }} {{ friend.surname }}
+
+                            <!-- Username link -->
+                            <small>
+                                <a href
+                                   ng-click="goTo.view('app.profiles.user', {username: friend.username}, $event)"
+                                   ui-sref="app.profiles.user({username: friend.username})">
+                                    @{{ friend.username }}
+                                </a>
+                            </small>
+
+                            <!-- Alias -->
+                            <small class="help-text"
+                                   ng-show="friend.alias != '' && friend.alias != null">
+                                {{ 'SOCIAL.FRIENDS.ALIAS' | translate:{alias: friend.alias} }}
+                            </small>
+
+                            <!-- Marks -->
+                            <cozen-tooltip ng-show="friend.blocked != 0"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-type-html
+                                           cozen-tooltip-label="'SOCIAL.FRIENDS.BLOCKED_SINCE' | translate:{date: (friend.blocked | date: 'EEEE dd MMMM yyyy')}">
+                                <mark class="atom-mark banned">{{ 'SOCIAL.FRIENDS.BLOCKED' | translate }}</mark>
+                            </cozen-tooltip>
+                        </p>
+
+                        <!-- Friend since -->
+                        <p class="help-text">
+                            {{ 'SOCIAL.FRIENDS.SINCE' | translate:{date: (friend.date | date: 'EEEE dd MMMM yyyy')} }}
+                        </p>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="action-btn">
+                        <friend-action friend-action-rename="true"
+                                       friend-action-block="friend.blocked == 0"
+                                       friend-action-block-data="{username: friend.username}"
+                                       friend-action-unblock-data="{username: friend.username}"
+                                       friend-action-rename-data="{username: friend.username, alias: friend.alias}"
+                                       friend-action-unblock="friend.blocked != 0">
+                        </friend-action>
+                    </div>
+                </div>
+
+                <!-- Friends fake (for actual length) -->
+                <div style="display: none;"
+                     ng-repeat="friend in vm.friends
+                       | filter: vm.settingsFriends.search
+                       as fakeFriendsFilter track by $index">
+                </div>
+            </div>
+
+            <!-- Info message for empty friends -->
+            <cozen-alert cozen-alert-display="vm.friends.length == 0"
+                         cozen-alert-label="'account_friends_empty'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-medium-before space-base-after"
+                         cozen-alert-type-info>
+            </cozen-alert>
+
+            <!-- More filter -->
+            <a href
+               class="animated fadeInUp space-medium-after"
+               onclick="this.blur()"
+               ng-click="methods.showPopup($event, 'contactsFilter', vm.friends)">
+                {{ 'groups_all_show_filter' | translate }}
+            </a>
+        </div>
+    </div>
+</div>

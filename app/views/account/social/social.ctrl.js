@@ -28,18 +28,20 @@
 
         // Methods
         vm.methods = {
-            startLoading          : startLoading,
-            stopLoading           : stopLoading,
-            getAppLanguageFlag    : getAppLanguageFlag,
-            initInvitations       : initInvitations,
-            initRecruit           : initRecruit,
-            recruit               : recruit
+            startLoading      : startLoading,
+            stopLoading       : stopLoading,
+            getAppLanguageFlag: getAppLanguageFlag,
+            initInvitations   : initInvitations,
+            initRecruit       : initRecruit,
+            recruit           : recruit,
+            initFriends       : initFriends
         };
 
         // When the user factory is updated
         userFactory.subscribe($scope, function () {
             vm.user = userFactory.getUser();
             vm.methods.initInvitations(vm.user);
+            vm.methods.initFriends(vm.user);
         });
 
         // Start the loader for submit btn
@@ -93,6 +95,17 @@
                 var btn = angular.element(document.querySelector('#submit-recruit-user-btn'));
                 httpRequest.shakeElement(btn);
             });
+        }
+
+        // Called on init friends
+        function initFriends(user) {
+            if (user == null) {
+                user = userFactory.getUser();
+            }
+            if (user != null) {
+                vm.friends         = userFactory.getFriends();
+                vm.settingsFriends = angular.copy(user.settings.preferences.contacts);
+            }
         }
     }
 

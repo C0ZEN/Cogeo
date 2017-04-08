@@ -16,12 +16,13 @@
 
         // Public functions
         return {
-            view             : view,
-            isCurrentView    : isCurrentView,
-            hasThisParent    : hasThisParent,
-            getCurrentParam  : getCurrentParam,
-            isOneOfThoseViews: isOneOfThoseViews,
-            viewUserProfile  : viewUserProfile
+            view                : view,
+            isCurrentView       : isCurrentView,
+            hasThisParent       : hasThisParent,
+            getCurrentParam     : getCurrentParam,
+            isOneOfThoseViews   : isOneOfThoseViews,
+            viewUserProfile     : viewUserProfile,
+            hasOneOfThoseParents: hasOneOfThoseParents
         };
 
         function view(view, param, $event) {
@@ -89,6 +90,15 @@
                 }
             }
             this.view(view, params);
+        }
+
+        function hasOneOfThoseParents() {
+            for (var i = 0, length = arguments.length; i < length; i++) {
+                if (Methods.isInList($state.current.name, arguments[i])) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 

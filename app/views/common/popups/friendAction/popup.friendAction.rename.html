@@ -1,0 +1,46 @@
+<cozen-popup cozen-popup-name="friendActionRename"
+             cozen-popup-type-info
+             cozen-popup-data="friendActionRenameData"
+             cozen-popup-header-title="'popup_friendAction_rename_header_title'">
+    <div class="row">
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top">{{ 'popup_friendAction_rename_body_title' | translate:friendActionRenameData }}</h3>
+            <p class="help-text">{{ 'popup_friendAction_rename_body_subtitle_1' | translate:friendActionRenameData }}</p>
+            <p class="help-text">{{ 'popup_friendAction_rename_body_subtitle_2' | translate:friendActionRenameData }}</p>
+            <p class="help-text">{{ 'popup_friendAction_rename_body_subtitle_3' | translate:friendActionRenameData }}</p>
+        </div>
+
+        <cozen-form class="col-xs-6 space-medium-after"
+                    cozen-form-ctrl="popup"
+                    cozen-form-model="form"
+                    cozen-form-name="friendActionRename">
+
+            <!-- New alias -->
+            <cozen-input cozen-input-model="popup.friendActionRenameData.alias"
+                         cozen-input-label="popup_friendAction_rename_body_alias"
+                         cozen-input-max-length="40"
+                         cozen-input-min-length="2"
+                         cozen-input-pattern-words
+                         cozen-input-validator-empty="false"
+                         cozen-input-placeholder="popup_friendAction_rename_body_alias_pc">
+            </cozen-input>
+        </cozen-form>
+
+        <!-- Submit btn -->
+        <div class="col-xs-12 space-large-after">
+            <cozen-btn cozen-btn-type-info
+                       cozen-btn-icon-right="fa fa-fw icons8-edit"
+                       cozen-btn-label="'popup_friendAction_rename_body_block' | translate:friendActionRenameData"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="popup.methods.friendAction.rename()"
+                       cozen-btn-class="space-base-right">
+            </cozen-btn>
+            <cozen-btn cozen-btn-type-cold
+                       cozen-btn-label="'popup_cancel'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="popup.methods.closePopup('friendActionRename')"
+                       cozen-btn-class="space-base-left">
+            </cozen-btn>
+        </div>
+    </div>
+</cozen-popup>

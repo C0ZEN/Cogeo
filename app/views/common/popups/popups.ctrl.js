@@ -169,6 +169,9 @@
                 case 'channelsLogsFilter':
                     userFactory.httpRequest.updateSettingsChannelsLogs(popup.channelsLogsFilter.data);
                     break;
+                case 'contactsFilter':
+                    userFactory.httpRequest.updateSettingsContacts(popup.contactsFilter.data);
+                    break;
             }
         }
 

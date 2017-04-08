@@ -17,6 +17,7 @@ div.actions-list {
         }
         &:hover {
             background-color : @atom-color-line-rule-light;
+            &.friend-rename,
             &.granted {
                 border : 1px solid @atom-color-blue;
                 color  : @atom-color-blue;
@@ -25,6 +26,7 @@ div.actions-list {
                 border : 1px solid @atom-color-purple;
                 color  : @atom-color-purple;
             }
+            &.friend-block,
             &.kicked {
                 border : 1px solid @atom-color-yellow;
                 color  : @atom-color-yellow;
@@ -33,6 +35,7 @@ div.actions-list {
                 border : 1px solid @atom-color-error;
                 color  : @atom-color-error;
             }
+            &.friend-unblock,
             &.unbanned {
                 border : 1px solid @atom-color-green;
                 color  : @atom-color-green;

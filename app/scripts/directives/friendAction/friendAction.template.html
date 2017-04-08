@@ -1,0 +1,34 @@
+<div class="actions-list"
+     ng-show="friendActionIsVisible"
+     ng-class="_methods.getMainClass()">
+
+    <!-- Block -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_friendAction_block'">
+        <div ng-show="friendActionBlock"
+             ng-click="_methods.onClick($event, 'block')"
+             class="action-item friend-block animated zoomIn">
+            <i class="fa fa-fw icons8-no-chat"></i>
+        </div>
+    </cozen-tooltip>
+
+    <!-- Unblock -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_friendAction_unblock'">
+        <div ng-show="friendActionUnblock"
+             ng-click="_methods.onClick($event, 'unblock')"
+             class="action-item friend-unblock animated zoomIn">
+            <i class="fa fa-fw icons8-chat"></i>
+        </div>
+    </cozen-tooltip>
+
+    <!-- Rename -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_friendAction_rename'">
+        <div ng-show="friendActionRename"
+             ng-click="_methods.onClick($event, 'rename')"
+             class="action-item friend-rename animated zoomIn">
+            <i class="fa fa-fw icons8-edit"></i>
+        </div>
+    </cozen-tooltip>
+</div>

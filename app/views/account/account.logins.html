@@ -32,7 +32,7 @@
 
             <div class="atom-access-logs space-base-before space-base-after">
                 <div class="atom-access-log"
-                     style="animation-delay: {{ 50 * $index + 'ms' }};"
+                     style="animation-delay: {{ 200 * $index + 'ms' }};"
                      ng-class="[accessLog.category, $last ? 'border-bottom' : '']"
                      ng-repeat="accessLog in vm.accessLogs
 			           | orderBy: 'date':vm.settingsLogins.orderBy

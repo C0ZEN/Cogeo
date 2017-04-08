@@ -87,21 +87,11 @@
                 }
 
                 // Default values (scope)
-                if (angular.isUndefined(attrs.userActionKicked)) {
-                    scope.userActionKicked = true;
-                }
-                if (angular.isUndefined(attrs.userActionBanned)) {
-                    scope.userActionBanned = true;
-                }
-                if (angular.isUndefined(attrs.userActionUnbanned)) {
-                    scope.userActionUnbanned = true;
-                }
-                if (angular.isUndefined(attrs.userActionRevoked)) {
-                    scope.userActionRevoked = true;
-                }
-                if (angular.isUndefined(attrs.userActionGranted)) {
-                    scope.userActionGranted = true;
-                }
+                angular.isUndefined(attrs.userActionKicked) ? scope.userActionKicked = true : null;
+                angular.isUndefined(attrs.userActionBanned) ? scope.userActionBanned = true : null;
+                angular.isUndefined(attrs.userActionUnbanned) ? scope.userActionUnbanned = true : null;
+                angular.isUndefined(attrs.userActionRevoked) ? scope.userActionRevoked = true : null;
+                angular.isUndefined(attrs.userActionGranted) ? scope.userActionGranted = true : null;
 
                 // Default values (attributes)
                 scope.userActionIsVisible = true;

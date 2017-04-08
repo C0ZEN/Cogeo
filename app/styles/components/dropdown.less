@@ -89,7 +89,32 @@ div.link-dropdown {
         &.no-action {
             cursor    : default;
             font-size : @atom-font-h4;
-            color     : @atom-color-label;
+            color     : @atom-color-line-rule;
+            &.active,
+            &:focus,
+            &:hover {
+                color            : @atom-color-line-rule;
+                background-color : @atom-color-white;
+                cursor           : default;
+            }
+        }
+        &.link-dropdown-item-purple {
+            &.active,
+            &:focus,
+            &:hover {
+                color : @atom-color-purple;
+            }
+        }
+        &.link-dropdown-item-green {
+            &.active,
+            &:focus,
+            &:hover {
+                color : @atom-color-green;
+            }
+        }
+        &.link-dropdown-item-title {
+            cursor : default;
+            color  : @atom-color-label;
             &.active,
             &:focus,
             &:hover {

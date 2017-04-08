@@ -1,0 +1,29 @@
+<cozen-popup cozen-popup-name="friendActionUnblock"
+             cozen-popup-type-green
+             cozen-popup-data="friendActionUnblockData"
+             cozen-popup-header-title="'popup_friendAction_unblock_header_title'">
+    <div class="row">
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top">{{ 'popup_friendAction_unblock_body_title' | translate:friendActionUnblockData }}</h3>
+            <p class="help-text">{{ 'popup_friendAction_unblock_body_subtitle_1' | translate:friendActionUnblockData }}</p>
+            <p class="help-text">{{ 'popup_friendAction_unblock_body_subtitle_2' | translate:friendActionUnblockData }}</p>
+        </div>
+
+        <!-- Submit btn -->
+        <div class="col-xs-12 space-large-after">
+            <cozen-btn cozen-btn-type-green
+                       cozen-btn-icon-right="fa fa-fw icons8-chat"
+                       cozen-btn-label="'popup_friendAction_unblock_body_block' | translate:friendActionUnblockData"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="popup.methods.friendAction.unblock()"
+                       cozen-btn-class="space-base-right">
+            </cozen-btn>
+            <cozen-btn cozen-btn-type-cold
+                       cozen-btn-label="'popup_cancel'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="popup.methods.closePopup('friendActionUnblock')"
+                       cozen-btn-class="space-base-left">
+            </cozen-btn>
+        </div>
+    </div>
+</cozen-popup>

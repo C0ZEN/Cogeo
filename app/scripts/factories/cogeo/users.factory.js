@@ -806,17 +806,25 @@
 
             // If the current user have some contacts
             if (!Methods.isNullOrEmpty(user.contacts) && user.contacts.length > 0) {
-                var tmpUsers = [];
-                availableUsers.forEach(function (user) {
+                var tmpUsers = [], stillAvailable;
+                availableUsers.forEach(function (availableUser) {
+                    stillAvailable = true;
                     user.contacts.forEach(function (contact) {
 
                         // If the user is found in the current user contacts
-                        if (user.username == contact.username) {
-                            if (contact.blocked == 0 && contact.removed == 0) {
-                                tmpUsers.push(user);
+                        if (contact.username == availableUser.username) {
+
+                            // But is removed, he can be invited as friend
+                            if (contact.removed == 0) {
+                                stillAvailable = false;
                             }
                         }
                     });
+
+                    // The user is not in the contacts, we can add it
+                    if (stillAvailable) {
+                        tmpUsers.push(availableUser);
+                    }
                 });
                 availableUsers = tmpUsers;
             }

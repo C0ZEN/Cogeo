@@ -34,7 +34,6 @@
             <div ng-show="vm.invitations != null && vm.invitations.length > 0"
                  class="atom-invitations space-base-before space-base-after">
                 <div class="atom-invitation"
-                     style="animation-delay: {{ 50 * $index + 'ms' }};"
                      ng-class="{'border-bottom': $last, 'waiting': invitation.status.response == 1, 'accepted': invitation.status.response == 2, 'rejected': invitation.status.response == 0}"
                      ng-repeat="invitation in vm.invitations
                        | orderBy: 'date':vm.settingsInvitations.orderBy

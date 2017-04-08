@@ -496,6 +496,9 @@ a.atom-link-yellow:focus {
 .no-margin-bottom {
   margin-bottom: 0 !important;
 }
+.no-margin-right {
+  margin-right: 0 !important;
+}
 /************/
 /**   HR   **/
 /************/
@@ -517,6 +520,8 @@ div.atom-btn-container {
   margin-left: 6px;
   margin-right: 6px;
 }
+small.help-text,
+span.help-text,
 p.help-text {
   margin: 0;
   color: #8C8C8C;
@@ -932,6 +937,9 @@ i.atom-icon-btn.purple:hover {
 .container.vertical-center-container > .row {
   width: 100%;
 }
+.margin-left-auto {
+  margin-left: auto;
+}
 /***************/
 /**   COLOR   **/
 /***************/
@@ -1134,11 +1142,32 @@ div.link-dropdown div.link-dropdown-item span {
 div.link-dropdown div.link-dropdown-item.no-action {
   cursor: default;
   font-size: 14px;
-  color: #8C8C8C;
+  color: #D6DBDB;
 }
 div.link-dropdown div.link-dropdown-item.no-action.active,
 div.link-dropdown div.link-dropdown-item.no-action:focus,
 div.link-dropdown div.link-dropdown-item.no-action:hover {
+  color: #D6DBDB;
+  background-color: #FFFFFF;
+  cursor: default;
+}
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-purple.active,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-purple:focus,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-purple:hover {
+  color: #9C27B0;
+}
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-green.active,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-green:focus,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-green:hover {
+  color: #4AC291;
+}
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-title {
+  cursor: default;
+  color: #8C8C8C;
+}
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-title.active,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-title:focus,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-title:hover {
   color: #8C8C8C;
   background-color: #FFFFFF;
   cursor: default;
@@ -2464,6 +2493,7 @@ div.actions-list div.action-item i {
 div.actions-list div.action-item:hover {
   background-color: #F8F8F8;
 }
+div.actions-list div.action-item:hover.friend-rename,
 div.actions-list div.action-item:hover.granted {
   border: 1px solid #2C9FDD;
   color: #2C9FDD;
@@ -2472,6 +2502,7 @@ div.actions-list div.action-item:hover.revoked {
   border: 1px solid #9C27B0;
   color: #9C27B0;
 }
+div.actions-list div.action-item:hover.friend-block,
 div.actions-list div.action-item:hover.kicked {
   border: 1px solid #FEB909;
   color: #FEB909;
@@ -2480,6 +2511,7 @@ div.actions-list div.action-item:hover.banned {
   border: 1px solid #E53935;
   color: #E53935;
 }
+div.actions-list div.action-item:hover.friend-unblock,
 div.actions-list div.action-item:hover.unbanned {
   border: 1px solid #4AC291;
   color: #4AC291;
@@ -2970,6 +3002,91 @@ div.atom-access-logs div.atom-access-log div.text p:first-of-type {
   font-size: 16px;
 }
 div.atom-access-logs > :first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+div.atom-friends div.atom-friend {
+  border-top: 1px solid #D6DBDB;
+  border-right: 1px solid #D6DBDB;
+  border-left: 1px solid #D6DBDB;
+  padding: 6px 12px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeInLeft-12;
+          animation-name: fadeInLeft-12;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@-webkit-keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+div.atom-friends div.atom-friend.ng-leave-active {
+  display: none;
+  -webkit-animation-duration: 0ms;
+          animation-duration: 0ms;
+}
+div.atom-friends div.atom-friend.border-bottom {
+  border-bottom: 1px solid #D6DBDB;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+div.atom-friends div.atom-friend div.img {
+  padding-right: 12px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+div.atom-friends div.atom-friend div.img img {
+  height: 42px;
+  padding: 4px;
+}
+div.atom-friends div.atom-friend div.text p {
+  margin: 0;
+}
+div.atom-friends div.atom-friend div.text p:first-of-type {
+  font-size: 16px;
+}
+div.atom-friends div.atom-friend div.text cozen-tooltip {
+  margin-left: 6px;
+}
+div.atom-friends div.atom-friend div.action-btn {
+  margin-left: auto;
+  margin-top: 4px;
+}
+div.atom-friends > :first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }

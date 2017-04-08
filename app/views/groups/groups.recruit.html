@@ -55,7 +55,6 @@
                                  ng-repeat="user in vm.availableUsers track by $index"
                                  class="atom-list-item-container">
                                 <div class="atom-inline-item"
-                                     style="animation-delay: {{ 50 * $index + 'ms' }};"
                                      ng-class="[$last ? 'border-bottom' : '']">
                                     <span>
                                         {{ user.givenName + ' ' + user.surname }}

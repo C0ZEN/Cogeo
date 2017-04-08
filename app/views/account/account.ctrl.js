@@ -40,10 +40,7 @@
             initNotifications     : initNotifications,
             initLogs              : initLogs,
             initLogins            : initLogins,
-            getAppLanguageFlag    : getAppLanguageFlag,
-            initInvitations       : initInvitations,
-            initRecruit           : initRecruit,
-            recruit               : recruit
+            getAppLanguageFlag    : getAppLanguageFlag
         };
 
         // When a change occur into the popup of test
@@ -55,6 +52,7 @@
             vm.methods.initSettings(vm.user);
             vm.methods.initNotifications(vm.user);
             vm.methods.initLogs(vm.user);
+            vm.methods.initLogins(vm.user);
         });
 
         // On submit, start loading, send request then stop loading
@@ -204,44 +202,6 @@
         // Return the src for the flag for this app language
         function getAppLanguageFlag(language) {
             return 'images/flags/' + language + '.png';
-        }
-
-        // Called on init invitations
-        function initInvitations(user) {
-            if (user == null) {
-                user = userFactory.getUser();
-            }
-            if (user != null) {
-                // vm.invitations         = angular.copy(user.invitations);
-                vm.invitations         = [];
-                vm.settingsInvitations = angular.copy(user.settings.preferences.invitations);
-            }
-        }
-
-        // Called on init recruit
-        function initRecruit(user) {
-            if (user == null) {
-                user = userFactory.getUser();
-            }
-            if (user != null) {
-                vm.availableUsers = usersFactory.getAvailableUsers(user);
-            }
-        }
-
-        // Send invitations to recruit Cogeo users
-        function recruit() {
-            vm.methods.startLoading();
-            var invitations = {
-                invitations: vm.availableUsersSelected
-            };
-            userFactory.httpRequest.sendInvitations(invitations, function () {
-                vm.methods.stopLoading();
-                goTo.view('app.account.invitations');
-            }, function () {
-                vm.methods.stopLoading();
-                var btn = angular.element(document.querySelector('#submit-recruit-user-btn'));
-                httpRequest.shakeElement(btn);
-            });
         }
     }
 

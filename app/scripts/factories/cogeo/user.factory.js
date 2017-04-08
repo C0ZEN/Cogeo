@@ -567,7 +567,8 @@
                 removeToStarred                  : httpRequestRemoveToStarred,
                 addAccessLog                     : httpRequestAddAccessLog,
                 updateSettingsInvitations        : httpRequestUpdateSettingsInvitations,
-                sendInvitations                  : httpRequestSendInvitations
+                sendInvitations                  : httpRequestSendInvitations,
+                updateSettingsContacts           : httpRequestUpdateSettingsContacts
             }
         };
 
@@ -613,7 +614,37 @@
                 user = null;
             }
             else {
-                user = formatUserData(response);
+                user          = formatUserData(response);
+                user.contacts = [
+                    {
+                        username: 'Test1',
+                        date    : 123,
+                        blocked : 0,
+                        removed : 0,
+                        alias   : ''
+                    },
+                    {
+                        username: 'Test2',
+                        date    : 123,
+                        blocked : 789123,
+                        removed : 0,
+                        alias   : ''
+                    },
+                    {
+                        username: 'Test3',
+                        date    : 123,
+                        blocked : 0,
+                        removed : 4567899,
+                        alias   : ''
+                    },
+                    {
+                        username: 'Test4',
+                        date    : 125593,
+                        blocked : 0,
+                        removed : 0,
+                        alias   : 'Mich mich'
+                    }
+                ];
                 usersFactory.updateUser(user);
             }
             _notify();
@@ -761,7 +792,16 @@
 
         // Return the friends of the current user
         function getFriends() {
-            return [];
+            var friends = [], friend;
+            for (var i = 0, length = user.contacts.length; i < length; i++) {
+                if (user.contacts[i].removed == 0) {
+                    friend                     = usersFactory.getUserByUsername(user.contacts[i].username);
+                    user.contacts[i].givenName = friend.givenName;
+                    user.contacts[i].surname   = friend.surname;
+                    friends.push(user.contacts[i]);
+                }
+            }
+            return friends;
         }
 
         // Return the status of the current user
@@ -1071,6 +1111,15 @@
                             }
                         });
                     }
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsContacts(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/settings/contacts', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
                 })
             ;
         }

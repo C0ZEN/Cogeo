@@ -28,8 +28,10 @@
                      ng-class="{'active': false}"
                      ng-click="goTo.view('app.groups.all')"
                      tabindex="0">
+                    <i class="fa fa-fw fa-th-list space-small-right"></i>
                     {{ 'navbar_groups_all' | translate }}
                 </div>
+                <div class="link-dropdown-separator"></div>
 
                 <!-- Group link -->
                 <div ng-repeat="group in vm.groups track by $index"
@@ -49,7 +51,7 @@
                     <div ng-show="group.showChannels && group.channels.length > 0"
                          class="sub-links">
                         <div ng-repeat="channel in group.channels track by $index"
-                             class="link-dropdown-item"
+                             class="link-dropdown-item link-dropdown-item-green"
                              ng-click="$event.stopPropagation(); goTo.view('app.channels.details', {groupName: group.name, channelName: channel.name})"
                              tabindex="0">
                             <div class="img">
@@ -138,46 +140,70 @@
              ng-mouseleave="vm.other.hover = false"
              ng-keydown="$event.keyCode == 13 ? vm.other.hover = !vm.other.hover : null"
              ng-click="vm.other.hover = true"
-             ng-class="{'active': goTo.hasThisParent('app.account')}"
+             ng-class="{'active': goTo.hasOneOfThoseParents('app.account', 'app.social')}"
              tabindex="0">
             {{ userFactory.getUser().username }}
             <div class="link-dropdown"
                  ng-show="vm.other.hover">
+
+                <!-- Account -->
+                <div class="link-dropdown-item link-dropdown-item-title">
+                    {{ 'navbar_other_account' | translate }}
+                </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.profile', 'app.account.profileEdit', 'app.account.profileEditPassword')}"
                      ng-click="goTo.view('app.account.profile')"
                      tabindex="0">
+                    <i class="fa fa-fw icons8-user-male space-small-right"></i>
                     {{ 'navbar_other_profile' | translate }}
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.notifications', 'app.account.notificationsEdit')}"
                      ng-click="goTo.view('app.account.notifications')"
                      tabindex="0">
+                    <i class="fa fa-fw icons8-appointment-reminders space-small-right"></i>
                     {{ 'navbar_other_notifications' | translate }}
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.settings', 'app.account.settingsEdit')}"
                      ng-click="goTo.view('app.account.settings')"
                      tabindex="0">
+                    <i class="fa fa-fw icons8-settings space-small-right"></i>
                     {{ 'navbar_other_settings' | translate }}
-                </div>
-                <div class="link-dropdown-item"
-                     ng-class="{'active': goTo.isOneOfThoseViews('app.account.invitations', 'app.account.recruit')}"
-                     ng-click="goTo.view('app.account.invitations')"
-                     tabindex="0">
-                    {{ 'navbar_other_invitations' | translate }}
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.log')}"
                      ng-click="goTo.view('app.account.log')"
                      tabindex="0">
+                    <i class="fa fa-fw icons8-time space-small-right"></i>
                     {{ 'navbar_other_log' | translate }}
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.logins')}"
                      ng-click="goTo.view('app.account.logins')"
                      tabindex="0">
+                    <i class="fa fa-fw icons8-login-rounded-right space-small-right"></i>
                     {{ 'navbar_other_logins' | translate }}
+                </div>
+
+                <!-- Social -->
+                <div class="link-dropdown-separator"></div>
+                <div class="link-dropdown-item link-dropdown-item-title">
+                    {{ 'navbar_other_social' | translate }}
+                </div>
+                <div class="link-dropdown-item link-dropdown-item-purple"
+                     ng-class="{'active': goTo.isOneOfThoseViews('app.social.friends')}"
+                     ng-click="goTo.view('app.social.friends')"
+                     tabindex="0">
+                    <i class="fa fa-fw icons8-user-groups space-small-right"></i>
+                    {{ 'navbar_other_friends' | translate }}
+                </div>
+                <div class="link-dropdown-item link-dropdown-item-purple"
+                     ng-class="{'active': goTo.isOneOfThoseViews('app.social.invitations', 'app.social.recruit')}"
+                     ng-click="goTo.view('app.social.invitations')"
+                     tabindex="0">
+                    <i class="fa fa-fw icons8-message-filled space-small-right"></i>
+                    {{ 'navbar_other_invitations' | translate }}
                 </div>
             </div>
         </div>
