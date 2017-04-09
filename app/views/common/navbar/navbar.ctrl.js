@@ -20,7 +20,7 @@
         vm.methods = {
             scrollToElement: scrollToElement,
             isConnected    : userFactory.isConnected,
-            onGroupsChanged: onGroupsChanged,
+            onGroupsChanged: onGroupsChanged
         };
 
         // Common data
@@ -38,13 +38,13 @@
         };
 
         // Get the current user
-        var user = userFactory.getUser();
+        vm.user = userFactory.getUser();
         vm.methods.onGroupsChanged();
 
         // Listeners
         groupsFactory.subscribe($scope, vm.methods.onGroupsChanged);
         userFactory.subscribe($scope, function () {
-            user = userFactory.getUser();
+            vm.user = userFactory.getUser();
         });
 
         function scrollToElement(element) {
@@ -53,9 +53,9 @@
         }
 
         function onGroupsChanged() {
-            var user = userFactory.getUser();
-            if (user != null) {
-                vm.groups = groupsFactory.getUserGroups(user.username);
+            vm.user = userFactory.getUser();
+            if (vm.user != null) {
+                vm.groups = groupsFactory.getUserGroups(vm.user.username);
             }
         }
     }

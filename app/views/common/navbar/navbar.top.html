@@ -17,6 +17,7 @@
              ng-mouseenter="vm.group.hover = true"
              ng-mouseleave="vm.group.hover = false"
              ng-keydown="$event.keyCode == 13 ? vm.group.hover = !vm.group.hover : null"
+             ng-class="{'active': goTo.hasOneOfThoseParents('app.groups', 'app.groupNew')}"
              ng-click="vm.group.hover = true"
              tabindex="0">
             {{ 'navbar_groups' | translate }}
@@ -25,7 +26,7 @@
 
                 <!-- See all groups link -->
                 <div class="link-dropdown-item"
-                     ng-class="{'active': false}"
+                     ng-class="{'active': goTo.isCurrentView('app.groups.all')}"
                      ng-click="goTo.view('app.groups.all')"
                      tabindex="0">
                     <i class="fa fa-fw fa-th-list space-small-right"></i>
@@ -36,7 +37,7 @@
                 <!-- Group link -->
                 <div ng-repeat="group in vm.groups track by $index"
                      class="link-dropdown-item"
-                     ng-class="{'active': false}"
+                     ng-class="{'active': goTo.hasOneOfThoseParents('app.groups', 'app.channels') && group.name == $state.params.groupName }"
                      ng-click="goTo.view('app.groups.details', {groupName: group.name})"
                      ng-mouseenter="group.showChannels = true"
                      ng-mouseleave="group.showChannels = false"
@@ -52,6 +53,7 @@
                          class="sub-links">
                         <div ng-repeat="channel in group.channels track by $index"
                              class="link-dropdown-item link-dropdown-item-green"
+                             ng-class="{'active': goTo.hasOneOfThoseParents('app.groups', 'app.channels') && channel.name == $state.params.channelName && group.name == $state.params.groupName }"
                              ng-click="$event.stopPropagation(); goTo.view('app.channels.details', {groupName: group.name, channelName: channel.name})"
                              tabindex="0">
                             <div class="img">
@@ -72,7 +74,7 @@
                 <!-- Add group link -->
                 <div class="link-dropdown-separator"></div>
                 <div class="link-dropdown-item"
-                     ng-class="{'active': false}"
+                     ng-class="{'active': goTo.hasOneOfThoseParents('app.groupNew')}"
                      ng-click="goTo.view('app.groupNew.firstStep')"
                      tabindex="0">
                     <i class="fa fa-fw fa-plus space-small-right"></i>
