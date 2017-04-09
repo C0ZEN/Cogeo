@@ -63,6 +63,10 @@
 
                     <!-- Details -->
                     <h3>{{ 'channels_details_details' | translate }}</h3>
+                    <h4 ng-if="vm.CONFIG.dev">
+                        <strong>ID:</strong>
+                        {{ vm.channel._id }}
+                    </h4>
                     <h4>
                         <strong>{{ 'channels_details_creator' | translate }}:</strong>
                         <a href

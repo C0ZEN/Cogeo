@@ -20,7 +20,7 @@
         vm.methods = {
             scrollToElement: scrollToElement,
             isConnected    : userFactory.isConnected,
-            onGroupsChanged: onGroupsChanged
+            onGroupsChanged: onGroupsChanged,
         };
 
         // Common data
@@ -43,6 +43,9 @@
 
         // Listeners
         groupsFactory.subscribe($scope, vm.methods.onGroupsChanged);
+        userFactory.subscribe($scope, function () {
+            user = userFactory.getUser();
+        });
 
         function scrollToElement(element) {
             var div = angular.element(document.getElementById(element));

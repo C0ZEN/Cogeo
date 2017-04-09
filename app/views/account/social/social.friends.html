@@ -82,7 +82,9 @@
                                        friend-action-block="friend.blocked == 0"
                                        friend-action-block-data="{username: friend.username}"
                                        friend-action-unblock-data="{username: friend.username}"
+                                       friend-action-remove-data="{username: friend.username}"
                                        friend-action-rename-data="{username: friend.username, alias: friend.alias}"
+                                       friend-action-remove="friend.blocked == 0"
                                        friend-action-unblock="friend.blocked != 0">
                         </friend-action>
                     </div>

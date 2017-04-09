@@ -27,6 +27,7 @@
         ConfigProvider
             .scrollsBar(false)
             .debug(true)
+            .dev(true)
             .logsEnabled(true)
             .dropdownAutoCloseOthers(true)
             .inputModelLengthType('focus')

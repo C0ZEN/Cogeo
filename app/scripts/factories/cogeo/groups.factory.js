@@ -1708,6 +1708,7 @@
             subscribe                    : subscribe,
             getGroups                    : getGroups,
             getGroupByName               : getGroupByName,
+            getGroupById                 : getGroupById,
             getGroupByNameWithUserRoles  : getGroupByNameWithUserRoles,
             getUserFromGroup             : getUserFromGroup,
             getGroupsWithUserRoles       : getGroupsWithUserRoles,
@@ -1721,6 +1722,7 @@
             getInvitationForUserFromGroup: getInvitationForUserFromGroup,
             addGroup                     : addGroup,
             getGroupPicture              : getGroupPicture,
+            getGroupPictureByGroupId     : getGroupPictureByGroupId,
             getChannelById               : getChannelById,
             getChannelByName             : getChannelByName,
             isUserAdmin                  : isUserAdmin,
@@ -1749,9 +1751,18 @@
             return groups;
         }
 
-        function getGroupByName(name) {
+        function getGroupByName(groupName) {
             for (var i = 0, length = groups.length; i < length; i++) {
-                if (groups[i].name == name) {
+                if (groups[i].name == groupName) {
+                    return groups[i];
+                }
+            }
+            return null;
+        }
+
+        function getGroupById(groupId) {
+            for (var i = 0, length = groups.length; i < length; i++) {
+                if (groups[i]._id == groupId) {
                     return groups[i];
                 }
             }
@@ -1942,6 +1953,19 @@
         function getGroupPicture(groupName) {
             if (!Methods.isNullOrEmpty(groupName)) {
                 var group = getGroupByName(groupName);
+                if (!Methods.isNullOrEmpty(group) && !Methods.isNullOrEmpty(group.picture) && !Methods.isNullOrEmpty(group.picture.url)) {
+                    return group.picture.url;
+                }
+                else {
+                    return 'images/groups/' + groupName.slice(0, 1) + '.png';
+                }
+            }
+            return '';
+        }
+
+        function getGroupPictureByGroupId(groupId, groupName) {
+            if (!Methods.isNullOrEmpty(groupId)) {
+                var group = getGroupById(groupId);
                 if (!Methods.isNullOrEmpty(group) && !Methods.isNullOrEmpty(group.picture) && !Methods.isNullOrEmpty(group.picture.url)) {
                     return group.picture.url;
                 }

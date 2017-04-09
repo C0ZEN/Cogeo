@@ -123,7 +123,7 @@
     "account_logins_login_address": "Localisation:",
     "account_logins_login_app": "Cogeo:",
     "account_logins_login_app_version": "version ",
-    "account_logins_last_login": "Dernière connexion le {{date}} à {{hour}}",
+    "account_logins_last_login": "Dernière visite le {{date}} à {{hour}}",
     "account_invitations_submit": "Inviter des amis",
     "account_recruit_title": "J'invite des membres Cogeo à mes amis",
     "account_recruit_subtitle_1": "Invite des utilisateurs Cogeo à rejoindre ton cercle d'amis.",

@@ -71,6 +71,7 @@
 .icons8-event-declined-filled:before,
 .icons8-google-groups:before,
 .icons8-google-plus:before,
+.icons8-hourglass-filled:before,
 .icons8-lock:before,
 .icons8-login-rounded-right:before,
 .icons8-logout-rounded:before,
@@ -89,6 +90,7 @@
 .icons8-speaker:before,
 .icons8-stop:before,
 .icons8-time:before,
+.icons8-trash:before,
 .icons8-unlock:before,
 .icons8-user-groups:before,
 .icons8-user-male:before,
@@ -138,6 +140,9 @@
 }
 .icons8-google-plus:before {
   content: "\f113";
+}
+.icons8-hourglass-filled:before {
+  content: "\f130";
 }
 .icons8-lock:before {
   content: "\f128";
@@ -193,6 +198,9 @@
 .icons8-time:before {
   content: "\f106";
 }
+.icons8-trash:before {
+  content: "\f132";
+}
 .icons8-unlock:before {
   content: "\f127";
 }
@@ -207,15 +215,15 @@
 }
 @font-face {
   font-family: "Atom";
-  src: url("../../fonts/Atom_46d393a305cc69352ee905a8562c5297.eot");
-  src: url("../../fonts/Atom_46d393a305cc69352ee905a8562c5297.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_46d393a305cc69352ee905a8562c5297.woff2") format("woff2"), url("../../fonts/Atom_46d393a305cc69352ee905a8562c5297.woff") format("woff"), url("../../fonts/Atom_46d393a305cc69352ee905a8562c5297.ttf") format("truetype"), url("../../fonts/Atom_46d393a305cc69352ee905a8562c5297.svg#Atom") format("svg");
+  src: url("../../fonts/Atom_6f9216209b3dfd9a0c9fad522dfce384.eot");
+  src: url("../../fonts/Atom_6f9216209b3dfd9a0c9fad522dfce384.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_6f9216209b3dfd9a0c9fad522dfce384.woff2") format("woff2"), url("../../fonts/Atom_6f9216209b3dfd9a0c9fad522dfce384.woff") format("woff"), url("../../fonts/Atom_6f9216209b3dfd9a0c9fad522dfce384.ttf") format("truetype"), url("../../fonts/Atom_6f9216209b3dfd9a0c9fad522dfce384.svg#Atom") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Atom";
-    src: url("../../fonts/Atom_46d393a305cc69352ee905a8562c5297.svg#Atom") format("svg");
+    src: url("../../fonts/Atom_6f9216209b3dfd9a0c9fad522dfce384.svg#Atom") format("svg");
   }
 }
 /*!
@@ -2507,10 +2515,13 @@ div.actions-list div.action-item:hover.kicked {
   border: 1px solid #FEB909;
   color: #FEB909;
 }
+div.actions-list div.action-item:hover.invitation-refuse,
+div.actions-list div.action-item:hover.friend-remove,
 div.actions-list div.action-item:hover.banned {
   border: 1px solid #E53935;
   color: #E53935;
 }
+div.actions-list div.action-item:hover.invitation-accept,
 div.actions-list div.action-item:hover.friend-unblock,
 div.actions-list div.action-item:hover.unbanned {
   border: 1px solid #4AC291;
@@ -2709,6 +2720,8 @@ div.atom-inline-list div.atom-list-item-container div.atom-inline-item {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  border-bottom: 1px solid #D6DBDB;
+  margin-top: -1px;
 }
 @-webkit-keyframes fadeInLeft-12 {
   from {
@@ -2740,11 +2753,11 @@ div.atom-inline-list div.atom-list-item-container div.atom-inline-item.ng-leave-
           animation-duration: 0ms;
 }
 div.atom-inline-list > :first-child div.atom-inline-item {
+  margin-top: 0;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 div.atom-inline-list > :last-child div.atom-inline-item {
-  border-bottom: 1px solid #D6DBDB;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -3084,9 +3097,116 @@ div.atom-friends div.atom-friend div.text cozen-tooltip {
 }
 div.atom-friends div.atom-friend div.action-btn {
   margin-left: auto;
-  margin-top: 4px;
 }
 div.atom-friends > :first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+div.atom-invitations-received div.atom-invitation-received {
+  border-top: 1px solid #D6DBDB;
+  border-right: 1px solid #D6DBDB;
+  padding: 6px 12px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeInLeft-12;
+          animation-name: fadeInLeft-12;
+}
+@-webkit-keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInLeft-12 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+            transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+div.atom-invitations-received div.atom-invitation-received.ng-leave-active {
+  display: none;
+  -webkit-animation-duration: 0ms;
+          animation-duration: 0ms;
+}
+div.atom-invitations-received div.atom-invitation-received.user {
+  border-left: 3px solid #9C27B0;
+}
+div.atom-invitations-received div.atom-invitation-received.user div.icon {
+  color: #9C27B0;
+}
+div.atom-invitations-received div.atom-invitation-received.group {
+  border-left: 3px solid #2C9FDD;
+}
+div.atom-invitations-received div.atom-invitation-received.group div.icon {
+  color: #2C9FDD;
+}
+div.atom-invitations-received div.atom-invitation-received.channel {
+  border-left: 3px solid #4AC291;
+}
+div.atom-invitations-received div.atom-invitation-received.channel div.icon {
+  color: #4AC291;
+}
+div.atom-invitations-received div.atom-invitation-received.border-bottom {
+  border-bottom: 1px solid #D6DBDB;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+div.atom-invitations-received div.atom-invitation-received > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+div.atom-invitations-received div.atom-invitation-received > div div.img {
+  padding-right: 12px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+div.atom-invitations-received div.atom-invitation-received > div div.img img {
+  height: 42px;
+  padding: 4px;
+}
+div.atom-invitations-received div.atom-invitation-received > div div.icon {
+  padding-right: 12px;
+  font-size: 24px;
+}
+div.atom-invitations-received div.atom-invitation-received > div div.icon i {
+  vertical-align: middle;
+  font-size: inherit;
+}
+div.atom-invitations-received div.atom-invitation-received > div div.text p {
+  margin: 0;
+}
+div.atom-invitations-received div.atom-invitation-received > div div.text p:first-of-type {
+  font-size: 16px;
+}
+div.atom-invitations-received div.atom-invitation-received > div div.action-btn {
+  margin-left: auto;
+}
+div.atom-invitations-received > :first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }

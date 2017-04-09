@@ -17,6 +17,8 @@ div.atom-inline-list {
             justify-content     : flex-start;
             align-items         : center;
             flex                : 1;
+            border-bottom       : 1px solid @atom-color-line-rule;
+            margin-top          : -1px;
             &.ng-leave-active {
                 display            : none;
                 animation-duration : 0ms;
@@ -24,11 +26,11 @@ div.atom-inline-list {
         }
     }
     > :first-child div.atom-inline-item {
+        margin-top              : 0;
         border-top-left-radius  : @atom-radius;
         border-top-right-radius : @atom-radius;
     }
     > :last-child div.atom-inline-item {
-        border-bottom              : 1px solid @atom-color-line-rule;
         border-bottom-left-radius  : @atom-radius;
         border-bottom-right-radius : @atom-radius;
     }

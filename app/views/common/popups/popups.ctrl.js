@@ -31,6 +31,12 @@
                 kicked  : userActionKicked,
                 banned  : userActionBanned,
                 unbanned: userActionUnbanned
+            },
+            friendAction        : {
+                block  : friendActionBlock,
+                unblock: friendActionUnblock,
+                rename : friendActionRename,
+                remove : friendActionRemove
             }
         };
 
@@ -199,6 +205,22 @@
             popup.chatSetStatus = {
                 status: userFactory.getAllStatus()
             }
+        }
+
+        function friendActionBlock() {
+            popup.methods.closePopup('friendActionBlock');
+        }
+
+        function friendActionUnblock() {
+            popup.methods.closePopup('friendActionUnblock');
+        }
+
+        function friendActionRename() {
+            popup.methods.closePopup('friendActionRename');
+        }
+
+        function friendActionRemove() {
+            popup.methods.closePopup('friendActionRemove');
         }
     }
 

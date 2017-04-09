@@ -614,8 +614,8 @@
                 user = null;
             }
             else {
-                user          = formatUserData(response);
-                user.contacts = [
+                user                    = formatUserData(response);
+                user.contacts           = [
                     {
                         username: 'Test1',
                         date    : 123,
@@ -643,6 +643,26 @@
                         blocked : 0,
                         removed : 0,
                         alias   : 'Mich mich'
+                    }
+                ];
+                user.pendingInvitations = [
+                    {
+                        type  : 'user',
+                        sentBy: 'Test5',
+                        sentOn: 123456
+                    },
+                    {
+                        type   : 'group',
+                        sentBy : 'Test5',
+                        sentOn : 123456,
+                        groupId: '58e6b955681cbb0011154873'
+                    },
+                    {
+                        type     : 'channel',
+                        sentBy   : 'Test5',
+                        sentOn   : 123456,
+                        groupId  : '58e6b955681cbb0011154873',
+                        channelId: '58e6b955681cbb0011154874'
                     }
                 ];
                 usersFactory.updateUser(user);

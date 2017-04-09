@@ -10,10 +10,12 @@
  * @param {boolean} friendActionBlock        = true > Display the block action
  * @param {boolean} friendActionUnblock      = true > Display the unblock action
  * @param {boolean} friendActionRename       = true > Display the rename action
+ * @param {boolean} friendActionRemove       = true > Display the remove action
  * @param {boolean} friendActionIsVisible    = true > Show/hide the actions
  * @param {object}  friendActionBlockData           > Data required by the popup
  * @param {object}  friendActionUnblockData         > Data required by the popup
  * @param {object}  friendActionRenameData          > Data required by the popup
+ * @param {object}  friendActionRemoveData          > Data required by the popup
  *
  */
 (function (angular) {
@@ -35,10 +37,12 @@
                 friendActionBlock      : '=?',
                 friendActionUnblock    : '=?',
                 friendActionRename     : '=?',
+                friendActionRemove     : '=?',
                 friendActionIsVisible  : '=?',
                 friendActionBlockData  : '=?',
                 friendActionUnblockData: '=?',
-                friendActionRenameData : '=?'
+                friendActionRenameData : '=?',
+                friendActionRemoveData : '=?'
             },
             replace    : false,
             transclude : false,
@@ -82,6 +86,7 @@
                 angular.isUndefined(attrs.friendActionBlock) ? scope.friendActionBlock = true : null;
                 angular.isUndefined(attrs.friendActionUnblock) ? scope.friendActionUnblock = true : null;
                 angular.isUndefined(attrs.friendActionRename) ? scope.friendActionRename = true : null;
+                angular.isUndefined(attrs.friendActionRemove) ? scope.friendActionRemove = true : null;
 
                 // Default values (attributes)
                 scope.friendActionIsVisible = true;
@@ -134,6 +139,9 @@
                         break;
                     case 'rename':
                         $rootScope.methods.showPopup($event, 'friendActionRename', scope.friendActionRenameData);
+                        break;
+                    case 'remove':
+                        $rootScope.methods.showPopup($event, 'friendActionRemove', scope.friendActionRemoveData);
                         break;
                 }
             }

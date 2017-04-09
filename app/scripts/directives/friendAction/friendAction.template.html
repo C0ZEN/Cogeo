@@ -2,6 +2,16 @@
      ng-show="friendActionIsVisible"
      ng-class="_methods.getMainClass()">
 
+    <!-- Rename -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_friendAction_rename'">
+        <div ng-show="friendActionRename"
+             ng-click="_methods.onClick($event, 'rename')"
+             class="action-item friend-rename animated zoomIn">
+            <i class="fa fa-fw icons8-edit"></i>
+        </div>
+    </cozen-tooltip>
+
     <!-- Block -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_friendAction_block'">
@@ -22,13 +32,13 @@
         </div>
     </cozen-tooltip>
 
-    <!-- Rename -->
+    <!-- Remove -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
-                   cozen-tooltip-label="'other_friendAction_rename'">
-        <div ng-show="friendActionRename"
-             ng-click="_methods.onClick($event, 'rename')"
-             class="action-item friend-rename animated zoomIn">
-            <i class="fa fa-fw icons8-edit"></i>
+                   cozen-tooltip-label="'other_friendAction_remove'">
+        <div ng-show="friendActionRemove"
+             ng-click="_methods.onClick($event, 'remove')"
+             class="action-item friend-remove animated zoomIn">
+            <i class="fa fa-fw icons8-trash"></i>
         </div>
     </cozen-tooltip>
 </div>

@@ -31,12 +31,14 @@
         };
 
         // Public global services
-        $rootScope.$state       = $state;
-        $rootScope.goTo         = goTo;
-        $rootScope.botFactory   = botFactory;
-        $rootScope.usersFactory = usersFactory;
-        $rootScope.userFactory  = userFactory;
-        $rootScope.logsFactory  = logs;
+        $rootScope.$state          = $state;
+        $rootScope.goTo            = goTo;
+        $rootScope.botFactory      = botFactory;
+        $rootScope.usersFactory    = usersFactory;
+        $rootScope.userFactory     = userFactory;
+        $rootScope.logsFactory     = logs;
+        $rootScope.groupsFactory   = groupsFactory;
+        $rootScope.channelsFactory = channelsFactory;
 
         // Public global functions
         $rootScope.methods = {

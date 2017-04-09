@@ -1,0 +1,24 @@
+<div class="actions-list"
+     ng-show="invitationActionIsVisible"
+     ng-class="_methods.getMainClass()">
+
+    <!-- Accept -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_invitationAction_accept'">
+        <div ng-show="invitationActionAccept"
+             ng-click="_methods.onClick($event, 'accept')"
+             class="action-item invitation-accept animated zoomIn">
+            <i class="fa fa-fw icons8-chat"></i>
+        </div>
+    </cozen-tooltip>
+
+    <!-- Refuse -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_invitationAction_refuse'">
+        <div ng-show="invitationActionRefuse"
+             ng-click="_methods.onClick($event, 'refuse')"
+             class="action-item invitation-refuse animated zoomIn">
+            <i class="fa fa-fw icons8-no-chat"></i>
+        </div>
+    </cozen-tooltip>
+</div>

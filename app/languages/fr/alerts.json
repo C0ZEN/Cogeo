@@ -1,6 +1,6 @@
 {
     "alerts_info_logout": "Tu es maintenant déconnecté.<br>Merci et à la prochaine !",
-    "alerts_success_login": "Hey, salut <strong>{{username}}</strong> ! Bon retour sur Cogeo !<br><small>Dernière connexion {{lastLogin}}.</small>",
+    "alerts_success_login": "Hey, salut <strong>{{username}}</strong> ! Bon retour sur Cogeo !<br><small>Dernière visite {{lastLogin}}.</small>",
     "alerts_success_register": "Hey <strong>{{username}}</strong> !<br>Merci de t'être inscrit sur Cogeo !",
     "alerts_success_update_user": "Tes modifications de profil ont été sauvegardées.",
     "alerts_success_update_user_password": "Ton mot de passe a été changé.",
