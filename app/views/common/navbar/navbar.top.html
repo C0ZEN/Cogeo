@@ -17,7 +17,7 @@
              ng-mouseenter="vm.group.hover = true"
              ng-mouseleave="vm.group.hover = false"
              ng-keydown="$event.keyCode == 13 ? vm.group.hover = !vm.group.hover : null"
-             ng-class="{'active': goTo.hasOneOfThoseParents('app.groups', 'app.groupNew')}"
+             ng-class="{'active': goTo.hasOneOfThoseParents('app.groups', 'app.groupNew', 'app.channels')}"
              ng-click="vm.group.hover = true"
              tabindex="0">
             {{ 'navbar_groups' | translate }}

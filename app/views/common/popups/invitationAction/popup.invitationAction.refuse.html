@@ -1,37 +1,38 @@
 <cozen-popup cozen-popup-name="invitationActionRefuse"
              cozen-popup-type-error
-             cozen-popup-data="invitationActionRefuseData"
+             cozen-popup-data="popup.invitationActionRefuseData"
              cozen-popup-header-title="'popup_invitationAction_refuse_header_title'">
     <div class="row"
-         ng-switch="invitationActionRefuseData.type">
+         ng-switch="popup.invitationActionRefuseData.tag">
 
         <!-- User invitation -->
         <div ng-switch-when="user"
              class="col-xs-12 space-large-before space-medium-after">
-            <h3 class="no-margin-top">{{ 'popup_invitationAction_refuse_user_body_title' | translate:invitationActionRefuseData }}</h3>
-            <p class="help-text">{{ 'popup_invitationAction_refuse_user_body_subtitle_1' | translate:invitationActionRefuseData }}</p>
+            <h3 class="no-margin-top">{{ 'popup_invitationAction_refuse_user_body_title' | translate:popup.invitationActionRefuseData }}</h3>
+            <p class="help-text">{{ 'popup_invitationAction_refuse_user_body_subtitle_1' | translate:popup.invitationActionRefuseData }}</p>
         </div>
 
         <!-- Group invitation -->
         <div ng-switch-when="group"
              class="col-xs-12 space-large-before space-medium-after">
-            <h3 class="no-margin-top">{{ 'popup_invitationAction_refuse_group_body_title' | translate:invitationActionRefuseData }}</h3>
-            <p class="help-text">{{ 'popup_invitationAction_refuse_group_body_subtitle_1' | translate:invitationActionRefuseData }}</p>
+            <h3 class="no-margin-top">{{ 'popup_invitationAction_refuse_group_body_title' | translate:popup.invitationActionRefuseData }}</h3>
+            <p class="help-text">{{ 'popup_invitationAction_refuse_group_body_subtitle_1' | translate:popup.invitationActionRefuseData }}</p>
         </div>
 
         <!-- Channel invitation -->
         <div ng-switch-when="channel"
              class="col-xs-12 space-large-before space-medium-after">
-            <h3 class="no-margin-top">{{ 'popup_invitationAction_refuse_channel_body_title' | translate:invitationActionRefuseData }}</h3>
-            <p class="help-text">{{ 'popup_invitationAction_refuse_channel_body_subtitle_1' | translate:invitationActionRefuseData }}</p>
+            <h3 class="no-margin-top">{{ 'popup_invitationAction_refuse_channel_body_title' | translate:popup.invitationActionRefuseData }}</h3>
+            <p class="help-text">{{ 'popup_invitationAction_refuse_channel_body_subtitle_1' | translate:popup.invitationActionRefuseData }}</p>
         </div>
 
         <!-- Submit btn -->
-        <div class="col-xs-12 space-large-after">
+        <div class="col-xs-12 space-large-after display-flex">
             <cozen-btn cozen-btn-type-error
                        cozen-btn-icon-right="fa fa-fw icons8-no-chat"
-                       cozen-btn-label="'popup_invitationAction_refuse_body_accept' | translate:invitationActionRefuseData"
+                       cozen-btn-label="'popup_invitationAction_refuse_body_accept' | translate:popup.invitationActionRefuseData"
                        cozen-btn-auto-sizing="true"
+                       cozen-btn-loader="popup.loading"
                        cozen-btn-on-click="popup.methods.invitationAction.refuse()"
                        cozen-btn-class="space-base-right">
             </cozen-btn>

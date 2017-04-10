@@ -948,6 +948,11 @@ i.atom-icon-btn.purple:hover {
 .margin-left-auto {
   margin-left: auto;
 }
+.display-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 /***************/
 /**   COLOR   **/
 /***************/

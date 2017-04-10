@@ -42,7 +42,9 @@
         vm.methods.onGroupsChanged();
 
         // Listeners
-        groupsFactory.subscribe($scope, vm.methods.onGroupsChanged);
+        groupsFactory.subscribe($scope, function () {
+            vm.methods.onGroupsChanged();
+        });
         userFactory.subscribe($scope, function () {
             vm.user = userFactory.getUser();
         });

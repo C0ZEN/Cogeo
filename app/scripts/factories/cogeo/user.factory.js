@@ -15,11 +15,13 @@
         'cozenFloatingFeedFactory',
         'accessLog',
         'readableTime',
-        '$filter'
+        '$filter',
+        'CONFIG',
+        'cozenEnhancedLogs'
     ];
 
     function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope,
-                         goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter) {
+                         goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter, CONFIG, cozenEnhancedLogs) {
 
         // var user   = {
         //     givenName      : 'Geoffrey',
@@ -568,7 +570,9 @@
                 addAccessLog                     : httpRequestAddAccessLog,
                 updateSettingsInvitations        : httpRequestUpdateSettingsInvitations,
                 sendInvitations                  : httpRequestSendInvitations,
-                updateSettingsContacts           : httpRequestUpdateSettingsContacts
+                updateSettingsContacts           : httpRequestUpdateSettingsContacts,
+                acceptPendingInvitation          : httpRequestAcceptPendingInvitation,
+                refusePendingInvitation          : httpRequestRefusePendingInvitation
             }
         };
 
@@ -614,8 +618,8 @@
                 user = null;
             }
             else {
-                user                    = formatUserData(response);
-                user.contacts           = [
+                user          = formatUserData(response);
+                user.contacts = [
                     {
                         username: 'Test1',
                         date    : 123,
@@ -645,27 +649,11 @@
                         alias   : 'Mich mich'
                     }
                 ];
-                user.pendingInvitations = [
-                    {
-                        type  : 'user',
-                        sentBy: 'Test5',
-                        sentOn: 123456
-                    },
-                    {
-                        type   : 'group',
-                        sentBy : 'Test5',
-                        sentOn : 123456,
-                        groupId: '58e6b955681cbb0011154873'
-                    },
-                    {
-                        type     : 'channel',
-                        sentBy   : 'Test5',
-                        sentOn   : 123456,
-                        groupId  : '58e6b955681cbb0011154873',
-                        channelId: '58e6b955681cbb0011154874'
-                    }
-                ];
                 usersFactory.updateUser(user);
+            }
+            if (CONFIG.dev) {
+                cozenEnhancedLogs.info.functionCalled('userFactory', 'setUser');
+                console.log(response);
             }
             _notify();
         }
@@ -1143,7 +1131,44 @@
                 })
             ;
         }
+
+        function httpRequestAcceptPendingInvitation(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/invitations/pending/accept', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                    var type, label;
+                    switch (data.tag) {
+                        case 'user':
+                            type  = 'purple';
+                            label = 'alerts_invitations_user_accept';
+                            break;
+                        case 'group':
+                            type  = 'blue';
+                            label = 'alerts_invitations_group_accept';
+                            break;
+                        case 'channel':
+                            type  = 'green';
+                            label = 'alerts_invitations_channel_accept';
+                            break;
+                    }
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : type,
+                        label      : label,
+                        labelValues: data
+                    });
+                })
+            ;
+        }
+
+        function httpRequestRefusePendingInvitation(data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/invitations/pending/refuse', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
     }
 
 })(window.angular);
-

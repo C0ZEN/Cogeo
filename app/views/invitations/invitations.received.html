@@ -12,13 +12,13 @@
                  class="atom-invitations-received space-base-before space-base-after">
                 <div class="atom-invitation-received"
                      ng-class="{'border-bottom': $last,
-                     'user': invitationReceived.type == 'user',
-                     'group': invitationReceived.type == 'group',
-                     'channel': invitationReceived.type == 'channel'}"
+                     'user': invitationReceived.tag == 'user',
+                     'group': invitationReceived.tag == 'group',
+                     'channel': invitationReceived.tag == 'channel'}"
                      ng-repeat="invitationReceived in vm.invitationsReceived
                        | orderBy: 'date':vm.settingsInvitations.orderBy
                        as invitationsReceivedFilter track by $index"
-                     ng-switch="invitationReceived.type">
+                     ng-switch="invitationReceived.tag">
 
                     <!-- Type user -->
                     <div ng-switch-when="user">

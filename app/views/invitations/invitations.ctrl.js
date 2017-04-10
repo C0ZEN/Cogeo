@@ -36,6 +36,7 @@
         // When the user factory is updated
         userFactory.subscribe($scope, function () {
             vm.user = userFactory.getUser();
+            vm.methods.initInvitationsReceived();
         });
 
         // Start the loader for submit btn
@@ -60,13 +61,13 @@
                 invitation.surname   = tmpUser.surname;
 
                 // Add some data about the group
-                if (invitation.type == 'group') {
+                if (invitation.tag == 'group') {
                     tmpGroup             = groupsFactory.getGroupById(invitation.groupId);
                     invitation.groupName = tmpGroup.name;
                 }
 
                 // Add some data about the channel
-                else if (invitation.type == 'channel') {
+                else if (invitation.tag == 'channel') {
                     tmpGroup               = groupsFactory.getGroupById(invitation.groupId);
                     invitation.groupName   = tmpGroup.name;
                     tmpChannel             = groupsFactory.getChannelById(tmpGroup.name, invitation.channelId);

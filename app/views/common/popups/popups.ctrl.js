@@ -11,10 +11,14 @@
         '$scope',
         '$rootScope',
         'userFactory',
-        'botFactory'
+        'botFactory',
+        'cozenEnhancedLogs',
+        'usersFactory',
+        'groupsFactory'
     ];
 
-    function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory) {
+    function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory, cozenEnhancedLogs, usersFactory,
+                       groupsFactory) {
         var popup = this;
 
         // Methods
@@ -37,7 +41,13 @@
                 unblock: friendActionUnblock,
                 rename : friendActionRename,
                 remove : friendActionRemove
-            }
+            },
+            invitationAction    : {
+                accept: invitationActionAccept,
+                refuse: invitationActionRefuse
+            },
+            startLoading        : startLoading,
+            stopLoading         : stopLoading
         };
 
         // Common data
@@ -221,6 +231,58 @@
 
         function friendActionRemove() {
             popup.methods.closePopup('friendActionRemove');
+        }
+
+        function invitationActionAccept() {
+            popup.methods.startLoading();
+            if (CONFIG.dev) {
+                cozenEnhancedLogs.info.functionCalled('popup', 'invitationActionAccept');
+                cozenEnhancedLogs.explodeObject(popup.invitationActionAcceptData);
+            }
+            userFactory.httpRequest.acceptPendingInvitation(popup.invitationActionAcceptData, function () {
+                popup.methods.stopLoading();
+                popup.methods.closePopup('invitationActionAccept');
+                switch (popup.invitationActionAcceptData.tag) {
+                    case 'user':
+                        usersFactory.httpRequest.getAll();
+                        break;
+                    case 'channel':
+                    case 'group':
+                        groupsFactory.httpRequest.getAllGroups();
+                }
+            }, function () {
+                popup.methods.stopLoading();
+            });
+        }
+
+        function invitationActionRefuse() {
+            popup.methods.startLoading();
+            if (CONFIG.dev) {
+                cozenEnhancedLogs.info.functionCalled('popup', 'invitationActionRefuse');
+                cozenEnhancedLogs.explodeObject(popup.invitationActionRefuseData);
+            }
+            userFactory.httpRequest.refusePendingInvitation(popup.invitationActionRefuseData, function () {
+                popup.methods.stopLoading();
+                popup.methods.closePopup('invitationActionRefuse');
+                switch (popup.invitationActionRefuseData.tag) {
+                    case 'user':
+                        usersFactory.httpRequest.getAll();
+                        break;
+                    case 'channel':
+                    case 'group':
+                        groupsFactory.httpRequest.getAllGroups();
+                }
+            }, function () {
+                popup.methods.stopLoading();
+            });
+        }
+
+        function startLoading() {
+            popup.loading = true;
+        }
+
+        function stopLoading() {
+            popup.loading = false;
         }
     }
 

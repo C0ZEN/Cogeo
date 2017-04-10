@@ -37,7 +37,7 @@
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
                      ng-class="{'border-bottom': $last, 'waiting': invitation.status.response == 1, 'accepted': invitation.status.response == 2, 'rejected': invitation.status.response == 0}"
                      ng-repeat="invitation in vm.groupInvitations
-                       | orderBy: 'date':vm.invitations.orderBy
+                       | orderBy: 'status.date':vm.invitations.orderBy
                        | filter: vm.invitations.search
                        | groupsInvitationsTypes: vm.invitations.types
                        | startFrom: (vm.invitations.currentPage - 1) * vm.invitations.limit
