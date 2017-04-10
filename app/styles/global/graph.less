@@ -1,0 +1,30 @@
+div.google-visualization-tooltip {
+    background-color : @atom-color-tooltip;
+    padding          : @atom-space-small;
+    border           : none;
+    border-radius    : @atom-radius;
+    display          : flex;
+    flex-direction   : row;
+    justify-content  : flex-start;
+    align-items      : center;
+    width            : auto !important;
+    max-width        : 400px;
+    div.tooltip-square {
+        height        : @atom-font-h3;
+        width         : @atom-font-h3;
+        max-width     : @atom-font-h3;
+        min-width     : @atom-font-h3;
+        border-radius : @atom-radius;
+        margin-right  : @atom-space-small;
+    }
+    p.tooltip-text {
+        font-size   : @atom-font-body;
+        color       : @atom-color-white;
+        font-weight : 400;
+        margin      : 0;
+        padding     : 0;
+        small {
+            color : @atom-color-line-rule;
+        }
+    }
+}

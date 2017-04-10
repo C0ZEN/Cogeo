@@ -77,7 +77,7 @@
                     text    : $filter('translate')('graph_google_channels_members_admin_tp')
                 },
                 {
-                    name    : $filter('translate')('graph_google_channels_members_member'),
+                    name    : '',
                     quantity: 20,
                     color   : colors.getColors().green,
                     pct     : '66%',
@@ -99,14 +99,9 @@
         // Create the tooltip
         function createCustomHTMLContent(item) {
             return '' +
-                '<div class="level" style="background-color:' + item.color + ';">' +
-                '</div>' +
-                '<p>' +
-                item.quantity + $filter('translate')('graph_google_channels_members_member_tp') +
-                '<br>' +
-                item.name.toLowerCase() +
-                '<br>' +
-                '<small>Soit ' + item.pct + '</small>' +
+                '<div class="tooltip-square" style="background-color:' + item.color + ';"></div>' +
+                '<p class="tooltip-text">' + item.quantity + ' ' + $filter('translate')('graph_google_channels_members_member_tp') + ' ' +  item.name.toLowerCase() +
+                '<small class="help-text"> (' + item.pct + ')</small>' +
                 '</p>';
         }
     }

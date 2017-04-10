@@ -1028,6 +1028,45 @@ html::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(76, 89, 107, 0.5);
   background-color: #4C596B;
 }
+div.google-visualization-tooltip {
+  background-color: #34495E;
+  padding: 6px;
+  border: none;
+  border-radius: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto !important;
+  max-width: 400px;
+}
+div.google-visualization-tooltip div.tooltip-square {
+  height: 16px;
+  width: 16px;
+  max-width: 16px;
+  min-width: 16px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+div.google-visualization-tooltip p.tooltip-text {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+div.google-visualization-tooltip p.tooltip-text small {
+  color: #D6DBDB;
+}
 div.link-dropdown {
   position: absolute;
   top: 100%;
