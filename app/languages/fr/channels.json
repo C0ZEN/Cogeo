@@ -54,6 +54,8 @@
     "channels_details_no_channel": "Le channel <strong>{{channelName}}</strong> n'existe pas ou à était supprimer.",
     "channels_details_no_rights_banned": "Tu ne peux pas rejoindre ce channel !<br>Tu es banni depuis le {{date}} par <strong>{{userName}}</strong> pour le motif suivant: {{for}}",
     "channels_details_no_rights_kicked": "Tu ne peux pas rejoindre ce channel !<br>Tu es expulsé depuis le {{date}} pour une durée de {{time}} par <strong>{{userName}}</strong> pour le motif suivant: {{for}}",
+    "channels_members_total_pluralize": "{{total}} membres",
+    "channels_members_total": "{{total}} membre",
     "channels_register_name": "Nom",
     "channels_register_name_pc": "Nom du channel (unique)",
     "channels_register_profile_picture": "Image du channel",

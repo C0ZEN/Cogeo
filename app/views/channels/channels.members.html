@@ -113,13 +113,21 @@
                          cozen-alert-type-info>
             </cozen-alert>
 
-            <!-- More filter -->
-            <a href
-               class="animated fadeInUp space-medium-after"
-               onclick="this.blur()"
-               ng-click="methods.showPopup($event, 'channelsMembersFilter', vm.membersSettings)">
-                {{ 'groups_all_show_filter' | translate }}
-            </a>
+            <div class="center-flex-content space-medium-after">
+
+                <!-- More filter -->
+                <a href
+                   class="animated fadeInUp"
+                   onclick="this.blur()"
+                   ng-click="methods.showPopup($event, 'channelsMembersFilter', vm.membersSettings)">
+                    {{ 'groups_all_show_filter' | translate }}
+                </a>
+
+                <!-- Number of members -->
+                <p class="no-margin help-text animated fadeInUp">
+                    {{ (vm.members.length > 1 ? 'channels_members_total_pluralize' : 'channels_members_total') | translate:{total: vm.members.length} }}
+                </p>
+            </div>
         </div>
     </div>
 </div>
