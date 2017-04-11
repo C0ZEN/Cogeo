@@ -30,7 +30,7 @@
             .logsEnabled(true)
             .dropdownAutoCloseOthers(true)
             .inputModelLengthType('focus')
-            .textareaDisplayModelLength(true)
+            .textareaModelLengthType('focus')
             .dropdownDisplayModelLength(true)
             .requiredType('icon')
             .alertIconLeftDefault('fa fa-info-circle')
