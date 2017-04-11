@@ -1997,11 +1997,11 @@
             return null;
         }
 
-        function isUserAdmin(groupName, userName) {
+        function isUserAdmin(groupName, username) {
             var group = getGroupByName(groupName);
             for (var i = 0, length = group.users.length; i < length; i++) {
-                if (group.users[i].username == userName) {
-                    return group.users[i].admin;
+                if (group.users[i].username == username) {
+                    return isActiveMember(username, groupName) && group.users[i].admin;
                 }
             }
             return false;
