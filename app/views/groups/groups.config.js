@@ -21,7 +21,7 @@
             name       : {
                 length  : 30,
                 required: true,
-                pattern : 'words',
+                pattern : '[A-Za-z0-9\\_\\-]*',
                 name    : 'name'
             },
             quicklink  : 'http://localhost:9000/#!/app/fr/groups/join/'

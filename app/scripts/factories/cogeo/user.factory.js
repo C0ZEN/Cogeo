@@ -9,7 +9,6 @@
         'httpRequest',
         'usersFactory',
         'localStorageService',
-        'socialLoginService',
         '$rootScope',
         'goTo',
         'cozenFloatingFeedFactory',
@@ -20,7 +19,7 @@
         'cozenEnhancedLogs'
     ];
 
-    function userFactory(httpRequest, usersFactory, localStorageService, socialLoginService, $rootScope,
+    function userFactory(httpRequest, usersFactory, localStorageService, $rootScope,
                          goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter, CONFIG, cozenEnhancedLogs) {
 
         // var user   = {
@@ -607,7 +606,7 @@
             httpRequestLogout(user.username, callback, callback);
             goTo.view('app.home');
             localStorageService.set('currentUser', {});
-            socialLoginService.logout();
+            // socialLoginService.logout();
             user = null;
             _notify();
         }
@@ -1166,6 +1165,26 @@
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
+                    var type, label;
+                    switch (data.tag) {
+                        case 'user':
+                            type  = 'purple';
+                            label = 'alerts_invitations_user_refuse';
+                            break;
+                        case 'group':
+                            type  = 'blue';
+                            label = 'alerts_invitations_group_refuse';
+                            break;
+                        case 'channel':
+                            type  = 'green';
+                            label = 'alerts_invitations_channel_refuse';
+                            break;
+                    }
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : type,
+                        label      : label,
+                        labelValues: data
+                    });
                 })
             ;
         }

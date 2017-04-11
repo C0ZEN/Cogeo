@@ -38,7 +38,7 @@
             'com.2fdevs.videogular.plugins.buffering',
             'ngclipboard',
             'LocalStorageModule',
-            'socialLogin',
+            // 'socialLogin',
             'anim-in-out',
             'angular-loading-bar',
             'dibari.angular-ellipsis',

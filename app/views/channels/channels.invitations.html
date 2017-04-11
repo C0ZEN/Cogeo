@@ -31,7 +31,7 @@
             </div>
 
             <!-- Invitations -->
-            <div ng-show="vm.invitations != null"
+            <div ng-show="vm.invitations.length != 0"
                  class="atom-invitations space-base-before space-base-after">
                 <div class="atom-invitation"
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
@@ -74,7 +74,7 @@
             </div>
 
             <!-- Info message for empty invitations -->
-            <cozen-alert cozen-alert-display="vm.invitations == null"
+            <cozen-alert cozen-alert-display="vm.invitations.length == 0"
                          cozen-alert-label="'groups_invitations_empty'"
                          cozen-alert-close-btn="false"
                          cozen-alert-class="space-base-before space-base-after"

@@ -14,13 +14,12 @@
         'tmhDynamicLocaleProvider',
         '$httpProvider',
         '$qProvider',
-        'socialProvider',
         'cfpLoadingBarProvider'
     ];
 
     // Global configuration
     function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider,
-                    $httpProvider, $qProvider, socialProvider, cfpLoadingBarProvider) {
+                    $httpProvider, $qProvider, cfpLoadingBarProvider) {
 
         // Override the CONFIG for the Atom theme
         ThemesProvider.setActiveTheme('atom');
@@ -77,11 +76,11 @@
         $qProvider.errorOnUnhandledRejections(false);
 
         // Social client and secret (Google/Facebook)
-        socialProvider.setGoogleKey("AIzaSyANiSj4N--3txST9re2QhbPuiifbx2HNQU");
-        socialProvider.setFbKey({
-            appId     : "576889762516850",
-            apiVersion: "v2.8"
-        });
+        // socialProvider.setGoogleKey("AIzaSyANiSj4N--3txST9re2QhbPuiifbx2HNQU");
+        // socialProvider.setFbKey({
+        //     appId     : "576889762516850",
+        //     apiVersion: "v2.8"
+        // });
 
         // Cogeo Config
         CONFIG.internal = {
