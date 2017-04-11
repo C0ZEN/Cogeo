@@ -36,6 +36,7 @@
             isActiveAdmin           : isActiveAdmin,
             getAvailableUsers       : getAvailableUsers,
             getDefaultChannels      : getDefaultChannels,
+            getChannelById          : getChannelById,
             httpRequest             : {
                 updateChannel  : httpRequestUpdateChannel,
                 addChannel     : httpRequestAddChannel,
@@ -262,10 +263,19 @@
 
         // Return the list of users which can be recruited
         function getAvailableUsers(groupName, channelId) {
-            var activeMembers  = getActiveMembers(groupName, channelId);
-            var groupMembers   = groupsFactory.getActiveUsers(groupName);
-            var currentUser    = userFactory.getUser();
-            var availableUsers = [], match;
+
+            // Get all the active members of the channel (to remove them after that)
+            var activeMembers = getActiveMembers(groupName, channelId);
+
+            // Get all the members of the group (available users)
+            var groupMembers = groupsFactory.getActiveUsers(groupName);
+
+            // Get all the invitations for this channel
+            var channelInvitations = getChannelById(groupName, channelId).invitations;
+            var currentUser        = userFactory.getUser();
+            var availableUsers     = [], match;
+
+            // For each group member, check if he is in the channel, if not, keep it
             groupMembers.forEach(function (groupMember) {
                 match = false;
                 activeMembers.forEach(function (channelMember) {
@@ -277,6 +287,8 @@
                     availableUsers.push(groupMember);
                 }
             });
+
+            // Remove the current from the list
             var userIndex = -1;
             availableUsers.forEach(function (user, index) {
                 if (user.username == currentUser.username) {
@@ -286,6 +298,25 @@
             if (userIndex != -1) {
                 availableUsers.splice(userIndex, 1);
             }
+
+            // Check if the user is already invited
+            var indexToRemove = [];
+            channelInvitations.forEach(function (invitation) {
+                availableUsers.forEach(function (user, index) {
+                    if (user.username == invitation.username && invitation.status.response == 1) {
+                        if (!Methods.isInList(indexToRemove, index)) {
+                            indexToRemove.push(index);
+                        }
+                    }
+                });
+            });
+
+            // Remove the matches
+            for (var i = indexToRemove.length - 1; i >= 0; i--) {
+                availableUsers.splice(indexToRemove[i], 1);
+            }
+
+            // Return the users
             return availableUsers;
         }
 
@@ -301,6 +332,16 @@
                 }
             }
             return defaultChannels;
+        }
+
+        function getChannelById(groupName, channelId) {
+            var group = groupsFactory.getGroupByName(groupName);
+            for (var i = 0, length = group.channels.length; i < length; i++) {
+                if (group.channels[i]._id == channelId) {
+                    return group.channels[i];
+                }
+            }
+            return null;
         }
 
         /// HTTP REQUEST ///
@@ -343,7 +384,7 @@
                     groupsFactory.updateGroup(response.data.data);
                     if (data.invitations.length > 1) {
                         cozenFloatingFeedFactory.addAlert({
-                            type       : 'success',
+                            type       : 'green',
                             label      : 'alerts_success_send_cogeo_groups_invitations',
                             labelValues: {
                                 groupName: groupName,
@@ -353,7 +394,7 @@
                     }
                     else {
                         cozenFloatingFeedFactory.addAlert({
-                            type       : 'success',
+                            type       : 'green',
                             label      : 'alerts_success_send_cogeo_groups_invitation',
                             labelValues: {
                                 groupName: groupName,

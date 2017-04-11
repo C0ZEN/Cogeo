@@ -1102,7 +1102,7 @@
                     setUserInLocalStorage(response.data.data);
                     if (data.invitations.length > 1) {
                         cozenFloatingFeedFactory.addAlert({
-                            type       : 'success',
+                            type       : 'purple',
                             label      : 'alerts_success_send_cogeo_user_invitations',
                             labelValues: {
                                 length: data.invitations.length
@@ -1111,7 +1111,7 @@
                     }
                     else {
                         cozenFloatingFeedFactory.addAlert({
-                            type       : 'success',
+                            type       : 'purple',
                             label      : 'alerts_success_send_cogeo_user_invitation',
                             labelValues: {
                                 username: data.invitations[0]

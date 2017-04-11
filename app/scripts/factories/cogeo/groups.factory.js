@@ -2089,7 +2089,7 @@
                     updateGroup(response.data.data);
                     if (data.invitations.length > 1) {
                         cozenFloatingFeedFactory.addAlert({
-                            type       : 'success',
+                            type       : 'blue',
                             label      : 'alerts_success_send_cogeo_groups_invitations',
                             labelValues: {
                                 groupName: groupName,
@@ -2099,7 +2099,7 @@
                     }
                     else {
                         cozenFloatingFeedFactory.addAlert({
-                            type       : 'success',
+                            type       : 'blue',
                             label      : 'alerts_success_send_cogeo_groups_invitation',
                             labelValues: {
                                 groupName: groupName,
@@ -2117,7 +2117,7 @@
                     updateGroup(response.data.data);
                     if (data.invitations.length > 1) {
                         cozenFloatingFeedFactory.addAlert({
-                            type       : 'success',
+                            type       : 'blue',
                             label      : 'alerts_success_send_email_groups_invitations',
                             labelValues: {
                                 groupName: groupName,
@@ -2127,7 +2127,7 @@
                     }
                     else {
                         cozenFloatingFeedFactory.addAlert({
-                            type       : 'success',
+                            type       : 'blue',
                             label      : 'alerts_success_send_email_groups_invitation',
                             labelValues: {
                                 groupName: groupName,

@@ -9,14 +9,14 @@
         'CONFIG',
         '$scope',
         'goTo',
-        '$rootScope',
+        'cozenEnhancedLogs',
         '$filter',
         'userFactory',
         'httpRequest',
         'usersFactory'
     ];
 
-    function SocialCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, usersFactory) {
+    function SocialCtrl(CONFIG, $scope, goTo, cozenEnhancedLogs, $filter, userFactory, httpRequest, usersFactory) {
         var vm = this;
 
         // Common data
@@ -87,6 +87,9 @@
             var invitations = {
                 invitations: vm.availableUsersSelected
             };
+            if (CONFIG.dev) {
+                cozenEnhancedLogs.info.explodeObject('SocialCtrl', 'recruit() executed', invitations);
+            }
             userFactory.httpRequest.sendInvitations(invitations, function () {
                 vm.methods.stopLoading();
                 goTo.view('app.social.invitations');

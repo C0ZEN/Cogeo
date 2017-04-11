@@ -60,7 +60,7 @@
                             </small>
                         </p>
                         <p class="help-text"
-                           cozen-compile="('groups_invitations_status_' + invitation.status.response) | translate:{date: (invitation.status.date | date: 'EEEE dd MMMM yyyy - HH:mm'), userName: '@' + invitation.sentBy}"></p>
+                           cozen-compile="('groups_invitations_status_' + invitation.status.response) | translate:{date: (invitation.status.date | date: 'EEEE dd MMMM yyyy'), hour: (invitation.status.date | date: 'HH:mm'), userName: '@' + invitation.sentBy}"></p>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
             <div class="space-medium-after center-flex-content">
 
                 <!-- Add members btn -->
-                <cozen-btn ng-show="vm.userCanRecruit"
+                <cozen-btn ng-show="vm.channel.private ? vm.userCanRecruit : true"
                            class="animated fadeInUp"
                            cozen-btn-label="'groups_invitations_invite_group'"
                            cozen-btn-auto-sizing="true"

@@ -15,11 +15,12 @@
         'usersFactory',
         'goTo',
         'httpRequest',
-        '$filter'
+        '$filter',
+        'cozenEnhancedLogs'
     ];
 
     function ChannelsCtrl(CONFIG, channelsFactory, googleGraphChannelMembers, $state, groupsFactory, userFactory,
-                          usersFactory, goTo, httpRequest, $filter) {
+                          usersFactory, goTo, httpRequest, $filter, cozenEnhancedLogs) {
         var vm = this;
 
         // Methods
@@ -231,7 +232,10 @@
                 username   : vm.user.username,
                 invitations: vm.availableUsersSelected
             };
-            channelsFactory.httpRequest.sendInvitations(vm.params.groupName, vm.params.channelName, data, function () {
+            if (CONFIG.dev) {
+                cozenEnhancedLogs.info.explodeObject('ChannelsCtrl', 'recruit() executed', invitations);
+            }
+            channelsFactory.httpRequest.sendInvitations(vm.params.groupName, vm.params.channelName, invitations, function () {
                 vm.methods.stopLoading();
                 goTo.view('app.channels.invitations', {
                     groupName  : vm.params.groupName,

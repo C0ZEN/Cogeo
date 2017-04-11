@@ -15,10 +15,11 @@
         'usersFactory',
         '$filter',
         '$scope',
-        '$timeout'
+        'cozenEnhancedLogs'
     ];
 
-    function GroupsCtrl(CONFIG, goTo, httpRequest, $state, groupsFactory, userFactory, usersFactory, $filter, $scope, $timeout) {
+    function GroupsCtrl(CONFIG, goTo, httpRequest, $state, groupsFactory, userFactory, usersFactory, $filter, $scope,
+                        cozenEnhancedLogs) {
         var vm = this;
 
         // Methods
@@ -154,6 +155,9 @@
                     data.invitations = vm.recruitEmail;
                     data.request     = 'sendEmailInvitations';
                     break;
+            }
+            if (CONFIG.dev) {
+                cozenEnhancedLogs.info.explodeObject('GroupsCtrl', 'recruit() executed', data);
             }
 
             // Execute the request
