@@ -1728,6 +1728,7 @@
             isUserAdmin                  : isUserAdmin,
             getActiveUsers               : getActiveUsers,
             setAllGroups                 : setAllGroups,
+            isActiveMember               : isActiveMember,
             httpRequest                  : {
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName,
@@ -2023,6 +2024,19 @@
         function setAllGroups(allGroups) {
             groups = allGroups;
             _notify();
+        }
+
+        function isActiveMember(username, groupName) {
+            if (Methods.isNullOrEmpty(username)) {
+                username = userFactory.getUser().username;
+            }
+            var group = getGroupByName(groupName);
+            for (var i = 0, length = group.users.length; i < length; i++) {
+                if (group.users[i].username == username) {
+                    return group.users[i].hasLeft == 0 && !group.users[i].kicked.active && !group.users[i].banned.active;
+                }
+            }
+            return false;
         }
 
         /// HTTP REQUEST ///

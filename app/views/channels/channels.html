@@ -56,6 +56,7 @@
                 <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_new"
                                          cozen-pills-item-simple-type-green
                                          cozen-pills-item-simple-on-click="goTo.view('app.channels.new', {'groupName': vm.params.groupName})"
+                                         cozen-pills-item-simple-disabled="!groupsFactory.isActiveMember(null, vm.params.groupName)"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.new')">
                 </cozen-pills-item-simple>
             </cozen-pills>
