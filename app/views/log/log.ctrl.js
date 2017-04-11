@@ -63,7 +63,10 @@
                 email    : vm.register.email,
                 password : vm.register.password
             };
-            userFactory.httpRequest.register(data, vm.methods.stopLoading, vm.methods.stopLoading);
+            userFactory.httpRequest.register(data, function () {
+                groupsFactory.httpRequest.getAllGroups();
+                vm.methods.stopLoading();
+            }, vm.methods.stopLoading);
         }
 
         function login() {
