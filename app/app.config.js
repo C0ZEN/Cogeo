@@ -40,7 +40,9 @@
             .popupFooter(false)
             .btnToggleStartRight(false)
             .floatingFeedWidth(520)
-            .floatingFeedTimeoutTime(14000);
+            .floatingFeedTimeoutTime(14000)
+            .btnLazyTestPositionTop('70px')
+            .btnLazyTestPositionLeft('10px');
 
         // Configure the location provider
         $locationProvider.html5Mode({

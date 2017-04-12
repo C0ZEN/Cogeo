@@ -50,7 +50,7 @@
         vm.edit        = {};
         vm.invitations = angular.copy(vm.user.settings.preferences.groupsInvitations);
         vm.members     = angular.copy(vm.user.settings.preferences.groupsMembers);
-        vm.log         = angular.copy(vm.user.settings.preferences.groupsLog);
+        vm.log         = angular.copy(vm.user.settings.preferences.groupsLogs);
 
         // When the user factory is updated
         userFactory.subscribe($scope, function () {
@@ -58,7 +58,7 @@
             vm.user        = userFactory.getUser();
             vm.invitations = angular.copy(vm.user.settings.preferences.groupsInvitations);
             vm.members     = angular.copy(vm.user.settings.preferences.groupsMembers);
-            vm.log         = angular.copy(vm.user.settings.preferences.groupsLog);
+            vm.log         = angular.copy(vm.user.settings.preferences.groupsLogs);
         });
 
         function save(form) {

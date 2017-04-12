@@ -147,7 +147,7 @@
             vm.channel        = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel        = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
             vm.userCanRecruit = vm.methods.canRecruit();
-            vm.availableUsers = channelsFactory.getAvailableUsers(vm.params.groupName, vm.channel._id);
+            vm.availableUsers = channelsFactory.getAvailableUsers2(vm.params.groupName, vm.channel._id);
         }
 
         // Called on edit view

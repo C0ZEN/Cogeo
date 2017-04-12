@@ -35,6 +35,7 @@
             isAdmin                 : isAdmin,
             isActiveAdmin           : isActiveAdmin,
             getAvailableUsers       : getAvailableUsers,
+            getAvailableUsers2      : getAvailableUsers2,
             getDefaultChannels      : getDefaultChannels,
             getChannelById          : getChannelById,
             httpRequest             : {
@@ -231,6 +232,7 @@
             return [];
         }
 
+
         // Check if the user is admin
         function isAdmin(username, groupName, channelId) {
             var channel = groupsFactory.getChannelById(groupName, channelId);
@@ -313,6 +315,61 @@
 
             // Remove the matches
             for (var i = indexToRemove.length - 1; i >= 0; i--) {
+                availableUsers.splice(indexToRemove[i], 1);
+            }
+
+            // Return the users
+            return availableUsers;
+        }
+
+        // Return the list of users which can be recruited
+        function getAvailableUsers2(groupName, channelId) {
+
+            // Get all the data required
+            var cogeoUsers              = usersFactory.getUsers();
+            var currentUser             = userFactory.getUser();
+            var channelInvitations      = getChannelById(groupName, channelId).invitations;
+            var groupUnavailableMembers = groupsFactory.getUnavailableUsers(groupName);
+            var availableUsers          = [];
+
+            // Keep all the users except the current user
+            cogeoUsers.forEach(function (cogeoUser) {
+                if (cogeoUser.username != currentUser.username) {
+                    availableUsers.push(cogeoUser);
+                }
+            });
+
+            // Check if the user is already invited
+            var indexToRemove = [];
+            channelInvitations.forEach(function (channelInvitation) {
+                availableUsers.forEach(function (availableUser, index) {
+                    if (availableUser.username == channelInvitation.username && channelInvitation.status.response == 1) {
+                        if (!Methods.isInList(indexToRemove, index)) {
+                            indexToRemove.push(index);
+                        }
+                    }
+                });
+            });
+
+            // Remove the matches
+            for (var i = indexToRemove.length - 1; i >= 0; i--) {
+                availableUsers.splice(indexToRemove[i], 1);
+            }
+
+            // Find the match between username and add index to the array
+            indexToRemove = [];
+            groupUnavailableMembers.forEach(function (toRemoveUser) {
+                availableUsers.forEach(function (availableUser, index) {
+                    if (toRemoveUser.username == availableUser.username) {
+                        if (!Methods.isInList(indexToRemove, index)) {
+                            indexToRemove.push(index);
+                        }
+                    }
+                })
+            });
+
+            // Remove the matches
+            for (i = indexToRemove.length - 1; i >= 0; i--) {
                 availableUsers.splice(indexToRemove[i], 1);
             }
 

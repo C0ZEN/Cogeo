@@ -941,7 +941,7 @@
         }
 
         function httpRequestUpdateSettingsLog(data, callbackSuccess, callbackError) {
-            httpRequest.requestPut('user/' + user.username + '/settings/log', data, callbackSuccess, callbackError)
+            httpRequest.requestPut('user/' + user.username + '/settings/logs', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);

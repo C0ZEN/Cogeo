@@ -33,14 +33,15 @@
 
         // Methods
         vm.methods = {
-            onPasswordChange     : onPasswordChange,
-            onCheckPasswordChange: onCheckPasswordChange,
-            register             : register,
-            login                : login,
-            newPassword          : newPassword,
-            startLoading         : startLoading,
-            stopLoading          : stopLoading,
-            onSocialSignInSuccess: onSocialSignInSuccess
+            onPasswordChange        : onPasswordChange,
+            onCheckPasswordChange   : onCheckPasswordChange,
+            register                : register,
+            login                   : login,
+            newPassword             : newPassword,
+            startLoading            : startLoading,
+            stopLoading             : stopLoading,
+            onSocialSignInSuccess   : onSocialSignInSuccess,
+            generateLazyRegisterData: generateLazyRegisterData
         };
 
         // Events
@@ -117,6 +118,14 @@
 
         function onSocialSignInSuccess($event, socialData) {
             // socialData => name, email, image_url, uid, provider, token
+        }
+
+        function generateLazyRegisterData() {
+            vm.register.surname   = '';
+            vm.register.givenName = '';
+            vm.register.username  = '';
+            vm.register.email     = '';
+            vm.register.password  = '';
         }
     }
 

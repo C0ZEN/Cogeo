@@ -65,8 +65,8 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
-                // vm.invitations         = angular.copy(user.invitations);
-                vm.invitations         = [];
+                vm.invitations         = angular.copy(user.invitations);
+                vm.invitations         = usersFactory.addUsersFullNames(vm.invitations);
                 vm.settingsInvitations = angular.copy(user.settings.preferences.invitations);
             }
         }

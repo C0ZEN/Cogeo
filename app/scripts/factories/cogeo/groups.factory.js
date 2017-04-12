@@ -1727,6 +1727,7 @@
             getChannelByName             : getChannelByName,
             isUserAdmin                  : isUserAdmin,
             getActiveUsers               : getActiveUsers,
+            getUnavailableUsers          : getUnavailableUsers,
             setAllGroups                 : setAllGroups,
             isActiveMember               : isActiveMember,
             httpRequest                  : {
@@ -2019,6 +2020,25 @@
                 }
             }
             return activeUsers;
+        }
+
+        function getUnavailableUsers(groupName) {
+            var group            = getGroupByName(groupName);
+            var unavailableUsers = [], add;
+            for (var i = 0, length = group.users.length; i < length; i++) {
+                add = false;
+                if (group.users[i].hasLeft == 0) {
+                    add = true;
+                }
+                else if (group.users[i].kicked.active || group.users[i].banned.active) {
+                    add = true;
+                }
+                if (add) {
+                    group.users[i] = usersFactory.addUserFullName(group.users[i]);
+                    unavailableUsers.push(group.users[i]);
+                }
+            }
+            return unavailableUsers;
         }
 
         function setAllGroups(allGroups) {

@@ -7,10 +7,12 @@
 
     usersFactory.$inject = [
         'httpRequest',
-        '$rootScope'
+        '$rootScope',
+        'CONFIG',
+        'cozenEnhancedLogs'
     ];
 
-    function usersFactory(httpRequest, $rootScope) {
+    function usersFactory(httpRequest, $rootScope, CONFIG, cozenEnhancedLogs) {
 
         // var users = [
         //     {
@@ -837,6 +839,10 @@
             httpRequest.requestGet('user', callbackSuccess, callbackError)
                 .then(function (response) {
                     setUsers(response.data.data);
+                    if (CONFIG.dev) {
+                        cozenEnhancedLogs.info.functionCalled('usersFactory', 'httpRequestGetAll');
+                        cozenEnhancedLogs.info.customMessage('usersFactory', users.length + ' users were fetched.');
+                    }
                 })
             ;
         }
