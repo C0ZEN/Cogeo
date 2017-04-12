@@ -848,6 +848,11 @@
 			"BLOCKED_SINCE": "Bloqué depuis le {{date}}"
 		}
 	},
+	"TEST": {
+		"LAZY_BTN": {
+			"REGISTER_TITLE": "Générer une inscription"
+		}
+	},
 	"alert_close_btn_tooltip": "Fermer",
 	"btn_label": "Je suis un label",
 	"btn_required_tooltip": "Upload requis",
