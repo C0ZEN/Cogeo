@@ -42,6 +42,7 @@
             vm.user = userFactory.getUser();
             vm.methods.initInvitations(vm.user);
             vm.methods.initFriends(vm.user);
+            vm.methods.initRecruit(vm.user);
         });
 
         // Start the loader for submit btn

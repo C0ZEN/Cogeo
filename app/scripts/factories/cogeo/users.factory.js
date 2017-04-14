@@ -830,6 +830,21 @@
                 });
                 availableUsers = tmpUsers;
             }
+
+            // Remove the users which are already invited but without response
+            var indexToRemove = [];
+            user.invitations.forEach(function (invitation) {
+                availableUsers.forEach(function (availableUser, index) {
+                    if (invitation.username == availableUser.username) {
+                        if (invitation.status.response == 1) {
+                            indexToRemove.push(index);
+                        }
+                    }
+                });
+            });
+            for (i = indexToRemove.length - 1; i >= 0; i--) {
+                availableUsers.splice(indexToRemove[i], 1);
+            }
             return availableUsers;
         }
 

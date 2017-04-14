@@ -7,6 +7,11 @@
             "ALIAS": "alias {{alias}}",
             "BLOCKED": "Bloqué",
             "BLOCKED_SINCE": "Bloqué depuis le {{date}}"
+        },
+        "INVITATIONS": {
+            "STATUS_0": "Invitation refusée le {{date}} à {{hour}}",
+            "STATUS_1": "Invitation envoyée le {{date}} à {{hour}}",
+            "STATUS_2": "Invitation acceptée le {{date}} à {{hour}}"
         }
     }
 }
