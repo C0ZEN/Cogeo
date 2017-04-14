@@ -18,11 +18,12 @@
         'rfc4122',
         'logs',
         'cozenEnhancedLogs',
-        'userFactory'
+        'userFactory',
+        'cozenLazyLoadRandom'
     ];
 
     function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory, usersFactory,
-                 rfc4122, logs, cozenEnhancedLogs, userFactory) {
+                 rfc4122, logs, cozenEnhancedLogs, userFactory, cozenLazyLoadRandom) {
         cozenEnhancedLogs.wrap.starting('windowOnLoad');
 
         // Public global data
@@ -31,14 +32,15 @@
         };
 
         // Public global services
-        $rootScope.$state          = $state;
-        $rootScope.goTo            = goTo;
-        $rootScope.botFactory      = botFactory;
-        $rootScope.usersFactory    = usersFactory;
-        $rootScope.userFactory     = userFactory;
-        $rootScope.logsFactory     = logs;
-        $rootScope.groupsFactory   = groupsFactory;
-        $rootScope.channelsFactory = channelsFactory;
+        $rootScope.$state              = $state;
+        $rootScope.goTo                = goTo;
+        $rootScope.botFactory          = botFactory;
+        $rootScope.usersFactory        = usersFactory;
+        $rootScope.userFactory         = userFactory;
+        $rootScope.logsFactory         = logs;
+        $rootScope.groupsFactory       = groupsFactory;
+        $rootScope.channelsFactory     = channelsFactory;
+        $rootScope.cozenLazyLoadRandom = cozenLazyLoadRandom;
 
         // Public global functions
         $rootScope.methods = {

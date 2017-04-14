@@ -88,6 +88,7 @@ module.exports = function(config) {
       'bower_components/ng-device-detector/ng-device-detector.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
       'bower_components/console.style/console.style.js',
+      'bower_components/chance/chance.js',
       'bower_components/cozen-lib/release/clean/main.js',
       'bower_components/cozen-lib/release/clean/template.cache.js',
       'bower_components/cozen-lib/release/clean/directives.js',

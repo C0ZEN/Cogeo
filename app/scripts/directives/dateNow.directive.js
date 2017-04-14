@@ -18,7 +18,7 @@
         };
 
         function link(scope, element, attrs) {
-            element.text($filter('capitalize')($filter('date')(new Date(), attrs.dateNow), true, true));
+            element.text($filter('cozenCapitalize')($filter('date')(new Date(), attrs.dateNow), true, true));
         }
     }
 })(window.angular);

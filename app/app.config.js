@@ -9,21 +9,22 @@
         '$locationProvider',
         '$translateProvider',
         'CONFIG',
-        'ThemesProvider',
-        'ConfigProvider',
+        'CozenThemesProvider',
+        'CozenConfigProvider',
         'tmhDynamicLocaleProvider',
         '$httpProvider',
         '$qProvider',
-        'cfpLoadingBarProvider'
+        'cfpLoadingBarProvider',
+        'CozenLazyLoadProvider'
     ];
 
     // Global configuration
-    function config($locationProvider, $translateProvider, CONFIG, ThemesProvider, ConfigProvider, tmhDynamicLocaleProvider,
-                    $httpProvider, $qProvider, cfpLoadingBarProvider) {
+    function config($locationProvider, $translateProvider, CONFIG, CozenThemesProvider, CozenConfigProvider,
+                    tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider) {
 
         // Override the CONFIG for the Atom theme
-        ThemesProvider.setActiveTheme('atom');
-        ConfigProvider
+        CozenThemesProvider.setActiveTheme('atom');
+        CozenConfigProvider
             .scrollsBar(false)
             .debug(true)
             .dev(true)
@@ -40,9 +41,11 @@
             .popupFooter(false)
             .btnToggleStartRight(false)
             .floatingFeedWidth(520)
-            .floatingFeedTimeoutTime(14000)
-            .btnLazyTestPositionTop('70px')
-            .btnLazyTestPositionLeft('10px');
+            .floatingFeedTimeoutTime(14000);
+        CozenLazyLoadProvider
+            .log(true)
+            .positionTop('70px')
+            .positionLeft('10px');
 
         // Configure the location provider
         $locationProvider.html5Mode({

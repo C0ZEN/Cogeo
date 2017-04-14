@@ -13,10 +13,13 @@
         'groupsFactory',
         '$timeout',
         '$filter',
-        'rfc4122'
+        'rfc4122',
+        'cozenLazyLoadRandom',
+        'cozenLazyLoadInternal'
     ];
 
-    function GroupNewCtrl(userFactory, httpRequest, CONFIG, goTo, groupsFactory, $timeout, $filter, rfc4122) {
+    function GroupNewCtrl(userFactory, httpRequest, CONFIG, goTo, groupsFactory, $timeout, $filter, rfc4122,
+                          cozenLazyLoadRandom, cozenLazyLoadInternal) {
         var vm = this;
 
         // Methods
@@ -29,7 +32,9 @@
             addChannel             : addChannel,
             isChannelNameDuplicated: isChannelNameDuplicated,
             startLoading           : startLoading,
-            stopLoading            : stopLoading
+            stopLoading            : stopLoading,
+            setRandomGroupName     : setRandomGroupName,
+            setRandomStep2         : setRandomStep2
         };
 
         // Common data
@@ -142,6 +147,25 @@
 
         function stopLoading() {
             vm.loading = false;
+        }
+
+        function setRandomGroupName() {
+            vm.newGroup.name = cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22));
+            cozenLazyLoadInternal.sendBroadcastForm('newGroup1');
+        }
+
+        function setRandomStep2() {
+            vm.newGroup.description = cozenLazyLoadRandom.getRandomSentence(15);
+            var channelQuantity     = Methods.getRandomFromRange(1, 5);
+            vm.newGroup.channels    = [];
+            for (var i = 0; i < channelQuantity; i++) {
+                vm.newGroup.channels.push({
+                    name   : cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)),
+                    default: true,
+                    id     : rfc4122.v4()
+                });
+            }
+            cozenLazyLoadInternal.sendBroadcastForm('newGroup2');
         }
     }
 

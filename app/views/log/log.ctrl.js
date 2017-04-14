@@ -13,10 +13,13 @@
         'goTo',
         'accessLog',
         'httpRequest',
-        'groupsFactory'
+        'groupsFactory',
+        'cozenLazyLoadPreBuild',
+        'cozenLazyLoadInternal'
     ];
 
-    function LogCtrl($timeout, CONFIG, userFactory, $rootScope, goTo, accessLog, httpRequest, groupsFactory) {
+    function LogCtrl($timeout, CONFIG, userFactory, $rootScope, goTo, accessLog, httpRequest, groupsFactory,
+                     cozenLazyLoadPreBuild, cozenLazyLoadInternal) {
         var vm = this;
 
         // Common data
@@ -41,7 +44,7 @@
             startLoading            : startLoading,
             stopLoading             : stopLoading,
             onSocialSignInSuccess   : onSocialSignInSuccess,
-            generateLazyRegisterData: generateLazyRegisterData
+            generateRegisterLazyData: generateRegisterLazyData
         };
 
         // Events
@@ -120,12 +123,15 @@
             // socialData => name, email, image_url, uid, provider, token
         }
 
-        function generateLazyRegisterData() {
-            vm.register.surname   = '';
-            vm.register.givenName = '';
-            vm.register.username  = '';
-            vm.register.email     = '';
-            vm.register.password  = '';
+        function generateRegisterLazyData() {
+            var simpleUser            = cozenLazyLoadPreBuild.getPreBuildSimpleUser('register', 'formRegister');
+            vm.register.surname       = simpleUser.firstName;
+            vm.register.givenName     = simpleUser.lastName;
+            vm.register.username      = simpleUser.username;
+            vm.register.email         = simpleUser.email;
+            vm.register.password      = simpleUser.password;
+            vm.register.checkPassword = simpleUser.password;
+            cozenLazyLoadInternal.sendBroadcastBtnClick('formRegister');
         }
     }
 

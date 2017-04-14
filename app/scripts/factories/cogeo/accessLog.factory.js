@@ -26,10 +26,10 @@
             var accessLog = {
                 appLanguage   : CONFIG.currentLanguage,
                 appVersion    : CONFIG.internal.appVersion,
-                browserName   : $filter('capitalize')(deviceDetector.browser, true, true),
-                browserVersion: $filter('capitalize')(deviceDetector.browser_version, true, true),
-                osName        : $filter('capitalize')(deviceDetector.os, true, true),
-                osVersion     : $filter('capitalize')(deviceDetector.os_version, true, true)
+                browserName   : $filter('cozenCapitalize')(deviceDetector.browser, true, true),
+                browserVersion: $filter('cozenCapitalize')(deviceDetector.browser_version, true, true),
+                osName        : $filter('cozenCapitalize')(deviceDetector.os, true, true),
+                osVersion     : $filter('cozenCapitalize')(deviceDetector.os_version, true, true)
             };
             var deferred  = $q.defer();
             httpRequest.customRequest('GET', 'http://ipinfo.io')
