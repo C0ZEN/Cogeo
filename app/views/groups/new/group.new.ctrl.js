@@ -51,6 +51,7 @@
         };
         vm.stepForward = true;
         vm.methods.addChannel($filter('translate')('groups_new_2_default_channel'));
+        vm.availableUsersSelected = userFactory.getFriends();
 
         function checkGroupName() {
             vm.methods.startLoading();
@@ -150,8 +151,9 @@
         }
 
         function setRandomGroupName() {
-            vm.newGroup.name = cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22));
+            vm.newGroup.name = $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true);
             cozenLazyLoadInternal.sendBroadcastForm('newGroup1');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-btn-new-group-step-1');
         }
 
         function setRandomStep2() {
@@ -160,12 +162,13 @@
             vm.newGroup.channels    = [];
             for (var i = 0; i < channelQuantity; i++) {
                 vm.newGroup.channels.push({
-                    name   : cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)),
+                    name   : $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true),
                     default: true,
                     id     : rfc4122.v4()
                 });
             }
             cozenLazyLoadInternal.sendBroadcastForm('newGroup2');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-btn-new-group-step-2');
         }
     }
 

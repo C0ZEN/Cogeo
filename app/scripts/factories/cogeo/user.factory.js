@@ -802,10 +802,12 @@
             var friends = [], friend;
             for (var i = 0, length = user.contacts.length; i < length; i++) {
                 if (user.contacts[i].removed == 0) {
-                    friend                     = usersFactory.getUserByUsername(user.contacts[i].username);
-                    user.contacts[i].givenName = friend.givenName;
-                    user.contacts[i].surname   = friend.surname;
-                    friends.push(user.contacts[i]);
+                    friend = usersFactory.getUserByUsername(user.contacts[i].username);
+                    if (!Methods.isNullOrEmpty(friend)) {
+                        user.contacts[i].givenName = friend.givenName;
+                        user.contacts[i].surname   = friend.surname;
+                        friends.push(user.contacts[i]);
+                    }
                 }
             }
             return friends;

@@ -88,7 +88,7 @@
     "groups_new_2_subtitle_1": "Paramètre ton nouveau groupe.",
     "groups_new_2_valid_settings": "Valider la configuration",
     "groups_new_2_change_name": "Changer le nom",
-    "groups_new_2_default_channel": "default",
+    "groups_new_2_default_channel": "Default",
     "groups_new_2_default_channels": "Channel(s) par défaut",
     "groups_new_2_maximum_default_channels": "<span>Les nouveaux membres rejoindront automatiquement les channels par défaut.<br>Maximum {{quantity}} channel par défaut.</span>",
     "groups_new_2_channel_name": "Nom du channel",
