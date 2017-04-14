@@ -38,7 +38,7 @@
                 }
             })
             .state('app.chat.user', {
-                url        : '/:userName',
+                url        : '/:username',
                 templateUrl: 'views/chat/context/chat.context.users.html',
                 data       : {
                     pageTitle: 'chat_user'

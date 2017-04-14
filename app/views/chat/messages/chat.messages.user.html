@@ -42,6 +42,6 @@
     <answer-action answer-action-display="message.sender != vm.user.username"></answer-action>
     <copy-action copy-action-message-id="'message-user-' + message.id"></copy-action>
     <chat-action chat-action-display="message.sender != vm.user.username"
-                 chat-action-on-click="goTo.view('app.chat.user', {userName: message.sender})">
+                 chat-action-on-click="goTo.view('app.chat.user', {username: message.sender})">
     </chat-action>
 </div>

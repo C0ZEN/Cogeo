@@ -11,10 +11,13 @@
         'userFactory',
         'httpRequest',
         '$rootScope',
-        'cozenFloatingFeedFactory'
+        'cozenFloatingFeedFactory',
+        'cozenEnhancedLogs',
+        'CONFIG'
     ];
 
-    function groupsFactory($filter, usersFactory, userFactory, httpRequest, $rootScope, cozenFloatingFeedFactory) {
+    function groupsFactory($filter, usersFactory, userFactory, httpRequest, $rootScope, cozenFloatingFeedFactory,
+                           cozenEnhancedLogs, CONFIG) {
 
         // var groups = [
         //     {
@@ -2084,6 +2087,10 @@
             httpRequest.requestGet('group', callbackSuccess, callbackError)
                 .then(function (response) {
                     setAllGroups(response.data.data);
+                    if (CONFIG.dev) {
+                        cozenEnhancedLogs.info.functionCalled('groupsFactory', 'httpRequestGetAllGroups');
+                        cozenEnhancedLogs.info.customMessage('groupsFactory', groups.length + ' groups were fetched.');
+                    }
                 })
             ;
         }
