@@ -42,9 +42,13 @@
                 <i class="icons-middle icons8-settings"></i>
                 {{ 'account_settings_other_title' | translate }}
             </h3>
-            <h4 class="space-medium-after">
+            <h4 class="space-base-after">
                 <strong>{{ 'account_settings_other_download_path' | translate }}:</strong>
                 {{ vm.settings.downloadPath }}
+            </h4>
+            <h4 class="space-medium-after">
+                <strong>{{ 'account_settings_other_language' | translate }}:</strong>
+                {{ vm.methods.getVerboseLanguage(vm.settings.language) }}
             </h4>
 
             <!-- Edit btn -->

@@ -1072,6 +1072,13 @@ div.google-visualization-tooltip p.tooltip-text {
 div.google-visualization-tooltip p.tooltip-text small {
   color: #D6DBDB;
 }
+cozen-dropdown-item-simple img.flag {
+  width: 17px;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+  margin-top: 4px;
+}
 div.link-dropdown {
   position: absolute;
   top: 100%;

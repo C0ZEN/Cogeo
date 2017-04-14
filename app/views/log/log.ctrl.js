@@ -44,7 +44,8 @@
             startLoading            : startLoading,
             stopLoading             : stopLoading,
             onSocialSignInSuccess   : onSocialSignInSuccess,
-            generateRegisterLazyData: generateRegisterLazyData
+            generateRegisterLazyData: generateRegisterLazyData,
+            generateLoginPassword   : generateLoginPassword
         };
 
         // Events
@@ -132,6 +133,12 @@
             vm.register.password      = simpleUser.password;
             vm.register.checkPassword = simpleUser.password;
             cozenLazyLoadInternal.sendBroadcastBtnClick('formRegister');
+        }
+
+        function generateLoginPassword() {
+            vm.login.password = 'Soleil123';
+            cozenLazyLoadInternal.sendBroadcastForm('login');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-login-btn');
         }
     }
 

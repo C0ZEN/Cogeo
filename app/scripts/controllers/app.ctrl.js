@@ -41,14 +41,15 @@
             if (toParams.lang != fromParams.lang) {
 
                 // If the new lang is not available, take the first one as callback
+                CONFIG.currentLanguage = toParams.lang;
                 if (!Methods.isInList(CONFIG.languages, toParams.lang)) {
-                    toParams.lang = CONFIG.languages[0];
+                    CONFIG.currentLanguage = CONFIG.languages[0];
                 }
 
                 // Update the language
-                $translate.use(toParams.lang);
-                moment.locale(toParams.lang);
-                tmhDynamicLocale.set(toParams.lang);
+                $translate.use(CONFIG.currentLanguage);
+                moment.locale(CONFIG.currentLanguage);
+                tmhDynamicLocale.set(CONFIG.currentLanguage);
             }
         });
 

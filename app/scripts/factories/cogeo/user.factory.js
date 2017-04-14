@@ -545,6 +545,7 @@
             getAllStatus         : getAllStatus,
             addToStarred         : addToStarred,
             removeToStarred      : removeToStarred,
+            getUserImage         : getUserImage,
             httpRequest          : {
                 getUser                          : httpRequestGetUser,
                 register                         : httpRequestRegister,
@@ -618,36 +619,6 @@
             }
             else {
                 user          = formatUserData(response);
-                user.contacts = [
-                    {
-                        username: 'Test1',
-                        date    : 123,
-                        blocked : 0,
-                        removed : 0,
-                        alias   : ''
-                    },
-                    {
-                        username: 'Test2',
-                        date    : 123,
-                        blocked : 789123,
-                        removed : 0,
-                        alias   : ''
-                    },
-                    {
-                        username: 'Test3',
-                        date    : 123,
-                        blocked : 0,
-                        removed : 4567899,
-                        alias   : ''
-                    },
-                    {
-                        username: 'Test4',
-                        date    : 125593,
-                        blocked : 0,
-                        removed : 0,
-                        alias   : 'Mich mich'
-                    }
-                ];
                 usersFactory.updateUser(user);
             }
             if (CONFIG.dev) {
@@ -858,6 +829,15 @@
             }
         }
 
+        function getUserImage() {
+            if (!Methods.isNullOrEmpty(user.picture) && !Methods.isNullOrEmpty(user.picture.url)) {
+                return user.picture.url;
+            }
+            else {
+                return 'images/groups/' + user.username.slice(0, 1).toUpperCase() + '.png';
+            }
+        }
+
         /// HTTP REQUEST ///
 
         function httpRequestGetUser(callbackSuccess, callbackError) {
@@ -932,6 +912,10 @@
         function httpRequestUpdateSettings(data, callbackSuccess, callbackError) {
             httpRequest.requestPut('user/' + user.username + '/settings', data, callbackSuccess, callbackError)
                 .then(function (response) {
+                    if (CONFIG.dev) {
+                        cozenEnhancedLogs.info.functionCalled('userFactory', 'httpRequestUpdateSettings');
+                        cozenEnhancedLogs.explodeObject(data, true);
+                    }
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
                     cozenFloatingFeedFactory.addAlert({

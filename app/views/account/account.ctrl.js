@@ -40,7 +40,8 @@
             initNotifications     : initNotifications,
             initLogs              : initLogs,
             initLogins            : initLogins,
-            getAppLanguageFlag    : getAppLanguageFlag
+            getAppLanguageFlag    : getAppLanguageFlag,
+            getVerboseLanguage    : getVerboseLanguage
         };
 
         // When a change occur into the popup of test
@@ -61,7 +62,14 @@
             var updateUser;
             switch (form) {
                 case 'settings':
-                    userFactory.httpRequest.updateSettings(vm.settings, function () {
+                    var updateSettings = {
+                        ports       : vm.settings.ports,
+                        micro       : vm.settings.micro,
+                        speaker     : vm.settings.speaker,
+                        downloadPath: vm.settings.downloadPath,
+                        language    : vm.settings.language
+                    };
+                    userFactory.httpRequest.updateSettings(updateSettings, function () {
                         vm.methods.stopLoading();
                         goTo.view('app.account.settings');
                     }, function () {
@@ -157,7 +165,15 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
-                vm.settings = angular.copy(user.settings);
+                vm.settings  = angular.copy(user.settings);
+                vm.languages = [];
+                CONFIG.languages.forEach(function (lang, index) {
+                    vm.languages.push({
+                        key     : lang,
+                        label   : CONFIG.languagesExtended[index],
+                        selected: vm.settings.language == lang
+                    });
+                });
             }
         }
 
@@ -204,26 +220,26 @@
                 };
 
                 // Loop through the logins to create data for the popup filter
-                vm.settingsLogins.forEach(function (login) {
+                vm.accessLogs.forEach(function (login) {
 
                     // appLanguage
-                    if (!Methods.isInList(vm.settingsLogins.cutom.appLanguage, login.appLanguage)) {
-                        vm.settingsLogins.custom.lang.push(login.appLanguage);
+                    if (!Methods.isInList(vm.settingsLogins.custom.appLanguage, login.appLanguage)) {
+                        vm.settingsLogins.custom.appLanguage.push(login.appLanguage);
                     }
 
                     // appVersion
-                    if (!Methods.isInList(vm.settingsLogins.cutom.appVersion, login.appVersion)) {
-                        vm.settingsLogins.custom.lang.push(login.appVersion);
+                    if (!Methods.isInList(vm.settingsLogins.custom.appVersion, login.appVersion)) {
+                        vm.settingsLogins.custom.appVersion.push(login.appVersion);
                     }
 
                     // osName
-                    if (!Methods.isInList(vm.settingsLogins.cutom.osName, login.osName) && !Methods.isNullOrEmpty(login.osName)) {
-                        vm.settingsLogins.custom.lang.push(login.osName);
+                    if (!Methods.isInList(vm.settingsLogins.custom.osName, login.osName) && !Methods.isNullOrEmpty(login.osName)) {
+                        vm.settingsLogins.custom.osName.push(login.osName);
                     }
 
                     // browserName
-                    if (!Methods.isInList(vm.settingsLogins.cutom.browserName, login.browserName) && !Methods.isNullOrEmpty(login.browserName)) {
-                        vm.settingsLogins.custom.lang.push(login.browserName);
+                    if (!Methods.isInList(vm.settingsLogins.custom.browserName, login.browserName) && !Methods.isNullOrEmpty(login.browserName)) {
+                        vm.settingsLogins.custom.browserName.push(login.browserName);
                     }
                 });
             }
@@ -232,6 +248,15 @@
         // Return the src for the flag for this app language
         function getAppLanguageFlag(language) {
             return 'images/flags/' + language + '.png';
+        }
+
+        function getVerboseLanguage(language) {
+            for (var i = 0, length = CONFIG.languages.length; i < length; i++) {
+                if (CONFIG.languages[i] == language) {
+                    return CONFIG.languagesExtended[i];
+                }
+            }
+            return language;
         }
     }
 

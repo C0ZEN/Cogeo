@@ -19,7 +19,7 @@
                                 cozen-dropdown-label="popup_logs_filter_body_event"
                                 cozen-dropdown-placeholder="popup_logs_filter_body_event_pc"
                                 cozen-dropdown-all-selected-text="popup_logs_filter_body_event_all_selected">
-                    <cozen-dropdown-item-simple ng-repeat="event in popup.accessLogsFilter.data.events track by $index"
+                    <cozen-dropdown-item-simple ng-repeat="event in popup.accessLogsFilter.data.custom.appLanguage track by $index"
                                                 cozen-dropdown-item-simple-value="event.id"
                                                 cozen-dropdown-item-simple-label="{{ event.name }}"
                                                 cozen-dropdown-item-simple-icon-left="{{ event.icon }} {{ event.color }}"
