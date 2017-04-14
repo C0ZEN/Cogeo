@@ -1,12 +1,3 @@
-/**
- * Generated header by Cozen for 4pjt project
- * Generated file group.new.router on WebStorm
- *
- * Created by: Geoffrey "C0ZEN" Testelin
- * Date: 09/02/2017
- * Time: 13:45
- * Version: 1.0.0
- */
 (function (angular) {
     'use strict';
 

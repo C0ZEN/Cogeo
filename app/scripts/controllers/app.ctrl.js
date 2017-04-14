@@ -13,10 +13,15 @@
         '$window',
         'usersFactory',
         'groupsFactory',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        '$rootScope',
+        '$translate',
+        'tmhDynamicLocale',
+        '$state'
     ];
 
-    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory, groupsFactory, cozenEnhancedLogs) {
+    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory, groupsFactory,
+                     cozenEnhancedLogs, $rootScope, $translate, tmhDynamicLocale, $state) {
         var app = this;
 
         // Common data
@@ -30,6 +35,22 @@
 
         // When the window is ready
         $window.onload = app.methods.onInit;
+
+        // Update the configuration of the language when the url lang param was changed
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            if (toParams.lang != fromParams.lang) {
+
+                // If the new lang is not available, take the first one as callback
+                if (!Methods.isInList(CONFIG.languages, toParams.lang)) {
+                    toParams.lang = CONFIG.languages[0];
+                }
+
+                // Update the language
+                $translate.use(toParams.lang);
+                moment.locale(toParams.lang);
+                tmhDynamicLocale.set(toParams.lang);
+            }
+        });
 
         function onInit() {
             cozenEnhancedLogs.wrap.end('windowOnLoad');

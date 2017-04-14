@@ -194,8 +194,38 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
-                vm.accessLogs     = angular.copy(user.accessLogs);
-                vm.settingsLogins = angular.copy(user.settings.preferences.accessLogs);
+                vm.accessLogs            = angular.copy(user.accessLogs);
+                vm.settingsLogins        = angular.copy(user.settings.preferences.accessLogs);
+                vm.settingsLogins.custom = {
+                    appLanguage: [],
+                    appVersion : [],
+                    osName     : [],
+                    browserName: []
+                };
+
+                // Loop through the logins to create data for the popup filter
+                vm.settingsLogins.forEach(function (login) {
+
+                    // appLanguage
+                    if (!Methods.isInList(vm.settingsLogins.cutom.appLanguage, login.appLanguage)) {
+                        vm.settingsLogins.custom.lang.push(login.appLanguage);
+                    }
+
+                    // appVersion
+                    if (!Methods.isInList(vm.settingsLogins.cutom.appVersion, login.appVersion)) {
+                        vm.settingsLogins.custom.lang.push(login.appVersion);
+                    }
+
+                    // osName
+                    if (!Methods.isInList(vm.settingsLogins.cutom.osName, login.osName) && !Methods.isNullOrEmpty(login.osName)) {
+                        vm.settingsLogins.custom.lang.push(login.osName);
+                    }
+
+                    // browserName
+                    if (!Methods.isInList(vm.settingsLogins.cutom.browserName, login.browserName) && !Methods.isNullOrEmpty(login.browserName)) {
+                        vm.settingsLogins.custom.lang.push(login.browserName);
+                    }
+                });
             }
         }
 

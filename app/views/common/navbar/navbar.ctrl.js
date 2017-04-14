@@ -10,10 +10,11 @@
         '$rootScope',
         'groupsFactory',
         'userFactory',
-        '$scope'
+        '$scope',
+        'CONFIG'
     ];
 
-    function NavbarCtrl($document, $rootScope, groupsFactory, userFactory, $scope) {
+    function NavbarCtrl($document, $rootScope, groupsFactory, userFactory, $scope, CONFIG) {
         var vm = this;
 
         // Methods
@@ -24,13 +25,14 @@
         };
 
         // Common data
-        vm.data  = {
+        vm.data   = {
             offset  : 60, // Height of the navbar
             duration: 600
         };
-        vm.other = {
+        vm.other  = {
             hover: false
         };
+        vm.CONFIG = CONFIG;
 
         // Groups
         vm.group = {

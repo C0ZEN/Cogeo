@@ -37,6 +37,10 @@
                      ng-repeat="accessLog in vm.accessLogs
 			           | orderBy: 'date':vm.settingsLogins.orderBy
 			           | filter: vm.settingsLogins.search
+			           | filter: vm.settingsLogins.custom.appLanguageFilter
+			           | filter: vm.settingsLogins.custom.appVersionFilter
+			           | filter: vm.settingsLogins.custom.osNameFilter
+			           | filter: vm.settingsLogins.custom.browserNameFilter
 			           | startFrom: (vm.settingsLogins.currentPage - 1) * vm.settingsLogins.limit
 			           | limitTo: vm.settingsLogins.limit
 			           as accessLogFilter track by $index">
@@ -81,6 +85,10 @@
                 <div style="display: none;"
                      ng-repeat="accessLog in vm.accessLogs
 			           | filter: vm.settingsLogins.search
+			           | filter: vm.settingsLogins.custom.appLanguageFilter
+			           | filter: vm.settingsLogins.custom.appVersionFilter
+			           | filter: vm.settingsLogins.custom.osNameFilter
+			           | filter: vm.settingsLogins.custom.browserNameFilter
 			           as fakeAccessLogFilter track by $index">
                 </div>
             </div>

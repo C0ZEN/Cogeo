@@ -20,7 +20,8 @@
 
     // Global configuration
     function config($locationProvider, $translateProvider, CONFIG, CozenThemesProvider, CozenConfigProvider,
-                    tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider) {
+                    tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider,
+                    $state) {
 
         // Override the CONFIG for the Atom theme
         CozenThemesProvider.setActiveTheme('atom');
@@ -60,6 +61,7 @@
                 suffix: '.concat.json'
             }
         );
+        CONFIG.currentLanguage = 'en';
         $translateProvider.preferredLanguage(CONFIG.currentLanguage);
 
         // Configure the locale for moment
@@ -99,7 +101,7 @@
                     }
                 }
             },
-            appVersion: '1.0.0'
+            appVersion: '1.0.1'
         };
 
         // Configure the loading bar

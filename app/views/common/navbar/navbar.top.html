@@ -91,6 +91,15 @@
              tabindex="0">
             {{ 'navbar_pending_invitations' | translate }}
         </div>
+
+        <!-- Users list -->
+        <div ng-show="vm.CONFIG.dev"
+             class="link link-blue"
+             ng-class="{'active': goTo.isCurrentView('app.dev.usersList')}"
+             ng-click="goTo.view('app.dev.usersList')"
+             tabindex="0">
+            {{ 'navbar_dev_users_list' | translate }}
+        </div>
     </div>
 
     <!-- Right -->

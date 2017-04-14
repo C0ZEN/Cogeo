@@ -1561,7 +1561,7 @@ nav.atom-navbar div.atom-navbar-block img.brand {
 }
 nav.atom-navbar div.atom-navbar-block div.link {
   height: 100%;
-  padding: 0 6px;
+  padding: 0 8px;
   margin: 0 12px;
   cursor: pointer;
   position: relative;
