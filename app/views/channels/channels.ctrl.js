@@ -119,7 +119,11 @@
             // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
             vm.logs.forEach(function (log) {
                 log.text          = $filter('translate')('channels_log_' + log.tag, log.values);
-                log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy à HH:mm');
+                log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy');
+                log.formattedDate += ' ';
+                log.formattedDate += $filter('translate')('other_time_at');
+                log.formattedDate += ' ';
+                log.formattedDate += $filter('date')(log.date, 'HH:mm');
             });
         }
 
