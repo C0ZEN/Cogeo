@@ -1,7 +1,8 @@
 {
     "DEV": {
         "USERS_LIST": {
-            "PAGE_TITLE": "Liste des utilisateurs Cogeo"
+            "PAGE_TITLE": "Liste des utilisateurs Cogeo",
+            "JOIN_ON": "Membre depuis le {{date}} à {{hour}}"
         }
     }
 }

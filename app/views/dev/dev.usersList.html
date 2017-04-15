@@ -37,6 +37,7 @@
                        | filter: vm.usersListSettings.search
                        | startFrom: (vm.usersListSettings.currentPage - 1) * vm.usersListSettings.limit
                        | limitTo: vm.usersListSettings.limit
+                       | orderBy: 'date.register'
                        as usersFilter track by $index">
                     <div class="text">
                         <p>
@@ -53,6 +54,7 @@
                                        data-clipboard-text="{{ user.username }}">
                                     </i>
                                 </cozen-tooltip>
+                                <span class="help-text">{{ 'DEV.USERS_LIST.JOIN_ON' | translate:{date: (user.date.register | date: 'EEEE dd MMMM yyyy'), hour: (user.date.register | date: 'HH:mm')} }}</span>
                             </small>
                         </p>
                     </div>

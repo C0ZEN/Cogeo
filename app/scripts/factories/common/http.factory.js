@@ -41,13 +41,13 @@
                 .then(function (response) {
                     deferred.resolve(response);
                     if (Methods.isFunction(callbackSuccess)) {
-                        callbackSuccess();
+                        callbackSuccess(response);
                     }
                 })
                 .catch(function (response) {
                     deferred.reject(response, 200);
                     if (Methods.isFunction(callbackError)) {
-                        callbackError();
+                        callbackError(response);
                     }
                     displayError(response);
                 })
@@ -71,12 +71,12 @@
             }).then(function (response) {
                 deferred.resolve(response);
                 if (Methods.isFunction(callbackSuccess)) {
-                    callbackSuccess();
+                    callbackSuccess(response);
                 }
             }).catch(function (response) {
                 deferred.reject(response, 200);
                 if (Methods.isFunction(callbackError)) {
-                    callbackError();
+                    callbackError(response);
                 }
                 displayError(response);
             });
@@ -99,12 +99,12 @@
             }).then(function (response) {
                 deferred.resolve(response);
                 if (Methods.isFunction(callbackSuccess)) {
-                    callbackSuccess();
+                    callbackSuccess(response);
                 }
             }).catch(function (response) {
                 deferred.reject(response, 200);
                 if (Methods.isFunction(callbackError)) {
-                    callbackError();
+                    callbackError(response);
                 }
                 displayError(response);
             });

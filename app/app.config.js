@@ -20,8 +20,7 @@
 
     // Global configuration
     function config($locationProvider, $translateProvider, CONFIG, CozenThemesProvider, CozenConfigProvider,
-                    tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider,
-                    $state) {
+                    tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider) {
 
         // Override the CONFIG for the Atom theme
         CozenThemesProvider.setActiveTheme('atom');
@@ -49,10 +48,12 @@
             .positionLeft('10px');
 
         // Configure the location provider
-        $locationProvider.html5Mode({
-            enabled    : false,
-            requireBase: false
-        });
+        $locationProvider
+            .html5Mode({
+                enabled    : false,
+                requireBase: false
+            })
+            .hashPrefix('!');
 
         // Configure the translate provider
         $translateProvider.useSanitizeValueStrategy('sanitizeParameters'); // escape
@@ -61,7 +62,6 @@
                 suffix: '.concat.json'
             }
         );
-        CONFIG.currentLanguage = 'en';
         $translateProvider.preferredLanguage(CONFIG.currentLanguage);
 
         // Configure the locale for moment

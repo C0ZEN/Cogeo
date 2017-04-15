@@ -17,11 +17,12 @@
         '$rootScope',
         '$translate',
         'tmhDynamicLocale',
-        '$state'
+        '$state',
+        '$stateParams'
     ];
 
     function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory, groupsFactory,
-                     cozenEnhancedLogs, $rootScope, $translate, tmhDynamicLocale, $state) {
+                     cozenEnhancedLogs, $rootScope, $translate, tmhDynamicLocale, $state, $stateParams) {
         var app = this;
 
         // Common data
@@ -30,7 +31,9 @@
 
         // Methods
         app.methods = {
-            onInit: onInit
+            onInit                   : onInit,
+            callbackLangIfUnavailable: callbackLangIfUnavailable,
+            changeLangInConfig       : changeLangInConfig
         };
 
         // When the window is ready
@@ -41,15 +44,10 @@
             if (toParams.lang != fromParams.lang) {
 
                 // If the new lang is not available, take the first one as callback
-                CONFIG.currentLanguage = toParams.lang;
-                if (!Methods.isInList(CONFIG.languages, toParams.lang)) {
-                    CONFIG.currentLanguage = CONFIG.languages[0];
-                }
+                app.methods.callbackLangIfUnavailable(toParams.lang);
 
                 // Update the language
-                $translate.use(CONFIG.currentLanguage);
-                moment.locale(CONFIG.currentLanguage);
-                tmhDynamicLocale.set(CONFIG.currentLanguage);
+                app.methods.changeLangInConfig();
 
                 // Log
                 if (CONFIG.dev) {
@@ -63,25 +61,71 @@
             cozenEnhancedLogs.wrap.starting('cogeoInit');
             var requestQuantity = 3;
 
-            // Get the stuff about the current connected user (to avoid login)
+            // Get the stuff about the current connected user (to avoid manual login)
             var user = localStorageService.get('currentUser');
             if (user != null && user.username != null && user.token != null) {
 
                 // Login with the app (how each load, to make sure that the token is still valid)
                 // May be a potential performance leak nevertheless the security is enhanced
-                userFactory.httpRequest.login(user, isDone, isDone);
-                usersFactory.httpRequest.getAll(isDone, isDone);
+                userFactory.httpRequest.login(user, function (response) {
+                    if (response.data.data.settings.language != CONFIG.currentLanguage) {
+
+                        // If the new lang is not available, take the first one as callback
+                        app.methods.callbackLangIfUnavailable(response.data.data.settings.language);
+
+                        // Update the language
+                        app.methods.changeLangInConfig();
+
+                        // Refresh the state with new lang param
+                        var params  = angular.copy($stateParams);
+                        params.lang = CONFIG.currentLanguage;
+                        $state.transitionTo($state.current, params, {
+                            reload : false,
+                            inherit: false,
+                            notify : false
+                        });
+                    }
+                    isDone();
+                }, function () {
+                    isDone();
+                });
+                usersFactory.httpRequest.getAll(function () {
+                    isDone();
+                }, function () {
+                    isDone();
+                });
 
                 // Get all the groups
-                groupsFactory.httpRequest.getAllGroups(isDone, isDone);
+                groupsFactory.httpRequest.getAllGroups(function () {
+                    isDone();
+                }, function () {
+                    isDone();
+                });
             }
             else {
                 userFactory.setUser(null);
-                isDone(3);
+
+                // Get some data only if mod dev
+                if (CONFIG.dev) {
+                    usersFactory.httpRequest.getAll(function () {
+                        isDone();
+                    }, function () {
+                        isDone();
+                    });
+                    groupsFactory.httpRequest.getAllGroups(function () {
+                        isDone();
+                    }, function () {
+                        isDone();
+                    });
+                    isDone();
+                }
+                else {
+                    isDone(3);
+                }
             }
 
             function isDone(quantity) {
-                if (quantity == null) {
+                if (Methods.isNullOrEmpty(quantity)) {
                     quantity = 1;
                 }
                 requestQuantity = requestQuantity - quantity;
@@ -91,6 +135,21 @@
                     Methods.safeApply($scope);
                 }
             }
+        }
+
+        function callbackLangIfUnavailable(language) {
+            if (!Methods.isInList(CONFIG.languages, language)) {
+                CONFIG.currentLanguage = CONFIG.languages[0];
+            }
+            else {
+                CONFIG.currentLanguage = language;
+            }
+        }
+
+        function changeLangInConfig() {
+            $translate.use(CONFIG.currentLanguage);
+            moment.locale(CONFIG.currentLanguage);
+            tmhDynamicLocale.set(CONFIG.currentLanguage);
         }
     }
 

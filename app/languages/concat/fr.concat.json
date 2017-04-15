@@ -264,7 +264,8 @@
 	"chat_user": "Discussion avec un ami",
 	"DEV": {
 		"USERS_LIST": {
-			"PAGE_TITLE": "Liste des utilisateurs Cogeo"
+			"PAGE_TITLE": "Liste des utilisateurs Cogeo",
+			"JOIN_ON": "Membre depuis le {{date}} à {{hour}}"
 		}
 	},
 	"errors_1": "Tu n'es pas connecté ! <small>{{date}}</small>",
