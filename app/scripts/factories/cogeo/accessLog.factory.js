@@ -11,10 +11,11 @@
         '$q',
         'deviceDetector',
         '$filter',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        'cozenLanguage'
     ];
 
-    function accessLog(CONFIG, httpRequest, $q, deviceDetector, $filter, cozenEnhancedLogs) {
+    function accessLog(CONFIG, httpRequest, $q, deviceDetector, $filter, cozenEnhancedLogs, cozenLanguage) {
         return {
             getAccessLog: getAccessLog
         };
@@ -24,7 +25,7 @@
         // Note: ipinfo return this: {country, hostname, ip, loc, org, postal, region}
         function getAccessLog() {
             var accessLog = {
-                appLanguage   : CONFIG.currentLanguage,
+                appLanguage   : cozenLanguage.getCurrentLanguage(),
                 appVersion    : CONFIG.internal.appVersion,
                 browserName   : $filter('cozenCapitalize')(deviceDetector.browser, true, true),
                 browserVersion: $filter('cozenCapitalize')(deviceDetector.browser_version, true, true),

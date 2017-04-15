@@ -15,14 +15,13 @@
         'groupsFactory',
         'cozenEnhancedLogs',
         '$rootScope',
-        '$translate',
-        'tmhDynamicLocale',
         '$state',
-        '$stateParams'
+        '$stateParams',
+        'cozenLanguage'
     ];
 
     function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory, groupsFactory,
-                     cozenEnhancedLogs, $rootScope, $translate, tmhDynamicLocale, $state, $stateParams) {
+                     cozenEnhancedLogs, $rootScope, $state, $stateParams, cozenLanguage) {
         var app = this;
 
         // Common data
@@ -31,9 +30,7 @@
 
         // Methods
         app.methods = {
-            onInit                   : onInit,
-            callbackLangIfUnavailable: callbackLangIfUnavailable,
-            changeLangInConfig       : changeLangInConfig
+            onInit: onInit
         };
 
         // When the window is ready
@@ -42,17 +39,7 @@
         // Update the configuration of the language when the url lang param was changed
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             if (toParams.lang != fromParams.lang) {
-
-                // If the new lang is not available, take the first one as callback
-                app.methods.callbackLangIfUnavailable(toParams.lang);
-
-                // Update the language
-                app.methods.changeLangInConfig();
-
-                // Log
-                if (CONFIG.dev) {
-                    cozenEnhancedLogs.info.customMessage('AppCtrl', 'The lang of the app has changed.');
-                }
+                cozenLanguage.updateCurrentLanguage(toParams.lang);
             }
         });
 
@@ -68,17 +55,12 @@
                 // Login with the app (how each load, to make sure that the token is still valid)
                 // May be a potential performance leak nevertheless the security is enhanced
                 userFactory.httpRequest.login(user, function (response) {
-                    if (response.data.data.settings.language != CONFIG.currentLanguage) {
-
-                        // If the new lang is not available, take the first one as callback
-                        app.methods.callbackLangIfUnavailable(response.data.data.settings.language);
-
-                        // Update the language
-                        app.methods.changeLangInConfig();
+                    if (response.data.data.settings.language != cozenLanguage.getCurrentLanguage()) {
+                        cozenLanguage.updateCurrentLanguage(response.data.data.settings.language);
 
                         // Refresh the state with new lang param
                         var params  = angular.copy($stateParams);
-                        params.lang = CONFIG.currentLanguage;
+                        params.lang = cozenLanguage.getCurrentLanguage();
                         $state.transitionTo($state.current, params, {
                             reload : false,
                             inherit: false,
@@ -135,21 +117,6 @@
                     Methods.safeApply($scope);
                 }
             }
-        }
-
-        function callbackLangIfUnavailable(language) {
-            if (!Methods.isInList(CONFIG.languages, language)) {
-                CONFIG.currentLanguage = CONFIG.languages[0];
-            }
-            else {
-                CONFIG.currentLanguage = language;
-            }
-        }
-
-        function changeLangInConfig() {
-            $translate.use(CONFIG.currentLanguage);
-            moment.locale(CONFIG.currentLanguage);
-            tmhDynamicLocale.set(CONFIG.currentLanguage);
         }
     }
 

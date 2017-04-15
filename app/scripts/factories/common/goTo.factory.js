@@ -7,12 +7,12 @@
 
     goTo.$inject = [
         '$state',
-        'CONFIG',
+        'cozenLanguage',
         '$stateParams',
         'cozenEnhancedLogs'
     ];
 
-    function goTo($state, CONFIG, $stateParams, cozenEnhancedLogs) {
+    function goTo($state, cozenLanguage, $stateParams, cozenEnhancedLogs) {
 
         // Public functions
         return {
@@ -32,7 +32,7 @@
 
             // Add the :lang as param (for app param)
             param = angular.merge({}, {
-                lang: CONFIG.currentLanguage
+                lang: cozenLanguage.getCurrentLanguage()
             }, param);
 
             cozenEnhancedLogs.info.changeRouteWithParams('goTo', view, param);
