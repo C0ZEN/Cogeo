@@ -71,7 +71,7 @@
                     };
                     userFactory.httpRequest.updateSettings(updateSettings, function () {
                         vm.methods.stopLoading();
-                        goTo.view('app.account.settings');
+                        goTo.view('app.account.settings', {lang: updateSettings.language});
                     }, function () {
                         vm.methods.stopLoading();
                         var btn = angular.element(document.querySelector('#submit-edit-account-settings'));
@@ -210,8 +210,8 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
-                vm.accessLogs            = angular.copy(user.accessLogs);
-                vm.settingsLogins        = angular.copy(user.settings.preferences.accessLogs);
+                vm.accessLogs = angular.copy(user.accessLogs);
+                vm.settingsLogins        = angular.merge({}, vm.settingsLogins, angular.copy(user.settings.preferences.accessLogs));
                 vm.settingsLogins.custom = {
                     appLanguage: [],
                     appVersion : [],

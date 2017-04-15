@@ -50,6 +50,11 @@
                 $translate.use(CONFIG.currentLanguage);
                 moment.locale(CONFIG.currentLanguage);
                 tmhDynamicLocale.set(CONFIG.currentLanguage);
+
+                // Log
+                if (CONFIG.dev) {
+                    cozenEnhancedLogs.info.customMessage('AppCtrl', 'The lang of the app has changed.');
+                }
             }
         });
 

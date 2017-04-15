@@ -63,7 +63,7 @@
         // Called on all view
         function onInitAll() {
             vm.methods.onInit();
-            vm.allChannels  = angular.copy(vm.user.settings.preferences.allChannels);
+            vm.allChannels  = angular.merge({}, vm.allChannels, angular.copy(vm.user.settings.preferences.allChannels));
             vm.isGroupAdmin = groupsFactory.isUserAdmin(vm.params.groupName, vm.user.username);
         }
 
@@ -93,7 +93,7 @@
             vm.channel         = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel         = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
             vm.members         = usersFactory.addUsersFullNames(vm.channel.users);
-            vm.membersSettings = angular.copy(vm.user.settings.preferences.channelsMembers);
+            vm.membersSettings = angular.merge({}, vm.membersSettings, angular.copy(vm.user.settings.preferences.channelsMembers));
         }
 
         // Called on invitations view
@@ -103,7 +103,7 @@
             vm.channel             = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
             vm.invitations         = vm.channel.invitations;
             vm.invitations         = usersFactory.addUsersFullNames(vm.invitations);
-            vm.invitationsSettings = angular.copy(vm.user.settings.preferences.channelsInvitations);
+            vm.invitationsSettings = angular.merge({}, vm.invitationsSettings, angular.copy(vm.user.settings.preferences.channelsInvitations));
             vm.userCanRecruit      = vm.methods.canRecruit();
         }
 
@@ -113,7 +113,7 @@
             vm.channel        = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel        = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
             vm.logs           = vm.channel.logs;
-            vm.logsSettings   = angular.copy(vm.user.settings.preferences.channelsLogs);
+            vm.logsSettings   = angular.merge({}, vm.logsSettings, angular.copy(vm.user.settings.preferences.channelsLogs));
             vm.allLogsDisplay = false;
 
             // Logs with js $filter stuff (if in html, then search field is not filtering deeper)

@@ -31,9 +31,9 @@
             }
 
             // Add the :lang as param (for app param)
-            param = angular.merge({}, param, {
+            param = angular.merge({}, {
                 lang: CONFIG.currentLanguage
-            });
+            }, param);
 
             cozenEnhancedLogs.info.changeRouteWithParams('goTo', view, param);
             $state.go(view, param);
