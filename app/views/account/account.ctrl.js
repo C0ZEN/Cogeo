@@ -214,38 +214,8 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
-                vm.accessLogs            = angular.copy(user.accessLogs);
-                vm.settingsLogins        = angular.merge({}, vm.settingsLogins, angular.copy(user.settings.preferences.accessLogs));
-                vm.settingsLogins.custom = {
-                    appLanguage: [],
-                    appVersion : [],
-                    osName     : [],
-                    browserName: []
-                };
-
-                // Loop through the logins to create data for the popup filter
-                vm.accessLogs.forEach(function (login) {
-
-                    // appLanguage
-                    if (!Methods.isInList(vm.settingsLogins.custom.appLanguage, login.appLanguage)) {
-                        vm.settingsLogins.custom.appLanguage.push(login.appLanguage);
-                    }
-
-                    // appVersion
-                    if (!Methods.isInList(vm.settingsLogins.custom.appVersion, login.appVersion)) {
-                        vm.settingsLogins.custom.appVersion.push(login.appVersion);
-                    }
-
-                    // osName
-                    if (!Methods.isInList(vm.settingsLogins.custom.osName, login.osName) && !Methods.isNullOrEmpty(login.osName)) {
-                        vm.settingsLogins.custom.osName.push(login.osName);
-                    }
-
-                    // browserName
-                    if (!Methods.isInList(vm.settingsLogins.custom.browserName, login.browserName) && !Methods.isNullOrEmpty(login.browserName)) {
-                        vm.settingsLogins.custom.browserName.push(login.browserName);
-                    }
-                });
+                vm.accessLogs     = angular.copy(user.accessLogs);
+                vm.settingsLogins = angular.merge({}, vm.settingsLogins, angular.copy(user.settings.preferences.accessLogs));
             }
         }
 

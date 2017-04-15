@@ -108,9 +108,6 @@
                     });
                 }
             }
-            else {
-                // @todo error handling
-            }
         }
 
         function joinGroup(groupName) {

@@ -9,24 +9,7 @@
             <cozen-form cozen-form-name="accessLogsFilter"
                         cozen-form-ctrl="popup"
                         cozen-form-model="form">
-
-                <!-- Events -->
-                <cozen-dropdown cozen-dropdown-model="popup.accessLogsFilter.trash"
-                                cozen-dropdown-validator-all
-                                cozen-dropdown-multiple="true"
-                                cozen-dropdown-model-enhanced="2"
-                                cozen-dropdown-class="space-medium-after"
-                                cozen-dropdown-label="popup_logs_filter_body_event"
-                                cozen-dropdown-placeholder="popup_logs_filter_body_event_pc"
-                                cozen-dropdown-all-selected-text="popup_logs_filter_body_event_all_selected">
-                    <cozen-dropdown-item-simple ng-repeat="event in popup.accessLogsFilter.data.custom.appLanguage track by $index"
-                                                cozen-dropdown-item-simple-value="event.id"
-                                                cozen-dropdown-item-simple-label="{{ event.name }}"
-                                                cozen-dropdown-item-simple-icon-left="{{ event.icon }} {{ event.color }}"
-                                                cozen-dropdown-item-simple-selected="event.selected">
-                    </cozen-dropdown-item-simple>
-                </cozen-dropdown>
-
+                
                 <!-- Limit per page -->
                 <cozen-input cozen-input-model="popup.accessLogsFilter.data.limit"
                              cozen-input-name="limit"
