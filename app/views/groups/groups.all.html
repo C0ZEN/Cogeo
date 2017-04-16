@@ -53,34 +53,36 @@
                                ng-click="goTo.view('app.groups.details', {groupName: group.name}, null)"
                                ui-sref="app.groups.details({groupName: group.name})">
                             </a>
-                            <cozen-tooltip ng-show="group.userRoles.isMember"
+                            <cozen-tooltip ng-show="group.userRoles.isMember && !vm.all.condensed"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-label="'groups_member_since' | translate:{'date': (group.userRoles.joined | date: 'EEEE dd MMMM yyyy')}">
                                 <mark class="atom-mark member">{{ 'groups_member' | translate }}</mark>
                             </cozen-tooltip>
-                            <cozen-tooltip ng-show="group.userRoles.isCreator"
+                            <cozen-tooltip ng-show="group.userRoles.isCreator && !vm.all.condensed"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-label="'groups_creator_in' | translate:{'date': (group.date.creation | date: 'EEEE dd MMMM yyyy')}">
                                 <mark class="atom-mark creator">{{ 'groups_creator' | translate }}</mark>
                             </cozen-tooltip>
-                            <cozen-tooltip ng-show="group.userRoles.isAdmin"
+                            <cozen-tooltip ng-show="group.userRoles.isAdmin && !vm.all.condensed"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-label="'groups_member_since' | translate:{'date': (group.userRoles.joined | date: 'EEEE dd MMMM yyyy')}">
                                 <mark class="atom-mark admin">{{ 'groups_admin' | translate }}</mark>
                             </cozen-tooltip>
-                            <cozen-tooltip ng-show="group.userRoles.isBanned"
+                            <cozen-tooltip ng-show="group.userRoles.isBanned && !vm.all.condensed"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-type-html
                                            cozen-tooltip-label="'groups_banned_since' | translate:{'date': (group.userRoles.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.banned.by, 'for': methods.getKickBanFor(group.userRoles.banned.for)}">
                                 <mark class="atom-mark banned">{{ 'groups_banned' | translate }}</mark>
                             </cozen-tooltip>
-                            <cozen-tooltip ng-show="group.userRoles.isKicked"
+                            <cozen-tooltip ng-show="group.userRoles.isKicked && !vm.all.condensed"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-type-html
                                            cozen-tooltip-label="'groups_kicked_since' | translate:{'date': (group.userRoles.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.kicked.by, 'for': methods.getKickBanFor(group.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(group.userRoles.kicked.time).key | translate)}">
                                 <mark class="atom-mark kicked">{{ 'groups_kicked' | translate }}</mark>
                             </cozen-tooltip>
-                            <small class="help-text">{{ (group.membersQuantity > 1 ? 'groups_members_total_pluralize' : 'groups_members_total') | translate:{total: group.membersQuantity} }}</small>
+                            <small ng-show="!vm.all.condensed"
+                                   class="help-text">{{ (group.membersQuantity > 1 ? 'groups_members_total_pluralize' : 'groups_members_total') | translate:{total: group.membersQuantity} }}
+                            </small>
                         </p>
                         <p class="help-text">{{ group.description }}</p>
                     </div>

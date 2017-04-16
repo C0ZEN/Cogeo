@@ -141,10 +141,14 @@
     "popup_allChannels_filter_body_privateChannels_tooltip": "Afficher seulement les channels privés (conversation cachée, recrutement par invitation)",
     "popup_allChannels_filter_body_defaultChannels": "Seulement les channels par défaut",
     "popup_allChannels_filter_body_defaultChannels_tooltip": "Afficher seulement les channels par défaut (les channels que rejoignent les nouveaux membre du groupe)",
+    "popup_allChannels_filter_body_condensed": "Vue plus condensée",
+    "popup_allChannels_filter_body_condensed_tooltip": "Réduit le nombre d'informations visibles pour amélioré la lisibilité",
     "popup_allGroups_filter_header_title": "Filtrer les groupes",
     "popup_allGroups_filter_body_order_by_tooltip": "Afficher les groupes par ordre alphabétique (de A à Z)",
     "popup_allGroups_filter_body_myGroups": "Seulement mes groupes",
     "popup_allGroups_filter_body_myGroups_tooltip": "Afficher seulement les groupes dont je suis membre",
     "popup_allGroups_filter_body_myGroupsAdmin": "Et ou je suis l'administrateur",
-    "popup_allGroups_filter_body_myGroupsAdmin_tooltip": "Afficher seulement les groupes dont je suis membre et dont je suis administrateur"
+    "popup_allGroups_filter_body_myGroupsAdmin_tooltip": "Afficher seulement les groupes dont je suis membre et dont je suis administrateur",
+    "popup_allGroups_filter_body_condensed": "Vue plus condensée",
+    "popup_allGroups_filter_body_condensed_tooltip": "Réduit le nombre d'informations visibles pour amélioré la lisibilité"
 }
