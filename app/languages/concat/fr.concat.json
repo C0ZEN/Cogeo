@@ -308,6 +308,18 @@
 				"MEMBER_KICKED_PLURALIZE": "membres expulsés",
 				"MEMBER_BANNED": "membre banni",
 				"MEMBER_BANNED_PLURALIZE": "membres bannis"
+			},
+			"GROUPS_CHANNELS_TYPES": {
+				"TYPE": "Types de channels",
+				"DEFAULT": "Défaut",
+				"PUBLIC": "Public",
+				"PRIVATE": "Privé",
+				"CHANNEL_DEFAULT": "channel par défaut",
+				"CHANNEL_DEFAULT_PLURALIZE": "channels par défauts",
+				"CHANNEL_PUBLIC": "channel public",
+				"CHANNEL_PUBLIC_PLURALIZE": "channels publiques",
+				"CHANNEL_PRIVATE": "channel privé",
+				"CHANNEL_PRIVATE_PLURALIZE": "channels privés"
 			}
 		}
 	},

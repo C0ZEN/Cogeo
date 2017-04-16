@@ -1734,6 +1734,14 @@
             setAllGroups                  : setAllGroups,
             isActiveMember                : isActiveMember,
             getGroupNotLeftMembersQuantity: getGroupNotLeftMembersQuantity,
+            getAdminMembersQuantity       : getAdminMembersQuantity,
+            getNoneAdminMembersQuantity   : getNoneAdminMembersQuantity,
+            getNotLeftMembersQuantity     : getNotLeftMembersQuantity,
+            getKickedMembersQuantity      : getKickedMembersQuantity,
+            getBannedMembersQuantity      : getBannedMembersQuantity,
+            getDefaultChannelsQuantity    : getDefaultChannelsQuantity,
+            getPublicChannelsQuantity     : getPublicChannelsQuantity,
+            getPrivateChannelsQuantity    : getPrivateChannelsQuantity,
             httpRequest                   : {
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName,
@@ -2072,6 +2080,101 @@
                 }
             });
             return notLeft;
+        }
+
+        function getAdminMembersQuantity(groupName) {
+            var group = getGroupByName(groupName);
+            var admin = 0;
+            group.users.forEach(function (member) {
+                if (member.hasLeft == 0) {
+                    if (member.admin) {
+                        admin++;
+                    }
+                }
+            });
+            return admin;
+        }
+
+        function getNoneAdminMembersQuantity(groupName) {
+            var group     = getGroupByName(groupName);
+            var noneAdmin = 0;
+            group.users.forEach(function (member) {
+                if (member.hasLeft == 0) {
+                    if (!member.admin) {
+                        noneAdmin++;
+                    }
+                }
+            });
+            return noneAdmin;
+        }
+
+        function getNotLeftMembersQuantity(users) {
+            var notLeft = 0;
+            users.forEach(function (user) {
+                if (user.hasLeft == 0) {
+                    notLeft++;
+                }
+            });
+            return notLeft;
+        }
+
+        function getKickedMembersQuantity(groupName) {
+            var group  = getGroupByName(groupName);
+            var kicked = 0;
+            group.users.forEach(function (member) {
+                if (member.hasLeft == 0) {
+                    if (member.kicked.active) {
+                        kicked++;
+                    }
+                }
+            });
+            return kicked;
+        }
+
+        function getBannedMembersQuantity(groupName) {
+            var group  = getGroupByName(groupName);
+            var banned = 0;
+            group.users.forEach(function (member) {
+                if (member.hasLeft == 0) {
+                    if (member.banned.active) {
+                        banned++;
+                    }
+                }
+            });
+            return banned;
+        }
+
+        function getDefaultChannelsQuantity(groupName) {
+            var group          = getGroupByName(groupName);
+            var defaultChannel = 0;
+            group.channels.forEach(function (channel) {
+                if (channel.default) {
+                    defaultChannel++;
+                }
+            });
+            return defaultChannel;
+        }
+
+        function getPublicChannelsQuantity(groupName) {
+            var group         = getGroupByName(groupName);
+            var publicChannel = 0;
+            group.channels.forEach(function (channel) {
+                if (!channel.private) {
+                    publicChannel++;
+                }
+            });
+            return publicChannel;
+        }
+
+        function getPrivateChannelsQuantity(groupName) {
+            var group          = getGroupByName(groupName);
+            var privateChannel = 0;
+            group.channels.forEach(function (channel) {
+                if (channel.private) {
+                    privateChannel++;
+                }
+            });
+            return privateChannel;
         }
 
         /// HTTP REQUEST ///

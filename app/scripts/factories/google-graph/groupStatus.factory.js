@@ -3,16 +3,16 @@
 
     angular
         .module('4pjtApp')
-        .factory('googleGraphChannelStatus', googleGraphChannelStatus);
+        .factory('googleGraphGroupStatus', googleGraphGroupStatus);
 
-    googleGraphChannelStatus.$inject = [
+    googleGraphGroupStatus.$inject = [
         '$filter',
         'colors',
-        'channelsFactory',
+        'groupsFactory',
         'CONFIG'
     ];
 
-    function googleGraphChannelStatus($filter, colors, channelsFactory, CONFIG) {
+    function googleGraphGroupStatus($filter, colors, groupsFactory, CONFIG) {
 
         // Options
         var _options = {
@@ -43,7 +43,7 @@
         };
 
         // Channels data
-        var _channels = {};
+        var _groups = {};
 
         return {
             getChart               : getChart,
@@ -53,13 +53,13 @@
         };
 
         // Return the object which must be binding to the directive draw-chart
-        function getChart(groupName, channelId) {
-            _channels.active = channelsFactory.getActiveMembers(groupName, channelId).length;
-            _channels.kicked = channelsFactory.getChannelKickedQuantity(groupName, channelId);
-            _channels.banned = channelsFactory.getChannelBannedQuantity(groupName, channelId);
-            _channels.total  = _channels.active + _channels.kicked + _channels.banned;
+        function getChart(groupName) {
+            _groups.active = groupsFactory.getActiveUsers(groupName).length;
+            _groups.kicked = groupsFactory.getKickedMembersQuantity(groupName);
+            _groups.banned = groupsFactory.getBannedMembersQuantity(groupName);
+            _groups.total  = _groups.active + _groups.kicked + _groups.banned;
             return {
-                id         : 'google-graph-channel-status',
+                id         : 'google-graph-group-status',
                 data       : getGoogleData,
                 options    : _options,
                 type       : 'PieChart',
@@ -108,25 +108,25 @@
             return [
                 {
                     name         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.ACTIVE'),
-                    quantity     : _channels.active,
+                    quantity     : _groups.active,
                     color        : colors.getColors().green,
-                    pct          : Math.round(_channels.active * 100 / _channels.total) + '%',
+                    pct          : Math.round(_groups.active * 100 / _groups.total) + '%',
                     text         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_ACTIVE'),
                     textPluralize: $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_ACTIVE_PLURALIZE')
                 },
                 {
                     name         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.KICKED'),
-                    quantity     : _channels.kicked,
+                    quantity     : _groups.kicked,
                     color        : colors.getColors().yellow,
-                    pct          : Math.round(_channels.kicked * 100 / _channels.total) + '%',
+                    pct          : Math.round(_groups.kicked * 100 / _groups.total) + '%',
                     text         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_KICKED'),
                     textPluralize: $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_KICKED_PLURALIZE')
                 },
                 {
                     name         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.BANNED'),
-                    quantity     : _channels.banned,
+                    quantity     : _groups.banned,
                     color        : colors.getColors().red,
-                    pct          : Math.round(_channels.banned * 100 / _channels.total) + '%',
+                    pct          : Math.round(_groups.banned * 100 / _groups.total) + '%',
                     text         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_BANNED'),
                     textPluralize: $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_BANNED_PLURALIZE')
                 }

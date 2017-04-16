@@ -1080,9 +1080,9 @@ div.atom-chart-container {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1101,6 +1101,7 @@ div.atom-chart-container div.draw-chart-values-container {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  padding-left: 140px;
 }
 div.atom-chart-container div.draw-chart-values-container div.draw-chart-value {
   font-size: 16px;
@@ -1114,17 +1115,22 @@ div.atom-chart-container div.draw-chart-values-container div.draw-chart-value sp
   font-size: inherit;
   font-weight: 400;
 }
-@media (min-width: 768px) {
-  div.atom-chart-container {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
+div.atom-chart-container.single-chart {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 @media (min-width: 992px) {
   div.atom-chart-container {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+  }
+  div.atom-chart-container div.draw-chart-values-container {
+    padding-left: 0;
+  }
+  div.atom-chart-container.single-chart div.draw-chart-values-container {
+    padding-left: 132px;
   }
 }
 cozen-dropdown-item-simple img.flag {

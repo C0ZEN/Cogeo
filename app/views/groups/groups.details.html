@@ -1,5 +1,5 @@
 <div class="animated fadeIn"
-     ng-init="vm.methods.onDisplayDetails()">
+     ng-init="vm.methods.onDisplayDetails(); vm.methods.onInitDetails();">
     <div class="row">
         <div class="col-xs-12">
             <div ng-show="vm.details.group != null">
@@ -74,14 +74,56 @@
 
                     <!-- Stats -->
                     <h3>{{ 'groups_details_stats' | translate }}</h3>
-                    <h4>
-                        <strong>{{ 'groups_details_memberLength' | translate }}:</strong>
-                        {{ vm.details.group.users.length }}
-                    </h4>
-                    <h4 class="no-margin-bottom">
-                        <strong>{{ 'groups_details_channelsLength' | translate }}:</strong>
-                        {{ vm.details.group.channels.length }}
-                    </h4>
+
+                    <div class="atom-chart-container">
+
+                        <!-- Members admin/not admin -->
+                        <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.members.id"
+                                          cozen-draw-chart-data="vm.googleGraph.members.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.members.options"
+                                          cozen-draw-chart-type="vm.googleGraph.members.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.members.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values draw-chart-values-factory="googleGraphGroupMembers"></draw-chart-values>
+
+                        <!-- Members active/kicked/banned -->
+                        <cozen-draw-chart ng-if-bootstrap-grid="md,lg"
+                                          cozen-draw-chart-id="vm.googleGraph.status.id"
+                                          cozen-draw-chart-data="vm.googleGraph.status.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.status.options"
+                                          cozen-draw-chart-type="vm.googleGraph.status.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.status.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values ng-if-bootstrap-grid="md,lg"
+                                           draw-chart-values-factory="googleGraphGroupStatus">
+                        </draw-chart-values>
+                    </div>
+
+                    <div ng-if-bootstrap-grid="xs,sm"
+                         class="atom-chart-container">
+
+                        <!-- Members active/kicked/banned -->
+                        <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.status.id"
+                                          cozen-draw-chart-data="vm.googleGraph.status.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.status.options"
+                                          cozen-draw-chart-type="vm.googleGraph.status.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.status.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values draw-chart-values-factory="googleGraphGroupStatus"></draw-chart-values>
+                    </div>
+
+                    <!-- Graph-->
+                    <div class="atom-chart-container single-chart">
+
+                        <!-- Channels public/private/default -->
+                        <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.channelsTypes.id"
+                                          cozen-draw-chart-data="vm.googleGraph.channelsTypes.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.channelsTypes.options"
+                                          cozen-draw-chart-type="vm.googleGraph.channelsTypes.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.channelsTypes.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values draw-chart-values-factory="googleGraphGroupChannelsTypes"></draw-chart-values>
+                    </div>
                 </div>
 
                 <!-- Warning message for banned -->

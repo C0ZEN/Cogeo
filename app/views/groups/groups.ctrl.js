@@ -15,11 +15,14 @@
         'usersFactory',
         '$filter',
         '$scope',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        'googleGraphGroupMembers',
+        'googleGraphGroupStatus',
+        'googleGraphGroupChannelsTypes'
     ];
 
     function GroupsCtrl(CONFIG, goTo, httpRequest, $state, groupsFactory, userFactory, usersFactory, $filter, $scope,
-                        cozenEnhancedLogs) {
+                        cozenEnhancedLogs, googleGraphGroupMembers, googleGraphGroupStatus, googleGraphGroupChannelsTypes) {
         var vm = this;
 
         // Methods
@@ -37,7 +40,8 @@
             toggleRecruitMod : toggleRecruitMod,
             startLoading     : startLoading,
             stopLoading      : stopLoading,
-            isEmailDuplicated: isEmailDuplicated
+            isEmailDuplicated: isEmailDuplicated,
+            onInitDetails    : onInitDetails
         };
 
         // Common data
@@ -52,6 +56,7 @@
         vm.members        = angular.merge({}, vm.members, angular.copy(vm.user.settings.preferences.groupsMembers));
         vm.log            = angular.merge({}, vm.log, angular.copy(vm.user.settings.preferences.groupsLogs));
         vm.groupsQuantity = groupsFactory.getGroups().length;
+        vm.googleGraph    = {};
 
         // When the user factory is updated
         userFactory.subscribe($scope, function () {
@@ -193,6 +198,14 @@
                 emails.push(email.email);
             });
             return Methods.hasDuplicates(emails);
+        }
+
+        function onInitDetails() {
+
+            // Get the google graph for members
+            vm.googleGraph.members       = googleGraphGroupMembers.getChart($state.params.groupName);
+            vm.googleGraph.status        = googleGraphGroupStatus.getChart($state.params.groupName);
+            vm.googleGraph.channelsTypes = googleGraphGroupChannelsTypes.getChart($state.params.groupName);
         }
     }
 

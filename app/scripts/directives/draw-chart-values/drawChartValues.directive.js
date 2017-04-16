@@ -19,10 +19,14 @@
 
     drawChartValues.$inject = [
         'googleGraphChannelMembers',
-        'googleGraphChannelStatus'
+        'googleGraphChannelStatus',
+        'googleGraphGroupMembers',
+        'googleGraphGroupStatus',
+        'googleGraphGroupChannelsTypes'
     ];
 
-    function drawChartValues(googleGraphChannelMembers, googleGraphChannelStatus) {
+    function drawChartValues(googleGraphChannelMembers, googleGraphChannelStatus, googleGraphGroupMembers, googleGraphGroupStatus,
+                             googleGraphGroupChannelsTypes) {
         return {
             link       : link,
             restrict   : 'E',
@@ -53,6 +57,15 @@
                         break;
                     case 'googleGraphChannelStatus':
                         scope._values = googleGraphChannelStatus.getData();
+                        break;
+                    case 'googleGraphGroupMembers':
+                        scope._values = googleGraphGroupMembers.getData();
+                        break;
+                    case 'googleGraphGroupStatus':
+                        scope._values = googleGraphGroupStatus.getData();
+                        break;
+                    case 'googleGraphGroupChannelsTypes':
+                        scope._values = googleGraphGroupChannelsTypes.getData();
                         break;
                 }
 

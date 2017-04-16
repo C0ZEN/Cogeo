@@ -91,8 +91,8 @@
 
         // Cogeo Config
         CONFIG.internal = {
-            API       : 'https://qwirk.herokuapp.com/',
-            video     : {
+            API        : 'https://qwirk.herokuapp.com/',
+            video      : {
                 theme  : "bower_components/videogular-themes-default/videogular.css",
                 plugins: {
                     controls: {
@@ -101,7 +101,18 @@
                     }
                 }
             },
-            appVersion: '1.0.2'
+            appVersion : '1.0.2',
+            googleGraph: {
+                pieChart: {
+                    pieHole: 0.7,
+                    height : 120,
+                    width  : 120,
+                    top    : 15,
+                    right  : 15,
+                    bottom : 15,
+                    left   : 15
+                }
+            }
         };
 
         // Configure the loading bar

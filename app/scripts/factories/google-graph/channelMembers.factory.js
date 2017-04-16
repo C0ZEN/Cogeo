@@ -8,36 +8,39 @@
     googleGraphChannelMembers.$inject = [
         '$filter',
         'colors',
-        'channelsFactory'
+        'channelsFactory',
+        'CONFIG'
     ];
 
-    function googleGraphChannelMembers($filter, colors, channelsFactory) {
+    function googleGraphChannelMembers($filter, colors, channelsFactory, CONFIG) {
 
         // Options
         var _options = {
-            height      : 130,
-            width       : 130,
-            legend      : {
-                position: 'none'
-            },
-            chartArea   : {
-                top   : 15,
-                bottom: 15,
-                left  : 15,
-                right : 15,
-                width : 100,
-                height: 100
-            },
-            tooltip     : {
-                showColorCode: false
-            },
-            pieHole     : 0.7,
-            pieSliceText: 'none',
-            colors      : [
-                colors.getColors().purple,
-                colors.getColors().green
-            ]
-        };
+                height      : CONFIG.internal.googleGraph.pieChart.height,
+                width       : CONFIG.internal.googleGraph.pieChart.width,
+                legend      : {
+                    position: 'none'
+                },
+                chartArea   : {
+                    top   : CONFIG.internal.googleGraph.pieChart.top,
+                    bottom: CONFIG.internal.googleGraph.pieChart.bottom,
+                    left  : CONFIG.internal.googleGraph.pieChart.left,
+                    right : CONFIG.internal.googleGraph.pieChart.right,
+                    width : CONFIG.internal.googleGraph.pieChart.width - CONFIG.internal.googleGraph.pieChart.right - CONFIG.internal.googleGraph.pieChart.left,
+                    height: CONFIG.internal.googleGraph.pieChart.height - CONFIG.internal.googleGraph.pieChart.top - CONFIG.internal.googleGraph.pieChart.bottom
+                },
+                tooltip     : {
+                    showColorCode: false
+                }
+                ,
+                pieHole     : CONFIG.internal.googleGraph.pieChart.pieHole,
+                pieSliceText: 'none',
+                colors      : [
+                    colors.getColors().purple,
+                    colors.getColors().green
+                ]
+            }
+        ;
 
         // Channels data
         var _channels = {};
