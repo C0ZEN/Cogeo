@@ -74,7 +74,7 @@
             vm.channel = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
 
             // Get the google graph for members
-            vm.googleGraph.members = googleGraphChannelMembers.getChart();
+            vm.googleGraph.members = googleGraphChannelMembers.getChart(vm.params.groupName, vm.channel._id);
         }
 
         // Leave a channel

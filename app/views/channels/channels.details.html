@@ -98,16 +98,13 @@
 
                     <!-- Stats -->
                     <h3>{{ 'channels_details_stats' | translate }}</h3>
-                    <h4 class="no-margin-bottom">
-                        <strong>{{ 'channels_details_memberLength' | translate }}:</strong>
-                        {{ vm.channel.users.length }}
-                    </h4>
 
                     <!-- Graph -->
                     <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.members.id"
                                       cozen-draw-chart-data="vm.googleGraph.members.data()"
                                       cozen-draw-chart-options="vm.googleGraph.members.options"
-                                      cozen-draw-chart-type="vm.googleGraph.members.type">
+                                      cozen-draw-chart-type="vm.googleGraph.members.type"
+                                      cozen-draw-chart-animation-in="{{ vm.googleGraph.members.animationIn }}">
                     </cozen-draw-chart>
                 </div>
 
