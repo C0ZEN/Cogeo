@@ -41,6 +41,8 @@
             getChannelAdminQuantity         : getChannelAdminQuantity,
             getChannelNoneAdminQuantity     : getChannelNoneAdminQuantity,
             getChannelNotLeftMembersQuantity: getChannelNotLeftMembersQuantity,
+            getChannelKickedQuantity        : getChannelKickedQuantity,
+            getChannelBannedQuantity        : getChannelBannedQuantity,
             httpRequest                     : {
                 updateChannel  : httpRequestUpdateChannel,
                 addChannel     : httpRequestAddChannel,
@@ -235,7 +237,7 @@
                     }
                 }
             }
-            return [];
+            return users;
         }
 
 
@@ -441,6 +443,32 @@
                 }
             });
             return notLeft;
+        }
+
+        function getChannelKickedQuantity(groupName, channelId) {
+            var channel = getChannelById(groupName, channelId);
+            var kicked  = 0;
+            channel.users.forEach(function (member) {
+                if (member.hasLeft == 0) {
+                    if (member.kicked.active) {
+                        kicked++;
+                    }
+                }
+            });
+            return kicked;
+        }
+
+        function getChannelBannedQuantity(groupName, channelId) {
+            var channel = getChannelById(groupName, channelId);
+            var banned  = 0;
+            channel.users.forEach(function (member) {
+                if (member.hasLeft == 0) {
+                    if (member.banned.active) {
+                        banned++;
+                    }
+                }
+            });
+            return banned;
         }
 
         /// HTTP REQUEST ///

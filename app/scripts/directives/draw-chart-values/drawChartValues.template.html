@@ -1,0 +1,21 @@
+<div class="draw-chart-values-container">
+
+    <!-- List of values to display -->
+    <div ng-repeat="value in _values track by $index"
+         ng-show="value.quantity > 0"
+         class="draw-chart-value">
+
+        <!-- Quantity -->
+        <span class="draw-chart-value-quantity"
+              ng-style="{color: value.color}">
+            {{ value.quantity }}
+        </span>
+
+        <!-- Text -->
+        <span class="draw-chart-value-text">{{ (value.quantity > 1 ? value.textPluralize : value.text) | translate }}</span>
+
+        <!-- Percent -->
+        <small class="draw-chart-value-percent help-text">({{ value.pct }})</small>
+
+    </div>
+</div>

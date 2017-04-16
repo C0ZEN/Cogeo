@@ -3,15 +3,15 @@
 
     angular
         .module('4pjtApp')
-        .factory('googleGraphChannelMembers', googleGraphChannelMembers);
+        .factory('googleGraphChannelStatus', googleGraphChannelStatus);
 
-    googleGraphChannelMembers.$inject = [
+    googleGraphChannelStatus.$inject = [
         '$filter',
         'colors',
         'channelsFactory'
     ];
 
-    function googleGraphChannelMembers($filter, colors, channelsFactory) {
+    function googleGraphChannelStatus($filter, colors, channelsFactory) {
 
         // Options
         var _options = {
@@ -34,8 +34,9 @@
             pieHole     : 0.7,
             pieSliceText: 'none',
             colors      : [
-                colors.getColors().purple,
-                colors.getColors().green
+                colors.getColors().green,
+                colors.getColors().yellow,
+                colors.getColors().red
             ]
         };
 
@@ -51,11 +52,12 @@
 
         // Return the object which must be binding to the directive draw-chart
         function getChart(groupName, channelId) {
-            _channels.admin     = channelsFactory.getChannelAdminQuantity(groupName, channelId);
-            _channels.noneAdmin = channelsFactory.getChannelNoneAdminQuantity(groupName, channelId);
-            _channels.total     = _channels.admin + _channels.noneAdmin;
+            _channels.active = channelsFactory.getActiveMembers(groupName, channelId).length;
+            _channels.kicked = channelsFactory.getChannelKickedQuantity(groupName, channelId);
+            _channels.banned = channelsFactory.getChannelBannedQuantity(groupName, channelId);
+            _channels.total  = _channels.active + _channels.kicked + _channels.banned;
             return {
-                id         : 'google-graph-channel-members',
+                id         : 'google-graph-channel-status',
                 data       : getGoogleData,
                 options    : _options,
                 type       : 'PieChart',
@@ -67,7 +69,7 @@
         function getGoogleData() {
             var structure = [
                 [
-                    $filter('translate')('GRAPH.GOOGLE.CHANNELS_MEMBERS.TYPE'),
+                    $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.TYPE'),
                     'Pourcentage',
                     ({
                         type: 'string',
@@ -103,20 +105,28 @@
         function getData() {
             return [
                 {
-                    name         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_MEMBERS.ADMIN'),
-                    quantity     : _channels.admin,
-                    color        : colors.getColors().purple,
-                    pct          : Math.round(_channels.admin * 100 / _channels.total) + '%',
-                    text         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_MEMBERS.MEMBER_ADMIN'),
-                    textPluralize: $filter('translate')('GRAPH.GOOGLE.CHANNELS_MEMBERS.MEMBER_ADMIN_PLURALIZE')
+                    name         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.ACTIVE'),
+                    quantity     : _channels.active,
+                    color        : colors.getColors().green,
+                    pct          : Math.round(_channels.active * 100 / _channels.total) + '%',
+                    text         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_ACTIVE'),
+                    textPluralize: $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_ACTIVE_PLURALIZE')
                 },
                 {
-                    name         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_MEMBERS.NONE_ADMIN'),
-                    quantity     : _channels.noneAdmin,
-                    color        : colors.getColors().green,
-                    pct          : Math.round(_channels.noneAdmin * 100 / _channels.total) + '%',
-                    text         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_MEMBERS.MEMBER_NOT_ADMIN'),
-                    textPluralize: $filter('translate')('GRAPH.GOOGLE.CHANNELS_MEMBERS.MEMBER_NOT_ADMIN_PLURALIZE')
+                    name         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.KICKED'),
+                    quantity     : _channels.kicked,
+                    color        : colors.getColors().yellow,
+                    pct          : Math.round(_channels.kicked * 100 / _channels.total) + '%',
+                    text         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_KICKED'),
+                    textPluralize: $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_KICKED_PLURALIZE')
+                },
+                {
+                    name         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.BANNED'),
+                    quantity     : _channels.banned,
+                    color        : colors.getColors().red,
+                    pct          : Math.round(_channels.banned * 100 / _channels.total) + '%',
+                    text         : $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_BANNED'),
+                    textPluralize: $filter('translate')('GRAPH.GOOGLE.CHANNELS_STATUS.MEMBER_BANNED_PLURALIZE')
                 }
             ];
         }

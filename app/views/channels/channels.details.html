@@ -100,12 +100,26 @@
                     <h3>{{ 'channels_details_stats' | translate }}</h3>
 
                     <!-- Graph -->
-                    <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.members.id"
-                                      cozen-draw-chart-data="vm.googleGraph.members.data()"
-                                      cozen-draw-chart-options="vm.googleGraph.members.options"
-                                      cozen-draw-chart-type="vm.googleGraph.members.type"
-                                      cozen-draw-chart-animation-in="{{ vm.googleGraph.members.animationIn }}">
-                    </cozen-draw-chart>
+                    <div class="atom-chart-container">
+
+                        <!-- Members admin/not admin-->
+                        <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.members.id"
+                                          cozen-draw-chart-data="vm.googleGraph.members.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.members.options"
+                                          cozen-draw-chart-type="vm.googleGraph.members.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.members.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values draw-chart-values-factory="googleGraphChannelMembers"></draw-chart-values>
+
+                        <!-- Members active/kicked/banned -->
+                        <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.status.id"
+                                          cozen-draw-chart-data="vm.googleGraph.status.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.status.options"
+                                          cozen-draw-chart-type="vm.googleGraph.status.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.status.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values draw-chart-values-factory="googleGraphChannelStatus"></draw-chart-values>
+                    </div>
                 </div>
 
                 <!-- Warning message for banned -->

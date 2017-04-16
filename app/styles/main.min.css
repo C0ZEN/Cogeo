@@ -1072,6 +1072,47 @@ div.google-visualization-tooltip p.tooltip-text {
 div.google-visualization-tooltip p.tooltip-text small {
   color: #D6DBDB;
 }
+div.atom-chart-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+div.atom-chart-container div.draw-chart-values-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+div.atom-chart-container div.draw-chart-values-container div.draw-chart-value {
+  font-size: 16px;
+}
+div.atom-chart-container div.draw-chart-values-container div.draw-chart-value span.draw-chart-value-quantity {
+  font-size: 24px;
+  font-weight: 600;
+}
+div.atom-chart-container div.draw-chart-values-container div.draw-chart-value span.draw-chart-value-text {
+  color: #4C596B;
+  font-size: inherit;
+  font-weight: 400;
+}
 cozen-dropdown-item-simple img.flag {
   width: 17px;
   display: inline-block;

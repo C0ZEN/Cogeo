@@ -291,7 +291,23 @@
 				"ADMIN_TP": " membre admin",
 				"MEMBER": "Membre",
 				"MEMBER_TP": "membres",
-				"MEMBER_TP_ALONE": "membre"
+				"MEMBER_TP_ALONE": "membre",
+				"MEMBER_ADMIN": "membre admin",
+				"MEMBER_ADMIN_PLURALIZE": "membres admin",
+				"MEMBER_NOT_ADMIN": "membre non admin",
+				"MEMBER_NOT_ADMIN_PLURALIZE": "membres non admin"
+			},
+			"CHANNELS_STATUS": {
+				"TYPE": "Status des membres",
+				"ACTIVE": "Actif",
+				"KICKED": "Expulsé",
+				"BANNED": "Banni",
+				"MEMBER_ACTIVE": "membre actif",
+				"MEMBER_ACTIVE_PLURALIZE": "membres actifs",
+				"MEMBER_KICKED": "membre expulsé",
+				"MEMBER_KICKED_PLURALIZE": "membres expulsés",
+				"MEMBER_BANNED": "membre banni",
+				"MEMBER_BANNED_PLURALIZE": "membres bannis"
 			}
 		}
 	},

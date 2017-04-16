@@ -15,7 +15,8 @@
             blue  : '#3498DB',
             green : '#2ECC71',
             yellow: '#F1C40F',
-            purple: '#9B59B6'
+            purple: '#9B59B6',
+            red   : '#E53935'
         };
 
         return {

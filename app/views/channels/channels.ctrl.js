@@ -16,11 +16,12 @@
         'goTo',
         'httpRequest',
         '$filter',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        'googleGraphChannelStatus'
     ];
 
     function ChannelsCtrl(CONFIG, channelsFactory, googleGraphChannelMembers, $state, groupsFactory, userFactory,
-                          usersFactory, goTo, httpRequest, $filter, cozenEnhancedLogs) {
+                          usersFactory, goTo, httpRequest, $filter, cozenEnhancedLogs, googleGraphChannelStatus) {
         var vm = this;
 
         // Methods
@@ -75,6 +76,7 @@
 
             // Get the google graph for members
             vm.googleGraph.members = googleGraphChannelMembers.getChart(vm.params.groupName, vm.channel._id);
+            vm.googleGraph.status  = googleGraphChannelStatus.getChart(vm.params.groupName, vm.channel._id);
         }
 
         // Leave a channel
