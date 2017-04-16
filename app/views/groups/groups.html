@@ -36,6 +36,14 @@
                                          cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.groups.log')">
                 </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_channels"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.all', {'groupName': vm.details.group.name})"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-icon-right="fa fa-fw fa-arrow-right"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
+                                         cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.channels.all')"
+                                         class="margin-left-auto">
+                </cozen-pills-item-simple>
             </cozen-pills>
 
             <!-- Content -->
