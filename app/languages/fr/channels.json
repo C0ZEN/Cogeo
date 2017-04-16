@@ -2,6 +2,8 @@
     "channels_all": "Tous les channels",
     "channels_creator": "Créateur",
     "channels_member": "Membre",
+    "channels_private_tp": "Channel privé",
+    "channels_private": "Privé",
     "channels_admin": "Administrateur",
     "channels_banned": "Banni",
     "channels_kicked": "Expulsé",

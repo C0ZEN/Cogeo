@@ -11,11 +11,16 @@
                              ng-src="{{ methods.getChannelPicture(vm.params.groupName, vm.channel._id) }}">
                         <div class="text">
                             <div class="center-flex-content flex-start">
-                                <h3>{{ vm.channel.name }}</h3>
+                                <h3 class="atom-ellipsis">{{ vm.channel.name }}</h3>
                                 <cozen-tooltip ng-show="vm.channel.default"
                                                cozen-tooltip-placement="auto bottom"
                                                cozen-tooltip-label="'channels_by_default_tp' | translate">
                                     <mark class="atom-mark default space-small-left">{{ 'channels_by_default' | translate }}</mark>
+                                </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.private"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_private_tp' | translate">
+                                    <mark class="atom-mark private space-small-left">{{ 'channels_private' | translate }}</mark>
                                 </cozen-tooltip>
                                 <cozen-tooltip ng-show="vm.channel.isMember"
                                                cozen-tooltip-placement="auto bottom"
@@ -46,16 +51,9 @@
                                 </cozen-tooltip>
                             </div>
                             <p class="help-text">{{ vm.channel.description }}</p>
-                            <div>
-                                <p class="help-text inline-block"
-                                   cozen-compile="'channels_details_creation_by' | translate:{userName: vm.channel.creator, date: (vm.channel.date.creation | date:'EEEE dd MMMM yyyy')}">
-                                </p>
-                                <cozen-tooltip cozen-tooltip-label="vm.channel.private ? 'channels_details_private_tp' : 'channels_details_public_tp'">
-                                    <i class="fa fa-fw eye"
-                                       ng-class="vm.channel.private ? 'fa-eye-slash' : 'fa-eye'">
-                                    </i>
-                                </cozen-tooltip>
-                            </div>
+                            <p class="help-text inline-block"
+                               cozen-compile="'channels_details_creation_by' | translate:{userName: vm.channel.creator, date: (vm.channel.date.creation | date:'EEEE dd MMMM yyyy')}">
+                            </p>
                         </div>
                     </div>
 

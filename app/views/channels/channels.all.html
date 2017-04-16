@@ -60,6 +60,11 @@
                                            cozen-tooltip-label="'channels_by_default_tp' | translate">
                                 <mark class="atom-mark default">{{ 'channels_by_default' | translate }}</mark>
                             </cozen-tooltip>
+                            <cozen-tooltip ng-show="channel.private"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'channels_private_tp' | translate">
+                                <mark class="atom-mark private">{{ 'channels_private' | translate }}</mark>
+                            </cozen-tooltip>
                             <cozen-tooltip ng-show="channel.isMember"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-label="'channels_member_since' | translate:{'date': (channel.joined | date: 'EEEE dd MMMM yyyy')}">
@@ -89,13 +94,7 @@
                             </cozen-tooltip>
                             <small class="help-text">{{ (channel.membersQuantity > 1 ? 'channels_members_total_pluralize' : 'channels_members_total') | translate:{total: channel.membersQuantity} }}</small>
                         </p>
-                        <div>
-                            <p class="help-text inline-block">{{ channel.description }}</p>
-                            <cozen-tooltip cozen-tooltip-label="'channels_details_private_tp'"
-                                           ng-if="channel.private">
-                                <i class="fa fa-fw eye fa-eye-slash"></i>
-                            </cozen-tooltip>
-                        </div>
+                        <p class="help-text inline-block">{{ channel.description }}</p>
                     </div>
                 </div>
 

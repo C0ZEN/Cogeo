@@ -321,6 +321,7 @@ mark.atom-mark {
   font-size: 12px;
   font-weight: 400;
   color: #FFFFFF;
+  cursor: help;
 }
 mark.atom-mark.default,
 mark.atom-mark.creator {
@@ -332,6 +333,7 @@ mark.atom-mark.member {
 mark.atom-mark.admin {
   background-color: #9C27B0;
 }
+mark.atom-mark.private,
 mark.atom-mark.kicked,
 mark.atom-mark.banned {
   background-color: #FEB909;
@@ -765,6 +767,15 @@ i.atom-icon-btn.purple:hover {
 .app-language-flag {
   width: 15px;
   margin-left: 4px;
+}
+.atom-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  line-height: inherit;
 }
 /********************/
 /**   TEXT ALIGN   **/
@@ -2771,6 +2782,7 @@ div.atom-groups div.atom-group div.img {
 }
 div.atom-groups div.atom-group div.img img {
   height: 42px;
+  width: 42px;
   padding: 4px;
 }
 div.atom-groups div.atom-group div.text {

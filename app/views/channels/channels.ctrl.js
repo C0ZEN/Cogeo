@@ -17,41 +17,50 @@
         'httpRequest',
         '$filter',
         'cozenEnhancedLogs',
-        'googleGraphChannelStatus'
+        'googleGraphChannelStatus',
+        'cozenLazyLoadRandom',
+        'cozenLazyLoadInternal',
+        '$scope'
     ];
 
     function ChannelsCtrl(CONFIG, channelsFactory, googleGraphChannelMembers, $state, groupsFactory, userFactory,
-                          usersFactory, goTo, httpRequest, $filter, cozenEnhancedLogs, googleGraphChannelStatus) {
+                          usersFactory, goTo, httpRequest, $filter, cozenEnhancedLogs, googleGraphChannelStatus, cozenLazyLoadRandom,
+                          cozenLazyLoadInternal, $scope) {
         var vm = this;
 
         // Methods
         vm.methods = {
-            onInit           : onInit,
-            onInitAll        : onInitAll,
-            onInitDetails    : onInitDetails,
-            leaveChannel     : leaveChannel,
-            joinChannel      : joinChannel,
-            onInitMembers    : onInitMembers,
-            getKickedTime    : Utils.getKickedTime,
-            getUserFullName  : usersFactory.getUserFullName,
-            onInitInvitations: onInitInvitations,
-            onInitLogs       : onInitLogs,
-            getAllLogs       : getAllLogs,
-            onInitNew        : onInitNew,
-            canRecruit       : canRecruit,
-            onInitRecruit    : onInitRecruit,
-            onInitEdit       : onInitEdit,
-            newChannel       : newChannel,
-            updateChannel    : updateChannel,
-            startLoading     : startLoading,
-            stopLoading      : stopLoading,
-            recruit          : recruit
+            onInit             : onInit,
+            onInitAll          : onInitAll,
+            onInitDetails      : onInitDetails,
+            leaveChannel       : leaveChannel,
+            joinChannel        : joinChannel,
+            onInitMembers      : onInitMembers,
+            getKickedTime      : Utils.getKickedTime,
+            getUserFullName    : usersFactory.getUserFullName,
+            onInitInvitations  : onInitInvitations,
+            onInitLogs         : onInitLogs,
+            getAllLogs         : getAllLogs,
+            onInitNew          : onInitNew,
+            canRecruit         : canRecruit,
+            onInitRecruit      : onInitRecruit,
+            onInitEdit         : onInitEdit,
+            newChannel         : newChannel,
+            updateChannel      : updateChannel,
+            startLoading       : startLoading,
+            stopLoading        : stopLoading,
+            recruit            : recruit,
+            createRandomChannel: createRandomChannel
         };
 
         // Common data
         vm.CONFIG      = CONFIG;
         vm.loading     = false;
         vm.googleGraph = {};
+
+        groupsFactory.subscribe($scope, function () {
+            onInit();
+        });
 
         // Called on each view
         function onInit() {
@@ -184,6 +193,9 @@
                 groupName  : vm.params.groupName
             };
             channelsFactory.httpRequest.addChannel(vm.params.groupName, newChannel, function () {
+                if (CONFIG.dev) {
+                    cozenEnhancedLogs.explodeObject(newChannel);
+                }
                 vm.methods.stopLoading();
                 goTo.view('app.channels.details', {
                     groupName  : vm.params.groupName,
@@ -252,6 +264,18 @@
                 var btn = angular.element(document.querySelector('#submit-recruit-channel-btn'));
                 httpRequest.shakeElement(btn);
             });
+        }
+
+        function createRandomChannel() {
+            vm.newChannel.name        = $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true);
+            vm.newChannel.description = cozenLazyLoadRandom.getRandomSentence(15);
+            vm.newChannel.private     = Methods.getRandomBoolean();
+            vm.newChannel.default     = Methods.getRandomBoolean();
+            if (!vm.canAddDefaultChannel) {
+                vm.newChannel.default = false;
+            }
+            cozenLazyLoadInternal.sendBroadcastForm('new');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-new-channel-btn');
         }
     }
 
