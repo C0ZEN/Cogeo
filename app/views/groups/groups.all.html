@@ -80,6 +80,7 @@
                                            cozen-tooltip-label="'groups_kicked_since' | translate:{'date': (group.userRoles.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': group.userRoles.kicked.by, 'for': methods.getKickBanFor(group.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(group.userRoles.kicked.time).key | translate)}">
                                 <mark class="atom-mark kicked">{{ 'groups_kicked' | translate }}</mark>
                             </cozen-tooltip>
+                            <small class="help-text">{{ (group.membersQuantity > 1 ? 'groups_members_total_pluralize' : 'groups_members_total') | translate:{total: group.membersQuantity} }}</small>
                         </p>
                         <p class="help-text">{{ group.description }}</p>
                     </div>

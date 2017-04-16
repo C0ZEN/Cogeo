@@ -29,14 +29,24 @@ div.atom-groups {
             }
         }
         div.text {
+            flex : 1;
             p {
-                margin : 0;
+                display         : flex;
+                justify-content : flex-start;
+                align-items     : center;
+                margin          : 0;
                 &:first-of-type {
                     font-size : @atom-font-h3;
                 }
             }
             a {
-                margin-right : @atom-space-small;
+                margin-right : 4px;
+            }
+            mark {
+                margin : 0 2px;
+            }
+            small {
+                margin-left : 4px;
             }
         }
         div.action-btn {

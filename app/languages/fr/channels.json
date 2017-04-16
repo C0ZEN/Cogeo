@@ -18,7 +18,7 @@
     "channels_banned_since": "Banni le {{date}} par <strong>{{userName}}</strong> pour le motif suivant: {{for}}",
     "channels_kicked_since": "Expulsé le {{date}} pour une durée de {{time}} par <strong>{{userName}}</strong> pour le motif suivant: {{for}}",
     "channels_details": "Détails d'un channel",
-    "channels_channels_title": "Les channels du groupe <a href='' ng-click=\"goTo.view('app.groups.details', {groupName: '{{groupName}}'}, $event)\" ui-sref=\"app.groups.details({groupName: '{{groupName}}'})\">{{groupName}}</a>",
+    "channels_channels_title": "Les {{quantity}} channels du groupe <a href='' ng-click=\"goTo.view('app.groups.details', {groupName: '{{groupName}}'}, $event)\" ui-sref=\"app.groups.details({groupName: '{{groupName}}'})\">{{groupName}}</a>",
     "channels_channels_title_new": "Nouveau channel pour le groupe <a href='' ng-click=\"goTo.view('app.groups.details', {groupName: '{{groupName}}'}, $event)\" ui-sref=\"app.groups.details({groupName: '{{groupName}}'})\">{{groupName}}</a>",
     "channels_channels_title_name": "Le channel {{channelName}} du groupe <a href='' ng-click=\"goTo.view('app.groups.details', {groupName: '{{groupName}}'}, $event)\" ui-sref=\"app.groups.details({groupName: '{{groupName}}'})\">{{groupName}}</a>",
     "channels_channels_subtitle": "Visualise, rejoins, modifie et manage les channels.",

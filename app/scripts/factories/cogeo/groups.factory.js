@@ -1708,32 +1708,33 @@
 
         // Public functions
         return {
-            subscribe                    : subscribe,
-            getGroups                    : getGroups,
-            getGroupByName               : getGroupByName,
-            getGroupById                 : getGroupById,
-            getGroupByNameWithUserRoles  : getGroupByNameWithUserRoles,
-            getUserFromGroup             : getUserFromGroup,
-            getGroupsWithUserRoles       : getGroupsWithUserRoles,
-            getUserGroups                : getUserGroups,
-            updateGroup                  : updateGroup,
-            updateOrPushGroup            : updateOrPushGroup,
-            updateGroupWithNewName       : updateGroupWithNewName,
-            doesUserHasRights            : doesUserHasRights,
-            getAvailableUsers            : getAvailableUsers,
-            isUserInGroup                : isUserInGroup,
-            getInvitationForUserFromGroup: getInvitationForUserFromGroup,
-            addGroup                     : addGroup,
-            getGroupPicture              : getGroupPicture,
-            getGroupPictureByGroupId     : getGroupPictureByGroupId,
-            getChannelById               : getChannelById,
-            getChannelByName             : getChannelByName,
-            isUserAdmin                  : isUserAdmin,
-            getActiveUsers               : getActiveUsers,
-            getUnavailableUsers          : getUnavailableUsers,
-            setAllGroups                 : setAllGroups,
-            isActiveMember               : isActiveMember,
-            httpRequest                  : {
+            subscribe                     : subscribe,
+            getGroups                     : getGroups,
+            getGroupByName                : getGroupByName,
+            getGroupById                  : getGroupById,
+            getGroupByNameWithUserRoles   : getGroupByNameWithUserRoles,
+            getUserFromGroup              : getUserFromGroup,
+            getGroupsWithUserRoles        : getGroupsWithUserRoles,
+            getUserGroups                 : getUserGroups,
+            updateGroup                   : updateGroup,
+            updateOrPushGroup             : updateOrPushGroup,
+            updateGroupWithNewName        : updateGroupWithNewName,
+            doesUserHasRights             : doesUserHasRights,
+            getAvailableUsers             : getAvailableUsers,
+            isUserInGroup                 : isUserInGroup,
+            getInvitationForUserFromGroup : getInvitationForUserFromGroup,
+            addGroup                      : addGroup,
+            getGroupPicture               : getGroupPicture,
+            getGroupPictureByGroupId      : getGroupPictureByGroupId,
+            getChannelById                : getChannelById,
+            getChannelByName              : getChannelByName,
+            isUserAdmin                   : isUserAdmin,
+            getActiveUsers                : getActiveUsers,
+            getUnavailableUsers           : getUnavailableUsers,
+            setAllGroups                  : setAllGroups,
+            isActiveMember                : isActiveMember,
+            getGroupNotLeftMembersQuantity: getGroupNotLeftMembersQuantity,
+            httpRequest                   : {
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName,
                 getAllGroups        : httpRequestGetAllGroups,
@@ -1803,8 +1804,8 @@
                 newGroups = customGroups;
             }
             for (var i = 0, length = newGroups.length; i < length; i++) {
-                user                   = getUserFromGroup(userName, newGroups[i].name);
-                newGroups[i].userRoles = {
+                user                         = getUserFromGroup(userName, newGroups[i].name);
+                newGroups[i].userRoles       = {
                     isCreator: newGroups[i].creator == userName,
                     isMember : user != null ? user.hasLeft == 0 : false,
                     isAdmin  : user != null ? user.admin : false,
@@ -1813,7 +1814,8 @@
                     banned   : user != null ? user.banned : null,
                     kicked   : user != null ? user.kicked : null,
                     joined   : user != null ? user.joined : null
-                }
+                };
+                newGroups[i].membersQuantity = getGroupNotLeftMembersQuantity(newGroups[i].users);
             }
             return newGroups;
         }
@@ -2060,6 +2062,16 @@
                 }
             }
             return false;
+        }
+
+        function getGroupNotLeftMembersQuantity(users) {
+            var notLeft = 0;
+            users.forEach(function (user) {
+                if (user.hasLeft == 0) {
+                    notLeft++;
+                }
+            });
+            return notLeft;
         }
 
         /// HTTP REQUEST ///

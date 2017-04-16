@@ -4,7 +4,7 @@
 
             <!-- Title -->
             <h1 ng-show="goTo.isCurrentView('app.channels.all')"
-                cozen-compile="'channels_channels_title' | translate:{groupName: vm.params.groupName}">
+                cozen-compile="'channels_channels_title' | translate:{groupName: vm.params.groupName, quantity: vm.channels.length}">
             </h1>
             <h1 ng-show="goTo.isCurrentView('app.channels.new')"
                 cozen-compile="'channels_channels_title_new' | translate:{groupName: vm.params.groupName}">

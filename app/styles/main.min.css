@@ -2712,14 +2712,34 @@ div.atom-groups div.atom-group div.img img {
   height: 42px;
   padding: 4px;
 }
+div.atom-groups div.atom-group div.text {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
 div.atom-groups div.atom-group div.text p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0;
 }
 div.atom-groups div.atom-group div.text p:first-of-type {
   font-size: 16px;
 }
 div.atom-groups div.atom-group div.text a {
-  margin-right: 6px;
+  margin-right: 4px;
+}
+div.atom-groups div.atom-group div.text mark {
+  margin: 0 2px;
+}
+div.atom-groups div.atom-group div.text small {
+  margin-left: 4px;
 }
 div.atom-groups div.atom-group div.action-btn {
   margin-left: auto;

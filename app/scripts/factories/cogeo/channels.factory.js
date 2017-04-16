@@ -20,27 +20,28 @@
 
         // Public functions
         return {
-            getChannelPicture          : getChannelPicture,
-            isActiveMember             : isActiveMember,
-            getUserByName              : getUserByName,
-            getChannelsWithUserRoles   : getChannelsWithUserRoles,
-            getChannelWithUserRoles    : getChannelWithUserRoles,
-            getMyChannels              : getMyChannels,
-            getMyStarredChannels       : getMyStarredChannels,
-            getMyOthersChannels        : getMyOthersChannels,
-            getMessages                : getMessages,
-            getChannelIdByName         : getChannelIdByName,
-            isStarredChannel           : isStarredChannel,
-            getActiveMembers           : getActiveMembers,
-            isAdmin                    : isAdmin,
-            isActiveAdmin              : isActiveAdmin,
-            getAvailableUsers          : getAvailableUsers,
-            getAvailableUsers2         : getAvailableUsers2,
-            getDefaultChannels         : getDefaultChannels,
-            getChannelById             : getChannelById,
-            getChannelAdminQuantity    : getChannelAdminQuantity,
-            getChannelNoneAdminQuantity: getChannelNoneAdminQuantity,
-            httpRequest                : {
+            getChannelPicture               : getChannelPicture,
+            isActiveMember                  : isActiveMember,
+            getUserByName                   : getUserByName,
+            getChannelsWithUserRoles        : getChannelsWithUserRoles,
+            getChannelWithUserRoles         : getChannelWithUserRoles,
+            getMyChannels                   : getMyChannels,
+            getMyStarredChannels            : getMyStarredChannels,
+            getMyOthersChannels             : getMyOthersChannels,
+            getMessages                     : getMessages,
+            getChannelIdByName              : getChannelIdByName,
+            isStarredChannel                : isStarredChannel,
+            getActiveMembers                : getActiveMembers,
+            isAdmin                         : isAdmin,
+            isActiveAdmin                   : isActiveAdmin,
+            getAvailableUsers               : getAvailableUsers,
+            getAvailableUsers2              : getAvailableUsers2,
+            getDefaultChannels              : getDefaultChannels,
+            getChannelById                  : getChannelById,
+            getChannelAdminQuantity         : getChannelAdminQuantity,
+            getChannelNoneAdminQuantity     : getChannelNoneAdminQuantity,
+            getChannelNotLeftMembersQuantity: getChannelNotLeftMembersQuantity,
+            httpRequest                     : {
                 updateChannel  : httpRequestUpdateChannel,
                 addChannel     : httpRequestAddChannel,
                 sendInvitations: httpRequestSendInvitations
@@ -100,6 +101,9 @@
                 for (var i = 0, length = group.channels.length; i < length; i++) {
                     channels.push(getChannelWithUserRoles(group.channels[i], user));
                 }
+                channels.forEach(function (channel) {
+                    channel.membersQuantity = getChannelNotLeftMembersQuantity(channel.users);
+                });
                 return channels;
             }
             return null;
@@ -427,6 +431,16 @@
                 }
             });
             return noneAdmin;
+        }
+
+        function getChannelNotLeftMembersQuantity(users) {
+            var notLeft = 0;
+            users.forEach(function (user) {
+                if (user.hasLeft == 0) {
+                    notLeft++;
+                }
+            });
+            return notLeft;
         }
 
         /// HTTP REQUEST ///
