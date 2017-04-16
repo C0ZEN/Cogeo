@@ -28,10 +28,11 @@ div.google-visualization-tooltip {
         }
     }
 }
+// Mobile
 div.atom-chart-container {
     display         : flex;
     flex-direction  : row;
-    justify-content : space-around;
+    justify-content : space-between;
     align-items     : center;
     div.draw-chart-values-container {
         display         : flex;
@@ -50,5 +51,17 @@ div.atom-chart-container {
                 font-weight : 400;
             }
         }
+    }
+}
+// Tablet
+@media (min-width : 768px) {
+    div.atom-chart-container {
+        justify-content : space-around;
+    }
+}
+// Desktop
+@media (min-width : 992px) {
+    div.atom-chart-container {
+        justify-content : space-between;
     }
 }

@@ -1080,8 +1080,9 @@ div.atom-chart-container {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1112,6 +1113,19 @@ div.atom-chart-container div.draw-chart-values-container div.draw-chart-value sp
   color: #4C596B;
   font-size: inherit;
   font-weight: 400;
+}
+@media (min-width: 768px) {
+  div.atom-chart-container {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+@media (min-width: 992px) {
+  div.atom-chart-container {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
 }
 cozen-dropdown-item-simple img.flag {
   width: 17px;

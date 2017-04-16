@@ -47,7 +47,8 @@
     "angular-ellipsis": "^0.1.7",
     "ng-device-detector": "^4.0.2",
     "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "ng-if-bootstrap": "^0.1.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",

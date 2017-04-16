@@ -43,6 +43,7 @@
             'angular-loading-bar',
             'dibari.angular-ellipsis',
             'ng.deviceDetector',
+            'ng-if-bootstrap-grid',
             'cozenLib',
 
             '4pjtApp.actionBar'
