@@ -22,6 +22,7 @@
              tabindex="0">
             {{ 'navbar_groups' | translate }}
             <div class="link-dropdown dropdown-right"
+                 ng-style="{'min-width': '240px'}"
                  ng-show="vm.group.hover">
 
                 <!-- See all groups link -->
@@ -31,6 +32,7 @@
                      tabindex="0">
                     <i class="fa fa-fw fa-th-list space-small-right"></i>
                     {{ 'navbar_groups_all' | translate }}
+                    <span class="help-text space-small-left">{{ 'navbar_groups_all_quantity' | translate:{quantity: vm.groupsLength } }}</span>
                 </div>
                 <div class="link-dropdown-separator"></div>
 

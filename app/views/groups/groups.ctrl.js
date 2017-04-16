@@ -41,16 +41,17 @@
         };
 
         // Common data
-        vm.CONFIG      = CONFIG;
-        vm.loading     = false;
-        vm.user        = userFactory.getUser();
-        vm.groups      = groupsFactory.getGroupsWithUserRoles(vm.user.username);
-        vm.all         = angular.merge({}, vm.all, angular.copy(vm.user.settings.preferences.allGroups));
-        vm.details     = {};
-        vm.edit        = {};
-        vm.invitations = angular.merge({}, vm.invitations, angular.copy(vm.user.settings.preferences.groupsInvitations));
-        vm.members     = angular.merge({}, vm.members, angular.copy(vm.user.settings.preferences.groupsMembers));
-        vm.log         = angular.merge({}, vm.log, angular.copy(vm.user.settings.preferences.groupsLogs));
+        vm.CONFIG         = CONFIG;
+        vm.loading        = false;
+        vm.user           = userFactory.getUser();
+        vm.groups         = groupsFactory.getGroupsWithUserRoles(vm.user.username);
+        vm.all            = angular.merge({}, vm.all, angular.copy(vm.user.settings.preferences.allGroups));
+        vm.details        = {};
+        vm.edit           = {};
+        vm.invitations    = angular.merge({}, vm.invitations, angular.copy(vm.user.settings.preferences.groupsInvitations));
+        vm.members        = angular.merge({}, vm.members, angular.copy(vm.user.settings.preferences.groupsMembers));
+        vm.log            = angular.merge({}, vm.log, angular.copy(vm.user.settings.preferences.groupsLogs));
+        vm.groupsQuantity = groupsFactory.getGroups().length;
 
         // When the user factory is updated
         userFactory.subscribe($scope, function () {

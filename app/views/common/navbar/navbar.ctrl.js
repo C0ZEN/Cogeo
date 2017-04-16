@@ -57,7 +57,8 @@
         }
 
         function onGroupsChanged() {
-            vm.user = userFactory.getUser();
+            vm.user         = userFactory.getUser();
+            vm.groupsLength = groupsFactory.getGroups().length;
             if (vm.user != null) {
                 vm.groups = groupsFactory.getUserGroups(vm.user.username);
             }

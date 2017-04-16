@@ -18,6 +18,7 @@
     "navbar_dev_users_list": "Utilisateurs",
     "navbar_groups": "Groupes",
     "navbar_groups_all": "Tous les groupes",
+    "navbar_groups_all_quantity": "({{quantity}})",
     "navbar_groups_add": "Ajouter un groupe",
     "navbar_groups_no_groups": "Présent dans aucun groupe"
 }

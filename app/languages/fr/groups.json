@@ -27,7 +27,7 @@
     "groups_join_subtitle_2": "Renseigne ton adresse mail pour recevoir une invitation à rejoindre le groupe {{groupName}}.",
     "groups_join_after_email": "Tu recevras une invitation par mail dans la minute.",
     "groups_join_group": "Rejoindre le groupe {{groupName}}",
-    "groups_groups_title": "Les groupes Cogeo",
+    "groups_groups_title": "Les {{quantity}} groupes Cogeo",
     "groups_groups_title_name": "Le groupe {{groupName}}",
     "groups_groups_subtitle": "Visualise, rejoins, modifie et manage les groupes.",
     "groups_members_since": "Membre depuis le {{date}}",
