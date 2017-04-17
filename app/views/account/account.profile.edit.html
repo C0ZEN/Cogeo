@@ -67,7 +67,8 @@
                 <div class="center-flex-content space-medium-after">
 
                     <!-- Edit btn -->
-                    <cozen-btn cozen-btn-label="'account_settings_save_2'"
+                    <cozen-btn class="animated fadeInUp"
+                               cozen-btn-label="'account_settings_save_2'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-id="submit-edit-account-profile"
                                cozen-btn-type-success
@@ -79,6 +80,7 @@
 
                     <!-- Edit password link -->
                     <a href
+                       class="animated fadeInUp"
                        onclick="this.blur()"
                        ng-click="goTo.view('app.account.profileEditPassword', null, $event)"
                        ui-sref="app.account.profileEditPassword">
