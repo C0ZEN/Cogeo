@@ -168,10 +168,11 @@
         // Called on edit view
         function onInitEdit() {
             vm.methods.onInit();
-            vm.channel         = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
-            vm.channel         = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
-            vm.editedChannel   = angular.copy(vm.channel);
-            vm.defaultChannels = channelsFactory.getDefaultChannels(vm.params.groupName);
+            vm.channel                    = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
+            vm.channel                    = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.editedChannel              = angular.copy(vm.channel);
+            vm.editedChannel.originalName = vm.params.channelName;
+            vm.defaultChannels            = channelsFactory.getDefaultChannels(vm.params.groupName);
             if (vm.defaultChannels.length == 5) {
                 vm.canAddDefaultChannel = vm.channel.default;
             }

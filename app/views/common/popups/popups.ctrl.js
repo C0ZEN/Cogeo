@@ -47,7 +47,10 @@
                 refuse: invitationActionRefuse
             },
             startLoading        : startLoading,
-            stopLoading         : stopLoading
+            stopLoading         : stopLoading,
+            channel             : {
+                remove: channelRemove
+            }
         };
 
         // Common data
@@ -283,6 +286,10 @@
 
         function stopLoading() {
             popup.loading = false;
+        }
+        
+        function channelRemove() {
+
         }
     }
 

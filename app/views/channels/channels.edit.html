@@ -62,17 +62,27 @@
                                   cozen-btn-toggle-on-change="vm.editedChannel.private = false">
                 </cozen-btn-toggle>
 
-                <!-- Edit btn -->
-                <cozen-btn cozen-btn-label="'account_settings_save'"
-                           cozen-btn-id="submit-edit-channel-btn"
-                           cozen-btn-auto-sizing="true"
-                           cozen-btn-type-success
-                           cozen-btn-loader="vm.loading"
-                           cozen-btn-disabled="vm.form.edit.$invalid"
-                           cozen-btn-on-click="vm.methods.updateChannel()"
-                           cozen-btn-icon-right="fa icons8-clouds-filled"
-                           cozen-btn-class="space-medium-after">
-                </cozen-btn>
+                <div class="center-flex-content space-medium-after">
+
+                    <!-- Edit btn -->
+                    <cozen-btn cozen-btn-label="'account_settings_save'"
+                               cozen-btn-id="submit-edit-channel-btn"
+                               cozen-btn-auto-sizing="true"
+                               cozen-btn-type-success
+                               cozen-btn-loader="vm.loading"
+                               cozen-btn-disabled="vm.form.edit.$invalid"
+                               cozen-btn-on-click="vm.methods.updateChannel()"
+                               cozen-btn-icon-right="fa icons8-clouds-filled">
+                    </cozen-btn>
+
+                    <!-- Remove btn -->
+                    <a href
+                       class="animated fadeInUp"
+                       onclick="this.blur()"
+                       ng-click="methods.showPopup($event, 'channelRemove', vm.editedChannel)">
+                        {{ 'channels_edit_remove' | translate }}
+                    </a>
+                </div>
             </cozen-form>
         </div>
     </div>
