@@ -13,6 +13,7 @@
     function config(CONFIG) {
         CONFIG.internal.channel = {
             maxDefault : 5,
+            max        : 15,
             name       : {
                 length  : 30,
                 required: true,

@@ -59,6 +59,7 @@
     "channels_members_total_pluralize": "{{total}} membres",
     "channels_members_total": "{{total}} membre",
     "channels_register_name": "Nom",
+    "channels_register_limit_reach": "La limite de <strong>{{limit}}</strong> channels par groupe à été atteinte. Si tu veux absolument créer un nouveau channel, tu devra supprimer un channel existant ou créer un nouveau groupe.",
     "channels_register_name_pc": "Nom du channel (unique)",
     "channels_register_profile_picture": "Image du channel",
     "channels_register_private": "Channel privé",
