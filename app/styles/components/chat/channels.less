@@ -98,6 +98,7 @@ div.atom-chat div.chat-channels-container {
                 text-overflow : ellipsis;
                 white-space   : nowrap;
                 overflow      : hidden;
+                margin-left   : @atom-space-small;
                 &:hover,
                 &:focus {
                     color : @atom-color-blue;
@@ -113,8 +114,8 @@ div.atom-chat div.chat-channels-container {
                 }
             }
             i.channel-icon {
-                margin-right : 2px;
-                font-size    : 13px;
+                font-size : 13px;
+                cursor    : help;
             }
             &.ng-enter-active {
                 .animation-fadeInLeft(-@atom-space-medium);

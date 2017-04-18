@@ -9,15 +9,10 @@
     </a>
 
     <!-- Marks -->
-    <cozen-tooltip ng-show="!vm.activeChannel.private"
-                   cozen-tooltip-placement="auto bottom"
-                   cozen-tooltip-label="'chat_public_channel' | translate">
-        <mark class="atom-mark default">{{ 'chat_public_channel' | translate }}</mark>
-    </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.private"
                    cozen-tooltip-placement="auto bottom"
-                   cozen-tooltip-label="'chat_private_channel' | translate">
-        <mark class="atom-mark default">{{ 'chat_private_channel' | translate }}</mark>
+                   cozen-tooltip-label="'chat_private_channel_tp' | translate">
+        <mark class="atom-mark private">{{ 'chat_private_channel' | translate }}</mark>
     </cozen-tooltip>
     <cozen-tooltip ng-show="vm.activeChannel.default"
                    cozen-tooltip-placement="auto bottom"
@@ -104,16 +99,44 @@
         </cozen-tooltip>
     </div>
     <div class="action options animated zoomIn"
-         ng-click="vm.methods.onActionClick($event, 'options');">
-        <cozen-tooltip cozen-tooltip-label="'chat_actionBar_options'"
-                       cozen-tooltip-placement="auto top">
-            <i class="fa fa-cog"></i>
-        </cozen-tooltip>
+         ng-mouseenter="vm.actionBar.options.down = true"
+         ng-mouseleave="vm.actionBar.options.down = false">
+        <i class="fa fa-cog"></i>
 
         <!-- Options dropdown -->
         <div class="link-dropdown link-floating"
              ng-show="vm.actionBar.options.down">
+
+            <!-- Channel -->
+            <div class="link-dropdown-item link-dropdown-item-title">
+                {{ 'chat_actionBar_options_channel' | translate }}
+            </div>
             <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.details', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})">
+                <i class="fa fa-fw icons8-channel-mosaic space-small-right"></i>
+                {{ 'chat_actionBar_options_details' | translate }}
+            </div>
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.members', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})">
+                <i class="fa fa-fw icons8-user-groups space-small-right"></i>
+                {{ 'chat_actionBar_options_members' | translate }}
+            </div>
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.recruit', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})">
+                <i class="fa fa-fw icons8-message-filled space-small-right"></i>
+                {{ 'chat_actionBar_options_recruit' | translate }}
+            </div>
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.logs', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})">
+                <i class="fa fa-fw icons8-hourglass-filled space-small-right"></i>
+                {{ 'chat_actionBar_options_logs' | translate }}
+            </div>
+            <div class="link-dropdown-item"
+                 tabindex="0"
                  ng-click="goTo.view('app.channels.profile')">
                 {{ 'chat_actionBar_options_invite' | translate }}
             </div>

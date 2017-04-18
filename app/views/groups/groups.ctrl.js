@@ -117,17 +117,22 @@
         }
 
         function joinGroup(groupName) {
-
+            groupsFactory.httpRequest.joinGroup(groupName, {
+                username: userFactory.getUser().username
+            });
         }
 
         function leaveGroup(groupName) {
-
+            groupsFactory.httpRequest.leaveGroup(groupName, {
+                username: userFactory.getUser().username
+            });
         }
 
         function onShowAll() {
 
             // It will hide the edit btn
             vm.details.userIsAdmin = false;
+
         }
 
         function getAllLogs() {

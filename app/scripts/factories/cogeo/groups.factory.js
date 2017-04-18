@@ -1748,7 +1748,9 @@
                 getAllGroups        : httpRequestGetAllGroups,
                 updateGroup         : httpRequestUpdateGroup,
                 sendCogeoInvitations: httpRequestSendCogeoInvitations,
-                sendEmailInvitations: httpRequestSendEmailInvitations
+                sendEmailInvitations: httpRequestSendEmailInvitations,
+                joinGroup           : httpRequestJoinGroup,
+                leaveGroup           : httpRequestLeaveGroup
             }
         };
 
@@ -2277,6 +2279,36 @@
                             }
                         });
                     }
+                })
+            ;
+        }
+
+        function httpRequestJoinGroup(groupName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/join', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_joined_group',
+                        labelValues: {
+                            groupName: groupName
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestLeaveGroup(groupName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/leave', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_leaved_group',
+                        labelValues: {
+                            groupName: groupName
+                        }
+                    });
                 })
             ;
         }

@@ -21,5 +21,7 @@
     "alerts_success_send_cogeo_groups_invitation": "Une invitation à rejoindre le groupe <strong>{{groupName}}</strong> à été envoyée à <strong>{{username}}</strong>",
     "alerts_success_send_cogeo_groups_invitations": "Les <strong>{{length}}</strong> invitations à rejoindre le groupe <strong>{{groupName}}</strong> ont été envoyées.",
     "alerts_success_send_email_groups_invitation": "Un email à rejoindre le groupe <strong>{{groupName}}</strong> à été envoyé à <strong>{{email}}</strong>.",
-    "alerts_success_send_email_groups_invitations": "Les <strong>{{length}}</strong> mails à rejoindre le groupe <strong>{{groupName}}</strong> ont été envoyés."
+    "alerts_success_send_email_groups_invitations": "Les <strong>{{length}}</strong> mails à rejoindre le groupe <strong>{{groupName}}</strong> ont été envoyés.",
+    "alerts_success_joined_group": "Tu fais maintenant partie du groupe <strong>{{groupName}}</strong>.",
+    "alerts_success_leaved_group": "Tu ne fais plus partie du groupe <strong>{{groupName}}</strong>."
 }

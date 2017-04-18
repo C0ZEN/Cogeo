@@ -271,10 +271,7 @@
             vm.newChannel.name        = $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true);
             vm.newChannel.description = cozenLazyLoadRandom.getRandomSentence(15);
             vm.newChannel.private     = Methods.getRandomBoolean();
-            vm.newChannel.default     = Methods.getRandomBoolean();
-            if (!vm.canAddDefaultChannel) {
-                vm.newChannel.default = false;
-            }
+            vm.newChannel.default     = false;
             cozenLazyLoadInternal.sendBroadcastForm('new');
             cozenLazyLoadInternal.sendBroadcastBtnClick('submit-new-channel-btn');
         }

@@ -2147,6 +2147,7 @@ div.atom-chat div.chat-channels-container div.chat-list div.chat-channel span {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin-left: 6px;
 }
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel span:hover,
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel span:focus {
@@ -2160,8 +2161,8 @@ div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.active 
   color: #32AFE3;
 }
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel i.channel-icon {
-  margin-right: 2px;
   font-size: 13px;
+  cursor: help;
 }
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.ng-enter-active {
   -webkit-animation-name: fadeInLeft-24;
@@ -2256,7 +2257,7 @@ div.atom-chat div.chat-col div.chat-context-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 12px;
+  padding: 12px 24px 12px 12px;
 }
 div.atom-chat div.chat-col div.chat-context-container div.channel-description a.channel-name {
   font-size: 22px;
