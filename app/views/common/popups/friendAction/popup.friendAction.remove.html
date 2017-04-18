@@ -1,19 +1,19 @@
 <cozen-popup cozen-popup-name="friendActionRemove"
              cozen-popup-type-error
-             cozen-popup-data="friendActionRemoveData"
+             cozen-popup-data="popup.friendActionRemoveData"
              cozen-popup-header-title="'popup_friendAction_remove_header_title'">
     <div class="row">
         <div class="col-xs-12 space-large-before space-medium-after">
-            <h3 class="no-margin-top">{{ 'popup_friendAction_remove_body_title' | translate:friendActionRemoveData }}</h3>
-            <p class="help-text">{{ 'popup_friendAction_remove_body_subtitle_1' | translate:friendActionRemoveData }}</p>
-            <p class="help-text">{{ 'popup_friendAction_remove_body_subtitle_2' | translate:friendActionRemoveData }}</p>
+            <h3 class="no-margin-top">{{ 'popup_friendAction_remove_body_title' | translate:popup.friendActionRemoveData }}</h3>
+            <p class="help-text">{{ 'popup_friendAction_remove_body_subtitle_1' | translate:popup.friendActionRemoveData }}</p>
+            <p class="help-text">{{ 'popup_friendAction_remove_body_subtitle_2' | translate:popup.friendActionRemoveData }}</p>
         </div>
 
         <!-- Submit btn -->
         <div class="col-xs-12 space-large-after">
             <cozen-btn cozen-btn-type-error
                        cozen-btn-icon-right="fa fa-fw icons8-trash"
-                       cozen-btn-label="'popup_friendAction_remove_body_block' | translate:friendActionRemoveData"
+                       cozen-btn-label="'popup_friendAction_remove_body_block' | translate:popup.friendActionRemoveData"
                        cozen-btn-auto-sizing="true"
                        cozen-btn-on-click="popup.methods.friendAction.remove()"
                        cozen-btn-class="space-base-right">

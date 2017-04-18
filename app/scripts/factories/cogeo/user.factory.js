@@ -572,7 +572,11 @@
                 sendInvitations                  : httpRequestSendInvitations,
                 updateSettingsContacts           : httpRequestUpdateSettingsContacts,
                 acceptPendingInvitation          : httpRequestAcceptPendingInvitation,
-                refusePendingInvitation          : httpRequestRefusePendingInvitation
+                refusePendingInvitation          : httpRequestRefusePendingInvitation,
+                friendSetAlias                   : httpRequestFriendSetAlias,
+                friendBlock                      : httpRequestFriendBlock,
+                friendUnblock                    : httpRequestFriendUnblock,
+                friendRemove                     : httpRequestFriendRemove
             }
         };
 
@@ -618,7 +622,7 @@
                 user = null;
             }
             else {
-                user          = formatUserData(response);
+                user = formatUserData(response);
                 usersFactory.updateUser(user);
             }
             if (CONFIG.dev) {
@@ -1170,6 +1174,82 @@
                         type       : type,
                         label      : label,
                         labelValues: data
+                    });
+                })
+            ;
+        }
+
+        function httpRequestFriendSetAlias(friend, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/friend/' + friend + '/alias', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                    if (Methods.isNullOrEmpty(data.alias)) {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'purple',
+                            label      : 'alerts_success_friend_set_alias_empty',
+                            labelValues: {
+                                friend: friend
+                            }
+                        });
+                    }
+                    else {
+                        cozenFloatingFeedFactory.addAlert({
+                            type       : 'purple',
+                            label      : 'alerts_success_friend_set_alias',
+                            labelValues: {
+                                friend: friend,
+                                alias : data.alias
+                            }
+                        });
+                    }
+                })
+            ;
+        }
+
+        function httpRequestFriendBlock(friend, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/friend/' + friend + '/block', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'purple',
+                        label      : 'alerts_success_friend_blocked',
+                        labelValues: {
+                            friend: friend
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestFriendUnblock(friend, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/friend/' + friend + '/unblock', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'purple',
+                        label      : 'alerts_success_friend_unblocked',
+                        labelValues: {
+                            friend: friend
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestFriendRemove(friend, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('user/' + user.username + '/friend/' + friend + '/remove', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'purple',
+                        label      : 'alerts_success_friend_remove',
+                        labelValues: {
+                            friend: friend
+                        }
                     });
                 })
             ;

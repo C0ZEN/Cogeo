@@ -225,19 +225,37 @@
         }
 
         function friendActionBlock() {
-            popup.methods.closePopup('friendActionBlock');
+            userFactory.httpRequest.friendBlock(popup.friendActionBlockData.username, {}, function () {
+                popup.methods.closePopup('friendActionBlock');
+            }, function () {
+                popup.methods.closePopup('friendActionBlock');
+            });
         }
 
         function friendActionUnblock() {
-            popup.methods.closePopup('friendActionUnblock');
+            userFactory.httpRequest.friendUnblock(popup.friendActionUnblockData.username, {}, function () {
+                popup.methods.closePopup('friendActionUnblock');
+            }, function () {
+                popup.methods.closePopup('friendActionUnblock');
+            });
         }
 
         function friendActionRename() {
-            popup.methods.closePopup('friendActionRename');
+            userFactory.httpRequest.friendSetAlias(popup.friendActionRenameData.username, {
+                alias: popup.friendNewAlias
+            }, function () {
+                popup.methods.closePopup('friendActionRename');
+            }, function () {
+                popup.methods.closePopup('friendActionRename');
+            });
         }
 
         function friendActionRemove() {
-            popup.methods.closePopup('friendActionRemove');
+            userFactory.httpRequest.friendRemove(popup.friendActionRemoveData.username, {}, function () {
+                popup.methods.closePopup('friendActionRemove');
+            }, function () {
+                popup.methods.closePopup('friendActionRemove');
+            });
         }
 
         function invitationActionAccept() {
