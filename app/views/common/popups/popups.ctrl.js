@@ -50,6 +50,10 @@
             stopLoading         : stopLoading,
             channel             : {
                 remove: channelRemove
+            },
+            group               : {
+                join : groupJoin,
+                leave: groupLeave
             }
         };
 
@@ -287,9 +291,29 @@
         function stopLoading() {
             popup.loading = false;
         }
-        
+
         function channelRemove() {
 
+        }
+
+        function groupJoin() {
+            groupsFactory.httpRequest.joinGroup(popup.groupJoinData.groupName, {
+                username: userFactory.getUser().username
+            }, function () {
+                closePopup('groupJoin');
+            }, function () {
+                closePopup('groupJoin');
+            });
+        }
+
+        function groupLeave() {
+            groupsFactory.httpRequest.leaveGroup(popup.groupLeaveData.groupName, {
+                username: userFactory.getUser().username
+            }, function () {
+                closePopup('groupLeave');
+            }, function () {
+                closePopup('groupLeave');
+            });
         }
     }
 

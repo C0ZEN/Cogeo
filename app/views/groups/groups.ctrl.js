@@ -18,11 +18,13 @@
         'cozenEnhancedLogs',
         'googleGraphGroupMembers',
         'googleGraphGroupStatus',
-        'googleGraphGroupChannelsTypes'
+        'googleGraphGroupChannelsTypes',
+        'cozenPopupFactory'
     ];
 
     function GroupsCtrl(CONFIG, goTo, httpRequest, $state, groupsFactory, userFactory, usersFactory, $filter, $scope,
-                        cozenEnhancedLogs, googleGraphGroupMembers, googleGraphGroupStatus, googleGraphGroupChannelsTypes) {
+                        cozenEnhancedLogs, googleGraphGroupMembers, googleGraphGroupStatus, googleGraphGroupChannelsTypes,
+                        cozenPopupFactory) {
         var vm = this;
 
         // Methods
@@ -60,6 +62,15 @@
 
         // When the user factory is updated
         userFactory.subscribe($scope, function () {
+            vm.methods.onDisplayDetails();
+            vm.user        = userFactory.getUser();
+            vm.invitations = angular.merge({}, vm.invitations, angular.copy(vm.user.settings.preferences.groupsInvitations));
+            vm.members     = angular.merge({}, vm.members, angular.copy(vm.user.settings.preferences.groupsMembers));
+            vm.log         = angular.merge({}, vm.log, angular.copy(vm.user.settings.preferences.groupsLogs));
+        });
+
+        // When the group
+        groupsFactory.subscribe($scope, function () {
             vm.methods.onDisplayDetails();
             vm.user        = userFactory.getUser();
             vm.invitations = angular.merge({}, vm.invitations, angular.copy(vm.user.settings.preferences.groupsInvitations));
@@ -117,14 +128,21 @@
         }
 
         function joinGroup(groupName) {
-            groupsFactory.httpRequest.joinGroup(groupName, {
-                username: userFactory.getUser().username
+            cozenPopupFactory.show({
+                name: 'groupJoin',
+                data: {
+                    groupName: groupName
+                }
             });
         }
 
-        function leaveGroup(groupName) {
-            groupsFactory.httpRequest.leaveGroup(groupName, {
-                username: userFactory.getUser().username
+        function leaveGroup($event, groupName) {
+            $event.stopPropagation();
+            cozenPopupFactory.show({
+                name: 'groupLeave',
+                data: {
+                    groupName: groupName
+                }
             });
         }
 
