@@ -14,11 +14,12 @@
         'botFactory',
         'cozenEnhancedLogs',
         'usersFactory',
-        'groupsFactory'
+        'groupsFactory',
+        'channelsFactory'
     ];
 
     function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory, cozenEnhancedLogs, usersFactory,
-                       groupsFactory) {
+                       groupsFactory, channelsFactory) {
         var popup = this;
 
         // Methods
@@ -49,7 +50,9 @@
             startLoading        : startLoading,
             stopLoading         : stopLoading,
             channel             : {
-                remove: channelRemove
+                remove: channelRemove,
+                join  : channelJoin,
+                leave : channelLeave
             },
             group               : {
                 join : groupJoin,
@@ -331,6 +334,26 @@
                 closePopup('groupLeave');
             }, function () {
                 closePopup('groupLeave');
+            });
+        }
+
+        function channelJoin() {
+            channelsFactory.httpRequest.joinChannel(popup.channelJoinData.groupName, popup.channelJoinData.channelName, {
+                username: userFactory.getUser().username
+            }, function () {
+                closePopup('channelJoin');
+            }, function () {
+                closePopup('channelJoin');
+            });
+        }
+
+        function channelLeave() {
+            channelsFactory.httpRequest.leaveChannel(popup.channelLeaveData.groupName, popup.channelLeaveData.channelName, {
+                username: userFactory.getUser().username
+            }, function () {
+                closePopup('channelLeave');
+            }, function () {
+                closePopup('channelLeave');
             });
         }
     }

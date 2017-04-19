@@ -15,11 +15,12 @@
         '$filter',
         'rfc4122',
         'cozenLazyLoadRandom',
-        'cozenLazyLoadInternal'
+        'cozenLazyLoadInternal',
+        'cozenEnhancedLogs'
     ];
 
     function GroupNewCtrl(userFactory, httpRequest, CONFIG, goTo, groupsFactory, $timeout, $filter, rfc4122,
-                          cozenLazyLoadRandom, cozenLazyLoadInternal) {
+                          cozenLazyLoadRandom, cozenLazyLoadInternal, cozenEnhancedLogs) {
         var vm = this;
 
         // Methods
@@ -98,6 +99,10 @@
         function createGroup() {
             vm.stepForward      = true;
             vm.newGroup.creator = userFactory.getUser().username;
+            vm.newGroup.users   = angular.copy(vm.availableUsersSelected);
+            if (CONFIG.dev) {
+                cozenEnhancedLogs.explodeObject(vm.newGroup);
+            }
             groupsFactory.httpRequest.addGroup(vm.newGroup, function () {
                 vm.methods.stopLoading();
                 goTo.view('app.groups.details', {

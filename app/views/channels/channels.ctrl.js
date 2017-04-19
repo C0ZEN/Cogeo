@@ -20,12 +20,14 @@
         'googleGraphChannelStatus',
         'cozenLazyLoadRandom',
         'cozenLazyLoadInternal',
-        '$scope'
+        '$scope',
+        'cozenPopupFactory',
+        '$rootScope'
     ];
 
     function ChannelsCtrl(CONFIG, channelsFactory, googleGraphChannelMembers, $state, groupsFactory, userFactory,
                           usersFactory, goTo, httpRequest, $filter, cozenEnhancedLogs, googleGraphChannelStatus, cozenLazyLoadRandom,
-                          cozenLazyLoadInternal, $scope) {
+                          cozenLazyLoadInternal, $scope, cozenPopupFactory, $rootScope) {
         var vm = this;
 
         // Methods
@@ -59,7 +61,7 @@
         vm.googleGraph = {};
 
         groupsFactory.subscribe($scope, function () {
-            onInit();
+            onInitDetails();
         });
 
         // Called on each view
@@ -86,16 +88,33 @@
             // Get the google graph for members
             vm.googleGraph.members = googleGraphChannelMembers.getChart(vm.params.groupName, vm.channel._id);
             vm.googleGraph.status  = googleGraphChannelStatus.getChart(vm.params.groupName, vm.channel._id);
+
+            // Send message to redraw graph
+            $rootScope.$broadcast('cozenDrawChart');
+            $rootScope.$broadcast('drawChartValuesInit');
         }
 
         // Leave a channel
-        function leaveChannel(channelId) {
-
+        function leaveChannel($event) {
+            $event.stopPropagation();
+            cozenPopupFactory.show({
+                name: 'channelLeave',
+                data: {
+                    groupName  : vm.params.groupName,
+                    channelName: vm.params.channelName
+                }
+            });
         }
 
         // Join a channel
-        function joinChannel(channelId) {
-
+        function joinChannel() {
+            cozenPopupFactory.show({
+                name: 'channelJoin',
+                data: {
+                    groupName  : vm.params.groupName,
+                    channelName: vm.params.channelName
+                }
+            });
         }
 
         // Called on members view
@@ -103,7 +122,7 @@
             vm.methods.onInit();
             vm.channel         = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel         = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
-            vm.members         = usersFactory.addUsersFullNames(vm.channel.users);
+            vm.members         = channelsFactory.getActiveMembers(vm.params.groupName, vm.channel._id);
             vm.membersSettings = angular.merge({}, vm.membersSettings, angular.copy(vm.user.settings.preferences.channelsMembers));
         }
 

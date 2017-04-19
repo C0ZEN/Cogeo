@@ -19,12 +19,13 @@
         'googleGraphGroupMembers',
         'googleGraphGroupStatus',
         'googleGraphGroupChannelsTypes',
-        'cozenPopupFactory'
+        'cozenPopupFactory',
+        '$rootScope'
     ];
 
     function GroupsCtrl(CONFIG, goTo, httpRequest, $state, groupsFactory, userFactory, usersFactory, $filter, $scope,
                         cozenEnhancedLogs, googleGraphGroupMembers, googleGraphGroupStatus, googleGraphGroupChannelsTypes,
-                        cozenPopupFactory) {
+                        cozenPopupFactory, $rootScope) {
         var vm = this;
 
         // Methods
@@ -112,7 +113,7 @@
                 vm.details.userHasRights = groupsFactory.doesUserHasRights(vm.details.user);
                 vm.edit                  = angular.copy(group);
                 vm.groupInvitations      = usersFactory.addUsersFullNames(group.invitations);
-                vm.groupMembers          = usersFactory.addUsersFullNames(group.users);
+                vm.groupMembers          = groupsFactory.getActiveUsers(name);
                 vm.logs                  = angular.copy(group.logs);
                 if (!Methods.isNullOrEmpty(vm.logs)) {
                     vm.logs.forEach(function (log) {
@@ -124,6 +125,10 @@
                         log.formattedDate += $filter('date')(log.date, 'HH:mm');
                     });
                 }
+
+                // Send message to redraw graph
+                $rootScope.$broadcast('cozenDrawChart');
+                $rootScope.$broadcast('drawChartValuesInit');
             }
         }
 

@@ -1,0 +1,24 @@
+<cozen-popup cozen-popup-name="channelJoin"
+             cozen-popup-type-green
+             cozen-popup-size-small
+             cozen-popup-data="popup.channelJoinData"
+             cozen-popup-header-title="'popup_channel_join_header_title'">
+    <div class="row">
+
+        <!-- User invitation -->
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top text-center">{{ 'popup_channel_join_body_title' | translate:popup.channelJoinData }}</h3>
+        </div>
+
+        <!-- Submit btn -->
+        <div class="col-xs-12 space-large-after text-center">
+            <cozen-btn cozen-btn-type-green
+                       cozen-btn-label="'popup_channel_join_body_join' | translate:popup.channelJoinData"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-loader="popup.loading"
+                       cozen-btn-on-click="popup.methods.channel.join()"
+                       cozen-btn-class="space-base-right">
+            </cozen-btn>
+        </div>
+    </div>
+</cozen-popup>

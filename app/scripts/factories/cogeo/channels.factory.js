@@ -46,7 +46,9 @@
             httpRequest                     : {
                 updateChannel  : httpRequestUpdateChannel,
                 addChannel     : httpRequestAddChannel,
-                sendInvitations: httpRequestSendInvitations
+                sendInvitations: httpRequestSendInvitations,
+                joinChannel    : httpRequestJoinChannel,
+                leaveChannel   : httpRequestLeaveChannel
             }
         };
 
@@ -99,7 +101,7 @@
             var group    = groupsFactory.getGroupByName(groupName);
             var user     = usersFactory.getUserByUsername(username);
             var channels = [];
-            if (group != null && user != null) {
+            if (!Methods.isNullOrEmpty(group) && !Methods.isNullOrEmpty(user)) {
                 for (var i = 0, length = group.channels.length; i < length; i++) {
                     channels.push(getChannelWithUserRoles(group.channels[i], user));
                 }
@@ -232,6 +234,7 @@
                 for (var i = 0, length = channel.users.length; i < length; i++) {
                     if (channel.users[i].hasLeft == 0) {
                         if (!channel.users[i].kicked.active && !channel.users[i].banned.active) {
+                            channel.users[i] = usersFactory.addUserFullName(channel.users[i]);
                             users.push(channel.users[i]);
                         }
                     }
@@ -529,6 +532,38 @@
                             }
                         });
                     }
+                })
+            ;
+        }
+
+        function httpRequestJoinChannel(groupName, channelName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/join', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_joined_channel',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: channelName
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestLeaveChannel(groupName, channelName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/leave', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_leaved_channel',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: channelName
+                        }
+                    });
                 })
             ;
         }

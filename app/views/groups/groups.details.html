@@ -168,7 +168,8 @@
                     </cozen-btn>
 
                     <!-- Leave btn -->
-                    <a href
+                    <a ng-show="vm.groupMembers.length > 1"
+                       href
                        class="animated fadeInUp"
                        onclick="this.blur()"
                        ng-click="vm.methods.leaveGroup($event, vm.details.group.name)">

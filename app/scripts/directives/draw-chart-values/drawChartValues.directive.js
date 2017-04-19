@@ -22,11 +22,12 @@
         'googleGraphChannelStatus',
         'googleGraphGroupMembers',
         'googleGraphGroupStatus',
-        'googleGraphGroupChannelsTypes'
+        'googleGraphGroupChannelsTypes',
+        '$rootScope'
     ];
 
     function drawChartValues(googleGraphChannelMembers, googleGraphChannelStatus, googleGraphGroupMembers, googleGraphGroupStatus,
-                             googleGraphGroupChannelsTypes) {
+                             googleGraphGroupChannelsTypes, $rootScope) {
         return {
             link       : link,
             restrict   : 'E',
@@ -39,7 +40,8 @@
         function link(scope, element, attrs) {
             var methods = {
                 init   : init,
-                destroy: destroy
+                destroy: destroy,
+                setData: setData
             };
 
             methods.init();
@@ -48,7 +50,21 @@
 
                 // Default values (attribute)
                 scope._drawChartValuesFactory = angular.isDefined(attrs.drawChartValuesFactory) ? attrs.drawChartValuesFactory : '';
-                scope._values                 = [];
+
+                // Init stuff
+                element.on('$destroy', methods.destroy);
+                methods.setData();
+
+                // Watch for a rebuild event
+                $rootScope.$on('drawChartValuesInit', methods.setData);
+            }
+
+            function destroy() {
+                element.off('$destroy', methods.destroy);
+            }
+
+            function setData() {
+                scope._values = [];
 
                 // Switch on the factory
                 switch (scope._drawChartValuesFactory) {
@@ -68,13 +84,6 @@
                         scope._values = googleGraphGroupChannelsTypes.getData();
                         break;
                 }
-
-                // Init stuff
-                element.on('$destroy', methods.destroy);
-            }
-
-            function destroy() {
-                element.off('$destroy', methods.destroy);
             }
         }
     }

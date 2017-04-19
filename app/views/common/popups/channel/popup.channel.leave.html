@@ -1,0 +1,24 @@
+<cozen-popup cozen-popup-name="channelLeave"
+             cozen-popup-type-warning
+             cozen-popup-size-small
+             cozen-popup-data="popup.channelLeaveData"
+             cozen-popup-header-title="'popup_channel_leave_header_title'">
+    <div class="row">
+
+        <!-- User invitation -->
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top text-center">{{ 'popup_channel_leave_body_title' | translate:popup.channelLeaveData }}</h3>
+        </div>
+
+        <!-- Submit btn -->
+        <div class="col-xs-12 space-large-after text-center">
+            <cozen-btn cozen-btn-type-warning
+                       cozen-btn-label="'popup_channel_leave_body_leave' | translate:popup.channelLeaveData"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-loader="popup.loading"
+                       cozen-btn-on-click="popup.methods.channel.leave()"
+                       cozen-btn-class="space-base-right">
+            </cozen-btn>
+        </div>
+    </div>
+</cozen-popup>
