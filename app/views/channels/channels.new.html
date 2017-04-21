@@ -56,7 +56,7 @@
                                   cozen-btn-toggle-model="vm.newChannel.private"
                                   cozen-btn-toggle-class="space-base-after"
                                   cozen-btn-toggle-disabled="vm.channels.length >= vm.CONFIG.internal.channel.max"
-                                  cozen-btn-toggle-on-change="vm.newChannel.default = false">
+                                  cozen-btn-toggle-on-change="vm.newChannel.byDefault = false">
                 </cozen-btn-toggle>
 
                 <!-- Toggle default -->
@@ -65,7 +65,7 @@
                                   cozen-btn-toggle-tooltip="{{ (vm.canAddDefaultChannel ? 'channels_register_default_tp' : 'channels_register_default_tp_disabled') | translate }}"
                                   cozen-btn-toggle-tooltip-max-width="'max-width-400'"
                                   cozen-btn-toggle-tooltip-type="html"
-                                  cozen-btn-toggle-model="vm.newChannel.default"
+                                  cozen-btn-toggle-model="vm.newChannel.byDefault"
                                   cozen-btn-toggle-class="space-medium-after"
                                   cozen-btn-toggle-on-change="vm.newChannel.private = false">
                 </cozen-btn-toggle>

@@ -12,7 +12,7 @@
                         <div class="text">
                             <div class="center-flex-content flex-start">
                                 <h3 class="atom-ellipsis">{{ vm.channel.name }}</h3>
-                                <cozen-tooltip ng-show="vm.channel.default"
+                                <cozen-tooltip ng-show="vm.channel.byDefault"
                                                cozen-tooltip-placement="auto bottom"
                                                cozen-tooltip-label="'channels_by_default_tp' | translate">
                                     <mark class="atom-mark default space-small-left">{{ 'channels_by_default' | translate }}</mark>
@@ -83,7 +83,7 @@
                     </h4>
                     <h4>
                         <strong>{{ 'channels_details_default' | translate }}:</strong>
-                        {{ (vm.channel.default ? 'other_yes' : 'other_no') | translate }}
+                        {{ (vm.channel.byDefault ? 'other_yes' : 'other_no') | translate }}
                     </h4>
                     <p ng-show="vm.channel.private"
                        class="no-margin-bottom help-text">

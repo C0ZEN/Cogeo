@@ -55,7 +55,7 @@
                                ng-click="goTo.view('app.channels.details', {channelName: channel.name}, null)"
                                ui-sref="app.channels.details({channelName: channel.name})">
                             </a>
-                            <cozen-tooltip ng-show="channel.default && !vm.allChannels.condensed"
+                            <cozen-tooltip ng-show="channel.byDefault && !vm.allChannels.condensed"
                                            cozen-tooltip-placement="auto bottom"
                                            cozen-tooltip-label="'channels_by_default_tp' | translate">
                                 <mark class="atom-mark default">{{ 'channels_by_default' | translate }}</mark>

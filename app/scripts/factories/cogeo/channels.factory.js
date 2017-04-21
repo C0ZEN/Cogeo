@@ -394,7 +394,7 @@
             var defaultChannels = [];
             if (!Methods.isNullOrEmpty(group) && !Methods.isNullOrEmpty(group.channels)) {
                 for (var i = 0, length = group.channels.length; i < length; i++) {
-                    if (group.channels[i].default) {
+                    if (group.channels[i].byDefault) {
                         defaultChannels.push(group.channels[i]);
                     }
                 }

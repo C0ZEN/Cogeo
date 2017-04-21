@@ -14,7 +14,7 @@
             if (isActivated) {
                 var newChannels = [];
                 channels.forEach(function (channel) {
-                    if (channel.default) {
+                    if (channel.byDefault) {
                         newChannels.push(channel);
                     }
                 });

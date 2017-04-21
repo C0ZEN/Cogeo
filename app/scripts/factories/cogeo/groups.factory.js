@@ -464,7 +464,7 @@
             var group          = getGroupByName(groupName);
             var defaultChannel = 0;
             group.channels.forEach(function (channel) {
-                if (channel.default) {
+                if (channel.byDefault) {
                     defaultChannel++;
                 }
             });

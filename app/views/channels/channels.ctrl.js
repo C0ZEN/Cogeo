@@ -193,7 +193,7 @@
             vm.editedChannel.originalName = vm.params.channelName;
             vm.defaultChannels            = channelsFactory.getDefaultChannels(vm.params.groupName);
             if (vm.defaultChannels.length == 5) {
-                vm.canAddDefaultChannel = vm.channel.default;
+                vm.canAddDefaultChannel = vm.channel.byDefault;
             }
             else {
                 vm.canAddDefaultChannel = vm.defaultChannels.length <= 5;
@@ -208,7 +208,7 @@
                 description: vm.newChannel.description,
                 picture    : vm.newChannel.picture,
                 private    : vm.newChannel.private,
-                default    : vm.newChannel.default,
+                default    : vm.newChannel.byDefault,
                 creator    : vm.user.username,
                 groupName  : vm.params.groupName
             };
@@ -236,7 +236,7 @@
                 description: vm.editedChannel.description,
                 picture    : vm.editedChannel.picture,
                 private    : vm.editedChannel.private,
-                default    : vm.editedChannel.default,
+                default    : vm.editedChannel.byDefault,
                 groupName  : vm.params.groupName,
                 username   : vm.user.username
             };
@@ -290,7 +290,7 @@
             vm.newChannel.name        = $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true);
             vm.newChannel.description = cozenLazyLoadRandom.getRandomSentence(15);
             vm.newChannel.private     = Methods.getRandomBoolean();
-            vm.newChannel.default     = false;
+            vm.newChannel.byDefault     = false;
             cozenLazyLoadInternal.sendBroadcastForm('new');
             cozenLazyLoadInternal.sendBroadcastBtnClick('submit-new-channel-btn');
         }
