@@ -208,7 +208,7 @@
                 description: vm.newChannel.description,
                 picture    : vm.newChannel.picture,
                 private    : vm.newChannel.private,
-                default    : vm.newChannel.byDefault,
+                byDefault  : vm.newChannel.byDefault,
                 creator    : vm.user.username,
                 groupName  : vm.params.groupName
             };
@@ -236,7 +236,7 @@
                 description: vm.editedChannel.description,
                 picture    : vm.editedChannel.picture,
                 private    : vm.editedChannel.private,
-                default    : vm.editedChannel.byDefault,
+                byDefault  : vm.editedChannel.byDefault,
                 groupName  : vm.params.groupName,
                 username   : vm.user.username
             };
@@ -290,7 +290,7 @@
             vm.newChannel.name        = $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true);
             vm.newChannel.description = cozenLazyLoadRandom.getRandomSentence(15);
             vm.newChannel.private     = Methods.getRandomBoolean();
-            vm.newChannel.byDefault     = false;
+            vm.newChannel.byDefault   = false;
             cozenLazyLoadInternal.sendBroadcastForm('new');
             cozenLazyLoadInternal.sendBroadcastBtnClick('submit-new-channel-btn');
         }

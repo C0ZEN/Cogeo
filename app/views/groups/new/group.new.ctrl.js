@@ -97,9 +97,9 @@
         }
 
         function createGroup() {
-            vm.stepForward      = true;
-            vm.newGroup.creator = userFactory.getUser().username;
-            vm.newGroup.users   = angular.copy(vm.availableUsersSelected);
+            vm.stepForward           = true;
+            vm.newGroup.creator      = userFactory.getUser().username;
+            vm.newGroup.invitedUsers = angular.copy(vm.availableUsersSelected);
             if (CONFIG.dev) {
                 cozenEnhancedLogs.explodeObject(vm.newGroup);
             }
@@ -133,9 +133,9 @@
 
         function addChannel(name) {
             vm.newGroup.channels.push({
-                name   : name,
-                default: true,
-                id     : rfc4122.v4()
+                name     : name,
+                byDefault: true,
+                id       : rfc4122.v4()
             });
         }
 
@@ -167,9 +167,9 @@
             vm.newGroup.channels    = [];
             for (var i = 0; i < channelQuantity; i++) {
                 vm.newGroup.channels.push({
-                    name   : $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true),
-                    default: true,
-                    id     : rfc4122.v4()
+                    name     : $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true),
+                    byDefault: true,
+                    id       : rfc4122.v4()
                 });
             }
             cozenLazyLoadInternal.sendBroadcastForm('newGroup2');
