@@ -72,7 +72,7 @@
         <div class="vertical-separator"></div>
 
         <!-- Total members -->
-        <cozen-tooltip cozen-tooltip-label="'chat_total_members' | translate:{total: vm.activeChannel.users.length}"
+        <cozen-tooltip cozen-tooltip-label="(vm.activeChannel.users.length > 1 ? 'chat_total_members' : 'chat_total_member') | translate:{total: vm.activeChannel.users.length}"
                        cozen-tooltip-placement="auto bottom">
             <a href
                ui-sref="app.channels.members({groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
