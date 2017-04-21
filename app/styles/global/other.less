@@ -227,3 +227,23 @@ i.atom-icon-btn {
     word-break         : break-all;
     line-height        : inherit;
 }
+.atom-annotation {
+    background-color : @atom-color-yellow;
+    border           : 1px solid @atom-color-yellow;
+    position         : absolute;
+    border-radius    : 50%;
+    top              : 2px;
+    right            : -10px;
+    width            : 18px;
+    height           : 18px;
+    line-height      : 18px;
+    display          : flex;
+    flex-direction   : row;
+    justify-content  : center;
+    align-items      : stretch;
+    span.annotation {
+        color       : @atom-color-white;
+        font-size   : @atom-font-body;
+        font-family : @atom-family-body;
+    }
+}

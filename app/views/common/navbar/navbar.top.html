@@ -87,11 +87,14 @@
 
         <!-- Pending invitations -->
         <div ng-show="vm.methods.isConnected() && vm.user.pendingInvitations.length > 0"
-             class="link link-blue"
+             class="link link-purple relative"
              ng-class="{'active': goTo.isCurrentView('app.invitations.received')}"
              ng-click="goTo.view('app.invitations.received')"
              tabindex="0">
             {{ 'navbar_pending_invitations' | translate }}
+            <div class="atom-annotation">
+                <span class="annotation">{{ vm.user.pendingInvitations.length }}</span>
+            </div>
         </div>
 
         <!-- Users list -->

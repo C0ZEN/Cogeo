@@ -777,6 +777,35 @@ i.atom-icon-btn.purple:hover {
   word-break: break-all;
   line-height: inherit;
 }
+.atom-annotation {
+  background-color: #FEB909;
+  border: 1px solid #FEB909;
+  position: absolute;
+  border-radius: 50%;
+  top: 2px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+.atom-annotation span.annotation {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: 'Catamaran', Arial, sans-serif;
+}
 /********************/
 /**   TEXT ALIGN   **/
 /********************/
