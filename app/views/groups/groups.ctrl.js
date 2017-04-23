@@ -44,7 +44,8 @@
             startLoading     : startLoading,
             stopLoading      : stopLoading,
             isEmailDuplicated: isEmailDuplicated,
-            onInitDetails    : onInitDetails
+            onInitDetails    : onInitDetails,
+            onInitMembers    : onInitMembers
         };
 
         // Common data
@@ -68,6 +69,7 @@
             vm.invitations = angular.merge({}, vm.invitations, angular.copy(vm.user.settings.preferences.groupsInvitations));
             vm.members     = angular.merge({}, vm.members, angular.copy(vm.user.settings.preferences.groupsMembers));
             vm.log         = angular.merge({}, vm.log, angular.copy(vm.user.settings.preferences.groupsLogs));
+            vm.methods.onInitMembers();
         });
 
         // When the group
@@ -77,6 +79,7 @@
             vm.invitations = angular.merge({}, vm.invitations, angular.copy(vm.user.settings.preferences.groupsInvitations));
             vm.members     = angular.merge({}, vm.members, angular.copy(vm.user.settings.preferences.groupsMembers));
             vm.log         = angular.merge({}, vm.log, angular.copy(vm.user.settings.preferences.groupsLogs));
+            vm.methods.onInitMembers();
         });
 
         function save(form) {
@@ -234,6 +237,11 @@
             vm.googleGraph.members       = googleGraphGroupMembers.getChart($state.params.groupName);
             vm.googleGraph.status        = googleGraphGroupStatus.getChart($state.params.groupName);
             vm.googleGraph.channelsTypes = googleGraphGroupChannelsTypes.getChart($state.params.groupName);
+        }
+
+        function onInitMembers() {
+            vm.membersList = groupsFactory.getAllUsersExceptHasLeft($state.params.groupName);
+            vm.membersList = usersFactory.addUsersFullNames(vm.membersList);
         }
     }
 

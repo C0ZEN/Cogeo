@@ -1,5 +1,5 @@
 <div class="animated fadeIn"
-     ng-init="vm.methods.onDisplayDetails()">
+     ng-init="vm.methods.onDisplayDetails(); vm.methods.onInitMembers()">
     <div class="row">
         <div class="col-xs-12">
             <div class="row">
@@ -31,12 +31,12 @@
             </div>
 
             <!-- Members -->
-            <div ng-show="vm.groupMembers.length > 0"
+            <div ng-show="vm.membersList.length > 0"
                  class="atom-groups space-base-before space-base-after">
                 <div class="atom-group"
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
                      ng-class="{'border-bottom': $last}"
-                     ng-repeat="member in vm.groupMembers
+                     ng-repeat="member in vm.membersList
                        | orderBy: 'joined':vm.members.orderBy
                        | filter: vm.members.search
                        | groupsMembersStatus: vm.members.status
@@ -98,7 +98,7 @@
 
                 <!-- Members fake (for actual length) -->
                 <div style="display: none;"
-                     ng-repeat="member in vm.groupMembers
+                     ng-repeat="member in vm.membersList
                        | filter: vm.members.search
                        | groupsMembersStatus: vm.members.status
                        as fakeMembersFilter track by $index">
@@ -106,7 +106,7 @@
             </div>
 
             <!-- Info message for empty invitations -->
-            <cozen-alert cozen-alert-display="vm.groupMembers.length == 0"
+            <cozen-alert cozen-alert-display="vm.membersList.length == 0"
                          cozen-alert-label="'groups_members_empty'"
                          cozen-alert-close-btn="false"
                          cozen-alert-class="space-medium-before space-base-after"
@@ -125,7 +125,7 @@
 
                 <!-- Number of members -->
                 <p class="no-margin help-text animated fadeInUp">
-                    {{ (vm.groupMembers.length > 1 ? 'groups_members_total_pluralize' : 'groups_members_total') | translate:{total: vm.groupMembers.length} }}
+                    {{ (vm.membersList.length > 1 ? 'groups_members_total_pluralize' : 'groups_members_total') | translate:{total: vm.membersList.length} }}
                 </p>
             </div>
         </div>

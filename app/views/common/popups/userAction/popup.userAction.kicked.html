@@ -1,13 +1,13 @@
 <cozen-popup cozen-popup-name="userActionKicked"
              cozen-popup-type-warning
-             cozen-popup-data="userActionKickedData"
+             cozen-popup-data="popup.userActionKickedData"
              cozen-popup-header-title="'popup_userAction_kicked_header_title'">
     <div class="row">
         <div class="col-xs-12 space-large-before space-medium-after">
-            <h3 class="no-margin-top">{{ 'popup_userAction_kicked_body_title' | translate:userActionKickedData }}</h3>
-            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_1' | translate:userActionKickedData }}</p>
-            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_2' | translate:userActionKickedData }}</p>
-            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_3' | translate:userActionKickedData }}</p>
+            <h3 class="no-margin-top">{{ 'popup_userAction_kicked_body_title' | translate:popup.userActionKickedData }}</h3>
+            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_1' | translate:popup.userActionKickedData }}</p>
+            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_2' | translate:popup.userActionKickedData }}</p>
+            <p class="help-text">{{ 'popup_userAction_kicked_body_subtitle_3' | translate:popup.userActionKickedData }}</p>
         </div>
         <cozen-form cozen-form-ctrl="popup"
                     cozen-form-model="form"
@@ -44,7 +44,7 @@
                 </div>
                 <div>
                     <label class="atom-label no-margin">{{ 'popup_userAction_kicked_body_date' | translate }}:</label>
-                    <span date-now="EEEE dd MMMM yyyy - HH:mm"
+                    <span date-now="EEEE dd MMMM yyyy {{ 'other_time_at' | translate }} HH:mm"
                           class="atom-value">
                     </span>
                 </div>

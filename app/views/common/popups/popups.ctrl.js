@@ -202,23 +202,52 @@
         }
 
         function userActionGranted() {
-            popup.methods.closePopup('userActionGranted');
+            groupsFactory.httpRequest.userGrant(popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {}, function () {
+                popup.methods.closePopup('userActionGranted');
+            }, function () {
+                popup.methods.closePopup('userActionGranted');
+            });
         }
 
         function userActionRevoked() {
-            popup.methods.closePopup('userActionRevoked');
+            groupsFactory.httpRequest.userRevoke(popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {}, function () {
+                popup.methods.closePopup('userActionRevoked');
+            }, function () {
+                popup.methods.closePopup('userActionRevoked');
+            });
         }
 
         function userActionKicked() {
-            popup.methods.closePopup('userActionKicked');
+            var kick = {
+                from: userFactory.getUser().username,
+                for : popup.userActionKicked.for,
+                time: popup.userActionKicked.time
+            };
+            groupsFactory.httpRequest.userKick(popup.userActionKickedData.elementName, popup.userActionKickedData.userName, kick, function () {
+                popup.methods.closePopup('userActionKicked');
+            }, function () {
+                popup.methods.closePopup('userActionKicked');
+            });
         }
 
         function userActionBanned() {
-            popup.methods.closePopup('userActionBanned');
+            var ban = {
+                from: userFactory.getUser().username,
+                for : popup.userActionBanned.for
+            };
+            groupsFactory.httpRequest.userBan(popup.userActionBannedData.elementName, popup.userActionBannedData.userName, ban, function () {
+                popup.methods.closePopup('userActionBanned');
+            }, function () {
+                popup.methods.closePopup('userActionBanned');
+            });
         }
 
         function userActionUnbanned() {
-            popup.methods.closePopup('userActionUnbanned');
+            groupsFactory.httpRequest.userUnban(popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {}, function () {
+                popup.methods.closePopup('userActionUnbanned');
+            }, function () {
+                popup.methods.closePopup('userActionUnbanned');
+            });
         }
 
         function onInitChatSetStatus() {

@@ -3,6 +3,25 @@
     <div class="row">
         <div class="col-xs-12">
             <div ng-show="vm.details.group != null">
+
+                <!-- Warning message for banned -->
+                <cozen-alert cozen-alert-display="vm.details.group.userRoles.isBanned"
+                             cozen-alert-label="'groups_details_no_rights_banned'"
+                             cozen-alert-label-values="{'date': (vm.details.group.userRoles.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.details.group.userRoles.banned.by, 'for': methods.getKickBanFor(vm.details.group.userRoles.banned.for)}"
+                             cozen-alert-close-btn="false"
+                             cozen-alert-class="space-base-after"
+                             cozen-alert-type-warning>
+                </cozen-alert>
+
+                <!-- Warning message for kicked -->
+                <cozen-alert cozen-alert-display="vm.details.group.userRoles.isKicked && !vm.details.group.userRoles.isBanned"
+                             cozen-alert-label="'groups_details_no_rights_kicked'"
+                             cozen-alert-label-values="{'date': (vm.details.group.userRoles.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.details.group.userRoles.kicked.by, 'for': methods.getKickBanFor(vm.details.group.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(vm.details.group.userRoles.kicked.time).key | translate)}"
+                             cozen-alert-close-btn="false"
+                             cozen-alert-class="space-base-after"
+                             cozen-alert-type-warning>
+                </cozen-alert>
+
                 <div class="atom-profile">
 
                     <!-- Profile card -->
@@ -125,24 +144,6 @@
                         <draw-chart-values draw-chart-values-factory="googleGraphGroupChannelsTypes"></draw-chart-values>
                     </div>
                 </div>
-
-                <!-- Warning message for banned -->
-                <cozen-alert cozen-alert-display="vm.details.group.userRoles.isBanned"
-                             cozen-alert-label="'groups_details_no_rights_banned'"
-                             cozen-alert-label-values="{'date': (vm.details.group.userRoles.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.details.group.userRoles.banned.by, 'for': methods.getKickBanFor(vm.details.group.userRoles.banned.for)}"
-                             cozen-alert-close-btn="false"
-                             cozen-alert-class="space-base-after"
-                             cozen-alert-type-warning>
-                </cozen-alert>
-
-                <!-- Warning message for kicked -->
-                <cozen-alert cozen-alert-display="vm.details.group.userRoles.isKicked && !vm.details.group.userRoles.isBanned"
-                             cozen-alert-label="'groups_details_no_rights_kicked'"
-                             cozen-alert-label-values="{'date': (vm.details.group.userRoles.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.details.group.userRoles.kicked.by, 'for': methods.getKickBanFor(vm.details.group.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(vm.details.group.userRoles.kicked.time).key | translate)}"
-                             cozen-alert-close-btn="false"
-                             cozen-alert-class="space-base-after"
-                             cozen-alert-type-warning>
-                </cozen-alert>
 
                 <div ng-show="!vm.details.userIsInGroup"
                      class="center-flex-content space-medium-after">

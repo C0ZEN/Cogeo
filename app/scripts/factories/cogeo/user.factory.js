@@ -390,6 +390,9 @@
                             httpRequestAddAccessLog(response);
                         })
                     ;
+                    if (CONFIG.dev) {
+                        cozenEnhancedLogs.explodeObject(data);
+                    }
                     goTo.view('app.account.profile');
                 })
             ;

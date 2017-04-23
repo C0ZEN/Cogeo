@@ -56,6 +56,7 @@
             getDefaultChannelsQuantity    : getDefaultChannelsQuantity,
             getPublicChannelsQuantity     : getPublicChannelsQuantity,
             getPrivateChannelsQuantity    : getPrivateChannelsQuantity,
+            getAllUsersExceptHasLeft      : getAllUsersExceptHasLeft,
             httpRequest                   : {
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName,
@@ -64,7 +65,12 @@
                 sendCogeoInvitations: httpRequestSendCogeoInvitations,
                 sendEmailInvitations: httpRequestSendEmailInvitations,
                 joinGroup           : httpRequestJoinGroup,
-                leaveGroup          : httpRequestLeaveGroup
+                leaveGroup          : httpRequestLeaveGroup,
+                userKick            : httpRequestUserKick,
+                userBan             : httpRequestUserBan,
+                userUnban           : httpRequestUserUnban,
+                userGrant           : httpRequestUserGrant,
+                userRevoke          : httpRequestUserRevoke
             }
         };
 
@@ -493,6 +499,17 @@
             return privateChannel;
         }
 
+        function getAllUsersExceptHasLeft(groupName) {
+            var group       = getGroupByName(groupName);
+            var activeUsers = [];
+            for (var i = 0, length = group.users.length; i < length; i++) {
+                if (group.users[i].hasLeft == 0) {
+                    activeUsers.push(group.users[i]);
+                }
+            }
+            return activeUsers;
+        }
+
         /// HTTP REQUEST ///
 
         function httpRequestAddGroup(data, callbackSuccess, callbackError) {
@@ -621,6 +638,87 @@
                         label      : 'alerts_success_leaved_group',
                         labelValues: {
                             groupName: groupName
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserKick(groupName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/user/' + username + '/kick', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_kick',
+                        labelValues: {
+                            groupName: groupName,
+                            username : username,
+                            time     : $filter('translate')('other_time_' + data.time)
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserBan(groupName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/user/' + username + '/ban', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_ban',
+                        labelValues: {
+                            groupName: groupName,
+                            username : username
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserUnban(groupName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/user/' + username + '/unban', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_unban',
+                        labelValues: {
+                            groupName: groupName,
+                            username : username
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserGrant(groupName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/user/' + username + '/grant', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_grant',
+                        labelValues: {
+                            groupName: groupName,
+                            username : username
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserRevoke(groupName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/user/' + username + '/revoke', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_revoke',
+                        labelValues: {
+                            groupName: groupName,
+                            username : username
                         }
                     });
                 })
