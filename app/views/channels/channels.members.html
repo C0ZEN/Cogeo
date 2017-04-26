@@ -31,12 +31,12 @@
             </div>
 
             <!-- Members -->
-            <div ng-show="vm.members.length > 0"
+            <div ng-show="vm.membersList.length > 0"
                  class="atom-groups space-base-before space-base-after">
                 <div class="atom-group"
                      style="animation-delay: {{ 50 * $index + 'ms' }};"
                      ng-class="{'border-bottom': $last}"
-                     ng-repeat="member in vm.members
+                     ng-repeat="member in vm.membersList
                        | orderBy: 'joined':vm.membersSettings.orderBy
                        | filter: vm.membersSettings.search
                        | groupsMembersStatus: vm.membersSettings.status
@@ -87,18 +87,18 @@
                                      user-action-kicked="!member.kicked.active && !member.banned.active"
                                      user-action-banned="!member.kicked.active && !member.banned.active"
                                      user-action-unbanned="member.kicked.active || member.banned.active"
-                                     user-action-granted-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
-                                     user-action-revoked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName}"
-                                     user-action-kicked-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}"
-                                     user-action-banned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}"
-                                     user-action-unbanned-data="{userName: member.username, element: 'groupe', elementName: vm.params.groupName, speaking: ('popup_userAction_speaking_groups' | translate)}">
+                                     user-action-granted-data="{userName: member.username, element: 'channel', groupName: vm.params.groupName, elementName: vm.params.channelName}"
+                                     user-action-revoked-data="{userName: member.username, element: 'channel', groupName: vm.params.groupName, elementName: vm.params.channelName}"
+                                     user-action-kicked-data="{userName: member.username, element: 'channel', groupName: vm.params.groupName, elementName: vm.params.channelName, speaking: ('popup_userAction_speaking_groups' | translate)}"
+                                     user-action-banned-data="{userName: member.username, element: 'channel', groupName: vm.params.groupName, elementName: vm.params.channelName, speaking: ('popup_userAction_speaking_groups' | translate)}"
+                                     user-action-unbanned-data="{userName: member.username, element: 'channel', groupName: vm.params.groupName, elementName: vm.params.channelName, speaking: ('popup_userAction_speaking_groups' | translate)}">
                         </user-action>
                     </div>
                 </div>
 
                 <!-- Members fake (for actual length) -->
                 <div style="display: none;"
-                     ng-repeat="member in vm.members
+                     ng-repeat="member in vm.membersList
                        | filter: vm.membersSettings.search
                        | groupsMembersStatus: vm.membersSettings.status
                        as fakeMembersFilter track by $index">
@@ -106,7 +106,7 @@
             </div>
 
             <!-- Info message for empty invitations -->
-            <cozen-alert cozen-alert-display="vm.members.length == 0"
+            <cozen-alert cozen-alert-display="vm.membersList.length == 0"
                          cozen-alert-label="'groups_members_empty'"
                          cozen-alert-close-btn="false"
                          cozen-alert-class="space-medium-before space-base-after"
@@ -125,7 +125,7 @@
 
                 <!-- Number of members -->
                 <p class="no-margin help-text animated fadeInUp">
-                    {{ (vm.members.length > 1 ? 'channels_members_total_pluralize' : 'channels_members_total') | translate:{total: vm.members.length} }}
+                    {{ (vm.membersList.length > 1 ? 'channels_members_total_pluralize' : 'channels_members_total') | translate:{total: vm.membersList.length} }}
                 </p>
             </div>
         </div>

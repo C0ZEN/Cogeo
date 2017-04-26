@@ -202,19 +202,37 @@
         }
 
         function userActionGranted() {
-            groupsFactory.httpRequest.userGrant(popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {}, function () {
-                popup.methods.closePopup('userActionGranted');
-            }, function () {
-                popup.methods.closePopup('userActionGranted');
-            });
+            if (popup.userActionGrantedData.element == 'channel') {
+                channelsFactory.httpRequest.userGrant(popup.userActionGrantedData.groupName, popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {}, function () {
+                    popup.methods.closePopup('userActionGranted');
+                }, function () {
+                    popup.methods.closePopup('userActionGranted');
+                });
+            }
+            else {
+                groupsFactory.httpRequest.userGrant(popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {}, function () {
+                    popup.methods.closePopup('userActionGranted');
+                }, function () {
+                    popup.methods.closePopup('userActionGranted');
+                });
+            }
         }
 
         function userActionRevoked() {
-            groupsFactory.httpRequest.userRevoke(popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {}, function () {
-                popup.methods.closePopup('userActionRevoked');
-            }, function () {
-                popup.methods.closePopup('userActionRevoked');
-            });
+            if (popup.userActionRevokedData.element == 'channel') {
+                channelsFactory.httpRequest.userRevoke(popup.userActionRevokedData.groupName, popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {}, function () {
+                    popup.methods.closePopup('userActionRevoked');
+                }, function () {
+                    popup.methods.closePopup('userActionRevoked');
+                });
+            }
+            else {
+                groupsFactory.httpRequest.userRevoke(popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {}, function () {
+                    popup.methods.closePopup('userActionRevoked');
+                }, function () {
+                    popup.methods.closePopup('userActionRevoked');
+                });
+            }
         }
 
         function userActionKicked() {
@@ -223,11 +241,20 @@
                 for : popup.userActionKicked.for,
                 time: popup.userActionKicked.time
             };
-            groupsFactory.httpRequest.userKick(popup.userActionKickedData.elementName, popup.userActionKickedData.userName, kick, function () {
-                popup.methods.closePopup('userActionKicked');
-            }, function () {
-                popup.methods.closePopup('userActionKicked');
-            });
+            if (popup.userActionKickedData.element == 'channel') {
+                channelsFactory.httpRequest.userKick(popup.userActionKickedData.groupName, popup.userActionKickedData.elementName, popup.userActionKickedData.userName, kick, function () {
+                    popup.methods.closePopup('userActionKicked');
+                }, function () {
+                    popup.methods.closePopup('userActionKicked');
+                });
+            }
+            else {
+                groupsFactory.httpRequest.userKick(popup.userActionKickedData.elementName, popup.userActionKickedData.userName, kick, function () {
+                    popup.methods.closePopup('userActionKicked');
+                }, function () {
+                    popup.methods.closePopup('userActionKicked');
+                });
+            }
         }
 
         function userActionBanned() {
@@ -235,19 +262,37 @@
                 from: userFactory.getUser().username,
                 for : popup.userActionBanned.for
             };
-            groupsFactory.httpRequest.userBan(popup.userActionBannedData.elementName, popup.userActionBannedData.userName, ban, function () {
-                popup.methods.closePopup('userActionBanned');
-            }, function () {
-                popup.methods.closePopup('userActionBanned');
-            });
+            if (popup.userActionBannedData.element == 'channel') {
+                channelsFactory.httpRequest.userBan(popup.userActionBannedData.groupName, popup.userActionBannedData.elementName, popup.userActionBannedData.userName, ban, function () {
+                    popup.methods.closePopup('userActionBanned');
+                }, function () {
+                    popup.methods.closePopup('userActionBanned');
+                });
+            }
+            else {
+                groupsFactory.httpRequest.userBan(popup.userActionBannedData.elementName, popup.userActionBannedData.userName, ban, function () {
+                    popup.methods.closePopup('userActionBanned');
+                }, function () {
+                    popup.methods.closePopup('userActionBanned');
+                });
+            }
         }
 
         function userActionUnbanned() {
-            groupsFactory.httpRequest.userUnban(popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {}, function () {
-                popup.methods.closePopup('userActionUnbanned');
-            }, function () {
-                popup.methods.closePopup('userActionUnbanned');
-            });
+            if (popup.userActionUnbannedData.element == 'channel') {
+                channelsFactory.httpRequest.userUnban(popup.userActionUnbannedData.groupName, popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {}, function () {
+                    popup.methods.closePopup('userActionUnbanned');
+                }, function () {
+                    popup.methods.closePopup('userActionUnbanned');
+                });
+            }
+            else {
+                groupsFactory.httpRequest.userUnban(popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {}, function () {
+                    popup.methods.closePopup('userActionUnbanned');
+                }, function () {
+                    popup.methods.closePopup('userActionUnbanned');
+                });
+            }
         }
 
         function onInitChatSetStatus() {

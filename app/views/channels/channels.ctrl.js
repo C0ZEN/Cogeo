@@ -61,7 +61,8 @@
         vm.googleGraph = {};
 
         groupsFactory.subscribe($scope, function () {
-            onInitDetails();
+            vm.methods.onInitDetails();
+            vm.methods.onInitMembers();
         });
 
         // Called on each view
@@ -122,7 +123,8 @@
             vm.methods.onInit();
             vm.channel         = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel         = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
-            vm.members         = channelsFactory.getActiveMembers(vm.params.groupName, vm.channel._id);
+            vm.membersList     = channelsFactory.getAllUsersExceptHasLeft($state.params.groupName, vm.channel._id);
+            vm.membersList     = usersFactory.addUsersFullNames(vm.membersList);
             vm.membersSettings = angular.merge({}, vm.membersSettings, angular.copy(vm.user.settings.preferences.channelsMembers));
         }
 

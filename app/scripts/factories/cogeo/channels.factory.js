@@ -43,12 +43,18 @@
             getChannelNotLeftMembersQuantity: getChannelNotLeftMembersQuantity,
             getChannelKickedQuantity        : getChannelKickedQuantity,
             getChannelBannedQuantity        : getChannelBannedQuantity,
+            getAllUsersExceptHasLeft        : getAllUsersExceptHasLeft,
             httpRequest                     : {
                 updateChannel  : httpRequestUpdateChannel,
                 addChannel     : httpRequestAddChannel,
                 sendInvitations: httpRequestSendInvitations,
                 joinChannel    : httpRequestJoinChannel,
-                leaveChannel   : httpRequestLeaveChannel
+                leaveChannel   : httpRequestLeaveChannel,
+                userKick       : httpRequestUserKick,
+                userBan        : httpRequestUserBan,
+                userUnban      : httpRequestUserUnban,
+                userGrant      : httpRequestUserGrant,
+                userRevoke     : httpRequestUserRevoke
             }
         };
 
@@ -474,6 +480,17 @@
             return banned;
         }
 
+        function getAllUsersExceptHasLeft(groupName, channelId) {
+            var channel     = getChannelById(groupName, channelId);
+            var activeUsers = [];
+            for (var i = 0, length = channel.users.length; i < length; i++) {
+                if (channel.users[i].hasLeft == 0) {
+                    activeUsers.push(channel.users[i]);
+                }
+            }
+            return activeUsers;
+        }
+
         /// HTTP REQUEST ///
 
         function httpRequestUpdateChannel(groupName, channelName, data, callbackSuccess, callbackError) {
@@ -562,6 +579,92 @@
                         labelValues: {
                             groupName  : groupName,
                             channelName: channelName
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserKick(groupName, channelName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/channel/' + channelName + '/user/' + username + '/kick', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_channel_kick',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: channelName,
+                            username   : username,
+                            time       : $filter('translate')('other_time_' + data.time)
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserBan(groupName, channelName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/channel/' + channelName + '/user/' + username + '/ban', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_channel_ban',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: channelName,
+                            username   : username
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserUnban(groupName, channelName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/channel/' + channelName + '/user/' + username + '/unban', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_channel_unban',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: channelName,
+                            username   : username
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserGrant(groupName, channelName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/channel/' + channelName + '/user/' + username + '/grant', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_channel_grant',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: channelName,
+                            username   : username
+                        }
+                    });
+                })
+            ;
+        }
+
+        function httpRequestUserRevoke(groupName, channelName, username, data, callbackSuccess, callbackError) {
+            httpRequest.requestPut('group/' + groupName + '/channel/' + channelName + '/user/' + username + '/revoke', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    groupsFactory.updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'blue',
+                        label      : 'alerts_success_user_channel_revoke',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: channelName,
+                            username   : username
                         }
                     });
                 })
