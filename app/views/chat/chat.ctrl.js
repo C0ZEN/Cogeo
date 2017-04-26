@@ -90,14 +90,18 @@
         // Remove this channel from the starred
         function removeToStarred($event, channelId) {
             $event.stopPropagation();
-            userFactory.removeToStarred(channelId);
+            userFactory.httpRequest.removeToStarred({
+                channelId: channelId
+            });
         }
 
         // Add this channel to the starred
         function addToStarred($event, channelId) {
             $event.stopPropagation();
             if (vm.starredChannels.length < 5) {
-                userFactory.addToStarred(channelId);
+                userFactory.httpRequest.addToStarred({
+                    channelId: channelId
+                });
             }
         }
 

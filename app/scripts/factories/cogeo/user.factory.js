@@ -62,8 +62,6 @@
             getStatus            : getStatus,
             setStatus            : setStatus,
             getAllStatus         : getAllStatus,
-            addToStarred         : addToStarred,
-            removeToStarred      : removeToStarred,
             getUserImage         : getUserImage,
             httpRequest          : {
                 getUser                          : httpRequestGetUser,
@@ -329,29 +327,6 @@
             return status;
         }
 
-        // Add a channel to the starred
-        function addToStarred(channelId) {
-            httpRequestAddToStarred({
-                id: channelId
-            });
-            user.starredChannels.push(channelId);
-            usersFactory.updateUser(user);
-            _notify();
-        }
-
-        // Remove a channel to the starred
-        function removeToStarred(channelId) {
-            httpRequestAddToStarred({
-                id: channelId
-            });
-            var index = user.starredChannels.indexOf(channelId);
-            if (index >= 0) {
-                user.starredChannels.splice(index, 1);
-                usersFactory.updateUser(user);
-                _notify();
-            }
-        }
-
         function getUserImage() {
             if (!Methods.isNullOrEmpty(user.picture) && !Methods.isNullOrEmpty(user.picture.url)) {
                 return user.picture.url;
@@ -582,11 +557,21 @@
         }
 
         function httpRequestAddToStarred(data, callbackSuccess, callbackError) {
-            httpRequest.requestPut('user/' + user.username + '/starredChannels', data, callbackSuccess, callbackError);
+            httpRequest.requestPut('user/' + user.username + '/add-to-starred', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
         }
 
         function httpRequestRemoveToStarred(data, callbackSuccess, callbackError) {
-            httpRequest.requestPut('user/' + user.username + '/starredChannels', data, callbackSuccess, callbackError);
+            httpRequest.requestPut('user/' + user.username + '/remove-from-starred', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    setUser(response.data.data);
+                    setUserInLocalStorage(response.data.data);
+                })
+            ;
         }
 
         function httpRequestAddAccessLog(data, callbackSuccess, callbackError) {

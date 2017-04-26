@@ -161,7 +161,7 @@
             if (channels != null) {
                 for (var i = 0, length = channels.length; i < length; i++) {
                     for (var y = 0, ylength = user.starredChannels.length; y < ylength; y++) {
-                        if (channels[i]._id == user.starredChannels[y]) {
+                        if (channels[i]._id == user.starredChannels[y].channelId) {
                             starredChannels.push(channels[i]);
                         }
                     }
@@ -183,7 +183,7 @@
                 for (var i = 0, length = channels.length; i < length; i++) {
                     isStarred = false;
                     for (var y = 0, ylength = user.starredChannels.length; y < ylength; y++) {
-                        if (channels[i]._id == user.starredChannels[y]) {
+                        if (channels[i]._id == user.starredChannels[y].channelId) {
                             isStarred = true;
                         }
                     }
@@ -224,7 +224,7 @@
             var user = usersFactory.getUserByUsername(username);
             if (user != null) {
                 for (var i = 0, length = user.starredChannels.length; i < length; i++) {
-                    if (user.starredChannels[i] == channelId) {
+                    if (user.starredChannels[i].channelId == channelId) {
                         return true;
                     }
                 }

@@ -28,13 +28,9 @@
                     <strong>{{ 'account_profile_username' | translate }}:</strong>
                     {{ vm.user.username }}
                 </h4>
-                <h4>
+                <h4 style="margin-bottom: 0;">
                     <strong>{{ 'account_profile_email' | translate }}:</strong>
                     {{ vm.user.email }}
-                </h4>
-                <h4 style="margin-bottom: 0;">
-                    <strong>{{ 'account_profile_born_date' | translate }}:</strong>
-                    {{ vm.user.birthday > 0 ? (vm.user.birthday | date: 'dd/mm/yyyy') : ('account_undefined' | translate) }}
                 </h4>
                 <p class="help-block no-margin-bottom">
                     {{ 'account_profile_date_register'
