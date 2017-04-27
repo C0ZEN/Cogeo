@@ -13,10 +13,11 @@
         '$filter',
         'userFactory',
         'httpRequest',
-        'cozenLanguage'
+        'cozenLanguage',
+        'groupsFactory'
     ];
 
-    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, cozenLanguage) {
+    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, cozenLanguage, groupsFactory) {
         var vm = this;
 
         // Common data
@@ -40,7 +41,8 @@
             initNotifications     : initNotifications,
             initLogs              : initLogs,
             initLogins            : initLogins,
-            getAppLanguageFlag    : getAppLanguageFlag
+            getAppLanguageFlag    : getAppLanguageFlag,
+            onInitProfile         : onInitProfile
         };
 
         // When a change occur into the popup of test
@@ -217,6 +219,10 @@
         // Return the src for the flag for this app language
         function getAppLanguageFlag(language) {
             return 'images/flags/' + language + '.png';
+        }
+
+        function onInitProfile() {
+            vm.userGroups = groupsFactory.getUserActiveGroups(userFactory.getUser().username);
         }
     }
 

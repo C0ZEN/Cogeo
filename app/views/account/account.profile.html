@@ -1,4 +1,5 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn"
+     ng-init="vm.methods.onInitProfile()">
     <div class="row">
         <div class="col-xs-12">
 
@@ -12,9 +13,13 @@
                         <h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>
                         <p class="help-text">@{{ vm.user.username }}</p>
                         <h4>
-                            <a href>#Supinfo</a>
-                            <a href>#9gag</a>
-                            <a href>#Bf1</a>
+                            <a href
+                               class="display-initial"
+                               ui-sref="app.groups.details({groupName: group.name})"
+                               ng-click="goTo.view('app.groups.details', {groupName: group.name})"
+                               ng-repeat="group in vm.userGroups track by $index">
+                                <span>#{{ group.name }}</span>
+                            </a>
                         </h4>
                     </div>
                 </div>

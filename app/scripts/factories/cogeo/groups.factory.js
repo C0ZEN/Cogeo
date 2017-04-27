@@ -30,6 +30,7 @@
             getUserFromGroup              : getUserFromGroup,
             getGroupsWithUserRoles        : getGroupsWithUserRoles,
             getUserGroups                 : getUserGroups,
+            getUserActiveGroups           : getUserActiveGroups,
             updateGroup                   : updateGroup,
             updateOrPushGroup             : updateOrPushGroup,
             updateGroupWithNewName        : updateGroupWithNewName,
@@ -155,6 +156,18 @@
             for (var i = 0, length = groups.length; i < length; i++) {
                 for (var y = 0, ylength = groups[i].users.length; y < ylength; y++) {
                     if (groups[i].users[y].username == userName) {
+                        newGroups.push(groups[i]);
+                    }
+                }
+            }
+            return $filter('orderBy')(newGroups, 'name', false);
+        }
+
+        function getUserActiveGroups(userName) {
+            var newGroups = [];
+            for (var i = 0, length = groups.length; i < length; i++) {
+                for (var y = 0, ylength = groups[i].users.length; y < ylength; y++) {
+                    if (groups[i].users[y].username == userName && isActiveMember(userName, groups[i].name)) {
                         newGroups.push(groups[i]);
                     }
                 }
@@ -386,9 +399,11 @@
                 username = userFactory.getUser().username;
             }
             var group = getGroupByName(groupName);
-            for (var i = 0, length = group.users.length; i < length; i++) {
-                if (group.users[i].username == username) {
-                    return group.users[i].hasLeft == 0 && !group.users[i].kicked.active && !group.users[i].banned.active;
+            if (!Methods.isNullOrEmpty(group)) {
+                for (var i = 0, length = group.users.length; i < length; i++) {
+                    if (group.users[i].username == username) {
+                        return group.users[i].hasLeft == 0 && !group.users[i].kicked.active && !group.users[i].banned.active;
+                    }
                 }
             }
             return false;

@@ -806,6 +806,9 @@ i.atom-icon-btn.purple:hover {
   font-size: 14px;
   font-family: 'Catamaran', Arial, sans-serif;
 }
+.display-initial {
+  display: initial;
+}
 /********************/
 /**   TEXT ALIGN   **/
 /********************/
