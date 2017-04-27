@@ -49,6 +49,11 @@
                                                cozen-tooltip-label="'channels_kicked_since' | translate:{'date': (vm.channel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.kicked.by, 'for': methods.getKickBanFor(vm.channel.kicked.for), 'time': (vm.methods.getKickedTime(vm.channel.kicked.time).key | translate)}">
                                     <mark class="atom-mark kicked space-small-left">{{ 'channels_kicked' | translate }}</mark>
                                 </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.isStarred"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_is_starred_tp' | translate">
+                                    <mark class="atom-mark starred space-small-left">{{ 'channels_is_starred' | translate }}</mark>
+                                </cozen-tooltip>
                             </div>
                             <p class="help-text">{{ vm.channel.description }}</p>
                             <p class="help-text inline-block"

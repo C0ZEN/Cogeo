@@ -92,6 +92,11 @@
                                            cozen-tooltip-label="'channels_kicked_since' | translate:{'date': (channel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': channel.kicked.by, 'for': methods.getKickBanFor(channel.kicked.for), 'time': (vm.methods.getKickedTime(channel.kicked.time).key | translate)}">
                                 <mark class="atom-mark kicked">{{ 'channels_kicked' | translate }}</mark>
                             </cozen-tooltip>
+                            <cozen-tooltip ng-show="channel.isStarred && !vm.allChannels.condensed"
+                                           cozen-tooltip-placement="auto bottom"
+                                           cozen-tooltip-label="'channels_is_starred_tp' | translate">
+                                <mark class="atom-mark starred">{{ 'channels_is_starred' | translate }}</mark>
+                            </cozen-tooltip>
                             <small ng-show="!vm.allChannels.condensed"
                                    class="help-text">{{ (channel.membersQuantity > 1 ? 'channels_members_total_pluralize' : 'channels_members_total') | translate:{total: channel.membersQuantity} }}
                             </small>

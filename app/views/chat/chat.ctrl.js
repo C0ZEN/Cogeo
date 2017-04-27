@@ -98,11 +98,9 @@
         // Add this channel to the starred
         function addToStarred($event, channelId) {
             $event.stopPropagation();
-            if (vm.starredChannels.length < 5) {
-                userFactory.httpRequest.addToStarred({
-                    channelId: channelId
-                });
-            }
+            userFactory.httpRequest.addToStarred({
+                channelId: channelId
+            });
         }
 
         // Hide the channels and friends col

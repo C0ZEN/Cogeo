@@ -44,6 +44,7 @@
             getChannelKickedQuantity        : getChannelKickedQuantity,
             getChannelBannedQuantity        : getChannelBannedQuantity,
             getAllUsersExceptHasLeft        : getAllUsersExceptHasLeft,
+            isStarredByUser                 : isStarredByUser,
             httpRequest                     : {
                 updateChannel  : httpRequestUpdateChannel,
                 addChannel     : httpRequestAddChannel,
@@ -124,11 +125,12 @@
             channel.isCreator = channel.creator == user.username;
             for (var i = 0, length = channel.users.length; i < length; i++) {
                 if (channel.users[i].username == user.username) {
-                    channel.isMember = channel.users[i].hasLeft == 0;
-                    channel.isAdmin  = channel.users[i].admin;
-                    channel.isBanned = channel.users[i].banned.active;
-                    channel.isKicked = channel.users[i].kicked.active;
-                    channel.joined   = channel.users[i].joined;
+                    channel.isMember  = channel.users[i].hasLeft == 0;
+                    channel.isAdmin   = channel.users[i].admin;
+                    channel.isBanned  = channel.users[i].banned.active;
+                    channel.isKicked  = channel.users[i].kicked.active;
+                    channel.joined    = channel.users[i].joined;
+                    channel.isStarred = isStarredByUser(user.username, channel._id);
                     break;
                 }
             }
@@ -489,6 +491,16 @@
                 }
             }
             return activeUsers;
+        }
+
+        function isStarredByUser(username, channelId) {
+            var user = usersFactory.getUserByUsername(username);
+            for (var i = 0, length = user.starredChannels.length; i < length; i++) {
+                if (user.starredChannels[i].channelId == channelId) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// HTTP REQUEST ///

@@ -242,6 +242,8 @@
                 groupName  : vm.params.groupName,
                 username   : vm.user.username
             };
+
+            // Update the channel
             channelsFactory.httpRequest.updateChannel(vm.params.groupName, vm.params.channelName, updatedChannel, function () {
                 vm.methods.stopLoading();
                 goTo.view('app.channels.details', {
@@ -253,6 +255,18 @@
                 var btn = angular.element(document.querySelector('#submit-edit-channel-btn'));
                 httpRequest.shakeElement(btn);
             });
+
+            // Update the starred channels
+            if (vm.editedChannel.isStarred) {
+                userFactory.httpRequest.removeToStarred({
+                    channelId: vm.channel._id
+                });
+            }
+            else {
+                userFactory.httpRequest.addToStarred({
+                    channelId: vm.channel._id
+                });
+            }
         }
 
         // Start loading

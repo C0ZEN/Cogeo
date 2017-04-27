@@ -91,10 +91,13 @@ mark.atom-mark {
     &.admin {
         background-color : @atom-color-purple;
     }
-    &.private,
+    &.starred,
+    &.private {
+        background-color : @atom-color-yellow;
+    }
     &.kicked,
     &.banned {
-        background-color : @atom-color-yellow;
+        background-color : @atom-color-error;
     }
 }
 .flex-1 {

@@ -135,6 +135,10 @@
             friendybot: botFactory.getBotById('friendybot')
         };
 
+        userFactory.subscribe($scope, function () {
+            popup.user = userFactory.getUser();
+        });
+
         function closePopup(name) {
             cozenPopupFactory.hide({
                 name: name

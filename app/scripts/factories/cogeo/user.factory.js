@@ -561,6 +561,9 @@
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
+                    if (CONFIG.dev) {
+                        cozenEnhancedLogs.explodeObject(data);
+                    }
                 })
             ;
         }
@@ -570,6 +573,9 @@
                 .then(function (response) {
                     setUser(response.data.data);
                     setUserInLocalStorage(response.data.data);
+                    if (CONFIG.dev) {
+                        cozenEnhancedLogs.explodeObject(data);
+                    }
                 })
             ;
         }

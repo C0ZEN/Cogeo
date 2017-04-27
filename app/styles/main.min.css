@@ -333,10 +333,13 @@ mark.atom-mark.member {
 mark.atom-mark.admin {
   background-color: #9C27B0;
 }
-mark.atom-mark.private,
+mark.atom-mark.starred,
+mark.atom-mark.private {
+  background-color: #FEB909;
+}
 mark.atom-mark.kicked,
 mark.atom-mark.banned {
-  background-color: #FEB909;
+  background-color: #E53935;
 }
 .flex-1 {
   -webkit-box-flex: 1;
