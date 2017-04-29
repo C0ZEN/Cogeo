@@ -2,6 +2,44 @@
      ng-init="vm.methods.onInitDetails()">
     <div class="row">
         <div class="col-xs-12">
+
+            <!-- Warning message for banned from group -->
+            <cozen-alert cozen-alert-display="vm.groupUserBanned.active"
+                         cozen-alert-label="'channels_user_group_banned'"
+                         cozen-alert-label-values="{'date': (vm.groupUserBanned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.groupUserBanned.by, 'for': methods.getKickBanFor(vm.groupUserBanned.for)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for kicked from group -->
+            <cozen-alert cozen-alert-display="vm.groupUserKicked.active"
+                         cozen-alert-label="'channels_user_group_kicked'"
+                         cozen-alert-label-values="{'date': (vm.groupUserKicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.groupUserKicked.by, 'for': methods.getKickBanFor(vm.groupUserKicked.for), 'time': (vm.methods.getKickedTime(vm.groupUserKicked.time).key | translate)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for banned -->
+            <cozen-alert cozen-alert-display="vm.channel.isBanned"
+                         cozen-alert-label="'channels_details_no_rights_banned'"
+                         cozen-alert-label-values="{'date': (vm.channel.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.banned.by, 'for': methods.getKickBanFor(vm.channel.banned.for)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for kicked -->
+            <cozen-alert cozen-alert-display="vm.channel.isKicked && !vm.channel.isBanned"
+                         cozen-alert-label="'channels_details_no_rights_kicked'"
+                         cozen-alert-label-values="{'date': (vm.channel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.kicked.by, 'for': methods.getKickBanFor(vm.channel.kicked.for), 'time': (vm.methods.getKickedTime(vm.channel.kicked.time).key | translate)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Details -->
             <div ng-show="vm.channel != null">
                 <div class="atom-profile">
 
@@ -140,29 +178,11 @@
                     </div>
                 </div>
 
-                <!-- Warning message for banned -->
-                <cozen-alert cozen-alert-display="vm.channel.isBanned"
-                             cozen-alert-label="'channels_details_no_rights_banned'"
-                             cozen-alert-label-values="{'date': (vm.channel.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.banned.by, 'for': methods.getKickBanFor(vm.channel.banned.for)}"
-                             cozen-alert-close-btn="false"
-                             cozen-alert-class="space-base-after"
-                             cozen-alert-type-warning>
-                </cozen-alert>
-
-                <!-- Warning message for kicked -->
-                <cozen-alert cozen-alert-display="vm.channel.isKicked && !vm.channel.isBanned"
-                             cozen-alert-label="'channels_details_no_rights_kicked'"
-                             cozen-alert-label-values="{'date': (vm.channel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.kicked.by, 'for': methods.getKickBanFor(vm.channel.kicked.for), 'time': (vm.methods.getKickedTime(vm.channel.kicked.time).key | translate)}"
-                             cozen-alert-close-btn="false"
-                             cozen-alert-class="space-base-after"
-                             cozen-alert-type-warning>
-                </cozen-alert>
-
                 <div ng-show="!vm.channel.isMember"
                      class="center-flex-content space-medium-after">
 
                     <!-- Join channel btn -->
-                    <cozen-btn ng-show="!vm.channel.isBanned && !vm.channel.isKicked && !vm.channel.private"
+                    <cozen-btn ng-show="!vm.channel.isBanned && !vm.channel.isKicked && !vm.channel.private && !vm.groupUserBanned.active && !vm.groupUserKicked.active"
                                class="animated fadeInUp"
                                cozen-btn-label="'channels_details_join_channel'"
                                cozen-btn-auto-sizing="true"
@@ -170,11 +190,10 @@
                     </cozen-btn>
                 </div>
 
-                <div ng-show="vm.channel.isMember"
-                     class="center-flex-content space-medium-after">
+                <div class="center-flex-content space-medium-after">
 
                     <!-- Edit btn -->
-                    <cozen-btn ng-show="vm.channel.isAdmin"
+                    <cozen-btn ng-show="vm.channel.isAdmin && vm.userHasGlobalRights"
                                class="animated fadeInUp"
                                cozen-btn-label="'channels_details_edit_channel'"
                                cozen-btn-auto-sizing="true"
@@ -182,7 +201,8 @@
                     </cozen-btn>
 
                     <!-- Leave btn -->
-                    <a href
+                    <a ng-show="vm.channel.isMember"
+                       href
                        class="animated fadeInUp"
                        onclick="this.blur()"
                        ng-click="vm.methods.leaveChannel($event)">

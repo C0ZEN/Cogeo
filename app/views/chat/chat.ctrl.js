@@ -50,6 +50,11 @@
 
         // Called each time a view is loaded
         function onInit() {
+
+            // Avoid empty channel name
+            if ($state.current.name == 'app.chat.channel' && Methods.isNullOrEmpty($state.params.channelName)) {
+                $state.params.channelName = groupsFactory.getGroupByName($state.params.groupName).channels[0].name;
+            }
             vm.params   = $state.params;
             vm.user     = userFactory.getUser();
             vm.groups   = groupsFactory.getUserGroups(vm.user.username);

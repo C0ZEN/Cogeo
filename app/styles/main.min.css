@@ -2669,11 +2669,11 @@ div.actions-list div.action-item:hover.revoked {
   border: 1px solid #9C27B0;
   color: #9C27B0;
 }
-div.actions-list div.action-item:hover.friend-block,
-div.actions-list div.action-item:hover.kicked {
+div.actions-list div.action-item:hover.friend-block {
   border: 1px solid #FEB909;
   color: #FEB909;
 }
+div.actions-list div.action-item:hover.kicked,
 div.actions-list div.action-item:hover.invitation-refuse,
 div.actions-list div.action-item:hover.friend-remove,
 div.actions-list div.action-item:hover.banned {

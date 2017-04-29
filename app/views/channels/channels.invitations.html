@@ -2,6 +2,44 @@
      ng-init="vm.methods.onInitInvitations()">
     <div class="row">
         <div class="col-xs-12">
+
+            <!-- Warning message for banned from group -->
+            <cozen-alert cozen-alert-display="vm.groupUserBanned.active"
+                         cozen-alert-label="'channels_user_group_banned_invitation'"
+                         cozen-alert-label-values="{'date': (vm.groupUserBanned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.groupUserBanned.by, 'for': methods.getKickBanFor(vm.groupUserBanned.for)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for kicked from group -->
+            <cozen-alert cozen-alert-display="vm.groupUserKicked.active"
+                         cozen-alert-label="'channels_user_group_kicked_invitation'"
+                         cozen-alert-label-values="{'date': (vm.groupUserKicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.groupUserKicked.by, 'for': methods.getKickBanFor(vm.groupUserKicked.for), 'time': (vm.methods.getKickedTime(vm.groupUserKicked.time).key | translate)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for banned -->
+            <cozen-alert cozen-alert-display="vm.channel.isBanned"
+                         cozen-alert-label="'channels_details_no_rights_banned_invitation'"
+                         cozen-alert-label-values="{'date': (vm.channel.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.banned.by, 'for': methods.getKickBanFor(vm.channel.banned.for)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for kicked -->
+            <cozen-alert cozen-alert-display="vm.channel.isKicked && !vm.channel.isBanned"
+                         cozen-alert-label="'channels_details_no_rights_kicked_invitation'"
+                         cozen-alert-label-values="{'date': (vm.channel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.kicked.by, 'for': methods.getKickBanFor(vm.channel.kicked.for), 'time': (vm.methods.getKickedTime(vm.channel.kicked.time).key | translate)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Invitations -->
             <div class="row">
 
                 <!-- Filter -->
@@ -84,7 +122,7 @@
             <div class="space-medium-after center-flex-content">
 
                 <!-- Add members btn -->
-                <cozen-btn ng-show="vm.channel.private ? vm.userCanRecruit : true"
+                <cozen-btn ng-show="(vm.channel.private ? vm.userCanRecruit : true) && vm.userHasGroupRights "
                            class="animated fadeInUp"
                            cozen-btn-label="'groups_invitations_invite_group'"
                            cozen-btn-auto-sizing="true"

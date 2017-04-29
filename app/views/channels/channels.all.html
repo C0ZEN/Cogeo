@@ -2,6 +2,26 @@
      ng-init="vm.methods.onInitAll()">
     <div class="row">
         <div class="col-xs-12">
+
+            <!-- Warning message for banned from group -->
+            <cozen-alert cozen-alert-display="vm.groupUserBanned.active"
+                         cozen-alert-label="'channels_user_group_banned'"
+                         cozen-alert-label-values="{'date': (vm.groupUserBanned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.groupUserBanned.by, 'for': methods.getKickBanFor(vm.groupUserBanned.for)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for kicked from group -->
+            <cozen-alert cozen-alert-display="vm.groupUserKicked.active"
+                         cozen-alert-label="'channels_user_group_kicked'"
+                         cozen-alert-label-values="{'date': (vm.groupUserKicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.groupUserKicked.by, 'for': methods.getKickBanFor(vm.groupUserKicked.for), 'time': (vm.methods.getKickedTime(vm.groupUserKicked.time).key | translate)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Channels -->
             <div class="row">
 
                 <!-- Filter -->
@@ -126,7 +146,7 @@
                     {{ 'channels_all_show_filter' | translate }}
                 </a>
 
-                <!-- Add channel -->
+                <!-- Add channel (vm.isGroupAdmin check if not banned, kicked and has left) -->
                 <a ng-show="vm.isGroupAdmin"
                    href
                    class="animated fadeInUp"

@@ -71,6 +71,20 @@
             vm.group    = groupsFactory.getGroupByName(vm.params.groupName);
             vm.user     = userFactory.getUser();
             vm.channels = channelsFactory.getChannelsWithUserRoles(vm.params.groupName, vm.user.username);
+
+            // Get the user and kicked/banned object
+            var userGroup      = groupsFactory.getUserFromGroup(vm.user.username, vm.group.name);
+            vm.groupUserBanned = userGroup.banned;
+            vm.groupUserKicked = userGroup.kicked;
+
+            // Common variable to know if the user has access
+            vm.userHasGroupRights  = !vm.groupUserBanned.active
+                && !vm.groupUserKicked.active
+                && userGroup.hasLeft == 0;
+            vm.userHasGlobalRights = vm.userHasGroupRights
+                && !vm.channel.isBanned
+                && !vm.channel.isKicked
+                && vm.channel.isMember;
         }
 
         // Called on all view
