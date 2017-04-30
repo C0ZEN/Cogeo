@@ -105,6 +105,23 @@
                         }
                     }
                 }
+                div.chat-friend {
+                    span {
+                        &:hover,
+                        &:focus {
+                            color : @@text-hover;
+                        }
+                    }
+                    &.active {
+                        span {
+                            color : @@text;
+                            &:hover,
+                            &:focus {
+                                color : @@text-hover;
+                            }
+                        }
+                    }
+                }
             }
             div.chat-search-bar {
                 background-color : @@background3;

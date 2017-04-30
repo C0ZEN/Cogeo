@@ -29,5 +29,13 @@
      class="chat-friend">
 
     <!-- Name -->
-    <span ng-click="">{{ friend |json }}</span>
+    <span ng-click="goTo.view('app.profiles.user', {username: friend.username})">
+        <span ng-show="friend.alias != ''">
+            {{ friend.alias }}
+        </span>
+        <span ng-show="friend.alias == ''">
+            {{ friend.givenName }} {{ friend.surname }}
+        </span>
+        <span>@{{ friend.username }}</span>
+    </span>
 </div>

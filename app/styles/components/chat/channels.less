@@ -133,21 +133,20 @@ div.atom-chat div.chat-channels-container {
             display         : flex;
             flex-direction  : row;
             justify-content : space-between;
-            span {
+            > span {
                 cursor        : pointer;
                 outline       : @atom-outline;
                 transition    : @atom-transition;
                 text-overflow : ellipsis;
                 white-space   : nowrap;
                 overflow      : hidden;
-                margin-left   : @atom-space-small;
                 &:hover,
                 &:focus {
                     color : @atom-color-blue;
                 }
             }
             &.active {
-                span {
+                > span {
                     color : @atom-color-blue;
                     &:hover,
                     &:focus {

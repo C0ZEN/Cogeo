@@ -1949,6 +1949,17 @@ div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-c
 div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-channel.active span:focus {
   color: #BFD9CF;
 }
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-friend span:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-friend span:focus {
+  color: #BFD9CF;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-friend.active span {
+  color: #E2E9E6;
+}
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-friend.active span:hover,
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-friend.active span:focus {
+  color: #BFD9CF;
+}
 div.atom-chat.channel-theme div.chat-channels-container div.chat-search-bar {
   background-color: #396050;
   border-top: 1px solid #13201B;
@@ -2072,6 +2083,17 @@ div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-ch
 }
 div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel.active span:hover,
 div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-channel.active span:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-friend span:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-friend span:focus {
+  color: #D7BDDB;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-friend.active span {
+  color: #EBDEED;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-friend.active span:hover,
+div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-friend.active span:focus {
   color: #D7BDDB;
 }
 div.atom-chat.social-theme div.chat-channels-container div.chat-search-bar {
@@ -2346,7 +2368,7 @@ div.atom-chat div.chat-channels-container div.chat-list div.chat-friend {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-div.atom-chat div.chat-channels-container div.chat-list div.chat-friend span {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend > span {
   cursor: pointer;
   outline: 0;
   -webkit-transition: all 80ms ease-out;
@@ -2354,17 +2376,16 @@ div.atom-chat div.chat-channels-container div.chat-list div.chat-friend span {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin-left: 6px;
 }
-div.atom-chat div.chat-channels-container div.chat-list div.chat-friend span:hover,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-friend span:focus {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend > span:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend > span:focus {
   color: #2C9FDD;
 }
-div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active span {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active > span {
   color: #2C9FDD;
 }
-div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active span:hover,
-div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active span:focus {
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active > span:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active > span:focus {
   color: #32AFE3;
 }
 div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.ng-enter-active {
@@ -2549,7 +2570,7 @@ div.atom-chat div.chat-groups-container {
   width: 70px;
 }
 div.atom-chat div.chat-groups-container div.chat-group {
-  margin-bottom: 6px;
+  margin-bottom: 12px;
   cursor: pointer;
   outline: 0;
   -webkit-animation-fill-mode: both;

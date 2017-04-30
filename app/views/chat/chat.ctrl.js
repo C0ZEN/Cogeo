@@ -55,11 +55,11 @@
             if ($state.current.name == 'app.chat.channel' && Methods.isNullOrEmpty($state.params.channelName)) {
                 $state.params.channelName = groupsFactory.getGroupByName($state.params.groupName).channels[0].name;
             }
-            vm.params       = $state.params;
-            vm.user         = userFactory.getUser();
-            vm.user.friends = userFactory.getFriends();
-            vm.groups       = groupsFactory.getUserGroups(vm.user.username);
-            vm.hasGroup     = vm.groups.length > 0;
+            vm.params   = $state.params;
+            vm.user     = userFactory.getUser();
+            vm.friends  = userFactory.getFriends();
+            vm.groups   = groupsFactory.getUserGroups(vm.user.username);
+            vm.hasGroup = vm.groups.length > 0;
             vm.methods.showChannels();
             vm.status = userFactory.getStatus();
             if (vm.hasGroup) {
