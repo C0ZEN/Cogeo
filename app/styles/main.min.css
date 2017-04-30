@@ -1186,6 +1186,73 @@ cozen-dropdown-item-simple img.flag {
   vertical-align: middle;
   margin-top: 4px;
 }
+.atom-markdown-container {
+  color: #4C596B;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+}
+.atom-markdown-container h1 {
+  margin: 0;
+  font-size: 300%;
+  font-weight: 600;
+  line-height: 1.8;
+}
+.atom-markdown-container h2 {
+  margin: 0;
+  font-size: 250%;
+  font-weight: 600;
+  line-height: 1.7;
+}
+.atom-markdown-container h3 {
+  margin: 0;
+  font-size: 230%;
+  font-weight: inherit;
+  line-height: 1.6;
+}
+.atom-markdown-container h4 {
+  margin: 0;
+  font-size: 180%;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.atom-markdown-container h5 {
+  margin: 0;
+  font-size: 160%;
+  font-weight: inherit;
+  line-height: 1.4;
+}
+.atom-markdown-container h6 {
+  margin: 0;
+  font-size: 130%;
+  font-weight: inherit;
+  line-height: 1.3;
+}
+.atom-markdown-container p {
+  margin: 0;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: 1.2;
+}
+.atom-markdown-container small {
+  margin: 0;
+  font-size: 80%;
+  font-weight: inherit;
+  line-height: 1.2;
+}
+.atom-markdown-container strong {
+  margin: 0;
+  font-size: 100%;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.atom-markdown-container em {
+  margin: 0;
+  font-size: 100%;
+  font-weight: inherit;
+  font-style: italic;
+  line-height: 1.2;
+}
 div.link-dropdown {
   position: absolute;
   top: 100%;
@@ -2577,11 +2644,6 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from span.sent-date {
   color: #8C8C8C;
-  font-weight: 400;
-  font-size: 14px;
-}
-div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content span.message-body {
-  color: #4C596B;
   font-weight: 400;
   font-size: 14px;
 }

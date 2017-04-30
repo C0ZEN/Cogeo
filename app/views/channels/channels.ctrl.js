@@ -72,6 +72,12 @@
             vm.user     = userFactory.getUser();
             vm.channels = channelsFactory.getChannelsWithUserRoles(vm.params.groupName, vm.user.username);
 
+            // Get at least a channel
+            if (Methods.isNullOrEmpty(vm.channel)) {
+                vm.channel = vm.group.channels[0];
+                vm.channel = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            }
+
             // Get the user and kicked/banned object
             var userGroup      = groupsFactory.getUserFromGroup(vm.user.username, vm.group.name);
             vm.groupUserBanned = userGroup.banned;

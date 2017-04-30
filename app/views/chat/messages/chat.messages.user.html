@@ -31,16 +31,16 @@
     </div>
 
     <!-- Message content -->
-    <span class="message-body"
-          id="message-user-{{ message.id }}"
-          cozen-cozen-compile="message.content">
+    <span class="message-body atom-markdown-container"
+          id="message-user-{{ message._id }}"
+          btf-markdown="message.content">
     </span>
 </div>
 
 <!-- Action bar -->
 <div class="action-bar">
     <answer-action answer-action-display="message.sender != vm.user.username"></answer-action>
-    <copy-action copy-action-message-id="'message-user-' + message.id"></copy-action>
+    <copy-action copy-action-message-id="'message-user-' + message._id"></copy-action>
     <chat-action chat-action-display="message.sender != vm.user.username"
                  chat-action-on-click="goTo.view('app.chat.user', {username: message.sender})">
     </chat-action>

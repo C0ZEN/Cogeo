@@ -44,6 +44,7 @@
             'dibari.angular-ellipsis',
             'ng.deviceDetector',
             'ng-if-bootstrap-grid',
+            'btford.markdown',
             'cozenLib',
 
             '4pjtApp.actionBar'

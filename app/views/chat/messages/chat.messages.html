@@ -6,19 +6,19 @@
          ng-mouseenter="message.isHover = true"
          ng-mouseleave="message.isHover = false"
          ng-class="{'is-hover': message.isHover}"
-         ng-switch="message.type">
+         ng-switch="message.tag">
 
         <!-- Message from a user -->
         <ng-switch ng-switch-when="user">
             <div ng-include="'views/chat/messages/chat.messages.user.html'"
-                 ng-class="message.type">
+                 ng-class="message.tag">
             </div>
         </ng-switch>
 
         <!-- Message from a bot -->
         <ng-switch ng-switch-when="bot">
             <div ng-include="'views/chat/messages/chat.messages.bot.html'"
-                 ng-class="message.type">
+                 ng-class="message.tag">
             </div>
         </ng-switch>
     </div>
