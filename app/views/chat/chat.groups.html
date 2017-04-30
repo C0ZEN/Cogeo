@@ -1,5 +1,5 @@
 <div ng-repeat="group in vm.groups track by $index"
-     ng-click="vm.methods.setActiveGroup(group.name)"
+     ng-click="vm.methods.setActiveGroup(group.name, true)"
      ng-class="{active: group.name == vm.activeGroup}"
      style="animation-delay: {{ 100 * $index + 'ms' }};"
      class="chat-group zoomIn">

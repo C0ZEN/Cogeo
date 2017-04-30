@@ -104,6 +104,9 @@
                             }
                         }
                     }
+                    &:hover {
+                        background-color : @@background3;
+                    }
                 }
                 div.chat-friend {
                     span {
@@ -120,6 +123,9 @@
                                 color : @@text-hover;
                             }
                         }
+                    }
+                    &:hover {
+                        background-color : @@background3;
                     }
                 }
             }
@@ -151,6 +157,17 @@
                         span.description {
                             color : @@text;
                         }
+                    }
+                }
+                div.user-description {
+                    a.friend-name {
+                        color : @@title;
+                        &:hover,
+                        &:focus {
+                            color : @@title-hover;
+                        }
+                    }
+                    div.line {
                     }
                 }
                 div.chat-action-bar {

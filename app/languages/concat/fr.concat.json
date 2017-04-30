@@ -306,6 +306,7 @@
 	"chat_friends_title": "Amis",
 	"chat_new_friend": "Inviter des amis",
 	"chat_no_friend_found": "Aucun amis",
+	"chat_alias": "alias",
 	"chat_user": "Discussion avec un ami",
 	"DEV": {
 		"USERS_LIST": {

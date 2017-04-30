@@ -1,10 +1,15 @@
+<!-- Group name -->
 <a href
    ui-sref="app.groups.details({groupName: vm.activeGroup})"
    ng-click="goTo.view('app.groups.details', {groupName: vm.activeGroup})"
    class="group-name hover-link animated fadeInRight">
     {{ vm.activeGroup }}
 </a>
+
+<!-- Current user -->
 <div class="user-profile">
+
+    <!-- Status -->
     <cozen-tooltip cozen-tooltip-label="vm.status.name"
                    cozen-tooltip-placement="auto top">
         <div class="status animated zoomIn"
@@ -13,6 +18,8 @@
              ng-style="{'background-color': vm.status.color}">
         </div>
     </cozen-tooltip>
+
+    <!-- Username -->
     <a href
        ui-sref="app.profiles.user({username: vm.user.username})"
        ng-click="goTo.view('app.profiles.user', {username: vm.user.username})"

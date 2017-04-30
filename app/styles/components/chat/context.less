@@ -49,6 +49,27 @@ div.atom-chat div.chat-col {
                 }
             }
         }
+        div.user-description {
+            a.friend-name {
+                font-size      : 22px;
+                font-weight    : 500;
+                display        : inline-table;
+                vertical-align : middle;
+                margin-right   : @atom-space-small;
+            }
+            div.line {
+                display         : flex;
+                flex-direction  : row;
+                justify-content : flex-start;
+                align-items     : center;
+                div.vertical-separator {
+                    height           : @atom-space-base;
+                    width            : 1px;
+                    background-color : @atom-color-line-rule;
+                    margin           : 0 @atom-space-base;
+                }
+            }
+        }
         div.chat-action-bar {
             display         : flex;
             flex-direction  : row;
@@ -60,7 +81,7 @@ div.atom-chat div.chat-col {
                 outline     : @atom-outline;
                 transition  : @atom-transition;
                 font-size   : @atom-font-h2;
-                margin-left : @atom-space-base;
+                margin-left : @atom-space-medium;
                 position    : relative;
                 &:hover,
                 &:focus {

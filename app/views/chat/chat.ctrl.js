@@ -32,7 +32,8 @@
             addToStarred    : addToStarred,
             hideChannels    : hideChannels,
             showChannels    : showChannels,
-            onActionClick   : onActionClick
+            onActionClick   : onActionClick,
+            setActiveFriend : setActiveFriend
         };
 
         // Common data
@@ -58,26 +59,50 @@
             vm.params   = $state.params;
             vm.user     = userFactory.getUser();
             vm.friends  = userFactory.getFriends();
-            vm.groups   = groupsFactory.getUserGroups(vm.user.username);
+            vm.groups   = groupsFactory.getUserActiveGroups(vm.user.username);
+            vm.groups   = groupsFactory.removeGroupsWhereNoActiveMemberChannel(vm.groups, vm.user.username);
             vm.hasGroup = vm.groups.length > 0;
             vm.methods.showChannels();
             vm.status = userFactory.getStatus();
             if (vm.hasGroup) {
+
+                // Set default active group
+                if (Methods.isNullOrEmpty(vm.params.groupName)) {
+                    vm.params.groupName = vm.groups[0].name;
+                }
                 vm.methods.setActiveGroup(vm.params.groupName);
 
                 // Active channel only if in a channel route
                 if ($state.current.name == 'app.chat.channel') {
                     vm.methods.setActiveChannel(vm.params.channelName, channelsFactory.getChannelIdByName(vm.params.groupName, vm.params.channelName));
                 }
+                else if ($state.current.name == 'app.chat.user') {
+                    vm.methods.setActiveFriend(vm.params.username);
+                }
             }
         }
 
         // Called when the user click on a new group
-        function setActiveGroup(groupName) {
+        function setActiveGroup(groupName, goToFirstChannel) {
+            if (Methods.isNullOrEmpty(goToFirstChannel)) {
+                goToFirstChannel = false;
+            }
             vm.activeGroup     = groupName;
             vm.starredChannels = channelsFactory.getMyStarredChannels(groupName);
             vm.othersChannels  = channelsFactory.getMyOthersChannels(groupName);
             vm.methods.showChannels();
+
+            // Set the context as channel
+            if (goToFirstChannel) {
+                var channel;
+                if (vm.starredChannels.length > 0) {
+                    channel = vm.starredChannels[0];
+                }
+                else {
+                    channel = vm.othersChannels[0];
+                }
+                vm.methods.setActiveChannel(channel.name, channel._id);
+            }
         }
 
         // Called when the user click on a new channel
@@ -275,6 +300,142 @@
                     vm.actionBar.options.down = false;
                     Methods.safeApply($scope);
             }
+        }
+
+        function setActiveFriend(username) {
+            vm.activeChannel = null;
+            vm.friends.forEach(function (friend) {
+                if (friend.username == username) {
+                    vm.activeFriend = friend;
+                }
+            });
+            vm.messages  = [
+                {
+                    _id    : '1',
+                    sender : 'C0ZEN',
+                    sent   : 1484561615,
+                    content: '###Yolo\nça boum ?',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '2',
+                    sender : 'Marco',
+                    sent   : 1484562715,
+                    content: 'Hello, ça va ?!?',
+                    edited : 1484562915,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '3',
+                    sender : 'Spamobot',
+                    sent   : 1484562715,
+                    content: 'Bienvenu !',
+                    tag    : 'bot'
+                },
+                {
+                    _id    : '4',
+                    sender : 'Friendybot',
+                    sent   : 1484562715,
+                    content: 'Yo !',
+                    tag    : 'bot'
+                },
+                {
+                    _id    : '5',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '*Yo*',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '6',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '#Titre 1',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '7',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '##Titre 2',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '8',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '###Titre 3',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '9',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '####Titre 4',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '10',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: 'Un texte avec le mot en *italique*',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '11',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: 'Un texte avec le mot en **gras**',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '12',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '#Titre 1     Bonjour les *amis* !',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '13',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: 'Un texte avec le mot en ~~rayé~~',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '14',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '#####Titre 5',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '15',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '######Titre 6',
+                    edited : 0,
+                    tag    : 'user'
+                }
+            ];
+            vm.chatTheme = 'social-theme';
+            goTo.view('app.chat.user', {
+                username: username
+            });
+            $rootScope.$broadcast('setChatTheme', {
+                theme: vm.chatTheme
+            });
         }
     }
 

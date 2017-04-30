@@ -29,7 +29,7 @@
      class="chat-friend">
 
     <!-- Name -->
-    <span ng-click="goTo.view('app.profiles.user', {username: friend.username})">
+    <span ng-click="vm.methods.setActiveFriend(friend.username)">
         <span ng-show="friend.alias != ''">
             {{ friend.alias }}
         </span>

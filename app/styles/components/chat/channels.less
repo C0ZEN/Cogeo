@@ -1,5 +1,5 @@
 // Col with channels
-@atom-chat-channels-container-width : 250px;
+@atom-chat-channels-container-width : 300px;
 @atom-chat-channels-container-padding : @atom-space-base;
 div.atom-chat div.chat-channels-container {
     height           : inherit;
@@ -12,6 +12,7 @@ div.atom-chat div.chat-channels-container {
     display          : flex;
     flex-direction   : column;
     justify-content  : flex-start;
+    transition       : background-color @atom-animation-duration-out-fast;
     div.chat-active-group {
         display          : flex;
         flex-direction   : column;
@@ -21,6 +22,7 @@ div.atom-chat div.chat-channels-container {
         height           : 76px;
         max-height       : 76px;
         min-height       : 76px;
+        transition       : background-color @atom-animation-duration-out-fast;
         a.group-name {
             font-size   : 22px;
             font-weight : 500;
@@ -52,17 +54,19 @@ div.atom-chat div.chat-channels-container {
         }
     }
     div.chat-list {
-        padding          : @atom-chat-channels-container-padding;
+        padding          : @atom-chat-channels-container-padding 0;
         background-color : @atom-color-line-rule-light;
+        transition       : background-color @atom-animation-duration-out-fast;
         div.chat-subtitle {
-            font-size       : 18px;
+            font-size       : 19px;
             font-weight     : 500;
             margin-top      : @atom-space-base;
-            margin-bottom   : 2px;
+            margin-bottom   : @atom-space-small;
             display         : flex;
             flex-direction  : row;
             justify-content : space-between;
             align-items     : center;
+            padding         : 0 @atom-chat-channels-container-padding;
             h3 {
                 font-size   : inherit;
                 font-weight : inherit;
@@ -78,18 +82,21 @@ div.atom-chat div.chat-channels-container {
             div.add-icon {
                 cursor       : pointer;
                 outline      : @atom-outline;
-                font-size    : @atom-font-body;
+                font-size    : @atom-font-h3;
                 line-height  : 0;
                 margin-right : 3px;
             }
         }
         span.no-result {
+            padding : 0 @atom-chat-channels-container-padding;
         }
         div.chat-channel {
             transition      : @atom-transition;
             display         : flex;
             flex-direction  : row;
             justify-content : space-between;
+            font-size       : @atom-font-h3;
+            padding         : 1px @atom-chat-channels-container-padding;
             span {
                 cursor        : pointer;
                 outline       : @atom-outline;
@@ -99,6 +106,7 @@ div.atom-chat div.chat-channels-container {
                 white-space   : nowrap;
                 overflow      : hidden;
                 margin-left   : @atom-space-small;
+                font-size     : inherit;
                 &:hover,
                 &:focus {
                     color : @atom-color-blue;
@@ -127,12 +135,17 @@ div.atom-chat div.chat-channels-container {
                 animation-fill-mode : @atom-animation-fill;
                 animation-duration  : @atom-animation-duration-in;
             }
+            &:hover {
+                background-color : @atom-color-line-rule;
+            }
         }
         div.chat-friend {
             transition      : @atom-transition;
             display         : flex;
             flex-direction  : row;
             justify-content : space-between;
+            font-size       : @atom-font-h3;
+            padding         : 1px @atom-chat-channels-container-padding;
             > span {
                 cursor        : pointer;
                 outline       : @atom-outline;
@@ -140,6 +153,7 @@ div.atom-chat div.chat-channels-container {
                 text-overflow : ellipsis;
                 white-space   : nowrap;
                 overflow      : hidden;
+                font-size     : inherit;
                 &:hover,
                 &:focus {
                     color : @atom-color-blue;
@@ -164,6 +178,9 @@ div.atom-chat div.chat-channels-container {
                 animation-fill-mode : @atom-animation-fill;
                 animation-duration  : @atom-animation-duration-in;
             }
+            &:hover {
+                background-color : @atom-color-line-rule;
+            }
         }
     }
     div.chat-search-bar {
@@ -171,5 +188,6 @@ div.atom-chat div.chat-channels-container {
         background-color : @atom-color-line-rule-light;
         border-top       : 1px solid @atom-color-line-rule;
         margin-top       : auto;
+        transition       : background-color @atom-animation-duration-out-fast;
     }
 }

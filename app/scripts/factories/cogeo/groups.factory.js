@@ -22,43 +22,44 @@
 
         // Public functions
         return {
-            subscribe                     : subscribe,
-            getGroups                     : getGroups,
-            getGroupByName                : getGroupByName,
-            getGroupById                  : getGroupById,
-            getGroupByNameWithUserRoles   : getGroupByNameWithUserRoles,
-            getUserFromGroup              : getUserFromGroup,
-            getGroupsWithUserRoles        : getGroupsWithUserRoles,
-            getUserGroups                 : getUserGroups,
-            getUserActiveGroups           : getUserActiveGroups,
-            updateGroup                   : updateGroup,
-            updateOrPushGroup             : updateOrPushGroup,
-            updateGroupWithNewName        : updateGroupWithNewName,
-            doesUserHasRights             : doesUserHasRights,
-            getAvailableUsers             : getAvailableUsers,
-            isUserInGroup                 : isUserInGroup,
-            getInvitationForUserFromGroup : getInvitationForUserFromGroup,
-            addGroup                      : addGroup,
-            getGroupPicture               : getGroupPicture,
-            getGroupPictureByGroupId      : getGroupPictureByGroupId,
-            getChannelById                : getChannelById,
-            getChannelByName              : getChannelByName,
-            isUserAdmin                   : isUserAdmin,
-            getActiveUsers                : getActiveUsers,
-            getUnavailableUsers           : getUnavailableUsers,
-            setAllGroups                  : setAllGroups,
-            isActiveMember                : isActiveMember,
-            getGroupNotLeftMembersQuantity: getGroupNotLeftMembersQuantity,
-            getAdminMembersQuantity       : getAdminMembersQuantity,
-            getNoneAdminMembersQuantity   : getNoneAdminMembersQuantity,
-            getNotLeftMembersQuantity     : getNotLeftMembersQuantity,
-            getKickedMembersQuantity      : getKickedMembersQuantity,
-            getBannedMembersQuantity      : getBannedMembersQuantity,
-            getDefaultChannelsQuantity    : getDefaultChannelsQuantity,
-            getPublicChannelsQuantity     : getPublicChannelsQuantity,
-            getPrivateChannelsQuantity    : getPrivateChannelsQuantity,
-            getAllUsersExceptHasLeft      : getAllUsersExceptHasLeft,
-            httpRequest                   : {
+            subscribe                             : subscribe,
+            getGroups                             : getGroups,
+            getGroupByName                        : getGroupByName,
+            getGroupById                          : getGroupById,
+            getGroupByNameWithUserRoles           : getGroupByNameWithUserRoles,
+            getUserFromGroup                      : getUserFromGroup,
+            getGroupsWithUserRoles                : getGroupsWithUserRoles,
+            getUserGroups                         : getUserGroups,
+            getUserActiveGroups                   : getUserActiveGroups,
+            removeGroupsWhereNoActiveMemberChannel: removeGroupsWhereNoActiveMemberChannel,
+            updateGroup                           : updateGroup,
+            updateOrPushGroup                     : updateOrPushGroup,
+            updateGroupWithNewName                : updateGroupWithNewName,
+            doesUserHasRights                     : doesUserHasRights,
+            getAvailableUsers                     : getAvailableUsers,
+            isUserInGroup                         : isUserInGroup,
+            getInvitationForUserFromGroup         : getInvitationForUserFromGroup,
+            addGroup                              : addGroup,
+            getGroupPicture                       : getGroupPicture,
+            getGroupPictureByGroupId              : getGroupPictureByGroupId,
+            getChannelById                        : getChannelById,
+            getChannelByName                      : getChannelByName,
+            isUserAdmin                           : isUserAdmin,
+            getActiveUsers                        : getActiveUsers,
+            getUnavailableUsers                   : getUnavailableUsers,
+            setAllGroups                          : setAllGroups,
+            isActiveMember                        : isActiveMember,
+            getGroupNotLeftMembersQuantity        : getGroupNotLeftMembersQuantity,
+            getAdminMembersQuantity               : getAdminMembersQuantity,
+            getNoneAdminMembersQuantity           : getNoneAdminMembersQuantity,
+            getNotLeftMembersQuantity             : getNotLeftMembersQuantity,
+            getKickedMembersQuantity              : getKickedMembersQuantity,
+            getBannedMembersQuantity              : getBannedMembersQuantity,
+            getDefaultChannelsQuantity            : getDefaultChannelsQuantity,
+            getPublicChannelsQuantity             : getPublicChannelsQuantity,
+            getPrivateChannelsQuantity            : getPrivateChannelsQuantity,
+            getAllUsersExceptHasLeft              : getAllUsersExceptHasLeft,
+            httpRequest                           : {
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName,
                 getAllGroups        : httpRequestGetAllGroups,
@@ -173,6 +174,36 @@
                 }
             }
             return $filter('orderBy')(newGroups, 'name', false);
+        }
+
+        function removeGroupsWhereNoActiveMemberChannel(groups, username) {
+            var newGroups = [];
+
+            // For each group
+            groups.forEach(function (group) {
+
+                // Check on each channel
+                channelLoop:
+                    for (var i = 0, length = group.channels.length; i < length; i++) {
+
+                        // Find the user in the users list
+                        for (var indexMember = 0, totalMembers = group.channels[i].users.length; indexMember < totalMembers; indexMember++) {
+                            if (username == group.channels[i].users[indexMember].username) {
+
+                                // If the user is in the channel, and is not ban or kick
+                                if (group.channels[i].users[indexMember].hasLeft == 0
+                                    && group.channels[i].users[indexMember].kicked.active == 0
+                                    && group.channels[i].users[indexMember].banned.active == 0) {
+
+                                    // We can keep the group and check for the next
+                                    newGroups.push(group);
+                                    break channelLoop;
+                                }
+                            }
+                        }
+                    }
+            });
+            return newGroups;
         }
 
         function updateGroup(group) {
