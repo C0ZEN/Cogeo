@@ -128,6 +128,44 @@ div.atom-chat div.chat-channels-container {
                 animation-duration  : @atom-animation-duration-in;
             }
         }
+        div.chat-friend {
+            transition      : @atom-transition;
+            display         : flex;
+            flex-direction  : row;
+            justify-content : space-between;
+            span {
+                cursor        : pointer;
+                outline       : @atom-outline;
+                transition    : @atom-transition;
+                text-overflow : ellipsis;
+                white-space   : nowrap;
+                overflow      : hidden;
+                margin-left   : @atom-space-small;
+                &:hover,
+                &:focus {
+                    color : @atom-color-blue;
+                }
+            }
+            &.active {
+                span {
+                    color : @atom-color-blue;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-blue-active;
+                    }
+                }
+            }
+            &.ng-enter-active {
+                .animation-fadeInLeft(-@atom-space-medium);
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in;
+            }
+            &.ng-leave-active {
+                .animation-fadeOutLeft(-@atom-space-medium);
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in;
+            }
+        }
     }
     div.chat-search-bar {
         padding          : @atom-chat-channels-container-padding;

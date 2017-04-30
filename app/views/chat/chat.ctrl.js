@@ -55,10 +55,11 @@
             if ($state.current.name == 'app.chat.channel' && Methods.isNullOrEmpty($state.params.channelName)) {
                 $state.params.channelName = groupsFactory.getGroupByName($state.params.groupName).channels[0].name;
             }
-            vm.params   = $state.params;
-            vm.user     = userFactory.getUser();
-            vm.groups   = groupsFactory.getUserGroups(vm.user.username);
-            vm.hasGroup = vm.groups.length > 0;
+            vm.params       = $state.params;
+            vm.user         = userFactory.getUser();
+            vm.user.friends = userFactory.getFriends();
+            vm.groups       = groupsFactory.getUserGroups(vm.user.username);
+            vm.hasGroup     = vm.groups.length > 0;
             vm.methods.showChannels();
             vm.status = userFactory.getStatus();
             if (vm.hasGroup) {
@@ -82,122 +83,122 @@
             vm.messages                       = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
             vm.messages                       = [
                 {
-                    _id     : '1',
+                    _id    : '1',
                     sender : 'C0ZEN',
                     sent   : 1484561615,
                     content: '###Yolo\nça boum ?',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '2',
+                    _id    : '2',
                     sender : 'Marco',
                     sent   : 1484562715,
                     content: 'Hello, ça va ?!?',
                     edited : 1484562915,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '3',
+                    _id    : '3',
                     sender : 'Spamobot',
                     sent   : 1484562715,
                     content: 'Bienvenu !',
-                    tag   : 'bot'
+                    tag    : 'bot'
                 },
                 {
-                    _id     : '4',
+                    _id    : '4',
                     sender : 'Friendybot',
                     sent   : 1484562715,
                     content: 'Yo !',
-                    tag   : 'bot'
+                    tag    : 'bot'
                 },
                 {
-                    _id     : '5',
+                    _id    : '5',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '*Yo*',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '6',
+                    _id    : '6',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '#Titre 1',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '7',
+                    _id    : '7',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '##Titre 2',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '8',
+                    _id    : '8',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '###Titre 3',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '9',
+                    _id    : '9',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '####Titre 4',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '10',
+                    _id    : '10',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: 'Un texte avec le mot en *italique*',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '11',
+                    _id    : '11',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: 'Un texte avec le mot en **gras**',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '12',
+                    _id    : '12',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '#Titre 1     Bonjour les *amis* !',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '13',
+                    _id    : '13',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: 'Un texte avec le mot en ~~rayé~~',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '14',
+                    _id    : '14',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '#####Titre 5',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 },
                 {
-                    _id     : '15',
+                    _id    : '15',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '######Titre 6',
                     edited : 0,
-                    tag   : 'user'
+                    tag    : 'user'
                 }
             ];
             vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel._id);

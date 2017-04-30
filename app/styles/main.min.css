@@ -512,6 +512,9 @@ a.atom-link-yellow:focus {
 .no-margin-right {
   margin-right: 0 !important;
 }
+.no-padding-top {
+  padding-top: 0 !important;
+}
 /************/
 /**   HR   **/
 /************/
@@ -2298,6 +2301,105 @@ div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.ng-ente
   }
 }
 div.atom-chat div.chat-channels-container div.chat-list div.chat-channel.ng-leave-active {
+  -webkit-animation-name: fadeOutLeft-24;
+          animation-name: fadeOutLeft-24;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 600ms;
+          animation-duration: 600ms;
+}
+@-webkit-keyframes fadeOutLeft-24 {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-24px, 0, 0);
+            transform: translate3d(-24px, 0, 0);
+  }
+}
+@keyframes fadeOutLeft-24 {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-24px, 0, 0);
+            transform: translate3d(-24px, 0, 0);
+  }
+}
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend {
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend span {
+  cursor: pointer;
+  outline: 0;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 6px;
+}
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend span:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend span:focus {
+  color: #2C9FDD;
+}
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active span {
+  color: #2C9FDD;
+}
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active span:hover,
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.active span:focus {
+  color: #32AFE3;
+}
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.ng-enter-active {
+  -webkit-animation-name: fadeInLeft-24;
+          animation-name: fadeInLeft-24;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 600ms;
+          animation-duration: 600ms;
+}
+@-webkit-keyframes fadeInLeft-24 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-24px, 0, 0);
+            transform: translate3d(-24px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes fadeInLeft-24 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-24px, 0, 0);
+            transform: translate3d(-24px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+div.atom-chat div.chat-channels-container div.chat-list div.chat-friend.ng-leave-active {
   -webkit-animation-name: fadeOutLeft-24;
           animation-name: fadeOutLeft-24;
   -webkit-animation-fill-mode: both;

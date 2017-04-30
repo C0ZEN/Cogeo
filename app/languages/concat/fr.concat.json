@@ -303,6 +303,8 @@
 	"chat_actionBar_download": "Télécharger",
 	"chat_actionBar_chat": "Discutter",
 	"chat_actionBar_copy": "Copier",
+	"chat_friends_title": "Amis",
+	"chat_new_friend": "Inviter des amis",
 	"chat_user": "Discussion avec un ami",
 	"DEV": {
 		"USERS_LIST": {
