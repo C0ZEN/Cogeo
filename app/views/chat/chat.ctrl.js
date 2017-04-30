@@ -64,7 +64,11 @@
             vm.status = userFactory.getStatus();
             if (vm.hasGroup) {
                 vm.methods.setActiveGroup(vm.params.groupName);
-                vm.methods.setActiveChannel(vm.params.channelName, channelsFactory.getChannelIdByName(vm.params.groupName, vm.params.channelName));
+
+                // Active channel only if in a channel route
+                if ($state.current.name == 'app.chat.channel') {
+                    vm.methods.setActiveChannel(vm.params.channelName, channelsFactory.getChannelIdByName(vm.params.groupName, vm.params.channelName));
+                }
             }
         }
 
