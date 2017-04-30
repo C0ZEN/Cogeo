@@ -2828,6 +2828,7 @@ div.actions-list div.action-item:hover.granted {
   border: 1px solid #2C9FDD;
   color: #2C9FDD;
 }
+div.actions-list div.action-item:hover.friend-chat,
 div.actions-list div.action-item:hover.revoked {
   border: 1px solid #9C27B0;
   color: #9C27B0;

@@ -2,6 +2,16 @@
      ng-show="friendActionIsVisible"
      ng-class="_methods.getMainClass()">
 
+    <!-- Chat -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'other_friendAction_chat'">
+        <div ng-show="friendActionChat"
+             ng-click="_methods.onClick($event, 'chat')"
+             class="action-item friend-chat animated zoomIn">
+            <i class="fa fa-fw icons8-chat"></i>
+        </div>
+    </cozen-tooltip>
+
     <!-- Rename -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_friendAction_rename'">

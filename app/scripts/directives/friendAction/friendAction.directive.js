@@ -11,11 +11,13 @@
  * @param {boolean} friendActionUnblock      = true > Display the unblock action
  * @param {boolean} friendActionRename       = true > Display the rename action
  * @param {boolean} friendActionRemove       = true > Display the remove action
+ * @param {boolean} friendActionChat         = true > Display the chat action
  * @param {boolean} friendActionIsVisible    = true > Show/hide the actions
  * @param {object}  friendActionBlockData           > Data required by the popup
  * @param {object}  friendActionUnblockData         > Data required by the popup
  * @param {object}  friendActionRenameData          > Data required by the popup
  * @param {object}  friendActionRemoveData          > Data required by the popup
+ * @param {object}  friendActionChatUsername        > Username required to go to the view for chatting
  *
  */
 (function (angular) {
@@ -26,23 +28,26 @@
         .directive('friendAction', friendAction);
 
     friendAction.$inject = [
-        '$rootScope'
+        '$rootScope',
+        'goTo'
     ];
 
-    function friendAction($rootScope) {
+    function friendAction($rootScope, goTo) {
         return {
             link       : link,
             restrict   : 'E',
             scope      : {
-                friendActionBlock      : '=?',
-                friendActionUnblock    : '=?',
-                friendActionRename     : '=?',
-                friendActionRemove     : '=?',
-                friendActionIsVisible  : '=?',
-                friendActionBlockData  : '=?',
-                friendActionUnblockData: '=?',
-                friendActionRenameData : '=?',
-                friendActionRemoveData : '=?'
+                friendActionBlock       : '=?',
+                friendActionUnblock     : '=?',
+                friendActionRename      : '=?',
+                friendActionRemove      : '=?',
+                friendActionChat        : '=?',
+                friendActionIsVisible   : '=?',
+                friendActionBlockData   : '=?',
+                friendActionUnblockData : '=?',
+                friendActionRenameData  : '=?',
+                friendActionRemoveData  : '=?',
+                friendActionChatUsername: '=?'
             },
             replace    : false,
             transclude : false,
@@ -87,6 +92,7 @@
                 angular.isUndefined(attrs.friendActionUnblock) ? scope.friendActionUnblock = true : null;
                 angular.isUndefined(attrs.friendActionRename) ? scope.friendActionRename = true : null;
                 angular.isUndefined(attrs.friendActionRemove) ? scope.friendActionRemove = true : null;
+                angular.isUndefined(attrs.friendActionChat) ? scope.friendActionChat = true : null;
 
                 // Default values (attributes)
                 scope.friendActionIsVisible = true;
@@ -142,6 +148,9 @@
                         break;
                     case 'remove':
                         $rootScope.methods.showPopup($event, 'friendActionRemove', scope.friendActionRemoveData);
+                        break;
+                    case 'chat':
+                        goTo.view('app.chat.user', {username: scope.friendActionChatUsername});
                         break;
                 }
             }
