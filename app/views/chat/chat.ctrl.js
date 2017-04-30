@@ -85,7 +85,7 @@
                     _id     : '1',
                     sender : 'C0ZEN',
                     sent   : 1484561615,
-                    content: 'Bonjour !',
+                    content: '###Yolo\nça boum ?',
                     edited : 0,
                     tag   : 'user'
                 },
