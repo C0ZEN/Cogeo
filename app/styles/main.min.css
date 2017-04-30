@@ -1872,6 +1872,15 @@ div.atom-chat div.full-star.disabled:focus,
 div.atom-chat div.empty-star.disabled:focus {
   color: #8C8C8C;
 }
+div.atom-chat div.atom-status-icon {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 div.atom-chat.channel-theme div.chat-groups-container {
   color: #E2E9E6;
   background-color: #305043;
@@ -1997,6 +2006,9 @@ div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-des
 div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description a.friend-name:hover,
 div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description a.friend-name:focus {
   color: #BFD9CF;
+}
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description div.line span.status {
+  color: #E2E9E6;
 }
 div.atom-chat.channel-theme div.chat-col div.chat-context-container div.chat-action-bar div.action {
   color: #E2E9E6;
@@ -2147,6 +2159,9 @@ div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-desc
 div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description a.friend-name:focus {
   color: #D7BDDB;
 }
+div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description div.line span.status {
+  color: #EBDEED;
+}
 div.atom-chat.social-theme div.chat-col div.chat-context-container div.chat-action-bar div.action {
   color: #EBDEED;
 }
@@ -2212,15 +2227,6 @@ div.atom-chat div.chat-channels-container div.chat-active-group a.group-name {
   font-size: 22px;
   font-weight: 500;
   display: inline-table;
-}
-div.atom-chat div.chat-channels-container div.chat-active-group div.user-profile div.status {
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 div.atom-chat div.chat-channels-container div.chat-active-group div.user-profile a.username {
   padding-left: 3px;
@@ -2604,6 +2610,10 @@ div.atom-chat div.chat-col div.chat-context-container div.user-description div.l
   width: 1px;
   background-color: #D6DBDB;
   margin: 0 12px;
+}
+div.atom-chat div.chat-col div.chat-context-container div.user-description div.line span.status {
+  margin-left: 6px;
+  vertical-align: middle;
 }
 div.atom-chat div.chat-col div.chat-context-container div.chat-action-bar {
   display: -webkit-box;

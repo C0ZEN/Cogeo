@@ -302,14 +302,24 @@
             }
         }
 
+        // Active the user context
         function setActiveFriend(username) {
             vm.activeChannel = null;
+
+            // Find the active friend
             vm.friends.forEach(function (friend) {
                 if (friend.username == username) {
                     vm.activeFriend = friend;
                 }
             });
-            vm.messages  = [
+
+            vm.friendStatus = {
+                id      : 'online',
+                name    : 'other_status_online',
+                selected: true,
+                color   : '#2ecc71'
+            };
+            vm.messages     = [
                 {
                     _id    : '1',
                     sender : 'C0ZEN',
@@ -429,7 +439,7 @@
                     tag    : 'user'
                 }
             ];
-            vm.chatTheme = 'social-theme';
+            vm.chatTheme    = 'social-theme';
             goTo.view('app.chat.user', {
                 username: username
             });

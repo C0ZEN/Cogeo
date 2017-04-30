@@ -66,7 +66,8 @@
 </span>
 
 <!-- Others channels -->
-<div class="chat-subtitle"
+<div ng-if-start="vm.othersChannels.length > 0"
+     class="chat-subtitle"
      ng-mouseenter="vm.onHoverOthersChannel = true"
      ng-mouseleave="vm.onHoverOthersChannel = false">
 
@@ -116,7 +117,6 @@
 
     <!-- Icon star -->
     <div ng-show="channel.onHoverChannel"
-         ng-class="{disabled: vm.starredChannels.length >= 5}"
          ng-click="vm.methods.addToStarred($event, channel._id)"
          class="empty-star">
         <cozen-tooltip cozen-tooltip-label="'chat_add_to_starred'">
@@ -126,7 +126,8 @@
 </div>
 
 <!-- No result -->
-<span ng-show="otherChannelsFilter.length == 0"
+<span ng-if-end
+      ng-show="otherChannelsFilter.length == 0"
       class="no-result">
     {{ 'chat_no_result' | translate }}
 </span>

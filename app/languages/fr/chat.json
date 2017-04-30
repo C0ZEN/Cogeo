@@ -9,6 +9,7 @@
     "chat_total_members": "{{total}} membres",
     "chat_total_member": "{{total}} membre",
     "chat_actionBar_phone": "Démarrer une conférence",
+    "chat_actionBar_phone_simple": "Démarrer un appel",
     "chat_actionBar_options": "Plus d'options",
     "chat_actionBar_options_members": "Membres",
     "chat_actionBar_options_details": "Détails",
