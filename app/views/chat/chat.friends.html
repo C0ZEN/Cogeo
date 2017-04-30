@@ -39,3 +39,15 @@
         <span>@{{ friend.username }}</span>
     </span>
 </div>
+
+<!-- No friend found -->
+<span ng-show="vm.friends.length > 0 && friendsFilter.length == 0"
+      class="no-result">
+    {{ 'chat_no_result' | translate }}
+</span>
+
+<!-- No friend -->
+<span ng-show="vm.friends.length == 0"
+      class="no-result">
+    {{ 'chat_no_friend_found' | translate }}
+</span>
