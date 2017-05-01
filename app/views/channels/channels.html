@@ -2,16 +2,27 @@
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
 
-            <!-- Title -->
-            <h1 ng-show="goTo.isCurrentView('app.channels.all')"
-                cozen-compile="'channels_channels_title' | translate:{groupName: vm.params.groupName, quantity: vm.channels.length}">
+            <!-- Title when all view selected -->
+            <h1 ng-show="goTo.isCurrentView('app.channels.all') && vm.channels.length == 1"
+                cozen-compile="'channels_channels_title' | translate:{groupName: vm.params.groupName, channelName: vm.channels[0].name}">
             </h1>
+
+            <!-- Title when all view selected (pluralized) -->
+            <h1 ng-show="goTo.isCurrentView('app.channels.all') && vm.channels.length > 1"
+                cozen-compile="'channels_channels_title_pluralize' | translate:{groupName: vm.params.groupName, quantity: vm.channels.length}">
+            </h1>
+
+            <!-- Title when new view selected -->
             <h1 ng-show="goTo.isCurrentView('app.channels.new')"
                 cozen-compile="'channels_channels_title_new' | translate:{groupName: vm.params.groupName}">
             </h1>
+
+            <!-- Title when other view -->
             <h1 ng-show="!goTo.isCurrentView('app.channels.all') && !goTo.isCurrentView('app.channels.new')"
-                cozen-compile="'channels_channels_title_name' | translate:{groupName: vm.params.groupName, channelName: vm.params.channelName}">
+                cozen-compile="'channels_channels_title_name_pluralize' | translate:{groupName: vm.params.groupName, channelName: vm.params.channelName}">
             </h1>
+
+            <!-- Subtitle -->
             <p class="help-text space-medium-after">{{ 'channels_channels_subtitle' | translate }}</p>
 
             <!-- Nav -->
