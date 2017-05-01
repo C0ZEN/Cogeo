@@ -27,7 +27,6 @@
 	"account_profile_email": "Email",
 	"account_profile_profile_card": "Mon badge d'identité",
 	"account_profile_data": "Mes informations",
-	"account_profile_born_date": "Date de naissance",
 	"account_profile_username": "Identifiant",
 	"account_profile_date_register": "Membre Cogeo depuis le {{date}}.",
 	"account_profile_date_last_update": "Dernière modification effectuée le {{date}}.",

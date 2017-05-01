@@ -52,10 +52,6 @@
                     <strong>{{ 'account_profile_email' | translate }}:</strong>
                     {{ vm.user.email }}
                 </h4>
-                <h4 style="margin-bottom: 0;">
-                    <strong>{{ 'account_profile_born_date' | translate }}:</strong>
-                    16/04/1994
-                </h4>
                 <p class="help-block">
                     {{ 'account_profile_date_register'
                     | translate:"{date:'" + (vm.user.date.register | date: 'EEEE dd MMMM yyyy') + "'}" }}

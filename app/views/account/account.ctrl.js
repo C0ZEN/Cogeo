@@ -85,8 +85,7 @@
                         surname  : vm.userCopy.surname,
                         email    : vm.userCopy.email,
                         picture  : vm.userCopy.picture,
-                        bio      : vm.userCopy.bio,
-                        birthday : vm.userCopy.birthday
+                        bio      : vm.userCopy.bio
                     };
                     userFactory.httpRequest.updateUser(updateUser, function () {
                         vm.methods.stopLoading();
