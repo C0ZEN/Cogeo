@@ -59,15 +59,44 @@
 
                 <!-- Groups -->
                 <h3 class="space-medium-before space-base-after">{{ 'profiles_user_groups' | translate }}</h3>
+                <div class="group"
+                     ng-repeat="group in vm.userGroups track by $index">
+                    <a href
+                       class="group-link"
+                       ui-sref="app.groups.details({groupName: group.name})"
+                       ng-click="goTo.view('app.groups.details', {groupName: group.name})">
+                        <span>#{{ group.name }}</span>
+                    </a>
+                </div>
+                <p ng-show="vm.userGroups.length == 0"
+                   class="help-block">
+                    {{ 'profiles_user_no_groups' | translate:{username: vm.user.username} }}
+                </p>
             </div>
 
             <div class="center-flex-content space-medium-after">
 
                 <!-- Add to friends -->
-                <cozen-btn cozen-btn-label="'profiles_user_add_to_friend'"
+                <cozen-btn ng-if="!vm.friend && vm.friendInvited.status.response != 1"
+                           class="animated fadeInUp"
+                           cozen-btn-label="'profiles_user_add_to_friend'"
                            cozen-btn-auto-sizing="true"
+                           cozen-btn-loader="vm.loading"
+                           cozen-btn-id="user-profile-add-friend-btn"
                            cozen-btn-on-click="vm.methods.socialAction('add')">
                 </cozen-btn>
+
+                <!-- Friend since -->
+                <p ng-if="vm.friend != false"
+                   class="no-margin help-text animated fadeInUp">
+                    {{ 'profiles_user_friend_since' | translate:{date: (vm.friend.date | date: 'EEEE dd MMMM yyyy'), username: vm.friend.username} }}
+                </p>
+
+                <!-- Invited on -->
+                <p ng-if="!vm.friend && vm.friendInvited.status.response == 1"
+                   class="no-margin help-text animated fadeInUp">
+                    {{ 'profiles_user_invited_on' | translate:{date: (vm.friendInvited.sentOn | date: 'EEEE dd MMMM yyyy')} }}
+                </p>
             </div>
         </div>
     </div>

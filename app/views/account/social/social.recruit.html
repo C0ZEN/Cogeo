@@ -76,6 +76,7 @@
                             <cozen-btn cozen-btn-icon-right="fa fa-fw icons8-message-filled"
                                        cozen-btn-label="vm.availableUsersSelected.length == 1 ? ('groups_recruit_cogeoUsers_submit_user' | translate:{username: vm.availableUsersSelected[0]}) : 'groups_recruit_cogeoUsers_submit_users'"
                                        cozen-btn-auto-sizing="true"
+                                       cozen-btn-loader="vm.loading"
                                        cozen-btn-id="submit-recruit-user-btn"
                                        cozen-btn-on-click="vm.methods.recruit()">
                             </cozen-btn>

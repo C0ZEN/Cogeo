@@ -51,19 +51,23 @@
 
         // Public functions
         return {
-            subscribe            : subscribe,
-            getUser              : getUser,
-            getSettings          : getSettings,
-            isConnected          : isConnected,
-            logout               : logout,
-            setUser              : setUser,
-            setUserInLocalStorage: setUserInLocalStorage,
-            getFriends           : getFriends,
-            getStatus            : getStatus,
-            setStatus            : setStatus,
-            getAllStatus         : getAllStatus,
-            getUserImage         : getUserImage,
-            httpRequest          : {
+            subscribe                  : subscribe,
+            getUser                    : getUser,
+            getSettings                : getSettings,
+            isConnected                : isConnected,
+            logout                     : logout,
+            setUser                    : setUser,
+            setUserInLocalStorage      : setUserInLocalStorage,
+            getFriends                 : getFriends,
+            getStatus                  : getStatus,
+            setStatus                  : setStatus,
+            getAllStatus               : getAllStatus,
+            getUserImage               : getUserImage,
+            getUserFriendObject        : getUserFriendObject,
+            getUserInvitationObject    : getUserInvitationObject,
+            getUserInvitationsObjects  : getUserInvitationsObjects,
+            getUserLastInvitationObject: getUserLastInvitationObject,
+            httpRequest                : {
                 getUser                          : httpRequestGetUser,
                 register                         : httpRequestRegister,
                 login                            : httpRequestLogin,
@@ -334,6 +338,48 @@
             else {
                 return 'images/groups/' + user.username.slice(0, 1).toUpperCase() + '.png';
             }
+        }
+
+        function getUserFriendObject(username) {
+            for (var i = 0, length = user.contacts.length; i < length; i++) {
+                if (user.contacts[i].username == username) {
+                    if (user.contacts[i].removed == 0 && user.contacts[i].blocked == 0) {
+                        return user.contacts[i];
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function getUserInvitationObject(username) {
+            for (var i = 0, length = user.invitations.length; i < length; i++) {
+                if (user.invitations[i].username == username) {
+                    return user.invitations[i];
+                }
+            }
+            return null;
+        }
+
+        function getUserInvitationsObjects(username) {
+            var invitations = [];
+            for (var i = 0, length = user.invitations.length; i < length; i++) {
+                if (user.invitations[i].username == username) {
+                    invitations.push(user.invitations[i]);
+                }
+            }
+            return invitations;
+        }
+
+        function getUserLastInvitationObject(username) {
+            for (var i = user.invitations.length; i-- > 0;) {
+                if (user.invitations[i].username == username) {
+                    return user.invitations[i];
+                }
+            }
+            return null;
         }
 
         /// HTTP REQUEST ///

@@ -623,6 +623,19 @@ div.atom-profile hr {
   margin-top: 12px;
   margin-bottom: 12px;
 }
+div.atom-profile div.group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+div.atom-profile div.group a.group-link {
+  font-size: 16px;
+  display: block;
+}
 i.eye {
   cursor: pointer;
   -webkit-transition: all 80ms ease-out;
