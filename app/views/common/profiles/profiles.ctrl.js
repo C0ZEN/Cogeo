@@ -10,10 +10,11 @@
         '$state',
         'usersFactory',
         'goTo',
-        'userFactory'
+        'userFactory',
+        'groupsFactory'
     ];
 
-    function ProfilesCtrl(CONFIG, $state, usersFactory, goTo, userFactory) {
+    function ProfilesCtrl(CONFIG, $state, usersFactory, goTo, userFactory, groupsFactory) {
         var vm = this;
 
         // Common data
@@ -35,7 +36,8 @@
                 goTo.view('app.account.profile');
             }
             else {
-                vm.user = usersFactory.getUserByUsername($state.params.username);
+                vm.user       = usersFactory.getUserByUsername($state.params.username);
+                vm.userGroups = groupsFactory.getUserActiveGroups($state.params.username);
             }
         }
 

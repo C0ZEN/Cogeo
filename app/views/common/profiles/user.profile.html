@@ -15,11 +15,20 @@
                     <div class="text">
                         <h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>
                         <p class="help-text">@{{ vm.user.username }}</p>
-                        <h4>
-                            <a href>#Supinfo</a>
-                            <a href>#9gag</a>
-                            <a href>#Bf1</a>
+                        <h4 ng-show="vm.userGroups.length > 0"
+                            class="groups">
+                            <a href
+                               class="link"
+                               ui-sref="app.groups.details({groupName: group.name})"
+                               ng-click="goTo.view('app.groups.details', {groupName: group.name})"
+                               ng-repeat="group in vm.userGroups track by $index">
+                                <span>#{{ group.name }}</span>
+                            </a>
                         </h4>
+                        <p ng-show="vm.userGroups.length == 0"
+                           class="help-text">
+                            {{ 'profiles_user_no_groups' | translate:{username: vm.user.username} }}
+                        </p>
                     </div>
                 </div>
 
@@ -27,6 +36,14 @@
 
                 <!-- Info -->
                 <h3 class="space-medium-before space-base-after">{{ 'profiles_user_details' | translate }}</h3>
+                <h4>
+                    <strong>{{ 'account_profile_givenName' | translate }}:</strong>
+                    {{ vm.user.givenName }}
+                </h4>
+                <h4>
+                    <strong>{{ 'account_profile_surname' | translate }}:</strong>
+                    {{ vm.user.surname }}
+                </h4>
                 <h4>
                     <strong>{{ 'account_profile_username' | translate }}:</strong>
                     {{ vm.user.username }}
@@ -55,12 +72,6 @@
                            cozen-btn-auto-sizing="true"
                            cozen-btn-on-click="vm.methods.socialAction('add')">
                 </cozen-btn>
-
-                <!-- Remove from friends -->
-                <a href
-                   ng-click="vm.methods.socialAction('remove')">
-                    {{ 'profiles_user_add_from_friends' | translate }}
-                </a>
             </div>
         </div>
     </div>

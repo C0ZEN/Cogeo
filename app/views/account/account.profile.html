@@ -12,7 +12,8 @@
                     <div class="text">
                         <h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>
                         <p class="help-text">@{{ vm.user.username }}</p>
-                        <h4 class="groups">
+                        <h4 ng-show="vm.userGroups.length > 0"
+                            class="groups">
                             <a href
                                class="link"
                                ui-sref="app.groups.details({groupName: group.name})"
@@ -21,6 +22,10 @@
                                 <span>#{{ group.name }}</span>
                             </a>
                         </h4>
+                        <p ng-show="vm.userGroups.length == 0"
+                           class="help-text">
+                            {{ 'account_profile_no_groups' | translate }}
+                        </p>
                     </div>
                 </div>
 
