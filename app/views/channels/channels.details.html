@@ -193,7 +193,7 @@
                 <div class="center-flex-content space-medium-after">
 
                     <!-- Edit btn -->
-                    <cozen-btn ng-show="vm.channel.isAdmin && vm.userHasGlobalRights"
+                    <cozen-btn ng-show="vm.channel.isAdmin && vm.channel.isMember && !vm.channel.isBanned && !vm.channel.isKicked && vm.userHasGroupRights"
                                class="animated fadeInUp"
                                cozen-btn-label="'channels_details_edit_channel'"
                                cozen-btn-auto-sizing="true"

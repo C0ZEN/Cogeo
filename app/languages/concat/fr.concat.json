@@ -229,7 +229,7 @@
 	"channels_recruit_dropdown_countText": "{{selected}} membres du groupe sélectionnés sur {{total}}",
 	"channels_recruit_selected_user": "Membre du groupe à inviter",
 	"channels_recruit_selected_users": "Membres du groupe à inviter",
-	"channels_details_creation_by": "Créer par <a href='' ng-click=\"goTo.view('app.profiles.user', {username: '{{userName}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{userName}}'})\">{{userName}}</a> le {{date}}",
+	"channels_details_creation_by": "Créer par <a href='' ng-click=\"goTo.view('app.profiles.user', {username: '{{userName}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{userName}}'})\">{{userName}}</a> le {{date}}.",
 	"channels_details_details": "Détails",
 	"channels_details_creator": "Créateur",
 	"channels_details_creation": "Création",

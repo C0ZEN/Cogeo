@@ -52,7 +52,8 @@
             startLoading       : startLoading,
             stopLoading        : stopLoading,
             recruit            : recruit,
-            createRandomChannel: createRandomChannel
+            createRandomChannel: createRandomChannel,
+            disableChat        : disableChat
         };
 
         // Common data
@@ -72,25 +73,15 @@
             vm.user     = userFactory.getUser();
             vm.channels = channelsFactory.getChannelsWithUserRoles(vm.params.groupName, vm.user.username);
 
-            // Get at least a channel
-            if (Methods.isNullOrEmpty(vm.channel)) {
-                vm.channel = vm.group.channels[0];
-                vm.channel = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
-            }
-
             // Get the user and kicked/banned object
             var userGroup      = groupsFactory.getUserFromGroup(vm.user.username, vm.group.name);
             vm.groupUserBanned = userGroup.banned;
             vm.groupUserKicked = userGroup.kicked;
 
             // Common variable to know if the user has access
-            vm.userHasGroupRights  = !vm.groupUserBanned.active
+            vm.userHasGroupRights = !vm.groupUserBanned.active
                 && !vm.groupUserKicked.active
                 && userGroup.hasLeft == 0;
-            vm.userHasGlobalRights = vm.userHasGroupRights
-                && !vm.channel.isBanned
-                && !vm.channel.isKicked
-                && vm.channel.isMember;
         }
 
         // Called on all view
@@ -98,13 +89,15 @@
             vm.methods.onInit();
             vm.allChannels  = angular.merge({}, vm.allChannels, angular.copy(vm.user.settings.preferences.allChannels));
             vm.isGroupAdmin = groupsFactory.isUserAdmin(vm.params.groupName, vm.user.username);
+            vm.disabledChat = vm.methods.disableChat();
         }
 
         // Called on details view
         function onInitDetails() {
             vm.methods.onInit();
-            vm.channel = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
-            vm.channel = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.channel      = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
+            vm.channel      = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.disabledChat = vm.methods.disableChat();
 
             // Get the google graph for members
             vm.googleGraph.members = googleGraphChannelMembers.getChart(vm.params.groupName, vm.channel._id);
@@ -143,6 +136,7 @@
             vm.methods.onInit();
             vm.channel         = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel         = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.disabledChat    = vm.methods.disableChat();
             vm.membersList     = channelsFactory.getAllUsersExceptHasLeft($state.params.groupName, vm.channel._id);
             vm.membersList     = usersFactory.addUsersFullNames(vm.membersList);
             vm.membersSettings = angular.merge({}, vm.membersSettings, angular.copy(vm.user.settings.preferences.channelsMembers));
@@ -153,6 +147,7 @@
             vm.methods.onInit();
             vm.channel             = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel             = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.disabledChat        = vm.methods.disableChat();
             vm.invitations         = vm.channel.invitations;
             vm.invitations         = usersFactory.addUsersFullNames(vm.invitations);
             vm.invitationsSettings = angular.merge({}, vm.invitationsSettings, angular.copy(vm.user.settings.preferences.channelsInvitations));
@@ -164,6 +159,7 @@
             vm.methods.onInit();
             vm.channel        = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel        = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.disabledChat   = vm.methods.disableChat();
             vm.logs           = vm.channel.logs;
             vm.logsSettings   = angular.merge({}, vm.logsSettings, angular.copy(vm.user.settings.preferences.channelsLogs));
             vm.allLogsDisplay = false;
@@ -202,6 +198,7 @@
             vm.methods.onInit();
             vm.channel        = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel        = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.disabledChat   = vm.methods.disableChat();
             vm.userCanRecruit = vm.methods.canRecruit();
             vm.availableUsers = channelsFactory.getAvailableUsers2(vm.params.groupName, vm.channel._id);
         }
@@ -211,6 +208,7 @@
             vm.methods.onInit();
             vm.channel                    = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
             vm.channel                    = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+            vm.disabledChat               = vm.methods.disableChat();
             vm.editedChannel              = angular.copy(vm.channel);
             vm.editedChannel.originalName = vm.params.channelName;
             vm.defaultChannels            = channelsFactory.getDefaultChannels(vm.params.groupName);
@@ -329,6 +327,15 @@
             vm.newChannel.byDefault   = false;
             cozenLazyLoadInternal.sendBroadcastForm('new');
             cozenLazyLoadInternal.sendBroadcastBtnClick('submit-new-channel-btn');
+        }
+
+        function disableChat() {
+            if (Methods.isNullOrEmpty(vm.channel)) {
+                return !vm.userHasGroupRights;
+            }
+            else {
+                return !(vm.userHasGroupRights && vm.channel.isMember && !vm.channel.isKicked && !vm.channel.isBanned);
+            }
         }
     }
 
