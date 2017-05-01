@@ -602,6 +602,16 @@ div.atom-profile div.profile-card div.text h3 {
 div.atom-profile div.profile-card div.text h3 small {
   color: #8C8C8C;
 }
+div.atom-profile div.profile-card div.text h4.groups {
+  overflow: hidden;
+  white-space: nowrap;
+}
+div.atom-profile div.profile-card div.text h4.groups a.link {
+  display: inline-block;
+  margin-right: 6px;
+  white-space: normal;
+  word-break: break-all;
+}
 div.atom-profile div.profile-card img {
   width: 70px;
   height: 70px;

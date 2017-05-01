@@ -12,9 +12,9 @@
                     <div class="text">
                         <h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>
                         <p class="help-text">@{{ vm.user.username }}</p>
-                        <h4>
+                        <h4 class="groups">
                             <a href
-                               class="display-initial"
+                               class="link"
                                ui-sref="app.groups.details({groupName: group.name})"
                                ng-click="goTo.view('app.groups.details', {groupName: group.name})"
                                ng-repeat="group in vm.userGroups track by $index">
