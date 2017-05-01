@@ -8,11 +8,12 @@
         {{ vm.activeFriend.givenName }}
         {{ vm.activeFriend.surname }}
         @{{ vm.activeFriend.username }}
-        <small ng-show="vm.activeFriend.alias != ''">
-            {{ 'chat_alias' | translate }}
-            {{ vm.activeFriend.alias }}
-        </small>
     </a>
+    <p class="friend-alias animated fadeInDown"
+        ng-show="vm.activeFriend.alias != ''">
+        {{ 'chat_alias' | translate }}
+        {{ vm.activeFriend.alias }}
+    </p>
 
     <!-- Other info -->
     <div class="line">
