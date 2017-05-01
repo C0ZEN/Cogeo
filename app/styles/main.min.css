@@ -2749,7 +2749,7 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.user-image {
   width: 42px;
   height: 42px;
-  padding: 3px;
+  padding: 4px;
   margin-right: 6px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -2826,7 +2826,7 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.bot-image {
   width: 42px;
   height: 42px;
-  padding: 3px;
+  padding: 4px;
   margin-right: 6px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
