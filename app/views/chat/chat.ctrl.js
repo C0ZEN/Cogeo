@@ -76,9 +76,9 @@
                 if ($state.current.name == 'app.chat.channel') {
                     vm.methods.setActiveChannel(vm.params.channelName, channelsFactory.getChannelIdByName(vm.params.groupName, vm.params.channelName));
                 }
-                else if ($state.current.name == 'app.chat.user') {
-                    vm.methods.setActiveFriend(vm.params.username);
-                }
+            }
+            if ($state.current.name == 'app.chat.user') {
+                vm.methods.setActiveFriend(vm.params.username);
             }
         }
 
@@ -435,6 +435,14 @@
                     sender : 'C0ZEN',
                     sent   : 1484571615,
                     content: '######Titre 6',
+                    edited : 0,
+                    tag    : 'user'
+                },
+                {
+                    _id    : '16',
+                    sender : 'C0ZEN',
+                    sent   : 1484571615,
+                    content: '[Lien](http://www.geoffreytestelin.com/)',
                     edited : 0,
                     tag    : 'user'
                 }

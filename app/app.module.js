@@ -45,6 +45,7 @@
             'ng.deviceDetector',
             'ng-if-bootstrap-grid',
             'btford.markdown',
+            'ngEmoticons',
             'cozenLib',
 
             '4pjtApp.actionBar'

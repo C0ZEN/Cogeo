@@ -4,7 +4,7 @@
 
     <!-- Groups -->
     <div class="chat-groups-container animated"
-         ng-show="vm.hasGroup"
+         ng-if="vm.hasGroup"
          ng-include="'views/chat/chat.groups.html'">
     </div>
 
@@ -30,11 +30,13 @@
 
         <!-- Channels -->
         <div class="chat-list"
+             ng-if="vm.hasGroup"
              ng-include="'views/chat/chat.channels.html'">
         </div>
 
         <!-- Friends -->
-        <div class="chat-list no-padding-top"
+        <div class="chat-list"
+             ng-class="{'no-padding-top': vm.hasGroup}"
              ng-include="'views/chat/chat.friends.html'">
         </div>
 

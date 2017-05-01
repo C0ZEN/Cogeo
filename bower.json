@@ -49,7 +49,8 @@
     "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop",
     "underscore": "^1.8.3",
     "ng-if-bootstrap": "^0.1.2",
-    "angular-markdown-directive": "^0.3.1"
+    "angular-markdown-directive": "^0.3.1",
+    "ng-emoticons": "^2.1.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",
