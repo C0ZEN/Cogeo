@@ -2,8 +2,8 @@
 
     <!-- Current user -->
     <a href
-       ui-sref="app.profiles.user({username: vm.activeFriend})"
-       ng-click="goTo.view('app.profiles.user', {username: vm.activeFriend})"
+       ui-sref="app.profiles.user({username: vm.activeFriend.username})"
+       ng-click="goTo.view('app.profiles.user', {username: vm.activeFriend.username})"
        class="friend-name hover-link animated fadeInDown">
         {{ vm.activeFriend.givenName }}
         {{ vm.activeFriend.surname }}
