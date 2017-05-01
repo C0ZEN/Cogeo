@@ -1998,6 +1998,9 @@ div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-f
 div.atom-chat.channel-theme div.chat-channels-container div.chat-list div.chat-friend:hover {
   background-color: #396050;
 }
+div.atom-chat.channel-theme div.chat-channels-container div.chat-list span.no-result {
+  color: #BFD9CF;
+}
 div.atom-chat.channel-theme div.chat-channels-container div.chat-search-bar {
   background-color: #396050;
   border-top: 1px solid #13201B;
@@ -2152,6 +2155,9 @@ div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-fr
 }
 div.atom-chat.social-theme div.chat-channels-container div.chat-list div.chat-friend:hover {
   background-color: #5D3663;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-list span.no-result {
+  color: #D7BDDB;
 }
 div.atom-chat.social-theme div.chat-channels-container div.chat-search-bar {
   background-color: #5D3663;
@@ -2799,8 +2805,8 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
           align-items: baseline;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content div.from a.user-username {
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 15px;
   margin-right: 6px;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content div.from span.sent-date {
@@ -2876,8 +2882,8 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
           align-items: baseline;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name {
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 15px;
   margin-right: 6px;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .bot div.message-content div.from a.bot-name.purple {

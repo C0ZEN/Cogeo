@@ -3,6 +3,7 @@
     <!-- Message -->
     <div ng-repeat="message in vm.messages track by $index"
          class="message"
+         ng-style="{'pointer-events': vm.actionBar.options.down ? 'none' : ''}"
          ng-mouseenter="message.isHover = true"
          ng-mouseleave="message.isHover = false"
          ng-class="{'is-hover': message.isHover}"

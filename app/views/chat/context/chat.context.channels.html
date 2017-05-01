@@ -91,6 +91,8 @@
 
 <!-- Action bar -->
 <div class="chat-action-bar">
+
+    <!-- Call -->
     <div ng-show="vm.activeMembers.length >= 2"
          class="action phone animated zoomIn">
         <cozen-tooltip cozen-tooltip-label="'chat_actionBar_phone'"
@@ -98,6 +100,8 @@
             <i class="fa fa-phone"></i>
         </cozen-tooltip>
     </div>
+
+    <!-- Links -->
     <div class="action options animated zoomIn"
          ng-mouseenter="vm.actionBar.options.down = true"
          ng-mouseleave="vm.actionBar.options.down = false">
