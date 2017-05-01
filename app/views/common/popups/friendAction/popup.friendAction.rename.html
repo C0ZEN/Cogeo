@@ -18,9 +18,9 @@
             <!-- New alias -->
             <cozen-input cozen-input-model="popup.friendNewAlias"
                          cozen-input-label="popup_friendAction_rename_body_alias"
-                         cozen-input-max-length="40"
+                         cozen-input-max-length="{{ popup.CONFIG.internal.log.username.length }}"
                          cozen-input-min-length="2"
-                         cozen-input-pattern-words
+                         cozen-input-pattern="{{ popup.CONFIG.internal.log.username.pattern }}"
                          cozen-input-validator-empty="false"
                          cozen-input-placeholder="popup_friendAction_rename_body_alias_pc">
             </cozen-input>
