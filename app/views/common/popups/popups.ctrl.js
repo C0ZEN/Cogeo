@@ -306,36 +306,48 @@
         }
 
         function friendActionBlock() {
+            popup.methods.startLoading();
             userFactory.httpRequest.friendBlock(popup.friendActionBlockData.username, {}, function () {
                 popup.methods.closePopup('friendActionBlock');
+                popup.methods.stopLoading();
             }, function () {
                 popup.methods.closePopup('friendActionBlock');
+                popup.methods.stopLoading();
             });
         }
 
         function friendActionUnblock() {
+            popup.methods.startLoading();
             userFactory.httpRequest.friendUnblock(popup.friendActionUnblockData.username, {}, function () {
                 popup.methods.closePopup('friendActionUnblock');
+                popup.methods.stopLoading();
             }, function () {
                 popup.methods.closePopup('friendActionUnblock');
+                popup.methods.stopLoading();
             });
         }
 
         function friendActionRename() {
+            popup.methods.startLoading();
             userFactory.httpRequest.friendSetAlias(popup.friendActionRenameData.username, {
                 alias: popup.friendNewAlias
             }, function () {
                 popup.methods.closePopup('friendActionRename');
+                popup.methods.stopLoading();
             }, function () {
                 popup.methods.closePopup('friendActionRename');
+                popup.methods.stopLoading();
             });
         }
 
         function friendActionRemove() {
+            popup.methods.startLoading();
             userFactory.httpRequest.friendRemove(popup.friendActionRemoveData.username, {}, function () {
                 popup.methods.closePopup('friendActionRemove');
+                popup.methods.stopLoading();
             }, function () {
                 popup.methods.closePopup('friendActionRemove');
+                popup.methods.stopLoading();
             });
         }
 
