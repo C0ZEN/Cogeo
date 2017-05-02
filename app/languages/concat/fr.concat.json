@@ -316,10 +316,11 @@
 	"chat_actionBar_copy": "Copier",
 	"chat_friends_title": "Amis",
 	"chat_friends_blocked_title": "Amis bloqués",
-	"chat_new_friend": "Inviter des amis",
+	"chat_new_friend": "Nouvel ami",
 	"chat_no_friend_found": "Aucun amis",
 	"chat_alias": "alias",
 	"chat_user": "Discussion avec un ami",
+	"chat_alert_friend_blocked": "Tu as bloqué {{username}} le {{date}}",
 	"DEV": {
 		"USERS_LIST": {
 			"PAGE_TITLE": "Liste des utilisateurs Cogeo",

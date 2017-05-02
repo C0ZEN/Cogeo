@@ -52,6 +52,20 @@
         <!-- Context -->
         <div class="ui-view chat-context-container"></div>
 
+        <!-- Alerts -->
+        <div ng-show="vm.activeFriend.blocked != 0 && $state.current.name == 'app.chat.user'"
+             class="chat-alert-container">
+
+            <!-- Blocked alert -->
+            <cozen-alert cozen-alert-display="vm.activeFriend.blocked != 0 && $state.current.name == 'app.chat.user'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-label="'chat_alert_friend_blocked'"
+                         cozen-alert-label-values="{username: $state.params.username, date: (vm.activeFriend.blocked | date: 'EEEE dd MMMM yyyy')}"
+                         cozen-alert-animation-in-class="fadeIn"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+        </div>
+
         <!-- Messages -->
         <div class="chat-messages-container"
              ng-include="'views/chat/messages/chat.messages.html'">
