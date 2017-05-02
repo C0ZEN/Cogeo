@@ -306,10 +306,8 @@
             }
         }
 
-        function onFriendActionRenameShow() {
-            console.log(popup.friendActionRenameData);
-            console.log(arguments);
-            popup.friendNewAlias = angular.copy(popup.friendActionRenameData.alias);
+        function onFriendActionRenameShow(id, name, data) {
+            popup.friendNewAlias = angular.copy(data.alias);
         }
 
         function friendActionBlock() {
