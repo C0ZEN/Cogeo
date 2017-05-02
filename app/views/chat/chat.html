@@ -9,22 +9,13 @@
     </div>
 
     <!-- Channels -->
-    <div class="chat-channels-container animated"
-         ng-mouseenter="vm.onHoverChannelContainer = true"
-         ng-mouseleave="vm.onHoverChannelContainer = false"
+    <div class="chat-channels-container"
          id="chat-channels-container">
-
-        <!-- Close btn -->
-        <div ng-show="vm.onHoverChannelContainer"
-             class="close-btn"
-             ng-click="vm.methods.hideChannels($event)">
-            <cozen-tooltip cozen-tooltip-label="'chat_close_channels'">
-                <i class="fa fa-fw fa-times"></i>
-            </cozen-tooltip>
-        </div>
 
         <!-- Active group -->
         <div class="chat-active-group"
+             ng-mouseenter="vm.onHoverChannelContainer = true"
+             ng-mouseleave="vm.onHoverChannelContainer = false"
              ng-include="'views/chat/chat.activeGroup.html'">
         </div>
 
@@ -47,7 +38,8 @@
     </div>
 
     <!-- Col -->
-    <div class="chat-col">
+    <div class="chat-col"
+         id="chat-context-container">
 
         <!-- Context -->
         <div class="ui-view chat-context-container"></div>

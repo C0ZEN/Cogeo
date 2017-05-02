@@ -1,8 +1,16 @@
 div.atom-chat div.chat-col {
-    width          : 100%;
+    width          : ~"calc(100% - @{atom-chat-groups-container-width} - @{atom-chat-channels-container-width})";
     height         : ~"calc(100% + 3px)";
     display        : flex;
     flex-direction : column;
+    position       : absolute;
+    top            : 0;
+    left           : @atom-chat-groups-container-width + @atom-chat-channels-container-width;
+    transition     : left ease @atom-animation-duration-in, width ease @atom-animation-duration-in;;
+    &.hidePanelToLeft {
+        left  : @atom-chat-groups-container-width;
+        width : ~"calc(100% - @{atom-chat-groups-container-width})";
+    }
     div.chat-context-container {
         background-color : @atom-color-line-rule-light;
         border-bottom    : 1px solid @atom-color-line-rule;
@@ -15,6 +23,7 @@ div.atom-chat div.chat-col {
         justify-content  : space-between;
         align-items      : center;
         padding          : @atom-chat-channels-container-padding @atom-space-medium @atom-chat-channels-container-padding @atom-chat-channels-container-padding;
+        z-index          : 1;
         div.channel-description {
             a.channel-name {
                 font-size      : 22px;

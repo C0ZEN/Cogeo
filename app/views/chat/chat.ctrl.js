@@ -172,15 +172,12 @@
             if (!Methods.isNullOrEmpty($event)) {
                 $event.stopPropagation();
             }
-            if (vm.showChannels && !vm.showChannelsBlocked) {
-                vm.showChannels        = false;
-                var channels           = angular.element(document.querySelector('#chat-channels-container'));
-                vm.showChannelsBlocked = true;
-                $animate.addClass(channels, 'slideOutLeft').then(function () {
-                    $animate.addClass(channels, 'hide');
-                    $animate.removeClass(channels, 'slideOutLeft');
-                    vm.showChannelsBlocked = false;
-                });
+            if (vm.showChannels) {
+                vm.showChannels = false;
+                var channelCol  = angular.element(document.querySelector('#chat-channels-container'));
+                var contextCol  = angular.element(document.querySelector('#chat-context-container'));
+                $animate.addClass(channelCol, 'hidePanelToLeft');
+                $animate.addClass(contextCol, 'hidePanelToLeft');
             }
         }
 
@@ -189,15 +186,12 @@
             if (!Methods.isNullOrEmpty($event)) {
                 $event.stopPropagation();
             }
-            if (!vm.showChannels && !vm.showChannelsBlocked) {
-                vm.showChannels        = true;
-                var channels           = angular.element(document.querySelector('#chat-channels-container'));
-                vm.showChannelsBlocked = true;
-                $animate.removeClass(channels, 'hide');
-                $animate.addClass(channels, 'slideInLeft').then(function () {
-                    $animate.removeClass(channels, 'slideInLeft');
-                    vm.showChannelsBlocked = false;
-                });
+            if (!vm.showChannels) {
+                vm.showChannels = true;
+                var channelCol  = angular.element(document.querySelector('#chat-channels-container'));
+                var contextCol  = angular.element(document.querySelector('#chat-context-container'));
+                $animate.removeClass(channelCol, 'hidePanelToLeft');
+                $animate.removeClass(contextCol, 'hidePanelToLeft');
             }
         }
 

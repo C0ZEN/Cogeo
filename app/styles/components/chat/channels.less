@@ -7,12 +7,17 @@ div.atom-chat div.chat-channels-container {
     z-index          : 1;
     width            : @atom-chat-channels-container-width;
     min-width        : @atom-chat-channels-container-width;
-    position         : relative;
     background-color : @atom-color-line-rule-light;
     display          : flex;
     flex-direction   : column;
     justify-content  : flex-start;
-    transition       : background-color @atom-animation-duration-out-fast;
+    transition       : background-color @atom-animation-duration-out-fast, left ease @atom-animation-duration-in;
+    position         : absolute;
+    top              : 0;
+    left             : @atom-chat-groups-container-width;
+    &.hidePanelToLeft {
+        left : @atom-chat-groups-container-width - @atom-chat-channels-container-width;
+    }
     div.chat-active-group {
         display          : flex;
         flex-direction   : column;
@@ -23,6 +28,7 @@ div.atom-chat div.chat-channels-container {
         max-height       : 76px;
         min-height       : 76px;
         transition       : background-color @atom-animation-duration-out-fast;
+        position         : relative;
         a.group-name {
             font-size   : 22px;
             font-weight : 500;
@@ -33,17 +39,17 @@ div.atom-chat div.chat-channels-container {
                 padding-left : 3px;
             }
         }
-    }
-    div.close-btn {
-        position   : absolute;
-        top        : 1px;
-        right      : 0;
-        cursor     : pointer;
-        transition : @atom-transition;
-        outline    : @atom-outline;
-        &:hover,
-        &:focus {
-            color : @atom-color-blue;
+        div.close-btn {
+            position   : absolute;
+            top        : 3px;
+            right      : 3px;
+            cursor     : pointer;
+            transition : @atom-transition;
+            outline    : @atom-outline;
+            &:hover,
+            &:focus {
+                color : @atom-color-blue;
+            }
         }
     }
     div.chat-list {

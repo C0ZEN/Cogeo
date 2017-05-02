@@ -27,3 +27,12 @@
         @{{ vm.user.username }}
     </a>
 </div>
+
+<!-- Close btn -->
+<div ng-show="vm.onHoverChannelContainer"
+     class="close-btn"
+     ng-click="vm.methods.hideChannels($event)">
+    <cozen-tooltip cozen-tooltip-label="'chat_close_channels'">
+        <i class="fa fa-fw fa-times"></i>
+    </cozen-tooltip>
+</div>

@@ -1,13 +1,14 @@
 // Col with groups
+@atom-chat-groups-container-width : 70px;
 div.atom-chat div.chat-groups-container {
     height           : inherit;
     background-color : @atom-color-line-rule-light;
     padding          : @atom-space-base;
     border-right     : 1px solid @atom-color-line-rule;
     z-index          : 2;
-    min-width        : 70px;
-    max-width        : 70px;
-    width            : 70px;
+    min-width        : @atom-chat-groups-container-width;
+    max-width        : @atom-chat-groups-container-width;
+    width            : @atom-chat-groups-container-width;
     transition       : background-color @atom-animation-duration-out-fast;
     div.chat-group {
         margin-bottom       : @atom-space-base;
