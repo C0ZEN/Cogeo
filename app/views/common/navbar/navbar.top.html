@@ -52,6 +52,7 @@
 
                     <!-- Channels -->
                     <div ng-show="group.showChannels && group.channels.length > 0"
+                         ng-style="{'min-width': '240px'}"
                          class="sub-links">
                         <div ng-repeat="channel in group.channels track by $index"
                              class="link-dropdown-item link-dropdown-item-green"

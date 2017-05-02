@@ -1419,6 +1419,16 @@ div.link-dropdown div.link-dropdown-item.link-dropdown-item-green:focus,
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-green:hover {
   color: #4AC291;
 }
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-red.active,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-red:focus,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-red:hover {
+  color: #E53935;
+}
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-yellow.active,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-yellow:focus,
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-yellow:hover {
+  color: #FEB909;
+}
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-title {
   cursor: default;
   color: #8C8C8C;
@@ -1857,7 +1867,7 @@ body {
   padding-top: 60px;
 }
 div.atom-chat {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 63px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1866,6 +1876,7 @@ div.atom-chat {
       -ms-flex-direction: row;
           flex-direction: row;
   padding: 0;
+  border-top: 3px solid #D6DBDB;
 }
 div.atom-chat div.full-star,
 div.atom-chat div.empty-star {

@@ -54,17 +54,51 @@
             <div class="link-dropdown-item link-dropdown-item-title">
                 {{ 'chat_actionBar_options_social' | translate }}
             </div>
+
+            <!-- Profile -->
             <div class="link-dropdown-item"
                  tabindex="0"
                  ng-click="goTo.view('app.profiles.user', {username: $state.params.username})">
                 <i class="fa fa-fw icons8-user-male space-small-right"></i>
                 {{ 'chat_actionBar_options_user_profile' | translate }}
             </div>
+            <div class="link-dropdown-separator"></div>
+
+            <!-- Actions -->
+            <div class="link-dropdown-item link-dropdown-item-title">
+                {{ 'chat_actionBar_options_actions' | translate }}
+            </div>
+
+            <!-- Rename -->
             <div class="link-dropdown-item"
                  tabindex="0"
-                 ng-click="methods.showPopup($event, 'friendActionRename', vm.activeFriend);">
+                 ng-click="methods.showPopup($event, 'friendActionRename', vm.activeFriend)">
                 <i class="fa fa-fw icons8-edit space-small-right"></i>
                 {{ 'chat_actionBar_options_user_rename' | translate }}
+            </div>
+
+            <!-- Block -->
+            <div class="link-dropdown-item link-dropdown-item-red"
+                 tabindex="0"
+                 ng-click="methods.showPopup($event, 'friendActionBlock', vm.activeFriend)">
+                <i class="fa fa-fw icons8-no-chat space-small-right"></i>
+                {{ 'chat_actionBar_options_user_block' | translate }}
+            </div>
+
+            <!-- Unblock -->
+            <div class="link-dropdown-item link-dropdown-item-green"
+                 tabindex="0"
+                 ng-click="methods.showPopup($event, 'friendActionUnblock', vm.activeFriend)">
+                <i class="fa fa-fw icons8-chat space-small-right"></i>
+                {{ 'chat_actionBar_options_user_unblock' | translate }}
+            </div>
+
+            <!-- Remove -->
+            <div class="link-dropdown-item link-dropdown-item-red"
+                 tabindex="0"
+                 ng-click="methods.showPopup($event, 'friendActionRemove', vm.activeFriend)">
+                <i class="fa fa-fw icons8-trash space-small-right"></i>
+                {{ 'chat_actionBar_options_user_remove' | translate }}
             </div>
         </div>
     </div>

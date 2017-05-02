@@ -24,37 +24,38 @@
 
         // Methods
         popup.methods = {
-            closePopup          : closePopup,
-            logout              : logout,
-            forgottenPassword   : forgottenPassword,
-            onPlayerReady       : onPlayerReady,
-            onPopupSettingsClose: onPopupSettingsClose,
-            onInitChatSetStatus : onInitChatSetStatus,
-            userAction          : {
+            closePopup              : closePopup,
+            logout                  : logout,
+            forgottenPassword       : forgottenPassword,
+            onPlayerReady           : onPlayerReady,
+            onPopupSettingsClose    : onPopupSettingsClose,
+            onInitChatSetStatus     : onInitChatSetStatus,
+            onFriendActionRenameShow: onFriendActionRenameShow,
+            userAction              : {
                 granted : userActionGranted,
                 revoked : userActionRevoked,
                 kicked  : userActionKicked,
                 banned  : userActionBanned,
                 unbanned: userActionUnbanned
             },
-            friendAction        : {
+            friendAction            : {
                 block  : friendActionBlock,
                 unblock: friendActionUnblock,
                 rename : friendActionRename,
                 remove : friendActionRemove
             },
-            invitationAction    : {
+            invitationAction        : {
                 accept: invitationActionAccept,
                 refuse: invitationActionRefuse
             },
-            startLoading        : startLoading,
-            stopLoading         : stopLoading,
-            channel             : {
+            startLoading            : startLoading,
+            stopLoading             : stopLoading,
+            channel                 : {
                 remove: channelRemove,
                 join  : channelJoin,
                 leave : channelLeave
             },
-            group               : {
+            group                   : {
                 join : groupJoin,
                 leave: groupLeave
             }
@@ -303,6 +304,12 @@
             popup.chatSetStatus = {
                 status: userFactory.getAllStatus()
             }
+        }
+
+        function onFriendActionRenameShow() {
+            console.log(popup.friendActionRenameData);
+            console.log(arguments);
+            popup.friendNewAlias = angular.copy(popup.friendActionRenameData.alias);
         }
 
         function friendActionBlock() {
