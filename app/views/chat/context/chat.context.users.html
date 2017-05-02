@@ -10,7 +10,7 @@
         @{{ vm.activeFriend.username }}
     </a>
     <p class="friend-alias animated fadeInDown"
-        ng-show="vm.activeFriend.alias != ''">
+       ng-show="vm.activeFriend.alias != ''">
         {{ 'chat_alias' | translate }}
         {{ vm.activeFriend.alias }}
     </p>
@@ -70,7 +70,8 @@
             </div>
 
             <!-- Rename -->
-            <div class="link-dropdown-item"
+            <div ng-show="vm.activeFriend.blocked == 0"
+                 class="link-dropdown-item"
                  tabindex="0"
                  ng-click="methods.showPopup($event, 'friendActionRename', vm.activeFriend)">
                 <i class="fa fa-fw icons8-edit space-small-right"></i>
@@ -78,7 +79,8 @@
             </div>
 
             <!-- Block -->
-            <div class="link-dropdown-item link-dropdown-item-red"
+            <div ng-show="vm.activeFriend.blocked == 0"
+                 class="link-dropdown-item link-dropdown-item-red"
                  tabindex="0"
                  ng-click="methods.showPopup($event, 'friendActionBlock', vm.activeFriend)">
                 <i class="fa fa-fw icons8-no-chat space-small-right"></i>
@@ -86,7 +88,8 @@
             </div>
 
             <!-- Unblock -->
-            <div class="link-dropdown-item link-dropdown-item-green"
+            <div ng-show="vm.activeFriend.blocked != 0"
+                 class="link-dropdown-item link-dropdown-item-green"
                  tabindex="0"
                  ng-click="methods.showPopup($event, 'friendActionUnblock', vm.activeFriend)">
                 <i class="fa fa-fw icons8-chat space-small-right"></i>
@@ -94,7 +97,8 @@
             </div>
 
             <!-- Remove -->
-            <div class="link-dropdown-item link-dropdown-item-red"
+            <div ng-show="vm.activeFriend.blocked == 0"
+                 class="link-dropdown-item link-dropdown-item-red"
                  tabindex="0"
                  ng-click="methods.showPopup($event, 'friendActionRemove', vm.activeFriend)">
                 <i class="fa fa-fw icons8-trash space-small-right"></i>
