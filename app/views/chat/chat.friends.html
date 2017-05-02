@@ -51,3 +51,53 @@
       class="no-result">
     {{ 'chat_no_friend_found' | translate }}
 </span>
+
+<!-- Friends blocked title -->
+<div ng-show="vm.blockedFriends.length > 0"
+     ng-mouseenter="vm.onHoverFriendsBlockedTitle = true"
+     ng-mouseleave="vm.onHoverFriendsBlockedTitle = false"
+     class="chat-subtitle">
+
+    <!-- Title -->
+    <h3>
+        {{ 'chat_friends_blocked_title' | translate }}
+        <small>({{ vm.blockedFriends.length }})</small>
+    </h3>
+
+    <!-- New friend -->
+    <div ng-show="vm.onHoverFriendsBlockedTitle"
+         ui-sref="app.social.recruit"
+         ng-click="goTo.view('app.social.recruit')"
+         class="add-icon">
+        <cozen-tooltip cozen-tooltip-label="'chat_new_friend'">
+            <i class="fa fa-plus-circle"></i>
+        </cozen-tooltip>
+    </div>
+</div>
+
+<!-- Blocked friends list -->
+<div ng-show="vm.blockedFriends.length > 0"
+     ng-repeat="friend in vm.blockedFriends
+     | filter: vm.searchValue as blockedFriendsFilter track by $index"
+     ng-class="{active: channel.name == vm.activeChannel.name}"
+     ng-mouseenter="friend.onHoverFriend = true"
+     ng-mouseleave="friend.onHoverFriend = false"
+     class="chat-friend">
+
+    <!-- Name -->
+    <span ng-click="vm.methods.setActiveFriend(friend.username)">
+        <span ng-show="friend.alias != ''">
+            {{ friend.alias }}
+        </span>
+        <span ng-show="friend.alias == ''">
+            {{ friend.givenName }} {{ friend.surname }}
+        </span>
+        <span>@{{ friend.username }}</span>
+    </span>
+</div>
+
+<!-- No friend found -->
+<span ng-show="vm.blockedFriends.length > 0 && blockedFriendsFilter.length == 0"
+      class="no-result">
+    {{ 'chat_no_result' | translate }}
+</span>

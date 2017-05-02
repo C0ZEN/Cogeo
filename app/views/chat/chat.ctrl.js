@@ -56,12 +56,14 @@
             if ($state.current.name == 'app.chat.channel' && Methods.isNullOrEmpty($state.params.channelName)) {
                 $state.params.channelName = groupsFactory.getGroupByName($state.params.groupName).channels[0].name;
             }
-            vm.params   = $state.params;
-            vm.user     = userFactory.getUser();
-            vm.friends  = userFactory.getFriends();
-            vm.groups   = groupsFactory.getUserActiveGroups(vm.user.username);
-            vm.groups   = groupsFactory.removeGroupsWhereNoActiveMemberChannel(vm.groups, vm.user.username);
-            vm.hasGroup = vm.groups.length > 0;
+            vm.params         = $state.params;
+            vm.user           = userFactory.getUser();
+            vm.friends        = userFactory.getUnblockedFriends();
+            vm.blockedFriends = userFactory.getBlockedFriends();
+            vm.allFriends     = userFactory.getFriends();
+            vm.groups         = groupsFactory.getUserActiveGroups(vm.user.username);
+            vm.groups         = groupsFactory.removeGroupsWhereNoActiveMemberChannel(vm.groups, vm.user.username);
+            vm.hasGroup       = vm.groups.length > 0;
             vm.methods.showChannels();
             vm.status = userFactory.getStatus();
             if (vm.hasGroup) {
@@ -110,7 +112,7 @@
             vm.activeChannel                  = groupsFactory.getChannelById(vm.activeGroup, channelId);
             vm.activeChannel                  = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
             vm.messages                       = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
-            vm.messages     = [
+            vm.messages                       = [
                 {
                     _id    : '1',
                     sender : 'C0ZEN',
@@ -213,7 +215,7 @@
             vm.activeChannel = null;
 
             // Find the active friend
-            vm.friends.forEach(function (friend) {
+            vm.allFriends.forEach(function (friend) {
                 if (friend.username == username) {
                     vm.activeFriend = friend;
                 }
