@@ -48,6 +48,7 @@
 
         <!-- Options dropdown -->
         <div class="link-dropdown link-floating"
+             ng-style="{'min-width': '250px'}"
              ng-show="vm.actionBar.options.down">
 
             <!-- Social -->
@@ -103,6 +104,11 @@
                  ng-click="methods.showPopup($event, 'friendActionRemove', vm.activeFriend)">
                 <i class="fa fa-fw icons8-trash space-small-right"></i>
                 {{ 'chat_actionBar_options_user_remove' | translate }}
+            </div>
+
+            <!-- Include the common toggle btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.toggleLeftMenu.html'">
             </div>
         </div>
     </div>

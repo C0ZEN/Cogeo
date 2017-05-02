@@ -98,6 +98,16 @@ div.link-dropdown {
                 cursor           : default;
             }
         }
+        &.disabled {
+            cursor : not-allowed;
+            color  : @atom-color-line-rule;
+            &.active,
+            &:focus,
+            &:hover {
+                color  : @atom-color-line-rule;
+                cursor : not-allowed;
+            }
+        }
         &.link-dropdown-item-purple {
             &.active,
             &:focus,
@@ -143,6 +153,9 @@ div.link-dropdown {
         height           : 1px;
         width            : 100%;
         padding          : 0 @atom-space-base;
-        margin           : 0 auto;
+        margin           : 3px auto;
+    }
+    div.link-included {
+        width : 100%;
     }
 }

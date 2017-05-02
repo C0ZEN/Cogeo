@@ -32,6 +32,7 @@
             addToStarred    : addToStarred,
             hideChannels    : hideChannels,
             showChannels    : showChannels,
+            toggleChannels  : toggleChannels,
             onActionClick   : onActionClick,
             setActiveFriend : setActiveFriend
         };
@@ -168,7 +169,9 @@
 
         // Hide the channels and friends col
         function hideChannels($event) {
-            $event.stopPropagation();
+            if (!Methods.isNullOrEmpty($event)) {
+                $event.stopPropagation();
+            }
             if (vm.showChannels && !vm.showChannelsBlocked) {
                 vm.showChannels        = false;
                 var channels           = angular.element(document.querySelector('#chat-channels-container'));
@@ -182,7 +185,10 @@
         }
 
         // Show the channels and friends col
-        function showChannels() {
+        function showChannels($event) {
+            if (!Methods.isNullOrEmpty($event)) {
+                $event.stopPropagation();
+            }
             if (!vm.showChannels && !vm.showChannelsBlocked) {
                 vm.showChannels        = true;
                 var channels           = angular.element(document.querySelector('#chat-channels-container'));
@@ -193,6 +199,10 @@
                     vm.showChannelsBlocked = false;
                 });
             }
+        }
+
+        function toggleChannels($event) {
+            vm.showChannels ? vm.methods.hideChannels($event) : vm.methods.showChannels($event);
         }
 
         // When the user click on an option in the action bar
