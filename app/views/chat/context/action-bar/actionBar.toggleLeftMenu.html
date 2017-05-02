@@ -6,9 +6,8 @@
 
 <!-- Toggle left menu -->
 <div class="link-dropdown-item"
-     ng-class="[vm.showChannelsBlocked ? 'disabled' : '']"
      tabindex="0"
-     ng-click="!vm.showChannelsBlocked ? vm.methods.toggleChannels($event) : null">
+     ng-click="vm.methods.toggleChannels($event)">
     <i class="fa fa-fw space-small-right"
        ng-class="[vm.showChannels ? 'icons8-open-pane-filled' : 'icons8-close-pane-filled']">
     </i>

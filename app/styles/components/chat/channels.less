@@ -145,7 +145,7 @@ div.atom-chat div.chat-channels-container {
             justify-content : space-between;
             font-size       : @atom-font-h3;
             padding         : 1px @atom-chat-channels-container-padding;
-            > span {
+            span.name {
                 cursor        : pointer;
                 outline       : @atom-outline;
                 transition    : @atom-transition;
@@ -159,7 +159,7 @@ div.atom-chat div.chat-channels-container {
                 }
             }
             &.active {
-                > span {
+                span.name {
                     color : @atom-color-blue;
                     &:hover,
                     &:focus {
