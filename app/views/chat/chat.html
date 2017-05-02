@@ -10,6 +10,7 @@
 
     <!-- Channels -->
     <div class="chat-channels-container"
+         ng-class="{'hidePanelToLeft': !vm.showChannels}"
          id="chat-channels-container">
 
         <!-- Active group -->
@@ -39,6 +40,7 @@
 
     <!-- Col -->
     <div class="chat-col"
+         ng-class="{'hidePanelToLeft': !vm.showChannels}"
          id="chat-context-container">
 
         <!-- Context -->

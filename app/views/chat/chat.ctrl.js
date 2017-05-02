@@ -1,4 +1,4 @@
-(function (angular, document) {
+(function (angular) {
     'use strict';
 
     angular
@@ -11,16 +11,14 @@
         'userFactory',
         '$state',
         'channelsFactory',
-        '$animate',
         'goTo',
         '$rootScope',
         '$scope',
-        'cozenOnClickService',
-        'usersFactory'
+        'cozenOnClickService'
     ];
 
-    function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, $animate, goTo, $rootScope, $scope,
-                      cozenOnClickService, usersFactory) {
+    function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
+                      cozenOnClickService) {
         var vm = this;
 
         // Methods
@@ -174,10 +172,6 @@
             }
             if (vm.showChannels) {
                 vm.showChannels = false;
-                var channelCol  = angular.element(document.querySelector('#chat-channels-container'));
-                var contextCol  = angular.element(document.querySelector('#chat-context-container'));
-                $animate.addClass(channelCol, 'hidePanelToLeft');
-                $animate.addClass(contextCol, 'hidePanelToLeft');
             }
         }
 
@@ -188,10 +182,6 @@
             }
             if (!vm.showChannels) {
                 vm.showChannels = true;
-                var channelCol  = angular.element(document.querySelector('#chat-channels-container'));
-                var contextCol  = angular.element(document.querySelector('#chat-context-container'));
-                $animate.removeClass(channelCol, 'hidePanelToLeft');
-                $animate.removeClass(contextCol, 'hidePanelToLeft');
             }
         }
 
@@ -377,5 +367,5 @@
         }
     }
 
-})(window.angular, window.document);
+})(window.angular);
 
