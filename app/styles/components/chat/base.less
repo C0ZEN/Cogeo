@@ -41,4 +41,22 @@ div.atom-chat {
 
     .atom-chat-theme(channel, green);
     .atom-chat-theme(social, purple);
+
+    // Change the absolute position of elements if the user don't have groups
+    &.hidden-column-groups {
+        div.chat-channels-container {
+            left : 0;
+            &.hidePanelToLeft {
+                left : -@atom-chat-channels-container-width;
+            }
+        }
+        div.chat-col {
+            left  : @atom-chat-channels-container-width;
+            width : ~"calc(100% - @{atom-chat-channels-container-width})";
+            &.hidePanelToLeft {
+                left  : 0;
+                width : 100%;
+            }
+        }
+    }
 }

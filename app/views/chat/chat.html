@@ -1,5 +1,5 @@
 <div class="container-fluid atom-chat"
-     ng-class="vm.chatTheme"
+     ng-class="[vm.chatTheme, vm.hasGroup ? '' : 'hidden-column-groups']"
      ng-init="vm.methods.onInit();">
 
     <!-- Groups -->

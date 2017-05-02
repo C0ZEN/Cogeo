@@ -2253,6 +2253,20 @@ div.atom-chat.social-theme div.full-star.disabled:focus,
 div.atom-chat.social-theme div.empty-star.disabled:focus {
   color: #EBDEED;
 }
+div.atom-chat.hidden-column-groups div.chat-channels-container {
+  left: 0;
+}
+div.atom-chat.hidden-column-groups div.chat-channels-container.hidePanelToLeft {
+  left: -300px;
+}
+div.atom-chat.hidden-column-groups div.chat-col {
+  left: 300px;
+  width: calc(100% - 300px);
+}
+div.atom-chat.hidden-column-groups div.chat-col.hidePanelToLeft {
+  left: 0;
+  width: 100%;
+}
 div.atom-chat div.chat-channels-container {
   height: inherit;
   border-right: 1px solid #D6DBDB;
