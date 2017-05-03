@@ -14,11 +14,13 @@
         'goTo',
         '$rootScope',
         '$scope',
-        'cozenOnClickService'
+        'cozenOnClickService',
+        '$filter',
+        '$compile'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
-                      cozenOnClickService) {
+                      cozenOnClickService, $filter, $compile) {
         var vm = this;
 
         // Methods
@@ -355,9 +357,17 @@
                     content: '[Lien](http://www.geoffreytestelin.com/)',
                     edited : 0,
                     tag    : 'user'
+                },
+                {
+                    _id    : '18',
+                    sender : 'Nitbosmet',
+                    sent   : 1484571615,
+                    content: 'Ceci :smile: est une emoticon',
+                    edited : 0,
+                    tag    : 'user'
                 }
             ];
-            vm.chatTheme    = 'social-theme';
+            vm.chatTheme = 'social-theme';
             goTo.view('app.chat.user', {
                 username: username
             });
