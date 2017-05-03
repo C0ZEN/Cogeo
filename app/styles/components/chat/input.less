@@ -19,6 +19,12 @@ div.atom-chat div.chat-input-container {
             div.cozen-tooltip-default {
                 display : inline-grid;
                 width   : 100%;
+                textarea {
+                    max-height : 149px;
+                    &.overflow-textarea {
+                        overflow-y : auto; !important;
+                    }
+                }
             }
         }
     }

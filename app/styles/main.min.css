@@ -3062,6 +3062,9 @@ div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip
   display: inline-grid;
   width: 100%;
 }
+div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-default textarea {
+  max-height: 149px;
+}
 div.actions-list {
   display: -webkit-box;
   display: -ms-flexbox;
