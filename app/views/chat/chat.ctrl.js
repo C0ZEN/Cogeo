@@ -325,7 +325,7 @@
                     _id    : '13',
                     sender : 'C0ZEN',
                     sent   : 1484571615,
-                    content: 'Un texte avec le mot en ~~rayé~~',
+                    content: 'Un texte avec le mot en ~rayé~',
                     edited : 0,
                     tag    : 'user'
                 },

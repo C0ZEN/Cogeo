@@ -1370,6 +1370,9 @@ div.link-dropdown div.link-dropdown-item:last-of-type {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
+div.link-dropdown div.link-dropdown-item i {
+  color: #2C9FDD;
+}
 div.link-dropdown div.link-dropdown-item.active,
 div.link-dropdown div.link-dropdown-item:focus,
 div.link-dropdown div.link-dropdown-item:hover {
@@ -1427,20 +1430,32 @@ div.link-dropdown div.link-dropdown-item.disabled:hover {
   color: #D6DBDB;
   cursor: not-allowed;
 }
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-purple i {
+  color: #9C27B0;
+}
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-purple.active,
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-purple:focus,
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-purple:hover {
   color: #9C27B0;
+}
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-green i {
+  color: #4AC291;
 }
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-green.active,
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-green:focus,
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-green:hover {
   color: #4AC291;
 }
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-red i {
+  color: #E53935;
+}
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-red.active,
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-red:focus,
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-red:hover {
   color: #E53935;
+}
+div.link-dropdown div.link-dropdown-item.link-dropdown-item-yellow i {
+  color: #FEB909;
 }
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-yellow.active,
 div.link-dropdown div.link-dropdown-item.link-dropdown-item-yellow:focus,
@@ -3057,13 +3072,22 @@ div.atom-chat div.chat-input-container form.row cozen-textarea {
       -ms-flex: 1;
           flex: 1;
 }
+div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-html,
 div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-default {
   display: -ms-inline-grid;
   display: inline-grid;
   width: 100%;
 }
+div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-html textarea,
 div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-default textarea {
   max-height: 149px;
+}
+div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-html textarea.overflow-textarea,
+div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-default textarea.overflow-textarea {
+  overflow-y: auto !important;
+}
+.text-left-inner .tooltip-inner {
+  text-align: left;
 }
 div.actions-list {
   display: -webkit-box;
