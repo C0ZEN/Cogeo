@@ -3025,6 +3025,43 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   display: -ms-flexbox;
   display: flex;
 }
+div.atom-chat div.chat-input-container {
+  background-color: #F8F8F8;
+  border-top: 1px solid #D6DBDB;
+  width: 100%;
+  display: block;
+  padding: 12px;
+  z-index: 1;
+  margin-top: auto;
+}
+div.atom-chat div.chat-input-container form.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+div.atom-chat div.chat-input-container form.row cozen-textarea {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-default {
+  display: -ms-inline-grid;
+  display: inline-grid;
+  width: 100%;
+}
 div.actions-list {
   display: -webkit-box;
   display: -ms-flexbox;

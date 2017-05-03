@@ -142,6 +142,9 @@
             vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel._id);
             vm.activeMembers                  = channelsFactory.getActiveMembers(vm.activeGroup, channelId);
             vm.chatTheme                      = 'channel-theme';
+            vm.inputPlaceholder               = $filter('translate')('chat_newMessage_placeholder_channel', {
+                channelName: vm.activeChannel.name
+            });
             goTo.view('app.chat.channel', {
                 groupName  : vm.activeGroup,
                 channelName: channelName
@@ -217,13 +220,13 @@
                 }
             });
 
-            vm.friendStatus = {
+            vm.friendStatus     = {
                 id      : 'online',
                 name    : 'other_status_online',
                 selected: true,
                 color   : '#2ecc71'
             };
-            vm.messages     = [
+            vm.messages         = [
                 {
                     _id    : '1',
                     sender : 'C0ZEN',
@@ -367,7 +370,10 @@
                     tag    : 'user'
                 }
             ];
-            vm.chatTheme = 'social-theme';
+            vm.chatTheme        = 'social-theme';
+            vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
+                username: vm.activeFriend.alias || vm.activeFriend.username
+            });
             goTo.view('app.chat.user', {
                 username: username
             });

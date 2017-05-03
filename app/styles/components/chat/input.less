@@ -1,0 +1,25 @@
+div.atom-chat div.chat-input-container {
+    background-color : @atom-color-line-rule-light;
+    border-top       : 1px solid @atom-color-line-rule;
+    width            : 100%;
+    display          : block;
+    padding          : @atom-space-base;
+    z-index          : 1;
+    margin-top       : auto;
+    form.row {
+        display         : flex;
+        flex-direction  : row;
+        justify-content : space-between;
+        align-items     : center;
+        margin          : 0;
+        padding         : 0;
+        width           : 100%;
+        cozen-textarea {
+            flex : 1;
+            div.cozen-tooltip-default {
+                display : inline-grid;
+                width   : 100%;
+            }
+        }
+    }
+}
