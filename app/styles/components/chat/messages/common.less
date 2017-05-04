@@ -60,14 +60,19 @@ div.atom-chat div.chat-col {
                             }
                         }
                         div.image {
-                            margin        : 0;
                             border-radius : 5px;
+                            margin        : 0;
+                            display       : flex;
                             img {
+                                transition    : ease @atom-animation-duration-in-fast;
                                 margin        : 0 0 0 10px;
                                 border-radius : inherit;
                             }
                             &.hidden-height {
-                                
+                                img {
+                                    transition : ease @atom-animation-duration-in-fast;
+                                    height     : 0;
+                                }
                             }
                         }
                     }
