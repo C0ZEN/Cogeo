@@ -33,6 +33,7 @@
         <div class="image"
              ng-class="{'hidden-height': !message.expanded}">
             <img ng-src="{{ message.content.url }}"
+                 ng-click="message.expanded ? methods.showZoomImage($event, message.content) : null"
                  height="{{ message.content.height }}"
                  width="{{ message.content.width }}"
                  title="{{ message.content.name }}">

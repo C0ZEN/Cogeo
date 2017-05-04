@@ -58,6 +58,9 @@
                 // Default values (scope)
                 angular.isUndefined(attrs.accordionActionDisplay) ? scope.accordionActionDisplay = true : null;
                 angular.isUndefined(attrs.accordionActionExpanded) ? scope.accordionActionExpanded = true : null;
+                if (typeof scope.accordionActionExpanded != 'boolean') {
+                    scope.accordionActionExpanded = true;
+                }
 
                 // Init stuff
                 element.on('$destroy', methods.destroy);

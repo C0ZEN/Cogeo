@@ -50,7 +50,8 @@
             getKickBanFor    : getKickBanFor,
             getGroupPicture  : groupsFactory.getGroupPicture,
             getChannelPicture: channelsFactory.getChannelPicture,
-            generateUuid     : rfc4122.v4
+            generateUuid     : rfc4122.v4,
+            showZoomImage    : showZoomImage
         };
 
         function showPopup($event, name, data) {
@@ -67,6 +68,10 @@
 
         function getKickBanFor(forValue) {
             return $filter('translate')('other_kicked_reason_' + forValue);
+        }
+
+        function showZoomImage($event) {
+            $event.stopPropagation();
         }
     }
 

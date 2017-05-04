@@ -98,7 +98,8 @@
 .icons8-unlock:before,
 .icons8-user-groups:before,
 .icons8-user-male:before,
-.icons8-video-call:before {
+.icons8-video-call:before,
+.icons8-zoom-in:before {
   display: inline-block;
   font-family: "Atom";
   font-style: normal;
@@ -229,17 +230,20 @@
 .icons8-video-call:before {
   content: "\f109";
 }
+.icons8-zoom-in:before {
+  content: "\f13a";
+}
 @font-face {
   font-family: "Atom";
-  src: url("../../fonts/Atom_5a16fcbbd6c58f4a8dfe491aeea07dc0.eot");
-  src: url("../../fonts/Atom_5a16fcbbd6c58f4a8dfe491aeea07dc0.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_5a16fcbbd6c58f4a8dfe491aeea07dc0.woff2") format("woff2"), url("../../fonts/Atom_5a16fcbbd6c58f4a8dfe491aeea07dc0.woff") format("woff"), url("../../fonts/Atom_5a16fcbbd6c58f4a8dfe491aeea07dc0.ttf") format("truetype"), url("../../fonts/Atom_5a16fcbbd6c58f4a8dfe491aeea07dc0.svg#Atom") format("svg");
+  src: url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.eot");
+  src: url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.woff2") format("woff2"), url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.woff") format("woff"), url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.ttf") format("truetype"), url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.svg#Atom") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Atom";
-    src: url("../../fonts/Atom_5a16fcbbd6c58f4a8dfe491aeea07dc0.svg#Atom") format("svg");
+    src: url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.svg#Atom") format("svg");
   }
 }
 /*!
@@ -3114,6 +3118,8 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   transition: ease 300ms;
   margin: 0 0 0 10px;
   border-radius: inherit;
+  outline: none;
+  cursor: zoom-in;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body > div.image div.image.hidden-height img {
   -webkit-transition: ease 300ms;

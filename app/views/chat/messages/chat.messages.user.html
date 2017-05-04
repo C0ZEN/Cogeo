@@ -51,6 +51,11 @@
                  chat-action-on-click="goTo.view('app.chat.user', {username: message.sender})">
     </chat-action>
 
+    <!-- Zoom -->
+    <zoom-action zoom-action-display="message.category == 'image'"
+                 zoom-action-image="message.content">
+    </zoom-action>
+
     <!-- Accordion -->
     <accordion-action accordion-action-display="message.category == 'image'"
                       accordion-action-expanded="message.expanded">

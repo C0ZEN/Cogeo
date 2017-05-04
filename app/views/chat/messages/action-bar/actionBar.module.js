@@ -7,7 +7,8 @@
             '4pjtApp.actionBar.chat',
             '4pjtApp.actionBar.copy',
             '4pjtApp.actionBar.download',
-            '4pjtApp.actionBar.accordion'
+            '4pjtApp.actionBar.accordion',
+            '4pjtApp.actionBar.zoom'
         ]);
 
 })(window.angular);
