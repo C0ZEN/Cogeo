@@ -31,6 +31,8 @@
     "chat_actionBar_accordion_expanded": "Agrandir",
     "chat_actionBar_accordion_collapsed": "Réduire",
     "chat_actionBar_zoom": "Zoomé",
+    "chat_actionBar_options_toggleExpand_collapse": "Cacher les médias",
+    "chat_actionBar_options_toggleExpand_expand": "Afficher les médias",
     "chat_new_channel": "Nouveau channel",
     "chat_newMessage_placeholder": "Envoyé un message",
     "chat_newMessage_placeholder_channel": "Envoyé un message aux membres du channel {{channelName}}",

@@ -157,9 +157,20 @@
                 {{ 'chat_actionBar_options_all_channels' | translate }}
             </div>
 
+            <!-- Settings -->
+            <div class="link-dropdown-separator"></div>
+            <div class="link-dropdown-item link-dropdown-item-title">
+                {{ 'chat_actionBar_options_settings' | translate }}
+            </div>
+
             <!-- Include the common toggle btn -->
             <div class="link-included"
                  ng-include="'views/chat/context/action-bar/actionBar.toggleLeftMenu.html'">
+            </div>
+
+            <!-- Include the common expand/collapse btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.toggleExpand.html'">
             </div>
         </div>
     </div>

@@ -34,7 +34,8 @@
             showChannels    : showChannels,
             toggleChannels  : toggleChannels,
             onActionClick   : onActionClick,
-            setActiveFriend : setActiveFriend
+            setActiveFriend : setActiveFriend,
+            toggleExpand    : toggleExpand
         };
 
         // Common data
@@ -45,6 +46,7 @@
                 down: false
             }
         };
+        vm.expandAll = true;
 
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
@@ -434,6 +436,16 @@
             });
             $rootScope.$broadcast('setChatTheme', {
                 theme: vm.chatTheme
+            });
+        }
+
+        function toggleExpand($event) {
+            $event.stopPropagation();
+            vm.expandAll = !vm.expandAll;
+            vm.messages.forEach(function (message) {
+                if (Methods.hasOwnProperty(message, 'expanded')) {
+                    message.expanded = vm.expandAll;
+                }
             });
         }
     }
