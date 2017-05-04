@@ -73,6 +73,7 @@
             }
 
             function onClick($event) {
+                $event.stopPropagation();
                 cozenEnhancedLogs.info.functionCalled('downloadAction', 'onClick');
                 if (Methods.isFunction(scope.downloadActionOnClick)) {
                     scope.downloadActionOnClick();

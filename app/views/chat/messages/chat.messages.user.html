@@ -9,6 +9,7 @@
 
     <!-- Sender -->
     <div class="from">
+        <a ui-sref="app.groups.details({groupName: vm.groupName})"></a>
 
         <!-- Username -->
         <a href
@@ -49,6 +50,11 @@
     <chat-action chat-action-display="message.sender != vm.user.username && $state.current.name != 'app.chat.user'"
                  chat-action-on-click="goTo.view('app.chat.user', {username: message.sender})">
     </chat-action>
+
+    <!-- Accordion -->
+    <accordion-action accordion-action-display="message.category == 'image'"
+                      accordion-action-expanded="message.expanded">
+    </accordion-action>
 
     <!-- Download -->
     <download-action download-action-display="message.category == 'image'"
