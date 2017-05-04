@@ -36,9 +36,23 @@
 
 <!-- Action bar -->
 <div class="action-bar">
-    <answer-action answer-action-display="message.sender != vm.user.username"></answer-action>
-    <copy-action copy-action-message-id="'message-user-' + message._id"></copy-action>
+
+    <!-- Answer (quote) -->
+    <answer-action answer-action-display="message.sender != vm.user.username && message.category == 'text'"></answer-action>
+
+    <!-- Copy the text -->
+    <copy-action copy-action-message-id="'message-user-' + message._id"
+                 copy-action-display="message.category == 'text'">
+    </copy-action>
+
+    <!-- Talk with -->
     <chat-action chat-action-display="message.sender != vm.user.username && $state.current.name != 'app.chat.user'"
                  chat-action-on-click="goTo.view('app.chat.user', {username: message.sender})">
     </chat-action>
+
+    <!-- Download -->
+    <download-action download-action-display="message.category == 'image'"
+                     download-action-src="{{ message.content.url }}"
+                     download-action-name="{{ message.content.fullName }}">
+    </download-action>
 </div>

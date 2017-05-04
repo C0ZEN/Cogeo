@@ -15,12 +15,14 @@
         '$httpProvider',
         '$qProvider',
         'cfpLoadingBarProvider',
-        'CozenLazyLoadProvider'
+        'CozenLazyLoadProvider',
+        '$compileProvider'
     ];
 
     // Global configuration
     function config($locationProvider, $translateProvider, CONFIG, CozenThemesProvider, CozenConfigProvider,
-                    tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider) {
+                    tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider,
+                    $compileProvider) {
 
         // Override the CONFIG for the Atom theme
         CozenThemesProvider.setActiveTheme('atom');
@@ -78,6 +80,8 @@
         delete $httpProvider.defaults.headers.common["X-Requested-With"];
         $httpProvider.defaults.headers.common["Accept"]       = "application/json";
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
 
         // Avoid an error in the console when a deferred is rejected
         $qProvider.errorOnUnhandledRejections(false);

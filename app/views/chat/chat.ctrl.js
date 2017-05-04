@@ -395,28 +395,30 @@
                     sender  : 'Nitbosmet',
                     sent    : 1484571615,
                     content : {
-                        format: "jpg",
-                        height: 160,
-                        url   : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
-                        width : 160,
-                        name  : "Maxime",
-                        size  : '150KB'
+                        format  : "jpg",
+                        height  : 160,
+                        url     : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
+                        width   : 160,
+                        name    : "Maxime",
+                        fullName: 'Maxime.jpg',
+                        size    : '150KB'
                     },
                     edited  : 0,
                     tag     : 'user',
                     category: 'image'
                 },
                 {
-                    _id     : '19',
+                    _id     : '20',
                     sender  : 'fzefez',
                     sent    : 1484571615,
                     content : {
-                        format: "jpg",
-                        height: 160,
-                        url   : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
-                        width : 160,
-                        name  : "Maxime",
-                        size  : '150KB'
+                        format  : "jpg",
+                        height  : 160,
+                        url     : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
+                        width   : 160,
+                        name    : "Maxime",
+                        fullName: 'Maxime.jpg',
+                        size    : '150KB'
                     },
                     edited  : 0,
                     tag     : 'user',

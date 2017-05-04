@@ -11,8 +11,12 @@
  * @param {boolean}  downloadActionDisplay = true > Hide or show the action
  * @param {function} downloadActionOnClick        > Callback function called on click
  *
+ * [Attribute params]
+ * @param {string} downloadActionSrc  > Source of the file to download
+ * @param {string} downloadActionName > Name of the file to download
+ *
  */
-(function (angular) {
+(function (angular, window) {
     'use strict';
 
     angular
@@ -56,6 +60,10 @@
                 // Default values (scope)
                 angular.isUndefined(attrs.downloadActionDisplay) ? scope.downloadActionDisplay = true : null;
 
+                // Default values (attributes)
+                scope._downloadActionSrc  = angular.isDefined(attrs.downloadActionSrc) ? attrs.downloadActionSrc : '';
+                scope._downloadActionName = angular.isDefined(attrs.downloadActionName) ? attrs.downloadActionName : '';
+
                 // Init stuff
                 element.on('$destroy', methods.destroy);
             }
@@ -73,4 +81,4 @@
         }
     }
 
-})(window.angular);
+})(window.angular, window);
