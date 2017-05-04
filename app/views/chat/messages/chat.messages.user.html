@@ -31,10 +31,7 @@
     </div>
 
     <!-- Message content -->
-    <span class="message-body atom-markdown-container"
-          id="message-user-{{ message._id }}"
-          btf-markdown="message.content">
-    </span>
+    <div ng-include="'views/chat/messages/chat.messages.content.html'"></div>
 </div>
 
 <!-- Action bar -->

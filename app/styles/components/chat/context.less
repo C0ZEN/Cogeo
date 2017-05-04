@@ -62,25 +62,25 @@ div.atom-chat div.chat-col {
             }
         }
         div.user-description {
-            a.friend-name {
-                font-size      : 22px;
-                font-weight    : 500;
-                display        : inline-table;
-                vertical-align : middle;
-                margin         : 0;
-            }
-            p.friend-alias {
-                font-size      : 18px;
-                font-weight    : 400;
-                display        : inline-table;
-                vertical-align : bottom;
-                margin         : 0 0 0 @atom-space-small;
-            }
             div.line {
                 display         : flex;
                 flex-direction  : row;
                 justify-content : flex-start;
-                align-items     : center;
+                align-items     : baseline;
+                a.friend-name {
+                    font-size      : 22px;
+                    font-weight    : 500;
+                    display        : inline-table;
+                    vertical-align : bottom;
+                    margin         : 0;
+                }
+                p.friend-alias {
+                    font-size      : 18px;
+                    font-weight    : 400;
+                    display        : inline-table;
+                    vertical-align : bottom;
+                    margin         : 0 0 0 @atom-space-small;
+                }
                 div.vertical-separator {
                     height           : @atom-space-base;
                     width            : 1px;

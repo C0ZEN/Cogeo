@@ -1,0 +1,38 @@
+<div class="message-body atom-markdown-container"
+     id="message-user-{{ message._id }}"
+     ng-switch="message.category">
+
+    <!-- Text -->
+    <span ng-switch-when="text"
+          class="text"
+          btf-markdown="message.content">
+    </span>
+
+    <!-- Image -->
+    <div ng-switch-when="image"
+         class="image">
+
+        <!-- Vertical separator -->
+        <div class="vertical-separator"
+        ng-class="{'background-yellow': message.sender == vm.user.username}"></div>
+
+        <!-- Row 1 -->
+        <div class="row">
+
+            <!-- Name -->
+            <span class="name">{{ message.content.name }}</span>
+
+            <!-- Size-->
+            <span class="size">
+                {{ '(' + message.content.width + 'x' + message.content.height + ',' }}
+                {{ message.content.size + ')' }}
+            </span>
+        </div>
+
+        <!-- Image -->
+        <div class="image">
+            <img ng-src="{{ message.content.url }}"
+                 title="{{ message.content.name }}">
+        </div>
+    </div>
+</div>

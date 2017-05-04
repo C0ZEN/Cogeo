@@ -13,6 +13,61 @@ div.atom-chat div.chat-col {
                 @import (less) "user.less";
                 @import (less) "bot.less";
                 @import (less) "actionBar.less";
+
+                // Messages
+                div.message-body {
+
+                    // Text
+                    span.text {
+                        color       : @atom-color-font;
+                        font-weight : 400;
+                        font-size   : @atom-font-body;
+                    }
+
+                    // Image
+                    > div.image {
+                        display        : flex;
+                        flex-direction : column;
+                        align-items    : flex-start;
+                        position       : relative;
+                        margin         : 0 0 @atom-space-small 0;
+                        div.vertical-separator {
+                            position         : absolute;
+                            top              : 0;
+                            left             : 0;
+                            width            : 3px;
+                            height           : 100%;
+                            border-radius    : 3px;
+                            background-color : @atom-color-blue;
+                        }
+                        div.row {
+                            display         : flex;
+                            flex-direction  : row;
+                            justify-content : flex-start;
+                            align-items     : center;
+                            margin          : 0 0 0 10px;
+                            padding         : 0;
+                            span.name {
+                                color        : @atom-color-font;
+                                font-weight  : 400;
+                                font-size    : @atom-font-body;
+                                margin-right : @atom-space-small;
+                            }
+                            span.size {
+                                color       : @atom-color-label;
+                                font-weight : 400;
+                                font-size   : @atom-font-small;
+                            }
+                        }
+                        div.image {
+                            margin        : 0 0 0 10px;
+                            border-radius : 5px;
+                            img {
+                                border-radius : inherit;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

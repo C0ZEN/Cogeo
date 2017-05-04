@@ -115,28 +115,31 @@
             vm.messages                       = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
             vm.messages                       = [
                 {
-                    _id    : '1',
-                    sender : 'C0ZEN',
-                    sent   : 1484561615,
-                    content: '###Yolo\nça boum ?',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '1',
+                    sender  : 'C0ZEN',
+                    sent    : 1484561615,
+                    content : '###Yolo\nça boum ?',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '2',
-                    sender : 'Marco',
-                    sent   : 1484562715,
-                    content: 'Hello, ça va ?!?',
-                    edited : 1484562915,
-                    tag    : 'user'
+                    _id     : '2',
+                    sender  : 'Marco',
+                    sent    : 1484562715,
+                    content : 'Hello, ça va ?!?',
+                    edited  : 1484562915,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '17',
-                    sender : 'Pioth',
-                    sent   : 1484571615,
-                    content: '[Lien](http://www.geoffreytestelin.com/)',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '17',
+                    sender  : 'Pioth',
+                    sent    : 1484571615,
+                    content : '[Lien](http://www.geoffreytestelin.com/)',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 }
             ];
             vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel._id);
@@ -228,146 +231,196 @@
             };
             vm.messages         = [
                 {
-                    _id    : '1',
-                    sender : 'C0ZEN',
-                    sent   : 1484561615,
-                    content: '###Yolo\nça boum ?',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '1',
+                    sender  : 'C0ZEN',
+                    sent    : 1484561615,
+                    content : '###Yolo\nça boum ?',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '2',
-                    sender : 'Marco',
-                    sent   : 1484562715,
-                    content: 'Hello, ça va ?!?',
-                    edited : 1484562915,
-                    tag    : 'user'
+                    _id     : '2',
+                    sender  : 'Marco',
+                    sent    : 1484562715,
+                    content : 'Hello, ça va ?!?',
+                    edited  : 1484562915,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '3',
-                    sender : 'Spamobot',
-                    sent   : 1484562715,
-                    content: 'Bienvenu !',
-                    tag    : 'bot'
+                    _id     : '3',
+                    sender  : 'Spamobot',
+                    sent    : 1484562715,
+                    content : 'Bienvenu !',
+                    tag     : 'bot',
+                    category: 'text'
                 },
                 {
-                    _id    : '4',
-                    sender : 'Friendybot',
-                    sent   : 1484562715,
-                    content: 'Yo !',
-                    tag    : 'bot'
+                    _id     : '4',
+                    sender  : 'Friendybot',
+                    sent    : 1484562715,
+                    content : 'Yo !',
+                    tag     : 'bot',
+                    category: 'text'
                 },
                 {
-                    _id    : '5',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '*Yo*',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '5',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '*Yo*',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '6',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '#Titre 1',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '6',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '#Titre 1',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '7',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '##Titre 2',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '7',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '##Titre 2',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '8',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '###Titre 3',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '8',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '###Titre 3',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '9',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '####Titre 4',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '9',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '####Titre 4',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '10',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: 'Un texte avec le mot en *italique*',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '10',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : 'Un texte avec le mot en *italique*',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '11',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: 'Un texte avec le mot en **gras**',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '11',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : 'Un texte avec le mot en **gras**',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '12',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '#Titre 1     Bonjour les *amis* !',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '12',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '#Titre 1     Bonjour les *amis* !',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '13',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: 'Un texte avec le mot en ~rayé~',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '13',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : 'Un texte avec le mot en ~rayé~',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '14',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '#####Titre 5',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '14',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '#####Titre 5',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '15',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '######Titre 6',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '15',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '######Titre 6',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '16',
-                    sender : 'C0ZEN',
-                    sent   : 1484571615,
-                    content: '[Lien](http://www.geoffreytestelin.com/)',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '16',
+                    sender  : 'C0ZEN',
+                    sent    : 1484571615,
+                    content : '[Lien](http://www.geoffreytestelin.com/)',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '17',
-                    sender : 'Nitbosmet',
-                    sent   : 1484571615,
-                    content: '[Lien](http://www.geoffreytestelin.com/)',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '17',
+                    sender  : 'Nitbosmet',
+                    sent    : 1484571615,
+                    content : '[Lien](http://www.geoffreytestelin.com/)',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
                 },
                 {
-                    _id    : '18',
-                    sender : 'Nitbosmet',
-                    sent   : 1484571615,
-                    content: 'Ceci :smile: est une emoticon',
-                    edited : 0,
-                    tag    : 'user'
+                    _id     : '18',
+                    sender  : 'Nitbosmet',
+                    sent    : 1484571615,
+                    content : 'Ceci :smile: est une emoticon',
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'text'
+                },
+                {
+                    _id     : '19',
+                    sender  : 'Nitbosmet',
+                    sent    : 1484571615,
+                    content : {
+                        format: "jpg",
+                        height: 160,
+                        url   : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
+                        width : 160,
+                        name  : "Maxime",
+                        size  : '150KB'
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'image'
+                },
+                {
+                    _id     : '19',
+                    sender  : 'fzefez',
+                    sent    : 1484571615,
+                    content : {
+                        format: "jpg",
+                        height: 160,
+                        url   : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
+                        width : 160,
+                        name  : "Maxime",
+                        size  : '150KB'
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'image'
                 }
             ];
             vm.chatTheme        = 'social-theme';

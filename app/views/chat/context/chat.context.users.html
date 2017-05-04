@@ -1,19 +1,21 @@
 <div class="user-description">
 
     <!-- Current user -->
-    <a href
-       ui-sref="app.profiles.user({username: vm.activeFriend.username})"
-       ng-click="goTo.view('app.profiles.user', {username: vm.activeFriend.username})"
-       class="friend-name hover-link animated fadeInDown">
-        {{ vm.activeFriend.givenName }}
-        {{ vm.activeFriend.surname }}
-        @{{ vm.activeFriend.username }}
-    </a>
-    <p class="friend-alias animated fadeInDown"
-       ng-show="vm.activeFriend.alias != ''">
-        {{ 'chat_alias' | translate }}
-        {{ vm.activeFriend.alias }}
-    </p>
+    <div class="line">
+        <a href
+           ui-sref="app.profiles.user({username: vm.activeFriend.username})"
+           ng-click="goTo.view('app.profiles.user', {username: vm.activeFriend.username})"
+           class="friend-name hover-link animated fadeInDown">
+            {{ vm.activeFriend.givenName }}
+            {{ vm.activeFriend.surname }}
+            @{{ vm.activeFriend.username }}
+        </a>
+        <p class="friend-alias animated fadeInDown"
+           ng-show="vm.activeFriend.alias != ''">
+            {{ 'chat_alias' | translate }}
+            {{ vm.activeFriend.alias }}
+        </p>
+    </div>
 
     <!-- Other info -->
     <div class="line">

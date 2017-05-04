@@ -1064,16 +1064,16 @@ i.atom-icon-btn.purple:hover {
   background-color: #2C9FDD;
 }
 .background-green {
-  background-color: #4AC291;
+  background-color: #4AC291 !important;
 }
 .background-purple {
-  background-color: #9C27B0;
+  background-color: #9C27B0 !important;
 }
 .background-yellow {
-  background-color: #FEB909;
+  background-color: #FEB909 !important;
 }
 .background-grey-light {
-  background-color: #F8F8F8;
+  background-color: #F8F8F8 !important;
 }
 .background-blue-flat {
   background-color: #3498DB;
@@ -2074,14 +2074,14 @@ div.atom-chat.channel-theme div.chat-col div.chat-context-container div.channel-
 div.atom-chat.channel-theme div.chat-col div.chat-context-container div.channel-description div.line span.description {
   color: #E2E9E6;
 }
-div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description a.friend-name {
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description div.line a.friend-name {
   color: #E4E7E6;
 }
-div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description a.friend-name:hover,
-div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description a.friend-name:focus {
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description div.line a.friend-name:hover,
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description div.line a.friend-name:focus {
   color: #BFD9CF;
 }
-div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description p.friend-alias {
+div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description div.line p.friend-alias {
   color: #BFD9CF;
 }
 div.atom-chat.channel-theme div.chat-col div.chat-context-container div.user-description div.line span.status {
@@ -2232,14 +2232,14 @@ div.atom-chat.social-theme div.chat-col div.chat-context-container div.channel-d
 div.atom-chat.social-theme div.chat-col div.chat-context-container div.channel-description div.line span.description {
   color: #EBDEED;
 }
-div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description a.friend-name {
+div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description div.line a.friend-name {
   color: #F5EFF6;
 }
-div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description a.friend-name:hover,
-div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description a.friend-name:focus {
+div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description div.line a.friend-name:hover,
+div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description div.line a.friend-name:focus {
   color: #D7BDDB;
 }
-div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description p.friend-alias {
+div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description div.line p.friend-alias {
   color: #D7BDDB;
 }
 div.atom-chat.social-theme div.chat-col div.chat-context-container div.user-description div.line span.status {
@@ -2704,20 +2704,6 @@ div.atom-chat div.chat-col div.chat-context-container div.channel-description di
   white-space: nowrap;
   overflow: hidden;
 }
-div.atom-chat div.chat-col div.chat-context-container div.user-description a.friend-name {
-  font-size: 22px;
-  font-weight: 500;
-  display: inline-table;
-  vertical-align: middle;
-  margin: 0;
-}
-div.atom-chat div.chat-col div.chat-context-container div.user-description p.friend-alias {
-  font-size: 18px;
-  font-weight: 400;
-  display: inline-table;
-  vertical-align: bottom;
-  margin: 0 0 0 6px;
-}
 div.atom-chat div.chat-col div.chat-context-container div.user-description div.line {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2729,9 +2715,23 @@ div.atom-chat div.chat-col div.chat-context-container div.user-description div.l
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+div.atom-chat div.chat-col div.chat-context-container div.user-description div.line a.friend-name {
+  font-size: 22px;
+  font-weight: 500;
+  display: inline-table;
+  vertical-align: bottom;
+  margin: 0;
+}
+div.atom-chat div.chat-col div.chat-context-container div.user-description div.line p.friend-alias {
+  font-size: 18px;
+  font-weight: 400;
+  display: inline-table;
+  vertical-align: bottom;
+  margin: 0 0 0 6px;
 }
 div.atom-chat div.chat-col div.chat-context-container div.user-description div.line div.vertical-separator {
   height: 12px;
@@ -2908,11 +2908,6 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   font-weight: 400;
   font-size: 14px;
 }
-div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content span.message-body {
-  color: #4C596B;
-  font-weight: 400;
-  font-size: 14px;
-}
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user:hover {
   background-color: #F8F8F8;
 }
@@ -3039,6 +3034,69 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body span.text {
+  color: #4C596B;
+  font-weight: 400;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body > div.image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  position: relative;
+  margin: 0 0 6px 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body > div.image div.vertical-separator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  border-radius: 3px;
+  background-color: #2C9FDD;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body > div.image div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 0 10px;
+  padding: 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body > div.image div.row span.name {
+  color: #4C596B;
+  font-weight: 400;
+  font-size: 14px;
+  margin-right: 6px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body > div.image div.row span.size {
+  color: #8C8C8C;
+  font-weight: 400;
+  font-size: 12px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body > div.image div.image {
+  margin: 0 0 0 10px;
+  border-radius: 5px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body > div.image div.image img {
+  border-radius: inherit;
 }
 div.atom-chat div.chat-input-container {
   background-color: #F8F8F8;
