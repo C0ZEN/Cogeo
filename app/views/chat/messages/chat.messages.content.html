@@ -14,7 +14,7 @@
 
         <!-- Vertical separator -->
         <div class="vertical-separator"
-        ng-class="{'background-yellow': message.sender == vm.user.username}"></div>
+             ng-class="{'background-yellow': message.sender == vm.user.username}"></div>
 
         <!-- Row 1 -->
         <div class="row">
@@ -30,8 +30,11 @@
         </div>
 
         <!-- Image -->
-        <div class="image">
+        <div class="image"
+             ng-class="{'hidden-height': !message.expanded}">
             <img ng-src="{{ message.content.url }}"
+                 height="{{ message.content.height }}"
+                 width="{{ message.content.width }}"
                  title="{{ message.content.name }}">
         </div>
     </div>

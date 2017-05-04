@@ -149,6 +149,14 @@
                 {{ 'chat_actionBar_options_logs' | translate }}
             </div>
 
+            <!-- All channels -->
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.all', {groupName: vm.activeGroup})">
+                <i class="fa fa-fw fa-th-list space-small-right"></i>
+                {{ 'chat_actionBar_options_all_channels' | translate }}
+            </div>
+
             <!-- Include the common toggle btn -->
             <div class="link-included"
                  ng-include="'views/chat/context/action-bar/actionBar.toggleLeftMenu.html'">
