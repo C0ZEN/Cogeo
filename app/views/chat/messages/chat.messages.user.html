@@ -67,4 +67,9 @@
                      download-action-src="{{ message.content.url }}"
                      download-action-name="{{ message.content.fullName }}">
     </download-action>
+
+    <!-- Remove -->
+    <remove-action remove-action-display="message.sender == vm.user.username"
+                   remove-action-message="message">
+    </remove-action>
 </div>

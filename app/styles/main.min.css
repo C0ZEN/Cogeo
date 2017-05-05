@@ -3054,6 +3054,10 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   border: 1px solid #9C27B0;
   color: #9C27B0;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.action-bar div.action:hover.red-hover {
+  border: 1px solid #E53935;
+  color: #E53935;
+}
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.action-bar div.action.download-action a.download-link {
   color: inherit;
 }
