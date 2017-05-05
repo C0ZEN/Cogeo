@@ -1,10 +1,17 @@
 <!-- Group name -->
-<a href
+<a ng-show="vm.activeGroup != null && vm.activeGroup != ''"
+   href
    ui-sref="app.groups.details({groupName: vm.activeGroup})"
    ng-click="goTo.view('app.groups.details', {groupName: vm.activeGroup})"
    class="group-name hover-link animated fadeInRight">
     {{ vm.activeGroup }}
 </a>
+
+<!-- Hello -->
+<p ng-show="vm.activeGroup == null || vm.activeGroup == ''"
+   class="hello animated fadeInRight">
+    {{ 'chat_hello' | translate }}
+</p>
 
 <!-- Current user -->
 <div class="user-profile">

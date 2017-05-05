@@ -2013,6 +2013,9 @@ div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group a.
 div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group a.group-name:focus {
   color: #FEC534;
 }
+div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group p.hello {
+  color: #E4E7E6;
+}
 div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group div.close-btn:hover,
 div.atom-chat.channel-theme div.chat-channels-container div.chat-active-group div.close-btn:focus {
   color: #BFD9CF;
@@ -2170,6 +2173,9 @@ div.atom-chat.social-theme div.chat-channels-container div.chat-active-group a.g
 div.atom-chat.social-theme div.chat-channels-container div.chat-active-group a.group-name:hover,
 div.atom-chat.social-theme div.chat-channels-container div.chat-active-group a.group-name:focus {
   color: #FEC534;
+}
+div.atom-chat.social-theme div.chat-channels-container div.chat-active-group p.hello {
+  color: #F5EFF6;
 }
 div.atom-chat.social-theme div.chat-channels-container div.chat-active-group div.close-btn:hover,
 div.atom-chat.social-theme div.chat-channels-container div.chat-active-group div.close-btn:focus {
@@ -2339,6 +2345,12 @@ div.atom-chat div.chat-channels-container div.chat-active-group {
   position: relative;
 }
 div.atom-chat div.chat-channels-container div.chat-active-group a.group-name {
+  font-size: 22px;
+  font-weight: 500;
+  display: inline-table;
+}
+div.atom-chat div.chat-channels-container div.chat-active-group p.hello {
+  margin: 0;
   font-size: 22px;
   font-weight: 500;
   display: inline-table;
