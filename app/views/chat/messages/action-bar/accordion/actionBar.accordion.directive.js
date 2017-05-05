@@ -22,10 +22,11 @@
 
     accordionAction.$inject = [
         'CONFIG',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        '$timeout'
     ];
 
-    function accordionAction(CONFIG, cozenEnhancedLogs) {
+    function accordionAction(CONFIG, cozenEnhancedLogs, $timeout) {
         return {
             link       : link,
             restrict   : 'E',
@@ -74,9 +75,13 @@
                 $event.stopPropagation();
                 cozenEnhancedLogs.info.functionCalled('accordionAction', 'onClick');
                 scope.accordionActionExpanded = !scope.accordionActionExpanded;
-                if (Methods.isFunction(scope.accordionActionOnClick)) {
-                    scope.accordionActionOnClick();
-                }
+                $timeout(function () {
+                    if (Methods.isFunction(scope.accordionActionOnClick)) {
+                        scope.accordionActionOnClick({
+                            expanded: scope.accordionActionExpanded
+                        });
+                    }
+                });
             }
         }
     }

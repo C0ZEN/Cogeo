@@ -25,17 +25,18 @@
 
         // Methods
         vm.methods = {
-            onInit          : onInit,
-            setActiveGroup  : setActiveGroup,
-            setActiveChannel: setActiveChannel,
-            removeToStarred : removeToStarred,
-            addToStarred    : addToStarred,
-            hideChannels    : hideChannels,
-            showChannels    : showChannels,
-            toggleChannels  : toggleChannels,
-            onActionClick   : onActionClick,
-            setActiveFriend : setActiveFriend,
-            toggleExpand    : toggleExpand
+            onInit                : onInit,
+            setActiveGroup        : setActiveGroup,
+            setActiveChannel      : setActiveChannel,
+            removeToStarred       : removeToStarred,
+            addToStarred          : addToStarred,
+            hideChannels          : hideChannels,
+            showChannels          : showChannels,
+            toggleChannels        : toggleChannels,
+            onActionClick         : onActionClick,
+            setActiveFriend       : setActiveFriend,
+            toggleExpand          : toggleExpand,
+            onToggleSingleExpanded: onToggleSingleExpanded
         };
 
         // Common data
@@ -447,6 +448,26 @@
                     message.expanded = vm.expandAll;
                 }
             });
+        }
+
+        function onToggleSingleExpanded() {
+            var isFirst = true, firstExpanded = vm.expandAll, equals = true;
+            vm.messages.forEach(function (message) {
+                if (Methods.hasOwnProperty(message, 'expanded') && message.category == 'image') {
+                    if (isFirst) {
+                        isFirst       = false;
+                        firstExpanded = message.expanded;
+                    }
+                    else {
+                        if (firstExpanded != message.expanded) {
+                            equals = false;
+                        }
+                    }
+                }
+            });
+            if (equals) {
+                vm.expandAll = firstExpanded;
+            }
         }
     }
 
