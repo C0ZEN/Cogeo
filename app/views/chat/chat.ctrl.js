@@ -16,11 +16,11 @@
         '$scope',
         'cozenOnClickService',
         '$filter',
-        '$compile'
+        'botFactory'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
-                      cozenOnClickService, $filter, $compile) {
+                      cozenOnClickService, $filter, botFactory) {
         var vm = this;
 
         // Methods
@@ -72,6 +72,12 @@
             vm.hasGroup       = vm.groups.length > 0;
             vm.methods.showChannels();
             vm.status = userFactory.getStatus();
+
+            // Add bots as friend
+            var bots      = botFactory.getBotFriends();
+            vm.friends    = vm.friends.concat(bots);
+            vm.allFriends = vm.allFriends.concat(bots);
+
             if (vm.hasGroup) {
 
                 // Set default active group

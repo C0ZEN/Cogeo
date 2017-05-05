@@ -28,9 +28,10 @@
 
         // Public functions
         return {
-            getBots     : getBots,
-            getBotById  : getBotById,
-            getBotByName: getBotByName
+            getBots      : getBots,
+            getBotById   : getBotById,
+            getBotByName : getBotByName,
+            getBotFriends: getBotFriends
         };
 
         // Return the bots
@@ -56,6 +57,29 @@
                 }
             }
             return null;
+        }
+
+        function getBotFriends() {
+            return [
+                {
+                    blocked  : 0,
+                    date     : 0,
+                    givenName: "",
+                    removed  : 0,
+                    surname  : "",
+                    username : "Friendybot",
+                    alias    : ""
+                },
+                {
+                    blocked  : 0,
+                    date     : 0,
+                    givenName: "",
+                    removed  : 0,
+                    surname  : "",
+                    username : "Spamobot",
+                    alias    : ""
+                }
+            ]
         }
     }
 
