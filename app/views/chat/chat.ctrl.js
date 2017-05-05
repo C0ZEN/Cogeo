@@ -36,7 +36,9 @@
             onActionClick         : onActionClick,
             setActiveFriend       : setActiveFriend,
             toggleExpand          : toggleExpand,
-            onToggleSingleExpanded: onToggleSingleExpanded
+            onToggleSingleExpanded: onToggleSingleExpanded,
+            isMedia               : isMedia,
+            calcMediaLength       : calcMediaLength
         };
 
         // Common data
@@ -113,10 +115,10 @@
 
         // Called when the user click on a new channel
         function setActiveChannel(channelName, channelId) {
-            vm.activeChannel                  = groupsFactory.getChannelById(vm.activeGroup, channelId);
-            vm.activeChannel                  = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
-            vm.messages                       = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
-            vm.messages                       = [
+            vm.activeChannel = groupsFactory.getChannelById(vm.activeGroup, channelId);
+            vm.activeChannel = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
+            vm.messages      = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
+            vm.messages      = [
                 {
                     _id     : '1',
                     sender  : 'C0ZEN',
@@ -145,6 +147,7 @@
                     category: 'text'
                 }
             ];
+            vm.methods.calcMediaLength(vm.messages);
             vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel._id);
             vm.activeMembers                  = channelsFactory.getActiveMembers(vm.activeGroup, channelId);
             vm.chatTheme                      = 'channel-theme';
@@ -226,13 +229,13 @@
                 }
             });
 
-            vm.friendStatus     = {
+            vm.friendStatus = {
                 id      : 'online',
                 name    : 'other_status_online',
                 selected: true,
                 color   : '#2ecc71'
             };
-            vm.messages         = [
+            vm.messages     = [
                 {
                     _id     : '1',
                     sender  : 'C0ZEN',
@@ -428,6 +431,7 @@
                     category: 'image'
                 }
             ];
+            vm.methods.calcMediaLength(vm.messages);
             vm.chatTheme        = 'social-theme';
             vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
                 username: vm.activeFriend.alias || vm.activeFriend.username
@@ -453,7 +457,7 @@
         function onToggleSingleExpanded() {
             var isFirst = true, firstExpanded = vm.expandAll, equals = true;
             vm.messages.forEach(function (message) {
-                if (Methods.hasOwnProperty(message, 'expanded') && message.category == 'image') {
+                if (Methods.hasOwnProperty(message, 'expanded') && vm.methods.isMedia(message)) {
                     if (isFirst) {
                         isFirst       = false;
                         firstExpanded = message.expanded;
@@ -468,6 +472,21 @@
             if (equals) {
                 vm.expandAll = firstExpanded;
             }
+        }
+
+        function isMedia(message) {
+            return message.category == 'image';
+        }
+
+        function calcMediaLength(messages) {
+            var media = 0;
+            messages.forEach(function (message) {
+                message.expanded = vm.expandAll;
+                if (vm.methods.isMedia(message)) {
+                    media++;
+                }
+            });
+            vm.mediaLength = media;
         }
     }
 

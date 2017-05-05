@@ -57,13 +57,13 @@
     </zoom-action>
 
     <!-- Accordion -->
-    <accordion-action accordion-action-display="message.category == 'image'"
+    <accordion-action accordion-action-display="vm.methods.isMedia(message)"
                       accordion-action-expanded="message.expanded"
                       accordion-action-on-click="vm.methods.onToggleSingleExpanded()">
     </accordion-action>
 
     <!-- Download -->
-    <download-action download-action-display="message.category == 'image'"
+    <download-action download-action-display="vm.methods.isMedia(message)"
                      download-action-src="{{ message.content.url }}"
                      download-action-name="{{ message.content.fullName }}">
     </download-action>
