@@ -3148,6 +3148,57 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   transition: ease 300ms;
   height: 0;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.pdf {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: 1px solid #D6DBDB;
+  min-width: 320px;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  margin: 0 0 6px 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.pdf div.img {
+  margin: 0 6px 0 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.pdf div.img img {
+  height: 37px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.pdf div.column-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 0 0 0 6px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.pdf div.column-block span.name {
+  color: #4C596B;
+  font-weight: 600;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.pdf div.column-block span.size {
+  color: #8C8C8C;
+  font-weight: 400;
+  font-size: 12px;
+}
 div.atom-chat div.chat-input-container {
   background-color: #F8F8F8;
   border-top: 1px solid #D6DBDB;

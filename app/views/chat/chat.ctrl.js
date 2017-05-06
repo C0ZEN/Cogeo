@@ -454,6 +454,19 @@
                     edited  : 0,
                     tag     : 'user',
                     category: 'image'
+                },
+                {
+                    _id     : '21',
+                    sender  : 'fzefez',
+                    sent    : 1484571615,
+                    content : {
+                        url : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
+                        name: "Mes achats",
+                        size: '160KB'
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'pdf'
                 }
             ];
             vm.methods.calcMediaLength(vm.messages);

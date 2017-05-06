@@ -39,4 +39,24 @@
                  title="{{ message.content.name }}">
         </div>
     </div>
+
+    <!-- Pdf -->
+    <div ng-switch-when="pdf"
+         class="pdf">
+
+        <!-- Img -->
+        <div class="img">
+            <img ng-src="images/chat/PDF-100.png">
+        </div>
+
+        <!-- Multiple lines block -->
+        <div class="column-block">
+
+            <!-- Name -->
+            <span class="name">{{ message.content.name }}</span>
+
+            <!-- Size -->
+            <span class="size">{{ message.content.size }}</span>
+        </div>
+    </div>
 </div>

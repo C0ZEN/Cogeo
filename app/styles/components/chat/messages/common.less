@@ -78,6 +78,43 @@ div.atom-chat div.chat-col {
                             }
                         }
                     }
+
+                    // Pdf
+                    div.pdf {
+                        display          : flex;
+                        flex-direction   : row;
+                        justify-content  : flex-start;
+                        align-items      : center;
+                        padding          : @atom-space-small @atom-space-base;
+                        border-radius    : 5px;
+                        border           : 1px solid @atom-color-line-rule;
+                        min-width        : 320px;
+                        background-color : @atom-color-white;
+                        box-sizing       : border-box;
+                        margin           : 0 0 @atom-space-small 0;
+                        div.img {
+                            margin : 0 @atom-space-small 0 0;
+                            img {
+                                height : 37px;
+                            }
+                        }
+                        div.column-block {
+                            display        : flex;
+                            flex-direction : column;
+                            align-items    : flex-start;
+                            margin         : 0 0 0 @atom-space-small;
+                            span.name {
+                                color       : @atom-color-font;
+                                font-weight : 600;
+                                font-size   : @atom-font-body;
+                            }
+                            span.size {
+                                color       : @atom-color-label;
+                                font-weight : 400;
+                                font-size   : @atom-font-small;
+                            }
+                        }
+                    }
                 }
             }
         }
