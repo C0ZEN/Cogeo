@@ -78,6 +78,24 @@
             vm.friends    = vm.friends.concat(bots);
             vm.allFriends = vm.allFriends.concat(bots);
 
+            // Add status to friends
+            vm.friends.forEach(function (friend) {
+                friend.status = {
+                    id      : 'online',
+                    name    : 'other_status_online',
+                    selected: true,
+                    color   : '#2ecc71'
+                };
+            });
+            vm.blockedFriends.forEach(function (friend) {
+                friend.status = {
+                    id      : 'online',
+                    name    : 'other_status_online',
+                    selected: true,
+                    color   : '#2ecc71'
+                };
+            });
+
             if (vm.hasGroup) {
 
                 // Set default active group

@@ -148,7 +148,7 @@ div.atom-chat div.chat-channels-container {
             transition      : @atom-transition;
             display         : flex;
             flex-direction  : row;
-            justify-content : space-between;
+            justify-content : flex-start;
             font-size       : @atom-font-h3;
             padding         : 1px @atom-chat-channels-container-padding;
             span.name {
@@ -159,6 +159,7 @@ div.atom-chat div.chat-channels-container {
                 white-space   : nowrap;
                 overflow      : hidden;
                 font-size     : inherit;
+                margin        : 0 0 0 @atom-space-small;
                 &:hover,
                 &:focus {
                     color : @atom-color-blue;

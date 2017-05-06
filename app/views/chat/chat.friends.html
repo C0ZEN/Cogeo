@@ -28,6 +28,14 @@
      ng-mouseleave="friend.onHoverFriend = false"
      class="chat-friend">
 
+    <!-- Status -->
+    <cozen-tooltip cozen-tooltip-label="friend.status.name"
+                   cozen-tooltip-placement="auto top">
+        <div class="atom-status-icon animated zoomIn"
+             ng-style="{'background-color': friend.status.color}">
+        </div>
+    </cozen-tooltip>
+
     <!-- Name -->
     <span class="name"
           ng-click="vm.methods.setActiveFriend(friend.username)">
@@ -86,6 +94,14 @@
      ng-mouseenter="friend.onHoverFriend = true"
      ng-mouseleave="friend.onHoverFriend = false"
      class="chat-friend">
+
+    <!-- Status -->
+    <cozen-tooltip cozen-tooltip-label="friend.status.name"
+                   cozen-tooltip-placement="auto top">
+        <div class="atom-status-icon animated zoomIn"
+             ng-style="{'background-color': friend.status.color}">
+        </div>
+    </cozen-tooltip>
 
     <!-- Name -->
     <span class="name"
