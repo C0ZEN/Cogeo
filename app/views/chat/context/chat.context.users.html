@@ -1,20 +1,31 @@
 <div class="user-description">
 
     <!-- Current user -->
-    <div class="line">
+    <div ng-show="!botFactory.isBot(vm.activeFriend.username)"
+         class="line">
         <a href
            ui-sref="app.profiles.user({username: vm.activeFriend.username})"
            ng-click="goTo.view('app.profiles.user', {username: vm.activeFriend.username})"
            class="friend-name hover-link animated fadeInDown">
             {{ vm.activeFriend.givenName }}
             {{ vm.activeFriend.surname }}
-            {{(botFactory.isBot(vm.activeFriend.username) ? '' : '@') + vm.activeFriend.username }}
+            {{ '@' + vm.activeFriend.username }}
         </a>
         <p class="friend-alias animated fadeInDown"
            ng-show="vm.activeFriend.alias != ''">
             {{ 'chat_alias' | translate }}
             {{ vm.activeFriend.alias }}
         </p>
+    </div>
+
+    <!-- Current user (bot) -->
+    <div ng-show="botFactory.isBot(vm.activeFriend.username)"
+         class="line">
+        <a href
+           ng-click="methods.showPopup($event, 'botProfile' + vm.activeFriend.username, {})"
+           class="friend-name hover-link animated fadeInDown">
+            {{ vm.activeFriend.username }}
+        </a>
     </div>
 
     <!-- Other info -->
