@@ -6,7 +6,7 @@ div.atom-chat div.chat-col {
     position       : absolute;
     top            : 0;
     left           : @atom-chat-groups-container-width + @atom-chat-channels-container-width;
-    transition     : left ease @atom-animation-duration-in, width ease @atom-animation-duration-in;;
+    transition     : left @atom-animation-duration-in ease, width @atom-animation-duration-in ease;
     &.hidePanelToLeft {
         left  : @atom-chat-groups-container-width;
         width : ~"calc(100% - @{atom-chat-groups-container-width})";

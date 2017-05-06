@@ -3,60 +3,17 @@
      ng-switch="message.category">
 
     <!-- Text -->
-    <span ng-switch-when="text"
-          class="text"
-          btf-markdown="message.content">
-    </span>
+    <div ng-switch-when="text">
+        <div ng-include="'views/chat/messages/categories/chat.category.text.html'"></div>
+    </div>
 
     <!-- Image -->
-    <div ng-switch-when="image"
-         class="image">
-
-        <!-- Vertical separator -->
-        <div class="vertical-separator"
-             ng-class="{'background-yellow': message.sender == vm.user.username}"></div>
-
-        <!-- Row 1 -->
-        <div class="row">
-
-            <!-- Name -->
-            <span class="name">{{ message.content.name }}</span>
-
-            <!-- Size-->
-            <span class="size">
-                {{ '(' + message.content.width + 'x' + message.content.height + ',' }}
-                {{ message.content.size + ')' }}
-            </span>
-        </div>
-
-        <!-- Image -->
-        <div class="image"
-             ng-class="{'hidden-height': !message.expanded}">
-            <img ng-src="{{ message.content.url }}"
-                 ng-click="message.expanded ? methods.showZoomImage($event, message.content) : null"
-                 height="{{ message.content.height }}"
-                 width="{{ message.content.width }}"
-                 title="{{ message.content.name }}">
-        </div>
+    <div ng-switch-when="image">
+        <div ng-include="'views/chat/messages/categories/chat.category.image.html'"></div>
     </div>
 
     <!-- Pdf -->
-    <div ng-switch-when="pdf"
-         class="pdf">
-
-        <!-- Img -->
-        <div class="img">
-            <img ng-src="images/chat/PDF-100.png">
-        </div>
-
-        <!-- Multiple lines block -->
-        <div class="column-block">
-
-            <!-- Name -->
-            <span class="name">{{ message.content.name }}</span>
-
-            <!-- Size -->
-            <span class="size">{{ message.content.size }}</span>
-        </div>
+    <div ng-switch-when="pdf">
+        <div ng-include="'views/chat/messages/categories/chat.category.pdf.html'"></div>
     </div>
 </div>

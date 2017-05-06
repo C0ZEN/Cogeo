@@ -25,7 +25,7 @@ div.atom-chat div.chat-col {
                     }
 
                     // Image
-                    > div.image {
+                    div.image {
                         display        : flex;
                         flex-direction : column;
                         align-items    : flex-start;
@@ -54,17 +54,36 @@ div.atom-chat div.chat-col {
                                 margin-right : @atom-space-small;
                             }
                             span.size {
-                                color       : @atom-color-label;
-                                font-weight : 400;
-                                font-size   : @atom-font-small;
+                                color        : @atom-color-label;
+                                font-weight  : 400;
+                                font-size    : @atom-font-small;
+                                margin-right : @atom-space-small / 2;
+                            }
+                            div.icon {
+                                outline    : @atom-outline;
+                                color      : @atom-color-label;
+                                font-size  : @atom-font-body;
+                                transition : @atom-transition;
+                                i {
+                                    color          : inherit;
+                                    font-size      : inherit;
+                                    vertical-align : middle;
+                                    transition     : all @atom-animation-duration-in-fast ease-in-out;
+                                    &.caret-left {
+                                        transform : rotate(-90deg);
+                                    }
+                                }
+                                &:hover {
+                                    color : @atom-color-font;
+                                }
                             }
                         }
-                        div.image {
+                        div.img {
                             border-radius : 5px;
                             margin        : 0;
                             display       : flex;
                             img {
-                                transition    : ease @atom-animation-duration-in-fast;
+                                transition    : @atom-animation-duration-in-fast ease;
                                 margin        : 0 0 0 10px;
                                 border-radius : inherit;
                                 outline       : none;
@@ -72,7 +91,7 @@ div.atom-chat div.chat-col {
                             }
                             &.hidden-height {
                                 img {
-                                    transition : ease @atom-animation-duration-in-fast;
+                                    transition : @atom-animation-duration-in-fast ease;
                                     height     : 0;
                                 }
                             }
@@ -112,6 +131,9 @@ div.atom-chat div.chat-col {
                                 color       : @atom-color-label;
                                 font-weight : 400;
                                 font-size   : @atom-font-small;
+                            }
+                            &.hidden-height {
+
                             }
                         }
                     }

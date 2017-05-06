@@ -11,7 +11,7 @@ div.atom-chat div.chat-channels-container {
     display          : flex;
     flex-direction   : column;
     justify-content  : flex-start;
-    transition       : background-color @atom-animation-duration-out-fast, left ease @atom-animation-duration-in;
+    transition       : background-color @atom-animation-duration-out-fast ease, left @atom-animation-duration-in ease;
     position         : absolute;
     top              : 0;
     left             : @atom-chat-groups-container-width;
@@ -27,7 +27,7 @@ div.atom-chat div.chat-channels-container {
         height           : 76px;
         max-height       : 76px;
         min-height       : 76px;
-        transition       : background-color @atom-animation-duration-out-fast;
+        transition       : background-color @atom-animation-duration-out-fast ease;
         position         : relative;
         a.group-name {
             font-size   : 22px;

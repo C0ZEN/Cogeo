@@ -460,7 +460,7 @@
                     sender  : 'fzefez',
                     sent    : 1484571615,
                     content : {
-                        url : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
+                        url : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
                         name: "Mes achats",
                         size: '160KB'
                     },
@@ -513,7 +513,7 @@
         }
 
         function isMedia(message) {
-            return message.category == 'image';
+            return message.category == 'image' || message.category == 'pdf';
         }
 
         function calcMediaLength(messages) {
