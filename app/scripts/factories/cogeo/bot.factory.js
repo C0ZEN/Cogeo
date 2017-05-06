@@ -31,7 +31,8 @@
             getBots      : getBots,
             getBotById   : getBotById,
             getBotByName : getBotByName,
-            getBotFriends: getBotFriends
+            getBotFriends: getBotFriends,
+            isBot        : isBot
         };
 
         // Return the bots
@@ -80,6 +81,10 @@
                     alias    : ""
                 }
             ]
+        }
+
+        function isBot(username) {
+            return username == 'Friendybot' || username == 'Spamobot';
         }
     }
 

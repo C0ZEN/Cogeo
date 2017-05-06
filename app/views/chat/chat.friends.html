@@ -37,7 +37,9 @@
         <span ng-show="friend.alias == ''">
             {{ friend.givenName }} {{ friend.surname }}
         </span>
-        <span>@{{ friend.username }}</span>
+        <span>
+            {{(botFactory.isBot(friend.username) ? '' : '@') + friend.username }}
+        </span>
     </span>
 </div>
 
