@@ -1,0 +1,34 @@
+div.excel {
+    display        : flex;
+    flex-direction : column;
+    align-items    : flex-start;
+    div.line-1 {
+        display         : flex;
+        flex-direction  : row;
+        justify-content : flex-start;
+        align-items     : center;
+        span.text {
+            color       : @atom-color-label;
+            font-weight : 400;
+            font-size   : @atom-font-body;
+        }
+        a.name {
+            color               : @atom-color-font;
+            font-weight         : 600;
+            font-size           : @atom-font-body;
+            margin-left         : @atom-space-small / 2;
+            cursor              : pointer;
+            outline             : @atom-outline;
+            animation-name      : fadeIn;
+            animation-fill-mode : @atom-animation-fill;
+            animation-duration  : @atom-animation-duration-in-fast;
+            &:hover {
+                text-decoration : underline;
+            }
+            &.ng-hide,
+            &.ng-hide-active {
+                display : none !important;
+            }
+        }
+    }
+}

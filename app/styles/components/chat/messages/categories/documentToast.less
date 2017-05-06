@@ -1,0 +1,65 @@
+a.document-toast {
+    display          : flex;
+    flex-direction   : row;
+    justify-content  : flex-start;
+    align-items      : center;
+    border-radius    : 5px;
+    border           : 1px solid @atom-color-line-rule;
+    min-width        : 280px;
+    background-color : @atom-color-white;
+    box-sizing       : border-box;
+    margin           : @atom-space-small / 2 0 @atom-space-small 0;
+    padding          : @atom-space-small @atom-space-base;
+    transition       : all @atom-animation-duration-in-fast ease;
+    transform        : scaleY(1);
+    cursor           : pointer;
+    text-decoration  : none;
+    div.img {
+        margin : 0 @atom-space-small 0 0;
+        img {
+        }
+    }
+    div.column-block {
+        display        : flex;
+        flex-direction : column;
+        align-items    : flex-start;
+        margin         : 0 0 0 @atom-space-small;
+        span.name {
+            color       : @atom-color-font;
+            font-weight : 600;
+            font-size   : @atom-font-body;
+        }
+        div.row {
+            display         : flex;
+            flex-direction  : row;
+            justify-content : flex-start;
+            align-items     : center;
+            margin          : 0;
+            span.size {
+                color       : @atom-color-label;
+                font-weight : 400;
+                font-size   : @atom-font-small;
+            }
+            span.download {
+                color               : @atom-color-label;
+                font-weight         : 400;
+                font-size           : @atom-font-small;
+                margin-left         : @atom-space-small / 2;
+                animation-name      : fadeIn;
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in-fast;
+                &.ng-hide {
+                    display : none;
+                }
+            }
+        }
+    }
+    &.hidden-height {
+        max-height     : 0;
+        transform      : scaleY(0);
+        margin-top     : 0;
+        margin-bottom  : 0;
+        padding-top    : 0;
+        padding-bottom : 0;
+    }
+}

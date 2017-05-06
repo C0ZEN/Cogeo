@@ -42,6 +42,7 @@
     "chat_message_edited_on": ", modifer à",
     "chat_channel": "Discussion dans un channel",
     "chat_upload_pdf_text": "a uploadé ce pdf",
+    "chat_upload_excel_text": "a uploadé cet excel",
     "chat_upload_download": "- clique pour télécharger",
     "chat_public_channel": "Public",
     "chat_private_channel": "Privé",

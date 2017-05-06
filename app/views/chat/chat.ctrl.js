@@ -468,6 +468,20 @@
                     edited  : 0,
                     tag     : 'user',
                     category: 'pdf'
+                },
+                {
+                    _id     : '22',
+                    sender  : 'fzefez',
+                    sent    : 1484571615,
+                    content : {
+                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+                        name    : "Mes achats",
+                        fullName: 'Mes achats.excel',
+                        size    : '160KB'
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'excel'
                 }
             ];
             vm.methods.calcMediaLength(vm.messages);
@@ -514,7 +528,7 @@
         }
 
         function isMedia(message) {
-            return message.category == 'image' || message.category == 'pdf';
+            return message.category == 'image' || message.category == 'pdf' || message.category == 'excel';
         }
 
         function calcMediaLength(messages) {
