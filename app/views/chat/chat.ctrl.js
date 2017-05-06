@@ -460,9 +460,10 @@
                     sender  : 'fzefez',
                     sent    : 1484571615,
                     content : {
-                        url : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
-                        name: "Mes achats",
-                        size: '160KB'
+                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+                        name    : "Mes achats",
+                        fullName: 'Mes achats.pdf',
+                        size    : '160KB'
                     },
                     edited  : 0,
                     tag     : 'user',

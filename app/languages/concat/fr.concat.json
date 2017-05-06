@@ -321,6 +321,8 @@
 	"chat_newMessage_tooltip": "Tu peux utiliser du <strong>markdown</strong> dans tes messages.<br>Exemples: **gras**, *italique*, [lien](url), etc...",
 	"chat_message_edited_on": ", modifer à",
 	"chat_channel": "Discussion dans un channel",
+	"chat_upload_pdf_text": "a uploadé ce pdf",
+	"chat_upload_download": "- clique pour télécharger",
 	"chat_public_channel": "Public",
 	"chat_private_channel": "Privé",
 	"chat_private_channel_tp": "Channel privé",

@@ -1,17 +1,63 @@
 <div class="pdf">
 
-    <!-- Img -->
-    <div class="img">
-        <img ng-src="images/chat/PDF-100.png">
-    </div>
+    <!-- Line 1 -->
+    <div class="line-1">
 
-    <!-- Multiple lines block -->
-    <div class="column-block">
+        <!-- Text -->
+        <span class="text">
+            {{ ('chat_upload_pdf_text' | translate) + (!message.expanded ? ':' : '') }}
+        </span>
 
         <!-- Name -->
-        <span class="name">{{ message.content.name }}</span>
+        <a ng-show="!message.expanded"
+           target="_self"
+           href="{{ message.content.url }}"
+           download="{{ message.content.name }}"
+           class="name">
+            {{ message.content.fullName }}
+        </a>
 
-        <!-- Size -->
-        <span class="size">{{ message.content.size }}</span>
+        <!-- Icon expand -->
+        <div class="icon-expand"
+             ng-click="message.expanded = !message.expanded; vm.methods.onToggleSingleExpanded();">
+            <i class="fa fa-fw fa-caret-down"
+               ng-class="{'caret-left': !message.expanded}">
+            </i>
+        </div>
     </div>
+
+    <!-- Toast -->
+    <a class="document-toast"
+       target="_self"
+       href="{{ message.content.url }}"
+       download="{{ message.content.name }}"
+       ng-mouseenter="message.content.onHover = true"
+       ng-mouseleave="message.content.onHover = false"
+       ng-class="{'hidden-height': !message.expanded}">
+
+        <!-- Img -->
+        <div class="img">
+            <img ng-src="images/chat/PDF-100.png">
+        </div>
+
+        <!-- Multiple lines block -->
+        <div class="column-block">
+
+            <!-- Name -->
+            <span class="name">{{ message.content.name }}</span>
+
+            <!-- Row -->
+            <div class="row">
+
+                <!-- Size -->
+                <span class="size">{{ message.content.size }}</span>
+
+                <!-- Download -->
+                <span ng-show="message.content.onHover"
+                      class="download">
+                    {{ 'chat_upload_download' | translate }}
+                </span>
+            </div>
+        </div>
+    </a>
 </div>
