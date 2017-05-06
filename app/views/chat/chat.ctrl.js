@@ -496,6 +496,23 @@
                     edited  : 0,
                     tag     : 'user',
                     category: 'word'
+                },
+                {
+                    _id     : '24',
+                    sender  : 'Nitbosmet',
+                    sent    : 1484571615,
+                    content : {
+                        format  : "gif",
+                        height  : 268,
+                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494104238/whV9B2T5lDjag_o6stwv.gif",
+                        width   : 480,
+                        name    : "whV9B2T5lDjag_o6stwv",
+                        fullName: 'whV9B2T5lDjag_o6stwv.gif',
+                        size    : '1.3MB'
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'image'
                 }
             ];
             vm.methods.calcMediaLength(vm.messages);
