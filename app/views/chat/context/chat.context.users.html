@@ -8,7 +8,7 @@
            class="friend-name hover-link animated fadeInDown">
             {{ vm.activeFriend.givenName }}
             {{ vm.activeFriend.surname }}
-            @{{ vm.activeFriend.username }}
+            {{(botFactory.isBot(vm.activeFriend.username) ? '' : '@') + vm.activeFriend.username }}
         </a>
         <p class="friend-alias animated fadeInDown"
            ng-show="vm.activeFriend.alias != ''">
