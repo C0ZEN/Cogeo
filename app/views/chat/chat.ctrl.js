@@ -476,12 +476,26 @@
                     content : {
                         url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
                         name    : "Mes achats",
-                        fullName: 'Mes achats.excel',
+                        fullName: 'Mes achats.xls',
                         size    : '160KB'
                     },
                     edited  : 0,
                     tag     : 'user',
                     category: 'excel'
+                },
+                {
+                    _id     : '23',
+                    sender  : 'zefez',
+                    sent    : 1484571615,
+                    content : {
+                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+                        name    : "Mes achats",
+                        fullName: 'Mes achats.docx',
+                        size    : '160KB'
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'word'
                 }
             ];
             vm.methods.calcMediaLength(vm.messages);
@@ -528,7 +542,10 @@
         }
 
         function isMedia(message) {
-            return message.category == 'image' || message.category == 'pdf' || message.category == 'excel';
+            return message.category == 'image'
+                || message.category == 'pdf'
+                || message.category == 'excel'
+                || message.category == 'word';
         }
 
         function calcMediaLength(messages) {

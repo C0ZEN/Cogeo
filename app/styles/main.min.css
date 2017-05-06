@@ -3370,6 +3370,59 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   font-weight: 400;
   font-size: 14px;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.word {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.word div.line-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.word div.line-1 span.text {
+  color: #8C8C8C;
+  font-weight: 400;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.word div.line-1 a.name {
+  color: #4C596B;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 3px;
+  cursor: pointer;
+  outline: 0;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.word div.line-1 a.name:hover {
+  text-decoration: underline;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.word div.line-1 a.name.ng-hide,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.word div.line-1 a.name.ng-hide-active {
+  display: none !important;
+}
 div.atom-chat div.chat-input-container {
   background-color: #F8F8F8;
   border-top: 1px solid #D6DBDB;
