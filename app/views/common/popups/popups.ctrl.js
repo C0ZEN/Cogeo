@@ -58,6 +58,9 @@
             group                   : {
                 join : groupJoin,
                 leave: groupLeave
+            },
+            message                 : {
+                remove: messageRemove
             }
         };
 
@@ -450,6 +453,12 @@
             }, function () {
                 closePopup('channelLeave');
             });
+        }
+
+        function messageRemove() {
+            popup.methods.startLoading();
+            popup.methods.closePopup('messageRemove');
+            popup.methods.stopLoading();
         }
     }
 

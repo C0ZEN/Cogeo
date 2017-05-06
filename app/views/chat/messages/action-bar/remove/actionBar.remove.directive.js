@@ -71,7 +71,7 @@
                 if (Methods.isFunction(scope.removeActionOnClick)) {
                     scope.removeActionOnClick();
                 }
-                $rootScope.methods.showPopup($event, 'chatRemoveMessage', scope.removeActionMessage);
+                $rootScope.methods.showPopup($event, 'messageRemove', scope.removeActionMessage);
             }
         }
     }

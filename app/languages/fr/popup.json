@@ -29,6 +29,8 @@
     "popup_logs_filter_body_order_by": "Ordre décroissant",
     "popup_logs_filter_body_order_by_tooltip": "Afficher les événements récents en premier",
     "popup_accessLogs_filter_header_title": "Filtrer les connexions",
+    "popup_message_remove_body_title": "Supprimer ce message ?",
+    "popup_message_remove_body_remove": "Supprimer",
     "popup_userAction_speaking_groups": "dans les channels de ce groupe",
     "popup_userAction_speaking_channels": "dans ce channel",
     "popup_userAction_granted_header_title": "Promouvoir",
