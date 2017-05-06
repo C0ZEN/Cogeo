@@ -38,7 +38,8 @@
             toggleExpand          : toggleExpand,
             onToggleSingleExpanded: onToggleSingleExpanded,
             isMedia               : isMedia,
-            calcMediaLength       : calcMediaLength
+            calcMediaLength       : calcMediaLength,
+            getUserAlias          : getUserAlias
         };
 
         // Common data
@@ -296,7 +297,7 @@
                 },
                 {
                     _id     : '5',
-                    sender  : 'C0ZEN',
+                    sender  : 'Pop',
                     sent    : 1484571615,
                     content : '*Yo*',
                     edited  : 0,
@@ -511,6 +512,15 @@
                 }
             });
             vm.mediaLength = media;
+        }
+
+        function getUserAlias(username) {
+            for (var i = 0, length = vm.allFriends.length; i < length; i++) {
+                if (vm.allFriends[i].username == username) {
+                    return vm.allFriends[i].alias;
+                }
+            }
+            return '';
         }
     }
 

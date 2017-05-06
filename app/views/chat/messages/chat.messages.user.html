@@ -17,7 +17,7 @@
            ng-click="goTo.view('app.profiles.user', {username: message.sender})"
            class="atom-link user-username"
            ng-class="{'atom-link-yellow': message.sender == vm.user.username}">
-            @{{ message.sender }}
+            {{ vm.methods.getUserAlias(message.sender) || '@' + message.sender }}
         </a>
 
         <!-- Send date -->
