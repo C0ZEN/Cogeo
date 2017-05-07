@@ -41,7 +41,8 @@
             isMedia               : isMedia,
             calcMediaLength       : calcMediaLength,
             getUserAlias          : getUserAlias,
-            onInitMp3             : onInitMp3
+            onInitMp3             : onInitMp3,
+            stopAllMp3            : stopAllMp3
         };
 
         // Common data
@@ -53,7 +54,7 @@
             }
         };
         vm.expandAll = true;
-        vm.mp3       = [];
+        vm.messages  = [];
 
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
@@ -143,6 +144,7 @@
 
         // Called when the user click on a new channel
         function setActiveChannel(channelName, channelId) {
+            vm.methods.stopAllMp3();
             vm.activeChannel = groupsFactory.getChannelById(vm.activeGroup, channelId);
             vm.activeChannel = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
             vm.messages      = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
@@ -249,6 +251,7 @@
         // Active the user context
         function setActiveFriend(username) {
             vm.activeChannel = null;
+            vm.methods.stopAllMp3();
 
             // Find the active friend
             vm.allFriends.forEach(function (friend) {
@@ -609,6 +612,14 @@
                 if (message._id == messageId) {
                     message.sound        = ngAudio.load(message.content.url);
                     message.sound.volume = vm.user.settings.speaker.volume / 100;
+                }
+            });
+        }
+
+        function stopAllMp3() {
+            vm.messages.forEach(function (message) {
+                if (message.category == 'mp3' && !Methods.isNullOrEmpty(message.sound)) {
+                    message.sound.stop();
                 }
             });
         }
