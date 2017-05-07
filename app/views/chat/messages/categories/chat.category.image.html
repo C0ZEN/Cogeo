@@ -7,8 +7,18 @@
     <!-- Row 1 -->
     <div class="row">
 
+        <!-- Text -->
+        <span class="text">
+            {{ 'chat_upload_image_text' | translate }}
+        </span>
+
         <!-- Name -->
-        <span class="name">{{ message.content.name }}</span>
+        <a class="name"
+           target="_self"
+           href="{{ message.content.url }}"
+           download="{{ message.content.name }}">
+            {{ message.content.name }}
+        </a>
 
         <!-- Size-->
         <span class="size">

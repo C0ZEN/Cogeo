@@ -3458,11 +3458,17 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   margin: 0 0 0 10px;
   padding: 0;
 }
-div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.image div.row span.name {
-  color: #4C596B;
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.image div.row span.text {
+  color: #8C8C8C;
   font-weight: 400;
   font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.image div.row a.name {
+  color: #4C596B;
+  font-weight: 600;
+  font-size: 14px;
   margin-right: 6px;
+  margin-left: 3px;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.image div.row span.size {
   color: #8C8C8C;

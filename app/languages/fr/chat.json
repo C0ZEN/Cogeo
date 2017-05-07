@@ -43,6 +43,7 @@
     "chat_newMessage_tooltip": "Tu peux utiliser du <strong>markdown</strong> dans tes messages.<br>Exemples: **gras**, *italique*, [lien](url), etc...",
     "chat_message_edited_on": ", modifer à",
     "chat_channel": "#{{channelName}}",
+    "chat_upload_image_text": "a uploadé cette image:",
     "chat_upload_pdf_text": "a uploadé ce document pdf",
     "chat_upload_excel_text": "a uploadé ce document excel",
     "chat_upload_word_text": "a uploadé ce document word",
