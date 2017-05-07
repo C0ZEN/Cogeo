@@ -607,7 +607,8 @@
         function onInitMp3(messageId) {
             vm.messages.forEach(function (message) {
                 if (message._id == messageId) {
-                    message.sound = ngAudio.load(message.content.url);
+                    message.sound        = ngAudio.load(message.content.url);
+                    message.sound.volume = vm.user.settings.speaker.volume / 100;
                 }
             });
         }
