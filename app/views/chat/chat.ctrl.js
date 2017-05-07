@@ -42,7 +42,8 @@
             calcMediaLength       : calcMediaLength,
             getUserAlias          : getUserAlias,
             onInitMp3             : onInitMp3,
-            stopAllMp3            : stopAllMp3
+            stopAllMp3            : stopAllMp3,
+            stopAllMedia          : stopAllMedia
         };
 
         // Common data
@@ -622,6 +623,11 @@
                     message.sound.stop();
                 }
             });
+        }
+
+        function stopAllMedia($event) {
+            $event.stopPropagation();
+            vm.methods.stopAllMp3();
         }
     }
 
