@@ -3108,6 +3108,8 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
           transform: scaleY(1);
   cursor: pointer;
   text-decoration: none;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.img,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.img {
