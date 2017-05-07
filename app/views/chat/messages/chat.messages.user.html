@@ -38,6 +38,11 @@
 <!-- Action bar -->
 <div class="action-bar">
 
+    <!-- Play -->
+    <play-action play-action-display="vm.methods.isAudioMedia(message)"
+                 play-action-message="message">
+    </play-action>
+
     <!-- Answer (quote) -->
     <answer-action answer-action-display="message.sender != vm.user.username && message.category == 'text'"></answer-action>
 

@@ -44,7 +44,8 @@
             onInitMp3             : onInitMp3,
             stopAllMp3            : stopAllMp3,
             stopAllMedia          : stopAllMedia,
-            isMediaAudioPresent   : isMediaAudioPresent
+            isMediaAudioPresent   : isMediaAudioPresent,
+            isAudioMedia          : isAudioMedia
         };
 
         // Common data
@@ -633,11 +634,15 @@
 
         function isMediaAudioPresent() {
             for (var i = 0, length = vm.messages.length; i < length; i++) {
-                if (vm.messages[i].category == 'mp3') {
+                if (vm.methods.isAudioMedia(vm.messages[i])) {
                     return true;
                 }
             }
             return false;
+        }
+
+        function isAudioMedia(message) {
+            return message.category == 'mp3';
         }
     }
 
