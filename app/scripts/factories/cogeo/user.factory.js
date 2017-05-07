@@ -140,7 +140,10 @@
         }
 
         // Update the current user
-        function setUser(response) {
+        function setUser(response, notify) {
+            if (notify == null) {
+                notify = true;
+            }
             if (response == null) {
                 user = null;
             }
@@ -152,7 +155,9 @@
                 cozenEnhancedLogs.info.functionCalled('userFactory', 'setUser');
                 console.log(response);
             }
-            _notify();
+            if (notify) {
+                _notify();
+            }
         }
 
         // Add custom info when updating the current user
@@ -488,14 +493,14 @@
             ;
         }
 
-        function httpRequestUpdateSettings(data, callbackSuccess, callbackError) {
+        function httpRequestUpdateSettings(data, callbackSuccess, callbackError, notify) {
             httpRequest.requestPut('user/' + user.username + '/settings', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     if (CONFIG.dev) {
                         cozenEnhancedLogs.info.functionCalled('userFactory', 'httpRequestUpdateSettings');
                         cozenEnhancedLogs.explodeObject(data, true);
                     }
-                    setUser(response.data.data);
+                    setUser(response.data.data, notify);
                     setUserInLocalStorage(response.data.data);
                     cozenFloatingFeedFactory.addAlert({
                         type : 'success',

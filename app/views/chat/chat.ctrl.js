@@ -62,8 +62,14 @@
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
         cozenOnClickService.subscribe($scope, vm.methods.onActionClick);
+
+        // Update the volume
         $rootScope.$on('newGlobalVolume', function () {
-            vm.methods.initMp3();
+            vm.messages.forEach(function (message) {
+                if (message.category == 'mp3') {
+                    message.sound.volume = userFactory.getUser().settings.speaker.volume / 100;
+                }
+            });
         });
 
         // Called each time a view is loaded

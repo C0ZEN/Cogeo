@@ -478,7 +478,7 @@
             }, function () {
                 popup.methods.closePopup('globalVolume');
                 popup.methods.stopLoading();
-            });
+            }, false);
         }
 
         function globalInitVolume() {
