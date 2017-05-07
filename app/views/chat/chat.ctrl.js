@@ -16,11 +16,12 @@
         '$scope',
         'cozenOnClickService',
         '$filter',
-        'botFactory'
+        'botFactory',
+        'ngAudio'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
-                      cozenOnClickService, $filter, botFactory) {
+                      cozenOnClickService, $filter, botFactory, ngAudio) {
         var vm = this;
 
         // Methods
@@ -39,7 +40,8 @@
             onToggleSingleExpanded: onToggleSingleExpanded,
             isMedia               : isMedia,
             calcMediaLength       : calcMediaLength,
-            getUserAlias          : getUserAlias
+            getUserAlias          : getUserAlias,
+            onInitMp3             : onInitMp3
         };
 
         // Common data
@@ -51,6 +53,7 @@
             }
         };
         vm.expandAll = true;
+        vm.mp3       = [];
 
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
@@ -513,6 +516,21 @@
                     edited  : 0,
                     tag     : 'user',
                     category: 'image'
+                },
+                {
+                    _id     : '25',
+                    sender  : 'Nitbosmet',
+                    sent    : 1484571615,
+                    content : {
+                        format  : "mp3",
+                        url     : "http://res.cloudinary.com/cozen/video/upload/v1494106319/Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv.mp3",
+                        name    : "Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv",
+                        fullName: 'Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv.mp3',
+                        size    : '2.8MB'
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'mp3'
                 }
             ];
             vm.methods.calcMediaLength(vm.messages);
@@ -562,7 +580,8 @@
             return message.category == 'image'
                 || message.category == 'pdf'
                 || message.category == 'excel'
-                || message.category == 'word';
+                || message.category == 'word'
+                || message.category == 'mp3';
         }
 
         function calcMediaLength(messages) {
@@ -583,6 +602,14 @@
                 }
             }
             return '';
+        }
+
+        function onInitMp3(messageId) {
+            vm.messages.forEach(function (message) {
+                if (message._id == messageId) {
+                    message.sound = ngAudio.load(message.content.url);
+                }
+            });
         }
     }
 

@@ -46,6 +46,7 @@
             'ng-if-bootstrap-grid',
             'btford.markdown',
             'ngEmbed',
+            'ngAudio',
             'cozenLib',
 
             '4pjtApp.actionBar'

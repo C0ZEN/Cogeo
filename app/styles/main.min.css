@@ -83,6 +83,7 @@
 .icons8-network:before,
 .icons8-no-chat:before,
 .icons8-open-pane-filled:before,
+.icons8-pause:before,
 .icons8-picture-filled:before,
 .icons8-play:before,
 .icons8-plus:before,
@@ -182,6 +183,9 @@
 .icons8-open-pane-filled:before {
   content: "\f134";
 }
+.icons8-pause:before {
+  content: "\f13c";
+}
 .icons8-picture-filled:before {
   content: "\f10c";
 }
@@ -235,15 +239,15 @@
 }
 @font-face {
   font-family: "Atom";
-  src: url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.eot");
-  src: url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.woff2") format("woff2"), url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.woff") format("woff"), url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.ttf") format("truetype"), url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.svg#Atom") format("svg");
+  src: url("../../fonts/Atom_199658230dfad558a8dd724a64cd153c.eot");
+  src: url("../../fonts/Atom_199658230dfad558a8dd724a64cd153c.eot?#iefix") format("embedded-opentype"), url("../../fonts/Atom_199658230dfad558a8dd724a64cd153c.woff2") format("woff2"), url("../../fonts/Atom_199658230dfad558a8dd724a64cd153c.woff") format("woff"), url("../../fonts/Atom_199658230dfad558a8dd724a64cd153c.ttf") format("truetype"), url("../../fonts/Atom_199658230dfad558a8dd724a64cd153c.svg#Atom") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Atom";
-    src: url("../../fonts/Atom_f09e06fc11b3a87722d1b9bac688b705.svg#Atom") format("svg");
+    src: url("../../fonts/Atom_199658230dfad558a8dd724a64cd153c.svg#Atom") format("svg");
   }
 }
 /*!
@@ -2865,9 +2869,13 @@ div.atom-chat div.chat-col div.chat-messages-container {
   overflow-x: hidden;
   overflow-y: auto;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages {
+  width: 100%;
+}
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message {
   position: relative;
   margin: 1px 0;
+  width: 100%;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user {
   display: -webkit-box;
@@ -3072,6 +3080,7 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   display: -ms-flexbox;
   display: flex;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3100,9 +3109,11 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   cursor: pointer;
   text-decoration: none;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.img,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.img {
   margin: 0 6px 0 0;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3116,11 +3127,13 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
           align-items: flex-start;
   margin: 0 0 0 6px;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block span.name,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block span.name {
   color: #4C596B;
   font-weight: 600;
   font-size: 14px;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3137,11 +3150,13 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
           align-items: center;
   margin: 0;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row span.size,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row span.size {
   color: #8C8C8C;
   font-weight: 400;
   font-size: 12px;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row span.download,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row span.download {
   color: #8C8C8C;
   font-weight: 400;
@@ -3154,9 +3169,11 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   -webkit-animation-duration: 300ms;
           animation-duration: 300ms;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row span.download.ng-hide,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row span.download.ng-hide {
   display: none;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast.hidden-height,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast.hidden-height {
   max-height: 0;
   -webkit-transform: scaleY(0);
@@ -3165,6 +3182,154 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   margin-bottom: 0;
   padding-top: 0;
   padding-bottom: 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  cursor: default;
+  padding: 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast > div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 6px 12px;
+  width: 100%;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast > div.row.center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast > div.row.mp3-timeline-container {
+  padding: 12px 12px 0 12px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast > div.row div.left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast > div.row div.center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast > div.row div.right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #D6DBDB;
+  margin: 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn {
+  padding: 6px 12px;
+  border: none;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+  background-color: transparent;
+  color: #8C8C8C;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 3px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn i {
+  color: inherit;
+  vertical-align: middle;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:hover,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:active,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:focus {
+  background-color: rgba(140, 140, 140, 0.1);
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:hover.play,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:active.play,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:focus.play {
+  color: #4AC291;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:hover.pause,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:active.pause,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:focus.pause {
+  color: #2C9FDD;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:hover.stop,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:active.stop,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.toast-btn:focus.stop {
+  color: #E53935;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.mp3-timeline {
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #D6DBDB;
+  position: relative;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.mp3-timeline div.mp3-timeline-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #FEB909;
+  height: inherit;
+  border-radius: inherit;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.excel {
   display: -webkit-box;
@@ -3311,6 +3476,59 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   -webkit-transition: 300ms ease;
   transition: 300ms ease;
   height: 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.mp3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.mp3 div.line-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.mp3 div.line-1 span.text {
+  color: #8C8C8C;
+  font-weight: 400;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.mp3 div.line-1 a.name {
+  color: #4C596B;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 3px;
+  cursor: pointer;
+  outline: 0;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.mp3 div.line-1 a.name:hover {
+  text-decoration: underline;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.mp3 div.line-1 a.name.ng-hide,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.mp3 div.line-1 a.name.ng-hide-active {
+  display: none !important;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.pdf {
   display: -webkit-box;
