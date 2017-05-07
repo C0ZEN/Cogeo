@@ -43,7 +43,8 @@
             getUserAlias          : getUserAlias,
             onInitMp3             : onInitMp3,
             stopAllMp3            : stopAllMp3,
-            stopAllMedia          : stopAllMedia
+            stopAllMedia          : stopAllMedia,
+            isMediaAudioPresent   : isMediaAudioPresent
         };
 
         // Common data
@@ -628,6 +629,15 @@
         function stopAllMedia($event) {
             $event.stopPropagation();
             vm.methods.stopAllMp3();
+        }
+
+        function isMediaAudioPresent() {
+            for (var i = 0, length = vm.messages.length; i < length; i++) {
+                if (vm.messages[i].category == 'mp3') {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
