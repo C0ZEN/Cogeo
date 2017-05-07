@@ -5,11 +5,16 @@ div.atom-chat div.chat-col {
         overflow-x : hidden;
         overflow-y : auto;
         div.chat-messages {
-            width : 100%;
             div.message {
-                position : relative;
-                margin   : 1px 0;
-                width    : 100%;
+                position            : relative;
+                margin              : 1px 0;
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in-fast;
+                animation-name      : fadeInUp;
+                &.ng-hide {
+                    display            : none !important;
+                    animation-duration : 0ms !important;
+                }
 
                 // Imports
                 @import (less) "user.less";
