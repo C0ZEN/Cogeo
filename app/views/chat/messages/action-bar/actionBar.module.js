@@ -10,7 +10,8 @@
             '4pjtApp.actionBar.accordion',
             '4pjtApp.actionBar.zoom',
             '4pjtApp.actionBar.remove',
-            '4pjtApp.actionBar.play'
+            '4pjtApp.actionBar.play',
+            '4pjtApp.actionBar.pause'
         ]);
 
 })(window.angular);

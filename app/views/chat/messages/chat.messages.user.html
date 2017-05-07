@@ -43,6 +43,11 @@
                  play-action-message="message">
     </play-action>
 
+    <!-- Pause -->
+    <pause-action pause-action-display="vm.methods.isAudioMedia(message)"
+                  pause-action-message="message">
+    </pause-action>
+
     <!-- Answer (quote) -->
     <answer-action answer-action-display="message.sender != vm.user.username && message.category == 'text'"></answer-action>
 

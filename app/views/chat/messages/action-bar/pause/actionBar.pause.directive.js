@@ -8,7 +8,7 @@
  * @description
  *
  * [Scope params]
- * @param {boolean}  pauseActionDispause = true > Hide or show the action
+ * @param {boolean}  pauseActionDisplay = true > Hide or show the action
  * @param {function} pauseActionOnClick        > Callback function called on click
  * @param {object}   pauseActionMessage        > Message object to pause
  *
@@ -31,9 +31,9 @@
             replace    : false,
             transclude : false,
             scope      : {
-                pauseActionDispause: '=?',
-                pauseActionOnClick: '&',
-                pauseActionMessage: '=?'
+                pauseActionDisplay: '=?',
+                pauseActionOnClick : '&',
+                pauseActionMessage : '=?'
             },
             templateUrl: 'views/chat/messages/action-bar/pause/actionBar.pause.template.html'
         };
@@ -55,7 +55,7 @@
                 };
 
                 // Default values (scope)
-                angular.isUndefined(attrs.pauseActionDispause) ? scope.pauseActionDispause = true : null;
+                angular.isUndefined(attrs.pauseActionDisplay) ? scope.pauseActionDisplay = true : null;
 
                 // Init stuff
                 element.on('$destroy', methods.destroy);
