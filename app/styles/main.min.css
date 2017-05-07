@@ -3140,12 +3140,6 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
           align-items: flex-start;
   margin: 0 0 0 6px;
 }
-div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block span.name,
-div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block span.name {
-  color: #4C596B;
-  font-weight: 600;
-  font-size: 14px;
-}
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row {
   display: -webkit-box;
@@ -3162,6 +3156,27 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
       -ms-flex-align: center;
           align-items: center;
   margin: 0;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row span.name,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row span.name {
+  color: #4C596B;
+  font-weight: 600;
+  font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row i.download,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row i.download {
+  margin-left: 6px;
+  color: #9C27B0;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row i.download.ng-hide,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row i.download.ng-hide {
+  display: none !important;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.document-toast div.column-block div.row span.size,
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body a.document-toast div.column-block div.row span.size {

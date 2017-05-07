@@ -26,17 +26,27 @@ a.document-toast {
         flex-direction : column;
         align-items    : flex-start;
         margin         : 0 0 0 @atom-space-small;
-        span.name {
-            color       : @atom-color-font;
-            font-weight : 600;
-            font-size   : @atom-font-body;
-        }
         div.row {
             display         : flex;
             flex-direction  : row;
             justify-content : flex-start;
             align-items     : center;
             margin          : 0;
+            span.name {
+                color       : @atom-color-font;
+                font-weight : 600;
+                font-size   : @atom-font-body;
+            }
+            i.download {
+                margin-left         : @atom-space-small;
+                color               : @atom-color-purple;
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in-fast;
+                animation-name      : fadeInUp;
+                &.ng-hide {
+                    display : none !important;
+                }
+            }
             span.size {
                 color       : @atom-color-label;
                 font-weight : 400;
