@@ -322,7 +322,7 @@
 	"chat_newMessage_placeholder_user": "Envoyé un message à {{username}}",
 	"chat_newMessage_tooltip": "Tu peux utiliser du <strong>markdown</strong> dans tes messages.<br>Exemples: **gras**, *italique*, [lien](url), etc...",
 	"chat_message_edited_on": ", modifer à",
-	"chat_channel": "Discussion dans un channel",
+	"chat_channel": "#{{channelName}}",
 	"chat_upload_pdf_text": "a uploadé ce document pdf",
 	"chat_upload_excel_text": "a uploadé ce document excel",
 	"chat_upload_word_text": "a uploadé ce document word",
@@ -343,7 +343,7 @@
 	"chat_new_friend": "Nouvel ami",
 	"chat_no_friend_found": "Aucun amis",
 	"chat_alias": "alias",
-	"chat_user": "Discussion avec un ami",
+	"chat_user": "@{{username}}",
 	"chat_hello": "Bonjour !",
 	"chat_alert_friend_blocked": "Tu as bloqué {{username}} le {{date}}",
 	"DEV": {

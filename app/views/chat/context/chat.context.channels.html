@@ -5,7 +5,7 @@
        ui-sref="app.channels.details({groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
        ng-click="goTo.view('app.channels.details', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
        class="channel-name hover-link animated fadeInDown">
-        {{ vm.activeChannel.name }}
+        #{{ vm.activeChannel.name }}
     </a>
 
     <!-- Marks -->

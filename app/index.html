@@ -3,7 +3,9 @@
       ng-controller="AppCtrl as app">
     <head>
         <meta charset="utf-8">
-        <title ng-bind="($state.current.data.pageTitle | translate) + ' - Cogeo'">Cogeo</title>
+        <title ng-bind="($state.current.data.pageTitle | translate:$state.params) + ' - Cogeo'">
+            Cogeo
+        </title>
         <meta name="description"
               content="">
         <meta name="viewport"
