@@ -158,7 +158,8 @@
         }
 
         function onPlayerReady(API) {
-            popup.testSpeaker.video.API = API;
+            popup.testSpeaker.video.API        = API;
+            popup.testSpeaker.video.API.volume = popup.testSpeakerData.volume / 100;
 
             // Watch for the volume change and broadcast to inform others of the change
             $scope.$watch('popup.testSpeaker.video.API.volume', function (newVolume) {
