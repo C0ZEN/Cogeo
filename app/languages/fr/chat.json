@@ -35,6 +35,7 @@
     "chat_actionBar_zoom": "Zoomé",
     "chat_actionBar_options_toggleExpand_collapse": "Réduire les médias",
     "chat_actionBar_options_toggleExpand_expand": "Agrandir les médias",
+    "chat_actionBar_options_changeVolume": "Modifier le volume",
     "chat_new_channel": "Nouveau channel",
     "chat_newMessage_placeholder": "Envoyé un message",
     "chat_newMessage_placeholder_channel": "Envoyé un message aux membres du channel {{channelName}}",

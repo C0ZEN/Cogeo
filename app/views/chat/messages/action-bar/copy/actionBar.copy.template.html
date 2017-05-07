@@ -1,7 +1,7 @@
 <div class="action-container"
      ngclipboard
      data-clipboard-target="#{{ copyActionMessageId }}"
-     ng-show="copyActionDisplay">
+     ng-if="copyActionDisplay">
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'chat_actionBar_copy'">
 

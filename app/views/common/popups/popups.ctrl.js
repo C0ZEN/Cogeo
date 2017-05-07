@@ -15,11 +15,12 @@
         'cozenEnhancedLogs',
         'usersFactory',
         'groupsFactory',
-        'channelsFactory'
+        'channelsFactory',
+        '$timeout'
     ];
 
     function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory, cozenEnhancedLogs, usersFactory,
-                       groupsFactory, channelsFactory) {
+                       groupsFactory, channelsFactory, $timeout) {
         var popup = this;
 
         // Methods
@@ -61,6 +62,10 @@
             },
             message                 : {
                 remove: messageRemove
+            },
+            global                  : {
+                volume    : globalVolume,
+                initVolume: globalInitVolume
             }
         };
 
@@ -133,7 +138,7 @@
         // logsFilter
         popup.logsFilter = {};
 
-        // Bot
+        // Bots
         popup.bot = {
             spamobot  : botFactory.getBotById('spamobot'),
             friendybot: botFactory.getBotById('friendybot')
@@ -457,9 +462,27 @@
         }
 
         function messageRemove() {
-            popup.methods.startLoading();
+
             popup.methods.closePopup('messageRemove');
             popup.methods.stopLoading();
+        }
+
+        function globalVolume() {
+            popup.methods.startLoading();
+            userFactory.httpRequest.updateSettings(popup.globalVolumeData, function () {
+                popup.methods.closePopup('globalVolume');
+                popup.methods.stopLoading();
+                $timeout(function () {
+                    $rootScope.$broadcast('newGlobalVolume');
+                });
+            }, function () {
+                popup.methods.closePopup('globalVolume');
+                popup.methods.stopLoading();
+            });
+        }
+
+        function globalInitVolume() {
+            popup.globalVolumeData = userFactory.getUser().settings;
         }
     }
 

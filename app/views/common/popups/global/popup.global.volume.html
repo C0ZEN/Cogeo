@@ -1,0 +1,36 @@
+<cozen-popup cozen-popup-name="globalVolume"
+             cozen-popup-type-info
+             cozen-popup-on-show="popup.methods.global.initVolume()"
+             cozen-popup-header-title="'popup_global_volume_header_title'">
+    <div class="row">
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top">{{ 'popup_global_volume_body_title' | translate }}</h3>
+            <p class="help-text">{{ 'popup_global_volume_body_subtitle_1' | translate }}</p>
+            <p class="help-text">{{ 'popup_global_volume_body_subtitle_2' | translate }}</p>
+        </div>
+
+        <div class="col-xs-12 space-medium-after">
+            <rzslider ng-if="popup.globalVolumeData.speaker.volume != null"
+                      rz-slider-model="popup.globalVolumeData.speaker.volume"
+                      rz-slider-options="popup.CONFIG.internal.account.settings.speaker.volume">
+            </rzslider>
+        </div>
+
+        <!-- Submit btn -->
+        <div class="col-xs-12 space-large-after flex-vertical-center">
+            <cozen-btn cozen-btn-icon-right="fa icons8-clouds-filled"
+                       cozen-btn-label="'popup_global_volume_body_save'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-loader="popup.loading"
+                       cozen-btn-on-click="popup.methods.global.volume()"
+                       cozen-btn-class="space-base-right">
+            </cozen-btn>
+            <cozen-btn cozen-btn-type-cold
+                       cozen-btn-label="'popup_cancel'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="popup.methods.closePopup('globalVolume')"
+                       cozen-btn-class="space-base-left">
+            </cozen-btn>
+        </div>
+    </div>
+</cozen-popup>

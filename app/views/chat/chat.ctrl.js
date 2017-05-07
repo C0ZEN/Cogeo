@@ -41,7 +41,7 @@
             isMedia               : isMedia,
             calcMediaLength       : calcMediaLength,
             getUserAlias          : getUserAlias,
-            onInitMp3             : onInitMp3,
+            initMp3               : initMp3,
             stopAllMp3            : stopAllMp3,
             stopAllMedia          : stopAllMedia,
             isMediaAudioPresent   : isMediaAudioPresent,
@@ -62,6 +62,9 @@
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
         cozenOnClickService.subscribe($scope, vm.methods.onActionClick);
+        $rootScope.$on('newGlobalVolume', function () {
+            vm.methods.initMp3();
+        });
 
         // Called each time a view is loaded
         function onInit() {
@@ -181,6 +184,7 @@
                 }
             ];
             vm.methods.calcMediaLength(vm.messages);
+            vm.methods.initMp3();
             vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel._id);
             vm.activeMembers                  = channelsFactory.getActiveMembers(vm.activeGroup, channelId);
             vm.chatTheme                      = 'channel-theme';
@@ -540,6 +544,7 @@
                 }
             ];
             vm.methods.calcMediaLength(vm.messages);
+            vm.methods.initMp3();
             vm.chatTheme        = 'social-theme';
             vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
                 username: vm.activeFriend.alias || vm.activeFriend.username
@@ -610,9 +615,9 @@
             return '';
         }
 
-        function onInitMp3(messageId) {
+        function initMp3() {
             vm.messages.forEach(function (message) {
-                if (message._id == messageId) {
+                if (message.category == 'mp3') {
                     message.sound        = ngAudio.load(message.content.url);
                     message.sound.volume = vm.user.settings.speaker.volume / 100;
                 }
@@ -623,6 +628,7 @@
             vm.messages.forEach(function (message) {
                 if (message.category == 'mp3' && !Methods.isNullOrEmpty(message.sound)) {
                     message.sound.stop();
+                    message.sound.unbind();
                 }
             });
         }
