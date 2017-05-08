@@ -47,7 +47,8 @@
             isMediaAudioPresent   : isMediaAudioPresent,
             isAudioMedia          : isAudioMedia,
             onPlayerReady         : onPlayerReady,
-            stopAllVideo          : stopAllVideo
+            stopAllVideo          : stopAllVideo,
+            onVideoVolumeChange   : onVideoVolumeChange
         };
 
         // Common data
@@ -170,7 +171,9 @@
                     _id     : '1',
                     sender  : 'C0ZEN',
                     sent    : 1484561615,
-                    content : '###Yolo\nça boum ?',
+                    content : {
+                        text: '###Yolo\nça boum ?'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -179,7 +182,9 @@
                     _id     : '2',
                     sender  : 'Marco',
                     sent    : 1484562715,
-                    content : 'Hello, ça va ?!?',
+                    content : {
+                        text: 'Hello, ça va ?!?'
+                    },
                     edited  : 1484562915,
                     tag     : 'user',
                     category: 'text'
@@ -188,7 +193,9 @@
                     _id     : '17',
                     sender  : 'Pioth',
                     sent    : 1484571615,
-                    content : '[Lien](http://www.geoffreytestelin.com/)',
+                    content : {
+                        text: '[Lien](http://www.geoffreytestelin.com/)'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -294,13 +301,7 @@
                         url     : "http://res.cloudinary.com/cozen/video/upload/v1494239259/witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4",
                         name    : "witt-lowry-wonder-if-you-wonder-official-music-video_knoesw",
                         fullName: 'witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4',
-                        size    : '12.4MB',
-                        sources : [
-                            {
-                                src : "http://res.cloudinary.com/cozen/video/upload/v1494239259/witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4",
-                                type: "video/mp4"
-                            }
-                        ]
+                        size    : '12.4MB'
                     },
                     edited  : 0,
                     tag     : 'user',
@@ -310,7 +311,9 @@
                     _id     : '1',
                     sender  : 'C0ZEN',
                     sent    : 1484561615,
-                    content : '###Yolo\nça boum ?',
+                    content : {
+                        text: '###Yolo\nça boum ?'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -319,7 +322,9 @@
                     _id     : '2',
                     sender  : 'Marco',
                     sent    : 1484562715,
-                    content : 'Hello, ça va ?!?',
+                    content : {
+                        text: 'Hello, ça va ?!?'
+                    },
                     edited  : 1484562915,
                     tag     : 'user',
                     category: 'text'
@@ -328,7 +333,9 @@
                     _id     : '3',
                     sender  : 'Spamobot',
                     sent    : 1484562715,
-                    content : 'Bienvenu !',
+                    content : {
+                        text: 'Bienvenu !'
+                    },
                     tag     : 'bot',
                     category: 'text'
                 },
@@ -336,7 +343,9 @@
                     _id     : '4',
                     sender  : 'Friendybot',
                     sent    : 1484562715,
-                    content : 'Yo !',
+                    content : {
+                        text: 'Yo !'
+                    },
                     tag     : 'bot',
                     category: 'text'
                 },
@@ -344,7 +353,9 @@
                     _id     : '5',
                     sender  : 'Pop',
                     sent    : 1484571615,
-                    content : '*Yo*',
+                    content : {
+                        text: '*Yo*'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -353,7 +364,9 @@
                     _id     : '6',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : '#Titre 1',
+                    content : {
+                        text: '#Titre 1'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -362,7 +375,9 @@
                     _id     : '7',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : '##Titre 2',
+                    content : {
+                        text: '##Titre 2'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -371,7 +386,9 @@
                     _id     : '8',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : '###Titre 3',
+                    content : {
+                        text: '###Titre 3'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -380,7 +397,9 @@
                     _id     : '9',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : '####Titre 4',
+                    content : {
+                        text: '####Titre 4'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -389,7 +408,9 @@
                     _id     : '10',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : 'Un texte avec le mot en *italique*',
+                    content : {
+                        text: 'Un texte avec le mot en *italique*'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -398,7 +419,9 @@
                     _id     : '11',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : 'Un texte avec le mot en **gras**',
+                    content : {
+                        text: 'Un texte avec le mot en **gras**'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -407,7 +430,9 @@
                     _id     : '12',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : '#Titre 1     Bonjour les *amis* !',
+                    content : {
+                        text: '#Titre 1     Bonjour les *amis* !'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -416,7 +441,9 @@
                     _id     : '13',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : 'Un texte avec le mot en ~rayé~',
+                    content : {
+                        text: 'Un texte avec le mot en ~rayé~'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -425,7 +452,9 @@
                     _id     : '14',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : '#####Titre 5',
+                    content : {
+                        text: '#####Titre 5'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -434,7 +463,9 @@
                     _id     : '15',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : '######Titre 6',
+                    content : {
+                        text: '######Titre 6'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -443,7 +474,9 @@
                     _id     : '16',
                     sender  : 'C0ZEN',
                     sent    : 1484571615,
-                    content : '[Lien](http://www.geoffreytestelin.com/)',
+                    content : {
+                        text: '[Lien](http://www.geoffreytestelin.com/)'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -452,7 +485,9 @@
                     _id     : '17',
                     sender  : 'Nitbosmet',
                     sent    : 1484571615,
-                    content : '[Lien](http://www.geoffreytestelin.com/)',
+                    content : {
+                        text: '[Lien](http://www.geoffreytestelin.com/)'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -461,7 +496,9 @@
                     _id     : '18',
                     sender  : 'Nitbosmet',
                     sent    : 1484571615,
-                    content : 'Ceci :smile: est une emoticon',
+                    content : {
+                        text: 'Ceci :smile: est une emoticon'
+                    },
                     edited  : 0,
                     tag     : 'user',
                     category: 'text'
@@ -696,6 +733,10 @@
                     message.content.API.stop();
                 }
             });
+        }
+
+        function onVideoVolumeChange() {
+
         }
     }
 

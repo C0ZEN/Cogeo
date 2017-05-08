@@ -72,7 +72,8 @@
                 userBan             : httpRequestUserBan,
                 userUnban           : httpRequestUserUnban,
                 userGrant           : httpRequestUserGrant,
-                userRevoke          : httpRequestUserRevoke
+                userRevoke          : httpRequestUserRevoke,
+                addMessage          : httpRequestAddMessage
             }
         };
 
@@ -767,6 +768,15 @@
                             username : username
                         }
                     });
+                })
+            ;
+        }
+
+        function httpRequestAddMessage(groupName, channelName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/add', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+
                 })
             ;
         }

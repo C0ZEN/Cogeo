@@ -99,7 +99,8 @@
                 friendSetAlias                   : httpRequestFriendSetAlias,
                 friendBlock                      : httpRequestFriendBlock,
                 friendUnblock                    : httpRequestFriendUnblock,
-                friendRemove                     : httpRequestFriendRemove
+                friendRemove                     : httpRequestFriendRemove,
+                updateSettingsSpeakerVolume      : httpRequestUpdateSettingsSpeakerVolume
             }
         };
 
@@ -847,6 +848,19 @@
                             friend: friend
                         }
                     });
+                })
+            ;
+        }
+
+        function httpRequestUpdateSettingsSpeakerVolume(data, callbackSuccess, callbackError, notify) {
+            httpRequest.requestPut('user/' + user.username + '/settings/speaker/volume', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    if (CONFIG.dev) {
+                        cozenEnhancedLogs.info.functionCalled('userFactory', 'httpRequestUpdateSettingsSpeakerVolume');
+                        cozenEnhancedLogs.explodeObject(data, true);
+                    }
+                    setUser(response.data.data, notify);
+                    setUserInLocalStorage(response.data.data);
                 })
             ;
         }

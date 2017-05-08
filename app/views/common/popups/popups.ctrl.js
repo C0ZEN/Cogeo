@@ -468,7 +468,9 @@
 
         function globalVolume() {
             popup.methods.startLoading();
-            userFactory.httpRequest.updateSettings(popup.globalVolumeData, function () {
+            userFactory.httpRequest.updateSettingsSpeakerVolume({
+                volume: popup.globalVolumeData.speaker.volume
+            }, function () {
                 popup.methods.closePopup('globalVolume');
                 popup.methods.stopLoading();
                 $timeout(function () {
