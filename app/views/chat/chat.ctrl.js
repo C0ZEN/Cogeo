@@ -308,6 +308,20 @@
                     category: 'video'
                 },
                 {
+                    _id     : '101',
+                    sender  : 'fzefez',
+                    sent    : 1484571615,
+                    content : {
+                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+                        name    : "Mes achats",
+                        fullName: 'Mes achats.ppt',
+                        size    : '160KB'
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'powerpoint'
+                },
+                {
                     _id     : '1',
                     sender  : 'C0ZEN',
                     sent    : 1484561615,
@@ -662,7 +676,8 @@
                 || message.category == 'excel'
                 || message.category == 'word'
                 || message.category == 'mp3'
-                || message.category == 'video';
+                || message.category == 'video'
+                || message.category == 'powerpoint';
         }
 
         function calcMediaLength(messages) {
