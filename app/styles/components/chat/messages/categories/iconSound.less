@@ -1,0 +1,24 @@
+div.icon-sound {
+    color               : @atom-color-purple;
+    font-size           : @atom-font-body;
+    transition          : @atom-transition;
+    animation-fill-mode : @atom-animation-fill;
+    animation-duration  : @atom-animation-duration-in-fast;
+    animation-name      : fadeInRight;
+    i {
+        color          : inherit;
+        font-size      : inherit;
+        vertical-align : middle;
+        transition     : all @atom-animation-duration-in-fast ease-in-out;
+        &.caret-left {
+            transform : rotate(-90deg);
+        }
+    }
+    &:hover {
+        color : @atom-color-purple-active;
+    }
+    &.ng-hide-add {
+        animation-duration : @atom-animation-duration-out-fast;
+        animation-name     : fadeOutRight;
+    }
+}

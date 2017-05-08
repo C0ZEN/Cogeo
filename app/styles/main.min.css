@@ -3436,6 +3436,38 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.icon-expand:hover {
   color: #4C596B;
 }
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.icon-sound {
+  color: #9C27B0;
+  font-size: 14px;
+  -webkit-transition: all 80ms ease-out;
+  transition: all 80ms ease-out;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-name: fadeInRight;
+          animation-name: fadeInRight;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.icon-sound i {
+  color: inherit;
+  font-size: inherit;
+  vertical-align: middle;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.icon-sound i.caret-left {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.icon-sound:hover {
+  color: #B92ED1;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.icon-sound.ng-hide-add {
+  -webkit-animation-duration: 200ms;
+          animation-duration: 200ms;
+  -webkit-animation-name: fadeOutRight;
+          animation-name: fadeOutRight;
+}
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.image {
   display: -webkit-box;
   display: -ms-flexbox;
