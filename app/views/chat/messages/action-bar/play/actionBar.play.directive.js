@@ -73,6 +73,9 @@
                 if (scope.playActionMessage.category == 'mp3') {
                     scope.playActionMessage.sound.play();
                 }
+                else if (scope.playActionMessage.category == 'video') {
+                    scope.playActionMessage.content.API.play();
+                }
             }
         }
     }

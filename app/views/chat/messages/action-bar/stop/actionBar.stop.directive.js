@@ -32,8 +32,8 @@
             transclude : false,
             scope      : {
                 stopActionDisplay: '=?',
-                stopActionOnClick : '&',
-                stopActionMessage : '=?'
+                stopActionOnClick: '&',
+                stopActionMessage: '=?'
             },
             templateUrl: 'views/chat/messages/action-bar/stop/actionBar.stop.template.html'
         };
@@ -72,6 +72,9 @@
                 }
                 if (scope.stopActionMessage.category == 'mp3') {
                     scope.stopActionMessage.sound.stop();
+                }
+                else if (scope.stopActionMessage.category == 'video') {
+                    scope.stopActionMessage.content.API.stop();
                 }
             }
         }

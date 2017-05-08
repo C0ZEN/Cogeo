@@ -45,7 +45,8 @@
             stopAllMp3            : stopAllMp3,
             stopAllMedia          : stopAllMedia,
             isMediaAudioPresent   : isMediaAudioPresent,
-            isAudioMedia          : isAudioMedia
+            isAudioMedia          : isAudioMedia,
+            onPlayerReady         : onPlayerReady
         };
 
         // Common data
@@ -280,6 +281,27 @@
                 color   : '#2ecc71'
             };
             vm.messages     = [
+                {
+                    _id     : '100',
+                    sender  : 'Nitbosmet',
+                    sent    : 1484571615,
+                    content : {
+                        format  : "mp4",
+                        url     : "http://res.cloudinary.com/cozen/video/upload/v1494239259/witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4",
+                        name    : "witt-lowry-wonder-if-you-wonder-official-music-video_knoesw",
+                        fullName: 'witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4',
+                        size    : '12.4MB',
+                        sources : [
+                            {
+                                src : "http://res.cloudinary.com/cozen/video/upload/v1494239259/witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4",
+                                type: "video/mp4"
+                            }
+                        ]
+                    },
+                    edited  : 0,
+                    tag     : 'user',
+                    category: 'video'
+                },
                 {
                     _id     : '1',
                     sender  : 'C0ZEN',
@@ -598,7 +620,8 @@
                 || message.category == 'pdf'
                 || message.category == 'excel'
                 || message.category == 'word'
-                || message.category == 'mp3';
+                || message.category == 'mp3'
+                || message.category == 'video';
         }
 
         function calcMediaLength(messages) {
@@ -654,7 +677,12 @@
         }
 
         function isAudioMedia(message) {
-            return message.category == 'mp3';
+            return message.category == 'mp3' || message.category == 'video';
+        }
+
+        function onPlayerReady(message, API) {
+            message.content.API    = API;
+            message.content.volume = userFactory.getUser().settings.speaker.volume;
         }
     }
 
