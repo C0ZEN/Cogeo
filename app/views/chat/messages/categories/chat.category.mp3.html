@@ -24,6 +24,15 @@
                ng-class="{'caret-left': !message.expanded}">
             </i>
         </div>
+
+        <!-- Icon sound -->
+        <div ng-show="!message.expanded && !message.sound.paused"
+             class="icon-sound">
+            <cozen-tooltip cozen-tooltip-placement="auto right"
+                           cozen-tooltip-label="'chat_icon_sound_tp'">
+                <i class="fa fa-fw icons8-speaker"></i>
+            </cozen-tooltip>
+        </div>
     </div>
 
     <!-- Toast -->
