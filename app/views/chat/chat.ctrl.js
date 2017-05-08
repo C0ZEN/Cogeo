@@ -686,8 +686,8 @@
         }
 
         function onPlayerReady(message, API) {
-            message.content.API    = API;
-            message.content.volume = userFactory.getUser().settings.speaker.volume;
+            message.content.API = API;
+            message.content.API.setVolume(userFactory.getUser().settings.speaker.volume / 100);
         }
 
         function stopAllVideo() {
