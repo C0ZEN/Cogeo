@@ -46,7 +46,8 @@
             stopAllMedia          : stopAllMedia,
             isMediaAudioPresent   : isMediaAudioPresent,
             isAudioMedia          : isAudioMedia,
-            onPlayerReady         : onPlayerReady
+            onPlayerReady         : onPlayerReady,
+            stopAllVideo          : stopAllVideo
         };
 
         // Common data
@@ -665,6 +666,7 @@
         function stopAllMedia($event) {
             $event.stopPropagation();
             vm.methods.stopAllMp3();
+            vm.methods.stopAllVideo();
         }
 
         function isMediaAudioPresent() {
@@ -683,6 +685,14 @@
         function onPlayerReady(message, API) {
             message.content.API    = API;
             message.content.volume = userFactory.getUser().settings.speaker.volume;
+        }
+
+        function stopAllVideo() {
+            vm.messages.forEach(function (message) {
+                if (message.category == 'video') {
+                    message.content.API.stop();
+                }
+            });
         }
     }
 
