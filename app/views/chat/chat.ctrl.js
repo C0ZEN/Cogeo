@@ -48,7 +48,8 @@
             isMediaAudioPresent   : isMediaAudioPresent,
             isAudioMedia          : isAudioMedia,
             onPlayerReady         : onPlayerReady,
-            stopAllVideo          : stopAllVideo
+            stopAllVideo          : stopAllVideo,
+            isMediaPresent        : isMediaPresent
         };
 
         // Common data
@@ -763,6 +764,15 @@
                     message.content.API.stop();
                 }
             });
+        }
+
+        function isMediaPresent() {
+            for (var i = 0, length = vm.messages.length; i < length; i++) {
+                if (vm.methods.isMedia(vm.messages[i])) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
