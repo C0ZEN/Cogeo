@@ -17,11 +17,12 @@
         'cozenOnClickService',
         '$filter',
         'botFactory',
-        'ngAudio'
+        'ngAudio',
+        '$timeout'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
-                      cozenOnClickService, $filter, botFactory, ngAudio) {
+                      cozenOnClickService, $filter, botFactory, ngAudio, $timeout) {
         var vm = this;
 
         // Methods
@@ -47,8 +48,7 @@
             isMediaAudioPresent   : isMediaAudioPresent,
             isAudioMedia          : isAudioMedia,
             onPlayerReady         : onPlayerReady,
-            stopAllVideo          : stopAllVideo,
-            onVideoVolumeChange   : onVideoVolumeChange
+            stopAllVideo          : stopAllVideo
         };
 
         // Common data
@@ -733,10 +733,6 @@
                     message.content.API.stop();
                 }
             });
-        }
-
-        function onVideoVolumeChange() {
-
         }
     }
 

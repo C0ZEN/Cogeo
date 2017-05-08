@@ -62,7 +62,6 @@
         <!-- Row -->
         <div class="row video-container">
             <videogular vg-player-ready="vm.methods.onPlayerReady(message, $API)"
-                        vg-update-volume="vm.methods.onVideoVolumeChange($volume)"
                         vg-theme="vm.CONFIG.internal.video.theme">
                 <vg-media vg-src="message.content.url"></vg-media>
 
@@ -81,12 +80,6 @@
 
                     <!-- Time left -->
                     <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
-
-                    <!-- Volume btn -->
-                    <vg-volume>
-                        <vg-mute-button></vg-mute-button>
-                        <vg-volume-bar></vg-volume-bar>
-                    </vg-volume>
                 </vg-controls>
 
                 <!-- Loader -->
