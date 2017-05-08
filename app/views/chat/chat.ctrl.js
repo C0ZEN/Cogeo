@@ -71,6 +71,9 @@
                 if (message.category == 'mp3') {
                     message.sound.volume = userFactory.getUser().settings.speaker.volume / 100;
                 }
+                else if (message.category == 'video') {
+                    message.content.API.setVolume(userFactory.getUser().settings.speaker.volume / 100);
+                }
             });
         });
 
