@@ -462,7 +462,6 @@
         }
 
         function messageRemove() {
-
             popup.methods.closePopup('messageRemove');
             popup.methods.stopLoading();
         }
@@ -483,6 +482,9 @@
 
         function globalInitVolume() {
             popup.globalVolumeData = userFactory.getUser().settings;
+            $timeout(function () {
+                $rootScope.$broadcast('rzSliderForceRender');
+            }, 400);
         }
     }
 

@@ -1,5 +1,6 @@
 <cozen-popup cozen-popup-name="globalVolume"
              cozen-popup-type-info
+             cozen-popup-size-small
              cozen-popup-on-show="popup.methods.global.initVolume()"
              cozen-popup-header-title="'popup_global_volume_header_title'">
     <div class="row">
@@ -10,8 +11,7 @@
         </div>
 
         <div class="col-xs-12 space-medium-after">
-            <rzslider ng-if="popup.globalVolumeData.speaker.volume != null"
-                      rz-slider-model="popup.globalVolumeData.speaker.volume"
+            <rzslider rz-slider-model="popup.globalVolumeData.speaker.volume"
                       rz-slider-options="popup.CONFIG.internal.account.settings.speaker.volume">
             </rzslider>
         </div>
