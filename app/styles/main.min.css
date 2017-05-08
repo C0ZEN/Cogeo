@@ -867,6 +867,20 @@ i.atom-icon-btn.purple:hover {
 .display-initial {
   display: initial;
 }
+* ::-moz-selection {
+  background-color: #2C9FDD;
+  color: #FFFFFF;
+}
+* ::selection {
+  background-color: #2C9FDD;
+  color: #FFFFFF;
+}
+img::-moz-selection {
+  background-color: transparent;
+}
+img::selection {
+  background-color: transparent;
+}
 /********************/
 /**   TEXT ALIGN   **/
 /********************/
