@@ -73,7 +73,9 @@
                 userUnban           : httpRequestUserUnban,
                 userGrant           : httpRequestUserGrant,
                 userRevoke          : httpRequestUserRevoke,
-                addMessage          : httpRequestAddMessage
+                addMessage          : httpRequestAddMessage,
+                editMessage         : httpRequestEditMessage,
+                removeMessage       : httpRequestRemoveMessage
             }
         };
 
@@ -776,7 +778,22 @@
             httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/add', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     updateGroup(response.data.data);
+                })
+            ;
+        }
 
+        function httpRequestEditMessage(groupName, channelName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/edit', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestRemoveMessage(groupName, channelName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/remove', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
                 })
             ;
         }
