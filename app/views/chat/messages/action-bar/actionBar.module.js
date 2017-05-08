@@ -12,7 +12,8 @@
             '4pjtApp.actionBar.remove',
             '4pjtApp.actionBar.play',
             '4pjtApp.actionBar.pause',
-            '4pjtApp.actionBar.stop'
+            '4pjtApp.actionBar.stop',
+            '4pjtApp.actionBar.volume'
         ]);
 
 })(window.angular);
