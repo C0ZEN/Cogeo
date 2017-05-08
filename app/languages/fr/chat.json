@@ -51,6 +51,7 @@
     "chat_upload_mp3_text": "a uploadé ce fichier mp3",
     "chat_upload_video_text": "a uploadé cette vidéo",
     "chat_upload_powerpoint_text": "a uploadé ce document powerpoint",
+    "chat_upload_txt_text": "a uploadé ce document texte",
     "chat_upload_download": "- clique pour télécharger",
     "chat_public_channel": "Public",
     "chat_private_channel": "Privé",
