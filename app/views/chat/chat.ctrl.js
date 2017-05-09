@@ -85,11 +85,8 @@
         // When the first ng-repeat is finished, we receive this event
         $scope.$on('cozenRepeatFinished', function ($event, data) {
 
-
             // We can scroll to the bottom of the page (last message)
-            $timeout(function () {
-                vm.methods.scrollToBottom(data);
-            });
+            vm.methods.scrollToBottom(data);
         });
 
         // Called each time a view is loaded
@@ -226,6 +223,9 @@
             goTo.view('app.chat.channel', {
                 groupName  : vm.activeGroup,
                 channelName: channelName
+            });
+            vm.methods.scrollToBottom({
+                data: vm.messages[vm.messages.length - 1]
             });
             $rootScope.$broadcast('setChatTheme', {
                 theme: vm.chatTheme
@@ -663,6 +663,9 @@
             goTo.view('app.chat.user', {
                 username: username
             });
+            vm.methods.scrollToBottom({
+                data: vm.messages[vm.messages.length - 1]
+            });
             $rootScope.$broadcast('setChatTheme', {
                 theme: vm.chatTheme
             });
@@ -809,11 +812,15 @@
         // After the first digest is done (all messages are injected in the DOM)
         // And that all the stuff is loaded and fit the space
         // A second call is made (so that all the directives that takes spaces like videos are visibles)
-        function scrollToBottom(data) {
-            $location.hash('message-' + data.data._id);
-            $anchorScroll();
+        function scrollToBottom(data, stop) {
+            if (Methods.isNullOrEmpty(data)) return;
             $timeout(function () {
-                vm.methods.scrollToBottom(data);
+                $location.hash('message-' + data.data._id);
+                $anchorScroll();
+                if (stop) return;
+                $timeout(function () {
+                    vm.methods.scrollToBottom(data, true);
+                });
             });
         }
     }
