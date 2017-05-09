@@ -1,6 +1,6 @@
-<div class="link-dropdown-item"
+<div ng-if="vm.mediaLength > 0"
+     class="link-dropdown-item"
      tabindex="0"
-     ng-show="vm.mediaLength > 0"
      ng-click="vm.methods.toggleChannels($event)">
     <i class="fa fa-fw space-small-right"
        ng-class="[vm.showChannels ? 'icons8-open-pane-filled' : 'icons8-close-pane-filled']">
