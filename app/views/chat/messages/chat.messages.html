@@ -1,15 +1,16 @@
-<div class="chat-messages"
-     id="chat-messages-container">
+<div class="chat-messages">
 
     <!-- Message -->
     <div ng-repeat="message in vm.messages track by $index"
          cozen-on-repeat-finish
+         cozen-on-repeat-finish-data="message"
          class="message"
          ng-style="{'pointer-events': vm.actionBar.options.down ? 'none' : ''}"
          ng-mouseenter="message.isHover = true"
          ng-mouseleave="message.isHover = false"
          ng-class="{'is-hover': message.isHover}"
-         ng-switch="message.tag">
+         ng-switch="message.tag"
+         id="message-{{ message._id }}">
 
         <!-- Message from a user -->
         <ng-switch ng-switch-when="user">

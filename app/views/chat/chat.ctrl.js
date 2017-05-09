@@ -18,11 +18,13 @@
         '$filter',
         'botFactory',
         'ngAudio',
+        '$location',
+        '$anchorScroll',
         '$timeout'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
-                      cozenOnClickService, $filter, botFactory, ngAudio, $timeout) {
+                      cozenOnClickService, $filter, botFactory, ngAudio, $location, $anchorScroll, $timeout) {
         var vm = this;
 
         // Methods
@@ -80,9 +82,14 @@
             });
         });
 
-        $scope.$on('cozenRepeatFinished', function () {
-            vm.methods.scrollToBottom();
-            console.log(1);
+        // When the first ng-repeat is finished, we receive this event
+        $scope.$on('cozenRepeatFinished', function ($event, data) {
+
+
+            // We can scroll to the bottom of the page (last message)
+            $timeout(function () {
+                vm.methods.scrollToBottom(data);
+            });
         });
 
         // Called each time a view is loaded
@@ -661,6 +668,8 @@
             });
         }
 
+        // Toggle the global expand value
+        // Hide or show all the media
         function toggleExpand($event) {
             $event.stopPropagation();
             vm.expandAll = !vm.expandAll;
@@ -671,6 +680,9 @@
             });
         }
 
+        // Called to calc the number of expanded media and edit the expandAll value
+        // Only if there is an opposing value (single expand of all media, but expandAll is false, it makes no sense)
+        // So we change the the expandAll accordingly
         function onToggleSingleExpanded() {
             var isFirst = true, firstExpanded = vm.expandAll, equals = true;
             vm.messages.forEach(function (message) {
@@ -691,6 +703,7 @@
             }
         }
 
+        // Check if the message is a media (mp3 or video)
         function isMedia(message) {
             return message.category == 'image'
                 || message.category == 'pdf'
@@ -702,6 +715,7 @@
                 || message.category == 'txt';
         }
 
+        // Get the number of media present in the messages
         function calcMediaLength(messages) {
             var media = 0;
             messages.forEach(function (message) {
@@ -713,6 +727,7 @@
             vm.mediaLength = media;
         }
 
+        // Get all the alias for the users by checking the friends alias of the current user
         function getUserAlias(username) {
             for (var i = 0, length = vm.allFriends.length; i < length; i++) {
                 if (vm.allFriends[i].username == username) {
@@ -722,6 +737,7 @@
             return '';
         }
 
+        // Init mp3 audio file
         function initMp3() {
             vm.messages.forEach(function (message) {
                 if (message.category == 'mp3') {
@@ -731,6 +747,7 @@
             });
         }
 
+        // Stop all mp3
         function stopAllMp3() {
             vm.messages.forEach(function (message) {
                 if (message.category == 'mp3' && !Methods.isNullOrEmpty(message.sound)) {
@@ -740,12 +757,14 @@
             });
         }
 
+        // Stop all mp3 and video
         function stopAllMedia($event) {
             $event.stopPropagation();
             vm.methods.stopAllMp3();
             vm.methods.stopAllVideo();
         }
 
+        // Check in the current messages if there is one of type mp3 or video
         function isMediaAudioPresent() {
             for (var i = 0, length = vm.messages.length; i < length; i++) {
                 if (vm.methods.isAudioMedia(vm.messages[i])) {
@@ -755,15 +774,18 @@
             return false;
         }
 
+        // Check if the message is audio or video
         function isAudioMedia(message) {
             return message.category == 'mp3' || message.category == 'video';
         }
 
+        // Called by the videogular directive when she's ready
         function onPlayerReady(message, API) {
             message.content.API = API;
             message.content.API.setVolume(userFactory.getUser().settings.speaker.volume / 100);
         }
 
+        // Stop all the videos
         function stopAllVideo() {
             vm.messages.forEach(function (message) {
                 if (message.category == 'video') {
@@ -772,6 +794,7 @@
             });
         }
 
+        // Check if a media is present in the list of current messages
         function isMediaPresent() {
             for (var i = 0, length = vm.messages.length; i < length; i++) {
                 if (vm.methods.isMedia(vm.messages[i])) {
@@ -781,9 +804,17 @@
             return false;
         }
 
-        function scrollToBottom() {
-            var messagesContainer       = angular.element(document.getElementById('chat-messages-container'));
-            messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+        // Scroll to a specific message (double call to better speed)
+        // Fast scroll to the message (but some directives are not ready yet)
+        // After the first digest is done (all messages are injected in the DOM)
+        // And that all the stuff is loaded and fit the space
+        // A second call is made (so that all the directives that takes spaces like videos are visibles)
+        function scrollToBottom(data) {
+            $location.hash('message-' + data.data._id);
+            $anchorScroll();
+            $timeout(function () {
+                vm.methods.scrollToBottom(data);
+            });
         }
     }
 
