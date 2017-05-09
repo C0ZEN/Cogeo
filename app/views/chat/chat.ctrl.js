@@ -1,4 +1,4 @@
-(function (angular) {
+(function (angular, document) {
     'use strict';
 
     angular
@@ -49,7 +49,8 @@
             isAudioMedia          : isAudioMedia,
             onPlayerReady         : onPlayerReady,
             stopAllVideo          : stopAllVideo,
-            isMediaPresent        : isMediaPresent
+            isMediaPresent        : isMediaPresent,
+            scrollToBottom        : scrollToBottom
         };
 
         // Common data
@@ -77,6 +78,11 @@
                     message.content.API.setVolume(userFactory.getUser().settings.speaker.volume / 100);
                 }
             });
+        });
+
+        $scope.$on('cozenRepeatFinished', function () {
+            vm.methods.scrollToBottom();
+            console.log(1);
         });
 
         // Called each time a view is loaded
@@ -774,7 +780,12 @@
             }
             return false;
         }
+
+        function scrollToBottom() {
+            var messagesContainer       = angular.element(document.getElementById('chat-messages-container'));
+            messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+        }
     }
 
-})(window.angular);
+})(window.angular, window.document);
 

@@ -1,7 +1,9 @@
-<div class="chat-messages">
+<div class="chat-messages"
+     id="chat-messages-container">
 
     <!-- Message -->
     <div ng-repeat="message in vm.messages track by $index"
+         cozen-on-repeat-finish
          class="message"
          ng-style="{'pointer-events': vm.actionBar.options.down ? 'none' : ''}"
          ng-mouseenter="message.isHover = true"
