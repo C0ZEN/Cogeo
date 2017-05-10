@@ -3,10 +3,10 @@ div.atom-chat div.chat-input-container {
     border-top       : 1px solid @atom-color-line-rule;
     width            : 100%;
     display          : block;
-    padding          : @atom-space-base;
+    padding          : @atom-space-base @atom-space-base @atom-space-small @atom-space-base;
     z-index          : 1;
     margin-top       : auto;
-    form.row {
+    .row {
         display         : flex;
         flex-direction  : row;
         justify-content : space-between;
@@ -27,6 +27,11 @@ div.atom-chat div.chat-input-container {
                     }
                 }
             }
+        }
+        span.pro-tips {
+            margin-left : auto;
+            font-size   : @atom-font-small;
+            color       : @atom-color-label;
         }
     }
 }

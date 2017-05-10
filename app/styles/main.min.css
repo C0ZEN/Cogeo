@@ -3888,11 +3888,11 @@ div.atom-chat div.chat-input-container {
   border-top: 1px solid #D6DBDB;
   width: 100%;
   display: block;
-  padding: 12px;
+  padding: 12px 12px 6px 12px;
   z-index: 1;
   margin-top: auto;
 }
-div.atom-chat div.chat-input-container form.row {
+div.atom-chat div.chat-input-container .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3910,24 +3910,29 @@ div.atom-chat div.chat-input-container form.row {
   padding: 0;
   width: 100%;
 }
-div.atom-chat div.chat-input-container form.row cozen-textarea {
+div.atom-chat div.chat-input-container .row cozen-textarea {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
-div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-html,
-div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-default {
+div.atom-chat div.chat-input-container .row cozen-textarea div.cozen-tooltip-html,
+div.atom-chat div.chat-input-container .row cozen-textarea div.cozen-tooltip-default {
   display: -ms-inline-grid;
   display: inline-grid;
   width: 100%;
 }
-div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-html textarea,
-div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-default textarea {
+div.atom-chat div.chat-input-container .row cozen-textarea div.cozen-tooltip-html textarea,
+div.atom-chat div.chat-input-container .row cozen-textarea div.cozen-tooltip-default textarea {
   max-height: 149px;
 }
-div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-html textarea.overflow-textarea,
-div.atom-chat div.chat-input-container form.row cozen-textarea div.cozen-tooltip-default textarea.overflow-textarea {
+div.atom-chat div.chat-input-container .row cozen-textarea div.cozen-tooltip-html textarea.overflow-textarea,
+div.atom-chat div.chat-input-container .row cozen-textarea div.cozen-tooltip-default textarea.overflow-textarea {
   overflow-y: auto !important;
+}
+div.atom-chat div.chat-input-container .row span.pro-tips {
+  margin-left: auto;
+  font-size: 12px;
+  color: #8C8C8C;
 }
 .text-left-inner .tooltip-inner {
   text-align: left;
