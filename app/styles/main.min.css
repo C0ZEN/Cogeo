@@ -742,9 +742,13 @@ i.atom-icon-btn.purple:hover {
           align-items: center;
 }
 .justify-content-center {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+}
+.justify-space-around {
+  -ms-flex-pack: distribute !important;
+      justify-content: space-around !important;
 }
 .full-center-content {
   display: -webkit-box;
@@ -1061,7 +1065,10 @@ img::selection {
   width: 100%;
 }
 .margin-left-auto {
-  margin-left: auto;
+  margin-left: auto !important;
+}
+.margin-right-auto {
+  margin-right: auto !important;
 }
 .display-flex {
   display: -webkit-box;
@@ -3930,7 +3937,6 @@ div.atom-chat div.chat-input-container .row cozen-textarea div.cozen-tooltip-def
   overflow-y: auto !important;
 }
 div.atom-chat div.chat-input-container .row span.pro-tips {
-  margin-left: auto;
   font-size: 12px;
   color: #8C8C8C;
 }
