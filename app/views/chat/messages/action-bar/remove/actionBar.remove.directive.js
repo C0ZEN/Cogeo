@@ -22,10 +22,11 @@
 
     removeAction.$inject = [
         '$rootScope',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        '$state'
     ];
 
-    function removeAction($rootScope, cozenEnhancedLogs) {
+    function removeAction($rootScope, cozenEnhancedLogs, $state) {
         return {
             link       : link,
             restrict   : 'E',

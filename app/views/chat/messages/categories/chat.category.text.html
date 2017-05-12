@@ -1,12 +1,12 @@
 <!-- Text -->
-<span ng-show="!message.editMod"
+<span ng-if="!message.editMod"
       class="text"
       btf-markdown="message.content.text">
 </span>
 
 <!-- Edit -->
 <div class="edit-container"
-     ng-show="message.editMod">
+     ng-if="message.editMod">
 
     <!-- Input -->
     <cozen-form cozen-form-ctrl="vm"

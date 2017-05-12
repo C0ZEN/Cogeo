@@ -16,11 +16,12 @@
         'usersFactory',
         'groupsFactory',
         'channelsFactory',
-        '$timeout'
+        '$timeout',
+        '$state'
     ];
 
     function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory, cozenEnhancedLogs, usersFactory,
-                       groupsFactory, channelsFactory, $timeout) {
+                       groupsFactory, channelsFactory, $timeout, $state) {
         var popup = this;
 
         // Methods
@@ -462,8 +463,25 @@
         }
 
         function messageRemove() {
-            popup.methods.closePopup('messageRemove');
-            popup.methods.stopLoading();
+            popup.methods.startLoading();
+            if ($state.current.name == 'app.chat.user') {
+                groupsFactory.httpRequest.removeMessage($state.params.groupName, $state.params.channelName, popup.messageRemoveData.message, function () {
+                    popup.methods.closePopup('messageRemove');
+                    popup.methods.stopLoading();
+                }, function () {
+                    popup.methods.closePopup('messageRemove');
+                    popup.methods.stopLoading();
+                });
+            }
+            else {
+                groupsFactory.httpRequest.removeMessage($state.params.groupName, $state.params.channelName, popup.messageRemoveData.message, function () {
+                    popup.methods.closePopup('messageRemove');
+                    popup.methods.stopLoading();
+                }, function () {
+                    popup.methods.closePopup('messageRemove');
+                    popup.methods.stopLoading();
+                });
+            }
         }
 
         function globalVolume() {
