@@ -52,7 +52,11 @@
             onPlayerReady         : onPlayerReady,
             stopAllVideo          : stopAllVideo,
             isMediaPresent        : isMediaPresent,
-            scrollToBottom        : scrollToBottom
+            scrollToBottom        : scrollToBottom,
+            sendNewMessage        : sendNewMessage,
+            stopAllEdit           : stopAllEdit,
+            startEdit             : startEdit,
+            editMessage           : editMessage
         };
 
         // Common data
@@ -174,6 +178,7 @@
         // Called when the user click on a new channel
         function setActiveChannel(channelName, channelId) {
             vm.methods.stopAllMp3();
+            vm.methods.stopAllEdit();
             vm.activeChannel = groupsFactory.getChannelById(vm.activeGroup, channelId);
             vm.activeChannel = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
             vm.messages      = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
@@ -291,6 +296,7 @@
         function setActiveFriend(username) {
             vm.activeChannel = null;
             vm.methods.stopAllMp3();
+            vm.methods.stopAllEdit();
 
             // Find the active friend
             vm.allFriends.forEach(function (friend) {
@@ -813,15 +819,66 @@
         // And that all the stuff is loaded and fit the space
         // A second call is made (so that all the directives that takes spaces like videos are visibles)
         function scrollToBottom(data, stop) {
-            if (Methods.isNullOrEmpty(data)) return;
+            if (Methods.isNullOrEmpty(data)) {
+                return;
+            }
             $timeout(function () {
                 $location.hash('message-' + data.data._id);
                 $anchorScroll();
-                if (stop) return;
+                if (stop) {
+                    return;
+                }
                 $timeout(function () {
                     vm.methods.scrollToBottom(data, true);
                 });
             });
+        }
+
+        function sendNewMessage(name, model) {
+            var message = {
+                sender  : userFactory.getUser().username,
+                content : {
+                    text: model
+                },
+                tag     : 'user',
+                category: 'text'
+            };
+            if ($state.current.name == 'app.chat.user') {
+
+            }
+            else {
+                groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message);
+                $timeout(function () {
+                    vm.message = null;
+                });
+            }
+        }
+
+        function stopAllEdit() {
+            vm.messages.forEach(function (message) {
+                message.editMod = false;
+            });
+        }
+
+        function startEdit(messageId) {
+            for (var i = 0, length = vm.messages.length; i < length; i++) {
+                if (vm.messages[i]._id == messageId) {
+                    vm.messages[i].editMod   = true;
+                    vm.messages[i].editModel = vm.messages[i].content.text;
+                    break;
+                }
+            }
+        }
+
+        function editMessage(message) {
+            message.content.text = message.editModel;
+            if ($state.current.name == 'app.chat.user') {
+
+            }
+            else {
+                groupsFactory.httpRequest.editMessage($state.params.groupName, $state.params.channelName, message);
+            }
+            message.editMod = false;
         }
     }
 

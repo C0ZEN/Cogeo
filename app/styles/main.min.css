@@ -750,6 +750,11 @@ i.atom-icon-btn.purple:hover {
   -ms-flex-pack: distribute !important;
       justify-content: space-around !important;
 }
+.justify-content-start {
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+}
 .full-center-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2943,6 +2948,7 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
           animation-duration: 300ms;
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
+  width: 100%;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message .user div.message-content div.from {
   display: -webkit-box;
@@ -3730,6 +3736,58 @@ div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.mes
   color: #4C596B;
   font-weight: 400;
   font-size: 14px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row cozen-textarea,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row cozen-textarea {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row cozen-textarea div.cozen-tooltip-html,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row cozen-textarea div.cozen-tooltip-html,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row cozen-textarea div.cozen-tooltip-default,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row cozen-textarea div.cozen-tooltip-default {
+  display: -ms-inline-grid;
+  display: inline-grid;
+  width: 100%;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row cozen-textarea div.cozen-tooltip-html textarea,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row cozen-textarea div.cozen-tooltip-html textarea,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row cozen-textarea div.cozen-tooltip-default textarea,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row cozen-textarea div.cozen-tooltip-default textarea {
+  max-height: 149px;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row cozen-textarea div.cozen-tooltip-html textarea.overflow-textarea,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row cozen-textarea div.cozen-tooltip-html textarea.overflow-textarea,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row cozen-textarea div.cozen-tooltip-default textarea.overflow-textarea,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row cozen-textarea div.cozen-tooltip-default textarea.overflow-textarea {
+  overflow-y: auto !important;
+}
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container div.row.btn-line,
+div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.edit-container form.row.btn-line {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 12px 0 6px 0;
 }
 div.atom-chat div.chat-col div.chat-messages-container div.chat-messages div.message div.message-body div.txt {
   display: -webkit-box;

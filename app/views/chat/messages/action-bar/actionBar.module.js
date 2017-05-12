@@ -13,7 +13,8 @@
             '4pjtApp.actionBar.play',
             '4pjtApp.actionBar.pause',
             '4pjtApp.actionBar.stop',
-            '4pjtApp.actionBar.volume'
+            '4pjtApp.actionBar.volume',
+            '4pjtApp.actionBar.edit'
         ]);
 
 })(window.angular);

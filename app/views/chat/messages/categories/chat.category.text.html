@@ -1,3 +1,48 @@
-<span class="text"
+<!-- Text -->
+<span ng-show="!message.editMod"
+      class="text"
       btf-markdown="message.content.text">
 </span>
+
+<!-- Edit -->
+<div class="edit-container"
+     ng-show="message.editMod">
+
+    <!-- Input -->
+    <cozen-form cozen-form-ctrl="vm"
+                cozen-form-model="form"
+                cozen-form-name="edit"
+                cozen-form-class="row">
+        <cozen-textarea cozen-textarea-model="message.editModel"
+                        cozen-textarea-rows="1"
+                        cozen-textarea-spell-check="false"
+                        cozen-textarea-error-design="false"
+                        cozen-textarea-success-design="false"
+                        cozen-textarea-when-height-greater-than="149"
+                        cozen-textarea-when-height-greater-than-class="overflow-textarea"
+                        cozen-textarea-when-height-greater-than-disabled="false"
+                        cozen-textarea-size-small>
+        </cozen-textarea>
+    </cozen-form>
+
+    <!-- Btn -->
+    <div class="row btn-line">
+
+        <!-- Edit -->
+        <cozen-btn cozen-btn-size-small
+                   cozen-btn-type-success
+                   cozen-btn-label="'chat_edit_submit'"
+                   cozen-btn-disabled="message.editModel == message.content.text"
+                   cozen-btn-icon-right="fa icons8-clouds-filled"
+                   cozen-btn-on-click="vm.methods.editMessage(message)"
+                   class="space-base-right">
+        </cozen-btn>
+
+        <!-- Cancel -->
+        <cozen-btn cozen-btn-size-small
+                   cozen-btn-type-cold
+                   cozen-btn-label="'chat_edit_cancel'"
+                   cozen-btn-on-click="message.editMod = false">
+        </cozen-btn>
+    </div>
+</div>
