@@ -370,6 +370,8 @@
 	"errors_103": "Le username <strong>{{username}}</strong> est déjà utilisé ! <small>{{date}}</small>",
 	"errors_104": "L'adresse mail <strong>{{email}}</strong> est déjà utilisée ! <small>{{date}}</small>",
 	"errors_105": "Le mot de passe actuel n'est pas le bon ! <small>{{date}}</small>",
+	"errors_106": "Ce nom d'utilisateur est réservé pour Friendybot ! <small>{{date}}</small>",
+	"errors_107": "Ce nom d'utilisateur est réservé pour Spamobot ! <small>{{date}}</small>",
 	"errors_300": "Un channel identique pour le groupe {{groupName}} existe déjà avec le même nom ! <small>{{date}}</small>",
 	"errors_301": "Le nom du channel n'est pas renseigné ! <small>{{date}}</small>",
 	"errors_302": "Au moins un channel doit être par défaut par groupe ! <small>{{date}}</small>",

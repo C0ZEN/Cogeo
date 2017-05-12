@@ -783,7 +783,7 @@
         }
 
         function httpRequestEditMessage(groupName, channelName, data, callbackSuccess, callbackError) {
-            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/edit', data, callbackSuccess, callbackError)
+            httpRequest.requestPut('group/' + groupName + '/channel/' + channelName + '/message/edit', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     updateGroup(response.data.data);
                 })
@@ -791,7 +791,7 @@
         }
 
         function httpRequestRemoveMessage(groupName, channelName, data, callbackSuccess, callbackError) {
-            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/remove', data, callbackSuccess, callbackError)
+            httpRequest.requestPut('group/' + groupName + '/channel/' + channelName + '/message/remove', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     updateGroup(response.data.data);
                 })

@@ -22,6 +22,7 @@
             requestGet   : requestGet,
             requestPost  : requestPost,
             requestPut   : requestPut,
+            requestDelete: requestDelete,
             shakeElement : shakeElement,
             displayError : displayError,
             customRequest: customRequest
@@ -111,6 +112,32 @@
             return deferred.promise;
         }
 
+        function requestDelete(url, callbackSuccess, callbackError) {
+            var deferred = $q.defer();
+            cozenEnhancedLogs.info.httpRequest({
+                methods: 'DELETE',
+                url    : CONFIG.internal.API + url,
+                data   : {
+                    session: {}
+                }
+            });
+            $http.delete(CONFIG.internal.API + url, {
+                session: {}
+            }).then(function (response) {
+                deferred.resolve(response);
+                if (Methods.isFunction(callbackSuccess)) {
+                    callbackSuccess(response);
+                }
+            }).catch(function (response) {
+                deferred.reject(response, 200);
+                if (Methods.isFunction(callbackError)) {
+                    callbackError(response);
+                }
+                displayError(response);
+            });
+            return deferred.promise;
+        }
+
         // Shake the button on error
         function shakeElement(element) {
             $timeout(function () {
@@ -128,6 +155,8 @@
                 case 1:
                 case 2:
                 case 105:
+                case 106:
+                case 107:
                 case 300:
                 case 301:
                 case 302:

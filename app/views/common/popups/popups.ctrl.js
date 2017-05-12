@@ -465,7 +465,7 @@
         function messageRemove() {
             popup.methods.startLoading();
             if ($state.current.name == 'app.chat.user') {
-                groupsFactory.httpRequest.removeMessage($state.params.groupName, $state.params.channelName, popup.messageRemoveData.message, function () {
+                groupsFactory.httpRequest.removeMessage($state.params.groupName, $state.params.channelName, popup.messageRemoveData, function () {
                     popup.methods.closePopup('messageRemove');
                     popup.methods.stopLoading();
                 }, function () {
@@ -474,7 +474,7 @@
                 });
             }
             else {
-                groupsFactory.httpRequest.removeMessage($state.params.groupName, $state.params.channelName, popup.messageRemoveData.message, function () {
+                groupsFactory.httpRequest.removeMessage($state.params.groupName, $state.params.channelName, popup.messageRemoveData, function () {
                     popup.methods.closePopup('messageRemove');
                     popup.methods.stopLoading();
                 }, function () {

@@ -182,41 +182,6 @@
             vm.activeChannel = groupsFactory.getChannelById(vm.activeGroup, channelId);
             vm.activeChannel = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
             vm.messages      = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
-            vm.messages      = [
-                {
-                    _id     : '1',
-                    sender  : 'C0ZEN',
-                    sent    : 1484561615,
-                    content : {
-                        text: '###Yolo\nça boum ?'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '2',
-                    sender  : 'Marco',
-                    sent    : 1484562715,
-                    content : {
-                        text: 'Hello, ça va ?!?'
-                    },
-                    edited  : 1484562915,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '17',
-                    sender  : 'Pioth',
-                    sent    : 1484571615,
-                    content : {
-                        text: '[Lien](http://www.geoffreytestelin.com/)'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                }
-            ];
             vm.methods.calcMediaLength(vm.messages);
             vm.methods.initMp3();
             vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel._id);
@@ -819,7 +784,7 @@
         // And that all the stuff is loaded and fit the space
         // A second call is made (so that all the directives that takes spaces like videos are visibles)
         function scrollToBottom(data, stop) {
-            if (Methods.isNullOrEmpty(data)) {
+            if (Methods.isNullOrEmpty(data) || Methods.isNullOrEmpty(data.data)) {
                 return;
             }
             $timeout(function () {

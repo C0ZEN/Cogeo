@@ -137,7 +137,6 @@
 
         function generateLoginPassword() {
             vm.login.password = 'Soleil123';
-            cozenLazyLoadInternal.sendBroadcastForm('login');
             cozenLazyLoadInternal.sendBroadcastBtnClick('submit-login-btn');
         }
     }
