@@ -77,8 +77,9 @@
         function login() {
             vm.methods.startLoading();
             var data = {
-                username: vm.login.username,
-                password: vm.login.password
+                username       : vm.login.username,
+                password       : vm.login.password,
+                updateLastLogin: false
             };
 
             userFactory.httpRequest.login(data, function () {

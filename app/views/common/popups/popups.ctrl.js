@@ -252,7 +252,7 @@
 
         function userActionKicked() {
             var kick = {
-                from: userFactory.getUser().username,
+                by: userFactory.getUser().username,
                 for : popup.userActionKicked.for,
                 time: popup.userActionKicked.time
             };
@@ -274,7 +274,7 @@
 
         function userActionBanned() {
             var ban = {
-                from: userFactory.getUser().username,
+                by: userFactory.getUser().username,
                 for : popup.userActionBanned.for
             };
             if (popup.userActionBannedData.element == 'channel') {
