@@ -5,9 +5,9 @@
     <!-- Chat -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_friendAction_chat'">
-        <div ng-show="friendActionChat"
+        <div ng-if="friendActionChat"
              ng-click="_methods.onClick($event, 'chat')"
-             class="action-item friend-chat animated zoomIn">
+             class="action-item friend-chat animated zoomIn force-ng-hide">
             <i class="fa fa-fw icons8-chat"></i>
         </div>
     </cozen-tooltip>
@@ -15,9 +15,9 @@
     <!-- Rename -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_friendAction_rename'">
-        <div ng-show="friendActionRename"
+        <div ng-if="friendActionRename"
              ng-click="_methods.onClick($event, 'rename')"
-             class="action-item friend-rename animated zoomIn">
+             class="action-item friend-rename animated zoomIn force-ng-hide">
             <i class="fa fa-fw icons8-edit"></i>
         </div>
     </cozen-tooltip>
@@ -25,9 +25,9 @@
     <!-- Block -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_friendAction_block'">
-        <div ng-show="friendActionBlock"
+        <div ng-if="friendActionBlock"
              ng-click="_methods.onClick($event, 'block')"
-             class="action-item friend-block animated zoomIn">
+             class="action-item friend-block animated zoomIn force-ng-hide">
             <i class="fa fa-fw icons8-no-chat"></i>
         </div>
     </cozen-tooltip>
@@ -35,9 +35,9 @@
     <!-- Unblock -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_friendAction_unblock'">
-        <div ng-show="friendActionUnblock"
+        <div ng-if="friendActionUnblock"
              ng-click="_methods.onClick($event, 'unblock')"
-             class="action-item friend-unblock animated zoomIn">
+             class="action-item friend-unblock animated zoomIn force-ng-hide">
             <i class="fa fa-fw icons8-chat"></i>
         </div>
     </cozen-tooltip>
@@ -45,9 +45,9 @@
     <!-- Remove -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_friendAction_remove'">
-        <div ng-show="friendActionRemove"
+        <div ng-if="friendActionRemove"
              ng-click="_methods.onClick($event, 'remove')"
-             class="action-item friend-remove animated zoomIn">
+             class="action-item friend-remove animated zoomIn force-ng-hide">
             <i class="fa fa-fw icons8-trash"></i>
         </div>
     </cozen-tooltip>

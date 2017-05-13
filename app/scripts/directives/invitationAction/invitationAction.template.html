@@ -5,9 +5,9 @@
     <!-- Accept -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_invitationAction_accept'">
-        <div ng-show="invitationActionAccept"
+        <div ng-if="invitationActionAccept"
              ng-click="_methods.onClick($event, 'accept')"
-             class="action-item invitation-accept animated zoomIn">
+             class="action-item invitation-accept animated zoomIn force-ng-hide">
             <i class="fa fa-fw icons8-chat"></i>
         </div>
     </cozen-tooltip>
@@ -15,9 +15,9 @@
     <!-- Refuse -->
     <cozen-tooltip cozen-tooltip-placement="auto bottom"
                    cozen-tooltip-label="'other_invitationAction_refuse'">
-        <div ng-show="invitationActionRefuse"
+        <div ng-if="invitationActionRefuse"
              ng-click="_methods.onClick($event, 'refuse')"
-             class="action-item invitation-refuse animated zoomIn">
+             class="action-item invitation-refuse animated zoomIn force-ng-hide">
             <i class="fa fa-fw icons8-no-chat"></i>
         </div>
     </cozen-tooltip>

@@ -179,11 +179,11 @@
                 </div>
 
                 <div ng-show="!vm.channel.isMember"
-                     class="center-flex-content space-medium-after">
+                     class="center-flex-content space-medium-after force-ng-hide">
 
                     <!-- Join channel btn -->
                     <cozen-btn ng-show="!vm.channel.isBanned && !vm.channel.isKicked && !vm.channel.private && !vm.groupUserBanned.active && !vm.groupUserKicked.active"
-                               class="animated fadeInUp"
+                               class="animated fadeInUp force-ng-hide"
                                cozen-btn-label="'channels_details_join_channel'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-on-click="vm.methods.joinChannel(vm.channel._id)">
@@ -194,7 +194,7 @@
 
                     <!-- Edit btn -->
                     <cozen-btn ng-show="vm.channel.isAdmin && vm.channel.isMember && !vm.channel.isBanned && !vm.channel.isKicked && vm.userHasGroupRights"
-                               class="animated fadeInUp"
+                               class="animated fadeInUp force-ng-hide"
                                cozen-btn-label="'channels_details_edit_channel'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-on-click="goTo.view('app.channels.edit', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})">
@@ -203,7 +203,7 @@
                     <!-- Leave btn -->
                     <a ng-show="vm.channel.isMember"
                        href
-                       class="animated fadeInUp"
+                       class="animated fadeInUp force-ng-hide"
                        onclick="this.blur()"
                        ng-click="vm.methods.leaveChannel($event)">
                         {{ 'channels_details_leave_channel' | translate }}

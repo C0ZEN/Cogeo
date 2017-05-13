@@ -146,11 +146,11 @@
                 </div>
 
                 <div ng-show="!vm.details.userIsInGroup"
-                     class="center-flex-content space-medium-after">
+                     class="center-flex-content space-medium-after force-ng-hide">
 
                     <!-- Join group btn -->
                     <cozen-btn ng-show="!vm.details.group.userRoles.isBanned && !vm.details.group.userRoles.isKicked"
-                               class="animated fadeInUp"
+                               class="animated fadeInUp force-ng-hide"
                                cozen-btn-label="'groups_details_join_group'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-on-click="vm.methods.joinGroup(vm.details.group.name)">
@@ -158,11 +158,11 @@
                 </div>
 
                 <div ng-show="vm.details.userIsInGroup"
-                     class="center-flex-content space-medium-after">
+                     class="center-flex-content space-medium-after force-ng-hide">
 
                     <!-- Edit btn -->
                     <cozen-btn ng-show="vm.details.userIsAdmin"
-                               class="animated fadeInUp"
+                               class="animated fadeInUp force-ng-hide"
                                cozen-btn-label="'groups_details_edit_group'"
                                cozen-btn-auto-sizing="true"
                                cozen-btn-on-click="goTo.view('app.groups.edit', {'groupName': vm.details.group.name})">
@@ -171,7 +171,7 @@
                     <!-- Leave btn -->
                     <a ng-show="vm.groupMembers.length > 1"
                        href
-                       class="animated fadeInUp"
+                       class="animated fadeInUp force-ng-hide"
                        onclick="this.blur()"
                        ng-click="vm.methods.leaveGroup($event, vm.details.group.name)">
                         {{ 'groups_details_leave_group' | translate }}
