@@ -98,6 +98,7 @@ module.exports = function(config) {
       'bower_components/angular-audio/app/angular.audio.js',
       'bower_components/marked/lib/marked.js',
       'bower_components/angular-marked/dist/angular-marked.js',
+      'bower_components/highlight-js/src/highlight.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

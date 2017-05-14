@@ -57,7 +57,8 @@
             sendNewMessage        : sendNewMessage,
             stopAllEdit           : stopAllEdit,
             startEdit             : startEdit,
-            editMessage           : editMessage
+            editMessage           : editMessage,
+            addSmiley             : addSmiley
         };
 
         // Common data
@@ -78,6 +79,12 @@
             var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, false);
             $rootScope.directMessageId = directMessage._id;
             vm.messages                = directMessage.messages;
+            vm.methods.addSmiley(vm.messages);
+            vm.methods.calcMediaLength(vm.messages);
+            vm.methods.initMp3();
+            vm.methods.scrollToBottom({
+                data: vm.messages[vm.messages.length - 1]
+            });
         });
 
         // Update the volume
@@ -188,6 +195,7 @@
             vm.activeChannel = groupsFactory.getChannelById(vm.activeGroup, channelId);
             vm.activeChannel = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
             vm.messages      = channelsFactory.getMessages(vm.activeGroup, channelId, 50);
+            vm.methods.addSmiley(vm.messages);
             vm.methods.calcMediaLength(vm.messages);
             vm.methods.initMp3();
             vm.activeChannel.isStarredChannel = channelsFactory.isStarredChannel(vm.user.username, vm.activeChannel._id);
@@ -637,6 +645,7 @@
             //         category: 'mp3'
             //     }
             // ];
+            vm.methods.addSmiley(vm.messages);
             vm.methods.calcMediaLength(vm.messages);
             vm.methods.initMp3();
             vm.chatTheme        = 'social-theme';
@@ -856,6 +865,14 @@
                 groupsFactory.httpRequest.editMessage($state.params.groupName, $state.params.channelName, message);
             }
             message.editMod = false;
+        }
+
+        function addSmiley(messages) {
+            messages.forEach(function (message) {
+                if (message.category == 'text') {
+                    message.content.compiledText = $filter('embed')(message.content.text, CONFIG.internal.embed);
+                }
+            });
         }
     }
 

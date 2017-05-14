@@ -99,7 +99,8 @@
             gfm        : true,
             tables     : true,
             breaks     : true,
-            smartypants: true
+            smartypants: true,
+            sanitize   : false
         });
 
         // Cogeo Config
