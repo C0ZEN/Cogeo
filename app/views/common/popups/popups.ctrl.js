@@ -219,14 +219,18 @@
 
         function userActionGranted() {
             if (popup.userActionGrantedData.element == 'channel') {
-                channelsFactory.httpRequest.userGrant(popup.userActionGrantedData.groupName, popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {}, function () {
+                channelsFactory.httpRequest.userGrant(popup.userActionGrantedData.groupName, popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {
+                    username: userFactory.getUser().username
+                }, function () {
                     popup.methods.closePopup('userActionGranted');
                 }, function () {
                     popup.methods.closePopup('userActionGranted');
                 });
             }
             else {
-                groupsFactory.httpRequest.userGrant(popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {}, function () {
+                groupsFactory.httpRequest.userGrant(popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {
+                    username: userFactory.getUser().username
+                }, function () {
                     popup.methods.closePopup('userActionGranted');
                 }, function () {
                     popup.methods.closePopup('userActionGranted');
@@ -236,14 +240,18 @@
 
         function userActionRevoked() {
             if (popup.userActionRevokedData.element == 'channel') {
-                channelsFactory.httpRequest.userRevoke(popup.userActionRevokedData.groupName, popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {}, function () {
+                channelsFactory.httpRequest.userRevoke(popup.userActionRevokedData.groupName, popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {
+                    username: userFactory.getUser().username
+                }, function () {
                     popup.methods.closePopup('userActionRevoked');
                 }, function () {
                     popup.methods.closePopup('userActionRevoked');
                 });
             }
             else {
-                groupsFactory.httpRequest.userRevoke(popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {}, function () {
+                groupsFactory.httpRequest.userRevoke(popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {
+                    username: userFactory.getUser().username
+                }, function () {
                     popup.methods.closePopup('userActionRevoked');
                 }, function () {
                     popup.methods.closePopup('userActionRevoked');
@@ -253,9 +261,10 @@
 
         function userActionKicked() {
             var kick = {
-                by  : userFactory.getUser().username,
-                for : popup.userActionKicked.for,
-                time: popup.userActionKicked.time
+                by      : userFactory.getUser().username,
+                for     : popup.userActionKicked.for,
+                time    : popup.userActionKicked.time,
+                username: userFactory.getUser().username
             };
             if (popup.userActionKickedData.element == 'channel') {
                 channelsFactory.httpRequest.userKick(popup.userActionKickedData.groupName, popup.userActionKickedData.elementName, popup.userActionKickedData.userName, kick, function () {
@@ -275,8 +284,9 @@
 
         function userActionBanned() {
             var ban = {
-                by : userFactory.getUser().username,
-                for: popup.userActionBanned.for
+                by      : userFactory.getUser().username,
+                for     : popup.userActionBanned.for,
+                username: userFactory.getUser().username
             };
             if (popup.userActionBannedData.element == 'channel') {
                 channelsFactory.httpRequest.userBan(popup.userActionBannedData.groupName, popup.userActionBannedData.elementName, popup.userActionBannedData.userName, ban, function () {
@@ -296,14 +306,18 @@
 
         function userActionUnbanned() {
             if (popup.userActionUnbannedData.element == 'channel') {
-                channelsFactory.httpRequest.userUnban(popup.userActionUnbannedData.groupName, popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {}, function () {
+                channelsFactory.httpRequest.userUnban(popup.userActionUnbannedData.groupName, popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {
+                    username: userFactory.getUser().username
+                }, function () {
                     popup.methods.closePopup('userActionUnbanned');
                 }, function () {
                     popup.methods.closePopup('userActionUnbanned');
                 });
             }
             else {
-                groupsFactory.httpRequest.userUnban(popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {}, function () {
+                groupsFactory.httpRequest.userUnban(popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {
+                    username: userFactory.getUser().username
+                }, function () {
                     popup.methods.closePopup('userActionUnbanned');
                 }, function () {
                     popup.methods.closePopup('userActionUnbanned');

@@ -29,24 +29,30 @@
                     return 'icons8-edit';
                 case 'groupInvitationSentOne':
                 case 'groupInvitationSentMany':
+                case 'groupInvitationReceived':
                 case 'channelInvitationSentOne':
                 case 'channelInvitationSentMany':
                 case 'socialInvitationSent':
                     return 'icons8-message-filled';
+                case 'groupPermissionsGrantedReceived':
                 case 'groupPermissionsGranted':
                 case 'channelPermissionsGranted':
                     return 'icons8-unlock';
+                case 'groupPermissionsRevokedReceived':
                 case 'groupPermissionsRevoked':
                 case 'channelPermissionsRevoked':
                     return 'icons8-lock';
                 case 'groupUserKicked':
+                case 'groupUserKickedReceived':
                 case 'groupUserBanned':
+                case 'groupUserBannedReceived':
                 case 'channelUserKicked':
                 case 'channelUserBanned':
                 case 'socialUserBlocked':
                 case 'socialUserRemoved':
                     return 'icons8-no-chat';
                 case 'groupUserUnbanned':
+                case 'groupUserUnbannedReceived':
                 case 'channelUserUnbanned':
                 case 'socialUserUnblocked':
                 case 'socialInvitationAccepted':

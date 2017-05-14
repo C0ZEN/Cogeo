@@ -190,6 +190,7 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
+                vm.settingsLogs = angular.copy(user.settings.preferences.logs);
                 getLogs();
                 userFactory.httpRequest.getLogs(function () {
                     $timeout(function () {
@@ -200,8 +201,7 @@
             }
 
             function getLogs() {
-                vm.logs         = angular.copy(user.logs);
-                vm.settingsLogs = angular.copy(user.settings.preferences.logs);
+                vm.logs = angular.copy(user.logs);
 
                 // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
                 vm.logs.forEach(function (log) {
