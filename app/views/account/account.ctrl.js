@@ -14,10 +14,11 @@
         'userFactory',
         'httpRequest',
         'cozenLanguage',
-        'groupsFactory'
+        'groupsFactory',
+        '$timeout'
     ];
 
-    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, cozenLanguage, groupsFactory) {
+    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, cozenLanguage, groupsFactory, $timeout) {
         var vm = this;
 
         // Common data
@@ -189,19 +190,29 @@
                 user = userFactory.getUser();
             }
             if (user != null) {
-                vm.logs         = angular.copy(user.logs);
-                vm.settingsLogs = angular.copy(user.settings.preferences.logs);
+                getLogs();
+                userFactory.httpRequest.getLogs(function () {
+                    $timeout(function () {
+                        user = userFactory.getUser();
+                        getLogs();
+                    });
+                });
             }
 
-            // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
-            vm.logs.forEach(function (log) {
-                log.text          = $filter('translate')('account_log_' + log.tag, log.values);
-                log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy');
-                log.formattedDate += ' ';
-                log.formattedDate += $filter('translate')('other_time_at');
-                log.formattedDate += ' ';
-                log.formattedDate += $filter('date')(log.date, 'HH:mm');
-            });
+            function getLogs() {
+                vm.logs         = angular.copy(user.logs);
+                vm.settingsLogs = angular.copy(user.settings.preferences.logs);
+
+                // Logs with js $filter stuff (if in html, then search field is not filtering deeper)
+                vm.logs.forEach(function (log) {
+                    log.text          = $filter('translate')('account_log_' + log.tag, log.values);
+                    log.formattedDate = $filter('date')(log.date, 'EEEE dd MMMM yyyy');
+                    log.formattedDate += ' ';
+                    log.formattedDate += $filter('translate')('other_time_at');
+                    log.formattedDate += ' ';
+                    log.formattedDate += $filter('date')(log.date, 'HH:mm');
+                });
+            }
         }
 
         // Called on init logins

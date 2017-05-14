@@ -37,7 +37,7 @@
                 <div class="link-dropdown-separator"></div>
 
                 <!-- Group link -->
-                <div ng-repeat="group in vm.groups track by $index"
+                <div ng-repeat="group in vm.groups | limitTo: 10 track by $index"
                      class="link-dropdown-item"
                      ng-class="{'active': goTo.hasOneOfThoseParents('app.groups', 'app.channels') && group.name == $state.params.groupName }"
                      ng-click="goTo.view('app.groups.details', {groupName: group.name})"

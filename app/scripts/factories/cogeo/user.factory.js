@@ -100,7 +100,8 @@
                 friendBlock                      : httpRequestFriendBlock,
                 friendUnblock                    : httpRequestFriendUnblock,
                 friendRemove                     : httpRequestFriendRemove,
-                updateSettingsSpeakerVolume      : httpRequestUpdateSettingsSpeakerVolume
+                updateSettingsSpeakerVolume      : httpRequestUpdateSettingsSpeakerVolume,
+                getLogs                          : httpRequestGetLogs
             }
         };
 
@@ -869,6 +870,14 @@
                     }
                     setUser(response.data.data, notify);
                     setUserInLocalStorage(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestGetLogs(callbackSuccess, callbackError) {
+            httpRequest.requestGet('user/' + user.username + '/logs', callbackSuccess, callbackError)
+                .then(function (response) {
+                    user.logs = response.data.data;
                 })
             ;
         }

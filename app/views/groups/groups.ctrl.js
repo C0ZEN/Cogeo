@@ -89,7 +89,8 @@
                     var updatedGroup = {
                         name       : vm.edit.name,
                         description: vm.edit.description,
-                        picture    : vm.edit.picture
+                        picture    : vm.edit.picture,
+                        username   : vm.user.username
                     };
                     groupsFactory.httpRequest.updateGroup(vm.details.group.name, updatedGroup, function () {
                         vm.methods.stopLoading();
