@@ -94,10 +94,10 @@ module.exports = function(config) {
       'bower_components/cozen-lib/release/clean/directives.js',
       'bower_components/underscore/underscore.js',
       'bower_components/ng-if-bootstrap/src/index.js',
-      'bower_components/showdown/src/showdown.js',
-      'bower_components/angular-markdown-directive/markdown.js',
       'bower_components/ngEmbed/src/ng-embed.js',
       'bower_components/angular-audio/app/angular.audio.js',
+      'bower_components/marked/lib/marked.js',
+      'bower_components/angular-marked/dist/angular-marked.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

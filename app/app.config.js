@@ -16,13 +16,14 @@
         '$qProvider',
         'cfpLoadingBarProvider',
         'CozenLazyLoadProvider',
-        '$compileProvider'
+        '$compileProvider',
+        'markedProvider'
     ];
 
     // Global configuration
     function config($locationProvider, $translateProvider, CONFIG, CozenThemesProvider, CozenConfigProvider,
                     tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider,
-                    $compileProvider) {
+                    $compileProvider, markedProvider) {
 
         // Override the CONFIG for the Atom theme
         CozenThemesProvider.setActiveTheme('atom');
@@ -92,6 +93,14 @@
         //     appId     : "576889762516850",
         //     apiVersion: "v2.8"
         // });
+
+        // Custom configuration of the markdown parser
+        markedProvider.setOptions({
+            gfm        : true,
+            tables     : true,
+            breaks     : true,
+            smartypants: true
+        });
 
         // Cogeo Config
         CONFIG.internal = {
