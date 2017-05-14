@@ -51,6 +51,7 @@
             // Get the stuff about the current connected user (to avoid manual login)
             var user = localStorageService.get('currentUser');
             if (user != null && user.username != null && user.token != null) {
+                user.updateLastLogin = true;
 
                 // Login with the app (how each load, to make sure that the token is still valid)
                 // May be a potential performance leak nevertheless the security is enhanced

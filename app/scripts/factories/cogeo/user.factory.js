@@ -457,6 +457,14 @@
             ;
         }
 
+        /**
+         * Try to connect the user
+         * Data must contain the username associated with a password or a token.
+         * The flag updateLastLogin could be added to disable or enable the edit of the data.lastLogin (default true)
+         * @param {object} data > User object used to identify which user should be connected
+         * @param {function} callbackSuccess > Callback called on success
+         * @param {function} callbackError   > Callback called on error
+         */
         function httpRequestLogin(data, callbackSuccess, callbackError) {
             httpRequest.requestPost('login', data, callbackSuccess, callbackError)
                 .then(function (response) {

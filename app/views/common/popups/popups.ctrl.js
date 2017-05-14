@@ -17,11 +17,12 @@
         'groupsFactory',
         'channelsFactory',
         '$timeout',
-        '$state'
+        '$state',
+        'directMessagesFactory'
     ];
 
     function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory, cozenEnhancedLogs, usersFactory,
-                       groupsFactory, channelsFactory, $timeout, $state) {
+                       groupsFactory, channelsFactory, $timeout, $state, directMessagesFactory) {
         var popup = this;
 
         // Methods
@@ -252,7 +253,7 @@
 
         function userActionKicked() {
             var kick = {
-                by: userFactory.getUser().username,
+                by  : userFactory.getUser().username,
                 for : popup.userActionKicked.for,
                 time: popup.userActionKicked.time
             };
@@ -274,8 +275,8 @@
 
         function userActionBanned() {
             var ban = {
-                by: userFactory.getUser().username,
-                for : popup.userActionBanned.for
+                by : userFactory.getUser().username,
+                for: popup.userActionBanned.for
             };
             if (popup.userActionBannedData.element == 'channel') {
                 channelsFactory.httpRequest.userBan(popup.userActionBannedData.groupName, popup.userActionBannedData.elementName, popup.userActionBannedData.userName, ban, function () {
@@ -465,7 +466,7 @@
         function messageRemove() {
             popup.methods.startLoading();
             if ($state.current.name == 'app.chat.user') {
-                groupsFactory.httpRequest.removeMessage($state.params.groupName, $state.params.channelName, popup.messageRemoveData, function () {
+                directMessagesFactory.httpRequest.removeMessage($rootScope.directMessageId, popup.messageRemoveData, function () {
                     popup.methods.closePopup('messageRemove');
                     popup.methods.stopLoading();
                 }, function () {

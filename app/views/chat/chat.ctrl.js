@@ -20,11 +20,12 @@
         'ngAudio',
         '$location',
         '$anchorScroll',
-        '$timeout'
+        '$timeout',
+        'directMessagesFactory'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
-                      cozenOnClickService, $filter, botFactory, ngAudio, $location, $anchorScroll, $timeout) {
+                      cozenOnClickService, $filter, botFactory, ngAudio, $location, $anchorScroll, $timeout, directMessagesFactory) {
         var vm = this;
 
         // Methods
@@ -73,6 +74,11 @@
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
         cozenOnClickService.subscribe($scope, vm.methods.onActionClick);
+        directMessagesFactory.subscribe($scope, function () {
+            var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, false);
+            $rootScope.directMessageId = directMessage._id;
+            vm.messages                = directMessage.messages;
+        });
 
         // Update the volume
         $rootScope.$on('newGlobalVolume', function () {
@@ -276,355 +282,361 @@
                 selected: true,
                 color   : '#2ecc71'
             };
-            vm.messages     = [
-                {
-                    _id     : '100',
-                    sender  : 'Nitbosmet',
-                    sent    : 1484571615,
-                    content : {
-                        format  : "mp4",
-                        url     : "http://res.cloudinary.com/cozen/video/upload/v1494239259/witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4",
-                        name    : "witt-lowry-wonder-if-you-wonder-official-music-video_knoesw",
-                        fullName: 'witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4',
-                        size    : '12.4MB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'video'
-                },
-                {
-                    _id     : '101',
-                    sender  : 'fzefez',
-                    sent    : 1484571615,
-                    content : {
-                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
-                        name    : "Mes achats",
-                        fullName: 'Mes achats.ppt',
-                        size    : '160KB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'powerpoint'
-                },
-                {
-                    _id     : '101',
-                    sender  : 'fzefez',
-                    sent    : 1484571615,
-                    content : {
-                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
-                        name    : "Mes achats",
-                        fullName: 'Mes achats.txt',
-                        size    : '160KB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'txt'
-                },
-                {
-                    _id     : '1',
-                    sender  : 'C0ZEN',
-                    sent    : 1484561615,
-                    content : {
-                        text: '###Yolo\nça boum ?'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '2',
-                    sender  : 'Marco',
-                    sent    : 1484562715,
-                    content : {
-                        text: 'Hello, ça va ?!?'
-                    },
-                    edited  : 1484562915,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '3',
-                    sender  : 'Spamobot',
-                    sent    : 1484562715,
-                    content : {
-                        text: 'Bienvenu !'
-                    },
-                    tag     : 'bot',
-                    category: 'text'
-                },
-                {
-                    _id     : '4',
-                    sender  : 'Friendybot',
-                    sent    : 1484562715,
-                    content : {
-                        text: 'Yo !'
-                    },
-                    tag     : 'bot',
-                    category: 'text'
-                },
-                {
-                    _id     : '5',
-                    sender  : 'Pop',
-                    sent    : 1484571615,
-                    content : {
-                        text: '*Yo*'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '6',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: '#Titre 1'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '7',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: '##Titre 2'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '8',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: '###Titre 3'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '9',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: '####Titre 4'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '10',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: 'Un texte avec le mot en *italique*'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '11',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: 'Un texte avec le mot en **gras**'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '12',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: '#Titre 1     Bonjour les *amis* !'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '13',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: 'Un texte avec le mot en ~rayé~'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '14',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: '#####Titre 5'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '15',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: '######Titre 6'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '16',
-                    sender  : 'C0ZEN',
-                    sent    : 1484571615,
-                    content : {
-                        text: '[Lien](http://www.geoffreytestelin.com/)'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '17',
-                    sender  : 'Nitbosmet',
-                    sent    : 1484571615,
-                    content : {
-                        text: '[Lien](http://www.geoffreytestelin.com/)'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '18',
-                    sender  : 'Nitbosmet',
-                    sent    : 1484571615,
-                    content : {
-                        text: 'Ceci :smile: est une emoticon'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'text'
-                },
-                {
-                    _id     : '19',
-                    sender  : 'Nitbosmet',
-                    sent    : 1484571615,
-                    content : {
-                        format  : "jpg",
-                        height  : 160,
-                        url     : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
-                        width   : 160,
-                        name    : "Maxime",
-                        fullName: 'Maxime.jpg',
-                        size    : '150KB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'image'
-                },
-                {
-                    _id     : '20',
-                    sender  : 'fzefez',
-                    sent    : 1484571615,
-                    content : {
-                        format  : "jpg",
-                        height  : 160,
-                        url     : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
-                        width   : 160,
-                        name    : "Maxime",
-                        fullName: 'Maxime.jpg',
-                        size    : '150KB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'image'
-                },
-                {
-                    _id     : '21',
-                    sender  : 'fzefez',
-                    sent    : 1484571615,
-                    content : {
-                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
-                        name    : "Mes achats",
-                        fullName: 'Mes achats.pdf',
-                        size    : '160KB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'pdf'
-                },
-                {
-                    _id     : '22',
-                    sender  : 'fzefez',
-                    sent    : 1484571615,
-                    content : {
-                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
-                        name    : "Mes achats",
-                        fullName: 'Mes achats.xls',
-                        size    : '160KB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'excel'
-                },
-                {
-                    _id     : '23',
-                    sender  : 'zefez',
-                    sent    : 1484571615,
-                    content : {
-                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
-                        name    : "Mes achats",
-                        fullName: 'Mes achats.docx',
-                        size    : '160KB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'word'
-                },
-                {
-                    _id     : '24',
-                    sender  : 'Nitbosmet',
-                    sent    : 1484571615,
-                    content : {
-                        format  : "gif",
-                        height  : 268,
-                        url     : "http://res.cloudinary.com/cozen/image/upload/v1494104238/whV9B2T5lDjag_o6stwv.gif",
-                        width   : 480,
-                        name    : "whV9B2T5lDjag_o6stwv",
-                        fullName: 'whV9B2T5lDjag_o6stwv.gif',
-                        size    : '1.3MB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'image'
-                },
-                {
-                    _id     : '25',
-                    sender  : 'Nitbosmet',
-                    sent    : 1484571615,
-                    content : {
-                        format  : "mp3",
-                        url     : "http://res.cloudinary.com/cozen/video/upload/v1494106319/Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv.mp3",
-                        name    : "Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv",
-                        fullName: 'Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv.mp3',
-                        size    : '2.8MB'
-                    },
-                    edited  : 0,
-                    tag     : 'user',
-                    category: 'mp3'
-                }
-            ];
+
+            // Get the messages
+            var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, true);
+            $rootScope.directMessageId = directMessage._id;
+            vm.messages                = directMessage.messages;
+
+            // vm.messages     = [
+            //     {
+            //         _id     : '100',
+            //         sender  : 'Nitbosmet',
+            //         sent    : 1484571615,
+            //         content : {
+            //             format  : "mp4",
+            //             url     : "http://res.cloudinary.com/cozen/video/upload/v1494239259/witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4",
+            //             name    : "witt-lowry-wonder-if-you-wonder-official-music-video_knoesw",
+            //             fullName: 'witt-lowry-wonder-if-you-wonder-official-music-video_knoesw.mp4',
+            //             size    : '12.4MB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'video'
+            //     },
+            //     {
+            //         _id     : '101',
+            //         sender  : 'fzefez',
+            //         sent    : 1484571615,
+            //         content : {
+            //             url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+            //             name    : "Mes achats",
+            //             fullName: 'Mes achats.ppt',
+            //             size    : '160KB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'powerpoint'
+            //     },
+            //     {
+            //         _id     : '101',
+            //         sender  : 'fzefez',
+            //         sent    : 1484571615,
+            //         content : {
+            //             url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+            //             name    : "Mes achats",
+            //             fullName: 'Mes achats.txt',
+            //             size    : '160KB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'txt'
+            //     },
+            //     {
+            //         _id     : '1',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484561615,
+            //         content : {
+            //             text: '###Yolo\nça boum ?'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '2',
+            //         sender  : 'Marco',
+            //         sent    : 1484562715,
+            //         content : {
+            //             text: 'Hello, ça va ?!?'
+            //         },
+            //         edited  : 1484562915,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '3',
+            //         sender  : 'Spamobot',
+            //         sent    : 1484562715,
+            //         content : {
+            //             text: 'Bienvenu !'
+            //         },
+            //         tag     : 'bot',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '4',
+            //         sender  : 'Friendybot',
+            //         sent    : 1484562715,
+            //         content : {
+            //             text: 'Yo !'
+            //         },
+            //         tag     : 'bot',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '5',
+            //         sender  : 'Pop',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '*Yo*'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '6',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '#Titre 1'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '7',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '##Titre 2'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '8',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '###Titre 3'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '9',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '####Titre 4'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '10',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: 'Un texte avec le mot en *italique*'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '11',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: 'Un texte avec le mot en **gras**'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '12',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '#Titre 1     Bonjour les *amis* !'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '13',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: 'Un texte avec le mot en ~rayé~'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '14',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '#####Titre 5'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '15',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '######Titre 6'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '16',
+            //         sender  : 'C0ZEN',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '[Lien](http://www.geoffreytestelin.com/)'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '17',
+            //         sender  : 'Nitbosmet',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: '[Lien](http://www.geoffreytestelin.com/)'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '18',
+            //         sender  : 'Nitbosmet',
+            //         sent    : 1484571615,
+            //         content : {
+            //             text: 'Ceci :smile: est une emoticon'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'text'
+            //     },
+            //     {
+            //         _id     : '19',
+            //         sender  : 'Nitbosmet',
+            //         sent    : 1484571615,
+            //         content : {
+            //             format  : "jpg",
+            //             height  : 160,
+            //             url     : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
+            //             width   : 160,
+            //             name    : "Maxime",
+            //             fullName: 'Maxime.jpg',
+            //             size    : '150KB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'image'
+            //     },
+            //     {
+            //         _id     : '20',
+            //         sender  : 'fzefez',
+            //         sent    : 1484571615,
+            //         content : {
+            //             format  : "jpg",
+            //             height  : 160,
+            //             url     : "http://res.cloudinary.com/cozen/image/upload/v1493885388/sgt1q1weswkyyvespywp.jpg",
+            //             width   : 160,
+            //             name    : "Maxime",
+            //             fullName: 'Maxime.jpg',
+            //             size    : '150KB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'image'
+            //     },
+            //     {
+            //         _id     : '21',
+            //         sender  : 'fzefez',
+            //         sent    : 1484571615,
+            //         content : {
+            //             url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+            //             name    : "Mes achats",
+            //             fullName: 'Mes achats.pdf',
+            //             size    : '160KB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'pdf'
+            //     },
+            //     {
+            //         _id     : '22',
+            //         sender  : 'fzefez',
+            //         sent    : 1484571615,
+            //         content : {
+            //             url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+            //             name    : "Mes achats",
+            //             fullName: 'Mes achats.xls',
+            //             size    : '160KB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'excel'
+            //     },
+            //     {
+            //         _id     : '23',
+            //         sender  : 'zefez',
+            //         sent    : 1484571615,
+            //         content : {
+            //             url     : "http://res.cloudinary.com/cozen/image/upload/v1494095008/001-MagdiWeb--Olivier-BARRE_jug0rc.pdf",
+            //             name    : "Mes achats",
+            //             fullName: 'Mes achats.docx',
+            //             size    : '160KB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'word'
+            //     },
+            //     {
+            //         _id     : '24',
+            //         sender  : 'Nitbosmet',
+            //         sent    : 1484571615,
+            //         content : {
+            //             format  : "gif",
+            //             height  : 268,
+            //             url     : "http://res.cloudinary.com/cozen/image/upload/v1494104238/whV9B2T5lDjag_o6stwv.gif",
+            //             width   : 480,
+            //             name    : "whV9B2T5lDjag_o6stwv",
+            //             fullName: 'whV9B2T5lDjag_o6stwv.gif',
+            //             size    : '1.3MB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'image'
+            //     },
+            //     {
+            //         _id     : '25',
+            //         sender  : 'Nitbosmet',
+            //         sent    : 1484571615,
+            //         content : {
+            //             format  : "mp3",
+            //             url     : "http://res.cloudinary.com/cozen/video/upload/v1494106319/Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv.mp3",
+            //             name    : "Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv",
+            //             fullName: 'Sammy_Pharaoh_-_In_the_Running_Official_Music_Video_pxqcmv.mp3',
+            //             size    : '2.8MB'
+            //         },
+            //         edited  : 0,
+            //         tag     : 'user',
+            //         category: 'mp3'
+            //     }
+            // ];
             vm.methods.calcMediaLength(vm.messages);
             vm.methods.initMp3();
             vm.chatTheme        = 'social-theme';
@@ -809,14 +821,14 @@
                 category: 'text'
             };
             if ($state.current.name == 'app.chat.user') {
-
+                directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message);
             }
             else {
                 groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message);
-                $timeout(function () {
-                    vm.message = null;
-                });
             }
+            $timeout(function () {
+                vm.message = null;
+            });
         }
 
         function stopAllEdit() {
@@ -838,7 +850,7 @@
         function editMessage(message) {
             message.content.text = message.editModel;
             if ($state.current.name == 'app.chat.user') {
-
+                directMessagesFactory.httpRequest.editMessage($rootScope.directMessageId, message);
             }
             else {
                 groupsFactory.httpRequest.editMessage($state.params.groupName, $state.params.channelName, message);
