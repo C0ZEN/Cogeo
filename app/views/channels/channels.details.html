@@ -138,7 +138,9 @@
                     </p>
 
                     <!-- Stats -->
-                    <h3>{{ 'channels_details_stats' | translate }}</h3>
+                    <h3 ng-if-start="Utils.canAccessGoogleVisualization()">
+                        {{ 'channels_details_stats' | translate }}
+                    </h3>
 
                     <div class="atom-chart-container">
 
@@ -165,6 +167,7 @@
                     </div>
 
                     <div ng-if-bootstrap-grid="xs,sm"
+                         ng-if-end
                          class="atom-chart-container">
 
                         <!-- Members active/kicked/banned -->

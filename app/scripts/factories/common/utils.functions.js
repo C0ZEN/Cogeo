@@ -1,8 +1,9 @@
 var Utils = {
-    createArrayFromRange    : createArrayFromRange,
-    getPercentRangeTickColor: getPercentRangeTickColor,
-    getKickedTimeList       : getKickedTimeList,
-    getKickedTime           : getKickedTime
+    createArrayFromRange        : createArrayFromRange,
+    getPercentRangeTickColor    : getPercentRangeTickColor,
+    getKickedTimeList           : getKickedTimeList,
+    getKickedTime               : getKickedTime,
+    canAccessGoogleVisualization: canAccessGoogleVisualization
 };
 
 // Times for kicked time (in seconds)
@@ -54,4 +55,8 @@ function getKickedTime(time) {
         }
     }
     return null;
+}
+
+function canAccessGoogleVisualization() {
+    return !((typeof google === 'undefined') || (typeof google.visualization === 'undefined'));
 }

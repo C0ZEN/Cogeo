@@ -47,16 +47,20 @@
             methods.init();
 
             function init() {
+                if (Utils.canAccessGoogleVisualization()) {
+                    // Default values (attribute)
+                    scope._drawChartValuesFactory = angular.isDefined(attrs.drawChartValuesFactory) ? attrs.drawChartValuesFactory : '';
 
-                // Default values (attribute)
-                scope._drawChartValuesFactory = angular.isDefined(attrs.drawChartValuesFactory) ? attrs.drawChartValuesFactory : '';
+                    // Init stuff
+                    element.on('$destroy', methods.destroy);
+                    methods.setData();
 
-                // Init stuff
-                element.on('$destroy', methods.destroy);
-                methods.setData();
-
-                // Watch for a rebuild event
-                $rootScope.$on('drawChartValuesInit', methods.setData);
+                    // Watch for a rebuild event
+                    $rootScope.$on('drawChartValuesInit', methods.setData);
+                }
+                else {
+                    methods.destroy();
+                }
             }
 
             function destroy() {

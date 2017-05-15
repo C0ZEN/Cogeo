@@ -92,7 +92,9 @@
                     </h4>
 
                     <!-- Stats -->
-                    <h3>{{ 'groups_details_stats' | translate }}</h3>
+                    <h3 ng-if-start="Utils.canAccessGoogleVisualization()">
+                        {{ 'groups_details_stats' | translate }}
+                    </h3>
 
                     <div class="atom-chart-container">
 
@@ -132,7 +134,8 @@
                     </div>
 
                     <!-- Graph-->
-                    <div class="atom-chart-container single-chart">
+                    <div ng-if-end
+                         class="atom-chart-container single-chart">
 
                         <!-- Channels public/private/default -->
                         <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.channelsTypes.id"
