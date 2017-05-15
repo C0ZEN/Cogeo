@@ -14,6 +14,7 @@
         'goTo',
         '$rootScope',
         '$scope',
+        '$anchorScroll',
         'cozenOnClickService',
         '$filter',
         'botFactory',
@@ -24,7 +25,7 @@
         'directMessagesFactory'
     ];
 
-    function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
+    function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope, $anchorScroll,
                       cozenOnClickService, $filter, botFactory, ngAudio, $location, $document, $timeout, directMessagesFactory) {
         var vm = this;
 
@@ -97,13 +98,6 @@
                     message.content.API.setVolume(userFactory.getUser().settings.speaker.volume / 100);
                 }
             });
-        });
-
-        // When the first ng-repeat is finished, we receive this event
-        $scope.$on('cozenRepeatFinished', function ($event, data) {
-
-            // We can scroll to the bottom of the page (last message)
-            vm.methods.scrollToBottom(data);
         });
 
         // Called each time a view is loaded
@@ -205,15 +199,15 @@
             vm.inputPlaceholder               = $filter('translate')('chat_newMessage_placeholder_channel', {
                 channelName: vm.activeChannel.name
             });
+            $rootScope.$broadcast('setChatTheme', {
+                theme: vm.chatTheme
+            });
             goTo.view('app.chat.channel', {
                 groupName  : vm.activeGroup,
                 channelName: channelName
             });
             vm.methods.scrollToBottom({
                 data: vm.messages[vm.messages.length - 1]
-            });
-            $rootScope.$broadcast('setChatTheme', {
-                theme: vm.chatTheme
             });
         }
 
@@ -654,14 +648,14 @@
             vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
                 username: vm.activeFriend.alias || vm.activeFriend.username
             });
+            $rootScope.$broadcast('setChatTheme', {
+                theme: vm.chatTheme
+            });
             goTo.view('app.chat.user', {
                 username: username
             });
             vm.methods.scrollToBottom({
                 data: vm.messages[vm.messages.length - 1]
-            });
-            $rootScope.$broadcast('setChatTheme', {
-                theme: vm.chatTheme
             });
         }
 
@@ -808,12 +802,9 @@
             }
             $timeout(function () {
                 $timeout(function () {
-                    $timeout(function () {
-                        $location.hash('message-' + data.data._id);
-                        var div = angular.element(document.getElementById('message-' + data.data._id));
-                        $document.scrollToElement(div, 60, 400);
-                        vm.loadingDomMessages = false;
-                    });
+                    $location.hash('message-' + data.data._id);
+                    $anchorScroll();
+                    vm.loadingDomMessages = false;
                 });
             });
         }

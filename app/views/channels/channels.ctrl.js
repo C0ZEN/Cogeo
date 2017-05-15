@@ -22,12 +22,13 @@
         'cozenLazyLoadInternal',
         '$scope',
         'cozenPopupFactory',
-        '$rootScope'
+        '$rootScope',
+        '$timeout'
     ];
 
     function ChannelsCtrl(CONFIG, channelsFactory, googleGraphChannelMembers, $state, groupsFactory, userFactory,
                           usersFactory, goTo, httpRequest, $filter, cozenEnhancedLogs, googleGraphChannelStatus, cozenLazyLoadRandom,
-                          cozenLazyLoadInternal, $scope, cozenPopupFactory, $rootScope) {
+                          cozenLazyLoadInternal, $scope, cozenPopupFactory, $rootScope, $timeout) {
         var vm = this;
 
         // Methods
@@ -244,9 +245,11 @@
                     cozenEnhancedLogs.explodeObject(newChannel);
                 }
                 vm.methods.stopLoading();
-                goTo.view('app.channels.details', {
-                    groupName  : vm.params.groupName,
-                    channelName: newChannel.name
+                $timeout(function () {
+                    goTo.view('app.channels.details', {
+                        groupName  : vm.params.groupName,
+                        channelName: newChannel.name
+                    });
                 });
             }, function () {
                 vm.methods.stopLoading();

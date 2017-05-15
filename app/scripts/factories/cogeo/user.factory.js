@@ -175,6 +175,11 @@
                     event.icon  = 'fa fa-fw icons8-channel-mosaic';
                     event.color = 'green';
                 }
+                else if (event.id == 'account') {
+                    event.name  = 'account_event_account';
+                    event.icon  = 'fa fa-fw icons8-user-male';
+                    event.color = 'blue';
+                }
                 else {
                     event.name  = 'account_event_social';
                     event.icon  = 'fa fa-fw icons8-user-groups';

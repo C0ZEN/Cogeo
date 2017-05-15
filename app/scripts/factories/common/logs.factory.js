@@ -14,6 +14,8 @@
 
         function getLogSrc(tag) {
             switch (tag) {
+                case 'accountCreated':
+                    return 'icons8-handshake';
                 case 'newGroupCreated':
                 case 'newGroupJoined':
                 case 'newChannelCreated':
@@ -26,20 +28,29 @@
                 case 'channelEdited':
                 case 'socialUserRenamed':
                 case 'socialUserAliasRemoved':
+                case 'accountEdited':
+                case 'accountSettingsEdited':
+                case 'accountNotificationsEdited':
                     return 'icons8-edit';
                 case 'groupInvitationSentOne':
                 case 'groupInvitationSentMany':
                 case 'groupInvitationReceived':
                 case 'channelInvitationSentOne':
                 case 'channelInvitationSentMany':
+                case 'channelInvitationReceived':
+                case 'socialInvitationSentOne':
+                case 'socialInvitationSentMany':
+                case 'socialInvitationReceived':
                 case 'socialInvitationSent':
                     return 'icons8-message-filled';
                 case 'groupPermissionsGrantedReceived':
                 case 'groupPermissionsGranted':
+                case 'channelPermissionsGrantedReceived':
                 case 'channelPermissionsGranted':
                     return 'icons8-unlock';
                 case 'groupPermissionsRevokedReceived':
                 case 'groupPermissionsRevoked':
+                case 'channelPermissionsRevokedReceived':
                 case 'channelPermissionsRevoked':
                     return 'icons8-lock';
                 case 'groupUserKicked':
@@ -47,13 +58,16 @@
                 case 'groupUserBanned':
                 case 'groupUserBannedReceived':
                 case 'channelUserKicked':
+                case 'channelUserKickedReceived':
                 case 'channelUserBanned':
+                case 'channelUserBannedReceived':
                 case 'socialUserBlocked':
                 case 'socialUserRemoved':
                     return 'icons8-no-chat';
                 case 'groupUserUnbanned':
                 case 'groupUserUnbannedReceived':
                 case 'channelUserUnbanned':
+                case 'channelUserUnbannedReceived':
                 case 'socialUserUnblocked':
                 case 'socialInvitationAccepted':
                     return 'icons8-chat';

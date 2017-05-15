@@ -218,13 +218,16 @@
         }
 
         function userActionGranted() {
+            popup.methods.startLoading();
             if (popup.userActionGrantedData.element == 'channel') {
                 channelsFactory.httpRequest.userGrant(popup.userActionGrantedData.groupName, popup.userActionGrantedData.elementName, popup.userActionGrantedData.userName, {
                     username: userFactory.getUser().username
                 }, function () {
                     popup.methods.closePopup('userActionGranted');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionGranted');
+                    popup.methods.stopLoading();
                 });
             }
             else {
@@ -232,13 +235,16 @@
                     username: userFactory.getUser().username
                 }, function () {
                     popup.methods.closePopup('userActionGranted');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionGranted');
+                    popup.methods.stopLoading();
                 });
             }
         }
 
         function userActionRevoked() {
+            popup.methods.startLoading();
             if (popup.userActionRevokedData.element == 'channel') {
                 channelsFactory.httpRequest.userRevoke(popup.userActionRevokedData.groupName, popup.userActionRevokedData.elementName, popup.userActionRevokedData.userName, {
                     username: userFactory.getUser().username
@@ -253,13 +259,16 @@
                     username: userFactory.getUser().username
                 }, function () {
                     popup.methods.closePopup('userActionRevoked');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionRevoked');
+                    popup.methods.stopLoading();
                 });
             }
         }
 
         function userActionKicked() {
+            popup.methods.startLoading();
             var kick = {
                 by      : userFactory.getUser().username,
                 for     : popup.userActionKicked.for,
@@ -269,20 +278,25 @@
             if (popup.userActionKickedData.element == 'channel') {
                 channelsFactory.httpRequest.userKick(popup.userActionKickedData.groupName, popup.userActionKickedData.elementName, popup.userActionKickedData.userName, kick, function () {
                     popup.methods.closePopup('userActionKicked');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionKicked');
+                    popup.methods.stopLoading();
                 });
             }
             else {
                 groupsFactory.httpRequest.userKick(popup.userActionKickedData.elementName, popup.userActionKickedData.userName, kick, function () {
                     popup.methods.closePopup('userActionKicked');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionKicked');
+                    popup.methods.stopLoading();
                 });
             }
         }
 
         function userActionBanned() {
+            popup.methods.startLoading();
             var ban = {
                 by      : userFactory.getUser().username,
                 for     : popup.userActionBanned.for,
@@ -291,27 +305,34 @@
             if (popup.userActionBannedData.element == 'channel') {
                 channelsFactory.httpRequest.userBan(popup.userActionBannedData.groupName, popup.userActionBannedData.elementName, popup.userActionBannedData.userName, ban, function () {
                     popup.methods.closePopup('userActionBanned');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionBanned');
+                    popup.methods.stopLoading();
                 });
             }
             else {
                 groupsFactory.httpRequest.userBan(popup.userActionBannedData.elementName, popup.userActionBannedData.userName, ban, function () {
                     popup.methods.closePopup('userActionBanned');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionBanned');
+                    popup.methods.stopLoading();
                 });
             }
         }
 
         function userActionUnbanned() {
+            popup.methods.startLoading();
             if (popup.userActionUnbannedData.element == 'channel') {
                 channelsFactory.httpRequest.userUnban(popup.userActionUnbannedData.groupName, popup.userActionUnbannedData.elementName, popup.userActionUnbannedData.userName, {
                     username: userFactory.getUser().username
                 }, function () {
                     popup.methods.closePopup('userActionUnbanned');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionUnbanned');
+                    popup.methods.stopLoading();
                 });
             }
             else {
@@ -319,8 +340,10 @@
                     username: userFactory.getUser().username
                 }, function () {
                     popup.methods.closePopup('userActionUnbanned');
+                    popup.methods.stopLoading();
                 }, function () {
                     popup.methods.closePopup('userActionUnbanned');
+                    popup.methods.stopLoading();
                 });
             }
         }

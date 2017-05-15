@@ -54,7 +54,7 @@
             vm.user = userFactory.getUser();
             vm.methods.initSettings(vm.user);
             vm.methods.initNotifications(vm.user);
-            vm.methods.initLogs(vm.user);
+            vm.methods.initLogs(vm.user, true);
             vm.methods.initLogins(vm.user);
         });
 
@@ -185,19 +185,24 @@
         }
 
         // Called on init logs
-        function initLogs(user) {
+        function initLogs(user, stopGetLogs) {
             if (user == null) {
                 user = userFactory.getUser();
+            }
+            if (Methods.isNullOrEmpty(stopGetLogs)) {
+                stopGetLogs = false;
             }
             if (user != null) {
                 vm.settingsLogs = angular.copy(user.settings.preferences.logs);
                 getLogs();
-                userFactory.httpRequest.getLogs(function () {
-                    $timeout(function () {
-                        user = userFactory.getUser();
-                        getLogs();
+                if (!stopGetLogs) {
+                    userFactory.httpRequest.getLogs(function () {
+                        $timeout(function () {
+                            user = userFactory.getUser();
+                            getLogs();
+                        });
                     });
-                });
+                }
             }
 
             function getLogs() {

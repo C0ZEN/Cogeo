@@ -3,6 +3,7 @@
             cozen-form-name="message"
             cozen-form-class="row">
     <cozen-textarea cozen-textarea-rows="1"
+                    cozen-textarea-disabled="vm.activeFriend.blocked != 0 && $state.current.name == 'app.chat.user'"
                     cozen-textarea-model="vm.message"
                     cozen-textarea-placeholder="vm.inputPlaceholder"
                     cozen-textarea-spell-check="false"
