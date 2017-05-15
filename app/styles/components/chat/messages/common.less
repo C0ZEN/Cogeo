@@ -7,15 +7,24 @@ div.atom-chat div.chat-col {
         height     : 100%;
         position   : relative;
         div.chat-messages {
+            div.atom-loader-small {
+                top : 56%;
+            }
             div.message {
                 position            : relative;
                 margin              : 1px 0;
                 animation-fill-mode : @atom-animation-fill;
                 animation-duration  : @atom-animation-duration-in-fast;
                 animation-name      : fadeInUp;
+                opacity             : 0;
+                visibility          : hidden;
                 &.ng-hide {
                     display            : none !important;
                     animation-duration : 0ms !important;
+                }
+                &.is-visible {
+                    opacity    : 1;
+                    visibility : visible;
                 }
 
                 // Imports

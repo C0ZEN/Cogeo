@@ -23,15 +23,18 @@ div.atom-loader-small {
 .atom-loader(@width) {
     @value : unit(@width);
     @name : ~"squaremove-@{value}";
-    width         : @width;
-    height        : @width;
-    border-radius : 100%;
-    position      : absolute;
-    top           : 50%;
-    left          : 50%;
-    transform     : translate(-50%, -50%);
-    margin-top    : -60px;
-    z-index       : 100;
+    width               : @width;
+    height              : @width;
+    border-radius       : 100%;
+    position            : absolute;
+    top                 : 50%;
+    left                : 50%;
+    transform           : translate(-50%, -50%);
+    margin-top          : -@width * 0.6;
+    z-index             : 100;
+    animation-fill-mode : @atom-animation-fill;
+    animation-duration  : @atom-animation-duration-in-fast;
+    animation-name      : zoomIn;
     &:before,
     &:after {
         content          : "";
@@ -46,6 +49,9 @@ div.atom-loader-small {
     &:after {
         bottom          : 0;
         animation-delay : 0.5s;
+    }
+    &.ng-hide {
+        display : none !important;
     }
     @keyframes @name {
         0%, 100% {

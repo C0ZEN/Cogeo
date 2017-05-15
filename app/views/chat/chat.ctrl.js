@@ -19,13 +19,13 @@
         'botFactory',
         'ngAudio',
         '$location',
-        '$anchorScroll',
+        '$document',
         '$timeout',
         'directMessagesFactory'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope,
-                      cozenOnClickService, $filter, botFactory, ngAudio, $location, $anchorScroll, $timeout, directMessagesFactory) {
+                      cozenOnClickService, $filter, botFactory, ngAudio, $location, $document, $timeout, directMessagesFactory) {
         var vm = this;
 
         // Methods
@@ -190,6 +190,7 @@
 
         // Called when the user click on a new channel
         function setActiveChannel(channelName, channelId) {
+            vm.loadingDomMessages = true;
             vm.methods.stopAllMp3();
             vm.methods.stopAllEdit();
             vm.activeChannel = groupsFactory.getChannelById(vm.activeGroup, channelId);
@@ -273,7 +274,8 @@
 
         // Active the user context
         function setActiveFriend(username) {
-            vm.activeChannel = null;
+            vm.activeChannel      = null;
+            vm.loadingDomMessages = true;
             vm.methods.stopAllMp3();
             vm.methods.stopAllEdit();
 
@@ -800,22 +802,18 @@
         }
 
         // Scroll to a specific message (double call to better speed)
-        // Fast scroll to the message (but some directives are not ready yet)
-        // After the first digest is done (all messages are injected in the DOM)
-        // And that all the stuff is loaded and fit the space
-        // A second call is made (so that all the directives that takes spaces like videos are visibles)
-        function scrollToBottom(data, stop) {
+        function scrollToBottom(data) {
             if (Methods.isNullOrEmpty(data) || Methods.isNullOrEmpty(data.data)) {
                 return;
             }
             $timeout(function () {
-                $location.hash('message-' + data.data._id);
-                $anchorScroll();
-                if (stop) {
-                    return;
-                }
                 $timeout(function () {
-                    vm.methods.scrollToBottom(data, true);
+                    $timeout(function () {
+                        $location.hash('message-' + data.data._id);
+                        var div = angular.element(document.getElementById('message-' + data.data._id));
+                        $document.scrollToElement(div, 60, 400);
+                        vm.loadingDomMessages = false;
+                    });
                 });
             });
         }

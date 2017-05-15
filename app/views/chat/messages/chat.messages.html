@@ -1,5 +1,10 @@
 <div class="chat-messages">
 
+    <!-- Loader -->
+    <div ng-show="vm.loadingDomMessages"
+         class="atom-loader-small">
+    </div>
+
     <!-- Message -->
     <div ng-repeat="message in vm.messages track by $index"
          cozen-on-repeat-finish
@@ -8,7 +13,7 @@
          ng-style="{'pointer-events': vm.actionBar.options.down ? 'none' : ''}"
          ng-mouseenter="message.isHover = true"
          ng-mouseleave="message.isHover = false"
-         ng-class="{'is-hover': message.isHover}"
+         ng-class="{'is-hover': message.isHover, 'is-visible': !vm.loadingDomMessages}"
          ng-switch="message.tag"
          id="message-{{ message._id }}">
 
