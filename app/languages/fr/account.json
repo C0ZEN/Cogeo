@@ -162,7 +162,7 @@
     "account_recruit_dropdown_countText": "{{selected}} membres Cogeo sélectionnés sur {{total}}",
     "account_recruit_selected_user": "Membre Cogeo à inviter",
     "account_recruit_selected_users": "Membres Cogeo à inviter",
-    "account_friends_empty": "Tu n'as pas encore d'amis Cogeo. Il peut être temps pour toi de rencontrer des gens.<br>Sinon, tu peux toujours aller parler à <strong><a href='' ng-click=\"goTo.goTo('app.chat.user', {username: 'Friendybot'}, $event)\" ui-sref=\"app.chat.user({username: 'Friendybot'})\">Friendybot</a></strong> !",
+    "account_friends_empty": "Tu n'as pas encore d'amis Cogeo. Il peut être temps pour toi de rencontrer des gens.<br>Sinon, tu peux toujours aller parler à <strong><a href='' ng-click=\"goTo.view('app.chat.user', {username: 'Friendybot'}, $event)\" ui-sref=\"app.chat.user({username: 'Friendybot'})\">Friendybot</a></strong> !",
     "account_event_group": "Groupe",
     "account_event_channel": "Channel",
     "account_event_social": "Social",

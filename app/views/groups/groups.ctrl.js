@@ -156,10 +156,10 @@
         }
 
         function onShowAll() {
+            vm.groups = groupsFactory.getGroupsWithUserRoles(vm.user.username);
 
             // It will hide the edit btn
             vm.details.userIsAdmin = false;
-
         }
 
         function getAllLogs() {

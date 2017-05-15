@@ -186,14 +186,20 @@
 
         // Called on init logs
         function initLogs(user, stopGetLogs) {
+
+            // Get the user if not specified
             if (user == null) {
                 user = userFactory.getUser();
             }
+
+            // Avoid to get logs data (avoid multiple useless call after subscribe occur (from this request itself))
             if (Methods.isNullOrEmpty(stopGetLogs)) {
                 stopGetLogs = false;
             }
             if (user != null) {
-                vm.settingsLogs = angular.copy(user.settings.preferences.logs);
+
+                // Merge to get old keys generated from pagination for example and avoid strange behavior
+                vm.settingsLogs = angular.merge({}, vm.settingsLogs, user.settings.preferences.logs);
                 getLogs();
                 if (!stopGetLogs) {
                     userFactory.httpRequest.getLogs(function () {
