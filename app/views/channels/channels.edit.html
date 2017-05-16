@@ -58,17 +58,8 @@
                                   cozen-btn-toggle-tooltip-max-width="'max-width-400'"
                                   cozen-btn-toggle-tooltip-type="html"
                                   cozen-btn-toggle-model="vm.editedChannel.byDefault"
-                                  cozen-btn-toggle-class="space-base-after"
+                                  cozen-btn-toggle-class="space-medium-after"
                                   cozen-btn-toggle-on-change="vm.editedChannel.private = false">
-                </cozen-btn-toggle>
-
-                <!-- Toggle starred -->
-                <cozen-btn-toggle cozen-btn-toggle-label="channels_register_starred"
-                                  cozen-btn-toggle-tooltip="{{ 'channels_register_starred_tp' | translate }}"
-                                  cozen-btn-toggle-tooltip-max-width="'max-width-400'"
-                                  cozen-btn-toggle-tooltip-type="html"
-                                  cozen-btn-toggle-model="vm.editedChannel.isStarred"
-                                  cozen-btn-toggle-class="space-medium-after">
                 </cozen-btn-toggle>
 
                 <div class="center-flex-content space-medium-after">
@@ -86,10 +77,14 @@
                     </cozen-btn>
 
                     <!-- Remove btn -->
-                    <a href
+                    <a ng-show="vm.channels.length > 1"
+                       href
                        class="animated fadeInUp"
                        onclick="this.blur()"
-                       ng-click="methods.showPopup($event, 'channelRemove', vm.editedChannel)">
+                       ng-click="methods.showPopup($event, 'channelRemove', {
+                            groupName: vm.group.name,
+                            channel: vm.editedChannel
+                       })">
                         {{ 'channels_edit_remove' | translate }}
                     </a>
                 </div>

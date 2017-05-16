@@ -14,10 +14,12 @@
 
         function getLogSrc(tag) {
             switch (tag) {
+                case 'channelRemoved':
+                    return 'icons8-trash';
                 case 'channelNowPrivate':
-                    return 'fa-eye';
-                case 'channelNowPublic':
                     return 'fa-eye-slash';
+                case 'channelNowPublic':
+                    return 'fa-eye';
                 case 'channelNowDefault':
                     return 'icons8-event-accepted-filled';
                 case 'channelNowNotDefault':

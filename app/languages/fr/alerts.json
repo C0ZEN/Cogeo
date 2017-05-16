@@ -36,7 +36,7 @@
     "alerts_success_user_channel_unban": "Tu as débanni <strong>{{username}}</strong> du channel <strong>{{channelName}}</strong> du groupe <strong>{{groupName}}</strong>.",
     "alerts_success_user_channel_grant": "Tu as promu <strong>{{username}}</strong> du channel <strong>{{channelName}}</strong> du groupe <strong>{{groupName}}</strong> au rang d'administrateur.",
     "alerts_success_user_channel_revoke": "Tu as rétrogradé <strong>{{username}}</strong> du channel <strong>{{channelName}}</strong> du groupe <strong>{{groupName}}</strong> au rang de membre.",
-
+    "alerts_success_channel_removed": "Tu as supprimé le channel <strong>{{channelName}}</strong> du groupe <strong>{{groupName}}.</strong>",
     "alerts_success_friend_set_alias": "Le nouveau alias de <strong>{{friend}}</strong> est <strong>{{alias}}</strong>.",
     "alerts_success_friend_set_alias_empty": "Tu as supprimé l'alias de <strong>{{friend}}</strong>.",
     "alerts_success_friend_blocked": "Tu as bloqué <strong>{{friend}}</strong> de tes amis.",

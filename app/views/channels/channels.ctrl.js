@@ -103,17 +103,19 @@
         // Called on details view
         function onInitDetails() {
             vm.methods.onInit();
-            vm.channel      = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
-            vm.channel      = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
-            vm.disabledChat = vm.methods.disableChat();
+            vm.channel = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
+            if (!Methods.isNullOrEmpty(vm.channel)) {
+                vm.channel      = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+                vm.disabledChat = vm.methods.disableChat();
 
-            // Get the google graph for members
-            vm.googleGraph.members = googleGraphChannelMembers.getChart(vm.params.groupName, vm.channel._id);
-            vm.googleGraph.status  = googleGraphChannelStatus.getChart(vm.params.groupName, vm.channel._id);
+                // Get the google graph for members
+                vm.googleGraph.members = googleGraphChannelMembers.getChart(vm.params.groupName, vm.channel._id);
+                vm.googleGraph.status  = googleGraphChannelStatus.getChart(vm.params.groupName, vm.channel._id);
 
-            // Send message to redraw graph
-            $rootScope.$broadcast('cozenDrawChart');
-            $rootScope.$broadcast('drawChartValuesInit');
+                // Send message to redraw graph
+                $rootScope.$broadcast('cozenDrawChart');
+                $rootScope.$broadcast('drawChartValuesInit');
+            }
         }
 
         // Leave a channel
@@ -142,12 +144,14 @@
         // Called on members view
         function onInitMembers() {
             vm.methods.onInit();
-            vm.channel         = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
-            vm.channel         = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
-            vm.disabledChat    = vm.methods.disableChat();
-            vm.membersList     = channelsFactory.getAllUsersExceptHasLeft($state.params.groupName, vm.channel._id);
-            vm.membersList     = usersFactory.addUsersFullNames(vm.membersList);
-            vm.membersSettings = angular.merge({}, vm.membersSettings, angular.copy(vm.user.settings.preferences.channelsMembers));
+            vm.channel = groupsFactory.getChannelByName(vm.params.groupName, vm.params.channelName);
+            if (!Methods.isNullOrEmpty(vm.channel)) {
+                vm.channel         = channelsFactory.getChannelWithUserRoles(vm.channel, vm.user);
+                vm.disabledChat    = vm.methods.disableChat();
+                vm.membersList     = channelsFactory.getAllUsersExceptHasLeft($state.params.groupName, vm.channel._id);
+                vm.membersList     = usersFactory.addUsersFullNames(vm.membersList);
+                vm.membersSettings = angular.merge({}, vm.membersSettings, angular.copy(vm.user.settings.preferences.channelsMembers));
+            }
         }
 
         // Called on invitations view

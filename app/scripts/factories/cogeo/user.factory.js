@@ -226,6 +226,11 @@
                     event.icon  = 'fa fa-fw icons8-google-groups';
                     event.color = 'blue';
                 }
+                else if (event.id == 'warning') {
+                    event.name  = 'account_event_warning';
+                    event.icon  = 'fa fa-fw fa-exclamation-triangle';
+                    event.color = 'yellow';
+                }
                 else {
                     event.name  = 'account_event_channel';
                     event.icon  = 'fa fa-fw icons8-channel-mosaic';

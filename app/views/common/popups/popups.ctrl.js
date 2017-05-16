@@ -18,11 +18,12 @@
         'channelsFactory',
         '$timeout',
         '$state',
-        'directMessagesFactory'
+        'directMessagesFactory',
+        'goTo'
     ];
 
     function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory, cozenEnhancedLogs, usersFactory,
-                       groupsFactory, channelsFactory, $timeout, $state, directMessagesFactory) {
+                       groupsFactory, channelsFactory, $timeout, $state, directMessagesFactory, goTo) {
         var popup = this;
 
         // Methods
@@ -457,16 +458,23 @@
         }
 
         function channelRemove() {
-
+            groupsFactory.httpRequest.removeChannel(popup.channelRemoveData.groupName, popup.channelRemoveData.channel.originalName, {
+                username: userFactory.getUser().username
+            }, function () {
+                popup.methods.closePopup('channelRemove');
+                goTo.view('app.channels.all', popup.channelRemoveData.groupName);
+            }, function () {
+                popup.methods.closePopup('channelRemove');
+            });
         }
 
         function groupJoin() {
             groupsFactory.httpRequest.joinGroup(popup.groupJoinData.groupName, {
                 username: userFactory.getUser().username
             }, function () {
-                closePopup('groupJoin');
+                popup.methods.closePopup('groupJoin');
             }, function () {
-                closePopup('groupJoin');
+                popup.methods.closePopup('groupJoin');
             });
         }
 
@@ -474,9 +482,9 @@
             groupsFactory.httpRequest.leaveGroup(popup.groupLeaveData.groupName, {
                 username: userFactory.getUser().username
             }, function () {
-                closePopup('groupLeave');
+                popup.methods.closePopup('groupLeave');
             }, function () {
-                closePopup('groupLeave');
+                popup.methods.closePopup('groupLeave');
             });
         }
 
@@ -484,9 +492,9 @@
             channelsFactory.httpRequest.joinChannel(popup.channelJoinData.groupName, popup.channelJoinData.channelName, {
                 username: userFactory.getUser().username
             }, function () {
-                closePopup('channelJoin');
+                popup.methods.closePopup('channelJoin');
             }, function () {
-                closePopup('channelJoin');
+                popup.methods.closePopup('channelJoin');
             });
         }
 
@@ -494,9 +502,9 @@
             channelsFactory.httpRequest.leaveChannel(popup.channelLeaveData.groupName, popup.channelLeaveData.channelName, {
                 username: userFactory.getUser().username
             }, function () {
-                closePopup('channelLeave');
+                popup.methods.closePopup('channelLeave');
             }, function () {
-                closePopup('channelLeave');
+                popup.methods.closePopup('channelLeave');
             });
         }
 

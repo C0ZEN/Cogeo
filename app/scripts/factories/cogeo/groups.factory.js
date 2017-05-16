@@ -75,7 +75,8 @@
                 userRevoke          : httpRequestUserRevoke,
                 addMessage          : httpRequestAddMessage,
                 editMessage         : httpRequestEditMessage,
-                removeMessage       : httpRequestRemoveMessage
+                removeMessage       : httpRequestRemoveMessage,
+                removeChannel       : httpRequestRemoveChannel
             }
         };
 
@@ -796,6 +797,22 @@
             httpRequest.requestPut('group/' + groupName + '/channel/' + channelName + '/message/remove', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     updateGroup(response.data.data);
+                })
+            ;
+        }
+
+        function httpRequestRemoveChannel(groupName, channelName, data, callbackSuccess, callbackError) {
+            httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/remove', data, callbackSuccess, callbackError)
+                .then(function (response) {
+                    updateGroup(response.data.data);
+                    cozenFloatingFeedFactory.addAlert({
+                        type       : 'green',
+                        label      : 'alerts_success_channel_removed',
+                        labelValues: {
+                            groupName  : groupName,
+                            channelName: channelName
+                        }
+                    });
                 })
             ;
         }
