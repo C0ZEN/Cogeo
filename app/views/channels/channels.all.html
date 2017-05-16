@@ -136,6 +136,14 @@
                 </div>
             </div>
 
+            <!-- Alert info no groups from filter -->
+            <cozen-alert ng-if="vm.channels.length > 0 && fakeAllChannelsFilter.length == 0"
+                         cozen-alert-label="'channels_all_no_channel_found'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-before space-base-after">
+            </cozen-alert>
+
+
             <div class="center-flex-content space-medium-after">
 
                 <!-- More filter -->

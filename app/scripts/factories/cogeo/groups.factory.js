@@ -551,9 +551,11 @@
         function getAllUsersExceptHasLeft(groupName) {
             var group       = getGroupByName(groupName);
             var activeUsers = [];
-            for (var i = 0, length = group.users.length; i < length; i++) {
-                if (group.users[i].hasLeft == 0) {
-                    activeUsers.push(group.users[i]);
+            if (!Methods.isNullOrEmpty(group)) {
+                for (var i = 0, length = group.users.length; i < length; i++) {
+                    if (group.users[i].hasLeft == 0) {
+                        activeUsers.push(group.users[i]);
+                    }
                 }
             }
             return activeUsers;

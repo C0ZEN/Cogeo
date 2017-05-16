@@ -133,12 +133,12 @@
             vm.register.email         = simpleUser.email;
             vm.register.password      = simpleUser.password;
             vm.register.checkPassword = simpleUser.password;
-            cozenLazyLoadInternal.sendBroadcastBtnClick('formRegister');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('formRegister', 'register');
         }
 
         function generateLoginPassword() {
             vm.login.password = 'Soleil123';
-            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-login-btn');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-login-btn', 'login');
         }
     }
 

@@ -14,11 +14,21 @@
 
         function getLogSrc(tag) {
             switch (tag) {
+                case 'channelNowPrivate':
+                    return 'fa-eye';
+                case 'channelNowPublic':
+                    return 'fa-eye-slash';
+                case 'channelNowDefault':
+                    return 'icons8-event-accepted-filled';
+                case 'channelNowNotDefault':
+                    return 'icons8-event-declined-filled';
                 case 'accountCreated':
                     return 'icons8-handshake';
                 case 'newGroupCreated':
-                case 'newGroupJoined':
+                    return 'icons8-google-groups';
                 case 'newChannelCreated':
+                    return 'icons8-channel-mosaic';
+                case 'newGroupJoined':
                 case 'newChannelJoined':
                     return 'icons8-plus';
                 case 'groupLeft':

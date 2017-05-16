@@ -335,8 +335,7 @@
             vm.newChannel.description = cozenLazyLoadRandom.getRandomSentence(15);
             vm.newChannel.private     = Methods.getRandomBoolean();
             vm.newChannel.byDefault   = false;
-            cozenLazyLoadInternal.sendBroadcastForm('new');
-            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-new-channel-btn');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-new-channel-btn', 'new');
         }
 
         function disableChat() {

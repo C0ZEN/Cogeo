@@ -29,6 +29,7 @@
     "channels_channels_subtitle": "Visualise, rejoins, modifie et manage les channels.",
     "channels_all_search_pc": "Rechercher un channel en particulier",
     "channels_all_show_filter": "Plus de filtres",
+    "channels_all_no_channel_found": "Aucun channel ne correspond à ta recherche !",
     "channels_recruit_title": "J'invite des amis à rejoindre le channel {{channelName}}...",
     "channels_recruit_subtitle_1": "Tu peux inviter des membres Cogeo via leurs identifiant.",
     "channels_recruit_subtitle_2": "Seul les utilisateurs du groupe peuvent être inviter.",

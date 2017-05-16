@@ -157,7 +157,7 @@
 
         function setRandomGroupName() {
             vm.newGroup.name = $filter('cozenCapitalize')(cozenLazyLoadRandom.getRandomWord(Methods.getRandomFromRange(4, 22)), true, true);
-            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-btn-new-group-step-1');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-btn-new-group-step-1', 'newGroup1');
         }
 
         function setRandomStep2() {
@@ -171,7 +171,7 @@
                     id       : rfc4122.v4()
                 });
             }
-            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-btn-new-group-step-2');
+            cozenLazyLoadInternal.sendBroadcastBtnClick('submit-btn-new-group-step-2', 'newGroup2');
         }
     }
 

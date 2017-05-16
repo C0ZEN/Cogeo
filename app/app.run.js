@@ -43,6 +43,7 @@
         $rootScope.channelsFactory     = channelsFactory;
         $rootScope.cozenLazyLoadRandom = cozenLazyLoadRandom;
         $rootScope.cozenLanguage       = cozenLanguage;
+        $rootScope.Utils               = Utils;
 
         // Public global functions
         $rootScope.methods = {

@@ -58,5 +58,5 @@ function getKickedTime(time) {
 }
 
 function canAccessGoogleVisualization() {
-    return !((typeof google === 'undefined') || (typeof google.visualization === 'undefined'));
+    return !((typeof google === 'undefined'));
 }
