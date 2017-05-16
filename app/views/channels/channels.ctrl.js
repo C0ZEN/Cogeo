@@ -62,9 +62,13 @@
         vm.loading     = false;
         vm.googleGraph = {};
 
+        // Listener
         groupsFactory.subscribe($scope, function () {
             vm.methods.onInitDetails();
             vm.methods.onInitMembers();
+        });
+        userFactory.subscribe($scope, function () {
+            vm.user = userFactory.getUser();
         });
 
         // Called on each view

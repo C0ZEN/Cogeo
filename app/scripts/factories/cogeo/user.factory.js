@@ -272,10 +272,15 @@
                 }
             });
             angular.forEach($user.settings.preferences.channelsLogs.events, function (event) {
-                if (event.id == 'group') {
-                    event.name  = 'account_event_group';
-                    event.icon  = 'fa fa-fw icons8-google-groups';
-                    event.color = 'blue';
+                if (event.id == 'social') {
+                    event.name  = 'account_event_social';
+                    event.icon  = 'fa fa-fw icons8-user-groups';
+                    event.color = 'purple';
+                }
+                else if (event.id == 'warning') {
+                    event.name  = 'account_event_warning';
+                    event.icon  = 'fa fa-fw fa-exclamation-triangle';
+                    event.color = 'yellow';
                 }
                 else {
                     event.name  = 'account_event_channel';

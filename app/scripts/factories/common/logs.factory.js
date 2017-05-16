@@ -32,7 +32,7 @@
                     return 'icons8-channel-mosaic';
                 case 'newGroupJoined':
                 case 'newChannelJoined':
-                    return 'icons8-plus';
+                    return 'icons8-login-rounded-right';
                 case 'groupLeft':
                 case 'channelLeft':
                     return 'icons8-logout-rounded';
@@ -43,6 +43,7 @@
                 case 'accountEdited':
                 case 'accountSettingsEdited':
                 case 'accountNotificationsEdited':
+                case 'channelNewName':
                     return 'icons8-edit';
                 case 'groupInvitationSentOne':
                 case 'groupInvitationSentMany':
