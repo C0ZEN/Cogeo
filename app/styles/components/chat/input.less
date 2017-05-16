@@ -15,7 +15,8 @@ div.atom-chat div.chat-input-container {
         padding         : 0;
         width           : 100%;
         cozen-textarea {
-            flex : 1;
+            margin-right : @atom-space-base;
+            width        : 100%;
             div.cozen-tooltip-html,
             div.cozen-tooltip-default {
                 display : inline-grid;
@@ -24,6 +25,26 @@ div.atom-chat div.chat-input-container {
                     max-height : 149px;
                     &.overflow-textarea {
                         overflow-y : auto !important;
+                    }
+                }
+            }
+        }
+        .chat-upload-btn {
+            .cozen-btn-icon.left {
+                padding        : 1px @atom-space-small 0 @atom-space-small !important;
+                vertical-align : middle !important;
+            }
+            &.chat-upload-error {
+                div.cozen-btn.atom.default.upload div.cozen-btn-content {
+                    border     : 1px solid @atom-color-error;
+                    color      : @atom-color-white;
+                    background : @atom-color-error;
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        border     : 1px dashed @atom-color-error;
+                        color      : @atom-color-error;
+                        background : @atom-color-white;
                     }
                 }
             }

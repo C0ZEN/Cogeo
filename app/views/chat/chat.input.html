@@ -2,6 +2,8 @@
             cozen-form-model="form"
             cozen-form-name="message"
             cozen-form-class="row">
+
+    <!-- Textarea for classic messages -->
     <cozen-textarea cozen-textarea-rows="1"
                     cozen-textarea-disabled="vm.activeFriend.blocked != 0 && $state.current.name == 'app.chat.user'"
                     cozen-textarea-model="vm.message"
@@ -14,6 +16,23 @@
                     cozen-textarea-when-height-greater-than-disabled="false"
                     cozen-textarea-on-enter="vm.methods.sendNewMessage(name, model)">
     </cozen-textarea>
+
+    <!-- Upload custom btn -->
+    <cozen-btn ng-class="{'chat-upload-error': vm.upload.hasUploadError}"
+               class="chat-upload-btn"
+               cozen-btn-is-upload="true"
+               cozen-btn-label=""
+               cozen-btn-icon-left="fa fa-fw icons8-upload"
+               cozen-btn-upload-model="vm.upload.model"
+               cozen-btn-upload-config="vm.upload.config"
+               cozen-btn-preview="false"
+               cozen-btn-upload-progress="false"
+               cozen-btn-is-uploading="vm.upload.isUploading"
+               cozen-btn-has-upload-error="vm.upload.hasUploadError"
+               cozen-btn-upload-alert="false"
+               cozen-btn-disabled="vm.upload.isUploading"
+               cozen-btn-on-upload-success="vm.upload.onSuccess(model)">
+    </cozen-btn>
 </cozen-form>
 
 <div class="row justify-space-around space-small-before">

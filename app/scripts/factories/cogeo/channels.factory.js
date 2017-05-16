@@ -131,6 +131,8 @@
                     channel.isKicked  = channel.users[i].kicked.active;
                     channel.joined    = channel.users[i].joined;
                     channel.isStarred = isStarredByUser(user.username, channel._id);
+                    channel.banned    = channel.users[i].banned;
+                    channel.kicked    = channel.users[i].kicked;
                     break;
                 }
             }

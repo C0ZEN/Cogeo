@@ -72,6 +72,20 @@
         };
         vm.expandAll = true;
         vm.messages  = [];
+        vm.upload    = {
+            config   : {
+                pattern  : '.jpg,.jpeg,.png,.txt,.pdf,.mp3,.mp4,.ppt,.docx,.xls',
+                maxSize  : '100MB',
+                minHeight: 0,
+                maxHeight: 10000,
+                minWidth : 0,
+                maxWidth : 10000,
+                resize   : {}
+            },
+            onSuccess: function () {
+                console.log(arguments);
+            }
+        };
 
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
