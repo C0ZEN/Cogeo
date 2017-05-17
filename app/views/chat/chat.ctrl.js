@@ -20,13 +20,13 @@
         'botFactory',
         'ngAudio',
         '$location',
-        '$sce',
+        'cozenEnhancedLogs',
         '$timeout',
         'directMessagesFactory'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope, $anchorScroll,
-                      cozenOnClickService, $filter, botFactory, ngAudio, $location, $sce, $timeout, directMessagesFactory) {
+                      cozenOnClickService, $filter, botFactory, ngAudio, $location, cozenEnhancedLogs, $timeout, directMessagesFactory) {
         var vm = this;
 
         // Methods
@@ -223,6 +223,11 @@
             });
         });
 
+        // Listen the change state to stop all mp3 from running
+        $rootScope.$on('$stateChangeStart', function () {
+            vm.methods.stopAllMp3();
+        });
+
         // Called each time a view is loaded
         function onInit() {
 
@@ -308,7 +313,6 @@
         // Called when the user click on a new channel
         function setActiveChannel(channelName, channelId) {
             vm.loadingDomMessages = true;
-            vm.methods.stopAllMp3();
             vm.methods.stopAllEdit();
             vm.activeChannel = groupsFactory.getChannelById(vm.activeGroup, channelId);
             vm.activeChannel = channelsFactory.getChannelWithUserRoles(vm.activeChannel, vm.user);
@@ -346,6 +350,9 @@
 
         // Remove this channel from the starred
         function removeToStarred($event, channelId) {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'removeToStarred');
+            }
             $event.stopPropagation();
             userFactory.httpRequest.removeToStarred({
                 channelId: channelId
@@ -354,6 +361,9 @@
 
         // Add this channel to the starred
         function addToStarred($event, channelId) {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'addToStarred');
+            }
             $event.stopPropagation();
             userFactory.httpRequest.addToStarred({
                 channelId: channelId
@@ -362,6 +372,9 @@
 
         // Hide the channels and friends col
         function hideChannels($event) {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'hideChannels');
+            }
             if (!Methods.isNullOrEmpty($event)) {
                 $event.stopPropagation();
             }
@@ -372,6 +385,9 @@
 
         // Show the channels and friends col
         function showChannels($event) {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'showChannels');
+            }
             if (!Methods.isNullOrEmpty($event)) {
                 $event.stopPropagation();
             }
@@ -403,7 +419,6 @@
         function setActiveFriend(username) {
             vm.activeChannel      = null;
             vm.loadingDomMessages = true;
-            vm.methods.stopAllMp3();
             vm.methods.stopAllEdit();
 
             // Find the active friend
@@ -530,6 +545,9 @@
 
         // Stop all mp3
         function stopAllMp3() {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'stopAllMp3');
+            }
             vm.messages.forEach(function (message) {
                 if (message.category == 'mp3' && !Methods.isNullOrEmpty(message.sound)) {
                     message.sound.stop();
@@ -539,6 +557,9 @@
 
         // Pause all mp3
         function pauseAllMp3() {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'pauseAllMp3');
+            }
             vm.messages.forEach(function (message) {
                 if (message.category == 'mp3' && !Methods.isNullOrEmpty(message.sound)) {
                     message.sound.pause();
@@ -548,6 +569,9 @@
 
         // Stop all mp3 and video
         function stopAllMedia($event) {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'stopAllMedia');
+            }
             $event.stopPropagation();
             vm.methods.stopAllMp3();
             vm.methods.stopAllVideo();
@@ -555,6 +579,9 @@
 
         // Pause all mp3 and video
         function pauseAllMedia($event) {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'pauseAllMedia');
+            }
             $event.stopPropagation();
             vm.methods.pauseAllMp3();
             vm.methods.pauseAllVideo();
@@ -583,6 +610,9 @@
 
         // Stop all the videos
         function stopAllVideo() {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'stopAllVideo');
+            }
             vm.messages.forEach(function (message) {
                 if (message.category == 'video') {
                     message.content.API.stop();
@@ -592,6 +622,9 @@
 
         // Pause all the videos
         function pauseAllVideo() {
+            if (CONFIG.debug) {
+                cozenEnhancedLogs.info.functionCalled('ChatCtrl', 'pauseAllVideo');
+            }
             vm.messages.forEach(function (message) {
                 if (message.category == 'video') {
                     message.content.API.pause();

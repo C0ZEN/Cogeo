@@ -17,13 +17,14 @@
         'cfpLoadingBarProvider',
         'CozenLazyLoadProvider',
         '$compileProvider',
-        'markedProvider'
+        'markedProvider',
+        'CozenFloatingFeedProvider'
     ];
 
     // Global configuration
     function config($locationProvider, $translateProvider, CONFIG, CozenThemesProvider, CozenConfigProvider,
                     tmhDynamicLocaleProvider, $httpProvider, $qProvider, cfpLoadingBarProvider, CozenLazyLoadProvider,
-                    $compileProvider, markedProvider) {
+                    $compileProvider, markedProvider, CozenFloatingFeedProvider) {
 
         // Override the CONFIG for the Atom theme
         CozenThemesProvider.setActiveTheme('atom');
@@ -42,13 +43,14 @@
             .popupAnimationInAnimation('zoomIn')
             .popupAnimationOutAnimation('zoomOut')
             .popupFooter(false)
-            .btnToggleStartRight(false)
-            .floatingFeedWidth(520)
-            .floatingFeedTimeoutTime(14000);
+            .btnToggleStartRight(false);
         CozenLazyLoadProvider
             .log(true)
             .positionTop('70px')
             .positionLeft('10px');
+        CozenFloatingFeedProvider
+            .width(520)
+            .timeoutTime(14000);
 
         // Configure the location provider
         $locationProvider
