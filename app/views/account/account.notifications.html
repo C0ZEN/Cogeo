@@ -83,6 +83,32 @@
                 {{ (vm.notifications.other.newFriend ? 'account_activated' : 'account_disabled') | translate }}
             </h4>
 
+            <!-- Internal -->
+            <h3 class="space-large-before blue">
+                <i class="icons-middle icons8-appointment-reminders"></i>
+                {{ 'account_notifications_internal' | translate }}
+            </h3>
+            <h4>
+                <strong>{{ 'account_notifications_internal_success' | translate }}:</strong>
+                {{ (vm.notifications.internal.success ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_internal_info' | translate }}:</strong>
+                {{ (vm.notifications.internal.info ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_internal_group' | translate }}:</strong>
+                {{ (vm.notifications.internal.group ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4>
+                <strong>{{ 'account_notifications_internal_channel' | translate }}:</strong>
+                {{ (vm.notifications.internal.channel ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+            <h4 class="space-medium-after">
+                <strong>{{ 'account_notifications_internal_social' | translate }}:</strong>
+                {{ (vm.notifications.internal.social ? 'account_activated' : 'account_disabled') | translate }}
+            </h4>
+
             <!-- Edit btn -->
             <cozen-btn cozen-btn-label="'account_settings_edit_notifications'"
                        cozen-btn-auto-sizing="true"

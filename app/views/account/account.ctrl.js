@@ -112,7 +112,7 @@
                     });
                     break;
                 case 'notifications':
-                    userFactory.httpRequest.updateNotifications(vm.notifications, function () {
+                    userFactory.httpRequest.updateNotifications(vm.notifications, function (response) {
                         vm.methods.stopLoading();
                         goTo.view('app.account.notifications');
                     }, function () {

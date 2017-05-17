@@ -10,6 +10,8 @@
         'usersFactory',
         'localStorageService',
         '$rootScope',
+        'displayTypesFactory',
+        'CozenFloatingFeed',
         'goTo',
         'cozenFloatingFeedFactory',
         'accessLog',
@@ -19,7 +21,7 @@
         'cozenEnhancedLogs'
     ];
 
-    function userFactory(httpRequest, usersFactory, localStorageService, $rootScope,
+    function userFactory(httpRequest, usersFactory, localStorageService, $rootScope, displayTypesFactory, CozenFloatingFeed,
                          goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter, CONFIG, cozenEnhancedLogs) {
         var user   = [];
         var status = [
@@ -152,6 +154,7 @@
             else {
                 user = formatUserData(response);
                 usersFactory.updateUser(user);
+                displayTypesFactory.updateConfig(response.data.data.notifications.internal);
             }
             if (CONFIG.dev) {
                 cozenEnhancedLogs.info.functionCalled('userFactory', 'setUser');
@@ -510,6 +513,7 @@
         function httpRequestLogout(username, callbackSuccess, callbackError) {
             httpRequest.requestGet('logout/' + username, callbackSuccess, callbackError)
                 .then(function (response) {
+                    CozenFloatingFeed.rollbackOriginDisplayTypes();
                     cozenFloatingFeedFactory.addAlert({
                         type : 'info',
                         label: 'alerts_info_logout'

@@ -83,6 +83,32 @@
                               cozen-btn-toggle-class="space-medium-after">
             </cozen-btn-toggle>
 
+            <!-- Internal -->
+            <h3 class="space-large-before blue">
+                <i class="icons-middle icons8-appointment-reminders"></i>
+                {{ 'account_notifications_internal' | translate }}
+            </h3>
+            <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.internal.success"
+                              cozen-btn-toggle-label="account_notifications_internal_success"
+                              cozen-btn-toggle-class="space-small-after">
+            </cozen-btn-toggle>
+            <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.internal.info"
+                              cozen-btn-toggle-label="account_notifications_internal_info"
+                              cozen-btn-toggle-class="space-small-after">
+            </cozen-btn-toggle>
+            <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.internal.group"
+                              cozen-btn-toggle-label="account_notifications_internal_group"
+                              cozen-btn-toggle-class="space-small-after">
+            </cozen-btn-toggle>
+            <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.internal.channel"
+                              cozen-btn-toggle-label="account_notifications_internal_channel"
+                              cozen-btn-toggle-class="space-small-after">
+            </cozen-btn-toggle>
+            <cozen-btn-toggle cozen-btn-toggle-model="vm.notifications.internal.social"
+                              cozen-btn-toggle-label="account_notifications_internal_social"
+                              cozen-btn-toggle-class="space-medium-after">
+            </cozen-btn-toggle>
+
             <!-- Edit btn -->
             <cozen-btn cozen-btn-label="'account_settings_edit_save_notifications'"
                        cozen-btn-auto-sizing="true"
