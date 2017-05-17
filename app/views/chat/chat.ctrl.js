@@ -48,11 +48,14 @@
             getUserAlias          : getUserAlias,
             initMp3               : initMp3,
             stopAllMp3            : stopAllMp3,
+            pauseAllMp3           : pauseAllMp3,
             stopAllMedia          : stopAllMedia,
+            pauseAllMedia         : pauseAllMedia,
             isMediaAudioPresent   : isMediaAudioPresent,
             isAudioMedia          : isAudioMedia,
             onPlayerReady         : onPlayerReady,
             stopAllVideo          : stopAllVideo,
+            pauseAllVideo         : pauseAllVideo,
             isMediaPresent        : isMediaPresent,
             scrollToBottom        : scrollToBottom,
             sendNewMessage        : sendNewMessage,
@@ -535,11 +538,27 @@
             });
         }
 
+        // Pause all mp3
+        function pauseAllMp3() {
+            vm.messages.forEach(function (message) {
+                if (message.category == 'mp3' && !Methods.isNullOrEmpty(message.sound)) {
+                    message.sound.pause();
+                }
+            });
+        }
+
         // Stop all mp3 and video
         function stopAllMedia($event) {
             $event.stopPropagation();
             vm.methods.stopAllMp3();
             vm.methods.stopAllVideo();
+        }
+
+        // Pause all mp3 and video
+        function pauseAllMedia($event) {
+            $event.stopPropagation();
+            vm.methods.pauseAllMp3();
+            vm.methods.pauseAllVideo();
         }
 
         // Check in the current messages if there is one of type mp3 or video
@@ -568,6 +587,15 @@
             vm.messages.forEach(function (message) {
                 if (message.category == 'video') {
                     message.content.API.stop();
+                }
+            });
+        }
+
+        // Pause all the videos
+        function pauseAllVideo() {
+            vm.messages.forEach(function (message) {
+                if (message.category == 'video') {
+                    message.content.API.pause();
                 }
             });
         }

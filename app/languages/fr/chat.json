@@ -29,6 +29,7 @@
     "chat_actionBar_options_leftMenu_hide": "Cacher le menu de gauche",
     "chat_actionBar_options_all_channels": "Tous",
     "chat_actionBar_options_stopMedia": "Arrêter tous les médias",
+    "chat_actionBar_options_pauseMedia": "Mettre en pause tous les médias",
     "chat_actionBar_remove": "Supprimer",
     "chat_actionBar_accordion_expanded": "Agrandir",
     "chat_actionBar_accordion_collapsed": "Réduire",
