@@ -533,7 +533,6 @@
             vm.messages.forEach(function (message) {
                 if (message.category == 'mp3' && !Methods.isNullOrEmpty(message.sound)) {
                     message.sound.stop();
-                    message.sound.unbind();
                 }
             });
         }
