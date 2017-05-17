@@ -121,15 +121,15 @@
 	"account_log_channelUserBannedReceived": "Vous avez été banni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> du channel <strong><a href='' ng-click=\"goTo.view('app.channels.details', {groupName: '{{groupName}}', channelName: '{{channelName}}'}, $event)\" ui-sref=\"app.channels.details({groupName: '{{groupName}}', channelName: '{{channelName}}'})\">{{channelName}}.</a></strong>",
 	"account_log_channelUserUnbanned": "Vous avez débanni <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> du channel <strong><a href='' ng-click=\"goTo.view('app.channels.details', {groupName: '{{groupName}}', channelName: '{{channelName}}'}, $event)\" ui-sref=\"app.channels.details({groupName: '{{groupName}}', channelName: '{{channelName}}'})\">{{channelName}}.</a></strong>",
 	"account_log_channelUserUnbannedReceived": "Vous avez été débanni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> du channel <strong><a href='' ng-click=\"goTo.view('app.channels.details', {groupName: '{{groupName}}', channelName: '{{channelName}}'}, $event)\" ui-sref=\"app.channels.details({groupName: '{{groupName}}', channelName: '{{channelName}}'})\">{{channelName}}.</a></strong>",
-	"account_log_socialInvitationSentOne": "Vous avez invité <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">{{user}}</a></strong> à rejoindre vos amis.",
+	"account_log_socialInvitationSentOne": "Vous avez invité <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">@{{user}}</a></strong> à rejoindre vos amis.",
 	"account_log_socialInvitationSentMany": "Vous avez invité <strong>{{quantity}}</strong> personnes à rejoindre vos amis.",
-	"account_log_socialInvitationReceived": "Vous avez été inviter par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">{{user}}</a></strong> à rejoindre ses amis.",
-	"account_log_socialUserBlocked": "Vous avez bloqué <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">{{user}}</a></strong> de vos amis.",
-	"account_log_socialUserRemoved": "Vous avez supprimé <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">{{user}}</a></strong> de vos amis.",
-	"account_log_socialUserUnblocked": "Vous avez débloqué <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">{{user}}</a></strong> de vos amis.",
-	"account_log_socialInvitationAccepted": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">{{user}}</a></strong> fait maintenant partie de vos amis.",
-	"account_log_socialUserRenamed": "Vous avez donné le pseudo <strong>{{userAlias}}</strong> à <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">{{user}}.</a></strong>",
-	"account_log_socialUserAliasRemoved": "Vous avez supprimé le pseudo de <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">{{user}}.</a></strong>",
+	"account_log_socialInvitationReceived": "Vous avez été inviter par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">@{{user}}</a></strong> à rejoindre ses amis.",
+	"account_log_socialUserBlocked": "Vous avez bloqué <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">@{{user}}</a></strong> de vos amis.",
+	"account_log_socialUserRemoved": "Vous avez supprimé <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">@{{user}}</a></strong> de vos amis.",
+	"account_log_socialUserUnblocked": "Vous avez débloqué <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">@{{user}}</a></strong> de vos amis.",
+	"account_log_socialInvitationAccepted": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">@{{user}}</a></strong> fait maintenant partie de vos amis.",
+	"account_log_socialUserRenamed": "Vous avez donné le pseudo <strong>{{userAlias}}</strong> à <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">@{{user}}.</a></strong>",
+	"account_log_socialUserAliasRemoved": "Vous avez supprimé le pseudo de <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{user}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{user}}'})\">@{{user}}.</a></strong>",
 	"account_log_accountCreated": "Bienvenue sur Cogeo !",
 	"account_log_accountEdited": "Vous avez modifier votre profil.",
 	"account_log_accountSettingsEdited": "Vous avez modifier vos paramètres.",
@@ -212,6 +212,94 @@
 	"alerts_success_friend_blocked": "Tu as bloqué <strong>{{friend}}</strong> de tes amis.",
 	"alerts_success_friend_unblocked": "Tu as débloqué <strong>{{friend}}</strong> de tes amis.",
 	"alerts_success_friend_remove": "Tu as supprimé <strong>{{friend}}</strong> de tes amis.",
+	"COMMON": {
+		"FRIENDS": {},
+		"CHANNELS": {}
+	},
+	"FRIENDYBOT": {
+		"FRIENDS": {
+			"FIRST_MESSAGE": {
+				"1": "Bienvenue sur Cogeo {{username}} ! :smile:",
+				"2": "Je suis fier de faire partie de tes amis !",
+				"3": "C’est dangereux de sortir tout seul, tient, prend ceci :heart: !",
+				"4": "Pour entretenir des amitiés solides, il ne suffit pas d'apprécier nos ressemblances; il faut aussi célébrer nos différences."
+			}
+		},
+		"CHANNELS": {}
+	},
+	"SPAMOBOT": {
+		"FRIENDS": {
+			"FIRST_MESSAGE": {
+				"1": "À quoi servirait l'intelligence si l'imbécillité n'existait pas ?",
+				"2": "Ne choisis tes amis que parmi tes égaux.",
+				"3": "Je ne suis pas asocial, je ne suis juste pas orienté utilisateur.",
+				"4": "Il ne faut pas que le robot soit trop intelligent, sinon il voudra rien foutre."
+			}
+		},
+		"CHANNELS": {
+			"NEW_MEMBER": {
+				"1": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a rejoint le channel.",
+				"2": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a rejoint le channel !",
+				"3": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a rejoint le channel :smile:",
+				"4": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a rejoint le channel :smiley:",
+				"5": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a rejoint le channel :disappointed:",
+				"6": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a rejoint le channel :angry:",
+				"7": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a rejoint le channel :tongue:",
+				"8": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a rejoint le channel :heart_eyes:"
+			},
+			"LEFT_MEMBER": {
+				"1": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a quitté le channel.",
+				"2": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a quitté le channel !",
+				"3": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a quitté le channel :smile:",
+				"4": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a quitté le channel :smiley:",
+				"5": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a quitté le channel :disappointed:",
+				"6": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a quitté le channel :sob:",
+				"7": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a quitté le channel :cry:"
+			},
+			"KICKED_MEMBER": {
+				"1": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été expulsé par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong>.",
+				"2": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été expulsé par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> !",
+				"3": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été expulsé par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :smile:",
+				"4": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été expulsé par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :smiley:",
+				"5": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été expulsé par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :disappointed:",
+				"6": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été expulsé par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :sob:",
+				"7": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été expulsé par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :cry:"
+			},
+			"BANNED_MEMBER": {
+				"1": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été banni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong>.",
+				"2": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été banni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> !",
+				"3": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été banni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :smile:",
+				"4": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été banni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :smiley:",
+				"5": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été banni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :disappointed:",
+				"6": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été banni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :sob:",
+				"7": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été banni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :cry:"
+			},
+			"UNBANNED_MEMBER": {
+				"1": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été débanni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong>.",
+				"2": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été débanni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> !",
+				"3": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été débanni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :smile:",
+				"4": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été débanni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :smiley:",
+				"5": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été débanni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :disappointed:",
+				"6": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été débanni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :sob:",
+				"7": "<strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username}}'})\">@{{username}}</a></strong> a été débanni par <strong><a href='' ng-click=\"goTo.viewUserProfile('app.profiles.user', {username: '{{username2}}'}, $event)\" ui-sref=\"app.profiles.user({username: '{{username2}}'})\">@{{username2}}</a></strong> :cry:"
+			},
+			"NOW_PRIVATE": {
+				"1": "Ce channel est maintenant privé. Les utilisateurs ne pourront plus le rejoindre sans <a href='' ng-click=\"goTo.view('app.channels.invitations', {groupName: '{{groupName}}', channelName: '{{channelName}}'}, $event)\" ui-sref=\"app.channels.invitations({groupName: '{{groupName}}', channelName: '{{channelName}}'})\">invitations.</a>"
+			},
+			"NOW_PUBLIC": {
+				"1": "Ce channel est maintenant public. Tous les utilisateurs pourront le rejoindre même sans invitation."
+			},
+			"NOW_DEFAULT": {
+				"1": "Ce channel est maintenant par défaut. Les utilisateurs qui rejoignent le groupe le rejoindront automatiquement."
+			},
+			"NOW_NOT_DEFAULT": {
+				"1": "Ce channel n'est plus par défaut. Les utilisateurs qui rejoignent le groupe ne vont plus le rejoindre automatiquement."
+			},
+			"NEW_NAME": {
+				"1": "Le channel <strong>{{name}}</strong> a été renommé en <strong>{{channelName}}.</strong>"
+			}
+		}
+	},
 	"channels_all": "Tous les channels",
 	"channels_creator": "Créateur",
 	"channels_member": "Membre",
@@ -359,7 +447,7 @@
 	"chat_newMessage_placeholder_user": "Envoyé un message à {{username}}",
 	"chat_newMessage_tooltip": "Tu peux utiliser du <strong>markdown</strong> dans tes messages.<br>Exemples: **gras**, *italique*, [lien](url), etc...",
 	"chat_newMessage_proTips_1": "<strong>Enter</strong> pour envoyé, <strong>Maj Enter</strong> pour un retour à la ligne.",
-	"chat_newMessage_proTips_2": "<strong>Markdown</strong> et <strong>Emoticons</strong> accepter. Exemples: **gras**, *italique*, [lien](url), :smiley:, ...",
+	"chat_newMessage_proTips_2": "<strong>Markdown</strong> et <strong>Emoticons</strong> accepter. Exemples: <strong>**gras**</strong>, <span class='text-italic'>*italique*</span>, [lien](url), :smiley:, ...",
 	"chat_message_edited_on": ", modifer à",
 	"chat_channel": "#{{channelName}}",
 	"chat_upload_image_text": "a uploadé cette image:",
@@ -393,6 +481,7 @@
 	"chat_user": "@{{username}}",
 	"chat_hello": "Bonjour !",
 	"chat_alert_friend_blocked": "Tu as bloqué {{username}} le {{date}}",
+	"chat_alert_friend_no_message": "Il n'y a pas encore de messages pour cette conversation",
 	"DEV": {
 		"USERS_LIST": {
 			"PAGE_TITLE": "Liste des utilisateurs Cogeo",

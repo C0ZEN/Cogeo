@@ -43,7 +43,7 @@
     "chat_newMessage_placeholder_user": "Envoyé un message à {{username}}",
     "chat_newMessage_tooltip": "Tu peux utiliser du <strong>markdown</strong> dans tes messages.<br>Exemples: **gras**, *italique*, [lien](url), etc...",
     "chat_newMessage_proTips_1": "<strong>Enter</strong> pour envoyé, <strong>Maj Enter</strong> pour un retour à la ligne.",
-    "chat_newMessage_proTips_2": "<strong>Markdown</strong> et <strong>Emoticons</strong> accepter. Exemples: **gras**, *italique*, [lien](url), :smiley:, ...",
+    "chat_newMessage_proTips_2": "<strong>Markdown</strong> et <strong>Emoticons</strong> accepter. Exemples: <strong>**gras**</strong>, <span class='text-italic'>*italique*</span>, [lien](url), :smiley:, ...",
     "chat_message_edited_on": ", modifer à",
     "chat_channel": "#{{channelName}}",
     "chat_upload_image_text": "a uploadé cette image:",
@@ -76,5 +76,6 @@
     "chat_alias": "alias",
     "chat_user": "@{{username}}",
     "chat_hello": "Bonjour !",
-    "chat_alert_friend_blocked": "Tu as bloqué {{username}} le {{date}}"
+    "chat_alert_friend_blocked": "Tu as bloqué {{username}} le {{date}}",
+    "chat_alert_friend_no_message": "Il n'y a pas encore de messages pour cette conversation"
 }

@@ -20,13 +20,13 @@
         'botFactory',
         'ngAudio',
         '$location',
-        '$document',
+        '$sce',
         '$timeout',
         'directMessagesFactory'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope, $anchorScroll,
-                      cozenOnClickService, $filter, botFactory, ngAudio, $location, $document, $timeout, directMessagesFactory) {
+                      cozenOnClickService, $filter, botFactory, ngAudio, $location, $sce, $timeout, directMessagesFactory) {
         var vm = this;
 
         // Methods
@@ -74,7 +74,7 @@
         vm.messages  = [];
         vm.upload    = {
             config   : {
-                pattern  : '.jpg,.jpeg,.png,.txt,.pdf,.mp3,.mp4,.ppt,.docx,.xls',
+                pattern  : '.jpg,.jpeg,.png,.txt,.pdf,.mp3,.mp4,.ppt,.docx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                 maxSize  : '100MB',
                 minHeight: 0,
                 maxHeight: 10000,
@@ -82,7 +82,7 @@
                 maxWidth : 10000,
                 resize   : {}
             },
-            onSuccess: function () {
+            onSuccess: function (model, file) {
                 console.log(arguments);
             }
         };
@@ -873,6 +873,13 @@
         function addSmiley(messages) {
             messages.forEach(function (message) {
                 if (message.category == 'text') {
+
+                    // Only for the BOT purpose, translate stuff
+                    if (message.tag == 'bot') {
+                        message.content.text = $filter('translate')(message.content.text, message.content.values);
+                    }
+
+                    // Create the emoticons
                     message.content.compiledText = $filter('embed')(message.content.text, CONFIG.internal.embed);
                 }
             });

@@ -18,8 +18,7 @@
     </cozen-textarea>
 
     <!-- Upload custom btn -->
-    <cozen-btn ng-class="{'chat-upload-error': vm.upload.hasUploadError}"
-               class="chat-upload-btn"
+    <cozen-btn class="chat-upload-btn"
                cozen-btn-is-upload="true"
                cozen-btn-label=""
                cozen-btn-icon-left="fa fa-fw icons8-upload"
@@ -31,7 +30,7 @@
                cozen-btn-has-upload-error="vm.upload.hasUploadError"
                cozen-btn-upload-alert="false"
                cozen-btn-disabled="vm.upload.isUploading"
-               cozen-btn-on-upload-success="vm.upload.onSuccess(model)">
+               cozen-btn-on-upload-success="vm.upload.onSuccess(model, file)">
     </cozen-btn>
 </cozen-form>
 

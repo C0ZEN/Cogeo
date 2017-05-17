@@ -15,7 +15,7 @@
            ng-click="methods.showPopup($event, 'botProfile' + message.sender, {})"
            class="atom-link bot-name"
            ng-class="botFactory.getBotByName(message.sender).color">
-            {{ message.sender }}
+            @{{ message.sender }}
         </a>
 
         <!-- Send date -->
@@ -33,8 +33,12 @@
     <answer-action></answer-action>
 
     <!-- Copy the text -->
-    <copy-action copy-action-message-id="'message-bot-' + message._id"></copy-action>
+    <copy-action copy-action-message-id="'message-user-' + message._id"
+                 copy-action-display="message.category == 'text'">
+    </copy-action>
 
     <!-- Talk with -->
-    <chat-action chat-action-on-click="goTo.view('app.chat.user', {username: message.sender})"></chat-action>
+    <chat-action chat-action-display="$state.current.name != 'app.chat.user'"
+                 chat-action-on-click="goTo.view('app.chat.user', {username: message.sender})">
+    </chat-action>
 </div>

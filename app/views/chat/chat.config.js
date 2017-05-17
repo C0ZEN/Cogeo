@@ -30,16 +30,16 @@
             dotsubEmbed     : true,
             liveleakEmbed   : true,
             ustreamEmbed    : true,
-            codepenEmbed     : true,
-            codepenHeight    : 300,
-            jsfiddleEmbed    : true,
-            jsfiddleHeight   : 300,
-            jsbinEmbed       : true,
-            jsbinHeight      : 300,
-            plunkerEmbed     : true,
-            githubgistEmbed  : true,
-            ideoneEmbed      : true,
-            ideoneHeight     : 300
+            codepenEmbed    : true,
+            codepenHeight   : 300,
+            jsfiddleEmbed   : true,
+            jsfiddleHeight  : 300,
+            jsbinEmbed      : true,
+            jsbinHeight     : 300,
+            plunkerEmbed    : true,
+            githubgistEmbed : true,
+            ideoneEmbed     : true,
+            ideoneHeight    : 300
         };
     }
 
