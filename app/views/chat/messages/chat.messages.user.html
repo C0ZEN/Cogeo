@@ -92,7 +92,7 @@
     </download-action>
 
     <!-- Remove -->
-    <remove-action remove-action-display="message.sender == vm.user.username"
+    <remove-action remove-action-display="message.sender == vm.user.username || vm.isUserAdmin"
                    remove-action-message="message">
     </remove-action>
 </div>
