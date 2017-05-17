@@ -83,7 +83,7 @@
                 resize   : {}
             },
             onSuccess: function (model, file) {
-                console.log(arguments);
+
             }
         };
 
@@ -213,13 +213,23 @@
             vm.inputPlaceholder               = $filter('translate')('chat_newMessage_placeholder_channel', {
                 channelName: vm.activeChannel.name
             });
+
+            // Check if the user is in the group (active) and admin of the channel (active too)
+            vm.isUserAdmin = channelsFactory.isActiveAdmin(vm.user.username, vm.activeGroup, vm.activeChannel._id)
+                && groupsFactory.isActiveMember(vm.user.username, vm.activeGroup);
+
+            // Change the theme
             $rootScope.$broadcast('setChatTheme', {
                 theme: vm.chatTheme
             });
+
+            // Change the route
             goTo.view('app.chat.channel', {
                 groupName  : vm.activeGroup,
                 channelName: channelName
             });
+
+            // Scroll to the last message
             vm.methods.scrollToBottom({
                 data: vm.messages[vm.messages.length - 1]
             });
@@ -662,6 +672,7 @@
             vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
                 username: vm.activeFriend.alias || vm.activeFriend.username
             });
+            vm.isUserAdmin      = false;
             $rootScope.$broadcast('setChatTheme', {
                 theme: vm.chatTheme
             });

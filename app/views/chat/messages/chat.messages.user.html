@@ -57,7 +57,7 @@
     <volume-action volume-action-display="vm.methods.isAudioMedia(message)"></volume-action>
 
     <!-- Edit -->
-    <edit-action edit-action-display="message.sender == vm.user.username && message.category == 'text'"
+    <edit-action edit-action-display="message.category == 'text' && (message.sender == vm.user.username || vm.isUserAdmin)"
                  edit-action-on-click="vm.methods.stopAllEdit(); vm.methods.startEdit(message._id);">
     </edit-action>
 
