@@ -154,7 +154,7 @@
             else {
                 user = formatUserData(response);
                 usersFactory.updateUser(user);
-                displayTypesFactory.updateConfig(response.data.data.notifications.internal);
+                // displayTypesFactory.updateConfig(response.data.data.notifications.internal);
             }
             if (CONFIG.dev) {
                 cozenEnhancedLogs.info.functionCalled('userFactory', 'setUser');
