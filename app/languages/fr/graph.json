@@ -15,7 +15,7 @@
                 "MEMBER_NOT_ADMIN_PLURALIZE": "membres non admin"
             },
             "CHANNELS_STATUS": {
-                "TYPE": "Status des membres",
+                "TYPE": "Statut des membres",
                 "ACTIVE": "Actif",
                 "KICKED": "Expulsé",
                 "BANNED": "Banni",

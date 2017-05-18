@@ -2,41 +2,41 @@
     "GRAPH": {
         "GOOGLE": {
             "CHANNELS_MEMBERS": {
-                "TYPE": "Types de membres",
+                "TYPE": "Members types",
                 "ADMIN": "Admin",
-                "NONE_ADMIN": "Non admin",
-                "ADMIN_TP": " membre admin",
-                "MEMBER": "Membre",
-                "MEMBER_TP": "membres",
-                "MEMBER_TP_ALONE": "membre",
-                "MEMBER_ADMIN": "membre admin",
-                "MEMBER_ADMIN_PLURALIZE": "membres admin",
-                "MEMBER_NOT_ADMIN": "membre non admin",
-                "MEMBER_NOT_ADMIN_PLURALIZE": "membres non admin"
+                "NONE_ADMIN": "Not admin",
+                "ADMIN_TP": " admin member",
+                "MEMBER": "Member",
+                "MEMBER_TP": "members",
+                "MEMBER_TP_ALONE": "member",
+                "MEMBER_ADMIN": "admin member",
+                "MEMBER_ADMIN_PLURALIZE": "admin members",
+                "MEMBER_NOT_ADMIN": "not admin member",
+                "MEMBER_NOT_ADMIN_PLURALIZE": "not admin members"
             },
             "CHANNELS_STATUS": {
-                "TYPE": "Status des membres",
-                "ACTIVE": "Actif",
-                "KICKED": "Expulsé",
-                "BANNED": "Banni",
-                "MEMBER_ACTIVE": "membre actif",
-                "MEMBER_ACTIVE_PLURALIZE": "membres actifs",
-                "MEMBER_KICKED": "membre expulsé",
-                "MEMBER_KICKED_PLURALIZE": "membres expulsés",
-                "MEMBER_BANNED": "membre banni",
-                "MEMBER_BANNED_PLURALIZE": "membres bannis"
+                "TYPE": "Members status",
+                "ACTIVE": "Active",
+                "KICKED": "Kicked",
+                "BANNED": "Banned",
+                "MEMBER_ACTIVE": "active member",
+                "MEMBER_ACTIVE_PLURALIZE": "active members",
+                "MEMBER_KICKED": "kicked member",
+                "MEMBER_KICKED_PLURALIZE": "kicked members",
+                "MEMBER_BANNED": "banned member",
+                "MEMBER_BANNED_PLURALIZE": "banned members"
             },
             "GROUPS_CHANNELS_TYPES": {
-                "TYPE": "Types de channels",
-                "DEFAULT": "Défaut",
+                "TYPE": "Channels types",
+                "DEFAULT": "Default",
                 "PUBLIC": "Public",
-                "PRIVATE": "Privé",
-                "CHANNEL_DEFAULT": "channel par défaut",
-                "CHANNEL_DEFAULT_PLURALIZE": "channels par défauts",
-                "CHANNEL_PUBLIC": "channel public",
-                "CHANNEL_PUBLIC_PLURALIZE": "channels publiques",
-                "CHANNEL_PRIVATE": "channel privé",
-                "CHANNEL_PRIVATE_PLURALIZE": "channels privés"
+                "PRIVATE": "Private",
+                "CHANNEL_DEFAULT": "default channel",
+                "CHANNEL_DEFAULT_PLURALIZE": "default channels",
+                "CHANNEL_PUBLIC": "public channel",
+                "CHANNEL_PUBLIC_PLURALIZE": "public channels",
+                "CHANNEL_PRIVATE": "private channel",
+                "CHANNEL_PRIVATE_PLURALIZE": "private channels"
             }
         }
     }

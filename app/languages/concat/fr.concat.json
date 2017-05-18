@@ -340,7 +340,7 @@
 	"channels_recruit_title": "J'invite des amis à rejoindre le channel {{channelName}}...",
 	"channels_recruit_subtitle_1": "Tu peux inviter des membres Cogeo via leurs identifiant.",
 	"channels_recruit_subtitle_2": "Seul les utilisateurs du groupe peuvent être inviter.",
-	"channels_recruit_subtitle_3": "Si la personne que tu souhaite inviter n'est pas encore dans le groupe, invite le d'abord dans ce groupe puis dans ce channel.",
+	"channels_recruit_subtitle_3": "Si la personne que tu souhaite inviter n'est pas encore dans le groupe, elle rejoindra automatiquement ce groupe.",
 	"channels_recruit_dropdown_help": "Seul les membres qui sont dans le groupe et qui ne sont pas banni sont visibles.",
 	"channels_recruit_dropdown_search_pc": "Rechercher un membre du groupe {{groupName}}",
 	"channels_recruit_dropdown_pc": "Membres du groupe pouvant être inviter",
@@ -381,7 +381,7 @@
 	"channels_register_name_pc": "Nom du channel (unique)",
 	"channels_register_profile_picture": "Image du channel",
 	"channels_register_private": "Channel privé",
-	"channels_register_private_tp": "Quand un channel est privé, les discussions de celui-ci à toutes les personnes qui ne sont pas membre de ce channel sont cachées.",
+	"channels_register_private_tp": "Quand un channel est privé, les discussions de celui-ci sont cachées à toutes les personnes qui ne sont pas membre de ce channel.",
 	"channels_register_default": "Channel par défaut",
 	"channels_register_default_tp": "Quand un channel est définit par défaut, les nouveaux membres du groupe rejoindront automatiquement ce channel sans invitation.<br>Maximum 5 channel par défaut.",
 	"channels_register_default_tp_disabled": "La limite est de 5 channel par défaut pour un groupe.",
@@ -526,7 +526,7 @@
 				"MEMBER_NOT_ADMIN_PLURALIZE": "membres non admin"
 			},
 			"CHANNELS_STATUS": {
-				"TYPE": "Status des membres",
+				"TYPE": "Statut des membres",
 				"ACTIVE": "Actif",
 				"KICKED": "Expulsé",
 				"BANNED": "Banni",
