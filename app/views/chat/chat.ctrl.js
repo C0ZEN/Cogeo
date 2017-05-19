@@ -79,7 +79,7 @@
             config   : CONFIG.internal.uploadChat,
             onSuccess: function (model, file) {
                 {
-                    
+
                     // Define and set data by category
                     var category, content;
                     switch (model.type) {
