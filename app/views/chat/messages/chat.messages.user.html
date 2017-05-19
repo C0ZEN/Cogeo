@@ -28,6 +28,9 @@
               class="edited">
             {{ 'chat_message_edited_on' | translate }}
             {{ message.edited | date: 'HH:mm' }}
+            <span ng-show="message.editedBy != '' && message.editedBy != null">
+                {{ 'chat_message_edited_by' | translate:{username: message.editedBy} }}
+            </span>
         </span>
     </div>
 

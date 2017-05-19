@@ -456,6 +456,7 @@
 	"chat_newMessage_proTips_1": "<strong>Enter</strong> pour envoyé, <strong>Maj Enter</strong> pour un retour à la ligne.",
 	"chat_newMessage_proTips_2": "<strong>Markdown</strong> et <strong>Emoticons</strong> accepter. Exemples: <strong>**gras**</strong>, <span class='text-italic'>*italique*</span>, [lien](url), :smiley:, ...",
 	"chat_message_edited_on": ", modifer à",
+	"chat_message_edited_by": "par {{username}}",
 	"chat_channel": "#{{channelName}}",
 	"chat_upload_image_text": "a uploadé cette image:",
 	"chat_upload_pdf_text": "a uploadé ce document pdf",

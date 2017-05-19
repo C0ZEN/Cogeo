@@ -46,6 +46,7 @@
     "chat_newMessage_proTips_1": "<strong>Enter</strong> to send, <strong>Shift Enter</strong> for a new line.",
     "chat_newMessage_proTips_2": "<strong>Markdown</strong> and <strong>Emoticons</strong> accepted. E.G: <strong>**bold**</strong>, <span class='text-italic'>*italic*</span>, [link](url), :smiley:, ...",
     "chat_message_edited_on": ", edited at",
+    "chat_message_edited_by": "by {{username}}",
     "chat_channel": "#{{channelName}}",
     "chat_upload_image_text": "has uploaded this image:",
     "chat_upload_pdf_text": "has uploaded this pdf",

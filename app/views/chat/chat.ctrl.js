@@ -79,8 +79,7 @@
             config   : CONFIG.internal.uploadChat,
             onSuccess: function (model, file) {
                 {
-                    console.log(model, file);
-
+                    
                     // Define and set data by category
                     var category, content;
                     switch (model.type) {
@@ -698,6 +697,10 @@
                 directMessagesFactory.httpRequest.editMessage($rootScope.directMessageId, message);
             }
             else {
+                var username = userFactory.getUser().username;
+                if (username != message.sender) {
+                    message.editedBy = username;
+                }
                 groupsFactory.httpRequest.editMessage($state.params.groupName, $state.params.channelName, message);
             }
             message.editMod = false;
