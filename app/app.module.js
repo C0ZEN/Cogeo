@@ -52,4 +52,4 @@
             '4pjtApp.actionBar'
         ]);
 
-})(window.angular, window);
+})(window.angular);

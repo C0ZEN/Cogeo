@@ -23,7 +23,7 @@
     "groups_join_discover_subtitle_2": "C'est simple, moderne, rapide et très convivial.",
     "groups_join_discover_subtitle_3": "Pour en savoir plus, n'hésite pas à faire le <a href ng-click='goTo.view(\"app.home\", null, $event)' ui-sref='app.home'>grand tour.</a>",
     "groups_join_title": "Rejoindre un groupe Cogeo.",
-    "groups_join_subtitle_1": "Rejoins la communauté Cogeo dès maintenant !",
+    "groups_join_subtitle_1": "Rejoint la communauté Cogeo dès maintenant !",
     "groups_join_subtitle_2": "Renseigne ton adresse mail pour recevoir une invitation à rejoindre le groupe {{groupName}}.",
     "groups_join_after_email": "Tu recevras une invitation par mail dans la minute.",
     "groups_join_group": "Rejoindre le groupe {{groupName}}",
