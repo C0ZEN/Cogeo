@@ -21,8 +21,9 @@ module.exports = function (grunt) {
 
     // Configurable paths for the application
     var appConfig = {
-        app : require('./bower.json').appPath || 'app',
-        dist: 'dist'
+        app    : require('./bower.json').appPath || 'app',
+        dist   : 'dist',
+        release: 'release'
     };
 
     // Define the configuration for all the tasks
@@ -40,7 +41,7 @@ module.exports = function (grunt) {
                 ],
                 tasks: [
                     'wiredep',
-                    'languages',
+                    'languages'
                     // 'newer:jshint:all',
                     // 'newer:jscs:all'
                 ]
@@ -51,7 +52,7 @@ module.exports = function (grunt) {
                     'Gruntfile.js'
                 ],
                 tasks  : [
-                    'angularFileLoader',
+                    'angularFileLoader'
                     // 'newer:jshint:all',
                     // 'newer:jscs:all'
                 ],
@@ -187,7 +188,7 @@ module.exports = function (grunt) {
 
         // Empties folders to start fresh
         clean: {
-            dist  : {
+            dist   : {
                 files: [{
                     dot: true,
                     src: [
@@ -197,7 +198,16 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
-            server: '.tmp'
+            server : '.tmp',
+            release: {
+                files: [{
+                    dot: true,
+                    src: [
+                        '.tmp',
+                        '<%= yeoman.release %>/**/*'
+                    ]
+                }]
+            }
         },
 
         // Add vendor prefixed styles
@@ -276,7 +286,7 @@ module.exports = function (grunt) {
                         steps: {
                             js : ['concat',
                                 'uglifyjs'],
-                            css: ['cssmin']
+                            css: ['cssmin:dist']
                         },
                         post : {}
                     }
@@ -306,35 +316,71 @@ module.exports = function (grunt) {
         // By default, your `index.html`'s <!-- Usemin block --> will take care of
         // minification. These next options are pre-configured if you do not wish
         // to use the Usemin blocks.
-        // cssmin: {
-        //   dist: {
-        //     files: {
-        //       '<%= yeoman.dist %>/styles/main.css': [
-        //         '.tmp/styles/{,*/}*.css'
-        //       ]
-        //     }
-        //   }
-        // },
-        // uglify: {
-        //   dist: {
-        //     files: {
-        //       '<%= yeoman.dist %>/scripts/scripts.js': [
-        //         '<%= yeoman.dist %>/scripts/scripts.js'
-        //       ]
-        //     }
-        //   }
-        // },
+        cssmin: {
+            options: {
+                keepSpecialComments: 0
+            },
+            dist   : {
+                files: {
+                    '<%= yeoman.dist %>/styles/main.css': [
+                        '.tmp/styles/{,*/}*.css'
+                    ]
+                }
+            },
+            release: {
+                files: [
+                    {'<%= yeoman.release %>/styles/main.min.css': '.tmp/release/main.min.css'}
+                ]
+            }
+        },
+        uglify: {
+            dist       : {
+                files: {
+                    '<%= yeoman.dist %>/scripts/scripts.js': [
+                        '<%= yeoman.dist %>/scripts/scripts.js'
+                    ]
+                }
+            },
+            releaseMain: {
+                files: {
+                    '<%= yeoman.release %>/main.min.js': [
+                        '<%= yeoman.app %>/**/*.js',
+                        '.tmp/release/template.cache.js',
+                        '!<%= yeoman.app %>/app.module.js',
+                        '!<%= yeoman.app %>/app.config.js',
+                        '!<%= yeoman.app %>/app.release.config.js',
+                        '!<%= yeoman.app %>/app.run.js'
+                    ]
+                }
+            },
+            releaseApp : {
+                files: {
+                    '<%= yeoman.release %>/module.min.js': '<%= yeoman.app %>/app.module.js',
+                    '<%= yeoman.release %>/config.min.js': '<%= yeoman.app %>/app.release.config.js',
+                    '<%= yeoman.release %>/run.min.js'   : '<%= yeoman.app %>/app.run.js'
+                }
+            }
+        },
+
         // concat: {
         //   dist: {}
         // },
 
         imagemin: {
-            dist: {
+            dist   : {
                 files: [{
                     expand: true,
                     cwd   : '<%= yeoman.app %>/images',
                     src   : '**/*.{png,jpg,jpeg,gif}',
                     dest  : '<%= yeoman.dist %>/images'
+                }]
+            },
+            release: {
+                files: [{
+                    expand: true,
+                    cwd   : '<%= yeoman.app %>/images',
+                    src   : '**/*.{png,jpg,jpeg,gif}',
+                    dest  : '<%= yeoman.release %>/images'
                 }]
             }
         },
@@ -351,7 +397,7 @@ module.exports = function (grunt) {
         },
 
         htmlmin: {
-            dist: {
+            dist   : {
                 options: {
                     collapseWhitespace       : true,
                     conservativeCollapse     : true,
@@ -364,11 +410,56 @@ module.exports = function (grunt) {
                     src   : ['*.html'],
                     dest  : '<%= yeoman.dist %>'
                 }]
+            },
+            release: {
+                options: {
+                    collapseBooleanAttributes: true,
+                    collapseWhitespace       : true,
+                    removeAttributeQuotes    : true,
+                    removeComments           : true,
+                    removeCommentsFromCDATA  : true
+                },
+                files  : [
+                    {
+                        expand: true,
+                        cwd   : '<%= yeoman.app %>',
+                        src   : [
+                            '**/*.html',
+                            '!index.html',
+                            '!index.release.html'
+                        ],
+                        dest  : '<%= yeoman.release %>'
+                    }
+                ]
+            },
+            index  : {
+                options: {
+                    collapseBooleanAttributes: true,
+                    collapseWhitespace       : true,
+                    removeAttributeQuotes    : true,
+                    removeComments           : true,
+                    removeCommentsFromCDATA  : true
+                },
+                files  : [
+                    {
+                        expand: true,
+                        cwd   : '<%= yeoman.app %>',
+                        src   : [
+                            'index.release.html'
+                        ],
+                        dest  : '<%= yeoman.release %>',
+                        rename: function (dest, src) {
+                            console.log(dest, src);
+                            src = src.replace('release.', '');
+                            return dest + '/' + src;
+                        }
+                    }
+                ]
             }
         },
 
         ngtemplates: {
-            dist: {
+            dist   : {
                 options: {
                     module : '4pjtApp',
                     htmlmin: '<%= htmlmin.dist.options %>',
@@ -377,6 +468,18 @@ module.exports = function (grunt) {
                 cwd    : '<%= yeoman.app %>',
                 src    : 'views/**/*.html',
                 dest   : '.tmp/templateCache.js'
+            },
+            release: {
+                options: {
+                    module : '4pjtApp',
+                    htmlmin: '<%= htmlmin.release.options %>'
+                },
+                cwd    : '<%= yeoman.app %>',
+                src    : [
+                    '**/*.html',
+                    '!index.html'
+                ],
+                dest   : '.tmp/release/template.cache.js'
             }
         },
 
@@ -402,7 +505,7 @@ module.exports = function (grunt) {
 
         // Copies remaining files to places other tasks can use
         copy: {
-            dist  : {
+            dist     : {
                 files: [{
                     expand: true,
                     dot   : true,
@@ -428,11 +531,31 @@ module.exports = function (grunt) {
                         dest  : '<%= yeoman.dist %>'
                     }]
             },
-            styles: {
+            styles   : {
                 expand: true,
                 cwd   : '<%= yeoman.app %>/styles',
                 dest  : '.tmp/styles/',
                 src   : '**/*.css'
+            },
+            languages: {
+                expand: true,
+                cwd   : '<%= yeoman.app %>/languages/concat',
+                dest  : '<%= yeoman.release %>/languages/',
+                src   : '*.json',
+                rename: function (dest, src) {
+                    src = src.replace('concat.', '');
+                    return dest + src;
+                }
+            },
+            other    : {
+                expand: true,
+                cwd   : '<%= yeoman.app %>',
+                dest  : '<%= yeoman.release %>',
+                src   : [
+                    'favicon.ico',
+                    'robots.txt',
+                    'fonts/**'
+                ]
             }
         },
 
@@ -481,6 +604,7 @@ module.exports = function (grunt) {
                     '!<%= yeoman.app %>/**/*.tpl.js',
                     '!<%= yeoman.app %>/app.module.js',
                     '!<%= yeoman.app %>/app.config.js',
+                    '!<%= yeoman.app %>/app.release.config.js',
                     '!<%= yeoman.app %>/app.run.js'
                 ],
                 startTag: 'start-js',
@@ -492,7 +616,7 @@ module.exports = function (grunt) {
         },
 
         less: {
-            main: {
+            main   : {
                 options: {
                     plugins: [
                         new (require('less-plugin-autoprefix'))()
@@ -500,6 +624,16 @@ module.exports = function (grunt) {
                 },
                 files  : [
                     {'<%= yeoman.app %>/styles/main.min.css': '<%= yeoman.app %>/styles/import.less'}
+                ]
+            },
+            release: {
+                options: {
+                    plugins: [
+                        new (require('less-plugin-autoprefix'))()
+                    ]
+                },
+                files  : [
+                    {'.tmp/release/main.min.css': '<%= yeoman.app %>/styles/import.less'}
                 ]
             }
         },
@@ -514,6 +648,27 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/styles/auto.import.less': [
                         '<%= yeoman.app %>/styles/*/**.less',
                         '!<%= yeoman.app %>/styles/auto.import.less'
+                    ]
+                }
+            }
+        },
+
+        'string-replace': {
+            release: {
+                files  : [
+                    {
+                        expand: true,
+                        cwd   : '<%= yeoman.release %>/styles',
+                        src   : 'main.min.css',
+                        dest  : '<%= yeoman.release %>/styles'
+                    }
+                ],
+                options: {
+                    replacements: [
+                        {
+                            pattern    : /..\/..\//g,
+                            replacement: '../'
+                        }
                     ]
                 }
             }
@@ -563,7 +718,7 @@ module.exports = function (grunt) {
         'ngAnnotate',
         'copy:dist',
         'cdnify',
-        'cssmin',
+        'cssmin:dist',
         'uglify',
         'filerev',
         'usemin',
@@ -575,6 +730,21 @@ module.exports = function (grunt) {
         // 'newer:jscs',
         'test',
         'build'
+    ]);
+
+    grunt.registerTask('release', [
+        'clean:release',            // Delete the .tmp folder and release content folder
+        'languages',                // Concat the languages files
+        'less:release',             // Transform less to css and add them to the release folder
+        'cssmin:release',           // Make the css better
+        'ngtemplates:release',      // Transform all the .html as template
+        'uglify:releaseMain',       // Copy and min all the js into the release folder
+        'uglify:releaseApp',        // Copy and min the config, module and run js into the release folder
+        'copy:languages',           // Copy the languages folder into the release folder
+        'copy:other',               // Copy the other files into the release folder
+        'htmlmin:index',            // Copy and min the index file into the release folder
+        'string-replace:release',   // Replace the absolute path in the css where url are pointing on images or fonts
+        'imagemin:release'          // Copy and min all the images into the release folder
     ]);
 
     grunt.registerTask('languages', 'Languages task to compile the .json', [

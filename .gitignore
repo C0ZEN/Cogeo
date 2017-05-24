@@ -5,3 +5,4 @@
 /bower_components
 .idea
 /app/styles/main.min.css
+/release/
