@@ -9,7 +9,7 @@
         <meta name="description"
               content="">
         <meta name="viewport"
-              content="width=device-width">
+              content="width=device-width, initial-scale=1">
 
         <!-- Reset the Browser's own custom CSS -->
         <link rel="stylesheet"
@@ -63,6 +63,9 @@
 
         <!-- User feed -->
         <cozen-floating-feed></cozen-floating-feed>
+
+        <!-- Avoid error with electron -->
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
         <!-- build:js(.) scripts/vendor.js -->
         <!-- bower:js -->
@@ -163,5 +166,8 @@
         </script>
         <script src="main.min.js"
                 type="text/javascript"></script>
+
+        <!-- Avoid error with electron -->
+        <script>if (window.module) module = window.module;</script>
     </body>
 </html>

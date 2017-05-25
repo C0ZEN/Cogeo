@@ -204,7 +204,8 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%= yeoman.release %>/**/*'
+                        '<%= yeoman.release %>/**/*',
+                        '!<%= yeoman.release %>/bower_components/**'
                     ]
                 }]
             }
