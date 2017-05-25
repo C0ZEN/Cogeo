@@ -181,7 +181,7 @@
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.profile', 'app.account.profileEdit', 'app.account.profileEditPassword')}"
-                     ng-click="goTo.view('app.account.profile')"
+                     ng-click="goTo.view('app.account.profile', null, $event)"
                      ng-mouseenter="linkHoverProfile = 'account'"
                      tabindex="0">
                     <i class="fa fa-fw icons8-user-male space-small-right"></i>
@@ -189,7 +189,7 @@
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.notifications', 'app.account.notificationsEdit')}"
-                     ng-click="goTo.view('app.account.notifications')"
+                     ng-click="goTo.view('app.account.notifications', null, $event)"
                      ng-mouseenter="linkHoverProfile = 'account'"
                      tabindex="0">
                     <i class="fa fa-fw icons8-appointment-reminders space-small-right"></i>
@@ -197,7 +197,7 @@
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.settings', 'app.account.settingsEdit')}"
-                     ng-click="goTo.view('app.account.settings')"
+                     ng-click="goTo.view('app.account.settings', null, $event)"
                      ng-mouseenter="linkHoverProfile = 'account'"
                      tabindex="0">
                     <i class="fa fa-fw icons8-settings space-small-right"></i>
@@ -205,7 +205,7 @@
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.log')}"
-                     ng-click="goTo.view('app.account.log')"
+                     ng-click="goTo.view('app.account.log', null, $event)"
                      ng-mouseenter="linkHoverProfile = 'account'"
                      tabindex="0">
                     <i class="fa fa-fw icons8-hourglass-filled space-small-right"></i>
@@ -213,7 +213,7 @@
                 </div>
                 <div class="link-dropdown-item"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.account.logins')}"
-                     ng-click="goTo.view('app.account.logins')"
+                     ng-click="goTo.view('app.account.logins', null, $event)"
                      ng-mouseenter="linkHoverProfile = 'account'"
                      tabindex="0">
                     <i class="fa fa-fw icons8-login-rounded-right space-small-right"></i>
@@ -228,7 +228,7 @@
                 </div>
                 <div class="link-dropdown-item link-dropdown-item-purple"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.social.friends')}"
-                     ng-click="goTo.view('app.social.friends')"
+                     ng-click="goTo.view('app.social.friends', null, $event)"
                      ng-mouseenter="linkHoverProfile = 'social'"
                      tabindex="0">
                     <i class="fa fa-fw icons8-user-groups space-small-right"></i>
@@ -236,7 +236,7 @@
                 </div>
                 <div class="link-dropdown-item link-dropdown-item-purple"
                      ng-class="{'active': goTo.isOneOfThoseViews('app.social.invitations', 'app.social.recruit')}"
-                     ng-click="goTo.view('app.social.invitations')"
+                     ng-click="goTo.view('app.social.invitations', null, $event)"
                      ng-mouseenter="linkHoverProfile = 'social'"
                      tabindex="0">
                     <i class="fa fa-fw icons8-message-filled space-small-right"></i>

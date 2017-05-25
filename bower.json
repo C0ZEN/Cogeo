@@ -1,132 +1,136 @@
 {
-  "name": "4pjt",
-  "version": "0.0.0",
-  "dependencies": {
-    "angular": "^1.4.0",
-    "bootstrap": "^3.2.0",
-    "angular-animate": "^1.4.0",
-    "angular-aria": "^1.4.0",
-    "angular-cookies": "^1.4.0",
-    "angular-messages": "^1.4.0",
-    "angular-resource": "^1.4.0",
-    "angular-route": "^1.4.0",
-    "angular-sanitize": "^1.4.0",
-    "angular-touch": "^1.4.0",
-    "angular-ui-router": "^0.3.2",
-    "angular-translate": "^2.13.0",
-    "angular-translate-loader-url": "^2.13.0",
-    "angular-translate-loader-static-files": "^2.13.0",
-    "angular-translate-loader-partial": "^2.13.0",
-    "components-font-awesome": "^4.7.0",
-    "moment": "^2.14.1",
-    "angular-bootstrap": "^2.2.0",
-    "ng-scrollbars": "https://C0ZEN@bitbucket.org/C0ZEN/ng-scrollbars.git#0.0.14",
-    "animate.css": "^3.5.2",
-    "angular-uuid-service": "^0.1.0",
-    "angular-elastic": "https://C0ZEN@bitbucket.org/C0ZEN/angular-elastic.git#v2.6.0",
-    "scrollreveal": "^3.3.2",
-    "angular-scroll": "^1.0.0",
-    "angularjs-slider": "^6.0.0",
-    "angular-dynamic-locale": "^0.1.32",
-    "angular-i18n": "^1.6.1",
-    "angularAudioRecorder": "^1.4.1",
-    "videogular": "^1.4.4",
-    "videogular-controls": "^1.4.4",
-    "videogular-buffering": "^1.4.4",
-    "videogular-overlay-play": "^1.4.4",
-    "videogular-poster": "^1.4.4",
-    "videogular-ima-ads": "^1.4.4",
-    "videogular-angulartics": "^1.4.4",
-    "videogular-themes-default": "^1.4.4",
-    "ngclipboard": "^1.1.1",
-    "angular-translate-interpolation-messageformat": "^2.13.1",
-    "angular-local-storage": "^0.5.2",
-    "angularjs-social-login": "^2.4.5",
-    "angular-ui-router-anim-in-out": "^1.0.2",
-    "angular-loading-bar": "^0.9.0",
-    "angular-ellipsis": "^0.1.7",
-    "ng-device-detector": "^4.0.2",
-    "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop",
-    "underscore": "^1.8.3",
-    "ng-if-bootstrap": "^0.1.2",
-    "ngEmbed": "ng-embed#^2.1.1",
-    "angular-audio": "^1.7.3",
-    "angular-marked": "^1.2.2",
-    "highlight-js": "^9.11.0"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.4.0",
-    "angular-translate": "^2.13.0"
-  },
-  "appPath": "app",
-  "moduleName": "4pjtApp",
-  "overrides": {
-    "bootstrap": {
-      "main": [
-        "less/bootstrap.less",
-        "dist/css/bootstrap.min.css",
-        "dist/js/bootstrap.min.js"
-      ]
+    "name": "4pjt",
+    "version": "0.0.0",
+    "dependencies": {
+        "angular": "^1.4.0",
+        "bootstrap": "^3.2.0",
+        "angular-animate": "^1.4.0",
+        "angular-aria": "^1.4.0",
+        "angular-cookies": "^1.4.0",
+        "angular-messages": "^1.4.0",
+        "angular-resource": "^1.4.0",
+        "angular-route": "^1.4.0",
+        "angular-sanitize": "^1.4.0",
+        "angular-touch": "^1.4.0",
+        "angular-ui-router": "^1.0.3",
+        "angular-translate": "^2.13.0",
+        "angular-translate-loader-url": "^2.13.0",
+        "angular-translate-loader-static-files": "^2.13.0",
+        "angular-translate-loader-partial": "^2.13.0",
+        "components-font-awesome": "^4.7.0",
+        "moment": "^2.14.1",
+        "angular-bootstrap": "^2.2.0",
+        "ng-scrollbars": "https://C0ZEN@bitbucket.org/C0ZEN/ng-scrollbars.git#0.0.14",
+        "animate.css": "^3.5.2",
+        "angular-uuid-service": "^0.1.0",
+        "angular-elastic": "https://C0ZEN@bitbucket.org/C0ZEN/angular-elastic.git#v2.6.0",
+        "scrollreveal": "^3.3.2",
+        "angular-scroll": "^1.0.0",
+        "angularjs-slider": "^6.0.0",
+        "angular-dynamic-locale": "^0.1.32",
+        "angular-i18n": "^1.6.1",
+        "angularAudioRecorder": "^1.4.1",
+        "videogular": "^1.4.4",
+        "videogular-controls": "^1.4.4",
+        "videogular-buffering": "^1.4.4",
+        "videogular-overlay-play": "^1.4.4",
+        "videogular-poster": "^1.4.4",
+        "videogular-ima-ads": "^1.4.4",
+        "videogular-angulartics": "^1.4.4",
+        "videogular-themes-default": "^1.4.4",
+        "ngclipboard": "^1.1.1",
+        "angular-translate-interpolation-messageformat": "^2.13.1",
+        "angular-local-storage": "^0.5.2",
+        "angularjs-social-login": "^2.4.5",
+        "angular-ui-router-anim-in-out": "^1.0.2",
+        "angular-loading-bar": "^0.9.0",
+        "angular-ellipsis": "^0.1.7",
+        "ng-device-detector": "^4.0.2",
+        "cozen-lib": "https://C0ZEN@bitbucket.org/C0ZEN/cozen.git#develop",
+        "underscore": "^1.8.3",
+        "ng-if-bootstrap": "^0.1.2",
+        "ngEmbed": "ng-embed#^2.1.1",
+        "angular-audio": "^1.7.3",
+        "angular-marked": "^1.2.2",
+        "highlight-js": "^9.11.0"
     },
-    "moment": {
-      "main": [
-        "min/moment-with-locales.min.js"
-      ]
+    "devDependencies": {
+        "angular-mocks": "^1.4.0",
+        "angular-translate": "^2.13.0"
     },
-    "angular-bootstrap": {
-      "main": [
-        "ui-bootstrap-tpls.min.js",
-        "ui-bootstrap-csp.css"
-      ]
+    "appPath": "app",
+    "moduleName": "4pjtApp",
+    "overrides": {
+        "bootstrap": {
+            "main": [
+                "less/bootstrap.less",
+                "dist/css/bootstrap.min.css",
+                "dist/js/bootstrap.min.js"
+            ]
+        },
+        "moment": {
+            "main": [
+                "min/moment-with-locales.min.js"
+            ]
+        },
+        "angular-bootstrap": {
+            "main": [
+                "ui-bootstrap-tpls.min.js",
+                "ui-bootstrap-csp.css"
+            ]
+        },
+        "ng-scrollbars": {
+            "main": [
+                "src/scrollbars.js"
+            ]
+        },
+        "angularjs-slider": {
+            "main": [
+                "dist/rzslider.min.js",
+                "dist/rzslider.min.css"
+            ]
+        },
+        "jquery": {
+            "main": [
+                "dist/jquery.min.js"
+            ]
+        },
+        "angular": {
+            "main": [
+                "angular.min.js"
+            ]
+        },
+        "animate.css": {
+            "main": [
+                "animate.min.css"
+            ]
+        },
+        "cozen-lib": {
+            "main": [
+                "release/clean/main.js",
+                "release/clean/template.cache.js",
+                "release/clean/directives.js",
+                "release/main.min.css"
+            ]
+        },
+        "angular-loading-bar": {
+            "main": [
+                "build/loading-bar.min.js",
+                "build/loading-bar.min.css"
+            ]
+        },
+        "highlight-js": {
+            "main": [
+                "src/highlight.js"
+            ]
+        },
+        "angular-ui-router": {
+            "main": [
+                "release/angular-ui-router.min.js"
+            ]
+        }
     },
-    "ng-scrollbars": {
-      "main": [
-        "src/scrollbars.js"
-      ]
-    },
-    "angularjs-slider": {
-      "main": [
-        "dist/rzslider.min.js",
-        "dist/rzslider.min.css"
-      ]
-    },
-    "jquery": {
-      "main": [
-        "dist/jquery.min.js"
-      ]
-    },
-    "angular": {
-      "main": [
-        "angular.min.js"
-      ]
-    },
-    "animate.css": {
-      "main": [
-        "animate.min.css"
-      ]
-    },
-    "cozen-lib": {
-      "main": [
-        "release/clean/main.js",
-        "release/clean/template.cache.js",
-        "release/clean/directives.js",
-        "release/main.min.css"
-      ]
-    },
-    "angular-loading-bar": {
-      "main": [
-        "build/loading-bar.min.js",
-        "build/loading-bar.min.css"
-      ]
-    },
-    "highlight-js": {
-      "main": [
-        "src/highlight.js"
-      ]
+    "resolutions": {
+        "angular": "1.6.4"
     }
-  },
-  "resolutions": {
-    "angular": "1.6.4",
-    "angular-ui-router": "^0.3.2"
-  }
 }

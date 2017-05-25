@@ -51,7 +51,7 @@
   "scripts": {
     "test": "karma start test\\karma.conf.js",
     "postinstall": "bower update",
-    "start": "electron main.js"
+    "start": "electron ."
   },
   "dependencies": {
     "electron": "^1.6.8",

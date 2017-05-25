@@ -203,7 +203,7 @@ module.exports = function (grunt) {
                 files: [{
                     dot: true,
                     src: [
-                        '.tmp',
+                        '.tmp/release/**',
                         '<%= yeoman.release %>/**/*',
                         '!<%= yeoman.release %>/bower_components/**'
                     ]
@@ -242,7 +242,10 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the app
         wiredep: {
             app : {
-                src       : ['<%= yeoman.app %>/index.html'],
+                src       : [
+                    '<%= yeoman.app %>/index.html',
+                    '<%= yeoman.app %>/index.release.html'
+                ],
                 ignorePath: /\.\.\//
             },
             test: {
@@ -334,6 +337,7 @@ module.exports = function (grunt) {
                 ]
             }
         },
+
         uglify: {
             dist       : {
                 files: {
@@ -343,6 +347,9 @@ module.exports = function (grunt) {
                 }
             },
             releaseMain: {
+                options: {
+                    mangle: false // Avoid error with ui-router redirection (dependency renamed and not found...)
+                },
                 files: {
                     '<%= yeoman.release %>/main.min.js': [
                         '<%= yeoman.app %>/**/*.js',

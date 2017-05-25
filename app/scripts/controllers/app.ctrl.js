@@ -17,11 +17,12 @@
         '$rootScope',
         '$state',
         '$stateParams',
-        'cozenLanguage'
+        'cozenLanguage',
+        '$timeout'
     ];
 
     function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory, groupsFactory,
-                     cozenEnhancedLogs, $rootScope, $state, $stateParams, cozenLanguage) {
+                     cozenEnhancedLogs, $rootScope, $state, $stateParams, cozenLanguage, $timeout) {
         var app = this;
 
         // Common data
@@ -34,13 +35,25 @@
         };
 
         // When the window is ready
-        $window.onload = app.methods.onInit;
+        // Note: removed the window.onLoad because it is sometimes not trigger
+        // If it is not trigger, the app will just not works so it's a huge problem ;)
+        $timeout(function () {
+            $timeout(function () {
+                app.methods.onInit();
+            });
+        });
 
         // Update the configuration of the language when the url lang param was changed
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             if (toParams.lang != fromParams.lang) {
                 cozenLanguage.updateCurrentLanguage(toParams.lang);
             }
+        });
+
+        // Just to log the error when one occurred
+        $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams) {
+            console.trace();
+            console.log(arguments);
         });
 
         function onInit() {

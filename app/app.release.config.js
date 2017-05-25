@@ -30,9 +30,9 @@
         CozenThemesProvider.setActiveTheme('atom');
         CozenConfigProvider
             .scrollsBar(false)
-            .debug(true)
-            .dev(true)
-            .logsEnabled(true)
+            .debug(false)
+            .dev(false)
+            .logsEnabled(false)
             .dropdownAutoCloseOthers(true)
             .inputModelLengthType('focus')
             .textareaModelLengthType('focus')
@@ -45,7 +45,7 @@
             .popupFooter(false)
             .btnToggleStartRight(false);
         CozenLazyLoadProvider
-            .log(true)
+            .log(false)
             .positionTop('70px')
             .positionLeft('10px');
         CozenFloatingFeedProvider
