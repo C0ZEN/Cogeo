@@ -24,7 +24,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp')
+        .module('cogeoApp')
         .directive('friendAction', friendAction);
 
     friendAction.$inject = [

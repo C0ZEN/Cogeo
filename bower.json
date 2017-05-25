@@ -1,5 +1,5 @@
 {
-    "name": "4pjt",
+    "name": "cogeo",
     "version": "0.0.0",
     "dependencies": {
         "angular": "^1.4.0",
@@ -59,7 +59,7 @@
         "angular-translate": "^2.13.0"
     },
     "appPath": "app",
-    "moduleName": "4pjtApp",
+    "moduleName": "cogeoApp",
     "overrides": {
         "bootstrap": {
             "main": [

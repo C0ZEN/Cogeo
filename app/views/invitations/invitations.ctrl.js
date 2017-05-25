@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp')
+        .module('cogeoApp')
         .controller('InvitationsCtrl', InvitationsCtrl);
 
     InvitationsCtrl.$inject = [

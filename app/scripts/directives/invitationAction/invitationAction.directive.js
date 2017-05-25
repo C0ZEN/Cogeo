@@ -18,7 +18,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp')
+        .module('cogeoApp')
         .directive('invitationAction', invitationAction);
 
     invitationAction.$inject = [

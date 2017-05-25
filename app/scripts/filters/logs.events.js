@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp')
+        .module('cogeoApp')
         .filter('logsEvents', logsEvents);
 
     function logsEvents() {

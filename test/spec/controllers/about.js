@@ -3,7 +3,7 @@
 describe('Controller: AboutCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('4pjtApp'));
+  beforeEach(module('cogeoApp'));
 
   var AboutCtrl,
     scope;

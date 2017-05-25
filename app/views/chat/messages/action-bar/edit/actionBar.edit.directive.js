@@ -17,7 +17,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.edit', [])
+        .module('cogeoApp.actionBar.edit', [])
         .directive('editAction', editAction);
 
     editAction.$inject = [

@@ -16,7 +16,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.chat', [])
+        .module('cogeoApp.actionBar.chat', [])
         .directive('chatAction', chatAction);
 
     chatAction.$inject = [

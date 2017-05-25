@@ -16,7 +16,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.volume', [])
+        .module('cogeoApp.actionBar.volume', [])
         .directive('volumeAction', volumeAction);
 
     volumeAction.$inject = [

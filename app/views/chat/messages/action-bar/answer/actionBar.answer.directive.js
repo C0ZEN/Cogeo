@@ -16,7 +16,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.answer', [])
+        .module('cogeoApp.actionBar.answer', [])
         .directive('answerAction', answerAction);
 
     answerAction.$inject = [

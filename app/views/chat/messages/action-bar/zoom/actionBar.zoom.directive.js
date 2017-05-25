@@ -17,7 +17,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.zoom', [])
+        .module('cogeoApp.actionBar.zoom', [])
         .directive('zoomAction', zoomAction);
 
     zoomAction.$inject = [

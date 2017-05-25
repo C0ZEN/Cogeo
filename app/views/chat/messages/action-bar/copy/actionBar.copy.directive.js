@@ -17,7 +17,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.copy', [])
+        .module('cogeoApp.actionBar.copy', [])
         .directive('copyAction', copyAction);
 
     copyAction.$inject = [

@@ -20,7 +20,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.download', [])
+        .module('cogeoApp.actionBar.download', [])
         .directive('downloadAction', downloadAction);
 
     downloadAction.$inject = [

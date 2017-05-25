@@ -17,7 +17,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.remove', [])
+        .module('cogeoApp.actionBar.remove', [])
         .directive('removeAction', removeAction);
 
     removeAction.$inject = [

@@ -17,7 +17,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.accordion', [])
+        .module('cogeoApp.actionBar.accordion', [])
         .directive('accordionAction', accordionAction);
 
     accordionAction.$inject = [

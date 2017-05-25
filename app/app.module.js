@@ -3,14 +3,14 @@
 
     /**
      * @ngdoc overview
-     * @name 4pjtApp
+     * @name cogeoApp
      * @description
-     * # 4pjtApp
+     * # cogeoApp
      *
      * Main module of the application.
      */
     angular
-        .module('4pjtApp', [
+        .module('cogeoApp', [
             'ngAnimate',
             'ngAria',
             'ngCookies',
@@ -49,7 +49,7 @@
             'hc.marked',
             'cozenLib',
 
-            '4pjtApp.actionBar'
+            'cogeoApp.actionBar'
         ]);
 
 })(window.angular);

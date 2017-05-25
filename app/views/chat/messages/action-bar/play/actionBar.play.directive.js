@@ -17,7 +17,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.play', [])
+        .module('cogeoApp.actionBar.play', [])
         .directive('playAction', playAction);
 
     playAction.$inject = [

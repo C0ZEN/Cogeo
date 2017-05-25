@@ -469,7 +469,7 @@ module.exports = function (grunt) {
         ngtemplates: {
             dist   : {
                 options: {
-                    module : '4pjtApp',
+                    module : 'cogeoApp',
                     htmlmin: '<%= htmlmin.dist.options %>',
                     usemin : 'scripts/scripts.js'
                 },
@@ -479,7 +479,7 @@ module.exports = function (grunt) {
             },
             release: {
                 options: {
-                    module : '4pjtApp',
+                    module : 'cogeoApp',
                     htmlmin: '<%= htmlmin.release.options %>'
                 },
                 cwd    : '<%= yeoman.app %>',

@@ -17,7 +17,7 @@
     'use strict';
 
     angular
-        .module('4pjtApp.actionBar.pause', [])
+        .module('cogeoApp.actionBar.pause', [])
         .directive('pauseAction', pauseAction);
 
     pauseAction.$inject = [
