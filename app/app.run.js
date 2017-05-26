@@ -71,8 +71,9 @@
             return $filter('translate')('other_kicked_reason_' + forValue);
         }
 
-        function showZoomImage($event) {
+        function showZoomImage($event, image) {
             $event.stopPropagation();
+            $rootScope.$broadcast('cogeoShowZoomImage', image);
         }
     }
 

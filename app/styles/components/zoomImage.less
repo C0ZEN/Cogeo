@@ -1,0 +1,115 @@
+div.zoom-image-container {
+    position            : fixed;
+    top                 : 0;
+    left                : 0;
+    flex-direction      : column;
+    display             : none;
+    z-index             : 2000;
+    width               : 100%;
+    height              : 100%;
+    background-color    : @atom-color-white;
+    animation-fill-mode : @atom-animation-fill;
+    animation-duration  : @atom-animation-duration-in-fast;
+    animation-name      : zoomIn;
+    div.header {
+        display          : flex;
+        flex-direction   : row;
+        justify-content  : space-between;
+        align-items      : center;
+        position         : relative;
+        background-color : @atom-color-line-rule-light;
+        border-bottom    : 1px solid @atom-color-line-rule;
+        padding          : @atom-space-base @atom-space-medium;
+        a.download-btn {
+            display         : flex;
+            flex-direction  : column;
+            justify-content : center;
+            align-items     : center;
+            cursor          : pointer;
+            outline         : @atom-outline;
+            transition      : @atom-transition;
+            border-radius   : 50%;
+            width           : 50px;
+            height          : 50px;
+            text-decoration : none;
+            i {
+                font-size  : @atom-font-h2;
+                color      : @atom-color-label;
+                transition : @atom-transition;
+            }
+            &:hover {
+                background-color : @atom-color-line-rule-light-medium;
+                i {
+                    color : @atom-color-purple;
+                }
+            }
+        }
+        div.image-intel {
+            display        : flex;
+            flex-direction : column;
+            align-items    : center;
+            span.title {
+                font-size   : @atom-font-h2;
+                font-weight : 500;
+                color       : @atom-color-font;
+            }
+            span.description {
+                font-size   : @atom-font-h4;
+                font-weight : 400;
+                color       : @atom-color-label;
+            }
+        }
+        div.close-btn {
+            display         : flex;
+            flex-direction  : column;
+            justify-content : center;
+            align-items     : center;
+            cursor          : pointer;
+            outline         : @atom-outline;
+            transition      : @atom-transition;
+            border-radius   : 50%;
+            width           : 50px;
+            height          : 50px;
+            i {
+                font-size     : 20px;
+                margin-bottom : 2px;
+                color         : @atom-color-label;
+            }
+            span.tip {
+                margin-top     : 1px;
+                font-size      : 9px;
+                font-weight    : 400;
+                color          : @atom-color-label;
+                text-transform : uppercase;
+            }
+            &:hover {
+                background-color : @atom-color-line-rule-light-medium;
+            }
+        }
+    }
+    div.body {
+        background-color : inherit;
+        overflow         : auto;
+        padding          : @atom-space-base @atom-space-medium;
+        display          : flex;
+        flex-direction   : row;
+        justify-content  : center;
+        align-items      : center;
+        height           : 100%;
+        img {
+            display       : block;
+            text-align    : center;
+            margin        : auto;
+            border        : 2px solid @atom-color-line-rule-light;
+            border-radius : @atom-radius;
+        }
+    }
+    &.visible-container {
+        display : flex;
+    }
+    &.hiding-container {
+        display            : flex;
+        animation-duration : @atom-animation-duration-out-fast;
+        animation-name     : zoomOut;
+    }
+}

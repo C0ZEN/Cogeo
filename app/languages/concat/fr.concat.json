@@ -833,6 +833,7 @@
 	"navbar_groups_add": "Ajouter un groupe",
 	"navbar_groups_no_groups": "Présent dans aucun groupe",
 	"other_loading": "Chargement...",
+	"other_escape": "Echap",
 	"other_status_online": "En ligne",
 	"other_status_absent": "Absent",
 	"other_status_busy": "Occupé",

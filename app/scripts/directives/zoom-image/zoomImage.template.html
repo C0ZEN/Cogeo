@@ -1,0 +1,50 @@
+<div class="zoom-image-container">
+
+    <!-- Header -->
+    <div class="header">
+
+        <!-- Download btn -->
+        <a class="download-btn"
+           target="_self"
+           href="{{ zoomImageData.url }}"
+           download="{{ zoomImageData.name }}">
+            <i class="fa fa-cloud-download"></i>
+        </a>
+
+        <!-- Image data -->
+        <div class="image-intel">
+
+            <!-- Title -->
+            <span class="title">
+                {{ zoomImageData.name }}
+            </span>
+
+            <!-- Description -->
+            <span class="description">
+                {{ zoomImageData.width + 'x' + zoomImageData.height + ',' }}
+                {{ zoomImageData.size + ', ' + zoomImageData.format.toUpperCase() }}
+            </span>
+        </div>
+
+        <!-- Close btn -->
+        <div class="close-btn"
+             ng-click="methods.hide($event)">
+
+            <!-- Icon -->
+            <i class="fa fa-times"></i>
+
+            <!-- Tip -->
+            <span class="tip">
+                {{ 'other_escape' | translate }}
+            </span>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+        <img ng-src="{{ zoomImageData.url }}"
+             height="{{ zoomImageData.height }}"
+             width="{{ zoomImageData.width }}"
+             title="{{ zoomImageData.name }}">
+    </div>
+</div>
