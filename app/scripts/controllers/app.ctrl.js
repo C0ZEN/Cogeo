@@ -10,7 +10,7 @@
         'userFactory',
         '$scope',
         'localStorageService',
-        '$window',
+        'cogeoWebRtc',
         'usersFactory',
         'groupsFactory',
         'cozenEnhancedLogs',
@@ -21,7 +21,7 @@
         '$timeout'
     ];
 
-    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, $window, usersFactory, groupsFactory,
+    function AppCtrl(CONFIG, userFactory, $scope, localStorageService, cogeoWebRtc, usersFactory, groupsFactory,
                      cozenEnhancedLogs, $rootScope, $state, $stateParams, cozenLanguage, $timeout) {
         var app = this;
 

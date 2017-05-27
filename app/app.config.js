@@ -128,7 +128,8 @@
                     bottom : 15,
                     left   : 15
                 }
-            }
+            },
+            peerDebug  : 2
         };
 
         // Configure the loading bar

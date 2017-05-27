@@ -18,6 +18,7 @@
             subscribe    : subscribe,
             getMessages  : getMessages,
             updateMessage: updateMessage,
+            addMessage   : addMessage,
             httpRequest  : {
                 getMessages  : httpRequestGetMessages,
                 addMessage   : httpRequestAddMessage,
@@ -73,6 +74,18 @@
             _notify();
         }
 
+        function addMessage(messageId, newMessage) {
+            for (var i = 0, length = messages.length; i < length; i++) {
+                if (messages[i]._id == messageId) {
+                    messages[i].messages.push(newMessage);
+                    break;
+                }
+            }
+            _notify();
+        }
+
+        /// HTTP REQUEST ///
+
         function httpRequestGetMessages(data, callbackSuccess, callbackError) {
             httpRequest.requestPost('direct-messages/get', data, callbackSuccess, callbackError)
                 .then(function (response) {
@@ -84,7 +97,7 @@
         function httpRequestAddMessage(messageId, data, callbackSuccess, callbackError) {
             httpRequest.requestPost('direct-messages/' + messageId + '/add', data, callbackSuccess, callbackError)
                 .then(function (response) {
-
+                    addMessage(messageId, response.data.data);
                 })
             ;
         }

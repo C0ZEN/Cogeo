@@ -59,6 +59,7 @@
             getPublicChannelsQuantity             : getPublicChannelsQuantity,
             getPrivateChannelsQuantity            : getPrivateChannelsQuantity,
             getAllUsersExceptHasLeft              : getAllUsersExceptHasLeft,
+            addMessage                            : addMessage,
             httpRequest                           : {
                 addGroup            : httpRequestAddGroup,
                 isAvailableGroupName: httpRequestIsAvailableGroupName,
@@ -562,6 +563,12 @@
             return activeUsers;
         }
 
+        function addMessage(groupName, channelName, newMessage) {
+            var channel = getChannelByName(groupName, channelName);
+            channel.messages.push(newMessage);
+            _notify();
+        }
+
         /// HTTP REQUEST ///
 
         function httpRequestAddGroup(data, callbackSuccess, callbackError) {
@@ -780,7 +787,7 @@
         function httpRequestAddMessage(groupName, channelName, data, callbackSuccess, callbackError) {
             httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/add', data, callbackSuccess, callbackError)
                 .then(function (response) {
-                    updateGroup(response.data.data);
+                    addMessage(groupName, channelName, response.data.data);
                 })
             ;
         }

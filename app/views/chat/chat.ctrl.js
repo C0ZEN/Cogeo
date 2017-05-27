@@ -22,11 +22,13 @@
         '$location',
         'cozenEnhancedLogs',
         '$timeout',
-        'directMessagesFactory'
+        'directMessagesFactory',
+        'cogeoWebRtc'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope, $anchorScroll,
-                      cozenOnClickService, $filter, botFactory, ngAudio, $location, cozenEnhancedLogs, $timeout, directMessagesFactory) {
+                      cozenOnClickService, $filter, botFactory, ngAudio, $location, cozenEnhancedLogs, $timeout, directMessagesFactory,
+                      cogeoWebRtc) {
         var vm = this;
 
         // Methods
@@ -185,7 +187,9 @@
                     // Send the message to the right entity
                     if (!Methods.isNullOrEmpty(message.content) && !Methods.isNullOrEmpty(message.category)) {
                         if ($state.current.name == 'app.chat.user') {
-                            directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message);
+                            directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message, function (response) {
+                                cogeoWebRtc.connectionSend(response.data.data);
+                            });
                         }
                         else {
                             groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message);
@@ -202,6 +206,15 @@
             var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, false);
             $rootScope.directMessageId = directMessage._id;
             vm.messages                = directMessage.messages;
+            vm.methods.addSmiley(vm.messages);
+            vm.methods.calcMediaLength(vm.messages);
+            vm.methods.initMp3();
+            vm.methods.scrollToBottom({
+                data: vm.messages[vm.messages.length - 1]
+            });
+        });
+        groupsFactory.subscribe($scope, function () {
+            vm.messages = channelsFactory.getMessages(vm.activeGroup, vm.activeChannel._id, 50);
             vm.methods.addSmiley(vm.messages);
             vm.methods.calcMediaLength(vm.messages);
             vm.methods.initMp3();
@@ -292,6 +305,7 @@
                 goToFirstChannel = false;
             }
             vm.activeGroup     = groupName;
+            vm.activeGroupId   = groupsFactory.getGroupByName(groupName)._id;
             vm.starredChannels = channelsFactory.getMyStarredChannels(groupName);
             vm.othersChannels  = channelsFactory.getMyOthersChannels(groupName);
             vm.methods.showChannels();
@@ -345,6 +359,12 @@
             vm.methods.scrollToBottom({
                 data: vm.messages[vm.messages.length - 1]
             });
+
+            // Connect with all friends
+            cogeoWebRtc.createPeerChannels(vm.activeGroupId, vm.starredChannels);
+            cogeoWebRtc.createPeerChannels(vm.activeGroupId, vm.othersChannels);
+            cogeoWebRtc.connectChannels(vm.activeGroupId, vm.starredChannels);
+            cogeoWebRtc.connectChannels(vm.activeGroupId, vm.othersChannels);
         }
 
         // Remove this channel from the starred
@@ -461,6 +481,9 @@
             vm.methods.scrollToBottom({
                 data: vm.messages[vm.messages.length - 1]
             });
+
+            // Connect with all friends
+            cogeoWebRtc.connectFriends(vm.friends);
         }
 
         // Toggle the global expand value
@@ -656,23 +679,29 @@
         }
 
         function sendNewMessage(name, model) {
-            var message = {
-                sender  : userFactory.getUser().username,
-                content : {
-                    text: model
-                },
-                tag     : 'user',
-                category: 'text'
-            };
-            if ($state.current.name == 'app.chat.user') {
-                directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message);
+            if (!Methods.isNullOrEmpty(model)) {
+                var message = {
+                    sender  : userFactory.getUser().username,
+                    content : {
+                        text: model
+                    },
+                    tag     : 'user',
+                    category: 'text'
+                };
+                if ($state.current.name == 'app.chat.user') {
+                    directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message, function (response) {
+                        cogeoWebRtc.connectionSend(response.data.data);
+                    });
+                }
+                else {
+                    groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message, function (response) {
+                        cogeoWebRtc.connectionSend(response.data.data);
+                    });
+                }
+                $timeout(function () {
+                    vm.message = null;
+                });
             }
-            else {
-                groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message);
-            }
-            $timeout(function () {
-                vm.message = null;
-            });
         }
 
         function stopAllEdit() {

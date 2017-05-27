@@ -18,11 +18,12 @@
         'readableTime',
         '$filter',
         'CONFIG',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        'cogeoWebRtc'
     ];
 
     function userFactory(httpRequest, usersFactory, localStorageService, $rootScope, displayTypesFactory, CozenFloatingFeed,
-                         goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter, CONFIG, cozenEnhancedLogs) {
+                         goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter, CONFIG, cozenEnhancedLogs, cogeoWebRtc) {
         var user   = [];
         var status = [
             {
@@ -497,6 +498,9 @@
                             lastLogin: readableTime.convertTimestamp(response.data.data.date.lastLogin, $filter('translate')('other_time_thereIsLess_lower'))
                         }
                     });
+
+                    // Create the peer
+                    cogeoWebRtc.createPeer(response.data.data.username);
                 })
                 .catch(function (response) {
 
