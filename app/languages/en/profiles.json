@@ -8,5 +8,7 @@
     "profiles_user_groups": "His groups",
     "profiles_user_no_groups": "{{username}} don't have a group yet.",
     "profiles_user_friend_since": "Friend with {{username}} since {{date}}.",
-    "profiles_user_invited_on": "Invited to join your friends since {{date}}."
+    "profiles_user_invited_on": "Invited to join your friends since {{date}}.",
+    "profiles_user_unblock": "Unblock",
+    "profiles_user_chat": "Chat"
 }

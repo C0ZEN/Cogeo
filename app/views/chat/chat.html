@@ -64,7 +64,8 @@
                          cozen-alert-label="'chat_alert_friend_blocked'"
                          cozen-alert-label-values="{username: $state.params.username, date: (vm.activeFriend.blocked | date: 'EEEE dd MMMM yyyy')}"
                          cozen-alert-animation-in-class="fadeIn"
-                         cozen-alert-type-warning>
+                         cozen-alert-type-warning
+                         cozen-alert-class="{{ vm.messages.length == 0 ? 'space-base-before' : '' }}">
             </cozen-alert>
         </div>
 

@@ -2,6 +2,16 @@
 <h1>{{ 'profiles_user_title' | translate:{username: vm.params.username} }}</h1>
 <p class="help-text space-medium-after">{{ 'profiles_user_subtitle' | translate }}</p>
 
+<!-- Blocked alert -->
+<cozen-alert cozen-alert-display="vm.friend.blocked != 0 && vm.friendInvited.status.response == 2"
+             cozen-alert-close-btn="false"
+             cozen-alert-label="'chat_alert_friend_blocked'"
+             cozen-alert-label-values="{username: vm.friend.username, date: (vm.friend.blocked | date: 'EEEE dd MMMM yyyy')}"
+             cozen-alert-animation-in-class="fadeIn"
+             cozen-alert-type-warning
+             cozen-alert-class="space-base-after">
+</cozen-alert>
+
 <div ng-init="vm.methods.onUserInit()"
      class="animated fadeIn">
     <div class="row">
@@ -78,7 +88,7 @@
 
                 <!-- Add to friends -->
                 <cozen-btn ng-if="!vm.friend && vm.friendInvited.status.response != 1"
-                           class="animated fadeInUp"
+                           class="animated fadeInUp force-ng-hide"
                            cozen-btn-label="'profiles_user_add_to_friend'"
                            cozen-btn-auto-sizing="true"
                            cozen-btn-loader="vm.loading"
@@ -86,15 +96,31 @@
                            cozen-btn-on-click="vm.methods.socialAction('add')">
                 </cozen-btn>
 
+                <!-- Unblock -->
+                <cozen-btn ng-if="vm.friend.blocked != 0 && vm.friendInvited.status.response == 2"
+                           class="animated fadeInUp force-ng-hide"
+                           cozen-btn-label="'profiles_user_unblock'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-on-click="methods.showPopup(null, 'friendActionUnblock', vm.friend)">
+                </cozen-btn>
+
+                <!-- Chat -->
+                <cozen-btn ng-if="vm.friend.blocked == 0 && vm.friendInvited.status.response == 2"
+                           class="animated fadeInUp force-ng-hide"
+                           cozen-btn-label="'profiles_user_chat'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-on-click="goTo.view('app.chat.user', {username: vm.friend.username})">
+                </cozen-btn>
+
                 <!-- Friend since -->
                 <p ng-if="vm.friend != false"
-                   class="no-margin help-text animated fadeInUp">
+                   class="no-margin help-text animated fadeInUp force-ng-hide">
                     {{ 'profiles_user_friend_since' | translate:{date: (vm.friend.date | date: 'EEEE dd MMMM yyyy'), username: vm.friend.username} }}
                 </p>
 
                 <!-- Invited on -->
                 <p ng-if="!vm.friend && vm.friendInvited.status.response == 1"
-                   class="no-margin help-text animated fadeInUp">
+                   class="no-margin help-text animated fadeInUp force-ng-hide">
                     {{ 'profiles_user_invited_on' | translate:{date: (vm.friendInvited.sentOn | date: 'EEEE dd MMMM yyyy')} }}
                 </p>
             </div>

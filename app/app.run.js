@@ -58,7 +58,9 @@
         function showPopup($event, name, data) {
 
             // Required to avoid an show and hide behavior
-            $event.stopPropagation();
+            if (!Methods.isNullOrEmpty($event)) {
+                $event.stopPropagation();
+            }
 
             // Show the popup
             cozenPopupFactory.show({

@@ -400,7 +400,7 @@
         function getUserFriendObject(username) {
             for (var i = 0, length = user.contacts.length; i < length; i++) {
                 if (user.contacts[i].username == username) {
-                    if (user.contacts[i].removed == 0 && user.contacts[i].blocked == 0) {
+                    if (user.contacts[i].removed == 0) {
                         return user.contacts[i];
                     }
                     else {
