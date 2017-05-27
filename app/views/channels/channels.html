@@ -65,7 +65,7 @@
                 </cozen-pills-item-simple>
                 <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_chat"
                                          cozen-pills-item-simple-type-green
-                                         cozen-pills-item-simple-on-click="goTo.view('app.chat.channel', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.chat.channel', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName || vm.channels[0].name })"
                                          cozen-pills-item-simple-disabled="vm.disabledChat"
                                          cozen-pills-item-simple-selected="goTo.isCurrentView('app.chat.channel')"
                                          class="margin-left-auto">
