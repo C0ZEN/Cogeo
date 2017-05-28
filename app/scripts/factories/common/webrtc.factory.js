@@ -18,14 +18,12 @@
         var peerId;
 
         return {
-            createPeer        : createPeer,
-            createPeerBot     : createPeerBot,
-            createPeerChannels: createPeerChannels,
-            connectFriends    : connectFriends,
-            connectChannels   : connectChannels,
-            connectionSend    : connectionSend,
-            destroyPeer       : destroyPeer,
-            searchConnection  : searchConnection
+            createPeer      : createPeer,
+            createPeerBot   : createPeerBot,
+            connectFriends  : connectFriends,
+            connectionSend  : connectionSend,
+            destroyPeer     : destroyPeer,
+            searchConnection: searchConnection
         };
 
         function createPeer(username) {
@@ -44,6 +42,16 @@
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'Peer connection is now open');
             });
 
+            // When other users connect to you
+            peer.on('connection', function(connection) {
+
+                // Listen for new message
+                connection.on('data', function(data){
+                    cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'New message received');
+                    console.log(data);
+                });
+            });
+
             // Listen for close window or refresh
             $window.onbeforeunload = function () {
                 destroyPeer();
@@ -55,15 +63,6 @@
             new Peer(username, {
                 key  : '9o3h3bvbimivbo6r',
                 debug: 0
-            });
-        }
-
-        function createPeerChannels(groupId, channels) {
-            channels.forEach(function (channel) {
-                new Peer(groupId + '-' + channel._id, {
-                    key  : '9o3h3bvbimivbo6r',
-                    debug: 0
-                });
             });
         }
 
@@ -80,83 +79,32 @@
                 else if (friend.username == 'Spamobot') {
                     friend.username = peerId + '-Spamobot'
                 }
+                else if (friend.username != peerId) {
 
-                // Check if connection exist
-                var connected = false;
-                for (var user in peer.connections) {
+                    // Check if connection exist
+                    var connected = false;
+                    for (var user in peer.connections) {
 
-                    // The connection exist
-                    if (user == friend.username) {
+                        // The connection exist
+                        if (user == friend.username) {
 
-                        // Check if at least one of the connection is still open
-                        peer.connections[user].forEach(function (connection) {
-                            if (connection.open) {
-                                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with', friend.username, 'is stilled opened');
-                                connected = true;
-                            }
-                        });
-                        break;
+                            // Check if at least one of the connection is still open
+                            peer.connections[user].forEach(function (connection) {
+                                if (connection.open) {
+                                    cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with', friend.username, 'is still opened');
+                                    connected = true;
+                                }
+                            });
+                            break;
+                        }
                     }
-                }
 
-                // The connection doesn't exist
-                if (!connected) {
+                    // The connection doesn't exist
+                    if (!connected) {
 
-                    // Create the connection
-                    var connection = peer.connect(friend.username);
-
-                    // Listen open and other events
-                    connection.on('open', function () {
-                        cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with', friend.username, 'is now open');
-
-                        // When a new message is posted
-                        connection.on('data', function (data) {
-                            cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'New data received with', connection.peer, 'connection');
-                        });
-                    });
-                }
-            });
-        }
-
-        function connectChannels(groupId, channels) {
-            cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'connectChannels');
-
-            // For each channel
-            channels.forEach(function (channel) {
-
-                // Check if connection exist
-                var connected = false;
-                for (var user in peer.connections) {
-
-                    // The connection exist
-                    if (user == groupId + '-' + channel._id) {
-
-                        // Check if at least one of the connection is still open
-                        peer.connections[user].forEach(function (connection) {
-                            if (connection.open) {
-                                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with channel', channel.name, 'is stilled opened');
-                                connected = true;
-                            }
-                        });
-                        break;
+                        // Create the connection
+                        var connection = peer.connect(friend.username);
                     }
-                }
-
-                // The connection doesn't exist
-                if (!connected) {
-
-                    // Create the connection
-                    var connection = peer.connect(groupId + '-' + channel._id);
-
-                    // Listen open and other events
-                    connection.on('open', function () {
-                        cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with channel', channel.name, 'is now open');
-
-                        // When a new message is posted
-                        connection.on('data', function (data) {
-                            cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'New data received with channel', connection.peer, 'connection');
-                        });
-                    });
                 }
             });
         }
@@ -169,6 +117,7 @@
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'New message sent');
             }
         }
+
 
         function destroyPeer() {
             cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'destroyPeer');

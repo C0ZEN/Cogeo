@@ -360,11 +360,8 @@
                 data: vm.messages[vm.messages.length - 1]
             });
 
-            // Connect with all friends
-            cogeoWebRtc.createPeerChannels(vm.activeGroupId, vm.starredChannels);
-            cogeoWebRtc.createPeerChannels(vm.activeGroupId, vm.othersChannels);
-            cogeoWebRtc.connectChannels(vm.activeGroupId, vm.starredChannels);
-            cogeoWebRtc.connectChannels(vm.activeGroupId, vm.othersChannels);
+            // Connect with all people
+            cogeoWebRtc.connectFriends(vm.activeMembers);
         }
 
         // Remove this channel from the starred
@@ -482,7 +479,7 @@
                 data: vm.messages[vm.messages.length - 1]
             });
 
-            // Connect with all friends
+            // Connect with all people
             cogeoWebRtc.connectFriends(vm.friends);
         }
 
@@ -695,7 +692,7 @@
                 }
                 else {
                     groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message, function (response) {
-                        cogeoWebRtc.connectionSend(response.data.data);
+
                     });
                 }
                 $timeout(function () {
