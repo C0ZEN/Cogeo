@@ -47,4 +47,4 @@ Nevertheless, the `master` branch is ready to receive some stuff.
 
 ## License
 
-SUPINFO University.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
