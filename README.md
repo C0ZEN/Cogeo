@@ -1,11 +1,33 @@
 # Cogeo
 
-A very simple chat app like Slack or Discord.  
+A very simple but complete chat app like Slack and Discord.  
 You can manage groups, channels and users.  
 
 The design is 100% homemade.  
 Most of the components are custom (input, textarea, dropdown...).  
 We have a full control of the behavior and the design, via the [cozen](https://bitbucket.org/C0ZEN/cozen) library.
+
+## About Cogeo
+
+Do you want to know more about the Cogeo app ?  
+Then this section if for you.
+
+We created the [cozen](https://bitbucket.org/C0ZEN/cozen) library at first to (re)create a lot of web components.  
+This library handle translations, themes and give us a lot of generic services, filters and methods to increase the modularity for our apps.  
+
+**Available translations :**
+
+- English [en]
+- Français [fr]
+
+**Available themes :**
+
+- Atom
+
+We almost achieve the first release version.  
+We have a complete Back-Office for the user, the groups and the channels.  
+We are working on the chat last features (async messages and video chat still missing).  
+We started the creation of Robots (IA).
 
 ## Getting Started
 
