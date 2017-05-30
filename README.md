@@ -43,7 +43,7 @@ You can checkout the [tags for this repository](https://github.com/C0ZEN/Cogeo/t
 
 ## Authors
 
-* **Geoffrey "C0ZEN" Testelin** - Front-End Developer - [C0ZEN](https://github.com/C0ZEN)
+* **Geoffrey Testelin** - Front-End Developer - [C0ZEN](https://github.com/C0ZEN)
 
 ## License
 
