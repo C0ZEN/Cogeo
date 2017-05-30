@@ -30,6 +30,7 @@ We don't have the time for that, sorry.
 ## Built With
 
 * [Yeoman](http://yeoman.io/) - The Web's scaffolding tool for modern webapps
+* [Angular](https://angular.io/) - Superheroic JavaScript MVW Framework
 * [cozen](https://bitbucket.org/C0ZEN/cozen) - External custom library
 * [Trello](https://trello.com/) - Todo list management
 
