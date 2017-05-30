@@ -1,0 +1,94 @@
+<div class="full-center-content">
+    <div class="row">
+        <div class="col-xs-12 col-md-5">
+            <div class="animated fadeInLeft">
+
+                <!-- Title -->
+                <h1 class="no-margin-top">{{ 'log_login_title' | translate }}</h1>
+                <p class="help-text">
+                    {{ 'log_login_subtitle_1' | translate }}
+                    <a href
+                       ng-click="goTo.view('app.log.register', null, $event)"
+                       ui-sref="app.log.register">
+                        {{ 'log_login_subtitle_2' | translate }}
+                    </a>
+                </p>
+                <p class="help-text">{{ 'log_login_subtitle_3' | translate }}</p>
+                <p class="help-text">{{ 'log_login_subtitle_4' | translate }}</p>
+
+                <!-- Form -->
+                <div class="no-padding col-xs-12 col-sm-9 col-md-12 col-lg-9">
+                    <cozen-form cozen-form-name="login"
+                                cozen-form-ctrl="vm"
+                                cozen-form-model="form"
+                                cozen-form-class="space-large-before">
+
+                        <!-- Socials -->
+                        <!--<h3 class="space-medium-after">{{ 'log_login_socials_title' | translate }}</h3>-->
+                        <!--<cozen-btn cozen-btn-label="'log_login_facebook'"-->
+                                   <!--cozen-btn-icon-left="fa fa-facebook-f"-->
+                                   <!--fb-login-->
+                                   <!--cozen-btn-type-facebook-->
+                                   <!--cozen-btn-class="space-base-after">-->
+                        <!--</cozen-btn>-->
+                        <!--<cozen-btn cozen-btn-label="'log_login_google'"-->
+                                   <!--g-login-->
+                                   <!--cozen-btn-icon-left="fa fa-google-plus"-->
+                                   <!--cozen-btn-type-google>-->
+                        <!--</cozen-btn>-->
+
+                        <!--<hr class="space-medium-before space-medium-after">-->
+
+                        <!-- Cogeo -->
+                        <h3 class="space-medium-after">{{ 'log_login_account' | translate }}</h3>
+                        <cozen-input cozen-input-model="vm.login.username"
+                                     cozen-input-name="{{ vm.CONFIG.internal.log.username.name }}"
+                                     cozen-input-max-length="{{ vm.CONFIG.internal.log.username.length }}"
+                                     cozen-input-pattern="{{ vm.CONFIG.internal.log.username.pattern }}"
+                                     cozen-input-label="log_login_username"
+                                     cozen-input-placeholder="log_login_username_pc"
+                                     cozen-input-required="{{ vm.CONFIG.internal.log.username.required }}"
+                                     cozen-input-class="space-medium-after">
+                        </cozen-input>
+                        <cozen-input cozen-input-model="vm.login.password"
+                                     cozen-input-name="{{ vm.CONFIG.internal.log.password.name }}"
+                                     cozen-input-max-length="{{ vm.CONFIG.internal.log.password.length }}"
+                                     cozen-input-label="log_login_password"
+                                     cozen-input-placeholder="log_login_password_pc"
+                                     cozen-input-required="{{ vm.CONFIG.internal.log.password.required }}"
+                                     cozen-input-type-password
+                                     cozen-input-type-password-config="vm.CONFIG.internal.log.password.passwordConfig"
+                                     cozen-input-class="space-medium-after">
+                        </cozen-input>
+                        <div class="center-flex-content">
+                            <cozen-btn cozen-btn-label="'log_login_submit'"
+                                       cozen-btn-id="submit-login-btn"
+                                       cozen-btn-auto-sizing="true"
+                                       cozen-btn-disabled="vm.form.login.$invalid"
+                                       cozen-btn-loader="vm.loading"
+                                       cozen-btn-on-click="vm.methods.login()"
+                                       cozen-btn-icon-right="fa fa-fw icons8-login-rounded-right"
+                                       cozen-btn-type-green>
+                            </cozen-btn>
+                            <a href
+                               onclick="this.blur()"
+                               ng-click="methods.showPopup($event, 'forgottenPassword')">
+                                {{ 'log_login_forgotten_password' | translate }}
+                            </a>
+                        </div>
+                    </cozen-form>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-7 background-green-flat">
+            <img class="animated zoomIn"
+                 ng-src="images/bg/platforms.png">
+        </div>
+    </div>
+</div>
+
+<cozen-btn-lazy-test cozen-btn-lazy-test-label="Soleil123 password"
+                     cozen-btn-lazy-test-on-click="vm.methods.generateLoginPassword()">
+</cozen-btn-lazy-test>
+
+

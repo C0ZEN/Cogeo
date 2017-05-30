@@ -1,0 +1,50 @@
+.user {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : flex-start;
+    padding         : 2px @atom-space-base;
+    transition      : @atom-transition;
+    div.user-image {
+        width               : 42px;
+        height              : 42px;
+        padding             : 4px;
+        margin-right        : @atom-space-small;
+        animation-fill-mode : @atom-animation-fill;
+        animation-duration  : @atom-animation-duration-in-fast;
+        animation-name      : zoomIn;
+        img {
+            padding : 0;
+            border  : none;
+        }
+    }
+    div.message-content {
+        animation-fill-mode : @atom-animation-fill;
+        animation-duration  : @atom-animation-duration-in-fast;
+        animation-name      : fadeIn;
+        width               : 100%;
+        div.from {
+            display         : flex;
+            flex-direction  : row;
+            justify-content : flex-start;
+            align-items     : baseline;
+            a.user-username {
+                font-weight  : 500;
+                font-size    : 15px;
+                margin-right : @atom-space-small;
+            }
+            span.sent-date {
+                color       : @atom-color-label;
+                font-weight : 400;
+                font-size   : @atom-font-h4;
+            }
+            span.edited {
+                color       : @atom-color-label;
+                font-weight : 400;
+                font-size   : @atom-font-h4;
+            }
+        }
+    }
+    &:hover {
+        background-color : @atom-color-line-rule-light;
+    }
+}

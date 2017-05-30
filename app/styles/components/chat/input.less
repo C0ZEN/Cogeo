@@ -1,0 +1,48 @@
+div.atom-chat div.chat-input-container {
+    background-color : @atom-color-line-rule-light;
+    border-top       : 1px solid @atom-color-line-rule;
+    width            : 100%;
+    display          : block;
+    padding          : @atom-space-base @atom-space-base @atom-space-small @atom-space-base;
+    z-index          : 1;
+    margin-top       : auto;
+    .row {
+        display         : flex;
+        flex-direction  : row;
+        justify-content : space-between;
+        align-items     : center;
+        margin          : 0;
+        padding         : 0;
+        width           : 100%;
+        cozen-textarea {
+            margin-right : @atom-space-base;
+            width        : 100%;
+            div.cozen-tooltip-html,
+            div.cozen-tooltip-default {
+                display : inline-grid;
+                width   : 100%;
+                textarea {
+                    max-height : 149px;
+                    &.overflow-textarea {
+                        overflow-y : auto !important;
+                    }
+                }
+            }
+        }
+        .chat-upload-btn {
+            .cozen-btn-icon.left {
+                padding        : 1px @atom-space-small 0 @atom-space-small !important;
+                vertical-align : middle !important;
+            }
+        }
+        span.pro-tips {
+            font-size : @atom-font-small;
+            color     : @atom-color-label;
+        }
+    }
+}
+.text-left-inner {
+    .tooltip-inner {
+        text-align : left;
+    }
+}

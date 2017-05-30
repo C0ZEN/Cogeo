@@ -1,0 +1,47 @@
+<div class="image">
+
+    <!-- Vertical separator -->
+    <div class="vertical-separator"
+         ng-class="{'background-yellow': message.sender == vm.user.username}"></div>
+
+    <!-- Row 1 -->
+    <div class="row">
+
+        <!-- Text -->
+        <span class="text">
+            {{ 'chat_upload_image_text' | translate }}
+        </span>
+
+        <!-- Name -->
+        <a class="name"
+           target="_self"
+           href="{{ message.content.url }}"
+           download="{{ message.content.name }}">
+            {{ message.content.name }}
+        </a>
+
+        <!-- Size-->
+        <span class="size">
+            {{ '(' + message.content.width + 'x' + message.content.height + ',' }}
+            {{ message.content.size + ', ' + message.content.format.toUpperCase() +')' }}
+        </span>
+
+        <!-- Icon expand -->
+        <div class="icon-expand"
+             ng-click="message.expanded = !message.expanded; vm.methods.onToggleSingleExpanded();">
+            <i class="fa fa-fw fa-caret-down"
+               ng-class="{'caret-left': !message.expanded}">
+            </i>
+        </div>
+    </div>
+
+    <!-- Image -->
+    <div class="img"
+         ng-class="{'hidden-height': !message.expanded}">
+        <img ng-src="{{ message.content.url }}"
+             ng-click="message.expanded ? methods.showZoomImage($event, message.content) : null"
+             height="{{ message.content.height }}"
+             width="{{ message.content.width }}"
+             title="{{ message.content.name }}">
+    </div>
+</div>

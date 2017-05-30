@@ -1,0 +1,120 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.initLogins()">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+
+                <!-- Filter -->
+                <cozen-form cozen-form-name="logins"
+                            cozen-form-ctrl="vm"
+                            cozen-form-model="form">
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-input cozen-input-model="vm.settingsLogins.search"
+                                     cozen-input-name="search"
+                                     cozen-input-success-design="false"
+                                     cozen-input-error-design="false"
+                                     cozen-input-icon-left="fa fa-search"
+                                     cozen-input-placeholder="account_logins_search_pc"
+                                     cozen-input-auto-complete="off"
+                                     cozen-input-class="atom-search-input">
+                        </cozen-input>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-pagination cozen-pagination-model="vm.settingsLogins.currentPage"
+                                          cozen-pagination-class="flex-end"
+                                          cozen-pagination-limit-per-page="vm.settingsLogins.limit"
+                                          cozen-pagination-total-elements="fakeAccessLogFilter.length"
+                                          cozen-pagination-auto-hide="true">
+                        </cozen-pagination>
+                    </div>
+                </cozen-form>
+            </div>
+
+            <div class="atom-access-logs space-base-before space-base-after">
+                <div class="atom-access-log"
+                     style="animation-delay: {{ 200 * $index + 'ms' }};"
+                     ng-class="[accessLog.category, $last ? 'border-bottom' : '']"
+                     ng-repeat="accessLog in vm.accessLogs
+			           | orderBy: 'date':vm.settingsLogins.orderBy
+			           | filter: vm.settingsLogins.search
+			           | filter: vm.settingsLogins.custom.appLanguageFilter
+			           | filter: vm.settingsLogins.custom.appVersionFilter
+			           | filter: vm.settingsLogins.custom.osNameFilter
+			           | filter: vm.settingsLogins.custom.browserNameFilter
+			           | startFrom: (vm.settingsLogins.currentPage - 1) * vm.settingsLogins.limit
+			           | limitTo: vm.settingsLogins.limit
+			           as accessLogFilter track by $index">
+                    <div class="text">
+                        <p>
+                            <strong>{{ 'account_logins_login_ip' | translate }}</strong>
+                            {{ accessLog.ip }}
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_hostname' | translate }}</strong>
+                            {{ accessLog.hostname }}
+                            <small>({{ accessLog.org }})</small>
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_address' | translate }}</strong>
+                            {{ accessLog.country }}, {{ accessLog.region }}, {{ accessLog.postal }}, {{ accessLog.city }}
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_on_os' | translate }}</strong>
+                            {{ accessLog.osName }}
+                            <small>({{ accessLog.osVersion }})</small>
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_on_browser' | translate }}</strong>
+                            {{ accessLog.browserName }}
+                            <small>({{ accessLog.browserVersion }})</small>
+                        </p>
+                        <p>
+                            <strong>{{ 'account_logins_login_app' | translate }}</strong>
+                            {{ 'account_logins_login_app_version' | translate }}{{ accessLog.appVersion }}
+                            <img ng-src="{{ vm.methods.getAppLanguageFlag(accessLog.appLanguage) }}"
+                                 class="app-language-flag">
+                        </p>
+                        <p class="help-text">
+                            {{ 'account_logins_login_date' | translate:{date: (accessLog.date | date: 'EEEE dd MMMM yyyy')} }}
+                            {{ 'account_logins_login_hour' | translate:{date: (accessLog.date | date: 'HH:mm')} }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- AccessLogs fake (for actual length) -->
+                <div style="display: none;"
+                     ng-repeat="accessLog in vm.accessLogs
+			           | filter: vm.settingsLogins.search
+			           | filter: vm.settingsLogins.custom.appLanguageFilter
+			           | filter: vm.settingsLogins.custom.appVersionFilter
+			           | filter: vm.settingsLogins.custom.osNameFilter
+			           | filter: vm.settingsLogins.custom.browserNameFilter
+			           as fakeAccessLogFilter track by $index">
+                </div>
+            </div>
+
+            <!-- Alert info no accessLogs -->
+            <cozen-alert ng-if="vm.accessLogs.length == 0"
+                         cozen-alert-label="'account_logins_no_accessLog'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-before space-base-after">
+            </cozen-alert>
+
+            <div class="space-medium-after center-flex-content">
+
+                <!-- More filter -->
+                <a href
+                   onclick="this.blur()"
+                   class="animated fadeInUp"
+                   ng-click="methods.showPopup($event, 'accessLogsFilter', vm.settingsLogins)">
+                    {{ 'account_log_show_filter' | translate }}
+                </a>
+
+                <!-- Last login -->
+                <p class="no-margin help-text animated fadeInUp">
+                    {{ 'account_logins_last_login' | translate:{date: (vm.user.date.lastLogin | date: 'EEEE dd MMMM yyyy'), hour: (vm.user.date.lastLogin | date: 'HH:mm')} }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

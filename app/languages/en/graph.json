@@ -1,0 +1,43 @@
+{
+    "GRAPH": {
+        "GOOGLE": {
+            "CHANNELS_MEMBERS": {
+                "TYPE": "Members types",
+                "ADMIN": "Admin",
+                "NONE_ADMIN": "Not admin",
+                "ADMIN_TP": " admin member",
+                "MEMBER": "Member",
+                "MEMBER_TP": "members",
+                "MEMBER_TP_ALONE": "member",
+                "MEMBER_ADMIN": "admin member",
+                "MEMBER_ADMIN_PLURALIZE": "admin members",
+                "MEMBER_NOT_ADMIN": "not admin member",
+                "MEMBER_NOT_ADMIN_PLURALIZE": "not admin members"
+            },
+            "CHANNELS_STATUS": {
+                "TYPE": "Members status",
+                "ACTIVE": "Active",
+                "KICKED": "Kicked",
+                "BANNED": "Banned",
+                "MEMBER_ACTIVE": "active member",
+                "MEMBER_ACTIVE_PLURALIZE": "active members",
+                "MEMBER_KICKED": "kicked member",
+                "MEMBER_KICKED_PLURALIZE": "kicked members",
+                "MEMBER_BANNED": "banned member",
+                "MEMBER_BANNED_PLURALIZE": "banned members"
+            },
+            "GROUPS_CHANNELS_TYPES": {
+                "TYPE": "Channels types",
+                "DEFAULT": "Default",
+                "PUBLIC": "Public",
+                "PRIVATE": "Private",
+                "CHANNEL_DEFAULT": "default channel",
+                "CHANNEL_DEFAULT_PLURALIZE": "default channels",
+                "CHANNEL_PUBLIC": "public channel",
+                "CHANNEL_PUBLIC_PLURALIZE": "public channels",
+                "CHANNEL_PRIVATE": "private channel",
+                "CHANNEL_PRIVATE_PLURALIZE": "private channels"
+            }
+        }
+    }
+}

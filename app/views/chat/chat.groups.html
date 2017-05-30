@@ -1,0 +1,10 @@
+<div ng-repeat="group in vm.groups | limitTo: 15 track by $index"
+     ng-click="vm.methods.setActiveGroup(group.name, true)"
+     ng-class="{active: group.name == vm.activeGroup}"
+     style="animation-delay: {{ 50 * $index + 'ms' }};"
+     class="chat-group zoomIn">
+    <cozen-tooltip cozen-tooltip-label="group.name">
+        <img class="img-circle img-thumbnail"
+             ng-src="{{ methods.getGroupPicture(group.name) }}">
+    </cozen-tooltip>
+</div>

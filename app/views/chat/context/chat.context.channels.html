@@ -1,0 +1,192 @@
+<div class="channel-description">
+
+    <!-- Current channel name -->
+    <a href
+       ui-sref="app.channels.details({groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
+       ng-click="goTo.view('app.channels.details', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
+       class="channel-name hover-link animated fadeInDown">
+        #{{ vm.activeChannel.name }}
+    </a>
+
+    <!-- Marks -->
+    <cozen-tooltip ng-show="vm.activeChannel.private"
+                   cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'chat_private_channel_tp' | translate">
+        <mark class="atom-mark private">{{ 'chat_private_channel' | translate }}</mark>
+    </cozen-tooltip>
+    <cozen-tooltip ng-show="vm.activeChannel.byDefault"
+                   cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'channels_by_default_tp' | translate">
+        <mark class="atom-mark default">{{ 'channels_by_default' | translate }}</mark>
+    </cozen-tooltip>
+    <cozen-tooltip ng-show="vm.activeChannel.isMember"
+                   cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'channels_member_since' | translate:{'date': (vm.activeChannel.joined | date: 'EEEE dd MMMM yyyy')}">
+        <mark class="atom-mark member">{{ 'channels_member' | translate }}</mark>
+    </cozen-tooltip>
+    <cozen-tooltip ng-show="vm.activeChannel.isCreator"
+                   cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'channels_creator_in' | translate:{'date': (vm.activeChannel.date.creation | date: 'EEEE dd MMMM yyyy')}">
+        <mark class="atom-mark creator">{{ 'channels_creator' | translate }}</mark>
+    </cozen-tooltip>
+    <cozen-tooltip ng-show="vm.activeChannel.isAdmin"
+                   cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'channels_member_since' | translate:{'date': (vm.activeChannel.joined | date: 'EEEE dd MMMM yyyy')}">
+        <mark class="atom-mark admin">{{ 'channels_admin' | translate }}</mark>
+    </cozen-tooltip>
+    <cozen-tooltip ng-show="vm.activeChannel.isBanned"
+                   cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-type-html
+                   cozen-tooltip-label="'channels_banned_since' | translate:{'date': (vm.activeChannel.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.activeChannel.banned.by, 'for': methods.getKickBanFor(vm.activeChannel.banned.for)}">
+        <mark class="atom-mark banned">{{ 'channels_banned' | translate }}</mark>
+    </cozen-tooltip>
+    <cozen-tooltip ng-show="vm.activeChannel.isKicked"
+                   cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-type-html
+                   cozen-tooltip-label="'channels_kicked_since' | translate:{'date': (vm.activeChannel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.activeChannel.kicked.by, 'for': methods.getKickBanFor(vm.activeChannel.kicked.for), 'time': (vm.methods.getKickedTime(vm.activeChannel.kicked.time).key | translate)}">
+        <mark class="atom-mark kicked">{{ 'channels_kicked' | translate }}</mark>
+    </cozen-tooltip>
+
+    <!-- Other info -->
+    <div class="line">
+
+        <!-- Icon star -->
+        <div ng-show="!vm.activeChannel.isStarredChannel && vm.starredChannels.length < 5"
+             ng-click="vm.methods.addToStarred($event, vm.activeChannel._id)"
+             class="empty-star">
+            <cozen-tooltip cozen-tooltip-label="'chat_add_to_starred'"
+                           cozen-tooltip-placement="auto bottom">
+                <i class="fa fa-star-o vertical-align-middle"></i>
+            </cozen-tooltip>
+        </div>
+
+        <!-- Icon unstar -->
+        <div ng-show="vm.activeChannel.isStarredChannel"
+             ng-click="vm.methods.removeToStarred($event, vm.activeChannel._id)"
+             class="full-star">
+            <cozen-tooltip cozen-tooltip-label="'chat_remove_to_starred'"
+                           cozen-tooltip-placement="auto bottom">
+                <i class="fa fa-star vertical-align-middle"></i>
+            </cozen-tooltip>
+        </div>
+        <div class="vertical-separator"></div>
+
+        <!-- Total members -->
+        <cozen-tooltip cozen-tooltip-label="(vm.activeChannel.users.length > 1 ? 'chat_total_members' : 'chat_total_member') | translate:{total: vm.activeChannel.users.length}"
+                       cozen-tooltip-placement="auto bottom">
+            <a href
+               ui-sref="app.channels.members({groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
+               ng-click="goTo.view('app.channels.members', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})"
+               class="total-members animated zoomIn">
+                <i class="fa fa-user"></i>
+                {{ vm.activeChannel.users.length }}
+            </a>
+        </cozen-tooltip>
+        <div class="vertical-separator"></div>
+
+        <!-- Description -->
+        <span class="description">{{ vm.activeChannel.description }}</span>
+    </div>
+</div>
+
+<!-- Action bar -->
+<div class="chat-action-bar">
+
+    <!-- Call -->
+    <div ng-show="vm.activeMembers.length >= 2"
+         class="action phone animated zoomIn">
+        <cozen-tooltip cozen-tooltip-label="'chat_actionBar_phone'"
+                       cozen-tooltip-placement="auto top">
+            <i class="fa icons8-video-call"></i>
+        </cozen-tooltip>
+    </div>
+
+    <!-- Links -->
+    <div class="action options animated zoomIn"
+         ng-mouseenter="vm.actionBar.options.down = true"
+         ng-mouseleave="vm.actionBar.options.down = false">
+        <i class="fa fa-cog"></i>
+
+        <!-- Options dropdown -->
+        <div class="link-dropdown link-floating"
+             ng-style="{'min-width': '250px'}"
+             ng-show="vm.actionBar.options.down">
+
+            <!-- Channel -->
+            <div class="link-dropdown-item link-dropdown-item-title">
+                {{ 'chat_actionBar_options_channel' | translate }}
+            </div>
+
+            <!-- Details -->
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.details', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})">
+                <i class="fa fa-fw icons8-channel-mosaic space-small-right"></i>
+                {{ 'chat_actionBar_options_details' | translate }}
+            </div>
+
+            <!-- Members -->
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.members', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})">
+                <i class="fa fa-fw icons8-user-groups space-small-right"></i>
+                {{ 'chat_actionBar_options_members' | translate }}
+            </div>
+
+            <!-- Recruit -->
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.recruit', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})">
+                <i class="fa fa-fw icons8-message-filled space-small-right"></i>
+                {{ 'chat_actionBar_options_recruit' | translate }}
+            </div>
+
+            <!-- Logs -->
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.logs', {groupName: vm.activeGroup, channelName: vm.activeChannel.name})">
+                <i class="fa fa-fw icons8-hourglass-filled space-small-right"></i>
+                {{ 'chat_actionBar_options_logs' | translate }}
+            </div>
+
+            <!-- All channels -->
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="goTo.view('app.channels.all', {groupName: vm.activeGroup})">
+                <i class="fa fa-fw fa-th-list space-small-right"></i>
+                {{ 'chat_actionBar_options_all_channels' | translate }}
+            </div>
+
+            <!-- Settings -->
+            <div class="link-dropdown-separator"></div>
+            <div class="link-dropdown-item link-dropdown-item-title">
+                {{ 'chat_actionBar_options_settings' | translate }}
+            </div>
+
+            <!-- Include the common toggle btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.toggleLeftMenu.html'">
+            </div>
+
+            <!-- Include the common expand/collapse btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.toggleExpand.html'">
+            </div>
+
+            <!-- Include the common change volume link -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.changeVolume.html'">
+            </div>
+
+            <!-- Include the common pause media btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.pauseMedia.html'">
+            </div>
+
+            <!-- Include the common stop media btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.stopMedia.html'">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+div.document-toast,
+a.document-toast {
+    display          : flex;
+    flex-direction   : row;
+    justify-content  : flex-start;
+    align-items      : center;
+    border-radius    : 5px;
+    border           : 1px solid @atom-color-line-rule;
+    min-width        : 280px;
+    background-color : @atom-color-white;
+    box-sizing       : border-box;
+    margin           : @atom-space-small / 2 0 @atom-space-small 0;
+    padding          : @atom-space-small @atom-space-base;
+    transition       : all @atom-animation-duration-in-fast ease;
+    transform        : scaleY(1);
+    cursor           : pointer;
+    text-decoration  : none;
+    transform-origin : top center;
+    div.img {
+        margin : 0 @atom-space-small 0 0;
+        img {
+        }
+    }
+    div.column-block {
+        display        : flex;
+        flex-direction : column;
+        align-items    : flex-start;
+        margin         : 0 0 0 @atom-space-small;
+        div.row {
+            display         : flex;
+            flex-direction  : row;
+            justify-content : flex-start;
+            align-items     : center;
+            margin          : 0;
+            span.name {
+                color       : @atom-color-font;
+                font-weight : 600;
+                font-size   : @atom-font-body;
+            }
+            i.download {
+                margin-left         : @atom-space-small;
+                color               : @atom-color-purple;
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in-fast;
+                animation-name      : fadeInUp;
+                &.ng-hide {
+                    display : none !important;
+                }
+            }
+            span.size {
+                color       : @atom-color-label;
+                font-weight : 400;
+                font-size   : @atom-font-small;
+            }
+            span.download {
+                color               : @atom-color-label;
+                font-weight         : 400;
+                font-size           : @atom-font-small;
+                margin-left         : @atom-space-small / 2;
+                animation-name      : fadeIn;
+                animation-fill-mode : @atom-animation-fill;
+                animation-duration  : @atom-animation-duration-in-fast;
+                &.ng-hide {
+                    display : none;
+                }
+            }
+        }
+    }
+    &.hidden-height {
+        max-height     : 0;
+        transform      : scaleY(0);
+        margin-top     : 0;
+        margin-bottom  : 0;
+        padding-top    : 0;
+        padding-bottom : 0;
+    }
+}
+div.document-toast {
+    flex-direction : column;
+    align-items    : flex-start;
+    cursor         : default;
+    padding        : 0;
+
+    // Row
+    > div.row {
+        display         : flex;
+        flex-direction  : row;
+        justify-content : flex-start;
+        align-items     : center;
+        margin          : 0;
+        padding         : @atom-space-small @atom-space-base;
+        width           : 100%;
+        &.center {
+            justify-content : center;
+        }
+        &.mp3-timeline-container {
+            padding : @atom-space-base @atom-space-base 0 @atom-space-base;
+        }
+        &.video-container {
+            padding : @atom-space-base;
+        }
+        div.left {
+            display         : flex;
+            flex-direction  : row;
+            justify-content : flex-start;
+            align-items     : center;
+            flex            : 3;
+        }
+        div.center {
+            display         : flex;
+            flex-direction  : row;
+            justify-content : center;
+            align-items     : center;
+            flex            : 6;
+        }
+        div.right {
+            display         : flex;
+            flex-direction  : row;
+            justify-content : flex-end;
+            align-items     : center;
+            flex            : 3;
+        }
+    }
+
+    // Horizontal separator
+    div.separator {
+        width            : 100%;
+        height           : 1px;
+        background-color : @atom-color-line-rule;
+        margin           : 0;
+    }
+
+    // Btn
+    div.toast-btn {
+        padding          : @atom-space-small @atom-space-base;
+        border           : none;
+        transition       : @atom-transition;
+        background-color : transparent;
+        color            : @atom-color-label;
+        outline          : @atom-outline;
+        cursor           : pointer;
+        border-radius    : 5px;
+        margin           : 0 @atom-space-small / 2;
+        i {
+            color          : inherit;
+            vertical-align : middle;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+            background-color : @atom-color-label-light;
+            &.play {
+                color : @atom-color-green;
+            }
+            &.pause {
+                color : @atom-color-blue;
+            }
+            &.stop {
+                color : @atom-color-error;
+            }
+        }
+    }
+
+    // MP3 timeline
+    div.mp3-timeline {
+        width            : 100%;
+        height           : 5px;
+        border-radius    : 5px;
+        background-color : @atom-color-line-rule;
+        position         : relative;
+        div.mp3-timeline-progress {
+            position         : absolute;
+            top              : 0;
+            left             : 0;
+            background-color : @atom-color-yellow;
+            height           : inherit;
+            border-radius    : inherit;
+        }
+    }
+}

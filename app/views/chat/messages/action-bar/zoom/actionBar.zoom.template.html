@@ -1,0 +1,16 @@
+<div class="action-container"
+     ng-if="zoomActionDisplay">
+
+    <!-- Tooltip -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'chat_actionBar_zoom'">
+
+        <!-- Action -->
+        <div class="action zoom-action blue-hover"
+             ng-click="methods.onClick($event)">
+
+            <!-- Icon -->
+            <i class="fa fa-fw icons8-zoom-in"></i>
+        </div>
+    </cozen-tooltip>
+</div>

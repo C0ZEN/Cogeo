@@ -1,0 +1,73 @@
+div.google-visualization-tooltip {
+    background-color : @atom-color-tooltip;
+    padding          : @atom-space-small;
+    border           : none;
+    border-radius    : @atom-radius;
+    display          : flex;
+    flex-direction   : row;
+    justify-content  : flex-start;
+    align-items      : center;
+    width            : auto !important;
+    max-width        : 400px;
+    div.tooltip-square {
+        height        : @atom-font-h3;
+        width         : @atom-font-h3;
+        max-width     : @atom-font-h3;
+        min-width     : @atom-font-h3;
+        border-radius : @atom-radius;
+        margin-right  : @atom-space-small;
+    }
+    p.tooltip-text {
+        font-size   : @atom-font-body;
+        color       : @atom-color-white;
+        font-weight : 400;
+        margin      : 0;
+        padding     : 0;
+        small {
+            color : @atom-color-line-rule;
+        }
+    }
+}
+// Mobile
+div.atom-chart-container {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : flex-start;
+    align-items     : center;
+    div.draw-chart-values-container {
+        display         : flex;
+        flex-direction  : column;
+        justify-content : flex-start;
+        align-items     : flex-start;
+        padding-left    : 140px;
+        div.draw-chart-value {
+            font-size : @atom-font-h3;
+            span.draw-chart-value-quantity {
+                font-size   : @atom-font-h2;
+                font-weight : 600;
+            }
+            span.draw-chart-value-text {
+                color       : @atom-color-font;
+                font-size   : inherit;
+                font-weight : 400;
+            }
+        }
+    }
+    &.single-chart {
+        justify-content : flex-start;
+    }
+}
+// Desktop
+@media (min-width : 992px) {
+    div.atom-chart-container {
+        justify-content : space-between;
+        div.draw-chart-values-container {
+            padding-left : 0;
+        }
+        &.single-chart {
+            div.draw-chart-values-container {
+                padding-left : 132px;
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<div class="chat-messages">
+
+    <!-- Loader -->
+    <div ng-show="vm.loadingDomMessages && vm.messages.length > 0"
+         class="atom-loader-small">
+    </div>
+
+    <!-- Message -->
+    <div ng-repeat="message in vm.messages track by $index"
+         class="message force-ng-hide"
+         ng-style="{'pointer-events': vm.actionBar.options.down ? 'none' : ''}"
+         ng-mouseenter="message.isHover = true"
+         ng-mouseleave="message.isHover = false"
+         ng-class="{'is-hover': message.isHover, 'is-visible': !vm.loadingDomMessages}"
+         ng-switch="message.tag"
+         id="message-{{ message._id }}">
+
+        <!-- Message from a user -->
+        <ng-switch ng-switch-when="user">
+            <div ng-include="'views/chat/messages/chat.messages.user.html'"
+                 ng-class="message.tag">
+            </div>
+        </ng-switch>
+
+        <!-- Message from a bot -->
+        <ng-switch ng-switch-when="bot">
+            <div ng-include="'views/chat/messages/chat.messages.bot.html'"
+                 ng-class="message.tag">
+            </div>
+        </ng-switch>
+    </div>
+</div>

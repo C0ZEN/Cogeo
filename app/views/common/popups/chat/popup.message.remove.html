@@ -1,0 +1,29 @@
+<cozen-popup cozen-popup-name="messageRemove"
+             cozen-popup-type-error
+             cozen-popup-size-small
+             cozen-popup-data="popup.messageRemoveData"
+             cozen-popup-header-title="'popup_friendAction_remove_header_title'">
+    <div class="row">
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top text-center">{{ 'popup_message_remove_body_title' | translate }}</h3>
+        </div>
+
+        <!-- Submit btn -->
+        <div class="col-xs-12 space-large-after flex-vertical-center justify-content-center">
+            <cozen-btn cozen-btn-type-error
+                       cozen-btn-icon-right="fa fa-fw icons8-trash"
+                       cozen-btn-label="'popup_message_remove_body_remove'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-loader="popup.loading"
+                       cozen-btn-on-click="popup.methods.message.remove()"
+                       cozen-btn-class="space-base-right">
+            </cozen-btn>
+            <cozen-btn cozen-btn-type-cold
+                       cozen-btn-label="'popup_cancel'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="popup.methods.closePopup('messageRemove')"
+                       cozen-btn-class="space-base-left">
+            </cozen-btn>
+        </div>
+    </div>
+</cozen-popup>

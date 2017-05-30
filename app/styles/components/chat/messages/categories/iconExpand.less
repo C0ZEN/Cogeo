@@ -1,0 +1,18 @@
+div.icon-expand {
+    outline    : @atom-outline;
+    color      : @atom-color-label;
+    font-size  : @atom-font-body;
+    transition : @atom-transition;
+    i {
+        color          : inherit;
+        font-size      : inherit;
+        vertical-align : middle;
+        transition     : all @atom-animation-duration-in-fast ease-in-out;
+        &.caret-left {
+            transform : rotate(-90deg);
+        }
+    }
+    &:hover {
+        color : @atom-color-font;
+    }
+}

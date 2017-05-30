@@ -1,0 +1,122 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.initSettings()">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <!-- Network -->
+            <cozen-form cozen-form-name="settings"
+                        cozen-form-ctrl="vm"
+                        cozen-form-model="form">
+
+                <!-- Network -->
+                <h3 class="no-margin-top blue">
+                    <i class="icons-middle icons8-network"></i>
+                    {{ 'account_settings_network_title' | translate }}
+                </h3>
+                <cozen-input cozen-input-model="vm.settings.ports.first"
+                             cozen-input-name="{{ vm.CONFIG.internal.account.settings.ports.first.name }}"
+                             cozen-input-min="{{ vm.CONFIG.internal.account.settings.ports.first.min }}"
+                             cozen-input-max="{{ vm.CONFIG.internal.account.settings.ports.first.max }}"
+                             cozen-input-max-length="{{ vm.CONFIG.internal.account.settings.ports.first.length }}"
+                             cozen-input-label="account_settings_network_port_1"
+                             cozen-input-placeholder="account_settings_network_port_1_pc"
+                             cozen-input-required="{{ vm.CONFIG.internal.account.settings.ports.first.required }}"
+                             cozen-input-type-number
+                             cozen-input-validator-all
+                             cozen-input-class="space-medium-after">
+                </cozen-input>
+                <cozen-input cozen-input-model="vm.settings.ports.second"
+                             cozen-input-name="{{ vm.CONFIG.internal.account.settings.ports.second.name }}"
+                             cozen-input-min="{{ vm.CONFIG.internal.account.settings.ports.second.min }}"
+                             cozen-input-max="{{ vm.CONFIG.internal.account.settings.ports.second.max }}"
+                             cozen-input-max-length="{{ vm.CONFIG.internal.account.settings.ports.second.length }}"
+                             cozen-input-label="account_settings_network_port_2"
+                             cozen-input-placeholder="account_settings_network_port_2_pc"
+                             cozen-input-required="{{ vm.CONFIG.internal.account.settings.ports.second.required }}"
+                             cozen-input-type-number
+                             cozen-input-validator-all>
+                </cozen-input>
+
+                <!-- Micro -->
+                <h3 class="space-large-before space-base-after green">
+                    <i class="icons-middle icons8-microphone"></i>
+                    {{ 'account_settings_micro_title' | translate }}
+                </h3>
+                <label class="atom-label">{{ 'account_settings_micro_volume' | translate }}</label>
+                <rzslider rz-slider-model="vm.settings.micro.volume"
+                          rz-slider-options="vm.CONFIG.internal.account.settings.micro.volume">
+                </rzslider>
+                <div class="space-base-before">
+                    <a href
+                       onclick="this.blur()"
+                       ng-click="methods.showPopup($event, 'testMicrophone')">
+                        {{ 'account_settings_micro_test' | translate }}
+                    </a>
+                </div>
+
+                <!-- Speaker -->
+                <h3 class="space-large-before space-base-after purple">
+                    <i class="icons-middle icons8-speaker"></i>
+                    {{ 'account_settings_speaker_title' | translate }}
+                </h3>
+                <label class="atom-label">{{ 'account_settings_speaker_volume' | translate }}</label>
+                <rzslider rz-slider-model="vm.settings.speaker.volume"
+                          rz-slider-options="vm.CONFIG.internal.account.settings.speaker.volume">
+                </rzslider>
+                <div class="space-base-before">
+                    <a href
+                       onclick="this.blur()"
+                       ng-click="methods.showPopup($event, 'testSpeaker', vm.settings.speaker)">
+                        {{ 'account_settings_speaker_test' | translate }}
+                    </a>
+                </div>
+
+                <!-- Other -->
+                <h3 class="space-large-before space-base-after yellow">
+                    <i class="icons-middle icons8-settings"></i>
+                    {{ 'account_settings_other_title' | translate }}
+                </h3>
+
+                <!-- Download path -->
+                <cozen-input cozen-input-model="vm.settings.downloadPath"
+                             cozen-input-name="{{ vm.CONFIG.internal.account.settings.downloadPath.name }}"
+                             cozen-input-max-length="{{ vm.CONFIG.internal.account.settings.downloadPath.length }}"
+                             cozen-input-label="account_settings_other_download_path"
+                             cozen-input-placeholder="account_settings_other_download_path_pc"
+                             cozen-input-required="{{ vm.CONFIG.internal.account.settings.downloadPath.required }}"
+                             cozen-input-validator-all
+                             cozen-input-class="space-medium-after">
+                </cozen-input>
+
+                <!-- Language -->
+                <cozen-dropdown cozen-dropdown-model="vm.settings.language"
+                                cozen-dropdown-class="space-medium-after"
+                                cozen-dropdown-label="account_settings_language"
+                                cozen-dropdown-validator-all
+                                cozen-dropdown-required="true"
+                                cozen-dropdown-single-display-selected-label="true"
+                                cozen-dropdown-placeholder="account_settings_language_pc">
+                    <cozen-dropdown-item-simple ng-repeat="language in vm.languages track by $index"
+                                                cozen-dropdown-item-simple-id="{{ language.key }}"
+                                                cozen-dropdown-item-simple-custom-html-left="<img class='flag' ng-src='{{ vm.methods.getAppLanguageFlag(language.key) }}'>"
+                                                cozen-dropdown-item-simple-label="{{ language.label }}"
+                                                cozen-dropdown-item-simple-value="language.key"
+                                                cozen-dropdown-item-simple-selected="language.selected">
+                    </cozen-dropdown-item-simple>
+                </cozen-dropdown>
+
+                <!-- Edit btn -->
+                <cozen-btn cozen-btn-label="'account_settings_save_settings'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-id="submit-edit-account-settings"
+                           cozen-btn-type-success
+                           cozen-btn-disabled="vm.form.profile.$invalid"
+                           cozen-btn-loader="vm.loading"
+                           cozen-btn-on-click="vm.methods.save('settings')"
+                           cozen-btn-icon-right="fa icons8-clouds-filled"
+                           cozen-btn-class="space-medium-after animated fadeInUp">
+                </cozen-btn>
+            </cozen-form>
+        </div>
+    </div>
+</div>

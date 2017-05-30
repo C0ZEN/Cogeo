@@ -1,0 +1,295 @@
+/************/
+/**   HR   **/
+/************/
+hr {
+    border-top : 1px solid @atom-color-line-rule;
+}
+hr.small {
+    border-color : @atom-color-line-rule;
+    border-width : 3px;
+    max-width    : 50px;
+}
+hr.small.light {
+    border-color : @atom-color-white;
+}
+/******************/
+/**   ATOM BTN   **/
+/******************/
+div.atom-btn-container {
+    margin-left  : @atom-space-small;
+    margin-right : @atom-space-small;
+}
+small.help-text,
+span.help-text,
+p.help-text {
+    margin     : 0;
+    color      : @atom-color-label;
+    text-align : justify;
+}
+.form-left-img {
+    position  : absolute;
+    top       : 50%;
+    left      : 50%;
+    transform : translate(-50%, -50%);
+    width     : 50%;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display : none !important;
+}
+body {
+    overflow-x : hidden;
+}
+div.atom-profile {
+    background-color : @atom-color-white;
+    border           : 1px solid @atom-color-line-rule;
+    border-radius    : @atom-radius;
+    padding          : @atom-space-base @atom-space-medium;
+    margin-bottom    : @atom-space-base;
+    div.profile-card {
+        display         : flex;
+        flex-direction  : row;
+        align-items     : center;
+        justify-content : flex-start;
+        div.text {
+            display        : flex;
+            flex-direction : column;
+            margin-left    : @atom-space-base;
+            h4,
+            p,
+            h3 {
+                margin : 0;
+            }
+            h3 {
+                small {
+                    color : @atom-color-label;
+                }
+            }
+            h4.groups {
+                overflow    : hidden;
+                white-space : nowrap;
+                a.link {
+                    display      : inline-block;
+                    margin-right : @atom-space-small;
+                    white-space  : normal;
+                    word-break   : break-all;
+                }
+            }
+        }
+        img {
+            width  : 70px;
+            height : 70px;
+            &.img-thumbnail {
+                padding : @atom-space-small;
+            }
+        }
+    }
+    hr {
+        margin-top    : @atom-space-base;
+        margin-bottom : @atom-space-base;
+    }
+    div.group {
+        display        : flex;
+        flex-direction : column;
+        a.group-link {
+            font-size : @atom-font-h3;
+            display   : block;
+        }
+    }
+}
+i.eye {
+    cursor         : pointer;
+    transition     : @atom-transition;
+    vertical-align : baseline;
+    color          : @atom-color-purple;
+    &:hover {
+        color : @atom-color-purple-active;
+    }
+}
+.audioRecorder-analyzer {
+    border     : 1px solid @atom-color-line-rule;
+    display    : flex;
+    height     : 130px;
+    box-sizing : border-box;
+}
+.waveSurfer {
+    border : 1px solid @atom-color-line-rule;
+}
+videogular div.my-logo-layer {
+    position : absolute;
+    display  : block;
+    z-index  : 50;
+    top      : 0;
+}
+videogular div.my-logo-layer img {
+    padding-left : @atom-space-base;
+    padding-top  : @atom-space-base;
+    opacity      : 0.5;
+    height       : 48px;
+}
+videogular vg-poster img,
+[videogular] vg-poster img {
+    max-height : 50% !important;
+    max-width  : 50% !important;
+}
+div.cozen-input.atom-search-input {
+    div.cozen-input-icon.left {
+        padding : 3px 6px 6px 8px !important;
+    }
+}
+.flex-end {
+    justify-content : flex-end !important;
+}
+.flex-start {
+    justify-content : flex-start !important;
+}
+i.atom-icon-btn {
+    color  : @atom-color-blue;
+    cursor : pointer;
+    &:focus,
+    &:hover {
+        color : @atom-color-blue-active;
+    }
+    &.purple {
+        color : @atom-color-purple;
+        &:focus,
+        &:hover {
+            color : @atom-color-purple-active;
+        }
+    }
+}
+.inherit-height {
+    height : inherit;
+}
+.flex-vertical-center {
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
+}
+.justify-content-center {
+    justify-content : center !important;
+}
+.justify-space-around {
+    justify-content : space-around !important;
+}
+.justify-content-start {
+    justify-content : flex-start !important;
+}
+.full-center-content {
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
+    margin         : 0;
+    padding        : 0;
+    width          : 100%;
+    height         : ~"calc(100vh - 60px)";
+    > .row {
+        height  : inherit;
+        margin  : 0;
+        padding : 0;
+        width   : 100%;
+        > div {
+            height         : inherit;
+            display        : flex;
+            flex-direction : row;
+            align-items    : center;
+            > div {
+                margin : 0 10%;
+                width  : 100%;
+            }
+            > img {
+                width     : 90%;
+                max-width : 500px;
+                margin    : auto;
+            }
+            &:nth-child(2) {
+                border-left : 6px solid @atom-color-line-rule;;
+            }
+        }
+    }
+}
+@media (max-width : 991px) {
+    .full-center-content {
+        margin-top : @atom-space-large;
+        height     : auto;
+        > .row {
+            > div {
+                flex-direction : column;
+            }
+        }
+    }
+}
+@media (max-width : 767px) {
+    .full-center-content {
+        > .row {
+            > div {
+                > div {
+                    margin : 0 auto;
+                }
+            }
+        }
+    }
+}
+.inline-block {
+    display : inline-block;
+}
+.vertical-align-sub {
+    vertical-align : sub;
+}
+.vertical-align-middle {
+    vertical-align : middle;
+}
+.atom-hashtag:before {
+    content : "#";
+}
+.app-language-flag {
+    width       : 15px;
+    margin-left : 4px;
+}
+.atom-ellipsis {
+    overflow           : hidden;
+    text-overflow      : ellipsis;
+    -webkit-line-clamp : 1;
+    display            : -webkit-box;
+    -webkit-box-orient : vertical;
+    word-break         : break-all;
+    line-height        : inherit;
+}
+.atom-annotation {
+    background-color : @atom-color-yellow;
+    border           : 1px solid @atom-color-yellow;
+    position         : absolute;
+    border-radius    : 50%;
+    top              : 2px;
+    right            : -10px;
+    width            : 18px;
+    height           : 18px;
+    line-height      : 18px;
+    display          : flex;
+    flex-direction   : row;
+    justify-content  : center;
+    align-items      : stretch;
+    span.annotation {
+        color       : @atom-color-white;
+        font-size   : @atom-font-body;
+        font-family : @atom-family-body;
+    }
+}
+.display-initial {
+    display : initial;
+}
+* ::selection {
+    background-color : @atom-color-blue;
+    color            : @atom-color-white;
+}
+img::selection {
+    background-color : transparent;
+}
+.force-ng-hide {
+    &.ng-leave,
+    &.ng-hide {
+        display : none !important;
+    }
+}
+.text-italic {
+    font-style : italic;
+}

@@ -1,0 +1,129 @@
+<!-- Title -->
+<h1>{{ 'profiles_user_title' | translate:{username: vm.params.username} }}</h1>
+<p class="help-text space-medium-after">{{ 'profiles_user_subtitle' | translate }}</p>
+
+<!-- Blocked alert -->
+<cozen-alert cozen-alert-display="vm.friend.blocked != 0 && vm.friendInvited.status.response == 2"
+             cozen-alert-close-btn="false"
+             cozen-alert-label="'chat_alert_friend_blocked'"
+             cozen-alert-label-values="{username: vm.friend.username, date: (vm.friend.blocked | date: 'EEEE dd MMMM yyyy')}"
+             cozen-alert-animation-in-class="fadeIn"
+             cozen-alert-type-warning
+             cozen-alert-class="space-base-after">
+</cozen-alert>
+
+<div ng-init="vm.methods.onUserInit()"
+     class="animated fadeIn">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="atom-profile">
+
+                <!-- Profile card -->
+                <div class="profile-card">
+                    <img class="img-circle img-thumbnail"
+                         ng-src="{{ usersFactory.getUserImage(vm.user.username) }}">
+                    <div class="text">
+                        <h3>{{ vm.user.givenName }} {{ vm.user.surname }}</h3>
+                        <p class="help-text">@{{ vm.user.username }}</p>
+                        <h4 ng-show="vm.userGroups.length > 0"
+                            class="groups">
+                            <a href
+                               class="link"
+                               ui-sref="app.groups.details({groupName: group.name})"
+                               ng-click="goTo.view('app.groups.details', {groupName: group.name})"
+                               ng-repeat="group in vm.userGroups track by $index">
+                                <span>#{{ group.name }}</span>
+                            </a>
+                        </h4>
+                        <p ng-show="vm.userGroups.length == 0"
+                           class="help-text">
+                            {{ 'profiles_user_no_groups' | translate:{username: vm.user.username} }}
+                        </p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Info -->
+                <h3 class="space-medium-before space-base-after">{{ 'profiles_user_details' | translate }}</h3>
+                <h4>
+                    <strong>{{ 'account_profile_givenName' | translate }}:</strong>
+                    {{ vm.user.givenName }}
+                </h4>
+                <h4>
+                    <strong>{{ 'account_profile_surname' | translate }}:</strong>
+                    {{ vm.user.surname }}
+                </h4>
+                <h4>
+                    <strong>{{ 'account_profile_username' | translate }}:</strong>
+                    {{ vm.user.username }}
+                </h4>
+                <h4>
+                    <strong>{{ 'account_profile_email' | translate }}:</strong>
+                    {{ vm.user.email }}
+                </h4>
+                <p class="help-block">
+                    {{ 'account_profile_date_register'
+                    | translate:"{date:'" + (vm.user.date.register | date: 'EEEE dd MMMM yyyy') + "'}" }}
+                </p>
+
+                <!-- Groups -->
+                <h3 class="space-medium-before space-base-after">{{ 'profiles_user_groups' | translate }}</h3>
+                <div class="group"
+                     ng-repeat="group in vm.userGroups track by $index">
+                    <a href
+                       class="group-link"
+                       ui-sref="app.groups.details({groupName: group.name})"
+                       ng-click="goTo.view('app.groups.details', {groupName: group.name})">
+                        <span>#{{ group.name }}</span>
+                    </a>
+                </div>
+                <p ng-show="vm.userGroups.length == 0"
+                   class="help-block">
+                    {{ 'profiles_user_no_groups' | translate:{username: vm.user.username} }}
+                </p>
+            </div>
+
+            <div class="center-flex-content space-medium-after">
+
+                <!-- Add to friends -->
+                <cozen-btn ng-if="!vm.friend && vm.friendInvited.status.response != 1"
+                           class="animated fadeInUp force-ng-hide"
+                           cozen-btn-label="'profiles_user_add_to_friend'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-loader="vm.loading"
+                           cozen-btn-id="user-profile-add-friend-btn"
+                           cozen-btn-on-click="vm.methods.socialAction('add')">
+                </cozen-btn>
+
+                <!-- Unblock -->
+                <cozen-btn ng-if="vm.friend.blocked != 0 && vm.friendInvited.status.response == 2"
+                           class="animated fadeInUp force-ng-hide"
+                           cozen-btn-label="'profiles_user_unblock'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-on-click="methods.showPopup(null, 'friendActionUnblock', vm.friend)">
+                </cozen-btn>
+
+                <!-- Chat -->
+                <cozen-btn ng-if="vm.friend.blocked == 0 && vm.friendInvited.status.response == 2"
+                           class="animated fadeInUp force-ng-hide"
+                           cozen-btn-label="'profiles_user_chat'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-on-click="goTo.view('app.chat.user', {username: vm.friend.username})">
+                </cozen-btn>
+
+                <!-- Friend since -->
+                <p ng-if="vm.friend != false"
+                   class="no-margin help-text animated fadeInUp force-ng-hide">
+                    {{ 'profiles_user_friend_since' | translate:{date: (vm.friend.date | date: 'EEEE dd MMMM yyyy'), username: vm.friend.username} }}
+                </p>
+
+                <!-- Invited on -->
+                <p ng-if="!vm.friend && vm.friendInvited.status.response == 1"
+                   class="no-margin help-text animated fadeInUp force-ng-hide">
+                    {{ 'profiles_user_invited_on' | translate:{date: (vm.friendInvited.sentOn | date: 'EEEE dd MMMM yyyy')} }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

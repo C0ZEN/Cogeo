@@ -1,0 +1,44 @@
+<div class="container space-large-before">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 animated fadeInLeft">
+
+            <!-- Title -->
+            <h1>{{ 'groups_join_title' | translate }}</h1>
+            <p class="help-text">{{ 'groups_join_subtitle_1' | translate }}</p>
+            <p class="help-text">{{ 'groups_join_subtitle_2' | translate:{groupName:vm.data.groupName} }}</p>
+
+            <!-- Form -->
+            <div class="row space-large-before space-extra-large-after">
+                <div class="col-xs-12 col-sm-8 col-md-6">
+                    <cozen-form cozen-form-name="join"
+                                cozen-form-ctrl="vm"
+                                cozen-form-model="form">
+                        <cozen-input cozen-input-model="vm.join.email"
+                                     cozen-input-name="{{ vm.CONFIG.internal.log.email.name }}"
+                                     cozen-input-max-length="{{ vm.CONFIG.internal.log.email.length }}"
+                                     cozen-input-pattern="{{ vm.CONFIG.internal.log.email.pattern }}"
+                                     cozen-input-label="log_register_email"
+                                     cozen-input-placeholder="log_register_email_pc"
+                                     cozen-input-required="{{ vm.CONFIG.internal.log.email.required }}">
+                        </cozen-input>
+                        <p class="help-text space-small-before space-medium-after">{{ 'groups_join_after_email' | translate }}</p>
+                        <cozen-btn cozen-btn-label="'groups_join_group' | translate:{groupName: vm.data.groupName}"
+                                   cozen-btn-auto-sizing="true"
+                                   cozen-btn-disabled="vm.form.join.$invalid"
+                                   cozen-btn-loader="vm.loading"
+                                   cozen-btn-on-click="vm.methods.join()">
+                        </cozen-btn>
+                    </cozen-form>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h1>{{ 'groups_join_discover_title' | translate }}</h1>
+            <p class="help-text">{{ 'groups_join_discover_subtitle_1' | translate }}</p>
+            <p class="help-text">{{ 'groups_join_discover_subtitle_2' | translate }}</p>
+            <p class="help-text"
+               cozen-compile="'groups_join_discover_subtitle_3' | translate">
+            </p>
+        </div>
+    </div>
+</div>

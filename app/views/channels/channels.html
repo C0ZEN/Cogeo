@@ -1,0 +1,79 @@
+<div class="container space-large-before animated fadeIn">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
+
+            <!-- Title when all view selected -->
+            <h1 ng-show="goTo.isCurrentView('app.channels.all') && vm.channels.length == 1"
+                cozen-compile="'channels_channels_title' | translate:{groupName: vm.params.groupName, channelName: vm.channels[0].name}">
+            </h1>
+
+            <!-- Title when all view selected (pluralized) -->
+            <h1 ng-show="goTo.isCurrentView('app.channels.all') && vm.channels.length > 1"
+                cozen-compile="'channels_channels_title_pluralize' | translate:{groupName: vm.params.groupName, quantity: vm.channels.length}">
+            </h1>
+
+            <!-- Title when new view selected -->
+            <h1 ng-show="goTo.isCurrentView('app.channels.new')"
+                cozen-compile="'channels_channels_title_new' | translate:{groupName: vm.params.groupName}">
+            </h1>
+
+            <!-- Title when other view -->
+            <h1 ng-show="!goTo.isCurrentView('app.channels.all') && !goTo.isCurrentView('app.channels.new')"
+                cozen-compile="'channels_channels_title_name' | translate:{groupName: vm.params.groupName, channelName: vm.params.channelName}">
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="help-text space-medium-after">{{ 'channels_channels_subtitle' | translate }}</p>
+
+            <!-- Nav -->
+            <cozen-pills cozen-pills-class="space-large-after"
+                         cozen-pills-auto-update-model="false">
+                <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_all"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.all')"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.all')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_details"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.details', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || goTo.isCurrentView('app.channels.new')"
+                                         cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.channels.details', 'app.channels.edit')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_members"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.members', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.members')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="channels_pills_invitations"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.invitations', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
+                                         cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.channels.invitations', 'app.channels.recruit')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_log"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.logs', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.channels.all') || vm.params.channelName == null || goTo.isCurrentView('app.channels.new')"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.logs')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_new"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.new', {'groupName': vm.params.groupName})"
+                                         cozen-pills-item-simple-disabled="!groupsFactory.isActiveMember(null, vm.params.groupName)"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.channels.new')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_chat"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-on-click="goTo.view('app.chat.channel', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName || vm.channels[0].name })"
+                                         cozen-pills-item-simple-disabled="vm.disabledChat"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.chat.channel')"
+                                         class="margin-left-auto">
+                </cozen-pills-item-simple>
+            </cozen-pills>
+
+            <!-- Content -->
+            <div class="ui-view"></div>
+        </div>
+    </div>
+</div>

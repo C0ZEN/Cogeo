@@ -1,0 +1,24 @@
+<cozen-popup cozen-popup-name="groupJoin"
+             cozen-popup-type-info
+             cozen-popup-size-small
+             cozen-popup-data="popup.groupJoinData"
+             cozen-popup-header-title="'popup_group_join_header_title'">
+    <div class="row">
+
+        <!-- User invitation -->
+        <div class="col-xs-12 space-large-before space-medium-after">
+            <h3 class="no-margin-top text-center">{{ 'popup_group_join_body_title' | translate:popup.groupJoinData }}</h3>
+        </div>
+
+        <!-- Submit btn -->
+        <div class="col-xs-12 space-large-after text-center">
+            <cozen-btn cozen-btn-type-info
+                       cozen-btn-label="'popup_group_join_body_join' | translate:popup.groupJoinData"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-loader="popup.loading"
+                       cozen-btn-on-click="popup.methods.group.join()"
+                       cozen-btn-class="space-base-right">
+            </cozen-btn>
+        </div>
+    </div>
+</cozen-popup>

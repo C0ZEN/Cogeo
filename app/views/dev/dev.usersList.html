@@ -1,0 +1,80 @@
+<div class="container space-large-before animated fadeIn"
+     ng-init="vm.methods.onInitUsersList()">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+
+                <!-- Filter -->
+                <cozen-form cozen-form-name="users"
+                            cozen-form-ctrl="vm"
+                            cozen-form-model="form">
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-input cozen-input-model="vm.usersListSettings.search"
+                                     cozen-input-name="search"
+                                     cozen-input-success-design="false"
+                                     cozen-input-error-design="false"
+                                     cozen-input-icon-left="fa fa-search"
+                                     cozen-input-auto-complete="off"
+                                     cozen-input-class="atom-search-input">
+                        </cozen-input>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <cozen-pagination cozen-pagination-model="vm.usersListSettings.currentPage"
+                                          cozen-pagination-class="flex-end"
+                                          cozen-pagination-limit-per-page="vm.usersListSettings.limit"
+                                          cozen-pagination-total-elements="fakeUsersFilter.length"
+                                          cozen-pagination-auto-hide="true">
+                        </cozen-pagination>
+                    </div>
+                </cozen-form>
+            </div>
+
+            <!-- Users -->
+            <div class="atom-groups space-base-before space-base-after">
+                <div class="atom-group"
+                     ng-class="{'border-bottom': $last}"
+                     ng-repeat="user in vm.usersList
+                       | filter: vm.usersListSettings.search
+                       | startFrom: (vm.usersListSettings.currentPage - 1) * vm.usersListSettings.limit
+                       | limitTo: vm.usersListSettings.limit
+                       | orderBy: 'date.register'
+                       as usersFilter track by $index">
+                    <div class="text">
+                        <p>
+                            {{ user.givenName }} {{ user.surname }}
+                            <small>
+                                <a href
+                                   ng-click="goTo.view('app.profiles.user', {username: user.username}, $event)"
+                                   ui-sref="app.profiles.user({username: user.username})">
+                                    @{{ user.username }}
+                                </a>
+                                <cozen-tooltip cozen-tooltip-label="'groups_details_quicklink_copy'">
+                                    <i class="fa fa-fw fa-copy atom-icon-btn purple"
+                                       ngclipboard
+                                       data-clipboard-text="{{ user.username }}">
+                                    </i>
+                                </cozen-tooltip>
+                                <span class="help-text">{{ 'DEV.USERS_LIST.JOIN_ON' | translate:{date: (user.date.register | date: 'EEEE dd MMMM yyyy'), hour: (user.date.register | date: 'HH:mm')} }}</span>
+                            </small>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Members fake (for actual length) -->
+                <div style="display: none;"
+                     ng-repeat="user in vm.usersList
+                       | filter: vm.usersListSettings.search
+                       as fakeUsersFilter track by $index">
+                </div>
+            </div>
+
+            <div class="center-flex-content space-medium-after">
+
+                <!-- Number of users -->
+                <p class="no-margin help-text animated fadeInUp">
+                    {{ (vm.usersList.length > 1 ? 'channels_members_total_pluralize' : 'channels_members_total') | translate:{total: vm.usersList.length} }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

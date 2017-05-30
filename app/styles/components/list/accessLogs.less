@@ -1,0 +1,36 @@
+div.atom-access-logs {
+    div.atom-access-log {
+        border-top          : 1px solid @atom-color-line-rule;
+        border-right        : 1px solid @atom-color-line-rule;
+        border-left         : 3px solid @atom-color-blue;
+        padding             : @atom-space-small @atom-space-base;
+        animation-fill-mode : @atom-animation-fill;
+        animation-duration  : @atom-animation-duration-in-fast;
+        .animation-fadeInLeft(-@atom-space-base);
+        display             : flex;
+        flex-direction      : row;
+        justify-content     : flex-start;
+        align-items         : center;
+        &.ng-leave-active {
+            display            : none;
+            animation-duration : 0ms;
+        }
+        &.border-bottom {
+            border-bottom              : 1px solid @atom-color-line-rule;
+            border-bottom-left-radius  : @atom-radius;
+            border-bottom-right-radius : @atom-radius;
+        }
+        div.text {
+            p {
+                margin : 0;
+                &:first-of-type {
+                    font-size : @atom-font-h3;
+                }
+            }
+        }
+    }
+    > :first-child {
+        border-top-left-radius  : @atom-radius;
+        border-top-right-radius : @atom-radius;
+    }
+}

@@ -1,0 +1,297 @@
+<!-- Intro -->
+<header>
+    <div class="header-content">
+        <div class="header-content-inner animated fadeIn">
+            <h1 id="homeHeading">{{ 'home_header_content_h1_1' | translate }}</h1>
+            <h1>{{ 'home_header_content_h1_2' | translate }}</h1>
+            <hr class="small">
+            <h2>{{ 'home_header_content_h2_1' | translate }}</h2>
+            <h2>{{ 'home_header_content_h2_2' | translate }}</h2>
+            <div class="space-large-before">
+                <cozen-btn cozen-btn-label="'home_discover_cogeo'"
+                           cozen-btn-type-default
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-size-large
+                           cozen-btn-on-click="vm.methods.scrollToElement('about')">
+                </cozen-btn>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About -->
+<section class="background-blue border-bottom-large"
+         id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">{{ 'home_about_title' | translate }}</h2>
+                <hr class="small light">
+                <h3>{{ 'home_about_text_1' | translate }}</h3>
+                <h3>{{ 'home_about_text_2' | translate }}</h3>
+                <h3>{{ 'home_about_text_3' | translate }}</h3>
+                <div class="space-large-before sr-button">
+                    <cozen-btn cozen-btn-label="'home_register'"
+                               cozen-btn-type-primary
+                               cozen-btn-auto-sizing="true"
+                               cozen-btn-size-large
+                               cozen-btn-on-click="goTo.view('app.log.register')">
+                    </cozen-btn>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Communication -->
+<section id="communication">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">{{ 'home_communication_header' | translate }}</h2>
+                <hr class="small primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row space-medium-after-not-xs space-medium-after-not-sm">
+            <div class="col-xs-12 col-md-6 col-lg-4 col-lg-push-1 text-justify">
+                <h3 class="blue">
+                    <i class="icons-middle icons-space-right icons8-google-groups"></i>
+                    {{ 'home_communication_groups_header' | translate }}
+                </h3>
+                <h4>{{ 'home_communication_groups_text_1' | translate }}</h4>
+                <h4>{{ 'home_communication_groups_text_2' | translate }}</h4>
+                <h4>{{ 'home_communication_groups_text_3' | translate }}</h4>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-4 col-lg-push-3 text-justify">
+                <h3 class="green">
+                    <i class="icons-middle icons-space-right icons8-channel-mosaic"></i>
+                    {{ 'home_communication_channels_header' | translate }}
+                </h3>
+                <h4>{{ 'home_communication_channels_text_1' | translate }}</h4>
+                <h4>{{ 'home_communication_channels_text_2' | translate }}</h4>
+                <h4>{{ 'home_communication_channels_text_3' | translate }}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-4 col-lg-push-1 text-justify">
+                <h3 class="purple">
+                    <i class="icons-middle icons-space-right icons8-chat"></i>
+                    {{ 'home_communication_message_header' | translate }}
+                </h3>
+                <h4>{{ 'home_communication_message_text_1' | translate }}</h4>
+                <h4>{{ 'home_communication_message_text_2' | translate }}</h4>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-4 col-lg-push-3 text-justify">
+                <h3 class="yellow">
+                    <i class="icons-middle icons-space-right icons8-video-call"></i>
+                    {{ 'home_communication_micro_header' | translate }}
+                </h3>
+                <h4>{{ 'home_communication_micro_text_1' | translate }}</h4>
+                <h4>{{ 'home_communication_micro_text_2' | translate }}</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr style="margin-bottom: 0;">
+
+<!-- Services -->
+<section id="services"
+         class="background-grey-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">{{ 'home_services_title' | translate }}</h2>
+                <hr class="small primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="blue fa fa-4x icons8-rabbit sr-icons-services"></i>
+                    <h3>{{ 'home_services_1_title' | translate }}</h3>
+                    <p>{{ 'home_services_1_text' | translate }}</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="green fa fa-4x icons8-robot-3-filled sr-icons-services"></i>
+                    <h3>{{ 'home_services_2_title' | translate }}</h3>
+                    <p>{{ 'home_services_2_text' | translate }}</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="purple fa fa-4x icons8-picture-filled sr-icons-services"></i>
+                    <h3>{{ 'home_services_3_title' | translate }}</h3>
+                    <p>{{ 'home_services_3_text' | translate }}</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="yellow fa fa-4x icons8-settings sr-icons-services"></i>
+                    <h3>{{ 'home_services_4_title' | translate }}</h3>
+                    <p>{{ 'home_services_4_text' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr style="margin-top: 0;">
+
+<!-- Bot -->
+<section id="bot">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">{{ 'home_bot_header_1' | translate }}</h2>
+                <h2 class="section-heading">{{ 'home_bot_header_2' | translate }}</h2>
+                <hr class="small primary">
+            </div>
+        </div>
+        <div class="row space-medium-after">
+            <div class="col-xs-12">
+                <div class="home-bot">
+                    <img ng-src="images/bot/Spamobot.png"
+                         class="img-circle img-thumbnail sr-icon hidden-xs">
+                    <div>
+                        <h3 class="purple">{{ 'home_bot_spamobot_header' | translate }}</h3>
+                        <h4>{{ 'home_bot_spamobot_text_1' | translate }}</h4>
+                        <h4>{{ 'home_bot_spamobot_text_2' | translate }}</h4>
+                        <h4>{{ 'home_bot_spamobot_text_3' | translate }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row space-medium-after">
+            <div class="col-xs-12">
+                <div class="home-bot">
+                    <img ng-src="images/bot/Friendybot.png"
+                         class="img-circle img-thumbnail sr-icon hidden-xs">
+                    <div>
+                        <h3 class="green">{{ 'home_bot_friendybot_header' | translate }}</h3>
+                        <h4>{{ 'home_bot_friendybot_text_1' | translate }}</h4>
+                        <h4>{{ 'home_bot_friendybot_text_2' | translate }}</h4>
+                        <h4>{{ 'home_bot_friendybot_text_3' | translate }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Register -->
+<section class="background-yellow border-bottom-large"
+         id="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">{{ 'home_register_title' | translate }}</h2>
+                <hr class="small light">
+                <div class="space-large-before sr-button">
+                    <cozen-btn cozen-btn-label="'home_register'"
+                               cozen-btn-type-primary
+                               cozen-btn-auto-sizing="true"
+                               cozen-btn-size-large
+                               cozen-btn-on-click="goTo.view('app.log.register')">
+                    </cozen-btn>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">{{ 'home_contact_title' | translate }}</h2>
+                <hr class="small primary">
+                <h4>{{ 'home_contact_devices_text_1' | translate }}</h4>
+                <h4>{{ 'home_contact_devices_text_2' | translate }}</h4>
+                <div class="col-xs-12 col-sm-6 col-sm-push-3">
+                    <div class="icon-type-devices space-large-before">
+                        <img ng-src="images/home/devices/Phone.png"
+                             width="56"
+                             height="56"
+                             class="sr-icons-devices">
+                        <img ng-src="images/home/devices/Tablet.png"
+                             width="76"
+                             height="76"
+                             class="sr-icons-devices">
+                        <img ng-src="images/home/devices/PC.png"
+                             width="96"
+                             height="96"
+                             class="sr-icons-devices">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr style="margin-bottom: 0;">
+
+<!-- Footer -->
+<aside id="footer"
+       class="background-grey-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="links">
+                    <div>
+                        <h4 class="blue">{{ 'home_footer_using_title' | translate }}</h4>
+                        <a href
+                           onclick="this.blur()"
+                           ng-click="vm.methods.scrollToElement('communication')">
+                            {{ 'home_footer_using_product' | translate }}
+                        </a>
+                        <a href
+                           onclick="this.blur()"
+                           ng-click="vm.methods.scrollToElement('register')">
+                            {{ 'home_footer_using_price' | translate }}
+                        </a>
+                        <a href>{{ 'home_footer_using_support' | translate }}</a>
+                    </div>
+                    <div>
+                        <h4 class="green">{{ 'home_footer_apps_title' | translate }}</h4>
+                        <a href>{{ 'home_footer_apps_desktop' | translate }}</a>
+                        <a href>{{ 'home_footer_apps_android' | translate }}</a>
+                        <a href>{{ 'home_footer_apps_ios' | translate }}</a>
+                    </div>
+                    <div>
+                        <h4 class="purple">{{ 'home_footer_legal_title' | translate }}</h4>
+                        <a href>{{ 'home_footer_legal_privacy' | translate }}</a>
+                        <a href>{{ 'home_footer_legal_security' | translate }}</a>
+                        <a href>{{ 'home_footer_legal_terms_of_service' | translate }}</a>
+                        <a href>{{ 'home_footer_legal_policies' | translate }}</a>
+                    </div>
+                    <div>
+                        <h4 class="yellow">{{ 'home_footer_links_title' | translate }}</h4>
+                        <a href
+                           ng-click="goTo.view('app.log.login', null, $event)"
+                           ui-sref="app.log.login">
+                            {{ 'home_footer_links_login' | translate }}
+                        </a>
+                        <a href
+                           ng-click="goTo.view('app.log.register', null, $event)"
+                           ui-sref="app.log.register">
+                            {{ 'home_footer_links_register' | translate }}
+                        </a>
+                        <a href
+                           onclick="this.blur()"
+                           ng-click="methods.showPopup($event, 'logout')">
+                            {{ 'home_footer_links_logout' | translate }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

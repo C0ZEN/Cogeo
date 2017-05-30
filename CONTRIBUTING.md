@@ -1,0 +1,3 @@
+# Contributing
+
+Nothing for now.

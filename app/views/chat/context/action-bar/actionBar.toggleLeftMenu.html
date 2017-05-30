@@ -1,0 +1,8 @@
+<div class="link-dropdown-item"
+     tabindex="0"
+     ng-click="vm.methods.toggleChannels($event)">
+    <i class="fa fa-fw space-small-right"
+       ng-class="[vm.showChannels ? 'icons8-open-pane-filled' : 'icons8-close-pane-filled']">
+    </i>
+    <span>{{ (vm.showChannels ? 'chat_actionBar_options_leftMenu_hide' : 'chat_actionBar_options_leftMenu_show') | translate }}</span>
+</div>

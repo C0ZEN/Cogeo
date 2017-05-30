@@ -1,0 +1,70 @@
+// XHR Loader
+#loading-bar .bar {
+    background : @atom-color-blue;
+    height     : 3px;
+}
+#loading-bar .peg {
+    box-shadow : @atom-color-blue 1px 0 6px 1px;
+}
+#loading-bar-spinner .spinner-icon {
+    border-top-color  : @atom-color-blue;
+    border-left-color : @atom-color-blue;
+}
+// Atom loader
+div.atom-loader {
+    .atom-loader(100px);
+}
+div.atom-loader-medium {
+    .atom-loader(120px);
+}
+div.atom-loader-small {
+    .atom-loader(80px);
+}
+.atom-loader(@width) {
+    @value : unit(@width);
+    @name : ~"squaremove-@{value}";
+    width               : @width;
+    height              : @width;
+    border-radius       : 100%;
+    position            : absolute;
+    top                 : 50%;
+    left                : 50%;
+    transform           : translate(-50%, -50%);
+    margin-top          : -@width * 0.6;
+    z-index             : 100;
+    animation-fill-mode : @atom-animation-fill;
+    animation-duration  : @atom-animation-duration-in-fast;
+    animation-name      : zoomIn;
+    &:before,
+    &:after {
+        content          : "";
+        width            : @width * 0.2;
+        height           : @width * 0.2;
+        position         : absolute;
+        top              : 0;
+        left             : calc(50% - @width * 0.1);
+        background-color : @atom-color-blue;
+        animation        : @name 1s ease-in-out infinite;
+    }
+    &:after {
+        bottom          : 0;
+        animation-delay : 0.5s;
+    }
+    &.ng-hide {
+        display : none !important;
+    }
+    @keyframes @name {
+        0%, 100% {
+            transform : translate(0, 0) rotate(0);
+        }
+        25% {
+            transform : translate(@width * 0.4, @width * 0.4) rotate(45deg);
+        }
+        50% {
+            transform : translate(0px, @width * 0.8) rotate(0deg);
+        }
+        75% {
+            transform : translate(-@width * 0.4, @width * 0.4) rotate(45deg);
+        }
+    }
+}

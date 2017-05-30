@@ -1,0 +1,58 @@
+.bot {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : flex-start;
+    padding         : 2px @atom-space-base;
+    transition      : @atom-transition;
+    div.bot-image {
+        width               : 42px;
+        height              : 42px;
+        padding             : 4px;
+        margin-right        : @atom-space-small;
+        animation-fill-mode : @atom-animation-fill;
+        animation-duration  : @atom-animation-duration-in-fast;
+        animation-name      : zoomIn;
+        img {
+            padding : 0;
+            border  : none;
+        }
+    }
+    div.message-content {
+        animation-fill-mode : @atom-animation-fill;
+        animation-duration  : @atom-animation-duration-in-fast;
+        animation-name      : fadeIn;
+        div.from {
+            display         : flex;
+            flex-direction  : row;
+            justify-content : flex-start;
+            align-items     : baseline;
+            a.bot-name {
+                font-weight  : 500;
+                font-size    : 15px;
+                margin-right : @atom-space-small;
+                &.purple {
+                    color : @atom-color-purple;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-purple-active;
+                    }
+                }
+                &.green {
+                    color : @atom-color-green;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-green-active;
+                    }
+                }
+            }
+            span.sent-date {
+                color       : @atom-color-label;
+                font-weight : 400;
+                font-size   : @atom-font-h4;
+            }
+        }
+    }
+    &:hover {
+        background-color : @atom-color-line-rule-light;
+    }
+}

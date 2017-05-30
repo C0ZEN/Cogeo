@@ -1,0 +1,23 @@
+<div class="action-container"
+     ng-if="downloadActionDisplay">
+
+    <!-- Tooltip -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="'chat_actionBar_download'">
+
+        <!-- Action -->
+        <div class="action download-action purple-hover"
+             ng-click="methods.onClick($event)">
+
+            <!-- Link -->
+            <a class="download-link"
+               target="_self"
+               href="{{ _downloadActionSrc }}"
+               download="{{ _downloadActionName }}">
+
+                <!-- Icon -->
+                <i class="fa fa-fw fa-cloud-download"></i>
+            </a>
+        </div>
+    </cozen-tooltip>
+</div>

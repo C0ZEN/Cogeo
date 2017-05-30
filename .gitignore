@@ -1,0 +1,9 @@
+/node_modules/
+/dist/
+/.tmp/
+/.sass-cache
+/bower_components
+.idea
+/app/styles/main.min.css
+/release/
+/release-app/

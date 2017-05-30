@@ -1,0 +1,49 @@
+<div class="message-body atom-markdown-container"
+     id="message-user-{{ message._id }}"
+     ng-switch="message.category">
+
+    <!-- Text -->
+    <div ng-switch-when="text">
+        <div ng-include="'views/chat/messages/categories/chat.category.text.html'"></div>
+    </div>
+
+    <!-- Image -->
+    <div ng-switch-when="image">
+        <div ng-include="'views/chat/messages/categories/chat.category.image.html'"></div>
+    </div>
+
+    <!-- Pdf -->
+    <div ng-switch-when="pdf">
+        <div ng-include="'views/chat/messages/categories/chat.category.pdf.html'"></div>
+    </div>
+
+    <!-- Excel -->
+    <div ng-switch-when="excel">
+        <div ng-include="'views/chat/messages/categories/chat.category.excel.html'"></div>
+    </div>
+
+    <!-- Word -->
+    <div ng-switch-when="word">
+        <div ng-include="'views/chat/messages/categories/chat.category.word.html'"></div>
+    </div>
+
+    <!-- MP3 -->
+    <div ng-switch-when="mp3">
+        <div ng-include="'views/chat/messages/categories/chat.category.mp3.html'"></div>
+    </div>
+
+    <!-- Video -->
+    <div ng-switch-when="video">
+        <div ng-include="'views/chat/messages/categories/chat.category.video.html'"></div>
+    </div>
+
+    <!-- Powerpoint -->
+    <div ng-switch-when="powerpoint">
+        <div ng-include="'views/chat/messages/categories/chat.category.powerpoint.html'"></div>
+    </div>
+
+    <!-- Txt -->
+    <div ng-switch-when="txt">
+        <div ng-include="'views/chat/messages/categories/chat.category.txt.html'"></div>
+    </div>
+</div>

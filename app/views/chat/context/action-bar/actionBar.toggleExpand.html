@@ -1,0 +1,11 @@
+<div ng-if="vm.methods.isMediaPresent()"
+     class="link-dropdown-item"
+     tabindex="0"
+     ng-click="vm.methods.toggleExpand($event)">
+    <i class="fa fa-fw space-small-right"
+       ng-class="[vm.expandAll ? 'icons8-collapse' : 'icons8-expand']">
+    </i>
+    <span>
+        {{ (vm.expandAll ? 'chat_actionBar_options_toggleExpand_collapse' : 'chat_actionBar_options_toggleExpand_expand') | translate }}
+    </span>
+</div>

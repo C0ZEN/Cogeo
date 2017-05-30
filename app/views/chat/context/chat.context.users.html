@@ -1,0 +1,157 @@
+<div class="user-description">
+
+    <!-- Current user -->
+    <div ng-show="!botFactory.isBot(vm.activeFriend.username)"
+         class="line">
+        <a href
+           ui-sref="app.profiles.user({username: vm.activeFriend.username})"
+           ng-click="goTo.view('app.profiles.user', {username: vm.activeFriend.username})"
+           class="friend-name hover-link animated fadeInDown">
+            {{ vm.activeFriend.givenName }}
+            {{ vm.activeFriend.surname }}
+            {{ '@' + vm.activeFriend.username }}
+        </a>
+        <p class="friend-alias animated fadeInDown"
+           ng-show="vm.activeFriend.alias != ''">
+            {{ 'chat_alias' | translate }}
+            {{ vm.activeFriend.alias }}
+        </p>
+    </div>
+
+    <!-- Current user (bot) -->
+    <div ng-show="botFactory.isBot(vm.activeFriend.username)"
+         class="line">
+        <a href
+           ng-click="methods.showPopup($event, 'botProfile' + vm.activeFriend.username, {})"
+           class="friend-name hover-link animated fadeInDown">
+            {{ vm.activeFriend.username }}
+        </a>
+    </div>
+
+    <!-- Other info -->
+    <div class="line">
+
+        <!-- Status -->
+        <cozen-tooltip cozen-tooltip-label="vm.friendStatus.name"
+                       cozen-tooltip-placement="auto top">
+            <div class="atom-status-icon animated zoomIn"
+                 ng-style="{'background-color': vm.friendStatus.color}">
+            </div>
+        </cozen-tooltip>
+        <span class="status">{{ vm.friendStatus.name | translate }}</span>
+    </div>
+</div>
+
+<!-- Action bar -->
+<div class="chat-action-bar">
+
+    <!-- Call -->
+    <div class="action phone animated zoomIn">
+        <cozen-tooltip cozen-tooltip-label="'chat_actionBar_phone_simple'"
+                       cozen-tooltip-placement="auto top">
+            <i class="fa icons8-video-call"></i>
+        </cozen-tooltip>
+    </div>
+
+    <!-- Links -->
+    <div class="action options animated zoomIn"
+         ng-mouseenter="vm.actionBar.options.down = true"
+         ng-mouseleave="vm.actionBar.options.down = false">
+        <i class="fa fa-cog"></i>
+
+        <!-- Options dropdown -->
+        <div class="link-dropdown link-floating"
+             ng-style="{'min-width': '250px'}"
+             ng-show="vm.actionBar.options.down">
+
+            <!-- Social -->
+            <div class="link-dropdown-item link-dropdown-item-title">
+                {{ 'chat_actionBar_options_social' | translate }}
+            </div>
+
+            <!-- Profile -->
+            <div class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="botFactory.isBot(vm.activeFriend.username) ? methods.showPopup($event, 'botProfile' + vm.activeFriend.username, {}) : goTo.view('app.profiles.user', {username: vm.activeFriend.username})">
+                <i class="fa fa-fw icons8-user-male space-small-right"></i>
+                {{ 'chat_actionBar_options_user_profile' | translate }}
+            </div>
+            <div ng-show="!botFactory.isBot(vm.activeFriend.username)"
+                 class="link-dropdown-separator">
+            </div>
+
+            <!-- Actions -->
+            <div ng-show="!botFactory.isBot(vm.activeFriend.username)"
+                 class="link-dropdown-item link-dropdown-item-title">
+                {{ 'chat_actionBar_options_actions' | translate }}
+            </div>
+
+            <!-- Rename -->
+            <div ng-show="vm.activeFriend.blocked == 0 && !botFactory.isBot(vm.activeFriend.username)"
+                 class="link-dropdown-item"
+                 tabindex="0"
+                 ng-click="methods.showPopup($event, 'friendActionRename', vm.activeFriend)">
+                <i class="fa fa-fw icons8-edit space-small-right"></i>
+                {{ 'chat_actionBar_options_user_rename' | translate }}
+            </div>
+
+            <!-- Block -->
+            <div ng-show="vm.activeFriend.blocked == 0 && !botFactory.isBot(vm.activeFriend.username)"
+                 class="link-dropdown-item link-dropdown-item-red"
+                 tabindex="0"
+                 ng-click="methods.showPopup($event, 'friendActionBlock', vm.activeFriend)">
+                <i class="fa fa-fw icons8-no-chat space-small-right"></i>
+                {{ 'chat_actionBar_options_user_block' | translate }}
+            </div>
+
+            <!-- Unblock -->
+            <div ng-show="vm.activeFriend.blocked != 0 && !botFactory.isBot(vm.activeFriend.username)"
+                 class="link-dropdown-item link-dropdown-item-green"
+                 tabindex="0"
+                 ng-click="methods.showPopup($event, 'friendActionUnblock', vm.activeFriend)">
+                <i class="fa fa-fw icons8-chat space-small-right"></i>
+                {{ 'chat_actionBar_options_user_unblock' | translate }}
+            </div>
+
+            <!-- Remove -->
+            <div ng-show="vm.activeFriend.blocked == 0 && !botFactory.isBot(vm.activeFriend.username)"
+                 class="link-dropdown-item link-dropdown-item-red"
+                 tabindex="0"
+                 ng-click="methods.showPopup($event, 'friendActionRemove', vm.activeFriend)">
+                <i class="fa fa-fw icons8-trash space-small-right"></i>
+                {{ 'chat_actionBar_options_user_remove' | translate }}
+            </div>
+
+            <!-- Settings -->
+            <div class="link-dropdown-separator"></div>
+            <div class="link-dropdown-item link-dropdown-item-title">
+                {{ 'chat_actionBar_options_settings' | translate }}
+            </div>
+
+            <!-- Include the common toggle btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.toggleLeftMenu.html'">
+            </div>
+
+            <!-- Include the common expand/collapse btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.toggleExpand.html'">
+            </div>
+
+            <!-- Include the common change volume link -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.changeVolume.html'">
+            </div>
+
+            <!-- Include the common pause media btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.pauseMedia.html'">
+            </div>
+
+            <!-- Include the common stop media btn -->
+            <div class="link-included"
+                 ng-include="'views/chat/context/action-bar/actionBar.stopMedia.html'">
+            </div>
+        </div>
+    </div>
+</div>

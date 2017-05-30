@@ -1,0 +1,18 @@
+<div class="action-container"
+     ng-if="accordionActionDisplay">
+
+    <!-- Tooltip -->
+    <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                   cozen-tooltip-label="accordionActionExpanded ? 'chat_actionBar_accordion_collapsed' : 'chat_actionBar_accordion_expanded'">
+
+        <!-- Action -->
+        <div class="action accordion-action blue-hover"
+             ng-click="methods.onClick($event)">
+
+            <!-- Icon -->
+            <i class="fa fa-fw"
+               ng-class="[accordionActionExpanded ? 'icons8-collapse' : 'icons8-expand']">
+            </i>
+        </div>
+    </cozen-tooltip>
+</div>

@@ -1,0 +1,116 @@
+<div class="mp3">
+
+    <!-- Line 1 -->
+    <div class="line-1">
+
+        <!-- Text -->
+        <span class="text">
+            {{ ('chat_upload_mp3_text' | translate) + (!message.expanded ? ':' : '') }}
+        </span>
+
+        <!-- Name -->
+        <a ng-show="!message.expanded"
+           target="_self"
+           href="{{ message.content.url }}"
+           download="{{ message.content.name }}"
+           class="name">
+            {{ message.content.fullName }}
+        </a>
+
+        <!-- Icon expand -->
+        <div class="icon-expand"
+             ng-click="message.expanded = !message.expanded; vm.methods.onToggleSingleExpanded();">
+            <i class="fa fa-fw fa-caret-down"
+               ng-class="{'caret-left': !message.expanded}">
+            </i>
+        </div>
+
+        <!-- Icon sound -->
+        <div ng-show="!message.expanded && !message.sound.paused"
+             class="icon-sound">
+            <cozen-tooltip cozen-tooltip-placement="auto right"
+                           cozen-tooltip-label="'chat_icon_sound_tp'">
+                <i class="fa fa-fw icons8-speaker"></i>
+            </cozen-tooltip>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="document-toast"
+         ng-mouseenter="message.content.onHover = true"
+         ng-mouseleave="message.content.onHover = false"
+         ng-class="{'hidden-height': !message.expanded}">
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- Img -->
+            <div class="img">
+                <img height="37"
+                     ng-src="images/chat/MP3-96.png">
+            </div>
+
+            <!-- Multiple lines block -->
+            <div class="column-block">
+
+                <!-- Name -->
+                <span class="name">{{ message.content.name }}</span>
+
+                <!-- Row -->
+                <div class="row">
+
+                    <!-- Size -->
+                    <span class="size">{{ message.content.size }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Separator -->
+        <div class="separator"></div>
+
+        <!-- Row -->
+        <div class="row mp3-timeline-container">
+
+            <!-- Progress bar -->
+            <div class="mp3-timeline">
+                <div class="mp3-timeline-progress"
+                     ng-style="{'width': (message.sound.progress * 100 + '%')}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Row -->
+        <div class="row center">
+            <div class="left">
+
+                <!-- Audio time -->
+                <span class="time">{{ message.sound.currentTime | trackTime }}</span>
+            </div>
+            <div class="center">
+
+                <!-- Play -->
+                <div class="toast-btn play"
+                     ng-click="message.sound.play()">
+                    <i class="fa fa-fw icons8-play"></i>
+                </div>
+
+                <!-- Pause -->
+                <div class="toast-btn pause"
+                     ng-click="message.sound.pause()">
+                    <i class="fa fa-fw icons8-pause"></i>
+                </div>
+
+                <!-- Stop -->
+                <div class="toast-btn stop"
+                     ng-click="message.sound.stop()">
+                    <i class="fa fa-fw icons8-stop"></i>
+                </div>
+            </div>
+            <div class="right">
+
+                <!-- Audio time -->
+                <span class="time">{{ message.sound.remaining | trackTime }}</span>
+            </div>
+        </div>
+    </div>
+</div>

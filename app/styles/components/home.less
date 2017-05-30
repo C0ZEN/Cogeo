@@ -1,0 +1,178 @@
+section {
+    padding : @atom-space-extra-large 0;
+}
+aside {
+    padding : @atom-space-large 0;
+}
+header {
+    position              : relative;
+    width                 : 100%;
+    background-image      : url('../../images/home/background.png');
+    background-position-y: -132px;
+    background-position: center;
+    background-size: cover;
+    text-align            : center;
+    margin-top            : -60px;
+    height                : 100vh;
+}
+header .header-content {
+    text-align : center;
+    width      : 100%;
+    position   : absolute;
+    top        : 50%;
+    transform  : translateY(-50%);
+    padding    : 0 50px;
+}
+header .header-content .header-content-inner h1 {
+    font-weight    : 700;
+    text-transform : uppercase;
+    margin-top     : 0;
+    margin-bottom  : 0;
+}
+section hr,
+header .header-content .header-content-inner hr {
+    margin : @atom-space-large auto;
+}
+header .header-content .header-content-inner h2 {
+    font-weight : 300;
+    margin-top  : 0;
+}
+@media (min-width : 768px) {
+    header {
+        min-height : 100%;
+    }
+    header .header-content .header-content-inner {
+        max-width    : 1000px;
+        margin-left  : auto;
+        margin-right : auto;
+    }
+    header .header-content .header-content-inner h1 {
+        font-size : 50px;
+    }
+    header .header-content .header-content-inner h2 {
+        max-width    : 80%;
+        margin-left  : auto;
+        margin-right : auto;
+    }
+}
+.section-heading {
+    margin-top  : 0;
+    font-size   : 36px;
+    font-weight : 500;
+}
+.service-box {
+    max-width : 400px;
+    margin    : @atom-space-large auto 0;
+    i {
+        margin-bottom : @atom-space-base;
+    }
+    p {
+        margin-bottom : 0;
+        font-size     : @atom-font-h3;
+    }
+}
+@media (min-width : 992px) {
+    .service-box {
+        margin : @atom-space-medium auto 0;
+    }
+}
+.portfolio-box {
+    position  : relative;
+    display   : block;
+    max-width : 650px;
+    margin    : 0 auto;
+}
+.portfolio-box .portfolio-box-caption {
+    color      : @atom-color-white;
+    opacity    : 0;
+    display    : block;
+    background : fade(@atom-color-blue, 90%);
+    position   : absolute;
+    bottom     : 0;
+    text-align : center;
+    width      : 100%;
+    height     : 100%;
+    transition : @atom-transition;
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
+    width      : 100%;
+    text-align : center;
+    position   : absolute;
+    top        : 50%;
+    transform  : translateY(-50%);
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    padding : 0 15px;
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+    text-transform : uppercase;
+    font-weight    : 500;
+    font-size      : @atom-font-h2;
+}
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    font-size   : 22px;
+    font-weight : 400;
+}
+.portfolio-box:hover .portfolio-box-caption {
+    opacity : 1;
+}
+.portfolio-box:focus {
+    outline : none;
+}
+.call-to-action h2 {
+    margin : 0 auto @atom-space-medium;
+}
+.text-primary {
+    color : @atom-color-blue;
+}
+.no-gutter > [class*='col-'] {
+    padding-right : 0;
+    padding-left  : 0;
+}
+section h3 {
+    margin-top  : 10px;
+    font-size   : 24px;
+    font-weight : 500;
+}
+section .home-bot {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : center;
+    align-items     : center;
+    img {
+        margin-right : @atom-space-large;
+        width        : 109px;
+        height       : 109px;
+    }
+}
+.icon-type-devices {
+    display         : flex;
+    flex-direction  : row;
+    justify-content : space-between;
+    align-items     : center;
+}
+aside#footer {
+    div.links {
+        display         : flex;
+        flex-direction  : row;
+        justify-content : space-around;
+        align-items     : flex-start;
+        h4 {
+            font-weight : 600;
+        }
+        a {
+            color         : @atom-color-font;
+            margin-bottom : @atom-space-small;
+            display       : table;
+            outline       : @atom-outline;
+            font-weight   : 500;
+            &:active,
+            &:focus,
+            &:hover {
+                color           : @atom-color-blue;
+                text-decoration : underline;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "errors_1": "You are not login ! <small>{{date}}</small>",
+    "errors_2": "The password is not correct ! <small>{{date}}</small>",
+    "errors_3": "This username <strong>{{username}}</strong> doesn't exist ! <small>{{date}}</small>",
+    "errors_200": "This group name <strong>{{groupName}}</strong> is already taken ! <small>{{date}}</small>",
+    "errors_103": "This username <strong>{{username}}</strong> is already taken ! <small>{{date}}</small>",
+    "errors_104": "This email <strong>{{email}}</strong> is already taken ! <small>{{date}}</small>",
+    "errors_105": "The current password is not matching ! <small>{{date}}</small>",
+    "errors_106": "This username is reserved by Friendybot ! <small>{{date}}</small>",
+    "errors_107": "This username is reserved by Spamobot ! <small>{{date}}</small>",
+    "errors_300": "A channel with the same name already exist in the group {{groupName}} ! <small>{{date}}</small>",
+    "errors_301": "The channel name is not set ! <small>{{date}}</small>",
+    "errors_302": "At least one channel must be by default ! <small>{{date}}</small>",
+    "errors_undefined": "An unknown error occurred ! <small>{{date}}</small>",
+    "errors_": "An unknown error occurred ! <small>{{date}}</small>",
+    "errors_disconnected": "Logout"
+}

@@ -1,0 +1,35 @@
+span.text {
+    color       : @atom-color-font;
+    font-weight : 400;
+    font-size   : @atom-font-body;
+}
+div.edit-container {
+    div.row,
+    form.row {
+        display         : flex;
+        flex-direction  : row;
+        justify-content : space-between;
+        align-items     : center;
+        margin          : 0;
+        padding         : 0;
+        width           : 100%;
+        cozen-textarea {
+            flex : 1;
+            div.cozen-tooltip-html,
+            div.cozen-tooltip-default {
+                display : inline-grid;
+                width   : 100%;
+                textarea {
+                    max-height : 149px;
+                    &.overflow-textarea {
+                        overflow-y : auto !important;
+                    }
+                }
+            }
+        }
+        &.btn-line {
+            justify-content : flex-start;
+            margin          : @atom-space-base 0 @atom-space-small 0;
+        }
+    }
+}

@@ -1,0 +1,139 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.initInvitationsReceived()">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <!-- Title -->
+            <h1>{{ 'INVITATIONS.RECEIVED.TITLE' | translate }}</h1>
+            <p class="help-text space-medium-after">{{ 'INVITATIONS.RECEIVED.SUBTITLE_1' | translate }}</p>
+
+            <!-- Invitations -->
+            <div ng-show="vm.invitationsReceived.length > 0"
+                 class="atom-invitations-received space-base-before space-base-after">
+                <div class="atom-invitation-received"
+                     ng-class="{'border-bottom': $last,
+                     'user': invitationReceived.tag == 'user',
+                     'group': invitationReceived.tag == 'group',
+                     'channel': invitationReceived.tag == 'channel'}"
+                     ng-repeat="invitationReceived in vm.invitationsReceived
+                       | orderBy: 'date':vm.settingsInvitations.orderBy
+                       as invitationsReceivedFilter track by $index"
+                     ng-switch="invitationReceived.tag">
+
+                    <!-- Type user -->
+                    <div ng-switch-when="user">
+                        <div class="img">
+                            <img class="img-circle img-thumbnail"
+                                 ng-src="{{ usersFactory.getUserImage(invitationReceived.sentBy) }}">
+                        </div>
+                        <div class="text">
+                            <p>
+                                {{ invitationReceived.givenName }} {{ invitationReceived.surname }}
+                                <small>
+                                    <a href
+                                       ng-click="goTo.view('app.profiles.user', {username: invitationReceived.sentBy}, $event)"
+                                       ui-sref="app.profiles.user({username: invitationReceived.sentBy})">
+                                        @{{ invitationReceived.sentBy }}
+                                    </a>
+                                </small>
+                                {{ 'INVITATIONS.RECEIVED.INVITE_YOU' | translate }}
+                            </p>
+                            <p class="help-text">
+                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn | date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
+                            </p>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="action-btn">
+                            <invitation-action invitation-action-accept="true"
+                                               invitation-action-accept-data="invitationReceived"
+                                               invitation-action-refuse="true"
+                                               invitation-action-refuse-data="invitationReceived">
+                            </invitation-action>
+                        </div>
+                    </div>
+
+                    <!-- Type group -->
+                    <div ng-switch-when="group">
+                        <div class="img">
+                            <img class="img-circle img-thumbnail"
+                                 ng-src="{{ groupsFactory.getGroupPictureByGroupId(invitationReceived.groupId, invitationReceived.groupName) }}">
+                        </div>
+                        <div class="text">
+                            <p>
+                                {{ invitationReceived.givenName }} {{ invitationReceived.surname }}
+                                <small>
+                                    <a href
+                                       ng-click="goTo.view('app.profiles.user', {username: invitationReceived.sentBy}, $event)"
+                                       ui-sref="app.profiles.user({username: invitationReceived.sentBy})">
+                                        @{{ invitationReceived.sentBy }}
+                                    </a>
+                                </small>
+                                <span cozen-compile="'INVITATIONS.RECEIVED.INVITE_IN_GROUP' | translate:{groupName: invitationReceived.groupName}"></span>
+                            </p>
+                            <p class="help-text">
+                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn | date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
+                            </p>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="action-btn">
+                            <invitation-action invitation-action-accept="true"
+                                               invitation-action-accept-data="invitationReceived"
+                                               invitation-action-refuse="true"
+                                               invitation-action-refuse-data="invitationReceived">
+                            </invitation-action>
+                        </div>
+                    </div>
+
+                    <!-- Type channel -->
+                    <div ng-switch-when="channel">
+                        <div class="img">
+                            <img class="img-circle img-thumbnail"
+                                 ng-src="{{ channelsFactory.getChannelPicture(invitationReceived.groupName, invitationReceived.channelId) }}">
+                        </div>
+                        <div class="text">
+                            <p>
+                                {{ invitationReceived.givenName }} {{ invitationReceived.surname }}
+                                <small>
+                                    <a href
+                                       ng-click="goTo.view('app.profiles.user', {username: invitationReceived.sentBy}, $event)"
+                                       ui-sref="app.profiles.user({username: invitationReceived.sentBy})">
+                                        @{{ invitationReceived.sentBy }}
+                                    </a>
+                                </small>
+                                <span cozen-compile="'INVITATIONS.RECEIVED.INVITE_IN_CHANNEL' | translate:{groupName: invitationReceived.groupName, channelName: invitationReceived.channelName}"></span>
+                            </p>
+                            <p class="help-text">
+                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn | date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
+                            </p>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="action-btn">
+                            <invitation-action invitation-action-accept="true"
+                                               invitation-action-accept-data="invitationReceived"
+                                               invitation-action-refuse="true"
+                                               invitation-action-refuse-data="invitationReceived">
+                            </invitation-action>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invitations fake (for actual length) -->
+                <div style="display: none;"
+                     ng-repeat="invitationReceived in vm.invitationsReceived
+                       as fakeInvitationsReceivedFilter track by $index">
+                </div>
+            </div>
+
+            <!-- Info message for empty invitations -->
+            <cozen-alert cozen-alert-display="vm.invitationsReceived.length == 0"
+                         cozen-alert-label="'INVITATIONS.RECEIVED.NO_INVITATIONS'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-before space-base-after"
+                         cozen-alert-type-info>
+            </cozen-alert>
+        </div>
+    </div>
+</div>

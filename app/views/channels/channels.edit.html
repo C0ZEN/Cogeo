@@ -1,0 +1,107 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.onInitEdit()">
+    <div class="row">
+        <div class="col-xs-12">
+            <cozen-form cozen-form-name="edit"
+                        cozen-form-ctrl="vm"
+                        cozen-form-model="form">
+
+                <!-- Name -->
+                <cozen-input cozen-input-model="vm.editedChannel.name"
+                             cozen-input-name="{{ vm.CONFIG.internal.channel.name.name }}"
+                             cozen-input-max-length="{{ vm.CONFIG.internal.channel.name.length }}"
+                             cozen-input-pattern="{{ vm.CONFIG.internal.channel.name.pattern }}"
+                             cozen-input-label="channels_register_name"
+                             cozen-input-placeholder="channels_register_name_pc"
+                             cozen-input-validator-all
+                             cozen-input-required="{{ vm.CONFIG.internal.channel.name.required }}"
+                             cozen-input-class="space-medium-after">
+                </cozen-input>
+
+                <!-- Description -->
+                <cozen-textarea cozen-textarea-model="vm.editedChannel.description"
+                                cozen-textarea-name="{{ vm.CONFIG.internal.channel.description.name }}"
+                                cozen-textarea-max-length="{{ vm.CONFIG.internal.channel.description.maxLength }}"
+                                cozen-textarea-min-length="{{ vm.CONFIG.internal.channel.description.minLength }}"
+                                cozen-textarea-label="groups_register_description"
+                                cozen-textarea-placeholder="'groups_register_description_pc'"
+                                cozen-textarea-validator-all
+                                cozen-textarea-elastic="false"
+                                cozen-textarea-required="{{ vm.CONFIG.internal.channel.description.required }}"
+                                cozen-textarea-class="space-medium-after">
+                </cozen-textarea>
+
+                <!-- Picture -->
+                <cozen-btn cozen-btn-upload-model="vm.editedChannel.picture"
+                           cozen-btn-is-upload="true"
+                           cozen-btn-upper-label="channels_register_profile_picture"
+                           cozen-btn-label="'account_profile_picture_upload'">
+                </cozen-btn>
+                <p class="help-block space-small-before space-medium-after">
+                    {{ 'account_profile_date_last_update'
+                    | translate:"{date:'" + (vm.editedChannel.date.lastUpdate | date: 'EEEE dd MMMM yyyy') + "'}" }}
+                </p>
+
+                <!-- Toggle private -->
+                <cozen-btn-toggle cozen-btn-toggle-label="channels_register_private"
+                                  cozen-btn-toggle-tooltip="channels_register_private_tp"
+                                  cozen-btn-toggle-tooltip-max-width="'max-width-400'"
+                                  cozen-btn-toggle-model="vm.editedChannel.private"
+                                  cozen-btn-toggle-class="space-base-after"
+                                  cozen-btn-toggle-on-change="vm.editedChannel.byDefault = false">
+                </cozen-btn-toggle>
+
+                <!-- Toggle default -->
+                <cozen-btn-toggle cozen-btn-toggle-disabled="!vm.canAddDefaultChannel"
+                                  cozen-btn-toggle-label="channels_register_default"
+                                  cozen-btn-toggle-tooltip="{{ (vm.canAddDefaultChannel ? 'channels_register_default_tp' : 'channels_register_default_tp_disabled') | translate }}"
+                                  cozen-btn-toggle-tooltip-max-width="'max-width-400'"
+                                  cozen-btn-toggle-tooltip-type="html"
+                                  cozen-btn-toggle-model="vm.editedChannel.byDefault"
+                                  cozen-btn-toggle-class="space-base-after"
+                                  cozen-btn-toggle-on-change="vm.editedChannel.private = false">
+                </cozen-btn-toggle>
+
+                <!-- Toggle starred -->
+                <cozen-btn-toggle cozen-btn-toggle-label="channels_register_starred"
+                                  cozen-btn-toggle-tooltip="{{ 'channels_register_starred_tp' | translate }}"
+                                  cozen-btn-toggle-tooltip-max-width="'max-width-400'"
+                                  cozen-btn-toggle-tooltip-type="html"
+                                  cozen-btn-toggle-model="vm.editedChannel.isStarred"
+                                  cozen-btn-toggle-class="space-medium-after">
+                </cozen-btn-toggle>
+
+                <div class="center-flex-content space-medium-after">
+
+                    <!-- Edit btn -->
+                    <cozen-btn class="animated fadeInUp"
+                               cozen-btn-label="'account_settings_save'"
+                               cozen-btn-id="submit-edit-channel-btn"
+                               cozen-btn-auto-sizing="true"
+                               cozen-btn-type-success
+                               cozen-btn-loader="vm.loading"
+                               cozen-btn-disabled="vm.form.edit.$invalid"
+                               cozen-btn-on-click="vm.methods.updateChannel()"
+                               cozen-btn-icon-right="fa icons8-clouds-filled">
+                    </cozen-btn>
+
+                    <!-- Remove btn -->
+                    <a ng-show="vm.channels.length > 1"
+                       href
+                       class="animated fadeInUp"
+                       onclick="this.blur()"
+                       ng-click="methods.showPopup($event, 'channelRemove', {
+                            groupName: vm.group.name,
+                            channel: vm.editedChannel
+                       })">
+                        {{ 'channels_edit_remove' | translate }}
+                    </a>
+                </div>
+            </cozen-form>
+        </div>
+    </div>
+</div>
+
+<cozen-btn-lazy-test cozen-btn-lazy-test-label="Random description"
+                     cozen-btn-lazy-test-on-click="vm.editedChannel.description = cozenLazyLoadRandom.getRandomSentence(15)">
+</cozen-btn-lazy-test>

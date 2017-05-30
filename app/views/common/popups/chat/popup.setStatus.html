@@ -1,0 +1,33 @@
+<cozen-popup cozen-popup-size-small
+             cozen-popup-name="chatSetStatus"
+             cozen-popup-type-info
+             cozen-popup-header-title="'popup_chat_setStatus_title'"
+             cozen-popup-on-show="popup.methods.onInitChatSetStatus()">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 class="space-large-before no-margin-bottom">{{ 'popup_chat_setStatus_body_title' | translate }}</h3>
+            <p class="no-margin-top space-large-after help-text">{{ 'popup_chat_setStatus_body_subtitle' | translate }}</p>
+        </div>
+        <div class="col-xs-12 space-large-after text-center">
+            <cozen-form cozen-form-name="chatSetStatus"
+                        cozen-form-ctrl="popup"
+                        cozen-form-model="form">
+
+                <!-- Status -->
+                <cozen-dropdown cozen-dropdown-model="popup.chatSetStatus.trash"
+                                cozen-dropdown-validator-all
+                                cozen-dropdown-single-display-selected-label="true"
+                                cozen-dropdown-label="popup_chat_setStatus_body_status"
+                                cozen-dropdown-placeholder="popup_chat_setStatus_body_status_pc"
+                                cozen-dropdown-required="true">
+                    <cozen-dropdown-item-simple ng-repeat="status in popup.chatSetStatus.status track by $index"
+                                                cozen-dropdown-item-simple-value="status.id"
+                                                cozen-dropdown-item-simple-label="{{ status.name }}"
+                                                cozen-dropdown-item-simple-icon-left="{{ event.icon }} {{ event.color }}"
+                                                cozen-dropdown-item-simple-selected="status.active">
+                    </cozen-dropdown-item-simple>
+                </cozen-dropdown>
+            </cozen-form>
+        </div>
+    </div>
+</cozen-popup>

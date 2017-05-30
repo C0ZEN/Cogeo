@@ -1,0 +1,62 @@
+div.atom-chat {
+    height         : ~"calc(100vh - 63px)";
+    display        : flex;
+    flex-direction : row;
+    padding        : 0;
+    border-top     : 3px solid @atom-color-line-rule;
+    position       : relative;
+
+    // Stars
+    div.full-star,
+    div.empty-star {
+        outline : @atom-outline;
+        cursor  : pointer;
+        color   : @atom-color-label;
+        z-index : 1;
+        i {
+            cursor : inherit;
+            color  : inherit;
+        }
+        &:hover,
+        &:focus {
+            color : @atom-color-yellow;
+        }
+        &.disabled {
+            cursor : not-allowed;
+            &:hover,
+            &:focus {
+                color : @atom-color-label;
+            }
+        }
+    }
+
+    // Status
+    div.atom-status-icon {
+        border-radius : 50%;
+        width         : 10px;
+        height        : 10px;
+        cursor        : pointer;
+        display       : flex;
+    }
+
+    .atom-chat-theme(channel, green);
+    .atom-chat-theme(social, purple);
+
+    // Change the absolute position of elements if the user don't have groups
+    &.hidden-column-groups {
+        div.chat-channels-container {
+            left : 0;
+            &.hidePanelToLeft {
+                left : -@atom-chat-channels-container-width;
+            }
+        }
+        div.chat-col {
+            left  : @atom-chat-channels-container-width;
+            width : ~"calc(100% - @{atom-chat-channels-container-width})";
+            &.hidePanelToLeft {
+                left  : 0;
+                width : 100%;
+            }
+        }
+    }
+}

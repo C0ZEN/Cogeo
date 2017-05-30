@@ -1,0 +1,62 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.initSettings()">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <!-- Network -->
+            <h3 class="no-margin-top blue">
+                <i class="icons-middle icons8-network"></i>
+                {{ 'account_settings_network_title' | translate }}
+            </h3>
+            <h4>
+                <strong>{{ 'account_settings_network_port_1' | translate }}:</strong>
+                {{ vm.settings.ports.first }}
+            </h4>
+            <h4 class="space-medium-after">
+                <strong>{{ 'account_settings_network_port_2' | translate }}:</strong>
+                {{ vm.settings.ports.second }}
+            </h4>
+
+            <!-- Micro -->
+            <h3 class="space-large-before space-base-after green">
+                <i class="icons-middle icons8-microphone"></i>
+                {{ 'account_settings_micro_title' | translate }}
+            </h3>
+            <h4>
+                <strong>{{ 'account_settings_micro_volume' | translate }}:</strong>
+                {{ vm.settings.micro.volume }}%
+            </h4>
+
+            <!-- Speaker -->
+            <h3 class="space-large-before space-base-after purple">
+                <i class="icons-middle icons8-speaker"></i>
+                {{ 'account_settings_speaker_title' | translate }}
+            </h3>
+            <h4>
+                <strong>{{ 'account_settings_speaker_volume' | translate }}:</strong>
+                {{ vm.settings.speaker.volume }}%
+            </h4>
+
+            <!-- Other -->
+            <h3 class="space-large-before space-base-after yellow">
+                <i class="icons-middle icons8-settings"></i>
+                {{ 'account_settings_other_title' | translate }}
+            </h3>
+            <h4 class="space-base-after">
+                <strong>{{ 'account_settings_other_download_path' | translate }}:</strong>
+                {{ vm.settings.downloadPath }}
+            </h4>
+            <h4 class="space-medium-after">
+                <strong>{{ 'account_settings_other_language' | translate }}:</strong>
+                {{ cozenLanguage.getExtendedLabel(vm.settings.language) }}
+            </h4>
+
+            <!-- Edit btn -->
+            <cozen-btn cozen-btn-label="'account_settings_edit'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="goTo.view('app.account.settingsEdit')"
+                       cozen-btn-class="space-medium-after animated fadeInUp">
+            </cozen-btn>
+        </div>
+    </div>
+</div>

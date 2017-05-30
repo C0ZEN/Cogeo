@@ -1,0 +1,116 @@
+<div class="full-center-content"
+     ng-class="vm.stepForward ? 'anim-slide-left' : 'anim-slide-right'"
+     ng-init="vm.methods.checkData(3)">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div>
+
+                <!-- Title -->
+                <div class="no-padding col-xs-12 col-sm-10 col-sm-push-1 col-md-12 col-md-push-0 col-lg-12 col-lg-push-0">
+                    <h1 class="no-margin-top">{{ 'groups_new_3_title' | translate:{groupName: vm.newGroup.name} }}</h1>
+                    <p class="help-text">{{ 'groups_new_3_subtitle_1' | translate }}</p>
+
+                    <!-- Quicklink -->
+                    <h3 class="space-large-before space-small-after">{{ 'groups_recruit_quicklink' | translate }}</h3>
+                    <div ng-include="'views/groups/common/quicklink.html'"></div>
+                </div>
+
+                <!-- Form -->
+                <div class="no-padding col-xs-12 col-sm-10 col-sm-push-1 col-md-12 col-md-push-0 col-lg-12 col-lg-push-0">
+                    <cozen-form cozen-form-name="newGroup3"
+                                cozen-form-ctrl="vm"
+                                cozen-form-model="form"
+                                cozen-form-class="space-medium-before">
+
+                        <!-- Invite users -->
+                        <div ng-show="vm.availableUsers.length > 0">
+
+                            <!-- Select Cogeo members -->
+                            <cozen-dropdown cozen-dropdown-model="vm.availableUsersSelected"
+                                            cozen-dropdown-label="groups_recruit_cogeoUsers_dropdown_label"
+                                            cozen-dropdown-multiple="true"
+                                            cozen-dropdown-model-enhanced="count"
+                                            cozen-dropdown-class="space-small-after"
+                                            cozen-dropdown-success-design="false"
+                                            cozen-dropdown-error-design="false"
+                                            cozen-dropdown-all-selected-text="groups_recruit_cogeoUsers_dropdown_allSelectedText"
+                                            cozen-dropdown-count-text="groups_recruit_cogeoUsers_dropdown_countText"
+                                            cozen-dropdown-placeholder="groups_recruit_cogeoUsers_dropdown_pc">
+                                <cozen-dropdown-item-search cozen-dropdown-item-search-placeholder="groups_recruit_cogeoUsers_dropdown_search_pc"
+                                                            cozen-dropdown-item-search-empty-text="groups_recruit_cogeoUsers_dropdown_search_empty">
+                                </cozen-dropdown-item-search>
+                                <cozen-dropdown-item-simple ng-repeat="user in vm.availableUsers track by $index"
+                                                            cozen-dropdown-item-simple-value="user.username"
+                                                            cozen-dropdown-item-simple-sub-label="@{{ user.username }}"
+                                                            cozen-dropdown-item-simple-selected="user.isSelected"
+                                                            cozen-dropdown-item-simple-label="{{ user.givenName + ' ' + user.surname }}">
+                                </cozen-dropdown-item-simple>
+                            </cozen-dropdown>
+
+                            <!-- List of selected Cogeo members -->
+                            <label ng-if-start="vm.availableUsersSelected.length > 0"
+                                   cozen-compile="vm.availableUsersSelected.length == 1 ? ('groups_recruit_cogeoUsers_selected_user' | translate) : ('groups_recruit_cogeoUsers_selected_users' | translate)"
+                                   class="space-small-after space-medium-before atom-label">
+                            </label>
+                            <div ng-if-end
+                                 class="atom-inline-list space-base-after">
+                                <div ng-if="user.isSelected"
+                                     ng-repeat="user in vm.availableUsers track by $index"
+                                     class="atom-list-item-container">
+                                    <div class="atom-inline-item"
+                                         style="animation-delay: {{ 50 * $index + 'ms' }};"
+                                         ng-class="[$last ? 'border-bottom' : '']">
+                                        <span>
+                                            {{ user.givenName + ' ' + user.surname }}
+                                            <small>
+                                                <a href
+                                                   ng-click="goTo.view('app.profiles.user', {username: user.username}, $event)"
+                                                   ui-sref="app.profiles.user({username: user.username})">
+                                                    @{{ user.username }}
+                                                </a>
+                                            </small>
+                                        </span>
+                                    </div>
+                                    <div class="atom-remove-btn"
+                                         ng-click="user.isSelected = false">
+                                        <i class="fa fa-fw icons8-trash"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- If not availableUsers -->
+                        <cozen-alert cozen-alert-display="vm.availableUsers.length == 0"
+                                     cozen-alert-label="'groups_new_3_no_friends'"
+                                     cozen-alert-type-info
+                                     cozen-alert-close-btn="false">
+                        </cozen-alert>
+
+                        <div class="center-flex-content space-medium-before space-medium after">
+
+                            <!-- Submit -->
+                            <cozen-btn cozen-btn-label="'groups_new_3_create_group' | translate:{groupName: vm.newGroup.name}"
+                                       cozen-btn-auto-sizing="true"
+                                       cozen-btn-disabled="vm.form.newGroup3.$invalid"
+                                       cozen-btn-loader="vm.loading"
+                                       cozen-btn-on-click="vm.methods.createGroup()"
+                                       cozen-btn-icon-right="fa fa-fw fa-arrow-right"
+                                       cozen-btn-id="submit-btn-new-group-step-3">
+                            </cozen-btn>
+
+                            <!-- Back -->
+                            <a href
+                               ng-click="vm.methods.goStepBackward(2);"
+                               ui-sref="app.groupNew.secondStep">
+                                {{ 'groups_new_3_change_settings' | translate }}
+                            </a>
+                        </div>
+                    </cozen-form>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-6 background-blue-flat">
+            <img ng-src="images/bg/groups-users.png">
+        </div>
+    </div>
+</div>

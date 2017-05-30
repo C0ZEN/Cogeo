@@ -1,0 +1,53 @@
+<div class="container space-large-before animated fadeIn">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
+
+            <!-- Title -->
+            <h1 ng-show="goTo.isCurrentView('app.groups.all')">{{ 'groups_groups_title' | translate:{quantity: vm.groups.length} }}</h1>
+            <h1 ng-show="!goTo.isCurrentView('app.groups.all')">
+                {{ 'groups_groups_title_name' | translate:{groupName: vm.params.groupName} }}
+            </h1>
+            <p class="help-text space-medium-after">{{ 'groups_groups_subtitle' | translate }}</p>
+
+            <!-- Nav -->
+            <cozen-pills cozen-pills-class="space-large-after"
+                         cozen-pills-auto-update-model="false">
+                <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_all"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.groups.all')"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.groups.all')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_details"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.groups.details', {'groupName': vm.details.group.name})"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all')"
+                                         cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.groups.details', 'app.groups.edit')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_members"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.groups.members', {'groupName': vm.details.group.name})"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.groups.members')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="groups_pills_invitations"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.groups.invitations', {'groupName': vm.details.group.name})"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
+                                         cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.groups.invitations', 'app.groups.recruit')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_log"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.groups.log', {'groupName': vm.details.group.name})"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
+                                         cozen-pills-item-simple-selected="goTo.isCurrentView('app.groups.log')">
+                </cozen-pills-item-simple>
+                <cozen-pills-item-simple cozen-pills-item-simple-label="account_pills_channels"
+                                         cozen-pills-item-simple-on-click="goTo.view('app.channels.all', {'groupName': vm.details.group.name})"
+                                         cozen-pills-item-simple-type-green
+                                         cozen-pills-item-simple-icon-right="fa fa-fw fa-arrow-right"
+                                         cozen-pills-item-simple-disabled="goTo.isCurrentView('app.groups.all') || vm.details.group == null"
+                                         cozen-pills-item-simple-selected="goTo.isOneOfThoseViews('app.channels.all')"
+                                         class="margin-left-auto">
+                </cozen-pills-item-simple>
+            </cozen-pills>
+
+            <!-- Content -->
+            <div class="ui-view"></div>
+        </div>
+    </div>
+</div>

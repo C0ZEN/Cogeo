@@ -1,0 +1,211 @@
+.atom-chat-theme(@name, @color) {
+
+    // Generated variables
+    @background2 : "atom-color-@{color}-background2";
+    @background3 : "atom-color-@{color}-background3";
+    @background4 : "atom-color-@{color}-background4";
+    @background5 : "atom-color-@{color}-background5";
+    @border1 : "atom-color-@{color}-border1";
+    @border2 : "atom-color-@{color}-border2";
+    @title : "atom-color-@{color}-title";
+    @title-hover : "atom-color-@{color}-title-hover";
+    @text : "atom-color-@{color}-text";
+    @text-hover : "atom-color-@{color}-text-hover";
+
+    // Theme
+    &.@{name}-theme {
+        div.chat-groups-container {
+            color            : @@text;
+            a {
+                color : @@text;
+                &:hover,
+                &:focus,
+                &:active {
+                    color : @@text-hover;
+                }
+            }
+            h3 {
+                color : @@title;
+            }
+            background-color : @@background2;
+            border-right     : 1px solid @@border1;
+            div.chat-group {
+                img {
+                    border : 2px solid @@border2;
+                }
+                &.active {
+                    img {
+                        border : 2px solid @atom-color-yellow;
+                    }
+                }
+            }
+        }
+        div.chat-channels-container {
+            color            : @@text;
+            a {
+                color : @@text;
+                &:hover,
+                &:focus,
+                &:active {
+                    color : @@text-hover;
+                }
+            }
+            h3 {
+                color : @@title;
+            }
+            border-right     : 1px solid @@border1;
+            background-color : @@background4;
+            div.chat-active-group {
+                background-color : @@background3;
+                border-bottom    : 1px solid @@border1;
+                a.group-name {
+                    color : @atom-color-yellow;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-yellow-active;
+                    }
+                }
+                p.hello {
+                    color : @@title;
+                }
+                div.close-btn {
+                    &:hover,
+                    &:focus {
+                        color : @@text-hover;
+                    }
+                }
+            }
+            div.chat-list {
+                background-color : @@background4;
+                div.chat-subtitle {
+                    h3 {
+                        small {
+                            color : @@text;
+                        }
+                    }
+                    div.add-icon {
+                        color : @@text;
+                        &:hover,
+                        &:focus {
+                            color : @@text-hover;
+                        }
+                    }
+                }
+                div.chat-channel {
+                    span {
+                        &:hover,
+                        &:focus {
+                            color : @@text-hover;
+                        }
+                    }
+                    &.active {
+                        span {
+                            color : @@text;
+                            &:hover,
+                            &:focus {
+                                color : @@text-hover;
+                            }
+                        }
+                    }
+                    &:hover {
+                        background-color : @@background3;
+                    }
+                }
+                div.chat-friend {
+                    span.name {
+                        &:hover,
+                        &:focus {
+                            color : @@text-hover;
+                        }
+                    }
+                    &.active {
+                        span.name {
+                            color : @@text;
+                            &:hover,
+                            &:focus {
+                                color : @@text-hover;
+                            }
+                        }
+                    }
+                    &:hover {
+                        background-color : @@background3;
+                    }
+                }
+                span.no-result {
+                    color : @@title-hover;
+                }
+            }
+            div.chat-search-bar {
+                background-color : @@background3;
+                border-top       : 1px solid @@border1;
+            }
+        }
+        div.chat-col {
+            div.chat-context-container {
+                background-color : @@background5;
+                border-bottom    : 1px solid @@border1;
+                div.channel-description {
+                    a.channel-name {
+                        color : @@title;
+                        &:hover,
+                        &:focus {
+                            color : @@title-hover;
+                        }
+                    }
+                    div.line {
+                        a.total-members {
+                            color : @@text;
+                            &:hover,
+                            &:focus {
+                                color : @@text-hover;
+                            }
+                        }
+                        span.description {
+                            color : @@text;
+                        }
+                    }
+                }
+                div.user-description {
+                    div.line {
+                        a.friend-name {
+                            color : @@title;
+                            &:hover,
+                            &:focus {
+                                color : @@title-hover;
+                            }
+                        }
+                        p.friend-alias {
+                            color : @@title-hover;
+                        }
+                        span.status {
+                            color : @@text;
+                        }
+                    }
+                }
+                div.chat-action-bar {
+                    div.action {
+                        color : @@text;
+                        &:hover,
+                        &:focus {
+                            color : @@text-hover;
+                        }
+                    }
+                }
+            }
+        }
+        div.full-star,
+        div.empty-star {
+            color : @@text;
+            &:hover,
+            &:focus {
+                color : @atom-color-yellow;
+            }
+            &.disabled {
+                &:hover,
+                &:focus {
+                    color : @@text;
+                }
+            }
+        }
+    }
+}

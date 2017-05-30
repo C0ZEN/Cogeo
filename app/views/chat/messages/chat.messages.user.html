@@ -1,0 +1,101 @@
+<!-- Profile picture -->
+<div class="user-image">
+    <img class="img-thumbnail img-circle"
+         ng-src="{{ usersFactory.getUserImage(message.sender) }}">
+</div>
+
+<!-- Content -->
+<div class="message-content">
+
+    <!-- Sender -->
+    <div class="from">
+        <a ui-sref="app.groups.details({groupName: vm.groupName})"></a>
+
+        <!-- Username -->
+        <a href
+           ui-sref="app.profiles.user({username: message.sender})"
+           ng-click="goTo.view('app.profiles.user', {username: message.sender})"
+           class="atom-link user-username"
+           ng-class="{'atom-link-yellow': message.sender == vm.user.username}">
+            {{ vm.methods.getUserAlias(message.sender) || '@' + message.sender }}
+        </a>
+
+        <!-- Send date -->
+        <span class="sent-date">{{ message.sent | date: 'HH:mm' }}</span>
+
+        <!-- When edited -->
+        <span ng-show="message.edited != 0"
+              class="edited">
+            {{ 'chat_message_edited_on' | translate }}
+            {{ message.edited | date: 'HH:mm' }}
+            <span ng-show="message.editedBy != '' && message.editedBy != null">
+                {{ 'chat_message_edited_by' | translate:{username: message.editedBy} }}
+            </span>
+        </span>
+    </div>
+
+    <!-- Message content -->
+    <div ng-include="'views/chat/messages/chat.messages.content.html'"></div>
+</div>
+
+<!-- Action bar -->
+<div class="action-bar">
+
+    <!-- Play -->
+    <play-action play-action-display="vm.methods.isAudioMedia(message)"
+                 play-action-message="message">
+    </play-action>
+
+    <!-- Pause -->
+    <pause-action pause-action-display="vm.methods.isAudioMedia(message)"
+                  pause-action-message="message">
+    </pause-action>
+
+    <!-- Stop -->
+    <stop-action stop-action-display="vm.methods.isAudioMedia(message)"
+                 stop-action-message="message">
+    </stop-action>
+
+    <!-- Volume -->
+    <volume-action volume-action-display="vm.methods.isAudioMedia(message)"></volume-action>
+
+    <!-- Edit -->
+    <edit-action edit-action-display="message.category == 'text' && (message.sender == vm.user.username || vm.isUserAdmin)"
+                 edit-action-on-click="vm.methods.stopAllEdit(); vm.methods.startEdit(message._id);">
+    </edit-action>
+
+    <!-- Answer (quote) -->
+    <answer-action answer-action-display="message.sender != vm.user.username && message.category == 'text'"></answer-action>
+
+    <!-- Copy the text -->
+    <copy-action copy-action-message-id="'message-user-' + message._id"
+                 copy-action-display="message.category == 'text'">
+    </copy-action>
+
+    <!-- Talk with -->
+    <chat-action chat-action-display="message.sender != vm.user.username && $state.current.name != 'app.chat.user'"
+                 chat-action-on-click="goTo.view('app.chat.user', {username: message.sender})">
+    </chat-action>
+
+    <!-- Zoom -->
+    <zoom-action zoom-action-display="message.category == 'image'"
+                 zoom-action-image="message.content">
+    </zoom-action>
+
+    <!-- Accordion -->
+    <accordion-action accordion-action-display="vm.methods.isMedia(message)"
+                      accordion-action-expanded="message.expanded"
+                      accordion-action-on-click="vm.methods.onToggleSingleExpanded()">
+    </accordion-action>
+
+    <!-- Download -->
+    <download-action download-action-display="vm.methods.isMedia(message)"
+                     download-action-src="{{ message.content.url }}"
+                     download-action-name="{{ message.content.fullName }}">
+    </download-action>
+
+    <!-- Remove -->
+    <remove-action remove-action-display="message.sender == vm.user.username || vm.isUserAdmin"
+                   remove-action-message="message">
+    </remove-action>
+</div>

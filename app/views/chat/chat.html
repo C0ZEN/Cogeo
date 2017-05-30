@@ -1,0 +1,83 @@
+<div class="container-fluid atom-chat"
+     ng-class="[vm.chatTheme, vm.hasGroup ? '' : 'hidden-column-groups']"
+     ng-init="vm.methods.onInit();">
+
+    <!-- Groups -->
+    <div class="chat-groups-container animated"
+         ng-if="vm.hasGroup"
+         ng-include="'views/chat/chat.groups.html'">
+    </div>
+
+    <!-- Channels -->
+    <div class="chat-channels-container"
+         ng-class="{'hidePanelToLeft': !vm.showChannels}"
+         id="chat-channels-container">
+
+        <!-- Active group -->
+        <div class="chat-active-group"
+             ng-mouseenter="vm.onHoverChannelContainer = true"
+             ng-mouseleave="vm.onHoverChannelContainer = false"
+             ng-include="'views/chat/chat.activeGroup.html'">
+        </div>
+
+        <!-- Channels -->
+        <div class="chat-list"
+             ng-if="vm.hasGroup"
+             ng-include="'views/chat/chat.channels.html'">
+        </div>
+
+        <!-- Friends -->
+        <div class="chat-list"
+             ng-class="{'no-padding-top': vm.hasGroup}"
+             ng-include="'views/chat/chat.friends.html'">
+        </div>
+
+        <!-- Search bar -->
+        <div class="chat-search-bar"
+             ng-include="'views/chat/chat.searchbar.html'">
+        </div>
+    </div>
+
+    <!-- Col -->
+    <div class="chat-col"
+         ng-class="{'hidePanelToLeft': !vm.showChannels}"
+         id="chat-context-container">
+
+        <!-- Context -->
+        <div class="ui-view chat-context-container"></div>
+
+        <!-- Alerts -->
+        <div ng-show="(vm.activeFriend.blocked != 0 && $state.current.name == 'app.chat.user') || vm.messages.length == 0"
+             class="chat-alert-container">
+
+            <!-- No message alert -->
+            <cozen-alert cozen-alert-display="vm.messages.length == 0"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-label="'chat_alert_friend_no_message'"
+                         cozen-alert-animation-in-class="fadeIn"
+                         cozen-alert-type-info>
+            </cozen-alert>
+
+            <!-- Blocked alert -->
+            <cozen-alert cozen-alert-display="vm.activeFriend.blocked != 0 && $state.current.name == 'app.chat.user'"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-label="'chat_alert_friend_blocked'"
+                         cozen-alert-label-values="{username: $state.params.username, date: (vm.activeFriend.blocked | date: 'EEEE dd MMMM yyyy')}"
+                         cozen-alert-animation-in-class="fadeIn"
+                         cozen-alert-type-warning
+                         cozen-alert-class="{{ vm.messages.length == 0 ? 'space-base-before' : '' }}">
+            </cozen-alert>
+        </div>
+
+        <!-- Messages -->
+        <div class="chat-messages-container"
+             id="chat-messages-container"
+             ng-include="'views/chat/messages/chat.messages.html'">
+        </div>
+
+        <!-- Send message -->
+        <div class="chat-input-container"
+             ng-include="'views/chat/chat.input.html'">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,228 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.onInitDetails()">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <!-- Warning message for banned from group -->
+            <cozen-alert cozen-alert-display="vm.groupUserBanned.active"
+                         cozen-alert-label="'channels_user_group_banned'"
+                         cozen-alert-label-values="{'date': (vm.groupUserBanned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.groupUserBanned.by, 'for': methods.getKickBanFor(vm.groupUserBanned.for)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for kicked from group -->
+            <cozen-alert cozen-alert-display="vm.groupUserKicked.active"
+                         cozen-alert-label="'channels_user_group_kicked'"
+                         cozen-alert-label-values="{'date': (vm.groupUserKicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.groupUserKicked.by, 'for': methods.getKickBanFor(vm.groupUserKicked.for), 'time': (vm.methods.getKickedTime(vm.groupUserKicked.time).key | translate)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for banned -->
+            <cozen-alert cozen-alert-display="vm.channel.isBanned"
+                         cozen-alert-label="'channels_details_no_rights_banned'"
+                         cozen-alert-label-values="{'date': (vm.channel.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.banned.by, 'for': methods.getKickBanFor(vm.channel.banned.for)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Warning message for kicked -->
+            <cozen-alert cozen-alert-display="vm.channel.isKicked && !vm.channel.isBanned"
+                         cozen-alert-label="'channels_details_no_rights_kicked'"
+                         cozen-alert-label-values="{'date': (vm.channel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.kicked.by, 'for': methods.getKickBanFor(vm.channel.kicked.for), 'time': (vm.methods.getKickedTime(vm.channel.kicked.time).key | translate)}"
+                         cozen-alert-close-btn="false"
+                         cozen-alert-class="space-base-after"
+                         cozen-alert-type-warning>
+            </cozen-alert>
+
+            <!-- Details -->
+            <div ng-show="vm.channel != null">
+                <div class="atom-profile">
+
+                    <!-- Profile card -->
+                    <div class="profile-card">
+                        <img class="img-circle img-thumbnail"
+                             ng-src="{{ methods.getChannelPicture(vm.params.groupName, vm.channel._id) }}">
+                        <div class="text">
+                            <div class="center-flex-content flex-start">
+                                <h3 class="atom-ellipsis">{{ vm.channel.name }}</h3>
+                                <cozen-tooltip ng-show="vm.channel.byDefault"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_by_default_tp' | translate">
+                                    <mark class="atom-mark default space-small-left">{{ 'channels_by_default' | translate }}</mark>
+                                </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.private"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_private_tp' | translate">
+                                    <mark class="atom-mark private space-small-left">{{ 'channels_private' | translate }}</mark>
+                                </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.isMember"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_member_since' | translate:{'date': (vm.channel.joined | date: 'EEEE dd MMMM yyyy')}">
+                                    <mark class="atom-mark member space-small-left">{{ 'channels_member' | translate }}</mark>
+                                </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.isCreator"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_creator_in' | translate:{'date': (vm.channel.date.creation | date: 'EEEE dd MMMM yyyy')}">
+                                    <mark class="atom-mark creator space-small-left">{{ 'channels_creator' | translate }}</mark>
+                                </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.isAdmin"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_member_since' | translate:{'date': (vm.channel.joined | date: 'EEEE dd MMMM yyyy')}">
+                                    <mark class="atom-mark admin space-small-left">{{ 'channels_admin' | translate }}</mark>
+                                </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.isBanned"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-type-html
+                                               cozen-tooltip-label="'channels_banned_since' | translate:{'date': (vm.channel.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.banned.by, 'for': methods.getKickBanFor(vm.channel.banned.for)}">
+                                    <mark class="atom-mark banned space-small-left">{{ 'channels_banned' | translate }}</mark>
+                                </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.isKicked"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-type-html
+                                               cozen-tooltip-label="'channels_kicked_since' | translate:{'date': (vm.channel.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.channel.kicked.by, 'for': methods.getKickBanFor(vm.channel.kicked.for), 'time': (vm.methods.getKickedTime(vm.channel.kicked.time).key | translate)}">
+                                    <mark class="atom-mark kicked space-small-left">{{ 'channels_kicked' | translate }}</mark>
+                                </cozen-tooltip>
+                                <cozen-tooltip ng-show="vm.channel.isStarred"
+                                               cozen-tooltip-placement="auto bottom"
+                                               cozen-tooltip-label="'channels_is_starred_tp' | translate">
+                                    <mark class="atom-mark starred space-small-left">{{ 'channels_is_starred' | translate }}</mark>
+                                </cozen-tooltip>
+                            </div>
+                            <p class="help-text">{{ vm.channel.description }}</p>
+                            <p class="help-text inline-block"
+                               cozen-compile="'channels_details_creation_by' | translate:{userName: vm.channel.creator, date: (vm.channel.date.creation | date:'EEEE dd MMMM yyyy')}">
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Details -->
+                    <h3>{{ 'channels_details_details' | translate }}</h3>
+                    <h4 ng-if="vm.CONFIG.dev">
+                        <strong>ID:</strong>
+                        {{ vm.channel._id }}
+                    </h4>
+                    <h4>
+                        <strong>{{ 'channels_details_creator' | translate }}:</strong>
+                        <a href
+                           ng-click="goTo.view('app.profiles.user', {username: vm.channel.creator}, $event)"
+                           ui-sref="app.profiles.user({username: vm.channel.creator})">
+                            @{{ vm.channel.creator }}
+                        </a>
+                    </h4>
+                    <h4>
+                        <strong>{{ 'channels_details_creation' | translate }}:</strong>
+                        {{ vm.channel.date.creation | date: 'EEEE dd MMMM yyyy' }}
+                    </h4>
+                    <h4>
+                        <strong>{{ 'channels_details_last_update' | translate }}:</strong>
+                        {{ vm.channel.date.lastUpdate | date: 'EEEE dd MMMM yyyy' }}
+                    </h4>
+                    <h4>
+                        <strong>{{ 'channels_details_default' | translate }}:</strong>
+                        {{ (vm.channel.byDefault ? 'other_yes' : 'other_no') | translate }}
+                    </h4>
+                    <p ng-show="vm.channel.private"
+                       class="no-margin-bottom help-text">
+                        {{ 'channels_details_private' | translate }}
+                    </p>
+                    <p ng-show="!vm.channel.private"
+                       class="no-margin-bottom help-text">
+                        {{ 'channels_details_public' | translate }}
+                    </p>
+
+                    <!-- Stats -->
+                    <h3 ng-if-start="Utils.canAccessGoogleVisualization()">
+                        {{ 'channels_details_stats' | translate }}
+                    </h3>
+
+                    <div class="atom-chart-container">
+
+                        <!-- Members admin/not admin -->
+                        <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.members.id"
+                                          cozen-draw-chart-data="vm.googleGraph.members.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.members.options"
+                                          cozen-draw-chart-type="vm.googleGraph.members.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.members.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values draw-chart-values-factory="googleGraphChannelMembers"></draw-chart-values>
+
+                        <!-- Members active/kicked/banned -->
+                        <cozen-draw-chart ng-if-bootstrap-grid="md,lg"
+                                          cozen-draw-chart-id="vm.googleGraph.status.id"
+                                          cozen-draw-chart-data="vm.googleGraph.status.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.status.options"
+                                          cozen-draw-chart-type="vm.googleGraph.status.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.status.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values ng-if-bootstrap-grid="md,lg"
+                                           draw-chart-values-factory="googleGraphChannelStatus">
+                        </draw-chart-values>
+                    </div>
+
+                    <div ng-if-bootstrap-grid="xs,sm"
+                         ng-if-end
+                         class="atom-chart-container">
+
+                        <!-- Members active/kicked/banned -->
+                        <cozen-draw-chart cozen-draw-chart-id="vm.googleGraph.status.id"
+                                          cozen-draw-chart-data="vm.googleGraph.status.data()"
+                                          cozen-draw-chart-options="vm.googleGraph.status.options"
+                                          cozen-draw-chart-type="vm.googleGraph.status.type"
+                                          cozen-draw-chart-animation-in="{{ vm.googleGraph.status.animationIn }}">
+                        </cozen-draw-chart>
+                        <draw-chart-values draw-chart-values-factory="googleGraphChannelStatus"></draw-chart-values>
+                    </div>
+                </div>
+
+                <div ng-show="!vm.channel.isMember"
+                     class="center-flex-content space-medium-after force-ng-hide">
+
+                    <!-- Join channel btn -->
+                    <cozen-btn ng-show="!vm.channel.isBanned && !vm.channel.isKicked && !vm.channel.private && !vm.groupUserBanned.active && !vm.groupUserKicked.active"
+                               class="animated fadeInUp force-ng-hide"
+                               cozen-btn-label="'channels_details_join_channel'"
+                               cozen-btn-auto-sizing="true"
+                               cozen-btn-on-click="vm.methods.joinChannel(vm.channel._id)">
+                    </cozen-btn>
+                </div>
+
+                <div class="center-flex-content space-medium-after">
+
+                    <!-- Edit btn -->
+                    <cozen-btn ng-show="vm.channel.isAdmin && vm.channel.isMember && !vm.channel.isBanned && !vm.channel.isKicked && vm.userHasGroupRights"
+                               class="animated fadeInUp force-ng-hide"
+                               cozen-btn-label="'channels_details_edit_channel'"
+                               cozen-btn-auto-sizing="true"
+                               cozen-btn-on-click="goTo.view('app.channels.edit', {'groupName': vm.params.groupName, 'channelName': vm.params.channelName})">
+                    </cozen-btn>
+
+                    <!-- Leave btn -->
+                    <a ng-show="vm.channel.isMember"
+                       href
+                       class="animated fadeInUp force-ng-hide"
+                       onclick="this.blur()"
+                       ng-click="vm.methods.leaveChannel($event)">
+                        {{ 'channels_details_leave_channel' | translate }}
+                    </a>
+                </div>
+            </div>
+
+            <!-- If no channel found -->
+            <cozen-alert cozen-alert-type-error
+                         cozen-alert-display="vm.channel == null"
+                         cozen-alert-label="'channels_details_no_channel'"
+                         cozen-alert-label-values="{channelName: vm.params.channelName}"
+                         cozen-alert-close-btn="false">
+            </cozen-alert>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,92 @@
+<div class="animated fadeIn"
+     ng-init="vm.methods.onInitNew()">
+    <div class="row">
+        <div class="col-xs-12">
+            <cozen-form cozen-form-name="new"
+                        cozen-form-ctrl="vm"
+                        cozen-form-model="form">
+
+                <!-- Alert if limit reach -->
+                <cozen-alert cozen-alert-display="vm.channels.length >= vm.CONFIG.internal.channel.max"
+                             cozen-alert-type-warning
+                             cozen-alert-label="'channels_register_limit_reach'"
+                             cozen-alert-close-btn="false"
+                             cozen-alert-label-values="{limit: vm.CONFIG.internal.channel.max}"
+                             cozen-alert-class="space-medium-after">
+                </cozen-alert>
+
+                <!-- Name -->
+                <cozen-input cozen-input-model="vm.newChannel.name"
+                             cozen-input-name="{{ vm.CONFIG.internal.channel.name.name }}"
+                             cozen-input-max-length="{{ vm.CONFIG.internal.channel.name.length }}"
+                             cozen-input-pattern="{{ vm.CONFIG.internal.channel.name.pattern }}"
+                             cozen-input-label="channels_register_name"
+                             cozen-input-placeholder="channels_register_name_pc"
+                             cozen-input-required="{{ vm.CONFIG.internal.channel.name.required }}"
+                             cozen-input-disabled="vm.channels.length >= vm.CONFIG.internal.channel.max"
+                             cozen-input-class="space-medium-after">
+                </cozen-input>
+
+                <!-- Description -->
+                <cozen-textarea cozen-textarea-model="vm.newChannel.description"
+                                cozen-textarea-name="{{ vm.CONFIG.internal.channel.description.name }}"
+                                cozen-textarea-max-length="{{ vm.CONFIG.internal.channel.description.maxLength }}"
+                                cozen-textarea-min-length="{{ vm.CONFIG.internal.channel.description.minLength }}"
+                                cozen-textarea-label="groups_register_description"
+                                cozen-textarea-placeholder="'groups_register_description_pc'"
+                                cozen-textarea-elastic="false"
+                                cozen-textarea-required="{{ vm.CONFIG.internal.channel.description.required }}"
+                                cozen-textarea-disabled="vm.channels.length >= vm.CONFIG.internal.channel.max"
+                                cozen-textarea-class="space-medium-after">
+                </cozen-textarea>
+
+                <!-- Picture -->
+                <cozen-btn cozen-btn-upload-model="vm.newChannel.picture"
+                           cozen-btn-is-upload="true"
+                           cozen-btn-upper-label="channels_register_profile_picture"
+                           cozen-btn-label="'account_profile_picture_upload'"
+                           cozen-btn-disabled="vm.channels.length >= vm.CONFIG.internal.channel.max"
+                           cozen-btn-class="space-medium-after">
+                </cozen-btn>
+
+                <!-- Toggle private -->
+                <cozen-btn-toggle cozen-btn-toggle-label="channels_register_private"
+                                  cozen-btn-toggle-tooltip="channels_register_private_tp"
+                                  cozen-btn-toggle-tooltip-max-width="'max-width-400'"
+                                  cozen-btn-toggle-model="vm.newChannel.private"
+                                  cozen-btn-toggle-class="space-base-after"
+                                  cozen-btn-toggle-disabled="vm.channels.length >= vm.CONFIG.internal.channel.max"
+                                  cozen-btn-toggle-on-change="vm.newChannel.byDefault = false">
+                </cozen-btn-toggle>
+
+                <!-- Toggle default -->
+                <cozen-btn-toggle cozen-btn-toggle-disabled="!vm.canAddDefaultChannel || vm.channels.length >= vm.CONFIG.internal.channel.max"
+                                  cozen-btn-toggle-label="channels_register_default"
+                                  cozen-btn-toggle-tooltip="{{ (vm.canAddDefaultChannel ? 'channels_register_default_tp' : 'channels_register_default_tp_disabled') | translate }}"
+                                  cozen-btn-toggle-tooltip-max-width="'max-width-400'"
+                                  cozen-btn-toggle-tooltip-type="html"
+                                  cozen-btn-toggle-model="vm.newChannel.byDefault"
+                                  cozen-btn-toggle-class="space-medium-after"
+                                  cozen-btn-toggle-on-change="vm.newChannel.private = false">
+                </cozen-btn-toggle>
+
+                <!-- Add btn -->
+                <cozen-btn class="animated fadeInUp"
+                           cozen-btn-label="'channels_add_submit'"
+                           cozen-btn-auto-sizing="true"
+                           cozen-btn-type-success
+                           cozen-btn-loader="vm.loading"
+                           cozen-btn-id="submit-new-channel-btn"
+                           cozen-btn-disabled="vm.form.new.$invalid || vm.channels.length >= vm.CONFIG.internal.channel.max"
+                           cozen-btn-on-click="vm.methods.newChannel()"
+                           cozen-btn-icon-right="fa icons8-clouds-filled"
+                           cozen-btn-class="space-medium-after">
+                </cozen-btn>
+            </cozen-form>
+        </div>
+    </div>
+</div>
+
+<cozen-btn-lazy-test cozen-btn-lazy-test-label="Random channel"
+                     cozen-btn-lazy-test-on-click="vm.methods.createRandomChannel();">
+</cozen-btn-lazy-test>

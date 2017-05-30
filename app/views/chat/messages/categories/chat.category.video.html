@@ -1,0 +1,105 @@
+<div class="video">
+
+    <!-- Line 1 -->
+    <div class="line-1">
+
+        <!-- Text -->
+        <span class="text">
+            {{ ('chat_upload_video_text' | translate) + (!message.expanded ? ':' : '') }}
+        </span>
+
+        <!-- Name -->
+        <a ng-show="!message.expanded"
+           target="_self"
+           href="{{ message.content.url }}"
+           download="{{ message.content.name }}"
+           class="name">
+            {{ message.content.fullName }}
+        </a>
+
+        <!-- Icon expand -->
+        <div class="icon-expand"
+             ng-click="message.expanded = !message.expanded; vm.methods.onToggleSingleExpanded();">
+            <i class="fa fa-fw fa-caret-down"
+               ng-class="{'caret-left': !message.expanded}">
+            </i>
+        </div>
+
+        <!-- Icon sound -->
+        <div ng-show="!message.expanded && message.content.API.currentState == 'play'"
+             class="icon-sound">
+            <cozen-tooltip cozen-tooltip-placement="auto right"
+                           cozen-tooltip-label="'chat_icon_sound_tp'">
+                <i class="fa fa-fw icons8-speaker"></i>
+            </cozen-tooltip>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="document-toast"
+         ng-mouseenter="message.content.onHover = true"
+         ng-mouseleave="message.content.onHover = false"
+         ng-class="{'hidden-height': !message.expanded}">
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- Img -->
+            <div class="img">
+                <img height="37"
+                     ng-src="images/chat/Video-File-96.png">
+            </div>
+
+            <!-- Multiple lines block -->
+            <div class="column-block">
+
+                <!-- Name -->
+                <span class="name">{{ message.content.name }}</span>
+
+                <!-- Row -->
+                <div class="row">
+
+                    <!-- Size -->
+                    <span class="size">{{ message.content.size }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Separator -->
+        <div class="separator"></div>
+
+        <!-- Row -->
+        <div class="row video-container">
+            <videogular vg-player-ready="vm.methods.onPlayerReady(message, $API)"
+                        vg-theme="vm.CONFIG.internal.video.theme">
+                <vg-media vg-src="message.content.url"></vg-media>
+
+                <vg-controls>
+
+                    <!-- Play/pause btn -->
+                    <vg-play-pause-button></vg-play-pause-button>
+
+                    <!-- Current time -->
+                    <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+
+                    <!-- Time bar -->
+                    <vg-scrub-bar>
+                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                    </vg-scrub-bar>
+
+                    <!-- Time left -->
+                    <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+                </vg-controls>
+
+                <!-- Loader -->
+                <vg-buffering></vg-buffering>
+
+                <!-- Play btn -->
+                <vg-overlay-play></vg-overlay-play>
+
+                <!-- Logo -->
+                <logo-layer></logo-layer>
+            </videogular>
+        </div>
+    </div>
+</div>

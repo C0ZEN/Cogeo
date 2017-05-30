@@ -1,0 +1,176 @@
+div.link-dropdown {
+    position                   : absolute;
+    top                        : 100%;
+    right                      : 0;
+    border                     : 1px solid @atom-color-line-rule;
+    display                    : flex;
+    flex-direction             : column;
+    align-items                : flex-start;
+    border-bottom-left-radius  : @atom-radius;
+    border-bottom-right-radius : @atom-radius;
+    min-width                  : 200px;
+    height                     : auto;
+    box-shadow                 : 0 3px 13px rgba(100, 100, 100, .3);
+    background-color           : @atom-color-white;
+    animation-fill-mode        : @atom-animation-fill;
+    animation-duration         : @atom-animation-duration-in-fast;
+    animation-name             : fadeIn;
+    &.dropdown-right {
+        left : 0;
+    }
+    &.ng-hide-add-active {
+        animation-name     : fadeOut;
+        animation-duration : @atom-animation-duration-out-fast;
+    }
+    &.link-floating {
+        border-radius : @atom-radius;
+        div.link-dropdown-item:first-of-type {
+            border-top-left-radius  : @atom-radius;
+            border-top-right-radius : @atom-radius;
+        }
+    }
+    div.link-dropdown-item {
+        color            : @atom-color-font;
+        font-size        : @atom-font-h3;
+        font-weight      : 500;
+        padding          : @atom-space-small @atom-space-base;
+        transition       : @atom-transition;
+        background-color : @atom-color-white;
+        width            : 100%;
+        outline          : @atom-outline;
+        display          : flex;
+        flex-direction   : row;
+        justify-content  : flex-start;
+        align-items      : center;
+        position         : relative;
+        div.img {
+            margin-right : @atom-space-small;
+            width        : 22px;
+            min-width    : 22px;
+            img {
+                height       : 22px;
+                width        : 22px;
+                padding      : 2px;
+                margin-right : 0;
+            }
+        }
+        &:last-of-type {
+            border-bottom-left-radius  : @atom-radius;
+            border-bottom-right-radius : @atom-radius;
+        }
+        i {
+            color : @atom-color-blue;
+        }
+        &.active,
+        &:focus,
+        &:hover {
+            color            : @atom-color-blue;
+            background-color : @atom-color-line-rule-light;
+        }
+        div.sub-links {
+            position                   : absolute;
+            top                        : 0;
+            left                       : 100%;
+            border                     : 1px solid @atom-color-line-rule;
+            display                    : flex;
+            flex-direction             : column;
+            align-items                : flex-start;
+            min-width                  : 200px;
+            height                     : auto;
+            box-shadow                 : 0 3px 13px rgba(100, 100, 100, .3);
+            border-top-right-radius    : @atom-radius;
+            border-bottom-right-radius : @atom-radius;
+        }
+        span {
+            overflow           : hidden;
+            text-overflow      : ellipsis;
+            -webkit-line-clamp : 1;
+            display            : -webkit-box;
+            -webkit-box-orient : vertical;
+            word-break         : break-all;
+        }
+        &.no-action {
+            cursor    : default;
+            font-size : @atom-font-h4;
+            color     : @atom-color-line-rule;
+            &.active,
+            &:focus,
+            &:hover {
+                color            : @atom-color-line-rule;
+                background-color : @atom-color-white;
+                cursor           : default;
+            }
+        }
+        &.disabled {
+            cursor : not-allowed;
+            color  : @atom-color-line-rule;
+            &.active,
+            &:focus,
+            &:hover {
+                color  : @atom-color-line-rule;
+                cursor : not-allowed;
+            }
+        }
+        &.link-dropdown-item-purple {
+            i {
+                color : @atom-color-purple;
+            }
+            &.active,
+            &:focus,
+            &:hover {
+                color : @atom-color-purple;
+            }
+        }
+        &.link-dropdown-item-green {
+            i {
+                color : @atom-color-green;
+            }
+            &.active,
+            &:focus,
+            &:hover {
+                color : @atom-color-green;
+            }
+        }
+        &.link-dropdown-item-red {
+            i {
+                color : @atom-color-error;
+            }
+            &.active,
+            &:focus,
+            &:hover {
+                color : @atom-color-error;
+            }
+        }
+        &.link-dropdown-item-yellow {
+            i {
+                color : @atom-color-yellow;
+            }
+            &.active,
+            &:focus,
+            &:hover {
+                color : @atom-color-yellow;
+            }
+        }
+        &.link-dropdown-item-title {
+            cursor : default;
+            color  : @atom-color-label;
+            &.active,
+            &:focus,
+            &:hover {
+                color            : @atom-color-label;
+                background-color : @atom-color-white;
+                cursor           : default;
+            }
+        }
+    }
+    div.link-dropdown-separator {
+        background-color : @atom-color-line-rule;
+        height           : 1px;
+        width            : 100%;
+        padding          : 0 @atom-space-base;
+        margin           : 3px auto;
+    }
+    div.link-included {
+        width : 100%;
+    }
+}

@@ -1,0 +1,124 @@
+<div class="full-center-content"
+     ng-class="vm.stepForward ? 'anim-slide-left' : 'anim-slide-right'"
+     ng-init="vm.methods.checkData(2)">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div>
+
+                <!-- Title -->
+                <div class="no-padding col-xs-12 col-sm-10 col-sm-push-1 col-md-12 col-md-push-0 col-lg-12 col-lg-push-0">
+                    <h1 class="no-margin-top">{{ 'groups_new_2_title' | translate:{groupName: vm.newGroup.name} }}</h1>
+                    <p class="help-text">{{ 'groups_new_2_subtitle_1' | translate }}</p>
+                </div>
+
+                <!-- Form -->
+                <div class="no-padding col-xs-12 col-sm-10 col-sm-push-1 col-md-12 col-md-push-0 col-lg-12 col-lg-push-0">
+                    <cozen-form cozen-form-name="newGroup2"
+                                cozen-form-ctrl="vm"
+                                cozen-form-model="form"
+                                cozen-form-class="space-large-before">
+
+                        <!-- Description -->
+                        <cozen-textarea cozen-textarea-model="vm.newGroup.description"
+                                        cozen-textarea-name="{{ vm.CONFIG.internal.group.description.name }}"
+                                        cozen-textarea-max-length="{{ vm.CONFIG.internal.group.description.maxLength }}"
+                                        cozen-textarea-min-length="{{ vm.CONFIG.internal.group.description.minLength }}"
+                                        cozen-textarea-label="groups_register_description"
+                                        cozen-textarea-placeholder="'groups_register_description_pc'"
+                                        cozen-textarea-elastic="false"
+                                        cozen-textarea-tooltip="{{ 'groups_register_description_length' | translate:{minLength: vm.CONFIG.internal.group.description.minLength, maxLength: vm.CONFIG.internal.group.description.maxLength} }}"
+                                        cozen-textarea-tooltip-type="html"
+                                        cozen-textarea-tooltip-max-width="'max-width-300'"
+                                        cozen-textarea-required="{{ vm.CONFIG.internal.group.description.required }}"
+                                        cozen-textarea-class="space-medium-after">
+                        </cozen-textarea>
+
+                        <!-- Picture -->
+                        <cozen-btn cozen-btn-upload-model="vm.newGroup.picture"
+                                   cozen-btn-is-upload="true"
+                                   cozen-btn-upper-label="groups_register_profile_picture"
+                                   cozen-btn-label="'account_profile_picture_upload'"
+                                   cozen-btn-class="space-medium-after">
+                        </cozen-btn>
+
+                        <!-- Channels -->
+                        <label class="atom-label">
+                            {{ 'groups_new_2_default_channels' | translate }}
+                            <cozen-icon-required></cozen-icon-required>
+                            <cozen-icon-info cozen-icon-info-tooltip-label="'groups_new_2_maximum_default_channels' | translate:{quantity: vm.CONFIG.internal.channel.maxDefault}"
+                                             cozen-icon-info-tooltip-type="html"
+                                             cozen-icon-info-tooltip-max-width="'max-width-300'">
+                            </cozen-icon-info>
+                        </label>
+                        <div ng-repeat="channel in vm.newGroup.channels track by $index"
+                             ng-class="{'space-small-after': !$last}"
+                             class="center-flex-content">
+
+                            <!-- Name -->
+                            <cozen-input cozen-input-model="channel.name"
+                                         cozen-input-placeholder="groups_new_2_channel_name_pc"
+                                         cozen-input-required="{{ vm.CONFIG.internal.channel.name.required }}"
+                                         cozen-input-name="{{ channel.id }}"
+                                         cozen-input-pattern="{{ vm.CONFIG.internal.channel.name.pattern }}"
+                                         cozen-input-max-length="{{ vm.CONFIG.internal.channel.name.length }}"
+                                         cozen-input-auto-complete="off"
+                                         cozen-input-has-error="channel.name == vm.newGroup.channels[$index - 1].name || channel.name == vm.newGroup.channels[$index + 1].name"
+                                         style="flex: 1;">
+                            </cozen-input>
+
+                            <!-- Add -->
+                            <div ng-if="$last"
+                                 class="atom-add-btn"
+                                 ng-class="{disabled: vm.newGroup.channels.length >= vm.CONFIG.internal.channel.maxDefault || vm.methods.isChannelNameDuplicated()}"
+                                 ng-click="vm.newGroup.channels.length < vm.CONFIG.internal.channel.maxDefault && !vm.methods.isChannelNameDuplicated() ? vm.methods.addChannel() : null">
+                                <i class="fa fa-fw fa-plus-circle"></i>
+                            </div>
+
+                            <!-- Trash -->
+                            <div ng-if="!$last"
+                                 class="atom-remove-btn"
+                                 ng-click="vm.newGroup.channels.splice($index, 1)">
+                                <i class="fa fa-fw icons8-trash"></i>
+                            </div>
+                        </div>
+
+                        <!-- Error if names are duplicated -->
+                        <cozen-alert cozen-alert-display="vm.methods.isChannelNameDuplicated()"
+                                     cozen-alert-type-error
+                                     cozen-alert-class="space-small-before"
+                                     cozen-alert-label="'groups_new_2_channel_name_error'"
+                                     cozen-alert-close-btn="false">
+                        </cozen-alert>
+
+                        <div class="center-flex-content space-medium-before space-medium after">
+
+                            <!-- Submit -->
+                            <cozen-btn cozen-btn-label="'groups_new_2_valid_settings'"
+                                       cozen-btn-auto-sizing="true"
+                                       cozen-btn-disabled="vm.form.newGroup2.$invalid"
+                                       cozen-btn-loader="vm.loading"
+                                       cozen-btn-on-click="vm.methods.checkSettings()"
+                                       cozen-btn-id="submit-btn-new-group-step-2"
+                                       cozen-btn-icon-right="fa fa-fw fa-arrow-right">
+                            </cozen-btn>
+
+                            <!-- Back -->
+                            <a href
+                               ng-click="vm.methods.goStepBackward(1);"
+                               ui-sref="app.groupNew.firstStep">
+                                {{ 'groups_new_2_change_name' | translate }}
+                            </a>
+                        </div>
+                    </cozen-form>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-6 background-blue-flat">
+            <img ng-src="images/bg/groups-users.png">
+        </div>
+    </div>
+</div>
+
+<cozen-btn-lazy-test cozen-btn-lazy-test-label="Random step 2 data"
+                     cozen-btn-lazy-test-on-click="vm.methods.setRandomStep2();">
+</cozen-btn-lazy-test>

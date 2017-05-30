@@ -1,0 +1,17 @@
+{
+    "SOCIAL": {
+        "TITLE": "My social zone",
+        "SUBTITLE": "Watch, invite and manage your friends.",
+        "FRIENDS": {
+            "SINCE": "Friends since {{date}}",
+            "ALIAS": "nickname {{alias}}",
+            "BLOCKED": "Blocked",
+            "BLOCKED_SINCE": "Blocked since {{date}}"
+        },
+        "INVITATIONS": {
+            "STATUS_0": "Invitation refused on {{date}} at {{hour}}",
+            "STATUS_1": "Invitation sent on {{date}} at {{hour}}",
+            "STATUS_2": "Invitation accepted on {{date}} at {{hour}}"
+        }
+    }
+}
