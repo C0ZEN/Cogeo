@@ -52,4 +52,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Inspired by [AdRoll UI Framework theme](https://dribbble.com/shots/2833155-AdRoll-UI-Framework) by [Mason Lee](https://dribbble.com/masonlee) 
+* [AdRoll UI Framework](https://dribbble.com/shots/2833155-AdRoll-UI-Framework) inspired theme by [Mason Lee](https://dribbble.com/masonlee) 
