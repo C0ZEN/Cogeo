@@ -20,7 +20,7 @@ Then this section if for you.
 **Cozen library :**
 
 We created the [cozen](https://bitbucket.org/C0ZEN/cozen) library at first to (re)create a lot of web components.  
-This library handle translations and themes.  
+This library handle translations, themes and app configuration.  
 Plus, it give us a lot of generic services, filters and methods to increase the modularity for our apps.  
 
 **Available translations :**
@@ -31,6 +31,16 @@ Plus, it give us a lot of generic services, filters and methods to increase the 
 **Available themes :**
 
 - Atom
+
+**Config :**
+
+The config is extremly linked to the cozen library so we won't talk about all the possibilites in this repository.  
+Basically, it's a bunch of providers to customize the app (we overrided it to add a specific internal config for Cogeo).
+
+You just have to know that there are multiples usefull options to :
+
+- Show/hide custom enhanced logs (super sexy logs in the console, multiple types to filter them)
+- Show/hide a form generator (create random fake data and submit in less than 10ms ! Lazy as fuck we were)
 
 **Cogeo progression :**
 
@@ -71,6 +81,8 @@ We don't have the time for that, sorry.
 * [Yeoman](http://yeoman.io/) - The Web's scaffolding tool for modern webapps
 * [Angular](https://angular.io/) - Superheroic JavaScript MVW Framework
 * [cozen](https://bitbucket.org/C0ZEN/cozen) - External custom library
+* [Cloudinary](http://cloudinary.com/) - Image and video management in the Cloud
+* [Electron](https://electron.atom.io/) - Build cross platform desktop apps with JavaScript, HTML, and CSS
 * [Trello](https://trello.com/) - Todo list management
 
 ## Contributing
