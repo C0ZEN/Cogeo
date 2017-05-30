@@ -39,7 +39,7 @@ Too early to add constraints over the way we want the app.
 ## Versioning
 
 The versioning is managed by our own.  
-You can checkout the [tags for this repository](https://github.com/your/project/tags).
+You can checkout the [tags for this repository](https://github.com/C0ZEN/Cogeo/tags).
 
 ## Authors
 
