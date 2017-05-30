@@ -38,8 +38,8 @@ Too early to add constraints over the way we want the app.
 
 ## Versioning
 
-Too early to handle versioning.  
-Nevertheless, the `master` branch is ready to receive some stuff.
+The versioning is managed by our own.  
+You can checkout the [tags for this repository](https://github.com/your/project/tags).
 
 ## Authors
 
