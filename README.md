@@ -20,7 +20,8 @@ Then this section if for you.
 **Cozen library :**
 
 We created the [cozen](https://bitbucket.org/C0ZEN/cozen) library at first to (re)create a lot of web components.  
-This library handle translations, themes and give us a lot of generic services, filters and methods to increase the modularity for our apps.  
+This library handle translations and themes.  
+Plus, it give us a lot of generic services, filters and methods to increase the modularity for our apps.  
 
 **Available translations :**
 
@@ -38,7 +39,10 @@ We have a complete Back-Office for the user, the groups and the channels (manage
 We are working on the chat last features (async messages and video chat still missing).  
 We started the creation of Robots (IA).
 
+**API progression :**
 
+The API is over.  
+We are currently looking for creating a full and complete documentation.
 
 ## Getting Started
 
