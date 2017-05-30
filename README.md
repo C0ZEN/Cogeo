@@ -31,6 +31,7 @@ We don't have the time for that, sorry.
 
 * [Yeoman](http://yeoman.io/) - The Web's scaffolding tool for modern webapps
 * [cozen](https://bitbucket.org/C0ZEN/cozen) - External custom library
+* [Trello](https://trello.com/) - Todo list management
 
 ## Contributing
 
@@ -48,3 +49,7 @@ You can checkout the [tags for this repository](https://github.com/C0ZEN/Cogeo/t
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgments
+
+* Inspired by [AdRoll UI Framework theme](https://dribbble.com/shots/2833155-AdRoll-UI-Framework) by [Mason Lee](https://dribbble.com/masonlee) 
