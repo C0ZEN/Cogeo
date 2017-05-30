@@ -12,6 +12,13 @@ We have a full control of the behavior and the design, via the [cozen](https://b
 Do you want to know more about the Cogeo app ?  
 Then this section if for you.
 
+**Languages and Frameworks :**
+
+- Front-End: AngularJS, HTML5, LESS, Electron, Grunt, Yeoman
+- Back-End : NodeJS, Express, MongoDB, Mongoose, Heroku
+
+**Cozen library :**
+
 We created the [cozen](https://bitbucket.org/C0ZEN/cozen) library at first to (re)create a lot of web components.  
 This library handle translations, themes and give us a lot of generic services, filters and methods to increase the modularity for our apps.  
 
@@ -24,10 +31,14 @@ This library handle translations, themes and give us a lot of generic services, 
 
 - Atom
 
-We almost achieve the first release version.  
-We have a complete Back-Office for the user, the groups and the channels.  
+**Cogeo progression :**
+
+We almost achieve the first release version (~95% of our specifications).  
+We have a complete Back-Office for the user, the groups and the channels (management is complete).  
 We are working on the chat last features (async messages and video chat still missing).  
 We started the creation of Robots (IA).
+
+
 
 ## Getting Started
 
