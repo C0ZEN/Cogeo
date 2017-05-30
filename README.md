@@ -5,7 +5,7 @@ You can manage groups, channels and users.
 
 The design is 100% homemade.  
 Most of the components are custom (input, textarea, dropdown...).  
-We have a full control of the behavior and the design of our app, via the [cozen](https://bitbucket.org/C0ZEN/cozen) library.
+We have a full control of the behavior and the design, via the [cozen](https://bitbucket.org/C0ZEN/cozen) library.
 
 ## Getting Started
 
