@@ -9,6 +9,8 @@ We have a full control of the behavior and the design, via the [cozen](https://b
 
 ## Getting Started
 
+Before anything below, run `npm install` to install the **node_modules** and **bower_components**.
+
 Use `grunt serve` to start the app.
 
 Use `grunt release` to create the minified version of the app.
@@ -46,6 +48,7 @@ You can checkout the [tags for this repository](https://github.com/C0ZEN/Cogeo/t
 ## Authors
 
 * **Geoffrey Testelin** - Front-End Developer - [C0ZEN](https://github.com/C0ZEN)
+* **Benoit Compere** - Back-End Developer - [BenoitCompere](https://github.com/BenoitCompere)
 
 ## License
 
