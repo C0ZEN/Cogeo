@@ -104,7 +104,7 @@
     "popup_invitationAction_accept_group_body_title": "Accepter l'invitation de {{sentBy}} pour devenir membre du groupe {{groupName}} ?",
     "popup_invitationAction_accept_group_body_subtitle_1": "Tu pourra accéder au groupe et ainsi rejoindre ses channels.",
     "popup_invitationAction_accept_channel_body_title": "Accepter l'invitation de {{sentBy}} pour devenir membre du channel {{channelName}} du groupe {{groupName}} ?",
-    "popup_invitationAction_accept_channel_body_subtitle_1": "Tu pourra discutter dans ce channel et voir l'historique des conversations.",
+    "popup_invitationAction_accept_channel_body_subtitle_1": "Tu pourra discuter dans ce channel et voir l'historique des conversations.",
     "popup_invitationAction_accept_body_accept": "Accepter",
     "popup_invitationAction_refuse_header_title": "Refuse une invitation",
     "popup_invitationAction_refuse_user_body_title": "Refuser l'invitation de {{sentBy}} pour devenir ami ?",
@@ -112,7 +112,7 @@
     "popup_invitationAction_refuse_group_body_title": "Refuser l'invitation de {{sentBy}} pour devenir membre du groupe {{groupName}} ?",
     "popup_invitationAction_refuse_group_body_subtitle_1": "Tu ne pourra pas accéder au groupe ni rejoindre ses channels.",
     "popup_invitationAction_refuse_channel_body_title": "Refuser l'invitation de {{sentBy}} pour devenir membre du channel {{channelName}} du groupe {{groupName}} ?",
-    "popup_invitationAction_refuse_channel_body_subtitle_1": "Tu ne pourra pas discutter dans ce channel ni voir l'historique des conversations.",
+    "popup_invitationAction_refuse_channel_body_subtitle_1": "Tu ne pourra pas discuter dans ce channel ni voir l'historique des conversations.",
     "popup_invitationAction_refuse_body_accept": "Refuser",
     "popup_forgotten_password_header_title": "Mot de passe oublié",
     "popup_forgotten_password_body_title": "Faire une demande de changement de mot de passe ?",
@@ -166,7 +166,7 @@
     "popup_allChannels_filter_body_defaultChannels": "Seulement les channels par défaut",
     "popup_allChannels_filter_body_defaultChannels_tooltip": "Afficher seulement les channels par défaut (les channels que rejoignent les nouveaux membre du groupe)",
     "popup_allChannels_filter_body_condensed": "Vue plus condensée",
-    "popup_allChannels_filter_body_condensed_tooltip": "Réduit le nombre d'informations visibles pour amélioré la lisibilité",
+    "popup_allChannels_filter_body_condensed_tooltip": "Réduit le nombre d'informations visibles pour améliorer la lisibilité",
     "popup_allGroups_filter_header_title": "Filtrer les groupes",
     "popup_allGroups_filter_body_order_by_tooltip": "Afficher les groupes par ordre alphabétique (de A à Z)",
     "popup_allGroups_filter_body_myGroups": "Seulement mes groupes",
@@ -174,5 +174,5 @@
     "popup_allGroups_filter_body_myGroupsAdmin": "Et ou je suis l'administrateur",
     "popup_allGroups_filter_body_myGroupsAdmin_tooltip": "Afficher seulement les groupes dont je suis membre et dont je suis administrateur",
     "popup_allGroups_filter_body_condensed": "Vue plus condensée",
-    "popup_allGroups_filter_body_condensed_tooltip": "Réduit le nombre d'informations visibles pour amélioré la lisibilité"
+    "popup_allGroups_filter_body_condensed_tooltip": "Réduit le nombre d'informations visibles pour améliorer la lisibilité"
 }
