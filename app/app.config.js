@@ -129,7 +129,10 @@
                     left   : 15
                 }
             },
-            peerDebug  : 2
+            peer       : {
+                debug: 2,
+                key  : '9o3h3bvbimivbo6r'
+            }
         };
 
         // Configure the loading bar

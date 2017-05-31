@@ -33,8 +33,8 @@
 
             // Create the peer
             peer = new Peer(username, {
-                key  : '9o3h3bvbimivbo6r',
-                debug: CONFIG.internal.peerDebug
+                key  : CONFIG.internal.peer.key,
+                debug: CONFIG.internal.peer.debug
             });
 
             // Listen for the creation
@@ -43,10 +43,10 @@
             });
 
             // When other users connect to you
-            peer.on('connection', function(connection) {
+            peer.on('connection', function (connection) {
 
                 // Listen for new message
-                connection.on('data', function(data){
+                connection.on('data', function (data) {
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'New message received');
                     console.log(data);
                 });
@@ -61,7 +61,7 @@
 
         function createPeerBot(username) {
             new Peer(username, {
-                key  : '9o3h3bvbimivbo6r',
+                key  : CONFIG.internal.peer.key,
                 debug: 0
             });
         }
@@ -74,24 +74,29 @@
 
                 // Handle bots
                 if (friend.username == 'Friendybot') {
-                    friend.username = peerId + '-Friendybot'
+                    friend.peerUsername = peerId + '-Friendybot'
                 }
                 else if (friend.username == 'Spamobot') {
-                    friend.username = peerId + '-Spamobot'
+                    friend.peerUsername = peerId + '-Spamobot'
                 }
                 else if (friend.username != peerId) {
+
+                    // Default username if empty
+                    if (Methods.isNullOrEmpty(friend.peerUsername)) {
+                        friend.peerUsername = friend.username;
+                    }
 
                     // Check if connection exist
                     var connected = false;
                     for (var user in peer.connections) {
 
                         // The connection exist
-                        if (user == friend.username) {
+                        if (user == friend.peerUsername) {
 
                             // Check if at least one of the connection is still open
                             peer.connections[user].forEach(function (connection) {
                                 if (connection.open) {
-                                    cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with', friend.username, 'is still opened');
+                                    cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with', friend.peerUsername, 'is still opened');
                                     connected = true;
                                 }
                             });
@@ -103,7 +108,7 @@
                     if (!connected) {
 
                         // Create the connection
-                        var connection = peer.connect(friend.username);
+                        var connection = peer.connect(friend.peerUsername);
                     }
                 }
             });
