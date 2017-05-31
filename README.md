@@ -64,7 +64,7 @@ Use `grunt release` to create the minified version of the app.
 
 Use `npm start` when the release is ready to start a live preview with **electron**.
 
-Use `npm package-*` to create the electron packaged version of the app.  
+Use `npm run package-*` to create the electron packaged version of the app.  
 This is the complete list of `package-*` commands :
 
 - `package-all` to create all the avaialble packages
