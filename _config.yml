@@ -1,1 +1,9 @@
 theme: jekyll-theme-cayman
+title: Cogeo
+description: A simple chat app
+author: C0ZEN
+author_email: geoffrey.testelin@gmail.com
+permalink: pretty
+show_downloads: true
+homePage: true
+homePageUrl: https://c0zen.github.io/Cogeo/
