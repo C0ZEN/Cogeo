@@ -48,7 +48,7 @@ You just have to know that there are multiples usefull options to :
 
 We almost achieve the first release version (~95% of our specifications).  
 We have a complete Back-Office for the user, the groups and the channels (management is complete).  
-We are working on the chat last features (async messages and video chat still missing).  
+We are working on the chat last features (video chat and users status still missing).  
 We started the creation of Robots (IA).
 
 **API progression :**
