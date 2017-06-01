@@ -1,5 +1,7 @@
 # Cogeo
 
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
+
 A very simple but complete chat app like Slack and Discord.  
 You can manage groups, channels and users.  
 
