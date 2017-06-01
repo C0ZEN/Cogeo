@@ -8,10 +8,12 @@
     cogeoWebRtc.$inject = [
         'CONFIG',
         '$window',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        'directMessagesFactory',
+        '$rootScope'
     ];
 
-    function cogeoWebRtc(CONFIG, $window, cozenEnhancedLogs) {
+    function cogeoWebRtc(CONFIG, $window, cozenEnhancedLogs, directMessagesFactory, $rootScope) {
 
         // Private data
         var peer;
@@ -43,13 +45,8 @@
             });
 
             // When other users connect to you
-            peer.on('connection', function (connection) {
-
-                // Listen for new message
-                connection.on('data', function (data) {
-                    cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'New message received');
-                    console.log(data);
-                });
+            peer.on('connection', function (newConnection) {
+                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'User', newConnection.peer, 'as established a connection with you');
             });
 
             // Listen for close window or refresh
@@ -74,10 +71,10 @@
 
                 // Handle bots
                 if (friend.username == 'Friendybot') {
-                    friend.peerUsername = peerId + '-Friendybot'
+                    friend.peerUsername = peerId + '-Friendybot';
                 }
                 else if (friend.username == 'Spamobot') {
-                    friend.peerUsername = peerId + '-Spamobot'
+                    friend.peerUsername = peerId + '-Spamobot';
                 }
                 else if (friend.username != peerId) {
 
@@ -108,17 +105,39 @@
                     if (!connected) {
 
                         // Create the connection
-                        var connection = peer.connect(friend.peerUsername);
+                        var newConnection = peer.connect(friend.peerUsername);
+                        cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with', friend.peerUsername, 'has been requested');
+
+                        // Wait for the open state of the connection
+                        newConnection.on('open', function () {
+
+                            // Listen for new messages
+                            newConnection.on('data', function (data) {
+                                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'New message received from', newConnection.peer, 'connection');
+
+                                // Update the right factory
+                                if (data.tag == 'friend') {
+                                    directMessagesFactory.addMessage(data.messageId, data.message);
+                                }
+                                else {
+                                    $rootScope.$broadcast('groupsFactory:newMessage', {
+                                        groupName  : data.groupName,
+                                        channelName: data.channelName,
+                                        newMessage : data.message
+                                    });
+                                }
+                            });
+                        });
                     }
                 }
             });
         }
 
-        function connectionSend(message) {
+        function connectionSend(newMessage) {
             cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'connectionSend');
-            var connection = searchConnection(message.targetedUsername);
+            var connection = searchConnection(newMessage.message.targetedUsername);
             if (!Methods.isNullOrEmpty(connection)) {
-                connection.send(message);
+                connection.send(newMessage);
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'New message sent');
             }
         }

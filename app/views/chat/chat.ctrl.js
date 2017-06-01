@@ -33,38 +33,39 @@
 
         // Methods
         vm.methods = {
-            onInit                : onInit,
-            setActiveGroup        : setActiveGroup,
-            setActiveChannel      : setActiveChannel,
-            removeToStarred       : removeToStarred,
-            addToStarred          : addToStarred,
-            hideChannels          : hideChannels,
-            showChannels          : showChannels,
-            toggleChannels        : toggleChannels,
-            onActionClick         : onActionClick,
-            setActiveFriend       : setActiveFriend,
-            toggleExpand          : toggleExpand,
-            onToggleSingleExpanded: onToggleSingleExpanded,
-            isMedia               : isMedia,
-            calcMediaLength       : calcMediaLength,
-            getUserAlias          : getUserAlias,
-            initMp3               : initMp3,
-            stopAllMp3            : stopAllMp3,
-            pauseAllMp3           : pauseAllMp3,
-            stopAllMedia          : stopAllMedia,
-            pauseAllMedia         : pauseAllMedia,
-            isMediaAudioPresent   : isMediaAudioPresent,
-            isAudioMedia          : isAudioMedia,
-            onPlayerReady         : onPlayerReady,
-            stopAllVideo          : stopAllVideo,
-            pauseAllVideo         : pauseAllVideo,
-            isMediaPresent        : isMediaPresent,
-            scrollToBottom        : scrollToBottom,
-            sendNewMessage        : sendNewMessage,
-            stopAllEdit           : stopAllEdit,
-            startEdit             : startEdit,
-            editMessage           : editMessage,
-            addSmiley             : addSmiley
+            onInit                  : onInit,
+            setActiveGroup          : setActiveGroup,
+            setActiveChannel        : setActiveChannel,
+            removeToStarred         : removeToStarred,
+            addToStarred            : addToStarred,
+            hideChannels            : hideChannels,
+            showChannels            : showChannels,
+            toggleChannels          : toggleChannels,
+            onActionClick           : onActionClick,
+            setActiveFriend         : setActiveFriend,
+            toggleExpand            : toggleExpand,
+            onToggleSingleExpanded  : onToggleSingleExpanded,
+            isMedia                 : isMedia,
+            calcMediaLength         : calcMediaLength,
+            getUserAlias            : getUserAlias,
+            initMp3                 : initMp3,
+            stopAllMp3              : stopAllMp3,
+            pauseAllMp3             : pauseAllMp3,
+            stopAllMedia            : stopAllMedia,
+            pauseAllMedia           : pauseAllMedia,
+            isMediaAudioPresent     : isMediaAudioPresent,
+            isAudioMedia            : isAudioMedia,
+            onPlayerReady           : onPlayerReady,
+            stopAllVideo            : stopAllVideo,
+            pauseAllVideo           : pauseAllVideo,
+            isMediaPresent          : isMediaPresent,
+            scrollToBottom          : scrollToBottom,
+            sendNewMessage          : sendNewMessage,
+            stopAllEdit             : stopAllEdit,
+            startEdit               : startEdit,
+            editMessage             : editMessage,
+            addSmiley               : addSmiley,
+            sendMessageToChannelPeer: sendMessageToChannelPeer
         };
 
         // Common data
@@ -188,11 +189,17 @@
                     if (!Methods.isNullOrEmpty(message.content) && !Methods.isNullOrEmpty(message.category)) {
                         if ($state.current.name == 'app.chat.user') {
                             directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message, function (response) {
-                                cogeoWebRtc.connectionSend(response.data.data);
+                                cogeoWebRtc.connectionSend({
+                                    message  : response.data.data,
+                                    tag      : 'friend',
+                                    messageId: $rootScope.directMessageId
+                                });
                             });
                         }
                         else {
-                            groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message);
+                            groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message, function (response) {
+                                sendMessageToChannelPeer(response.data.data);
+                            });
                         }
                     }
                 }
@@ -687,12 +694,16 @@
                 };
                 if ($state.current.name == 'app.chat.user') {
                     directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message, function (response) {
-                        cogeoWebRtc.connectionSend(response.data.data);
+                        cogeoWebRtc.connectionSend({
+                            message  : response.data.data,
+                            tag      : 'friend',
+                            messageId: $rootScope.directMessageId
+                        });
                     });
                 }
                 else {
                     groupsFactory.httpRequest.addMessage($state.params.groupName, $state.params.channelName, message, function (response) {
-
+                        sendMessageToChannelPeer(response.data.data);
                     });
                 }
                 $timeout(function () {
@@ -743,6 +754,30 @@
 
                     // Create the emoticons
                     message.content.compiledText = $filter('embed')(message.content.text, CONFIG.internal.embed);
+                }
+            });
+        }
+
+        function sendMessageToChannelPeer(newMessage) {
+
+            // Get all the active members from this channel
+            var channelId     = channelsFactory.getChannelIdByName($state.params.groupName, $state.params.channelName);
+            var activeMembers = channelsFactory.getActiveMembers($state.params.groupName, channelId);
+            var currentUser   = userFactory.getUser().username;
+
+            // Send them a new message
+            activeMembers.forEach(function (activeMember) {
+
+                // Avoid to send a message to myself
+                if (activeMember.username != currentUser.username) {
+                    newMessage.targetedUsername = activeMember.username;
+                    cogeoWebRtc.connectionSend({
+                        message    : newMessage,
+                        tag        : 'channel',
+                        groupName  : $state.params.groupName,
+                        channelName: $state.params.channelName,
+                        channelId  : channelId
+                    });
                 }
             });
         }
