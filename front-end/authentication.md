@@ -122,4 +122,6 @@ L'utilisateur sera alors redirigé vers `app/fr/home`.
 
 **Note:** les déconnexions s'effectuent à l'aide d'une popup.  
 
+fzef
 <a href="https://github.com/jasonlong/geo_pattern" class="btn">View on GitHub</a>
+fezf
