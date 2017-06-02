@@ -80,3 +80,44 @@ Render:
 
 - [My first header 1](https://c0zen.github.io/Cogeo/folder/first.md/)
 - [My second header 1](https://c0zen.github.io/Cogeo/folder/second.md/)
+
+### Errors design
+
+When you want to declare that a possible error may occur, you should use the syntax bellow:
+
+Example:
+
+```
+> If the username doesn't exist, the error XXX is return
+```
+
+Render:
+
+> If the username doesn't exist, the error XXX is return
+
+### URL design
+
+When you want to declare an url, you should wrap it into a code `` pattern.
+
+### Note design
+
+When you want to add a note about something, you can add the keywork note as bold.  
+Make sure than the note as a blank line before and after.
+
+Example:
+
+```
+This is some text...
+
+**Note:** this is a simple note.
+
+And the text continue...
+```
+
+Render:
+
+This is some text...
+
+**Note:** this is a simple note.
+
+And the text continue...
