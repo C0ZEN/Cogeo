@@ -45,7 +45,7 @@ Ces informations permettent à l'utilisateur de savoir ou et quand il s'est conn
 Un système de connexion automatique a été mise en place.  
 En effet, lorsqu'un utilisateur ouvre l'application, une requête de connexion est envoyée au serveur.
 
-Les informations envoyées au serveur dépendent de ce que contient le **local storage**.
+Les informations envoyées au serveur dépendent du contenu en **local storage**.
 
 ### Local storage
 
@@ -54,19 +54,28 @@ Lorsque qu'un utilisateur s'inscrit ou se connecte, son username et son **token 
 Ces informations sont stockées dans le **local storage** pour une durée illimitée.  
 Cela permet de persister les données même lors de la fermeture du navigateur ou de l'ordinateur.
 
-Si ces informations ne sont pas sauvegardées, l'utilisateur sera considéré comme déconnecté à chaque fermeture de Cogeo.
+Si ces informations ne sont pas sauvegardées ou effacées, l'utilisateur sera considéré comme déconnecté dès l'ouverture de Cogeo.
 
 ### Token de login
 
 Le token de login est une clé **uuid** auto-générée par le serveur.  
 Elle permet d'identifier une connexion entre un utilisateur et le serveur à un moment donné.
 
-Cela permet dans un premier temps de s'assuré qu'il n'y est pas de session multiples pour un utilisateur donnée.  
-En effet, cette clé est vérifiée à chaque requête.  
+Cette clé est vérifiée à chaque requête.  
+Cela permet dans un premier temps de s'assuré qu'il n'y est pas de session multiples pour un utilisateur donnée.   
 
-Si la clé de l'utilisateur qui émet les requêtes est différente de celle qui est stockée sur le serveur, le serveur retourne une erreur au Front.  
-Le Front va alors effectué une déconnexion.
+Si la clé de l'utilisateur qui émet les requêtes est différente de celle qui est stockée sur le serveur, le serveur retourne une erreur.  Cette erreur se traduit par une déconnexion automatique de l'utilisateur.
 
 **Note:** cette clé est écrasée à chaque connexion.
 
 ## Déconnexion
+
+Lors d'une déconnexion, toutes les données de l'application seront supprimées.  
+
+- Les données contenus dans les factories
+- Les données contenus dans le local storage
+- La configuration de l'application sera réinitialisée avec les valeurs par défaut
+
+L'utilisateur sera alors redirigé vers `app/fr/home`.
+
+**Note:** les déconnexions s'effectuent à l'aide d'une popup.  
