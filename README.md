@@ -91,6 +91,7 @@ You can checkout the [tags for this repository](https://github.com/C0ZEN/Cogeo/t
 
 * **Geoffrey Testelin** - Front-End Developer - [C0ZEN](https://github.com/C0ZEN)
 * **Benoit Compere** - Back-End Developer - [BenoitCompere](https://github.com/BenoitCompere)
+* **Paul Verbeke** - Architect - [paolovador](https://github.com/paolovador)
 
 ## License
 
