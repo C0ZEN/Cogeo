@@ -47,11 +47,15 @@ The API is over.
 
 Before anything below, run `npm install` to install the **node_modules** and **bower_components**.
 
-Use `grunt serve` to start the app.
+Use `grunt serve` to start the app.  
+This task is used to run a local node server, auto-refresh the app when files changed and avoid error with CORS by the fact that this JSON files must be served by a server.
 
-Use `grunt release` to create the minified version of the app.
+Use `grunt release` to create the minified version of the app.  
+This task is used to generate the folder used in production.  
+Note: you should copy the bower_components folder in the root of the release folder.
 
-Use `npm start` when the release is ready to start a live preview with **electron**.
+Use `npm start` when the release is ready to start a live preview with **electron**.  
+This script is used to preview what electron will give us when running with the release folder.
 
 Use `npm package-*` to create the electron packaged version of the app.  
 This is the complete list of `package-*` commands :
