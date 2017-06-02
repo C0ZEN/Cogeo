@@ -2,9 +2,9 @@
 
 ## Documentation
 
-### Structure
+#### Structure
 
-The structure is only composed of three-levels of headers (h1, h2, h3).  
+The structure is only composed of three-levels of headers (h1, h2, h4).  
 The only required element is a h1 on the top of the file.
 
 You can use **bold**, *italic* or ~~scratch~~.  
@@ -23,18 +23,18 @@ Make use of h3 to split the blocks or just a blank line.
 This is a block text.  
 With a second line.
 
-### I could add a subtitle too if necessary
+#### I could add a subtitle too if necessary
 
 This is a block text.  
 With a second line.
 
-### Bold & co
+#### Bold & co
 
 This **word** is bold.  
 This *word* is italic.  
 This ~~word~~ is scratch.
 
-### A quote
+#### A quote
 
 > Quote me if you can !
 ```
@@ -48,22 +48,22 @@ This ~~word~~ is scratch.
 > This is a block text.  
 > With a second line.
 > 
-> ### I could add a subtitle too if necessary
+> #### I could add a subtitle too if necessary
 > 
 > This is a block text.  
 > With a second line.
 > 
-> ### Bold & co
+> #### Bold & co
 > 
 > This **word** is bold.  
 > This *word* is italic.  
 > This ~~word~~ is scratch.
 > 
-> ### A quote
+> #### A quote
 > 
 > > Quote me if you can !
 
-### Summary
+#### Summary
 
 Composed only of the top-level titles (#h1).  
 Is a bullet list.  
@@ -81,7 +81,7 @@ Is a link to a page.
 > - [My first header 1](https://c0zen.github.io/Cogeo/folder/first.md/)
 > - [My second header 1](https://c0zen.github.io/Cogeo/folder/second.md/)
 
-### Errors design
+#### Errors design
 
 When you want to declare that a possible error may occur, you should use the syntax bellow:
 
@@ -95,11 +95,11 @@ When you want to declare that a possible error may occur, you should use the syn
 
 > > If the username doesn't exist, the error XXX is return
 
-### URL design
+#### URL design
 
 When you want to declare an url, you should wrap it into a code `` pattern.
 
-### Note design
+#### Note design
 
 When you want to add a note about something, you can add the keywork note as bold.  
 Make sure than the note as a blank line before and after.
