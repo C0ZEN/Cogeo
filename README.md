@@ -80,7 +80,7 @@ Note that they were written in **French** ;)
 
 ## Contributing
 
-Too early to add constraints over the way we want the app.
+Take your time to read the notes about how help us to make the [documentation](https://github.com/C0ZEN/Cogeo/CONTRIBUTING.md).
 
 ## Versioning
 
