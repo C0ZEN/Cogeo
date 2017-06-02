@@ -4,7 +4,6 @@
 @import "{{ site.theme }}";
 
 // Override the green of the cayman
-.btn.btn-green,
 .main-content h1, 
 .main-content h2, 
 .main-content h3, 
@@ -15,8 +14,10 @@
 }
 
 // Change the color hover the btn
-.btn.btn-green:hover {
-	color: #32AFE3;
+.btn.btn-green {
+	&:hover {
+		background-color: #32AFE3;
+	}
 }
 
 // Change the color of the header
