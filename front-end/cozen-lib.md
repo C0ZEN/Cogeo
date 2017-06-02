@@ -1,7 +1,7 @@
 # Librairie Cozen
 
 Avant même de débuté le projet Cogeo, nous avons réaliser une librairie complètement indépendante.  
-Elle apporte énormément de fonctionnalités et fournit le template de base de Cogeo.  
+Elle apporte énormément de fonctionnalités et produit le template de base pour Cogeo.  
 Cette librairie nous est utile également sur d'autres projets que Cogeo.
 
 ## Nos motivations
@@ -98,10 +98,50 @@ Et on peut dire qu'elles nous servent !
 
 **Note:** en plus, elle sont disponibles même pour des projets sans **Angular** ! ;)
 
+## Configuration
+
+Toute la librairie est configurable de manière globale puisqu'elle utilise des variables globales stockées dans un service Angular.  
+C'est un peu comme le cerveau de l'application.
+
+Pour éviter des erreurs, plusieurs provider sont disponibles afin de modifier la configuration initiale (avant l'éxécution de l'application).  
+Les données sont alors analysées pour éviter des erreurs potentielles.
+
+Bien sûr, la configuration reste modifiable à n'importe quel moment en modifiant directement les variables du service.
+
 ## Langues
 
-La librairie
+La librairie utilise un système de traduction via du JSON.  
+La gestion des languages se fait directement via une factory issue d'un provider (de la **configuration**).
+
+Actuellement, seul deux languages sont disponibles:
+
+- Français
+- Anglais
+
+**Note:** la traduction n'est pas automatique, il faut configurer et passer les fichiers de languages au provider d'Angular translate.
 
 ## Thèmes
-## Configuration
+
+Tout comme les **langues**, les thèmes sont configurables via la **configuration**.  
+Les thèmes peuvent donc être modifier très simplement et ce sans rafraîchir la page.
+
+Les thèmes sont générés via des mixins LESS, ce qui les rend parfaitement compatibles.  
+La maintenance et l'amélioration est d'autant plus simple.
+
+Les composants utilisent les thèmes via leur HTML/CSS par conséquent, c'est très simple et sans conflit.
+
+Trois thèmes sont actuellement disponibles même s'ils ne sont pas tous terminés:
+
+- Atom (le plus abouti, utilisé par Cogeo)
+- Tau
+- Nolan
+
 ## Release
+
+La Cozen librairie est incluse dans Cogeo.  
+Des tâches **Grunt** sont utilisées.
+
+#### Grunt
+
+La tâche `release` permet de générer un dossier **release** contenant une version minifiée et optimisée de la librairie.  
+C'est cette version qui est injectée dans Cogeo.
