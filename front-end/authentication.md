@@ -34,11 +34,23 @@ Si le username existe, une vérication de la correspondance avec le mot de passe
 
 Si la connexion s'est bien effectuée, une redirection vers `app/fr/account/details` est effectuée.
 
-Puisqu'il s'agit d'une connexion manuelle, une requête de log d'accès est envoyée.  
+Puisqu'il s'agit d'une connexion manuelle, une requête vers l'**historique des connexions** est envoyée.  
 Cette requête permet d'alimenter les *accessLogs*.  
 
-Les *accessLogs* sont des informations sur l'utilisateur (IP, position, OS, navigateur, version et langue de Cogeo).  
-Ces informations permettent à l'utilisateur de savoir ou et quand il s'est connecté pour la dernière fois.
+### Historique des connexions
+
+L'**historique des connexions** est un journal des connexions effectuées.  
+Ces informations permettent à l'utilisateur de savoir ou et quand il s'est connecté.
+
+Chaque connexion sauvegarde des informations sur l'utilisateur:
+
+- IP
+- Position
+- OS
+- Navigateur
+- Version de Cogeo
+- Langage courant
+- Date de connexion
 
 ## Connexion automatique
 
