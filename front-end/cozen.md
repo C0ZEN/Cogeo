@@ -100,13 +100,13 @@ Et on peut dire qu'elles nous servent !
 
 ## Configuration
 
-Toute la librairie est configurable de manière globale puisqu'elle utilise des variables globales stockées dans un service Angular.  
+Toute la librairie est configurable de manière générale puisqu'elle utilise des variables globales stockées dans un service Angular.  
 C'est un peu comme le cerveau de l'application.
 
 Pour éviter des erreurs, plusieurs provider sont disponibles afin de modifier la configuration initiale (avant l'éxécution de l'application).  
 Les données sont alors analysées pour éviter des erreurs potentielles.
 
-Bien sûr, la configuration reste modifiable à n'importe quel moment en modifiant directement les variables du service.
+Bien sûr, la configuration reste modifiable à n'importe quel moment, les variables du service étant publiques.
 
 ## Langues
 
