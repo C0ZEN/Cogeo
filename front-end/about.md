@@ -11,7 +11,7 @@
    - Gestion de projet 
 
 - Design
-- Languages
+- Langages
 - Librairie Cozen
 - Authentification
 - Mon compte
