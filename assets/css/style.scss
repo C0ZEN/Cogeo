@@ -23,6 +23,7 @@ $atom-green-hover: #66CCA3;
 
 // Change the color hover the btn
 .btn.btn-green {
+	margin-top: 1rem;
 	background-color: $atom-green;
 	&:hover {
 		background-color: $atom-green-hover;
