@@ -28,7 +28,7 @@ Tout commence par la maîtrise du code et des événements.
 Nous voulions absolument tout contrôler et **Angular** apporte un vrai plus à ce niveau.  
 La librairie s'adapte à la fois aux gestions view-model ainsi qu'à l'orienté event.
 
-Les composants classiques du web ont ainsi pu être recodés (input, dropdown, popup, pagination...).
+Les composants classiques du web ont ainsi pu être recodés (input, dropdown, popup, pagination, btn...).
 
 #### Un design maîtrisé
 
@@ -44,21 +44,64 @@ Pour ne pas s'arrêter dans cette volontée de modularité, nous avons de suite 
 
 L'intérêt qui se cache également dérrière cette librairie est sa réutilisation.
 
-Nous pouvons réutilisé cette librairie dans quasiment n'importe quel projet.
+Nous pouvons réutilisé cette librairie dans n'importe quel projet **Angular**.
 
 Que ce soit pour profité de quelques features comme pour profité pleinement de ses capacités.
 
 ## Composants
 
-#### Directives
+Voyons un peu plus en détails de nos composants.
+
+#### Composants
+
+Les composants ont tous trois tailles (petit, normal, grand) et ce pour chaque thème.
+
+Voici un listing complet de nos composants:
+
+- `alert` permet de générer des alertes en tout genre
+- `btn` réinvite le btn, avec loader et upload possible
+- `btn-check` est une version en pure CSS du inupt check
+- `btn-lazy-test` est un bouton fixed pour générer encore plus facilement le lazy load (disponible qu'en mode debug)
+- `btn-radio` est une version en pure CSS du input radio
+- `bgn-toggle` est une version en pure CSS du input toggle
+- `dropdown` est une réécriture complète du select en pure CSS avec encore plus d'options (champs de recherches intégrés, injecton d'html...)
+- `form` permet d'encapsuler le form angular afin de profité du form validator
+- `icons` est une série d'icones légèrement améliorées
+- `input` est une version ultra améliorée de l'input
+- `list` est un composant pour réaliser des listes de différents types d'éléments
+- `pagination` pour gérer efficacement la pagination
+- `panel` est un composant pour réaliser des panels de différents types
+- `pills` est un menu d'onglets
+- `popup` qui gère l'utilisation de plusieurs types de popup
+- `textarea` surcharge au même titre que l'input, un textarea
+- `tooltip` utile à tous les composants pour réaliser des tooltip
+- `view` qui est requis en tant que wrapper de l'application pour activer certains services communs aux composants
 
 #### Services
 
+Voici un listing des services les plus utiles à Cogeo:
+
+- `lazyLoad` permet de générer des données aléatoirement et de remplir des formulaires en un simple clique (lazy...)
+- `enhancedLogs` améliore le design et harmonise les log dans la console
+- `http` surcharge le servbice de requête http afin d'améliorer la gestion des données retournées et des callback
+
+#### Filtres
+
+Nous en avons peu, mais ils sont tellement utiles pour nos applications !
+
 #### Methods
 
+Partie de l'idée que recodé toujours la même chose dans nos projets c'est mal,  
+On a décidé de créer un fourre tout de snippet en tout genre !
 
+Et on peut dire qu'elles nous servent !  
+
+**Note:** en plus, elle sont disponibles même pour des projets sans **Angular** ! ;)
 
 ## Langues
+
+La librairie
+
 ## Thèmes
 ## Configuration
 ## Release
