@@ -11,6 +11,36 @@ Avant de faire quoi que ce soit, il faut bien évidemment s'inscrire.
 
 Aller vers `app/fr/register`.
 
+L'utilisateur doit remplir six champs pour envoyé le formulaire:
+
+- Nom
+- Prénom
+- Email
+- Username
+- Mot de passe
+- Vérification du mot de passe
+
+Comme pour tous les autres formulaires de Cogeo, le bouton *submit* est désactivé tant que le formulaire est incorrecte.  
+Ce système se base sur les expressions régulières, sur les champs requis et sur les limites min/max du nombre de caractères liés aux inputs.
+
+**Note:** le bouton *submit* sera désactivé si les deux mots de passe ne sont pas identiques.
+
+### Vérifications
+
+Une première vérification est effectuée sur le username.  
+> Si le username existe déjà, une erreur est levée.
+
+Une seconde vérification est effectuée sur l'email.  
+> Si l'email existe déjà, une erreur est levée.
+
+### Après inscription
+
+Si la connexion s'est bien effectuée, une redirection vers `app/fr/account/details` est effectuée.
+
+Puisqu'il s'agit d'une première inscription manuelle, une requête vers l'**historique des connexions** est envoyée.  
+
+**Note:** cette requête alimente les *accessLogs*.  
+
 ## Connexion
 
 Aller vers `app/fr/login`.
@@ -20,15 +50,12 @@ Pour se connecter à Cogeo, il suffit de saisir un nom d'utilisateur ainsi qu'un
 **Note:** le nom d'utilisateur est unique.  
 **Note:** le mot de passe est caché par des étoiles.
 
-Comme pour tous les autres formulaires de Cogeo, le bouton *submit* est désactivé tant que le formulaire est incorrecte.  
-Ce système se base sur les expressions régulières, sur les champs requis et sur les limites min/max du nombre de caractères liés aux inputs.
-
 ### Vérifications
 
-Après envoi du formulaire, une première vérification est effectuée pour s'assurer que le username existe en base.  
+Une première vérification est effectuée pour s'assurer que le username existe en base.  
 > Si le username n'existe pas, une erreur est levée.
 
-Si le username existe, une vérication de la correspondance avec le mot de passe est utilisée.  
+Si le username existe, une vérication de la correspondance username/mot de passe est effectuée.
 > Si le username et le mot de passe ne correspondent pas, une erreur est levée.
 
 ### Après connexion
