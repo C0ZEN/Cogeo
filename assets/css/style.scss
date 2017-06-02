@@ -3,6 +3,13 @@
 
 @import "{{ site.theme }}";
 
-.btn.btn-green {
-	background-color: #159957;
+// Override the green of the cayman
+.btn.btn-green,
+.main-content h1, 
+.main-content h2, 
+.main-content h3, 
+.main-content h4, 
+.main-content h5, 
+.main-content h6 {
+	color: #32AFE3;
 }
