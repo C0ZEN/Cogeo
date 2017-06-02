@@ -10,18 +10,27 @@
 .main-content h4, 
 .main-content h5, 
 .main-content h6 {
-	color: #2C9FDD;
+	color: #9C27B0;
 }
 
 // Change the color hover the btn
 .btn.btn-green {
+	background-color: #9C27B0;
 	&:hover {
-		background-color: #32AFE3;
+		background-color: #B92ED1;
 	}
 }
 
 // Change the color of the header
 .page-header {
- 	background-color: #2C9FDD;
-    background-image: linear-gradient(120deg, #2C9FDD, #32AFE3);
+ 	background-color: #9C27B0;
+   	background-image: linear-gradient(120deg, #9C27B0, #B92ED1);
+}
+
+// Change the color of a link
+a {
+	color: #2C9FDD;
+	&:hover {
+		color: #32AFE3;
+	}
 }
