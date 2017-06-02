@@ -30,8 +30,8 @@ With a second line.
 
 ### Bold & co
 
-This **word** is bold.
-This *word* is italic.
+This **word** is bold.  
+This *word* is italic.  
 This ~~word~~ is scratch.
 
 ### A quote
@@ -55,8 +55,8 @@ With a second line.
 
 ### Bold & co
 
-This **word** is bold.
-This *word* is italic.
+This **word** is bold.  
+This *word* is italic.  
 This ~~word~~ is scratch.
 
 ### A quote
