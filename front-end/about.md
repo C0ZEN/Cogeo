@@ -16,4 +16,4 @@
 - Autres  
 - Electron
 - Tâches grunt
-- Tâches npm
+- Scripts npm
