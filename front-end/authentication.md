@@ -123,4 +123,4 @@ L'utilisateur sera alors redirigé vers `app/fr/home`.
 
 **Note:** les déconnexions s'effectuent à l'aide d'une popup.  
 
-<a href="{{ site.baseUrl }}front-end/account/" class="btn">Chapitre suivant: Compte</a>
+<a href="{{ site.baseUrl }}front-end/account/" class="btn btn-green">Chapitre suivant: Compte</a>
