@@ -105,7 +105,8 @@ Elle permet d'identifier une connexion entre un utilisateur et le serveur à un 
 Cette clé est vérifiée à chaque requête.  
 Cela permet dans un premier temps de s'assuré qu'il n'y est pas de session multiples pour un utilisateur donnée.   
 
-Si la clé de l'utilisateur qui émet les requêtes est différente de celle qui est stockée sur le serveur, le serveur retourne une erreur.  Cette erreur se traduit par une déconnexion automatique de l'utilisateur.
+Si la clé de l'utilisateur qui émet les requêtes est différente de celle qui est stockée sur le serveur, le serveur retourne une erreur.  
+Cette erreur se traduit par une déconnexion automatique de l'utilisateur.
 
 **Note:** cette clé est écrasée à chaque connexion.
 
