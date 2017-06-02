@@ -90,3 +90,5 @@ Voyons maintenant en détails les étapes de cette tâche:
 - Minifie toutes les images vers le dossier release
 
 Il ne manque plus que la copie des bower_components et nous somme tout bon !
+
+<a href="{{ site.baseUrl }}front-end/npm/" class="btn btn-green">Chapitre suivant: Npm</a>
