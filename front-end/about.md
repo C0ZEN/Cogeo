@@ -2,7 +2,7 @@
 
 # Sommaire
 
-- Présentation Front-End
+- [Présentation Front-End](https://c0zen.github.io/Cogeo/front-end/about/)
 - Conception
 - Technologies et outils
 - Design
