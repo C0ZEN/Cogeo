@@ -13,7 +13,8 @@ Aller vers `app/fr/register`.
 
 ## Connexion
 
-Aller vers `app/fr/login`.  
+Aller vers `app/fr/login`.
+
 Pour se connecter à Cogeo, il suffit de saisir un nom d'utilisateur ainsi qu'un mot de passe.  
 
 **Note:** le nom d'utilisateur est unique.  
@@ -82,11 +83,12 @@ Si la clé de l'utilisateur qui émet les requêtes est différente de celle qui
 
 ## Déconnexion
 
-Lors d'une déconnexion, toutes les données de l'application seront supprimées.  
+Lors d'une déconnexion, toutes les données de l'application seront supprimées:
 
 - Les données contenus dans les factories
 - Les données contenus dans le local storage
 - La configuration de l'application sera réinitialisée avec les valeurs par défaut
+- Les connexions aux peers seront fermées
 
 L'utilisateur sera alors redirigé vers `app/fr/home`.
 
