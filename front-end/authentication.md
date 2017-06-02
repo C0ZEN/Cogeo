@@ -121,3 +121,5 @@ Lors d'une déconnexion, toutes les données de l'application seront supprimées
 L'utilisateur sera alors redirigé vers `app/fr/home`.
 
 **Note:** les déconnexions s'effectuent à l'aide d'une popup.  
+
+<a href="https://github.com/jasonlong/geo_pattern" class="btn">View on GitHub</a>
