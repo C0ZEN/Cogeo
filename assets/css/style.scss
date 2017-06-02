@@ -13,6 +13,14 @@
 .main-content h6 {
 	color: #2C9FDD;
 }
+
+// Change the color hover the btn
 .btn.btn-green:hover {
 	color: #32AFE3;
+}
+
+// Change the color of the header
+.page-header {
+ 	background-color: #2C9FDD;
+    background-image: linear-gradient(120deg, #2C9FDD, #32AFE3);
 }
