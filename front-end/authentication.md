@@ -5,27 +5,30 @@ Nous expliquerons également notre système de connexion automatique.
 
 ## Prérequis
 
-Avant de faire quoi que ce soit, il faut bien évidemment s'inscrire.  
+Avant de faire quoi que ce soit, il faut bien évidemment s'inscrire.
+
+## Inscription
+
 Aller vers *app/fr/register*.
 
-## Connexion interne
+## Connexion
 
 Aller vers *app/fr/login*.  
 Pour se connecter à Cogeo, il suffit de saisir un nom d'utilisateur ainsi qu'un mot de passe.  
 
-__Note:__ le nom d'utilisateur est unique.  
-__Note:__ le mot de passe est caché par des étoiles.
+**Note:** le nom d'utilisateur est unique.  
+**Note:** le mot de passe est caché par des étoiles.
 
-Comme pour tous les autres formulaires de Cogeo, le bouton __submit__ est désactivé tant que le formulaire est incorrecte.  
+Comme pour tous les autres formulaires de Cogeo, le bouton *submit* est désactivé tant que le formulaire est incorrecte.  
 Ce système se base sur les expressions régulières, sur les champs requis et sur les limites min/max du nombre de caractères liés aux inputs.
 
 ### Vérifications
 
-Après envoi du formulaire, une première vérification est effectuée pour s'assurer que le **username** existe en base.  
-> Si le **username** n'existe pas, une erreur est levée.
+Après envoi du formulaire, une première vérification est effectuée pour s'assurer que le username existe en base.  
+> Si le username n'existe pas, une erreur est levée.
 
-Si le **username** existe, une vérication de la correspondance avec le mot de passe est utilisée.  
-> Si le **username** et le mot de passe ne correspondent pas, une erreur est levée.
+Si le username existe, une vérication de la correspondance avec le mot de passe est utilisée.  
+> Si le username et le mot de passe ne correspondent pas, une erreur est levée.
 
 ### Après connexion
 
@@ -38,3 +41,32 @@ Les *accessLogs* sont des informations sur l'utilisateur (IP, position, OS, navi
 Ces informations permettent à l'utilisateur de savoir ou et quand il s'est connecté pour la dernière fois.
 
 ## Connexion automatique
+
+Un système de connexion automatique a été mise en place.  
+En effet, lorsqu'un utilisateur ouvre l'application, une requête de connexion est envoyée au serveur.
+
+Les informations envoyées au serveur dépendent de ce que contient le **local storage**.
+
+### Local storage
+
+Lorsque qu'un utilisateur s'inscrit ou se connecte, son username et son **token de login** sont enregistrer en local.
+
+Ces informations sont stockées dans le **local storage** pour une durée illimitée.  
+Cela permet de persister les données même lors de la fermeture du navigateur ou de l'ordinateur.
+
+Si ces informations ne sont pas sauvegardées, l'utilisateur sera considéré comme déconnecté à chaque fermeture de Cogeo.
+
+### Token de login
+
+Le token de login est une clé **uuid** auto-générée par le serveur.  
+Elle permet d'identifier une connexion entre un utilisateur et le serveur à un moment donné.
+
+Cela permet dans un premier temps de s'assuré qu'il n'y est pas de session multiples pour un utilisateur donnée.  
+En effet, cette clé est vérifiée à chaque requête.  
+
+Si la clé de l'utilisateur qui émet les requêtes est différente de celle qui est stockée sur le serveur, le serveur retourne une erreur au Front.  
+Le Front va alors effectué une déconnexion.
+
+**Note:** cette clé est écrasée à chaque connexion.
+
+## Déconnexion
