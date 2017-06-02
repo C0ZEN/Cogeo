@@ -13,9 +13,10 @@
     <section class="page-header">
       <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
-      {% if site.homePage %}
-        <a href="{{ site.homePageUrl }}" class="btn">Home</a>
-      {% endif %}
+      <a href="{{ site.homePageUrl }}" class="btn">Accueil</a>
+      <a href="{{ site.homePageUrl }}" class="btn">API</a>
+      <a href="{{ site.homePageUrl }}" class="btn">Architecture</a>
+      <a href="{{ site.homePageUrl }}" class="btn">Front-End</a>
     </section>
 
     <section class="main-content">
