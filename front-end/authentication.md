@@ -9,11 +9,11 @@ Avant de faire quoi que ce soit, il faut bien évidemment s'inscrire.
 
 ## Inscription
 
-Aller vers *app/fr/register*.
+Aller vers `app/fr/register`.
 
 ## Connexion
 
-Aller vers *app/fr/login*.  
+Aller vers `app/fr/login`.  
 Pour se connecter à Cogeo, il suffit de saisir un nom d'utilisateur ainsi qu'un mot de passe.  
 
 **Note:** le nom d'utilisateur est unique.  
@@ -32,7 +32,7 @@ Si le username existe, une vérication de la correspondance avec le mot de passe
 
 ### Après connexion
 
-Si la connexion s'est bien effectuée, une redirection vers *app/fr/account/details* est effectuée.
+Si la connexion s'est bien effectuée, une redirection vers `app/fr/account/details` est effectuée.
 
 Puisqu'il s'agit d'une connexion manuelle, une requête de log d'accès est envoyée.  
 Cette requête permet d'alimenter les *accessLogs*.  
