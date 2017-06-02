@@ -123,5 +123,4 @@ L'utilisateur sera alors redirigé vers `app/fr/home`.
 
 **Note:** les déconnexions s'effectuent à l'aide d'une popup.  
 
-<a href="https://c0zen.github.io/Cogeo/front-end/account/" class="btn">Chapitre suivant: Compte</a>
-
+<a href="{{ site.baseUrl }}front-end/account/" class="btn">Chapitre suivant: Compte</a>
