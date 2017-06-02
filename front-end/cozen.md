@@ -145,3 +145,5 @@ Des tâches **Grunt** sont utilisées.
 
 La tâche `release` permet de générer un dossier **release** contenant une version minifiée et optimisée de la librairie.  
 C'est cette version qui est injectée dans Cogeo.
+
+<a href="{{ site.baseUrl }}front-end/authentication/" class="btn btn-green">Chapitre suivant: Authentification</a>
