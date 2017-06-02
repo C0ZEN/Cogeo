@@ -13,7 +13,7 @@ You can use images, list, quote and code as well.
 Always think about segmented blocks (maximum three lines) to increase readability.  
 Make use of h3 to split the blocks or just a blank line.
 
-Example:
+**Example:**
 
 ```
 # This is the main title of a page - same as summary title
@@ -39,29 +39,29 @@ This ~~word~~ is scratch.
 > Quote me if you can !
 ```
 
-Render:
+**Render:**
 
-# This is the main title of a page - same as summary title
-
-## This is a subtitle for an important section - this is not required
-
-This is a block text.  
-With a second line.
-
-### I could add a subtitle too if necessary
-
-This is a block text.  
-With a second line.
-
-### Bold & co
-
-This **word** is bold.  
-This *word* is italic.  
-This ~~word~~ is scratch.
-
-### A quote
-
-> Quote me if you can !
+> # This is the main title of a page - same as summary title
+> 
+> ## This is a subtitle for an important section - this is not required
+> 
+> This is a block text.  
+> With a second line.
+> 
+> ### I could add a subtitle too if necessary
+> 
+> This is a block text.  
+> With a second line.
+> 
+> ### Bold & co
+> 
+> This **word** is bold.  
+> This *word* is italic.  
+> This ~~word~~ is scratch.
+> 
+> ### A quote
+> 
+> > Quote me if you can !
 
 ### Summary
 
@@ -69,31 +69,31 @@ Composed only of the top-level titles (#h1).
 Is a bullet list.  
 Is a link to a page.
 
-Example:
+**Example:**
 
 ```
 - [My first header 1](https://c0zen.github.io/Cogeo/folder/first.md/)
 - [My second header 1](https://c0zen.github.io/Cogeo/folder/second.md/)
 ```
 
-Render:
+**Render:**
 
-- [My first header 1](https://c0zen.github.io/Cogeo/folder/first.md/)
-- [My second header 1](https://c0zen.github.io/Cogeo/folder/second.md/)
+> - [My first header 1](https://c0zen.github.io/Cogeo/folder/first.md/)
+> - [My second header 1](https://c0zen.github.io/Cogeo/folder/second.md/)
 
 ### Errors design
 
 When you want to declare that a possible error may occur, you should use the syntax bellow:
 
-Example:
+**Example:**
 
 ```
 > If the username doesn't exist, the error XXX is return
 ```
 
-Render:
+**Render:**
 
-> If the username doesn't exist, the error XXX is return
+> > If the username doesn't exist, the error XXX is return
 
 ### URL design
 
@@ -104,7 +104,7 @@ When you want to declare an url, you should wrap it into a code `` pattern.
 When you want to add a note about something, you can add the keywork note as bold.  
 Make sure than the note as a blank line before and after.
 
-Example:
+**Example:**
 
 ```
 This is some text...
@@ -114,10 +114,10 @@ This is some text...
 And the text continue...
 ```
 
-Render:
+**Render:**
 
-This is some text...
-
-**Note:** this is a simple note.
-
-And the text continue...
+> This is some text...
+> 
+> **Note:** this is a simple note.
+> 
+> And the text continue...
