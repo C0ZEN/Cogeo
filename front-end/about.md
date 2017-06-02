@@ -15,5 +15,5 @@
 - [Chat](https://c0zen.github.io/Cogeo/front-end/chat/)
 - [Autres](https://c0zen.github.io/Cogeo/front-end/others/)
 - [Electron](https://c0zen.github.io/Cogeo/front-end/electron/)
-- [Tâches grunt](https://c0zen.github.io/Cogeo/front-end/grunt/)
+- [Tâches Grunt](https://c0zen.github.io/Cogeo/front-end/grunt/)
 - [Scripts npm](https://c0zen.github.io/Cogeo/front-end/npm/)
