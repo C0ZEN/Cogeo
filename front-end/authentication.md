@@ -36,7 +36,8 @@ Si le username existe, une vérication de la correspondance avec le mot de passe
 Si la connexion s'est bien effectuée, une redirection vers `app/fr/account/details` est effectuée.
 
 Puisqu'il s'agit d'une connexion manuelle, une requête vers l'**historique des connexions** est envoyée.  
-Cette requête permet d'alimenter les *accessLogs*.  
+
+**Note:** cette requête alimente les *accessLogs*.  
 
 ### Historique des connexions
 
@@ -67,7 +68,7 @@ Lorsque qu'un utilisateur s'inscrit ou se connecte, son username et son **token 
 Ces informations sont stockées dans le **local storage** pour une durée illimitée.  
 Cela permet de persister les données même lors de la fermeture du navigateur ou de l'ordinateur.
 
-Si ces informations ne sont pas sauvegardées ou effacées, l'utilisateur sera considéré comme déconnecté dès l'ouverture de Cogeo.
+**Note:** si le **local storage** est vide, l'utilisateur sera considéré comme déconnecté dès l'ouverture de Cogeo.
 
 ### Token de login
 
