@@ -25,7 +25,7 @@ Ce système se base sur les expressions régulières, sur les champs requis et s
 
 **Note:** le bouton *submit* sera désactivé si les deux mots de passe ne sont pas identiques.
 
-### Vérifications
+#### Vérifications
 
 Une première vérification est effectuée sur le username.  
 > Si le username existe déjà, une erreur est levée.
@@ -33,7 +33,7 @@ Une première vérification est effectuée sur le username.
 Une seconde vérification est effectuée sur l'email.  
 > Si l'email existe déjà, une erreur est levée.
 
-### Après inscription
+#### Après inscription
 
 Si la connexion s'est bien effectuée, une redirection vers `app/fr/account/details` est effectuée.
 
@@ -50,7 +50,7 @@ Pour se connecter à Cogeo, il suffit de saisir un nom d'utilisateur ainsi qu'un
 **Note:** le nom d'utilisateur est unique.  
 **Note:** le mot de passe est caché par des étoiles.
 
-### Vérifications
+#### Vérifications
 
 Une première vérification est effectuée pour s'assurer que le username existe en base.  
 > Si le username n'existe pas, une erreur est levée.
@@ -58,7 +58,7 @@ Une première vérification est effectuée pour s'assurer que le username existe
 Si le username existe, une vérication de la correspondance username/mot de passe est effectuée.
 > Si le username et le mot de passe ne correspondent pas, une erreur est levée.
 
-### Après connexion
+#### Après connexion
 
 Si la connexion s'est bien effectuée, une redirection vers `app/fr/account/details` est effectuée.
 
@@ -66,7 +66,7 @@ Puisqu'il s'agit d'une connexion manuelle, une requête vers l'**historique des 
 
 **Note:** cette requête alimente les *accessLogs*.  
 
-### Historique des connexions
+#### Historique des connexions
 
 L'**historique des connexions** est un journal des connexions effectuées.  
 Ces informations permettent à l'utilisateur de savoir ou et quand il s'est connecté.
@@ -88,7 +88,7 @@ En effet, lorsqu'un utilisateur ouvre l'application, une requête de connexion e
 
 Les informations envoyées au serveur dépendent du contenu en **local storage**.
 
-### Local storage
+#### Local storage
 
 Lorsque qu'un utilisateur s'inscrit ou se connecte, son username et son **token de login** sont enregistrer en local.
 
@@ -97,7 +97,7 @@ Cela permet de persister les données même lors de la fermeture du navigateur o
 
 **Note:** si le **local storage** est vide, l'utilisateur sera considéré comme déconnecté dès l'ouverture de Cogeo.
 
-### Token de login
+#### Token de login
 
 Le token de login est une clé **uuid** auto-générée par le serveur.  
 Elle permet d'identifier une connexion entre un utilisateur et le serveur à un moment donné.
