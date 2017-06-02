@@ -13,6 +13,13 @@
 - Design
 - Languages
 - Librairie Cozen
+- Authentification
+- Mon compte
+- Les groupes
+- Les channels
+- Le chat
+- Les autres vues  
+- Electron
 - Tâches grunt
 
    - serve
@@ -21,4 +28,4 @@
 - Tâches npm
 
    - start
-   - 
+   - package
