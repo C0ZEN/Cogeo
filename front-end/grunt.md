@@ -91,4 +91,4 @@ Voyons maintenant en détails les étapes de cette tâche:
 
 Il ne manque plus que la copie des bower_components et nous somme tout bon !
 
-<a href="{{ site.baseUrl }}front-end/npm/" class="btn btn-green">Chapitre suivant: Npm</a>
+<a href="{{ site.baseUrl }}front-end/npm/" class="btn btn-green">Chapitre suivant: Scripts npm</a>
