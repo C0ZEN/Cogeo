@@ -45,8 +45,25 @@ De plus, nous avons décidé d'assigné une 4 couleurs à des types de contenu:
 
 #### LESS
 
-#### Themes
+Nous l'avons déjà, **LESS** est une version pré-compilé de CSS.  
 
-#### Mixins
+La structure le rend beaucoup plus agréable à codé et à relire.  
+Bien utiliser, il aide également à évité les override du CSS en étant très précis sur les balises à stylisé.
+
+Mais le plus important est qu'il nous ai quasiment impératif lors de la réalisation de **thèmes**.
+
+**Note:** nous expliquerons dans le chapitre des [tâches grunt]({{ site.baseUrl }}front-end/grunt/) comment transformer le **LESS** en CSS.
+
+#### Thèmes
+
+En effet, les mixins (fonctions) sont le coeur de la réalisation des thèmes et permettent de les modifier très rapidement sans engendré de conflits.
+
+Sans ça, la librairie Cozen serait juste horrible à maintenir.
+
+Pour le moment, trois thèmes sont disponibles:
+
+- Tau (thème initial, n'est plus maintenu)
+- Atom (thème inspiré par AdRoll, complet)
+- Nolan (thème copier d'Atom, n'est pas terminé)
 
 <a href="{{ site.baseUrl }}front-end/languages/" class="btn btn-green">Chapitre suivant: Langages</a>
