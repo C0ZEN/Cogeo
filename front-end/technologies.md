@@ -87,19 +87,46 @@ Bower est l'équivalent de **npm** mais pour les paquets web.
 On utilise dans Cogeo plus de 50 dépendances **bower**.  
 Que ce soit pour installer **Angular** ou tout autre type de dépendance, nous passons par **bower**.
 
-C'est beaucoup plus facile à maintenant et la gestion est d'autant plus automatisée via les tâches **Grunt**.
+C'est beaucoup plus facile à maintenir et la gestion est d'autant plus automatisée via les tâches **Grunt**.
 
 ## Outils
 
+Quelques mots à propos des outils utilisés pour réaliser Cogeo.
+
 #### GitHub
+
+La platforme web de référence pour sauvegarder des repositories en ligne.  
+La plus complète et simple d'utilisation.
+
+D'ailleurs, vous l'aurez sans doute remarquer, notre documentation est générée par GitHub pages.  
 
 #### SourceTree
 
+Personnallement, je n'aime pas les lignes de commandes.  
+C'est sujet aux erreurs et c'est plus lent de taper des commandes que faire du clique-clique.
+
+Du coup, on utilise **SourceTree** pour poussé notre code et réalisé nos features.
+
+**Note:** nous respectons le procédé Git Flow.
+
 #### Trello
+
+Peu adapté sur des projets énormes avec de grandes équipes, mais parfaitement adapté à notre situation.  
+Trello à beaucoup servi, surtout lors de la conception.
+
+Après quelques 200 étiquettes ToDo, nous pouvions nous mettre au travail.
+
+Par manque de temps vers la fin du projet, il nous a surtout servi de pense-bête.
 
 #### Webstorm
 
+Pour nous, Webstorm et le meilleur IDE de développement web.  
+Alors on lui fait honneur !
+
 #### Electron
 
+**Electron** permet de créer des applications multi-platformes pour le bureau à partir de Javascript, HTML et CSS.
+
+Autrement dit, on pourra obtenir une version exécutable de Cogeo.
 
 <a href="{{ site.baseUrl }}front-end/technologies/" class="btn btn-green">Chapitre suivant: Technologies et outils</a>
