@@ -1,6 +1,6 @@
 # Scripts npm
 
-Après avoir obtenu le dossier release produit par la tâche **grunt release** du chapitre précédent, nous pouvons exécuter des scripts npm pour aller encore plus loins dans les versions de production.
+Après avoir obtenu le dossier release produit par la tâche `grunt release` du chapitre précédent, nous pouvons exécuter des scripts npm pour aller encore plus loins dans les versions de production.
 
 ## Electron
 
