@@ -30,7 +30,6 @@ Cependant, une connaissance du web et des technologies est pour certaines partie
 - [Channels](https://c0zen.github.io/Cogeo/front-end/channels/)
 - [Chat](https://c0zen.github.io/Cogeo/front-end/chat/)
 - [Autres](https://c0zen.github.io/Cogeo/front-end/others/)
-- [Electron](https://c0zen.github.io/Cogeo/front-end/electron/)
 - [Bower](https://c0zen.github.io/Cogeo/front-end/bower/)
 - [Tâches Grunt](https://c0zen.github.io/Cogeo/front-end/grunt/)
 - [Scripts npm](https://c0zen.github.io/Cogeo/front-end/npm/)
