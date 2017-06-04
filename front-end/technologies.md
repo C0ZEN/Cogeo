@@ -129,4 +129,4 @@ Alors on lui fait honneur !
 
 Autrement dit, on pourra obtenir une version exécutable de Cogeo.
 
-<a href="{{ site.baseUrl }}front-end/technologies/" class="btn btn-green">Chapitre suivant: Technologies et outils</a>
+<a href="{{ site.baseUrl }}front-end/design/" class="btn btn-green">Chapitre suivant: Design</a>
