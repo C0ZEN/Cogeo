@@ -31,7 +31,7 @@ La commande `npm run package-all` s'occupe de générer un dossier qui contiendr
 
 Ce script utilise **electon-packager** pour réaliser les multiples versions.
 
-**Note:** le dossier de sortie s'intitule *release-app* et lui même contiendra des sous-dossiers nommés en fonction des version *cogeo-app-<platform>-<arch>*
+**Note:** le dossier de sortie s'intitule *release-app* et lui même contiendra des sous-dossiers nommés en fonction des version *cogeo-app-<<platform>>-<<arch>>*
 
 #### Electron packager
 
