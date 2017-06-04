@@ -9,7 +9,7 @@ Nous utilisons **Electron** pour permettre à nos utilisateurs d'avoir une versi
 
 Ce qui veut dire qu'à la fin de ce chapitre, vous pourrez utiliser Cogeo à la fois sur le Web et sur votre ordinateur.
 
-### Preview
+#### Preview
 
 Un premier script permet de testé en live la version qui sera livrée par **Electron**.  
 Cela permet de gagner du temps sur les test.
@@ -23,7 +23,7 @@ La version de bureau va automatiquement s'ouvrir.
 
 **Note:** la version produite est liée au système qui exécute le script (windows x64 pour ma part).
 
-### Production
+#### Production
 
 Après avoir testé que la version **preview** fonctionne correctement, vous pouvez passer à la prochaine et dernière étape qui consiste à réaliser les versions de production pour toutes les plateformes.
 
@@ -33,7 +33,7 @@ Ce script utilise **electon-packager** pour réaliser les multiples versions.
 
 **Note:** le dossier de sortie s'intitule *release-app* et lui même contiendra des sous-dossiers nommés en fonction des version *cogeo-app-<platform>-<arch>*
 
-### Electron packager
+#### Electron packager
 
 C'est cette dépendance qui s'occupe de générer les versions.  
 Actuellement, le script en génère trois (Windows 32/64bits et Linux 32bits).
