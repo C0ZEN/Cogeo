@@ -4,7 +4,7 @@ Après avoir obtenu le dossier release produit par la tâche **grunt release** d
 
 ## Electron
 
-Electron permet de créer des applications multi-platformes pour le bureau à partir de Javascript, HTML et CSS.  
+**Electron** permet de créer des applications multi-platformes pour le bureau à partir de Javascript, HTML et CSS.  
 Nous utilisons **Electron** pour permettre à nos utilisateurs d'avoir une version bureau de Cogeo.
 
 Ce qui veut dire qu'à la fin de ce chapitre, vous pourrez utiliser Cogeo à la fois sur le Web et sur votre ordinateur.
