@@ -91,6 +91,15 @@ C'est beaucoup plus facile à maintenant et la gestion est d'autant plus automat
 
 ## Outils
 
+#### GitHub
+
+#### SourceTree
+
+#### Trello
+
+#### Webstorm
+
+#### Electron
 
 
 <a href="{{ site.baseUrl }}front-end/technologies/" class="btn btn-green">Chapitre suivant: Technologies et outils</a>
