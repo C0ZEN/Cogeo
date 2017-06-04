@@ -84,7 +84,8 @@ Grâce au travail de [Mason Lee](https://dribbble.com/masonlee) sur [AdRoll UI F
 Bien entendu, nous ne faisons pas dans le copier-coller.  
 Nous avons garder les bases, les couleurs, la police, les composants.
 
-**Note:** le thème **Atom** pour notre librairie Cozen est le résultat de ce mockup.
+**Note:** le thème **Atom** pour notre librairie Cozen est le résultat de ce mockup.  
+**Note:** un [chapitre](https://c0zen.github.io/Cogeo/front-end/design/) est dédiée au design.
 
 ## User-friendly
 
