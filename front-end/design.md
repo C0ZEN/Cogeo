@@ -64,6 +64,6 @@ Pour le moment, trois thèmes sont disponibles:
 
 - Tau (thème initial, n'est plus maintenu)
 - Atom (thème inspiré par AdRoll, complet)
-- Nolan (thème copier d'Atom, n'est pas terminé)
+- Nolan (thème copié d'Atom, n'est pas terminé)
 
 <a href="{{ site.baseUrl }}front-end/languages/" class="btn btn-green">Chapitre suivant: Langages</a>
