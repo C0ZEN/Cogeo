@@ -38,7 +38,7 @@ Deux facteurs positifs sont à retenir:
 
 Après avoir étudié ce qui nous as plus dans **Slack** et **Discord**, nous avons décidé de faire une application avec un Back-Office complet mais uniforme ainsi qu'un chat axé sur des fonctionnalités primaires.
 
-Bien entendu, un très bon UI/UX est requis dans un contexte très user-friendly.
+Bien entendu, un très bon UI/UX est requis dans un contexte très **user-friendly**.
 
 ## La maîtrise en facteur clé
 
