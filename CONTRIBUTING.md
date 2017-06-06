@@ -124,8 +124,8 @@ And the text continue...
 
 ### Next link
 
-You should add a lin kto the next chapter on each page except the last one.  
-Just copy/past and edit this link.
+You should add a link to the next chapter on each page except the last one.  
+Just copy/past then edit this link.
 
 ```
 <a href="{{ site.baseUrl }}front-end/account/" class="btn btn-green">Chapitre suivant: Compte</a>
