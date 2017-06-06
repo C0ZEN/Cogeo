@@ -35,9 +35,9 @@ Plus, it give us a lot of generic services, filters and methods to increase the 
 **Cogeo progression :**
 
 We almost achieve the first release version (~95% of our specifications).  
-We have a complete Back-Office for the user, the groups and the channels (management is complete).  
-We are working on the chat last features (async messages and video chat still missing).  
-We started the creation of Robots (IA).
+We have a complete Back-Office for the user, the groups and the channels.  
+The only last feature not complete is the video call (hard to test).  
+We started the creation of Robots (IA) but there are not limit to all the improvements possibilities.
 
 **API progression :**
 
