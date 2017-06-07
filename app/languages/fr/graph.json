@@ -32,9 +32,9 @@
                 "PUBLIC": "Public",
                 "PRIVATE": "Privé",
                 "CHANNEL_DEFAULT": "channel par défaut",
-                "CHANNEL_DEFAULT_PLURALIZE": "channels par défauts",
+                "CHANNEL_DEFAULT_PLURALIZE": "channels par défaut",
                 "CHANNEL_PUBLIC": "channel public",
-                "CHANNEL_PUBLIC_PLURALIZE": "channels publiques",
+                "CHANNEL_PUBLIC_PLURALIZE": "channels publics",
                 "CHANNEL_PRIVATE": "channel privé",
                 "CHANNEL_PRIVATE_PLURALIZE": "channels privés"
             }

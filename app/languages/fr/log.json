@@ -24,7 +24,7 @@
     "log_login_title": "Je me connecte...",
     "log_login_subtitle_1": "Si tu n'as pas encore de compte Cogeo, nous te recommandons dans un premier temps de",
     "log_login_subtitle_2": "t'inscrire.",
-    "log_login_subtitle_3": "Sans inscription au préalable, tu ne pourra pas associer ton compte Cogeo à tes réseaux sociaux.",
+    "log_login_subtitle_3": "Sans inscription au préalable, tu ne pourras pas associer ton compte Cogeo à tes réseaux sociaux.",
     "log_login_subtitle_4": "En plus, Cogeo est totalement gratuit !",
     "log_login_username": "Identifiant",
     "log_login_password": "Mot de passe",
@@ -42,6 +42,6 @@
     "log_new_password_password_pc": "Nouveau mot de passe",
     "log_new_password_confirm_password": "Vérification du nouveau mot de passe",
     "log_new_password_confirm_password_pc": "Vérification du nouveau mot de passe",
-    "log_new_password_subtitle_1": "Saisi un nouveau mot de passe pour ton compte Cogeo.",
-    "log_new_password_subtitle_2": "Une fois la modification valider, tu pourra te connecter avec ton nouveau mot de passe."
+    "log_new_password_subtitle_1": "Saisis un nouveau mot de passe pour ton compte Cogeo.",
+    "log_new_password_subtitle_2": "Une fois la modification validée, tu pourras te connecter avec ton nouveau mot de passe."
 }

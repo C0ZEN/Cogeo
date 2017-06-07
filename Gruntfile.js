@@ -44,7 +44,10 @@ module.exports = function (grunt) {
                     'languages'
                     // 'newer:jshint:all',
                     // 'newer:jscs:all'
-                ]
+                ],
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                }
             },
             js        : {
                 files  : [
@@ -92,6 +95,7 @@ module.exports = function (grunt) {
                 },
                 files  : [
                     '<%= yeoman.app %>/**/*.html',
+                    // '<%= yeoman.app %>/languages/**/*.json',
                     '.tmp/styles/**/*.css',
                     '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
