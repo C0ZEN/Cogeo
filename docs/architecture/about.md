@@ -9,6 +9,7 @@ Elle contient des informations sur notre conception, les topologies, la mise en 
 
 Cette documentation est une documentation technique.  
 Elle sera utile pour comprendre nos choix de technologies et de conception.
+
 Une connaissance des technologies de réseaux, d'architectures et de systèmes d'exploitations est par conséquent nécessaire à la lecture de cette documentation.
 
 # Sommaire
