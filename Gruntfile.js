@@ -457,7 +457,6 @@ module.exports = function (grunt) {
                         ],
                         dest  : '<%= yeoman.release %>',
                         rename: function (dest, src) {
-                            console.log(dest, src);
                             src = src.replace('release.', '');
                             return dest + '/' + src;
                         }
@@ -741,18 +740,18 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('release', [
-        'clean:release',            // Delete the .tmp folder and release content folder
-        'languages',                // Concat the languages files
-        'less:release',             // Transform less to css and add them to the release folder
-        'cssmin:release',           // Make the css better
-        'ngtemplates:release',      // Transform all the .html as template
-        'uglify:releaseMain',       // Copy and min all the js into the release folder
-        'uglify:releaseApp',        // Copy and min the config, module and run js into the release folder
-        'copy:languages',           // Copy the languages folder into the release folder
-        'copy:other',               // Copy the other files into the release folder
-        'htmlmin:index',            // Copy and min the index file into the release folder
-        'string-replace:release',   // Replace the absolute path in the css where url are pointing on images or fonts
-        'imagemin:release'          // Copy and min all the images into the release folder
+        'clean:release',          // Delete the .tmp folder and release content folder
+        'languages',              // Concat the languages files
+        'less:release',           // Transform less to css and add them to the release folder
+        'cssmin:release',         // Make the css better
+        'ngtemplates:release',    // Transform all the .html as template
+        'uglify:releaseMain',     // Copy and min all the js into the release folder
+        'uglify:releaseApp',      // Copy and min the config, module and run js into the release folder
+        'copy:languages',         // Copy the languages folder into the release folder
+        'copy:other',             // Copy the other files into the release folder
+        'htmlmin:index',          // Copy and min the index file into the release folder
+        'string-replace:release', // Replace the absolute path in the css where url are pointing on images or fonts
+        'imagemin:release'        // Copy and min all the images into the release folder
     ]);
 
     grunt.registerTask('languages', 'Languages task to compile the .json', [

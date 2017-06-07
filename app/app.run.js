@@ -52,7 +52,8 @@
             getGroupPicture  : groupsFactory.getGroupPicture,
             getChannelPicture: channelsFactory.getChannelPicture,
             generateUuid     : rfc4122.v4,
-            showZoomImage    : showZoomImage
+            showZoomImage    : showZoomImage,
+            broadcastEvent   : broadcastEvent
         };
 
         function showPopup($event, name, data) {
@@ -76,6 +77,10 @@
         function showZoomImage($event, image) {
             $event.stopPropagation();
             $rootScope.$broadcast('cogeoShowZoomImage', image);
+        }
+
+        function broadcastEvent(eventName, data) {
+            $rootScope.$broadcast(eventName, data);
         }
     }
 

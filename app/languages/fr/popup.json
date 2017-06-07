@@ -174,5 +174,9 @@
     "popup_allGroups_filter_body_myGroupsAdmin": "Et ou je suis l'administrateur",
     "popup_allGroups_filter_body_myGroupsAdmin_tooltip": "Afficher seulement les groupes dont je suis membre et dont je suis administrateur",
     "popup_allGroups_filter_body_condensed": "Vue plus condensée",
-    "popup_allGroups_filter_body_condensed_tooltip": "Réduit le nombre d'informations visibles pour améliorer la lisibilité"
+    "popup_allGroups_filter_body_condensed_tooltip": "Réduit le nombre d'informations visibles pour améliorer la lisibilité",
+    "popup_onCall_header_title": "Appel",
+    "popup_onCall_body_title": "Accepter ou refuser l'appel de {{username}}",
+    "popup_onCall_body_accept": "Accepter",
+    "popup_onCall_body_refuse": "Refuser"
 }

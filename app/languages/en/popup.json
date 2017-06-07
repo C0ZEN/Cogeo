@@ -174,5 +174,9 @@
     "popup_allGroups_filter_body_myGroupsAdmin": "And where I am the admin",
     "popup_allGroups_filter_body_myGroupsAdmin_tooltip": "Show only groups I am a member of which I am a director",
     "popup_allGroups_filter_body_condensed": "More condensed view",
-    "popup_allGroups_filter_body_condensed_tooltip": "Reduces the number of visible information to improve readability"
+    "popup_allGroups_filter_body_condensed_tooltip": "Reduces the number of visible information to improve readability",
+    "popup_onCall_header_title": "Call",
+    "popup_onCall_body_title": "Accept or refuse the call of {{username}}",
+    "popup_onCall_body_accept": "Accept",
+    "popup_onCall_body_refuse": "Refuse"
 }

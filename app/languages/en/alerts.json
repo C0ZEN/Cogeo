@@ -41,5 +41,6 @@
     "alerts_success_friend_set_alias_empty": "You have removed the nickname of <strong>{{friend}}</strong>.",
     "alerts_success_friend_blocked": "You have blocked <strong>{{friend}}</strong> from your friends.",
     "alerts_success_friend_unblocked": "You have unblocked <strong>{{friend}}</strong> from your friends.",
-    "alerts_success_friend_remove": "You have removed <strong>{{friend}}</strong> from your friends."
+    "alerts_success_friend_remove": "You have removed <strong>{{friend}}</strong> from your friends.",
+    "alerts_error_get_mediaStream": "You can't start a call. You must authorize Cogeo to use your microphone and your camera."
 }

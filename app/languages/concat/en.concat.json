@@ -218,6 +218,7 @@
 	"alerts_success_friend_blocked": "You have blocked <strong>{{friend}}</strong> from your friends.",
 	"alerts_success_friend_unblocked": "You have unblocked <strong>{{friend}}</strong> from your friends.",
 	"alerts_success_friend_remove": "You have removed <strong>{{friend}}</strong> from your friends.",
+	"alerts_error_get_mediaStream": "You can't start a call. You must authorize Cogeo to use your microphone and your camera.",
 	"COMMON": {
 		"FRIENDS": {},
 		"CHANNELS": {}
@@ -1141,6 +1142,10 @@
 	"popup_allGroups_filter_body_myGroupsAdmin_tooltip": "Show only groups I am a member of which I am a director",
 	"popup_allGroups_filter_body_condensed": "More condensed view",
 	"popup_allGroups_filter_body_condensed_tooltip": "Reduces the number of visible information to improve readability",
+	"popup_onCall_header_title": "Call",
+	"popup_onCall_body_title": "Accept or refuse the call of {{username}}",
+	"popup_onCall_body_accept": "Accept",
+	"popup_onCall_body_refuse": "Refuse",
 	"profiles_user": "Profile of a Cogeo member",
 	"profiles_user_title": "{{username}}'s profile",
 	"profiles_user_subtitle": "Watch his profile and trigger social actions.",

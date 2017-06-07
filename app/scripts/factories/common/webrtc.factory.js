@@ -10,14 +10,35 @@
         '$window',
         'cozenEnhancedLogs',
         'directMessagesFactory',
-        '$rootScope'
+        '$rootScope',
+        'cozenFloatingFeedFactory'
     ];
 
-    function cogeoWebRtc(CONFIG, $window, cozenEnhancedLogs, directMessagesFactory, $rootScope) {
+    function cogeoWebRtc(CONFIG, $window, cozenEnhancedLogs, directMessagesFactory, $rootScope, cozenFloatingFeedFactory) {
 
         // Private data
         var peer;
         var peerId;
+        var mediaConnection;
+        var mediaStream;
+
+        // Listener called when the user wish to start a call with a friend
+        $rootScope.$on('cogeoWebRtc:callFriend', function ($event, $eventData) {
+
+            // Try to get the media stream
+            getMediaStream(function () {
+
+                // Make a call
+                mediaConnection = peer.call($eventData.friend, mediaStream);
+                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called ask for friend', $eventData.friend);
+            });
+        });
+
+        // Listener called when the user accept the call
+        $rootScope.$on('cogeoWebRtc:answerCall', function ($event, $eventData) {
+            mediaConnection.answer(mediaStream);
+            cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'Call answered');
+        });
 
         return {
             createPeer      : createPeer,
@@ -25,7 +46,8 @@
             connectFriends  : connectFriends,
             connectionSend  : connectionSend,
             destroyPeer     : destroyPeer,
-            searchConnection: searchConnection
+            searchConnection: searchConnection,
+            getMediaStream  : getMediaStream
         };
 
         function createPeer(username) {
@@ -47,6 +69,28 @@
             // When other users connect to you
             peer.on('connection', function (newConnection) {
                 cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'User', newConnection.peer, 'as established a connection with you');
+            });
+
+            // Listen for video calls
+            peer.on('call', function (newMediaConnection) {
+                mediaConnection = newMediaConnection;
+                cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'You received a call');
+
+                // Open the popup to accept or refuse the call
+                getMediaStream(function () {
+                    $rootScope.methods.showPopup(null, 'onCall', {
+                        mediaConnection: mediaConnection,
+                        mediaStream    : mediaStream,
+                        username       : mediaConnection.peer,
+                        type           : 'purple'
+                    });
+                });
+
+                // When the call is answer, the stream is triggered
+                mediaConnection.on('stream', function(stream) {
+                    cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is live');
+                    $('#stream').prop('src', URL.createObjectURL(stream));
+                });
             });
 
             // Listen for close window or refresh
@@ -166,6 +210,32 @@
                 }
             }
             return searchedConnection;
+        }
+
+        function getMediaStream(successCallback) {
+
+            // If the media stream wasn't set
+            if (Methods.isNullOrEmpty(mediaStream)) {
+                navigator.mediaDevices.getUserMedia({
+                    audio: true,
+                    video: true
+                }).then(function (newMediaStream) {
+                    mediaStream = newMediaStream;
+                    cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'We can start a media stream');
+                    successCallback();
+                }).catch(function () {
+                    cozenEnhancedLogs.error.customMessage('cogeoWebRtc', 'We can not start a media stream');
+                    cozenFloatingFeedFactory.addAlert({
+                        type : 'error',
+                        label: 'alerts_error_get_mediaStream'
+                    });
+                });
+            }
+
+            // If we already have a media stream
+            else {
+                successCallback();
+            }
         }
     }
 
