@@ -15,10 +15,12 @@
         'httpRequest',
         'cozenLanguage',
         'groupsFactory',
-        '$timeout'
+        '$timeout',
+        '$stateParams'
     ];
 
-    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, cozenLanguage, groupsFactory, $timeout) {
+    function AccountCtrl(CONFIG, $scope, goTo, $rootScope, $filter, userFactory, httpRequest, cozenLanguage, groupsFactory, $timeout,
+                         $stateParams) {
         var vm = this;
 
         // Common data
@@ -73,7 +75,8 @@
                     };
                     userFactory.httpRequest.updateSettings(updateSettings, function () {
                         vm.methods.stopLoading();
-                        goTo.view('app.account.settings', {lang: updateSettings.language});
+                        cozenLanguage.updateCurrentLanguage(vm.settings.language);
+                        goTo.view('app.account.settings', {lang: vm.settings.language});
                     }, function () {
                         vm.methods.stopLoading();
                         var btn = angular.element(document.querySelector('#submit-edit-account-settings'));

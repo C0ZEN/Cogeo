@@ -1,14 +1,14 @@
 {
     "profiles_user": "Profil d'un membre Cogeo",
     "profiles_user_title": "Profil de {{username}}",
-    "profiles_user_subtitle": "Consulter son profil et mené des actions sociales.",
+    "profiles_user_subtitle": "Consulter son profil et mener des actions sociales.",
     "profiles_user_details": "Ses informations",
     "profiles_user_add_to_friend": "Ajouter aux amis",
     "profiles_user_add_from_friends": "Supprimer des amis",
     "profiles_user_groups": "Ses groupes",
     "profiles_user_no_groups": "{{username}} n'est pas encore membre d'un groupe.",
-    "profiles_user_friend_since": "Tu es amis avec {{username}} depuis le {{date}}.",
+    "profiles_user_friend_since": "Tu es ami avec {{username}} depuis le {{date}}.",
     "profiles_user_invited_on": "Invité à rejoindre tes amis depuis le {{date}}.",
-    "profiles_user_unblock": "Débloqué",
+    "profiles_user_unblock": "Débloquer",
     "profiles_user_chat": "Chatter"
 }

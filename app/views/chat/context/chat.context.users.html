@@ -46,7 +46,8 @@
 <div class="chat-action-bar">
 
     <!-- Call -->
-    <div class="action phone animated zoomIn">
+    <div class="action phone animated zoomIn"
+         ng-click="methods.broadcastEvent('cogeoWebRtc:callFriend', {friend: vm.activeFriend.username})">
         <cozen-tooltip cozen-tooltip-label="'chat_actionBar_phone_simple'"
                        cozen-tooltip-placement="auto top">
             <i class="fa icons8-video-call"></i>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="cogeoApp"
       ng-controller="AppCtrl as app">
-    <head>
+    <base>
         <meta charset="utf-8">
         <title ng-bind="($state.current.data.pageTitle | translate:$state.params) + ' - Cogeo'">
             Cogeo
@@ -27,8 +27,8 @@
         <link rel="stylesheet" href="bower_components/videogular-themes-default/videogular.css" />
         <link rel="stylesheet" href="bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css" />
         <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css" />
-        <link rel="stylesheet" href="bower_components/cozen-lib/release/main.min.css" />
         <link rel="stylesheet" href="bower_components/ngEmbed/src/ng-embed.css" />
+        <link rel="stylesheet" href="bower_components/cozen-lib/release/main.min.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -135,12 +135,6 @@
         <script src="bower_components/angular-ellipsis/src/angular-ellipsis.js"></script>
         <script src="bower_components/re-tree/re-tree.js"></script>
         <script src="bower_components/ng-device-detector/ng-device-detector.js"></script>
-        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
-        <script src="bower_components/console.style/console.style.js"></script>
-        <script src="bower_components/chance/chance.js"></script>
-        <script src="bower_components/cozen-lib/release/clean/main.js"></script>
-        <script src="bower_components/cozen-lib/release/clean/template.cache.js"></script>
-        <script src="bower_components/cozen-lib/release/clean/directives.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/ng-if-bootstrap/src/index.js"></script>
         <script src="bower_components/ngEmbed/src/ng-embed.js"></script>
@@ -149,6 +143,12 @@
         <script src="bower_components/angular-marked/dist/angular-marked.js"></script>
         <script src="bower_components/highlight-js/src/highlight.js"></script>
         <script src="bower_components/peerjs/peer.js"></script>
+        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+        <script src="bower_components/console.style/console.style.js"></script>
+        <script src="bower_components/chance/chance.js"></script>
+        <script src="bower_components/cozen-lib/release/clean/main.js"></script>
+        <script src="bower_components/cozen-lib/release/clean/template.cache.js"></script>
+        <script src="bower_components/cozen-lib/release/clean/directives.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -277,6 +277,8 @@
         <script src="scripts/filters/groupsInvitations.types.js" type="text/javascript"></script>
 
         <script src="scripts/filters/defaultChannels.js" type="text/javascript"></script>
+
+        <script src="scripts/filters/blockedFriends.js" type="text/javascript"></script>
 
         <script src="scripts/factories/google-graph/groupStatus.factory.js" type="text/javascript"></script>
 

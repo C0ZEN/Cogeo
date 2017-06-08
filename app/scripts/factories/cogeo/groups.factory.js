@@ -20,9 +20,15 @@
                            cozenEnhancedLogs, CONFIG) {
         var groups = [];
 
+        // Listener when new message is posted
+        $rootScope.$on('groupsFactory:newMessage', function ($event, data) {
+            addMessage(data.groupName, data.channelName, data.newMessage);
+        });
+
         // Public functions
         return {
             subscribe                             : subscribe,
+            _notify                               : _notify,
             getGroups                             : getGroups,
             getGroupByName                        : getGroupByName,
             getGroupById                          : getGroupById,
@@ -716,6 +722,7 @@
                             time     : $filter('translate')('other_time_' + data.time)
                         }
                     });
+                    cozenEnhancedLogs.explodeObject(data, true);
                 })
             ;
         }

@@ -69,7 +69,8 @@
                 // Login with the app (how each load, to make sure that the token is still valid)
                 // May be a potential performance leak nevertheless the security is enhanced
                 userFactory.httpRequest.login(user, function (response) {
-                    if (response.data.data.settings.language != cozenLanguage.getCurrentLanguage()) {
+                    if (response.data.data.settings.language != cozenLanguage.getCurrentLanguage() ||
+                        cozenLanguage.getCurrentLanguage() != $stateParams.lang) {
                         cozenLanguage.updateCurrentLanguage(response.data.data.settings.language);
 
                         // Refresh the state with new lang param

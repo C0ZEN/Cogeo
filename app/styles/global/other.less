@@ -293,3 +293,32 @@ img::selection {
 .text-italic {
     font-style : italic;
 }
+.atom-screenshot-mark {
+    position : relative;
+    @atom-screenshot-mark-width : 5px;
+    @atom-screenshot-mark-border : @atom-screenshot-mark-width solid @atom-color-label;
+    &:before {
+        position         : absolute;
+        bottom           : 100%;
+        right            : 100%;
+        width            : @atom-space-medium;
+        height           : @atom-space-medium;
+        content          : '';
+        background-color : transparent;
+        box-sizing       : border-box;
+        border-bottom    : @atom-screenshot-mark-border;
+        border-right     : @atom-screenshot-mark-border;
+    }
+    &:after {
+        position         : absolute;
+        top              : 100%;
+        left             : 100%;
+        width            : @atom-space-medium;
+        height           : @atom-space-medium;
+        content          : '';
+        background-color : transparent;
+        box-sizing       : border-box;
+        border-top       : @atom-screenshot-mark-border;
+        border-left      : @atom-screenshot-mark-border;
+    }
+}

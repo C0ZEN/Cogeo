@@ -45,6 +45,7 @@
             getChannelBannedQuantity        : getChannelBannedQuantity,
             getAllUsersExceptHasLeft        : getAllUsersExceptHasLeft,
             isStarredByUser                 : isStarredByUser,
+            addMessage                      : addMessage,
             httpRequest                     : {
                 updateChannel  : httpRequestUpdateChannel,
                 addChannel     : httpRequestAddChannel,
@@ -503,6 +504,12 @@
                 }
             }
             return false;
+        }
+
+        function addMessage(groupName, channelId, newMessage) {
+            var channel = getChannelById(groupName, channelId);
+            channel.messages.push(newMessage);
+            groupsFactory._notify();
         }
 
         /// HTTP REQUEST ///

@@ -46,7 +46,7 @@
 
         // Used for chat upload btn
         CONFIG.internal.uploadChat = {
-            pattern  : '.jpg,.jpeg,.png,.gif,.txt,.pdf,.mp3,.m4v,.mp4,.mov,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            pattern  : 'image/gif,image/png,image/jpg,.txt,.pdf,.mp3,.m4v,.mp4,.mov,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             maxSize  : '100MB',
             minHeight: 0,
             maxHeight: 10000,

@@ -20,11 +20,12 @@
         'cozenEnhancedLogs',
         'userFactory',
         'cozenLazyLoadRandom',
-        'cozenLanguage'
+        'cozenLanguage',
+        'CONFIG'
     ];
 
     function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory, usersFactory,
-                 rfc4122, logs, cozenEnhancedLogs, userFactory, cozenLazyLoadRandom, cozenLanguage) {
+                 rfc4122, logs, cozenEnhancedLogs, userFactory, cozenLazyLoadRandom, cozenLanguage, CONFIG) {
         cozenEnhancedLogs.wrap.starting('windowOnLoad');
 
         // Public global data
@@ -44,6 +45,7 @@
         $rootScope.cozenLazyLoadRandom = cozenLazyLoadRandom;
         $rootScope.cozenLanguage       = cozenLanguage;
         $rootScope.Utils               = Utils;
+        $rootScope.$CONFIG             = CONFIG;
 
         // Public global functions
         $rootScope.methods = {
@@ -52,7 +54,8 @@
             getGroupPicture  : groupsFactory.getGroupPicture,
             getChannelPicture: channelsFactory.getChannelPicture,
             generateUuid     : rfc4122.v4,
-            showZoomImage    : showZoomImage
+            showZoomImage    : showZoomImage,
+            broadcastEvent   : broadcastEvent
         };
 
         function showPopup($event, name, data) {
@@ -76,6 +79,10 @@
         function showZoomImage($event, image) {
             $event.stopPropagation();
             $rootScope.$broadcast('cogeoShowZoomImage', image);
+        }
+
+        function broadcastEvent(eventName, data) {
+            $rootScope.$broadcast(eventName, data);
         }
     }
 

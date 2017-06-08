@@ -1,7 +1,7 @@
 {
     "SOCIAL": {
         "TITLE": "Mon aspect social",
-        "SUBTITLE": "Consulte, invite et gère tes amis.",
+        "SUBTITLE": "Consultes, invites et gères tes amis.",
         "FRIENDS": {
             "SINCE": "Amis depuis le {{date}}",
             "ALIAS": "alias {{alias}}",
