@@ -110,7 +110,47 @@ Un champ de recherche, une pagination et des filtres sur le type de membre, le n
 
 <img class="atom-vertical-line"
      src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsMembers.png"
-     alt="Capture d'écran de la modification du groupe"
-     title="Modification du groupe">
+     alt="Capture d'écran des membres du groupe"
+     title="Membres du groupe">
+     
+## Invitations du groupe
+
+**Chemin:** `app/fr/groups/invitations/[groupName]`
+
+#### Description
+
+Contient la liste des invitations du groupe.
+
+Permet de voir qui envoie des invitations et si les invitations ont été acceptées, refusées ou sont toujours en attente.
+     
+**Filtres**
+
+Cette vue contient plusieurs options pour filtrer l'affichage en cours.
+
+Un champ de recherche, une pagination et des filtres sur le type d'invitation, le nombre par page et l'ordre.
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsInvitations.png"
+     alt="Capture d'écran des invitations du groupe"
+     title="Invitations du groupe">
+     
+## Recruter des membres pour le groupe
+
+**Chemin:** `app/fr/groups/recruit/[groupName]`
+
+#### Description
+
+Permet d'inviter des membres Cogeo à rejoindre le groupe.
+
+Il est possible d'inviter les membres de trois manières:
+
+- En partagant un lien d'invitation
+- En invitant des membres Cogeo
+- En invitant des utilisateur par mail (envoi de mail non implémenté)
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsRecruit.png"
+     alt="Capture d'écran du recrutement des membres d'un groupe"
+     title="Recruiter des membres pour le groupe">
      
 <a href="{{ site.baseUrl }}front-end/groups/" class="btn btn-green">Chapitre suivant: Groupes</a>
