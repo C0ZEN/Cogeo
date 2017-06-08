@@ -230,3 +230,5 @@ Un champ de recherche, une pagination et des filtres sur le nombre par page et l
      src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/accountLogins.png"
      alt="Capture d'écran de l'historique des connexions"
      title="Connexions">
+     
+<a href="{{ site.baseUrl }}front-end/social/" class="btn btn-green">Chapitre suivant: Social</a>
