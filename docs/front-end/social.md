@@ -55,14 +55,14 @@ Cette vue contient plusieurs options pour filtrer l'affichage en cours.
 
 Un champ de recherche, une pagination et des filtres sur les types d'invitations, le nombre par page et l'ordre.
 
+**Liens:**
+
+- Inviter des amis
+
 <img class="atom-vertical-line"
      src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/socialInvitations.png"
      alt="Capture d'écran des invitations"
      title="Invitations">
-     
-**Liens:**
-
-- Inviter des amis
 
 ## Inviter
 
