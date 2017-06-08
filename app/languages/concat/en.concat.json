@@ -995,6 +995,8 @@
 	"popup_logs_filter_body_event_all_selected": "All Categories selected",
 	"popup_logs_filter_body_order_by": "Decreasing order",
 	"popup_logs_filter_body_order_by_tooltip": "Show Recent Events First",
+	"popup_logs_filter_body_blocked": "Display blocked friends",
+	"popup_logs_filter_body_blocked_tooltip": "Also display all blocked friends ?",
 	"popup_global_volume_header_title": "Change volume",
 	"popup_global_volume_body_title": "Change volume for Cogeo.",
 	"popup_global_volume_body_subtitle_1": "The volume of calls will be changed.",

@@ -39,6 +39,7 @@
                      ng-repeat="friend in vm.friends
                        | orderBy: 'date':vm.settingsFriends.orderBy
                        | filter: vm.settingsFriends.search
+                       | blockedFriends: vm.settingsFriends.blocked
                        | startFrom: (vm.settingsFriends.currentPage - 1) * vm.settingsFriends.limit
                        | limitTo: vm.settingsFriends.limit
                        as friendsFilter track by $index">
@@ -96,6 +97,7 @@
                 <div style="display: none;"
                      ng-repeat="friend in vm.friends
                        | filter: vm.settingsFriends.search
+                       | blockedFriends: vm.settingsFriends.blocked
                        as fakeFriendsFilter track by $index">
                 </div>
             </div>
@@ -112,7 +114,7 @@
             <a href
                class="animated fadeInUp space-medium-after"
                onclick="this.blur()"
-               ng-click="methods.showPopup($event, 'contactsFilter', vm.friends)">
+               ng-click="methods.showPopup($event, 'contactsFilter', vm.settingsFriends)">
                 {{ 'groups_all_show_filter' | translate }}
             </a>
         </div>

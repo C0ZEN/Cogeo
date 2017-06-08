@@ -722,6 +722,7 @@
                             time     : $filter('translate')('other_time_' + data.time)
                         }
                     });
+                    cozenEnhancedLogs.explodeObject(data, true);
                 })
             ;
         }

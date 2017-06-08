@@ -28,6 +28,8 @@
     "popup_logs_filter_body_event_all_selected": "Toutes les catégories sélectionnées",
     "popup_logs_filter_body_order_by": "Ordre décroissant",
     "popup_logs_filter_body_order_by_tooltip": "Afficher les événements récents en premier",
+    "popup_logs_filter_body_blocked": "Afficher les amis bloqués",
+    "popup_logs_filter_body_blocked_tooltip": "Afficher également tous les amis actuellement bloqués ?",
     "popup_global_volume_header_title": "Modifier le volume",
     "popup_global_volume_body_title": "Modifier le volume pour Cogeo.",
     "popup_global_volume_body_subtitle_1": "Le volume des appels sera modifié.",
