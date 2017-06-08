@@ -73,7 +73,7 @@ Un champ de recherche, une pagination et des filtres sur les types d'invitations
 Contient la liste des membres Cogeo pouvant être ajouter aux amis de l'utilisateur courant.
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/socialRecruits.png"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/socialRecruit.png"
      alt="Capture d'écran des membres à inviter"
      title="Inviter">
      
