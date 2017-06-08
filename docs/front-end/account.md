@@ -139,3 +139,46 @@ Permet à l'utilisateur courant de modifier ses paramètres.
 **Liens:** 
 
 - Voir les paramètres
+
+## Historique
+
+`app/fr/account/log`
+
+#### Description
+
+Contient une liste d'événements liés aux interactions de l'utilisateur courant.  
+
+Ces événements sont générés automatiquement par l'API en fonction des routes appellées.
+
+**Note:** vue en tuile, avec champ de recherche et pagination.
+
+**Liens:** 
+
+- Plus de filtres
+- Afficher l'historique complet
+
+## Connexions
+
+`app/fr/account/logins`
+
+#### Description
+
+Contient une liste d'historique de connexions de l'utilisateur courant.
+
+Ces événements sont générés automatiquement par le Front-End lorsque l'utilisateur se connecte via la page de connexion (username et mot de passe).
+
+**Données visibles:**
+
+- IP
+- Hostname
+- Localisation (pays, région, département et ville)
+- Système (Type et version)
+- Navigateur (Nom et version)
+- Cogeo (version et langue)
+- Date de connexion
+
+**Note:** vue en tuile, avec champ de recherche et pagination.
+
+**Liens:** 
+
+- Plus de filtres
