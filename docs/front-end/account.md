@@ -27,7 +27,10 @@ Contient toutes les informations du profil de l'utilisateur courant.
 - Groupes
 - Date d'inscription
 
-![Screenshot](http://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/accountProfile.png "Profil")
+<img class="atom-vertical-line"
+     src="http://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/accountProfile.png"
+     alt="Capture d'écran du Profil"
+     title="Profil">
 
 **Liens:** 
 
