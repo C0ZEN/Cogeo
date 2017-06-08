@@ -63,5 +63,18 @@ Un champ de recherche, une pagination et des filtres sur les types d'invitations
 **Liens:**
 
 - Inviter des amis
+
+## Inviter
+
+**Chemin:** `app/fr/social/recruit`
+
+#### Description
+
+Contient la liste des membres Cogeo pouvant être ajouter aux amis de l'utilisateur courant.
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/socialRecruits.png"
+     alt="Capture d'écran des membres à inviter"
+     title="Inviter">
      
 <a href="{{ site.baseUrl }}front-end/groups/" class="btn btn-green">Chapitre suivant: Groupes</a>
