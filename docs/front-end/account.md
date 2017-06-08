@@ -101,3 +101,41 @@ Permet à l'utilisateur courant d'activé ou de désactivé ses notifications au
 **Liens:** 
 
 - Voir les notifications
+
+## Paramètres
+
+`app/fr/account/settings`
+
+#### Description
+
+Contient la liste de tous les paramètres liés à l'utilisateur courant.
+
+**Types de paramètres:**
+
+- Réseau
+- Microphone
+- Enceintes
+- Autres paramètres
+
+**Liens:** 
+
+- Modifier les paramètres
+
+## Paramètres
+
+`app/fr/account/settings/edit`
+
+#### Description
+
+Permet à l'utilisateur courant de modifier ses paramètres.
+
+**Paramètres éditables:**
+
+- Réseau (ports)
+- Microphone (volume)
+- Enceintes (volume)
+- Autres paramètres (chemin d'enregisteement et langue de Cogeo)
+
+**Liens:** 
+
+- Voir les paramètres
