@@ -63,7 +63,8 @@ Permet à l'utilisateur courant de modifier son mot de passe.
 **Données à saisir:**
 
 - Mot de passe actuel
-- Nouveau mot de passe (x2)
+- Nouveau mot de passe
+- Confirmation du mot de passe
 
 **Liens:**
 
