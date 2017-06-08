@@ -52,6 +52,11 @@ Contient toutes les informations du profil de l'utilisateur courant qui sont éd
 - Image de profil
 - Description
 
+<img class="atom-vertical-line"
+     src="http://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/accountProfileEdit.png"
+     alt="Capture d'écran de l'édition du profil"
+     title="Edition du profil">
+
 **Liens:**
 
 - Voir le profil
@@ -70,6 +75,11 @@ Permet à l'utilisateur courant de modifier son mot de passe.
 - Mot de passe actuel
 - Nouveau mot de passe
 - Confirmation du nouveau mot de passe
+
+<img class="atom-vertical-line"
+     src="http://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/accountProfileEditPassword.png"
+     alt="Capture d'écran de l'édition du mot de passe"
+     title="Edition du mot de passe">
 
 **Liens:**
 
@@ -90,6 +100,11 @@ Contient la liste de tous les paramètres liés aux notifications pour l'utilisa
 - Notifications sociales
 - Autres notifications
 - Notifications internes Cogeo
+
+<img class="atom-vertical-line"
+     src="http://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/accountNotifications.png"
+     alt="Capture d'écran des notifications"
+     title="Notifications">
 
 **Liens:** 
 
