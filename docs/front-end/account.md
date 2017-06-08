@@ -16,4 +16,19 @@ De la gestion du profil à la gestion des paramètres, l'utilisateur a accès à
 
 Contient toutes les informations du profil de l'utilisateur courant.
 
-**Lien:** édition du profil.
+**Liens:** 
+
+- Modifier le profil
+
+## Profil - Edition
+
+`app/fr/account/profile/edit`
+
+#### Description
+
+Contient toutes les informations du profil de l'utilisateur courant qui sont éditables par celui-ci.
+
+**Liens:**
+
+- Voir le profil
+- Changer de mot de passe
