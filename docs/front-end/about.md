@@ -26,6 +26,7 @@ Cependant, une connaissance du web et des technologies est pour certaines partie
 - [Librairie Cozen](https://c0zen.github.io/Cogeo/front-end/cozen/)
 - [Authentification](https://c0zen.github.io/Cogeo/front-end/authentication/)
 - [Compte](https://c0zen.github.io/Cogeo/front-end/account/)
+- [Social](https://c0zen.github.io/Cogeo/front-end/social/)
 - [Groupes](https://c0zen.github.io/Cogeo/front-end/groups/)
 - [Channels](https://c0zen.github.io/Cogeo/front-end/channels/)
 - [Chat](https://c0zen.github.io/Cogeo/front-end/chat/)
