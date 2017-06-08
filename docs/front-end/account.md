@@ -16,11 +16,22 @@ De la gestion du profil à la gestion des paramètres, l'utilisateur a accès à
 
 Contient toutes les informations du profil de l'utilisateur courant.
 
+**Données visibles:**
+
+- Nom
+- Prénom
+- Username
+- Email
+- Image de profil
+- Description
+- Groupes
+- Date d'inscription
+
 **Liens:** 
 
 - Modifier le profil
 
-## Profil - Edition
+## Profil - Edition du profil
 
 `app/fr/account/profile/edit`
 
@@ -28,7 +39,32 @@ Contient toutes les informations du profil de l'utilisateur courant.
 
 Contient toutes les informations du profil de l'utilisateur courant qui sont éditables par celui-ci.
 
+**Données éditables:**
+
+- Nom
+- Prénom
+- Email
+- Image de profil
+- Description
+
 **Liens:**
 
 - Voir le profil
 - Changer de mot de passe
+
+## Profil - Edition du mot de passe
+
+`app/fr/account/profile/edit/password`
+
+#### Description
+
+Permet à l'utilisateur courant de modifier son mot de passe.
+
+**Données à saisir:**
+
+- Mot de passe actuel
+- Nouveau mot de passe (x2)
+
+**Liens:**
+
+- Sauvegarder et voir le profil
