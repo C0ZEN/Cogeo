@@ -39,4 +39,29 @@ Un champ de recherche, une pagination et des filtres sur les membres, le nombre 
      alt="Capture d'écran des amis"
      title="Amis">
      
+## Invitations
+
+**Chemin:** `app/fr/social/invitations`
+
+#### Description
+
+Contient la liste des invitations envoyées par l'utilisateur courant.
+
+Permet de voir si les autres utilisateurs Cogeo ont accepter, refuser ou n'ont pas encore répondu à ses invitations.
+
+**Filtres:**
+
+Cette vue contient plusieurs options pour filtrer l'affichage en cours.
+
+Un champ de recherche, une pagination et des filtres sur les types d'invitations, le nombre par page et l'ordre.
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/socialInvitations.png"
+     alt="Capture d'écran des invitations"
+     title="Invitations">
+     
+**Liens:**
+
+- Inviter des amis
+     
 <a href="{{ site.baseUrl }}front-end/groups/" class="btn btn-green">Chapitre suivant: Groupes</a>
