@@ -1,106 +1,93 @@
 # Cogeo
 
-A very simple but complete chat app like **Slack** and **Discord**.  
-You can manage groups, channels and users.  
+Une application très simple mais complète comme **Slack** et **Discord**.  
+Tu peux gérer les groupes, les channels et les utilisateurs.
 
-The design is 100% homemade.  
-Most of the components are custom (input, textarea, dropdown...).  
-We have a full control of the behavior and the design, via the [cozen](https://bitbucket.org/C0ZEN/cozen) library.
+Le design est fait maison à 100%.  
+La majeure partie des composants sont personnalisés (input, textarea, dropdown...).  
+Nous avons un contrôle complet du comportement et du design via la librairie [Cozen](https://bitbucket.org/C0ZEN/cozen).
 
-## About Cogeo
+## A propos de Cogeo
 
-Do you want to know more about the Cogeo app ?  
-Then this section if for you.
+Tu veux en savoir plus à propos de l'application Cogeo ?  
+Alors cette partie est faite pour toi.
 
-**Languages and Frameworks :**
+**Langages et Frameworks :**
 
 - Front-End: AngularJS, HTML5, LESS, Electron, Grunt, Yeoman
 - Back-End : NodeJS, Express, MongoDB, Mongoose, Heroku
 
-**Cozen library :**
+**Librairie Cozen :**
 
-We created the [cozen](https://bitbucket.org/C0ZEN/cozen) library at first to (re)create a lot of web components.  
-This library handle translations and themes.  
-Plus, it give us a lot of generic services, filters and methods to increase the modularity for our apps.  
+Dans un premier temps, nous avons créer la librairie [Cozen](https://bitbucket.org/C0ZEN/cozen) pour (re)créer un grand nombre de composants web.
 
-**Available translations :**
+Cette librairie gère les traductions et la gestion des thèmes.  
+De plus, elle nous donne un grand nombre de services génériques, des filtres et méthodes le tout pour améliorer la modularité de nos applications.
+
+**Traductions disponibles :**
 
 - English [en]
 - Français [fr]
 
-**Available themes :**
+**Thèmes disponibles :**
 
 - Atom
 
-**Cogeo progression :**
+## Pour commencer
 
-We almost achieve the first release version (~95% of our specifications).  
-We have a complete Back-Office for the user, the groups and the channels.  
-The only last feature not complete is the video call (hard to test).  
-We started the creation of Robots (IA) but there are not limit to all the improvements possibilities.
+Avant tout, exécute la commande `npm install` pour installer les **node_modules** et les **bower_components**.
 
-**API progression :**
+Utilise `grunt serve` pour démarrer l'application en mode développement.  
+Cette tâche est utilisée pour démarré un serveur node local, relancer le navigateur automatiquement quand les fichiers changent et évite également les erreurs CORS lors de l'utilisateur des fichiers JSON (de traduction).
 
-The API is over.
+Utilise `grunt release` pour créer une version minifiée de Cogeo.  
+Cette tâche est utilisée pour généré un dossier destiné à la production.
 
-## Getting Started
+**Note:** il faut copier/coller le dossier **bower_components** à la racine de ce dossier.
 
-Before anything below, run `npm install` to install the **node_modules** and **bower_components**.
+Utilise `npm start` quand le dossier release est prêt pour démarré une application lourd en live avec **Electron**.  
+Ce script est utilisé pour faire une preview de ce que **Electron** nous donnera par la suite.
 
-Use `grunt serve` to start the app.  
-This task is used to run a local node server, auto-refresh the app when files changed and avoid error with CORS by the fact that this JSON files must be served by a server.
+Utilise `npm package-[version]` pour créer les versions packagés de Cogeo avec **Electron**.
 
-Use `grunt release` to create the minified version of the app.  
-This task is used to generate the folder used in production.  
-Note: you should copy the bower_components folder in the root of the release folder.
+Voici la liste complète des versions de `npm package` :
 
-Use `npm start` when the release is ready to start a live preview with **electron**.  
-This script is used to preview what electron will give us when running with the release folder.
+- `package-all` pour créer tous les packages disponibles
+- `package-win` pour créer le package Windows
+- `package-lin` pour créer le package Linux
 
-Use `npm package-*` to create the electron packaged version of the app.  
-This is the complete list of `package-*` commands :
+## Fait avec
 
-- `package-all` to create all the avaialble packages
-- `package-win` to create the windows package
-- `package-lin` to create the linux package
-
-## Running the tests
-
-There is no test for now.  
-We don't have the time for that, sorry.
-
-## Built With
-
-* [Yeoman](http://yeoman.io/) - The Web's scaffolding tool for modern webapps
+* [Yeoman](http://yeoman.io/) - L'outil de scaffolding pour les applications web modernes
 * [Angular](https://angular.io/) - Superheroic JavaScript MVW Framework
-* [cozen](https://bitbucket.org/C0ZEN/cozen) - External custom library
-* [Trello](https://trello.com/) - Todo list management
+* [cozen](https://bitbucket.org/C0ZEN/cozen) - Librairie externe
 
 ## Documentation
 
-You can take a look at the [documentation](https://c0zen.github.io/Cogeo/) generated by GitHub Pages.  
-These documentations are only here to explain our choices and how the stuff works, there are not technical.  
-Note that they were written in **French** ;)
+Tu peux jeté un oeil à la documentation [documentation](https://c0zen.github.io/Cogeo/) générée par GitHub Pages.
 
-## Contributing
+Ces documentations ne sont là que pour expliquer nos choix et comment cela fonctionne, ce n'est donc pas technique.
 
-Take your time to read the notes about how help us to make the [documentation](CONTRIBUTING.md).
+## Contribué
 
-## Versioning
+Prend du temps pour lire nos guidelines avant de rédigé la [documentation](CONTRIBUTING.md).
 
-The versioning is managed by our own.  
-You can checkout the [tags for this repository](https://github.com/C0ZEN/Cogeo/tags).
+## Versions
 
-## Authors
+Les versions sont gérés par nous même.
 
-* **Geoffrey Testelin** - Front-End Developer - [C0ZEN](https://github.com/C0ZEN)
-* **Benoit Compere** - Back-End Developer - [BenoitCompere](https://github.com/BenoitCompere)
-* **Paul Verbeke** - Architect - [paolovador](https://github.com/paolovador)
+Tu peux jeté un oeil aux [tags pour ce repo](https://github.com/C0ZEN/Cogeo/tags).
+
+## Auteurs
+
+* **Geoffrey Testelin** - Développeur Front-End - [C0ZEN](https://github.com/C0ZEN)
+* **Benoit Compere** - Développeur Back-End - [BenoitCompere](https://github.com/BenoitCompere)
+* **Paul Verbeke** - Architecte - [paolovador](https://github.com/paolovador)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+Ce projet est sous la license de MIT - regarde [LICENSE.md](LICENSE.md) pour plus de détails.
 
-## Acknowledgments
+## Remerciements
 
-* [AdRoll UI Framework](https://dribbble.com/shots/2833155-AdRoll-UI-Framework) inspired theme by [Mason Lee](https://dribbble.com/masonlee) 
+* [AdRoll UI Framework](https://dribbble.com/shots/2833155-AdRoll-UI-Framework) inspiré par [Mason Lee](https://dribbble.com/masonlee) 
