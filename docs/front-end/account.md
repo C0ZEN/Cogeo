@@ -64,8 +64,40 @@ Permet à l'utilisateur courant de modifier son mot de passe.
 
 - Mot de passe actuel
 - Nouveau mot de passe
-- Confirmation du mot de passe
+- Confirmation du nouveau mot de passe
 
 **Liens:**
 
 - Sauvegarder et voir le profil
+
+## Notifications
+
+`app/fr/account/notifications`
+
+#### Description
+
+Contient la liste de tous les paramètres liés aux notifications pour l'utilisateur courant.
+
+**Types de notifications:**
+
+- Notifications des groupes
+- Notifications des channels
+- Notifications sociales
+- Autres notifications
+- Notifications internes Cogeo
+
+**Liens:** 
+
+- Modifier les notifications
+
+## Notifications - Edition des notifications
+
+`app/fr/account/notifications/edit`
+
+#### Description
+
+Permet à l'utilisateur courant d'activé ou de désactivé ses notifications au cas par cas.
+
+**Liens:** 
+
+- Voir les notifications
