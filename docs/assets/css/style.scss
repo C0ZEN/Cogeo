@@ -46,15 +46,6 @@ a {
 
 // Vertical line
 .atom-vertical-line {
-	position: relative;
-	margin-left: 10px;
-	&:before {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 3px;
-		height: 100%;
-		background-color: $atom-green;
-		content: '';
-	}
+	padding-left: 8px;
+	border-left: 2px solid $atom-green;
 }
