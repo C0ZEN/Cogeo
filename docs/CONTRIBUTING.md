@@ -137,6 +137,8 @@ To make the image a little more visible (if transparent or white background, som
 
 You just have to copy/past this example then edit it.
 
+**Note:** url should be over https.
+
 **Example:**
 
 ```
