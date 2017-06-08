@@ -754,6 +754,18 @@
 
                     // Create the emoticons
                     message.content.compiledText = $filter('embed')(message.content.text, CONFIG.internal.embed);
+
+                    that.messages = that.group.messages;
+                    var embed     = {
+                        fontSmiley  : true,
+                        sanitizeHtml: false,
+                        emoji       : true,
+                        link        : false,
+                        linkTarget  : '_self'
+                    };
+                    that.messages.forEach(function (message) {
+                        message.message = $filter('embed')(message.message, embed);
+                    });
                 }
             });
         }

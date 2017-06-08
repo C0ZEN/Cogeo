@@ -299,8 +299,8 @@ img::selection {
     @atom-screenshot-mark-border : @atom-screenshot-mark-width solid @atom-color-label;
     &:before {
         position         : absolute;
-        bottom           : ~"calc(100% + -@{atom-screenshot-mark-width})";
-        right            : ~"calc(100% + -@{atom-screenshot-mark-width})";
+        bottom           : 100%;
+        right            : 100%;
         width            : @atom-space-medium;
         height           : @atom-space-medium;
         content          : '';
@@ -311,8 +311,8 @@ img::selection {
     }
     &:after {
         position         : absolute;
-        top              : ~"calc(100% + -@{atom-screenshot-mark-width})";
-        left             : ~"calc(100% + -@{atom-screenshot-mark-width})";
+        top              : 100%;
+        left             : 100%;
         width            : @atom-space-medium;
         height           : @atom-space-medium;
         content          : '';
