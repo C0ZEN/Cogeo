@@ -50,7 +50,7 @@
             .positionLeft('10px');
         CozenFloatingFeedProvider
             .width(520)
-            .timeoutTime(14000);
+            .timeoutTime(10000);
 
         // Configure the location provider
         $locationProvider
@@ -107,8 +107,8 @@
 
         // Cogeo Config
         CONFIG.internal = {
-            API        : 'https://qwirk.herokuapp.com/',
-            video      : {
+            API          : 'https://qwirk.herokuapp.com/',
+            video        : {
                 theme  : "bower_components/videogular-themes-default/videogular.css",
                 plugins: {
                     controls: {
@@ -117,8 +117,8 @@
                     }
                 }
             },
-            appVersion : '1.0.2',
-            googleGraph: {
+            appVersion   : '1.0.2',
+            googleGraph  : {
                 pieChart: {
                     pieHole: 0.7,
                     height : 120,
@@ -129,9 +129,12 @@
                     left   : 15
                 }
             },
-            peer       : {
+            peer         : {
                 debug: 2,
                 key  : '9o3h3bvbimivbo6r'
+            },
+            documentation: {
+                screenshotMark: true
             }
         };
 
