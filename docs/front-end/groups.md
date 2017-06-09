@@ -6,6 +6,77 @@ Ce chapitre concerne toutes les vues et leurs contenus pour la section *des grou
 
 Contient toutes les données relatives aux groupes et à leurs gestions.
 
+## Nouveau groupe (première étape)
+
+**Chemin:** `app/fr/groups/new/name`
+
+#### Description
+
+Permet la création d'un nouveau groupe.
+
+Cette première étape consiste à saisir le nom du groupe.
+
+**Note:** le nom du groupe sera alors vérifier avant le pessage à l'étape 2.
+
+**Liens:**
+
+- Deuxième étape
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupNew1.png"
+     alt="Capture d'écran de la première étape de création d'un groupe"
+     title="Première étape de création d'un groupe">
+     
+## Nouveau groupe (deuxième étape)
+
+**Chemin:** `app/fr/groups/new/details`
+
+#### Description
+
+Permet la création d'un nouveau groupe.
+
+Cette deuxième étape consiste à saisir des informations complémentaires sur le groupe.
+
+- Description
+- Image du groupe (non requis)
+- Channels (maximum 5)
+
+**Note:** les channels seront les channels par défaut pour ce groupe.
+
+**Note:** les membres qui rejoignent un groupe rejoindront automatiquement les channels par défaut.
+
+**Liens:**
+
+- Changer le nom (première étape)
+- Troisième étape
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupNew2.png"
+     alt="Capture d'écran de la deuxième étape de création d'un groupe"
+     title="Deuxième étape de création d'un groupe">
+     
+## Nouveau groupe (troisième étape)
+
+**Chemin:** `app/fr/groups/new/recruit`
+
+#### Description
+
+Permet la création d'un nouveau groupe.
+
+Cette troisième et dernière étape consiste à inviter des utilisateurs Cogeo à rejoindre ce groupe (uniquement les amis de l'utilisateur courant).
+
+**Note:** cette étape est optionelle.
+
+**Liens:**
+
+- Modifier les détails (deuxième étape)
+- Valider la création du groupe
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupNew3.png"
+     alt="Capture d'écran de la troisième étape de création d'un groupe"
+     title="Troisième étape de création d'un groupe">
+
 ## Tous les groupes
 
 **Chemin:** `app/fr/groups/all`
