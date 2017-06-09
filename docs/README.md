@@ -19,7 +19,7 @@ Alors cette partie est faite pour toi.
 
 **Librairie Cozen :**
 
-Dans un premier temps, nous avons créer la librairie [Cozen](https://bitbucket.org/C0ZEN/cozen) pour (re)créer un grand nombre de composants web.
+Dans un premier temps, nous avons créé la librairie [Cozen](https://bitbucket.org/C0ZEN/cozen) pour (re)créer un grand nombre de composants web.
 
 Cette librairie gère les traductions et la gestion des thèmes.  
 De plus, elle nous donne un grand nombre de services génériques, des filtres et méthodes le tout pour améliorer la modularité de nos applications.
@@ -38,17 +38,17 @@ De plus, elle nous donne un grand nombre de services génériques, des filtres e
 Avant tout, exécute la commande `npm install` pour installer les **node_modules** et les **bower_components**.
 
 Utilise `grunt serve` pour démarrer l'application en mode développement.  
-Cette tâche est utilisée pour démarré un serveur node local, relancer le navigateur automatiquement quand les fichiers changent et évite également les erreurs CORS lors de l'utilisateur des fichiers JSON (de traduction).
+Cette tâche est utilisée pour démarrer un serveur node local, relancer le navigateur automatiquement quand les fichiers changent et évite également les erreurs CORS lors de l'utilisation des fichiers JSON (de traduction).
 
 Utilise `grunt release` pour créer une version minifiée de Cogeo.  
-Cette tâche est utilisée pour généré un dossier destiné à la production.
+Cette tâche est utilisée pour générer un dossier destiné à la production.
 
 **Note:** il faut copier/coller le dossier **bower_components** à la racine de ce dossier.
 
-Utilise `npm start` quand le dossier release est prêt pour démarré une application lourd en live avec **Electron**.  
+Utilise `npm start` quand le dossier release est prêt pour démarrer une application lourd en live avec **Electron**.  
 Ce script est utilisé pour faire une preview de ce que **Electron** nous donnera par la suite.
 
-Utilise `npm package-[version]` pour créer les versions packagés de Cogeo avec **Electron**.
+Utilise `npm package-[version]` pour créer les versions packagées de Cogeo avec **Electron**.
 
 Voici la liste complète des versions de `npm package` :
 
@@ -64,19 +64,19 @@ Voici la liste complète des versions de `npm package` :
 
 ## Documentation
 
-Tu peux jeté un oeil à la documentation [documentation](https://c0zen.github.io/Cogeo/) générée par GitHub Pages.
+Tu peux jeter un oeil à la documentation [documentation](https://c0zen.github.io/Cogeo/) générée par GitHub Pages.
 
-Ces documentations ne sont là que pour expliquer nos choix et comment cela fonctionne, ce n'est donc pas technique.
+Ces documentations ne sont là que pour expliquer nos choix et comment cela fonctionne, ce n'est donc pas une documentation technique.
 
-## Contribué
+## Contribuer
 
-Prend du temps pour lire nos guidelines avant de rédigé la [documentation](CONTRIBUTING.md).
+Prend du temps pour lire nos guidelines avant de rédiger la [documentation](CONTRIBUTING.md).
 
 ## Versions
 
-Les versions sont gérés par nous même.
+Les versions sont gérées par nous même.
 
-Tu peux jeté un oeil aux [tags pour ce repo](https://github.com/C0ZEN/Cogeo/tags).
+Tu peux jeter un oeil aux [tags pour ce repo](https://github.com/C0ZEN/Cogeo/tags).
 
 ## Auteurs
 
