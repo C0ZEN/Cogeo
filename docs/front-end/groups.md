@@ -153,4 +153,26 @@ Il est possible d'inviter les membres de trois manières:
      alt="Capture d'écran du recrutement des membres d'un groupe"
      title="Recruiter des membres pour le groupe">
      
+## Historique du groupe
+
+**Chemin:** `app/fr/groups/log/[groupName]`
+
+#### Description
+
+Permet de consulter l'historique des événements du groupe.
+
+L'historique contient toutes les données liées à la manipulation des données, des membres et des channels du groupe.
+
+**Filtres**
+
+Cette vue contient plusieurs options pour filtrer l'affichage en cours.
+
+Un champ de recherche, une pagination et des filtres sur le type d'historique, le nombre par page et l'ordre.
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsLogs.png"
+     alt="Capture d'écran dde l'historique du groupe"
+     title="Historique du groupe"> 
+     
+     
 <a href="{{ site.baseUrl }}front-end/groups/" class="btn btn-green">Chapitre suivant: Groupes</a>
