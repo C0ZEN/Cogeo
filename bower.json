@@ -53,7 +53,7 @@
         "angular-marked": "^1.2.2",
         "highlight-js": "^9.11.0",
         "peerjs": "^0.3.14",
-        "cozen-lib": "https://github.com/C0ZEN/Cozen.git#1.1.1"
+        "cozen-lib": "https://github.com/C0ZEN/Cozen.git#develop"
     },
     "devDependencies": {
         "angular-mocks": "^1.4.0",
