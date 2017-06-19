@@ -47,7 +47,8 @@
             connectionSend  : connectionSend,
             destroyPeer     : destroyPeer,
             searchConnection: searchConnection,
-            getMediaStream  : getMediaStream
+            getMediaStream  : getMediaStream,
+            listenData      : listenData
         };
 
         function createPeer(username) {
@@ -69,6 +70,7 @@
             // When other users connect to you
             peer.on('connection', function (newConnection) {
                 cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'User', newConnection.peer, 'as established a connection with you');
+                listenData(newConnection);
             });
 
             // Listen for video calls
@@ -153,27 +155,7 @@
                         cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with', friend.peerUsername, 'has been requested');
 
                         if (!Methods.isNullOrEmpty(newConnection)) {
-
-                            // Wait for the open state of the connection
-                            newConnection.on('open', function () {
-
-                                // Listen for new messages
-                                newConnection.on('data', function (data) {
-                                    cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'New message received from', newConnection.peer, 'connection');
-
-                                    // Update the right factory
-                                    if (data.tag == 'friend') {
-                                        directMessagesFactory.addMessage(data.messageId, data.message);
-                                    }
-                                    else {
-                                        $rootScope.$broadcast('groupsFactory:newMessage', {
-                                            groupName  : data.groupName,
-                                            channelName: data.channelName,
-                                            newMessage : data.message
-                                        });
-                                    }
-                                });
-                            });
+                            listenData(newConnection);
                         }
                     }
                 }
@@ -237,6 +219,32 @@
             // If we already have a media stream
             else {
                 successCallback();
+            }
+        }
+
+        function listenData(newConnection) {
+            if (!Methods.isNullOrEmpty(newConnection)) {
+
+                // Wait for the open state of the connection
+                newConnection.on('open', function () {
+
+                    // Listen for new messages
+                    newConnection.on('data', function (data) {
+                        cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'New message received from', newConnection.peer, 'connection');
+
+                        // Update the right factory
+                        if (data.tag == 'friend') {
+                            directMessagesFactory.addMessage(data.messageId, data.message);
+                        }
+                        else {
+                            $rootScope.$broadcast('groupsFactory:newMessage', {
+                                groupName  : data.groupName,
+                                channelName: data.channelName,
+                                newMessage : data.message
+                            });
+                        }
+                    });
+                });
             }
         }
     }
