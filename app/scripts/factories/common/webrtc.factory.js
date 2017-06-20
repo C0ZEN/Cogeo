@@ -54,7 +54,8 @@
             if (!Methods.isNullOrEmpty(connection)) {
                 connection.send({
                     tag     : 'showFriendStream',
-                    username: $eventData.username
+                    username: $eventData.username,
+                    stream  : mediaStream
                 });
                 cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
             }
@@ -110,6 +111,7 @@
                 listenData(newConnection);
             });
 
+            // Listen for video calls
             // Listen for video calls
             peer.on('call', function (newMediaConnection) {
                 mediaConnection = newMediaConnection;
@@ -305,8 +307,7 @@
                         }
 
                         else if (data.tag == 'showFriendStream') {
-                            // @todo good mediaStream
-                            showStreamFriends(mediaStream);
+                            showStreamFriends(data.stream);
                         }
                         else {
                             $rootScope.$broadcast('groupsFactory:newMessage', {
