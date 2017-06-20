@@ -205,6 +205,13 @@
                 }
             }
         };
+        vm.chat      = {
+            friends : {
+                isVisible: false,
+                isCalling: false
+            },
+            channels: {}
+        };
 
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
@@ -245,6 +252,17 @@
         // Listen the change state to stop all mp3 from running
         $rootScope.$on('$stateChangeStart', function () {
             vm.methods.stopAllMp3();
+        });
+
+        // Listen to know if the call was refused
+        $rootScope.$on('cogeoWebRtc:refusedCall', function () {
+            vm.chat.friends.isCalling = false;
+        });
+
+        // Listen to know when the stream start
+        $rootScope.$on('cogeoWebRtc:streamStarted', function () {
+            vm.chat.friends.isVisible = true;
+            vm.chat.friends.isCalling = false;
         });
 
         // Called each time a view is loaded

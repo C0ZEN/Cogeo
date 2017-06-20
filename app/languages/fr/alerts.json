@@ -1,5 +1,7 @@
 {
     "alerts_info_logout": "Tu es maintenant déconnecté.<br>Merci et à la prochaine !",
+    "alerts_info_call_stop": "<strong>{{username}}</strong> a arrêté l'appel.",
+    "alerts_info_call_refused": "L'appel a été refusé.",
     "alerts_invitations_user_accept": "Tu es maintenant ami avec <strong>{{sentBy}}.</strong>",
     "alerts_invitations_group_accept": "Tu fais maintenant partie du groupe <strong>{{groupName}}.</strong>",
     "alerts_invitations_channel_accept": "Tu fais maintenant partie du channel <strong>{{channelName}}.</strong>",

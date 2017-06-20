@@ -50,6 +50,7 @@
         // Public global functions
         $rootScope.methods = {
             showPopup        : showPopup,
+            closePopup       : closePopup,
             getKickBanFor    : getKickBanFor,
             getGroupPicture  : groupsFactory.getGroupPicture,
             getChannelPicture: channelsFactory.getChannelPicture,
@@ -69,6 +70,19 @@
             cozenPopupFactory.show({
                 name: name,
                 data: data
+            });
+        }
+
+        function closePopup($event, name) {
+
+            // Required to avoid an show and hide behavior
+            if (!Methods.isNullOrEmpty($event)) {
+                $event.stopPropagation();
+            }
+
+            // Show the popup
+            cozenPopupFactory.hide({
+                name: name
             });
         }
 

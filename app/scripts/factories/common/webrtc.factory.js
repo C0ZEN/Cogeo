@@ -34,21 +34,58 @@
             });
         });
 
+        // Listener called when the user wish to stop the call for a friend
+        $rootScope.$on('cogeoWebRtc:stopCallFriend', function ($event, $eventData) {
+            var connection = searchConnection($eventData.friend);
+            if (!Methods.isNullOrEmpty(connection)) {
+                connection.send({
+                    tag     : 'stopCallFriend',
+                    username: $eventData.friend
+                });
+                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called stop for friend', $eventData.friend);
+            }
+        });
+
         // Listener called when the user accept the call
         $rootScope.$on('cogeoWebRtc:answerCall', function ($event, $eventData) {
+
+            // Send a message to tell the other user to show his own stream
+            var connection = searchConnection($eventData.username);
+            if (!Methods.isNullOrEmpty(connection)) {
+                connection.send({
+                    tag     : 'showFriendStream',
+                    username: $eventData.username
+                });
+                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
+            }
+
+            // Start the media stream
             mediaConnection.answer(mediaStream);
             cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'Call answered');
         });
 
+        // Listener called whe the user refuse the call
+        $rootScope.$on('cogeoWebRtc:refuseCall', function ($event, $eventData) {
+            var connection = searchConnection($eventData.username);
+            if (!Methods.isNullOrEmpty(connection)) {
+                connection.send({
+                    tag     : 'refuseCallFriend',
+                    username: $eventData.username
+                });
+                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called refused for friend', $eventData.username);
+            }
+        });
+
         return {
-            createPeer      : createPeer,
-            createPeerBot   : createPeerBot,
-            connectFriends  : connectFriends,
-            connectionSend  : connectionSend,
-            destroyPeer     : destroyPeer,
-            searchConnection: searchConnection,
-            getMediaStream  : getMediaStream,
-            listenData      : listenData
+            createPeer       : createPeer,
+            createPeerBot    : createPeerBot,
+            connectFriends   : connectFriends,
+            connectionSend   : connectionSend,
+            destroyPeer      : destroyPeer,
+            searchConnection : searchConnection,
+            getMediaStream   : getMediaStream,
+            listenData       : listenData,
+            showStreamFriends: showStreamFriends
         };
 
         function createPeer(username) {
@@ -90,8 +127,8 @@
 
                 // When the call is answer, the stream is triggered
                 mediaConnection.on('stream', function (stream) {
+                    showStreamFriends(stream);
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is live');
-                    $('#stream').prop('src', URL.createObjectURL(stream));
                 });
             });
 
@@ -172,8 +209,11 @@
         }
 
         function destroyPeer() {
-            cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'destroyPeer');
-            peer.destroy();
+            if (!Methods.isNullOrEmpty(peer)) {
+                cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'destroyPeer');
+                peer.disconnect();
+                peer.destroy();
+            }
         }
 
         function searchConnection(username) {
@@ -236,6 +276,38 @@
                         if (data.tag == 'friend') {
                             directMessagesFactory.addMessage(data.messageId, data.message);
                         }
+
+                        // Stop the call
+                        else if (data.tag == 'stopCallFriend') {
+
+                            // Close the popup
+                            $rootScope.methods.closePopup(null, 'onCall');
+
+                            // Alert the user
+                            cozenFloatingFeedFactory.addAlert({
+                                type       : 'blue',
+                                label      : 'alerts_info_call_stop',
+                                labelValues: {
+                                    username: data.username
+                                }
+                            });
+                        }
+
+                        // The call was refused
+                        else if (data.tag == 'refuseCallFriend') {
+
+                            // Alert the user
+                            cozenFloatingFeedFactory.addAlert({
+                                type : 'blue',
+                                label: 'alerts_info_call_refused'
+                            });
+                            $rootScope.$broadcast('cogeoWebRtc:refusedCall');
+                        }
+
+                        else if (data.tag == 'showFriendStream') {
+                            // @todo good mediaStream
+                            showStreamFriends(mediaStream);
+                        }
                         else {
                             $rootScope.$broadcast('groupsFactory:newMessage', {
                                 groupName  : data.groupName,
@@ -246,6 +318,12 @@
                     });
                 });
             }
+        }
+
+        function showStreamFriends(stream) {
+            $rootScope.$broadcast('cogeoWebRtc:streamStarted');
+            $('#user-stream').prop('src', URL.createObjectURL(mediaStream));
+            $('#friend-stream').prop('src', URL.createObjectURL(stream));
         }
     }
 

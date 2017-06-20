@@ -5,7 +5,9 @@
              cozen-popup-header-title="'popup_onCall_header_title'">
     <div class="row">
         <div class="col-xs-12 space-large-before space-medium-after">
-            <h3 class="no-margin-top text-center">{{ 'popup_onCall_body_title' | translate:{username: popup.onCallData.username} }}</h3>
+            <h3 class="no-margin-top text-center">{{ 'popup_onCall_body_title' | translate:{username:
+                popup.onCallData.username} }}
+            </h3>
         </div>
 
         <!-- Submit btn -->
@@ -21,7 +23,7 @@
                        cozen-btn-icon-right="fa fa-fw icons8-no-video"
                        cozen-btn-label="'popup_onCall_body_refuse'"
                        cozen-btn-auto-sizing="true"
-                       cozen-btn-on-click="popup.methods.closePopup('onCall')"
+                       cozen-btn-on-click="methods.broadcastEvent('cogeoWebRtc:refuseCall', popup.onCallData); popup.methods.closePopup('onCall');"
                        cozen-btn-class="space-base-left">
             </cozen-btn>
         </div>

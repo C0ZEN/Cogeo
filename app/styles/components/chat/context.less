@@ -113,11 +113,54 @@ div.atom-chat div.chat-col {
                 &:first-of-type {
                     margin-left : 0;
                 }
+                &.disabled {
+                    cursor  : not-allowed;
+                    opacity : 0.4;
+                    &:hover,
+                    &:focus {
+                        color : @atom-color-blue;
+                    }
+                }
             }
         }
     }
     div.chat-alert-container {
         padding       : @atom-space-base;
         border-bottom : 1px solid @atom-color-line-rule;
+    }
+    div.chat-video-container {
+        display             : flex;
+        flex-direction      : column;
+        justify-content     : center;
+        padding             : @atom-space-small @atom-space-base;
+        animation-fill-mode : @atom-animation-fill;
+        animation-duration  : @atom-animation-duration-in;
+        animation-name      : zoomIn;
+        background-color    : @atom-color-navy;
+        &.ng-hide-active {
+            animation-name     : zoomOut;
+            animation-duration : @atom-animation-duration-out;
+        }
+        div.users-stream {
+            display         : flex;
+            flex-direction  : row;
+            justify-content : center;
+            align-items     : center;
+            flex-wrap       : wrap;
+            video.stream {
+                width  : 240px;
+                height : 180px;
+                margin : 4px @atom-space-small;
+                &.user {
+                    border : 1px solid @atom-color-blue;
+                }
+                &.friend {
+                    border : 1px solid @atom-color-purple;
+                }
+            }
+        }
+        div.action-container {
+
+        }
     }
 }
