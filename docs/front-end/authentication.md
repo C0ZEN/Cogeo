@@ -1,6 +1,7 @@
 # Authentification
 
-Cette section explique nos choix sur le système d'authentification ainsi que les règles de sécurité appliquées au Front.  
+Cette section explique nos choix sur le système d'authentification ainsi que les règles de sécurité appliquées au Front.
+
 Nous expliquerons également notre système de connexion automatique.
 
 ## Prérequis
@@ -83,7 +84,8 @@ Puisqu'il s'agit d'une connexion manuelle, une requête vers l'**historique des 
 
 #### Historique des connexions
 
-L'**historique des connexions** est un journal des connexions effectuées.  
+L'**historique des connexions** est un journal des connexions effectuées.
+
 Ces informations permettent à l'utilisateur de savoir ou et quand il s'est connecté.
 
 Chaque connexion sauvegarde des informations sur l'utilisateur:
@@ -98,7 +100,8 @@ Chaque connexion sauvegarde des informations sur l'utilisateur:
 
 ## Connexion automatique
 
-Un système de connexion automatique a été mise en place.  
+Un système de connexion automatique a été mise en place.
+
 En effet, lorsqu'un utilisateur ouvre l'application, une requête de connexion est envoyée au serveur.
 
 Les informations envoyées au serveur dépendent du contenu en **local storage**.
@@ -107,17 +110,20 @@ Les informations envoyées au serveur dépendent du contenu en **local storage**
 
 Lorsque qu'un utilisateur s'inscrit ou se connecte, son username et son **token de login** sont enregistrer en local.
 
-Ces informations sont stockées dans le **local storage** pour une durée illimitée.  
+Ces informations sont stockées dans le **local storage** pour une durée illimitée.
+
 Cela permet de persister les données même lors de la fermeture du navigateur ou de l'ordinateur.
 
 **Note:** si le **local storage** est vide, l'utilisateur sera considéré comme déconnecté dès l'ouverture de Cogeo.
 
 #### Token de login
 
-Le token de login est une clé **uuid** auto-générée par le serveur.  
+Le token de login est une clé **uuid** auto-générée par le serveur.
+
 Elle permet d'identifier une connexion entre un utilisateur et le serveur à un moment donné.
 
-Cette clé est vérifiée à chaque requête.  
+Cette clé est vérifiée à chaque requête.
+
 Cela permet dans un premier temps de s'assuré qu'il n'y est pas de session multiples pour un utilisateur donnée.   
 
 Si la clé de l'utilisateur qui émet les requêtes est différente de celle qui est stockée sur le serveur, le serveur retourne une erreur.  
