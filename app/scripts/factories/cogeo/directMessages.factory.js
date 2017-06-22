@@ -105,7 +105,7 @@
         function httpRequestEditMessage(messageId, data, callbackSuccess, callbackError) {
             httpRequest.requestPut('direct-messages/' + messageId + '/edit', data, callbackSuccess, callbackError)
                 .then(function (response) {
-
+                    updateMessage(response.data.data);
                 })
             ;
         }
@@ -113,7 +113,7 @@
         function httpRequestRemoveMessage(messageId, data, callbackSuccess, callbackError) {
             httpRequest.requestPut('direct-messages/' + messageId + '/remove', data, callbackSuccess, callbackError)
                 .then(function (response) {
-
+                    updateMessage(response.data.data);
                 })
             ;
         }
