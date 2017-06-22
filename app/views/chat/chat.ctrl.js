@@ -265,6 +265,11 @@
             vm.chat.friends.isCalling = false;
         });
 
+        // Listen to know when the profile bot popup btn is called to set new active friend bot
+        $rootScope.$on('popups:onChatBot', function ($event, $eventData) {
+            vm.methods.setActiveFriend($eventData.botName);
+        });
+
         // Called each time a view is loaded
         function onInit() {
 

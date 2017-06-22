@@ -35,6 +35,7 @@
             onPopupSettingsClose    : onPopupSettingsClose,
             onInitChatSetStatus     : onInitChatSetStatus,
             onFriendActionRenameShow: onFriendActionRenameShow,
+            onChatBot               : onChatBot,
             userAction              : {
                 granted : userActionGranted,
                 revoked : userActionRevoked,
@@ -357,6 +358,20 @@
 
         function onFriendActionRenameShow(id, name, data) {
             popup.friendNewAlias = angular.copy(data.alias);
+        }
+
+        function onChatBot(botName) {
+            popup.methods.closePopup('botProfile' + botName);
+
+            // Specific event when on chat view to force to change a lot of things
+            if ($state.current.name == 'app.chat.user' || $state.current.name == 'app.chat.channel') {
+                $rootScope.$broadcast('popups:onChatBot', {
+                    botName: botName
+                });
+            }
+            else {
+                goTo.view('app.chat.user', {'username': botName});
+            }
         }
 
         function friendActionBlock() {
