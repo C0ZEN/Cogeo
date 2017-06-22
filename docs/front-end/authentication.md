@@ -9,7 +9,9 @@ Avant de faire quoi que ce soit, il faut bien évidemment s'inscrire.
 
 ## Inscription
 
-Aller vers `app/fr/register`.
+**Chemin:** `app/fr/register`.
+
+#### Description
 
 L'utilisateur doit remplir six champs pour envoyé le formulaire:
 
@@ -20,10 +22,16 @@ L'utilisateur doit remplir six champs pour envoyé le formulaire:
 - Mot de passe
 - Vérification du mot de passe
 
-Comme pour tous les autres formulaires de Cogeo, le bouton *submit* est désactivé tant que le formulaire est incorrecte.  
+Comme pour tous les autres formulaires de Cogeo, le bouton *submit* est désactivé tant que le formulaire est incorrecte.
+
 Ce système se base sur les expressions régulières, sur les champs requis et sur les limites min/max du nombre de caractères liés aux inputs.
 
 **Note:** le bouton *submit* sera désactivé si les deux mots de passe ne sont pas identiques.
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/register.png"
+     alt="Capture d'écran de l'inscription"
+     title="Inscription">
 
 #### Vérifications
 
@@ -43,7 +51,9 @@ Puisqu'il s'agit d'une première inscription manuelle, une requête vers l'**his
 
 ## Connexion
 
-Aller vers `app/fr/login`.
+**Chemin:** `app/fr/login`.
+
+#### Description
 
 Pour se connecter à Cogeo, il suffit de saisir un nom d'utilisateur ainsi qu'un mot de passe.  
 
@@ -65,6 +75,11 @@ Si la connexion s'est bien effectuée, une redirection vers `app/fr/account/deta
 Puisqu'il s'agit d'une connexion manuelle, une requête vers l'**historique des connexions** est envoyée.  
 
 **Note:** cette requête alimente les *accessLogs*.  
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/login.png"
+     alt="Capture d'écran de la connexion"
+     title="Connexion">
 
 #### Historique des connexions
 
@@ -112,6 +127,8 @@ Cette erreur se traduit par une déconnexion automatique de l'utilisateur.
 
 ## Déconnexion
 
+#### Description
+
 Lors d'une déconnexion, toutes les données de l'application seront supprimées:
 
 - Les données contenus dans les factories
@@ -121,6 +138,11 @@ Lors d'une déconnexion, toutes les données de l'application seront supprimées
 
 L'utilisateur sera alors redirigé vers `app/fr/home`.
 
-**Note:** les déconnexions s'effectuent à l'aide d'une popup.  
+**Note:** les déconnexions s'effectuent à l'aide d'une popup.
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/logout.png"
+     alt="Capture d'écran de la déconnexion"
+     title="Déconnexion">
 
 <a href="{{ site.baseUrl }}front-end/account/" class="btn btn-green">Chapitre suivant: Compte</a>
