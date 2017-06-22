@@ -1,7 +1,9 @@
 # Librairie Cozen
 
-Avant même de débuté le projet Cogeo, nous avons réaliser une librairie complètement indépendante.  
-Elle apporte énormément de fonctionnalités et produit le template de base pour Cogeo.  
+Avant même de débuté le projet Cogeo, nous avons réaliser une librairie complètement indépendante.
+
+Elle apporte énormément de fonctionnalités et produit le template de base pour Cogeo.
+
 Cette librairie nous est utile également sur d'autres projets que Cogeo.
 
 ## Nos motivations
@@ -16,7 +18,8 @@ La majeure partie des composants sont complètement dépassés:
 - Par une **gestion** complexe et peu accessible
 - Par une surcharge des browser qui rend la vie encore plus dur
 
-En effet, le **design** date et les composants n'ont tout simplement pas été conçus pour être entièrement **personnalisables**.  
+En effet, le **design** date et les composants n'ont tout simplement pas été conçus pour être entièrement **personnalisables**.
+
 L'interaction avec eux, même wrapper dans **Angular** reste bien trop peu complète.
 
 Par conséquent, nous étions tout simplement obligés de recréer une bonne partie des composants par nos propres moyens.  
@@ -25,17 +28,20 @@ Par conséquent, nous étions tout simplement obligés de recréer une bonne par
 
 Tout commence par la maîtrise du code et des événements.
 
-Nous voulions absolument tout contrôler et **Angular** apporte un vrai plus à ce niveau.  
+Nous voulions absolument tout contrôler et **Angular** apporte un vrai plus à ce niveau.
+
 La librairie s'adapte à la fois aux gestions view-model ainsi qu'à l'orienté event.
 
 Les composants classiques du web ont ainsi pu être recodés (input, dropdown, popup, pagination, btn...).
 
 #### Un design maîtrisé
 
-C'est bien de contrôler nos composants.  
+C'est bien de contrôler nos composants.
+
 Mais la maîtrise passe aussi par le design.
 
-Ainsi, plutôt que d'utiliser les input HTML classiques, tel que upload, select, toggle, check...  
+Ainsi, plutôt que d'utiliser les input HTML classiques, tel que upload, select, toggle, check...
+
 Nous avons misés sur une solution en pure CSS.
 
 Pour ne pas s'arrêter dans cette volontée de modularité, nous avons de suite mise en place des **thèmes**.
@@ -100,17 +106,20 @@ Et on peut dire qu'elles nous servent !
 
 ## Configuration
 
-Toute la librairie est configurable de manière générale puisqu'elle utilise des variables globales stockées dans un service Angular.  
+Toute la librairie est configurable de manière générale puisqu'elle utilise des variables globales stockées dans un service Angular.
+
 C'est un peu comme le cerveau de l'application.
 
-Pour éviter des erreurs, plusieurs provider sont disponibles afin de modifier la configuration initiale (avant l'éxécution de l'application).  
+Pour éviter des erreurs, plusieurs provider sont disponibles afin de modifier la configuration initiale (avant l'éxécution de l'application).
+
 Les données sont alors analysées pour éviter des erreurs potentielles.
 
 Bien sûr, la configuration reste modifiable à n'importe quel moment, les variables du service étant publiques.
 
 ## Langues
 
-La librairie utilise un système de traduction via du JSON.  
+La librairie utilise un système de traduction via du JSON.
+
 La gestion des languages se fait directement via une factory issue d'un provider (de la **configuration**).
 
 Actuellement, seul deux languages sont disponibles:
@@ -122,10 +131,12 @@ Actuellement, seul deux languages sont disponibles:
 
 ## Thèmes
 
-Tout comme les **langues**, les thèmes sont configurables via la **configuration**.  
+Tout comme les **langues**, les thèmes sont configurables via la **configuration**.
+
 Les thèmes peuvent donc être modifier très simplement et ce sans rafraîchir la page.
 
-Les thèmes sont générés via des mixins LESS, ce qui les rend parfaitement compatibles.  
+Les thèmes sont générés via des mixins LESS, ce qui les rend parfaitement compatibles.
+
 La maintenance et l'amélioration est d'autant plus simple.
 
 Les composants utilisent les thèmes via leur HTML/CSS par conséquent, c'est très simple et sans conflit.
@@ -138,12 +149,14 @@ Trois thèmes sont actuellement disponibles même s'ils ne sont pas tous termin�
 
 ## Release
 
-La Cozen librairie est incluse dans Cogeo.  
+La Cozen librairie est incluse dans Cogeo.
+
 Des tâches **Grunt** sont utilisées.
 
 #### Grunt
 
-La tâche `release` permet de générer un dossier **release** contenant une version minifiée et optimisée de la librairie.  
+La tâche `release` permet de générer un dossier **release** contenant une version minifiée et optimisée de la librairie.
+
 C'est cette version qui est injectée dans Cogeo.
 
 <a href="{{ site.baseUrl }}front-end/authentication/" class="btn btn-green">Chapitre suivant: Authentification</a>
