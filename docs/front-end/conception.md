@@ -4,7 +4,8 @@ Nous allons vous expliquer dans ce chapitre nos choix et nos exigences sur ce pr
 
 ## Inspirations applicatives
 
-Quoi de plus logique que de s'inspiré des meilleurs ?  
+Quoi de plus logique que de s'inspiré des meilleurs ?
+
 On ne fonce pas tête baissée !
 
 Nous avons étudié la concurrence et voici notre compte-rendu.
@@ -13,7 +14,8 @@ Nous avons étudié la concurrence et voici notre compte-rendu.
 
 **Slack** est un très bon example, c'est moderne, jolie, facile à utiliser et très complet.  
 
-Cette simplicité est expliquée par le fait qu'une action désirée par un utilisateur est faisable par divers moyens.  
+Cette simplicité est expliquée par le fait qu'une action désirée par un utilisateur est faisable par divers moyens.
+
 Autrement dit, ils offrent des raccourcis et beaucoup de contenu afin de satisfaire tout le monde.
 
 C'est bien, mais on s'éloigne de plus en plus des fonctionnalités primaires, c'est à dire celle du chat.
@@ -55,33 +57,39 @@ Alors pour y parvenir, on a tout simplement récréer notre propres composants !
 On en viens à la **librairie Cozen**.  
 Cette librairie est le résultat de notre travail en ammont à Cogeo.
 
-Une librairie qui permet de récrer à notre sauce tous les composants du web et tout les éléments génériques nécéssaire au bon fonctionnement de nos applications.  
+Une librairie qui permet de récrer à notre sauce tous les composants du web et tout les éléments génériques nécéssaire au bon fonctionnement de nos applications.
+
 C'est le cerveau/coeur de notre projet, une base en béton armée.
 
 **Note:** un [chapitre](https://c0zen.github.io/Cogeo/front-end/cozen/) lui est dédiée.
 
 ## Un design à la pointe
 
-Après avoir vu **Slack** et **Discord**, nous étions sous le charme bien évidemment.  
+Après avoir vu **Slack** et **Discord**, nous étions sous le charme bien évidemment.
+
 L'UI est sublime et l'UX qui va de pair est top !
 
 Alors comment faire aussi bien ?  
 Comment faire mieux ?
 
-Nous avons des notions de design et de conception, mais nous ne sommes ni graphistes, ni concepteurs.  
+Nous avons des notions de design et de conception, mais nous ne sommes ni graphistes, ni concepteurs.
+
 Alors à notre habitude, nous nous reposons sur le savoir des autres, sur des experts.
 
 #### Dribbble
 
 **Dribbble** c'est LA communauté des graphistes.  
 
-Alors on a cherché et on s'est inspiré.  
-Finalement, on est tombé sur ce qu'il nous fallait.  
+Alors on a cherché et on s'est inspiré.
+
+Finalement, on est tombé sur ce qu'il nous fallait.
+
 Une maquette UI pour un Framework.
 
 Grâce au travail de [Mason Lee](https://dribbble.com/masonlee) sur [AdRoll UI Framework](https://dribbble.com/shots/2833155-AdRoll-UI-Framework), nous avons pu avoir une base solide pour notre design.
 
-Bien entendu, nous ne faisons pas dans le copier-coller.  
+Bien entendu, nous ne faisons pas dans le copier-coller.
+
 Nous avons garder les bases, les couleurs, la police, les composants.
 
 **Note:** le thème **Atom** pour notre librairie Cozen est le résultat de ce mockup.  
@@ -89,7 +97,8 @@ Nous avons garder les bases, les couleurs, la police, les composants.
 
 ## User-friendly
 
-Nous aimons être proche des utilisateurs.  
+Nous aimons être proche des utilisateurs.
+
 C'est pourquoi être **user-friendly** était un élément important dans notre conception.
 
 Nous n'aimons pas l'emploi du "vous", nous préférons tutoyer.
