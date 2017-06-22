@@ -6,6 +6,29 @@ Ce chapitre concerne toutes les vues et leurs contenus pour la section des *grou
 
 Contient toutes les données relatives aux groupes et à leurs gestions.
 
+## Description
+
+Un groupe permet de rassembler les utilisateurs Cogeo sous une même idée, un même intéret ou toute autre raison qui lient ces utilisateurs entre eux.
+
+Un groupe contient:
+
+- Des membres (liste des membres du groupe)
+- Des channels (permet de communiquer au sein du groupe)
+- Des historiques (voir les événements liés au groupe et channels)
+
+Les membres peuvent être de type:
+
+- Créateur (tous les droits)
+- Administrateur (droits d'expulser, de bannir, de débannir, de promouvoir et de rétrogradé les membres)
+- Membre (aucun droits en particulier)
+
+**Note:** les administrateurs n'ont aucun droit sur le créateur.
+
+Un groupe ne permet pas de communiquer, par conséquent, il est public.  
+Tout le monde peut le rejoindre sans invitation.
+
+Les channels sont destinés à communiquer entre les membres du groupe.
+
 ## Nouveau groupe (première étape)
 
 **Chemin:** `app/fr/groups/new/name`
