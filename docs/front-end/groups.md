@@ -246,4 +246,4 @@ Un champ de recherche, une pagination et des filtres sur le type d'historique, l
      title="Historique du groupe"> 
      
      
-<a href="{{ site.baseUrl }}front-end/groups/" class="btn btn-green">Chapitre suivant: Groupes</a>
+<a href="{{ site.baseUrl }}front-end/channels/" class="btn btn-green">Chapitre suivant: Channels</a>
