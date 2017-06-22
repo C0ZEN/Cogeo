@@ -2,7 +2,8 @@
 
 ## Front-End
 
-Cette documentation concerne uniquement la partie Front-End.  
+Cette documentation concerne uniquement la partie Front-End.
+
 Elle contient des informations sur notre conception, le contenu du Front et toutes les tâches et dépendances qui y sont liées.  
 
 De plus, elle contient une partie présentation pour chaque vue de Cogeo avec des screenshots.  
@@ -11,7 +12,8 @@ De plus, elle contient une partie présentation pour chaque vue de Cogeo avec de
 
 ## Type de documentation
 
-Cette documentation n'est pas technique, ce n'est pas l'objectif.  
+Cette documentation n'est pas technique, ce n'est pas l'objectif.
+
 Elle sera utile pour comprendre nos choix et ce qu'il est possible de faire avec Cogeo.
 
 Cependant, une connaissance du web et des technologies est pour certaines parties de cette documentation recommandé.
