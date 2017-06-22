@@ -1,6 +1,6 @@
 # Les groupes
 
-Ce chapitre concerne toutes les vues et leurs contenus pour la section *des groupes*.
+Ce chapitre concerne toutes les vues et leurs contenus pour la section des *groupes*.
 
 ## Groupes [Global]
 
