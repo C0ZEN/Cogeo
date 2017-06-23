@@ -223,6 +223,10 @@ Cette vue contient plusieurs options pour filtrer l'affichage en cours.
 
 Un champ de recherche, une pagination et des filtres sur le type d'invitation, le nombre par page et l'ordre.
 
+**Liens:**
+
+- Inviter des membres
+
 <img class="atom-vertical-line"
      src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsInvitations.png"
      alt="Capture d'écran des invitations du groupe"
