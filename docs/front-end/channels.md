@@ -10,7 +10,7 @@ Contient toutes les données relatives aux channels et à leurs gestions.
 
 Un channel fait toujours partie d'un groupe.
 
-Il permet de communiquer au seins de celui-ci.
+Il permet de communiquer au sein de celui-ci.
 
 Un channel contient:
 
@@ -21,7 +21,7 @@ Les membres peuvent être de type:
 
 - Créateur (tous les droits)
 - Administrateur (droits d'expulser, de bannir, de débannir, de promouvoir et de rétrogradé les membres)
-- Membre (aucun droits en particulier)
+- Membre (aucun droit en particulier)
 
 **Note:** les administrateurs n'ont aucun droit sur le créateur.  
 **Note:** les droits du groupe ont un impact sur les droits des membres du channel.
@@ -36,95 +36,55 @@ Les membres qui rejoignent le groupe rejoindront automatiquement tous les channe
 
 ## Nouveau channel
 
-**Chemin:** `app/fr/groups/new/name`
+**Chemin:** `app/fr/groups/[groupName]/channels/new`
 
 #### Description
 
-Permet la création d'un nouveau groupe.
+Permet la création d'un nouveau channel.
 
-Cette première étape consiste à saisir le nom du groupe.
+L'utilisateur pourra alors saisir:
 
-**Note:** le nom du groupe sera alors vérifier avant le pessage à l'étape 2.
+- Un nom (requis)
+- Une description
+- Une image
+- Définir en privé (ne peut pas être par défaut dans ce cas)
+- Définir en defaut (ne peut pas être privé dans ce cas)
+
+**Note:** le nom de channel par défaut est limité à 5.
 
 **Liens:**
 
-- Deuxième étape
+- Création du channel
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupNew1.png"
-     alt="Capture d'écran de la première étape de création d'un groupe"
-     title="Première étape de création d'un groupe">
-     
-## Nouveau groupe (deuxième étape)
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelNew.png"
+     alt="Capture d'écran de la création d'un channel"
+     title="Création d'un channel">
 
-**Chemin:** `app/fr/groups/new/details`
+## Tous les channels
+
+**Chemin:** `app/fr/groups/[groupName]/channels/all`
+
+Il est important de noter que les onglets suivants ne sont pas accessibles si l'utilisateur n'a pas choisi de channel.
+
+Il faut donc sélectionner un channel dans la liste des channels pour pouvoir avoir accès à plus d'onglets.
 
 #### Description
 
-Permet la création d'un nouveau groupe.
-
-Cette deuxième étape consiste à saisir des informations complémentaires sur le groupe.
-
-- Description
-- Image du groupe (non requis)
-- Channels (maximum 5)
-
-**Note:** les channels seront les channels par défaut pour ce groupe.
-
-**Note:** les membres qui rejoignent un groupe rejoindront automatiquement les channels par défaut.
-
-**Liens:**
-
-- Changer le nom (première étape)
-- Troisième étape
-
-<img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupNew2.png"
-     alt="Capture d'écran de la deuxième étape de création d'un groupe"
-     title="Deuxième étape de création d'un groupe">
-     
-## Nouveau groupe (troisième étape)
-
-**Chemin:** `app/fr/groups/new/recruit`
-
-#### Description
-
-Permet la création d'un nouveau groupe.
-
-Cette troisième et dernière étape consiste à inviter des utilisateurs Cogeo à rejoindre ce groupe (uniquement les amis de l'utilisateur courant).
-
-**Note:** cette étape est optionelle.
-
-**Liens:**
-
-- Modifier les détails (deuxième étape)
-- Valider la création du groupe
-
-<img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupNew3.png"
-     alt="Capture d'écran de la troisième étape de création d'un groupe"
-     title="Troisième étape de création d'un groupe">
-
-## Tous les groupes
-
-**Chemin:** `app/fr/groups/all`
-
-#### Description
-
-Contient la liste de tous les groupes.
+Contient la liste de tous les channels.
 
 **Filtres:**
 
 Cette vue contient plusieurs options pour filtrer l'affichage en cours.
 
-Un champ de recherche, une pagination et des filtres sur le nombre par page, les groupes de l'utilisateur courant, les groupes de l'utilisateur courant lorsqu'il est admin, une vue condensée et l'ordre.
+Un champ de recherche, une pagination et des filtres sur le nombre par page, les channels de l'utilisateur courant, les channels de l'utilisateur courant lorsqu'il est admin, seulement les channels privés, seulement les channels par défaut, une vue condensée et l'ordre.
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsAll.png"
-     alt="Capture d'écran des groupes"
-     title="Groupes">
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsAll.png"
+     alt="Capture d'écran des channels"
+     title="Channels">
      
-## Détails d'un groupe
+## Détails d'un channel
 
 **Chemin:** `app/fr/groups/details/[groupName]`
 
