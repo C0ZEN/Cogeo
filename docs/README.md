@@ -35,6 +35,8 @@ De plus, elle nous donne un grand nombre de services génériques, des filtres e
 
 ## Pour commencer
 
+**Note:** si vous voulez plus d'informations à ce sujet ou si vous rencontrez des problèmes, un chapitre à [Grunt](https://c0zen.github.io/Cogeo/front-end/grunt/) et [Npm](https://c0zen.github.io/Cogeo/front-end/npm/) sont disponibles.
+
 Avant tout, exécute la commande `npm install` pour installer les **node_modules** et les **bower_components**.
 
 Utilise `grunt serve` pour démarrer l'application en mode développement.  
