@@ -74,9 +74,21 @@ Le serveur node va donc occuper un port et va permettre de récupérer ces fichi
 
 Il répond parfaitement à nos besoins et est parfaitement adapté et bien sûr ultra rapide (les fichiers sont en local).
 
+### Prérequis
+
+Afin d'utiliser **Grunt**, il faudra au préalable avoir installer la **current version** de [Node.js](https://nodejs.org/en/).
+
+Node.js installe [npm]({{ site.baseUrl }}front-end/npm/), le célèbre packet manager.
+
+Ensuite il faudra installer **Grunt**.
+
+Exécuter la commande `npm install grunt-cli -g` pour installer **Grunt** en mode global depuis le Node.js command prompt.
+
+Vous êtes maintenant fin prêt à démarrer Cogeo.
+
 #### Grunt serve
 
-En mode développement, il faudra donc exécuter la tâche `grunt serve`.
+En mode développement, il faudra donc exécuter la tâche `grunt serve` sur un command prompt à la racine du dossier du projet.
 
 Cette tâche aura plusieurs fonctions:
 
