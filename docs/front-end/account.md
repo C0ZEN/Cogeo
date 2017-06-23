@@ -166,6 +166,9 @@ Permet à l'utilisateur courant de modifier ses paramètres.
 - Enceintes (volume)
 - Autres paramètres (chemin d'enregisteement et langue de Cogeo)
 
+**Note:** une popup permet de régler le microphone et une autre popup permet de testé le volume des enceintes.
+**Note:** le chemin d'enregistrement ne devrait jamais être forcé par une application web selon les bonnes pratiques de sécurité. Par conséquent, il ne sert à rien pour le moment.
+
 **Liens:** 
 
 - Voir les paramètres
