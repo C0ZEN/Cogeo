@@ -46,7 +46,7 @@ Plus d'informations sur le chapitre de la [librairie cozen](https://c0zen.github
 
 ## Pour commencer
 
-**Note:** si vous voulez plus d'informations à ce sujet ou si vous rencontrez des problèmes, un chapitre à [Grunt](https://c0zen.github.io/Cogeo/front-end/grunt/) et [Npm](https://c0zen.github.io/Cogeo/front-end/npm/) sont disponibles.
+**Note:** si vous voulez plus d'informations à ce sujet ou si vous rencontrez des problèmes, des chapitres à propos de [Grunt](https://c0zen.github.io/Cogeo/front-end/grunt/) et [Npm](https://c0zen.github.io/Cogeo/front-end/npm/) sont disponibles.
 
 Avant tout, exécuter la commande `npm install` pour installer les **node_modules** et les **bower_components**.
 
