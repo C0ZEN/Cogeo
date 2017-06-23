@@ -3,12 +3,14 @@
     <div class="users-stream">
         <video id="user-stream"
                muted="true"
-               controls
+               poster="{{ userFactory.getUserImage() }}"
                class="stream user">
+            {{ 'chat_no_video_support' | translate }}
         </video>
         <video id="friend-stream"
-               controls
+               poster="{{ usersFactory.getUserImage(vm.activeFriend.username) }}"
                class="stream friend">
+            {{ 'chat_no_video_support' | translate }}
         </video>
     </div>
     <div class="action-container">

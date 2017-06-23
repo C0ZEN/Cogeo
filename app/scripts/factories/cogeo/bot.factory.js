@@ -65,20 +65,20 @@
                 {
                     blocked  : 0,
                     date     : 0,
-                    givenName: "",
+                    givenName: '',
                     removed  : 0,
-                    surname  : "",
-                    username : "Friendybot",
-                    alias    : ""
+                    surname  : '',
+                    username : 'Friendybot',
+                    alias    : ''
                 },
                 {
                     blocked  : 0,
                     date     : 0,
-                    givenName: "",
+                    givenName: '',
                     removed  : 0,
-                    surname  : "",
-                    username : "Spamobot",
-                    alias    : ""
+                    surname  : '',
+                    username : 'Spamobot',
+                    alias    : ''
                 }
             ]
         }

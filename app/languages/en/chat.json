@@ -82,5 +82,6 @@
     "chat_user": "@{{username}}",
     "chat_hello": "Hello !",
     "chat_alert_friend_blocked": "You have blocked {{username}} on {{date}}",
-    "chat_alert_friend_no_message": "There are no messages for this conversation"
+    "chat_alert_friend_no_message": "There are no messages for this conversation",
+    "chat_no_video_support": "Your browser does not support videos !"
 }

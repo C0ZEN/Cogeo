@@ -496,6 +496,7 @@
 	"chat_hello": "Bonjour !",
 	"chat_alert_friend_blocked": "Tu as bloqué {{username}} le {{date}}",
 	"chat_alert_friend_no_message": "Il n'y a pas encore de messages pour cette conversation",
+	"chat_no_video_support": "Ton navigateur ne supporte pas les vidéos !",
 	"DEV": {
 		"USERS_LIST": {
 			"PAGE_TITLE": "Liste des utilisateurs Cogeo",
