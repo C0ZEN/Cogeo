@@ -34,11 +34,15 @@ De plus, elle nous donne un grand nombre de services génériques, des filtres e
 - English [en]
 - Français [fr]
 
+Plus d'informations sur le chapitre des [langages](https://c0zen.github.io/Cogeo/front-end/languages/).
+
 **Thèmes disponibles :**
 
 - Atom [complet]
 - Nolan [incomplet]
 - Tau [incomplet]
+
+Plus d'informations sur le chapitre de la [librairie cozen](https://c0zen.github.io/Cogeo/front-end/cozen/).
 
 ## Pour commencer
 
