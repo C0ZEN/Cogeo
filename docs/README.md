@@ -1,16 +1,20 @@
 # Cogeo
 
-Une application très simple mais complète comme **Slack** et **Discord**.  
+Une application très simple mais complète comme **Slack** et **Discord**.
+
 Tu peux gérer les groupes, les channels et les utilisateurs.
 
-Le design est fait maison à 100%.  
-La majeure partie des composants sont personnalisés (input, textarea, dropdown...).  
+Le design est fait maison à 100%.
+
+La majeure partie des composants sont personnalisés (input, textarea, dropdown...).
+
 Nous avons un contrôle complet du comportement et du design via la librairie [Cozen](https://bitbucket.org/C0ZEN/cozen).
 
 ## A propos de Cogeo
 
-Tu veux en savoir plus à propos de l'application Cogeo ?  
-Alors cette partie est faite pour toi.
+Vous voulez en savoir plus à propos de l'application Cogeo ?
+
+Alors cette partie est faite pour vous.
 
 **Langages et Frameworks :**
 
@@ -21,7 +25,8 @@ Alors cette partie est faite pour toi.
 
 Dans un premier temps, nous avons créé la librairie [Cozen](https://bitbucket.org/C0ZEN/cozen) pour (re)créer un grand nombre de composants web.
 
-Cette librairie gère les traductions et la gestion des thèmes.  
+Cette librairie gère les traductions et la gestion des thèmes.
+
 De plus, elle nous donne un grand nombre de services génériques, des filtres et méthodes le tout pour améliorer la modularité de nos applications.
 
 **Traductions disponibles :**
@@ -39,20 +44,23 @@ De plus, elle nous donne un grand nombre de services génériques, des filtres e
 
 **Note:** si vous voulez plus d'informations à ce sujet ou si vous rencontrez des problèmes, un chapitre à [Grunt](https://c0zen.github.io/Cogeo/front-end/grunt/) et [Npm](https://c0zen.github.io/Cogeo/front-end/npm/) sont disponibles.
 
-Avant tout, exécute la commande `npm install` pour installer les **node_modules** et les **bower_components**.
+Avant tout, exécuter la commande `npm install` pour installer les **node_modules** et les **bower_components**.
 
-Utilise `grunt serve` pour démarrer l'application en mode développement.  
+Utiliser `grunt serve` pour démarrer l'application en mode développement.
+
 Cette tâche est utilisée pour démarrer un serveur node local, relancer le navigateur automatiquement quand les fichiers changent et évite également les erreurs CORS lors de l'utilisation des fichiers JSON (de traduction).
 
-Utilise `grunt release` pour créer une version minifiée de Cogeo.  
+Utiliser `grunt release` pour créer une version minifiée de Cogeo.
+
 Cette tâche est utilisée pour générer un dossier destiné à la production.
 
 **Note:** il faut copier/coller le dossier **bower_components** à la racine de ce dossier.
 
-Utilise `npm start` quand le dossier release est prêt pour démarrer une application lourd en live avec **Electron**.  
+Utiliser `npm start` quand le dossier release est prêt pour démarrer une application lourd en live avec **Electron**.
+
 Ce script est utilisé pour faire une preview de ce que **Electron** nous donnera par la suite.
 
-Utilise `npm package-[version]` pour créer les versions packagées de Cogeo avec **Electron**.
+Utiliser `npm package-[version]` pour créer les versions packagées de Cogeo avec **Electron**.
 
 Voici la liste complète des versions de `npm package` :
 
@@ -68,19 +76,19 @@ Voici la liste complète des versions de `npm package` :
 
 ## Documentation
 
-Tu peux jeter un oeil à la documentation [documentation](https://c0zen.github.io/Cogeo/) générée par GitHub Pages.
+Vous pouvez jeter un oeil à la documentation [documentation](https://c0zen.github.io/Cogeo/) générée par GitHub Pages.
 
 Ces documentations ne sont là que pour expliquer nos choix et comment cela fonctionne, ce n'est donc pas une documentation technique.
 
 ## Contribuer
 
-Prend du temps pour lire nos guidelines avant de rédiger la [documentation](CONTRIBUTING.md).
+Prenez du temps pour lire nos guidelines avant de rédiger la [documentation](CONTRIBUTING.md).
 
 ## Versions
 
 Les versions sont gérées par nous même.
 
-Tu peux jeter un oeil aux [tags pour ce repo](https://github.com/C0ZEN/Cogeo/tags).
+Vous pouvez jeter un oeil aux [tags pour ce repository](https://github.com/C0ZEN/Cogeo/tags).
 
 ## Auteurs
 
