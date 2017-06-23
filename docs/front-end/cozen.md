@@ -143,9 +143,9 @@ Les composants utilisent les thèmes via leur HTML/CSS par conséquent, c'est tr
 
 Trois thèmes sont actuellement disponibles même s'ils ne sont pas tous terminés:
 
-- Atom (le plus abouti, utilisé par Cogeo)
-- Tau
-- Nolan
+- Atom [complet]
+- Nolan [incomplet]
+- Tau [incomplet]
 
 ## Release
 
