@@ -86,11 +86,11 @@ Un champ de recherche, une pagination et des filtres sur le nombre par page, les
      
 ## Détails d'un channel
 
-**Chemin:** `app/fr/groups/details/[groupName]`
+**Chemin:** `app/fr/groups/details/[channelName]`
 
 #### Description
 
-Contient tous les informations à propos du groupe.
+Contient tous les informations à propos du channel.
 
 **Données visibles:**
 
@@ -100,54 +100,61 @@ Contient tous les informations à propos du groupe.
 - Créateur
 - Date de création
 - Date de dernière modification
+- Channel par défaut
+- Channel privé
 
 Contient également une partie statistiques:
 
 - Membres admins/non admins
-- Membres actifs/expuslés/bannis
-- Channels défauts/publics/privés
+- Membres actifs/expulsés/bannis
      
 **Liens:**
 
-- Modifier ce groupe (si admin)
-- Rejoindre ce groupe (tout le monde)
-- Quitter ce groupe (si plus d'un membre est actif)
+- Modifier ce channel (si admin)
+- Rejoindre ce channel (si le channel n'est pas privé)
+- Quitter ce channel (si plus d'un membre est actif)
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsDetails.png"
-     alt="Capture d'écran des détails du groupe"
-     title="Détails du groupe">
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsDetails.png"
+     alt="Capture d'écran des détails du channel"
+     title="Détails du channel">
      
-## Modifier un groupe
+## Modifier un channel
 
-**Chemin:** `app/fr/groups/edit/[groupName]`
+**Chemin:** `app/fr/groups/[groupName]/channels/edit/[channelName]`
 
 #### Description
 
-Contient tous les données modifiables pour ce groupe.
+Contient tous les données modifiables pour ce channel.
 
 **Données modifiables:**
 
 - Nom
 - Description
-- Image du groupe
+- Image du channel
+- Channel privé
+- Channel par défaut
+- Channel favori (utilisaeur courant)
+- Supprimer le channel (popup de sécurité)
+
+**Note:** un channel favori permet à l'utilisateur courant d'y accéder plus facilement dans la partie chat.
      
 **Liens:**
 
 - Sauvegarder et voir les détails
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsEdit.png"
-     alt="Capture d'écran de la modification du groupe"
-     title="Modification du groupe">
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsEdit.png"
+     alt="Capture d'écran de la modification du channel"
+     title="Modification du channel">
      
-## Membres du groupe
+## Membres du channel
 
-**Chemin:** `app/fr/groups/members/[groupName]`
+**Chemin:** `app/fr/groups/[groupName]/channels/members/[channelName]`
 
 #### Description
 
-Contient la liste de tous les membres du groupe.
+Contient la liste de tous les membres du channel.
 
 Permet également aux admins de gérer les membres.
 
@@ -168,17 +175,17 @@ Cette vue contient plusieurs options pour filtrer l'affichage en cours.
 Un champ de recherche, une pagination et des filtres sur le type de membre, le nombre par page et l'ordre.
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsMembers.png"
-     alt="Capture d'écran des membres du groupe"
-     title="Membres du groupe">
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsMembers.png"
+     alt="Capture d'écran des membres du channel"
+     title="Membres du channel">
      
-## Invitations du groupe
+## Invitations du channel
 
-**Chemin:** `app/fr/groups/invitations/[groupName]`
+**Chemin:** `app/fr/groups/[groupName]/channels/invitations/[channelName]`
 
 #### Description
 
-Contient la liste des invitations du groupe.
+Contient la liste des invitations du channel.
 
 Permet de voir qui envoie des invitations et si les invitations ont été acceptées, refusées ou sont toujours en attente.
      
@@ -188,39 +195,40 @@ Cette vue contient plusieurs options pour filtrer l'affichage en cours.
 
 Un champ de recherche, une pagination et des filtres sur le type d'invitation, le nombre par page et l'ordre.
 
-<img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsInvitations.png"
-     alt="Capture d'écran des invitations du groupe"
-     title="Invitations du groupe">
-     
-## Recruter des membres pour le groupe
+**Liens:**
 
-**Chemin:** `app/fr/groups/recruit/[groupName]`
+- Inviter des membres
+
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsInvitations.png"
+     alt="Capture d'écran des invitations du channel"
+     title="Invitations du channel">
+     
+## Recruter des membres pour le channel
+
+**Chemin:** `app/fr/groups/[groupName]/channels/recruit/[channelName]`
 
 #### Description
 
-Permet d'inviter des membres Cogeo à rejoindre le groupe.
+Permet d'inviter des membres Cogeo à rejoindre le channel.
 
-Il est possible d'inviter les membres de trois manières:
-
-- En partagant un lien d'invitation
-- En invitant des membres Cogeo
-- En invitant des utilisateur par mail (envoi de mail non implémenté)
+**Note:** seul les membres pas encore inviter, pas encore membre et pas bannis sont disponibles.
+**Note:** si l'utilisateur ne fait pas encore partie du groupe, il le rejoindra automatiquement ainsi que ses channels par défaut.
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsRecruit.png"
-     alt="Capture d'écran du recrutement des membres d'un groupe"
-     title="Recruiter des membres pour le groupe">
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsRecruit.png"
+     alt="Capture d'écran du recrutement des membres d'un channel"
+     title="Recruiter des membres pour le channel">
      
-## Historique du groupe
+## Historique du channel
 
-**Chemin:** `app/fr/groups/log/[groupName]`
+**Chemin:** `app/fr/groups/[groupName]/channels/log/[channelName]`
 
 #### Description
 
-Permet de consulter l'historique des événements du groupe.
+Permet de consulter l'historique des événements du channel.
 
-L'historique contient toutes les données liées à la manipulation des données, des membres et des channels du groupe.
+L'historique contient toutes les données liées à la manipulation des données et des membres du channel.
 
 **Filtres**
 
@@ -229,9 +237,9 @@ Cette vue contient plusieurs options pour filtrer l'affichage en cours.
 Un champ de recherche, une pagination et des filtres sur le type d'historique, le nombre par page et l'ordre.
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/groupsLogs.png"
-     alt="Capture d'écran dde l'historique du groupe"
-     title="Historique du groupe"> 
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsLogs.png"
+     alt="Capture d'écran dde l'historique du channel"
+     title="Historique du channel"> 
      
      
 <a href="{{ site.baseUrl }}front-end/chat/" class="btn btn-green">Chapitre suivant: Chat</a>
