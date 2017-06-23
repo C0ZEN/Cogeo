@@ -139,7 +139,7 @@ Contient tous les informations à propos du groupe.
 Contient également une partie statistiques:
 
 - Membres admins/non admins
-- Membres actifs/expuslés/bannis
+- Membres actifs/expulsés/bannis
 - Channels défauts/publics/privés
      
 **Liens:**
