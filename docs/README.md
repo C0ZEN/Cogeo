@@ -31,7 +31,9 @@ De plus, elle nous donne un grand nombre de services génériques, des filtres e
 
 **Thèmes disponibles :**
 
-- Atom
+- Atom [complet]
+- Nolan [incomplet]
+- Tau [incomplet]
 
 ## Pour commencer
 
