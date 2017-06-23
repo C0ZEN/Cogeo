@@ -26,11 +26,17 @@
         $rootScope.$on('cogeoWebRtc:callFriend', function ($event, $eventData) {
 
             // Try to get the media stream
-            getMediaStream(function () {
+            getMediaStream(true, true, function () {
+                makeCall($eventData);
+            });
+        });
 
-                // Make a call
-                mediaConnection = peer.call($eventData.friend, mediaStream);
-                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called ask for friend', $eventData.friend);
+        // Listener called when the user wish to start a call audio with a friend
+        $rootScope.$on('cogeoWebRtc:callFriendAudio', function ($event, $eventData) {
+
+            // Try to get the media stream
+            getMediaStream(true, false, function () {
+                makeCall($eventData);
             });
         });
 
@@ -86,7 +92,8 @@
             searchConnection : searchConnection,
             getMediaStream   : getMediaStream,
             listenData       : listenData,
-            showStreamFriends: showStreamFriends
+            showStreamFriends: showStreamFriends,
+            makeCall         : makeCall
         };
 
         function createPeer(username) {
@@ -118,7 +125,7 @@
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'You received a call');
 
                 // Open the popup to accept or refuse the call
-                getMediaStream(function () {
+                getMediaStream(true, true, function () {
                     $rootScope.methods.showPopup(null, 'onCall', {
                         mediaConnection: mediaConnection,
                         mediaStream    : mediaStream,
@@ -238,13 +245,13 @@
             return searchedConnection;
         }
 
-        function getMediaStream(successCallback) {
+        function getMediaStream(audio, video, successCallback) {
 
             // If the media stream wasn't set
             if (Methods.isNullOrEmpty(mediaStream)) {
                 navigator.mediaDevices.getUserMedia({
-                    audio: true,
-                    video: true
+                    audio: Methods.isBoolean(audio) ? audio : true,
+                    video: Methods.isBoolean(video) ? video : true
                 }).then(function (newMediaStream) {
                     mediaStream = newMediaStream;
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'We can start a media stream');
@@ -325,6 +332,11 @@
             $rootScope.$broadcast('cogeoWebRtc:streamStarted');
             $('#user-stream').prop('src', URL.createObjectURL(mediaStream));
             $('#friend-stream').prop('src', URL.createObjectURL(stream));
+        }
+
+        function makeCall($eventData) {
+            mediaConnection = peer.call($eventData.friend, mediaStream);
+            cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called ask for friend', $eventData.friend);
         }
     }
 
