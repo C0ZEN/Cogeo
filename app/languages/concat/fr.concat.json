@@ -342,7 +342,7 @@
 	"channels_all_no_channel_found": "Aucun channel ne correspond à ta recherche !",
 	"channels_recruit_title": "J'invite des amis à rejoindre le channel {{channelName}}...",
 	"channels_recruit_subtitle_1": "Tu peux inviter des membres Cogeo via leurs identifiants.",
-	"channels_recruit_subtitle_2": "Seuls les utilisateurs du groupe peuvent être invités.",
+	"channels_recruit_subtitle_2": "Tous les utilisateurs qui ne sont pas encore invités ou bannis sont disponibles.",
 	"channels_recruit_subtitle_3": "Si la personne que tu souhaites inviter n'est pas encore dans le groupe, elle rejoindra automatiquement ce groupe.",
 	"channels_recruit_dropdown_help": "Seuls les membres qui sont dans le groupe et qui ne sont pas bannis sont visibles.",
 	"channels_recruit_dropdown_search_pc": "Rechercher un membre du groupe {{groupName}}",

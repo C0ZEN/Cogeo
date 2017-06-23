@@ -32,7 +32,7 @@
     "channels_all_no_channel_found": "No channel match your research !",
     "channels_recruit_title": "I invite some friends to join the channel {{channelName}}...",
     "channels_recruit_subtitle_1": "You invite friends by their username.",
-    "channels_recruit_subtitle_2": "Only the members of the group can be invited.",
+    "channels_recruit_subtitle_2": "All users which are not invited yet and not banned are avaialble.",
     "channels_recruit_subtitle_3": "If the user you want to invite is not yet in the group, he will automatically join this group.",
     "channels_recruit_dropdown_help": "Only members who are in the group and who are not banned are visible.",
     "channels_recruit_dropdown_search_pc": "Search a group member of {{groupName}}",
