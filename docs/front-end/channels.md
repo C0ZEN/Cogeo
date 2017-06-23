@@ -57,7 +57,7 @@ L'utilisateur pourra alors saisir:
 - Création du channel
 
 <img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelNew.png"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsNew.png"
      alt="Capture d'écran de la création d'un channel"
      title="Création d'un channel">
 
