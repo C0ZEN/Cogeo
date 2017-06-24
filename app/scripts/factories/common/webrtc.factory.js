@@ -373,19 +373,21 @@
         }
 
         function sendUpdateStatusMessage(statusIndex, callback) {
-            for (var user in peer.connections) {
-                peer.connections[user].forEach(function (userConnection) {
-                    if (userConnection.open) {
-                        userConnection.send({
-                            tag        : 'newStatus',
-                            statusIndex: statusIndex, // Online
-                            username   : peerId       // Current user username
-                        });
-                    }
-                });
-            }
-            if (Methods.isFunction(callback)) {
-                callback();
+            if (!Methods.isNullOrEmpty(peer)) {
+                for (var user in peer.connections) {
+                    peer.connections[user].forEach(function (userConnection) {
+                        if (userConnection.open) {
+                            userConnection.send({
+                                tag        : 'newStatus',
+                                statusIndex: statusIndex, // Online
+                                username   : peerId       // Current user username
+                            });
+                        }
+                    });
+                }
+                if (Methods.isFunction(callback)) {
+                    callback();
+                }
             }
         }
 
