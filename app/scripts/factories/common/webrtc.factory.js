@@ -1,4 +1,4 @@
-(function (angular) {
+(function (angular, window) {
     'use strict';
 
     angular
@@ -64,19 +64,31 @@
 
             // Send a message to tell the other user to show his own stream
             var connection = searchConnection($eventData.username);
-            if (!Methods.isNullOrEmpty(connection)) {
-                console.log(mediaStream);
-                connection.send({
-                    tag     : 'showFriendStream',
-                    username: $eventData.username,
-                    stream  : JSON.stringify(mediaStream)
-                });
-                cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
+            if (Methods.isNullOrEmpty(mediaStream)) {
+                getMediaStream(true, true, function () {
+                    answer();
+                })
+            }
+            else {
+                answer();
             }
 
-            // Start the media stream
-            mediaConnection.answer(mediaStream);
-            cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'Call answered');
+            function answer() {
+                console.log(mediaStream);
+                console.log(JSON.stringify(mediaStream));
+                if (!Methods.isNullOrEmpty(connection)) {
+                    connection.send({
+                        tag     : 'showFriendStream',
+                        username: $eventData.username,
+                        stream  : JSON.stringify(mediaStream)
+                    });
+                    cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
+                }
+
+                // Start the media stream
+                mediaConnection.answer(mediaStream);
+                cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'Call answered');
+            }
         });
 
         // Listener called whe the user refuse the call
@@ -337,6 +349,8 @@
 
                         // Display the view with the media
                         else if (data.tag == 'showFriendStream') {
+                            cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'Show friend stream');
+                            cozenEnhancedLogs.explodeObject(data, true);
                             showStreamFriends(data.stream);
                         }
 
@@ -367,9 +381,11 @@
 
         function showStreamFriends(stream) {
             $rootScope.$broadcast('cogeoWebRtc:streamStarted');
-            $('#user-stream').prop('src', URL.createObjectURL(mediaStream));
-            $('#friend-stream').prop('src', URL.createObjectURL(stream));
-            Methods.safeApply($rootScope);
+            console.log(mediaStream);
+            console.log(stream);
+            $('#user-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(mediaStream));
+            $('#friend-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(stream));
+            $rootScope.$broadcast('safeApplyChat');
         }
 
         function makeCall($eventData) {
@@ -408,4 +424,4 @@
         }
     }
 
-})(window.angular);
+})(window.angular, window);

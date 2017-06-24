@@ -327,7 +327,7 @@
             return friends;
         }
 
-        function getUserImage() {
+        function getUserImage(size) {
             if (!Methods.isNullOrEmpty(user.picture) && !Methods.isNullOrEmpty(user.picture.url)) {
                 return user.picture.url;
             }

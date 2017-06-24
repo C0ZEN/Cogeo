@@ -283,6 +283,10 @@
             Methods.safeApply($scope);
         });
 
+        $rootScope.$on('safeApplyChat', function () {
+            Methods.safeApply($scope);
+        });
+
         // Called each time a view is loaded
         function onInit() {
 
