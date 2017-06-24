@@ -372,7 +372,6 @@
                         else if (data.tag == 'showFriendStream') {
                             cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'Show friend stream');
                             cozenEnhancedLogs.explodeObject(data, true);
-                            showStreamFriends(data.stream);
                         }
 
                         // Update the status for the user
@@ -402,8 +401,6 @@
 
         function showStreamFriends(stream) {
             $rootScope.$broadcast('cogeoWebRtc:streamStarted');
-            console.log(mediaStream);
-            console.log(stream);
             $('#user-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(mediaStream));
             $('#friend-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(stream));
             $rootScope.$broadcast('safeApplyChat');
