@@ -68,7 +68,10 @@
         <zoom-image></zoom-image>
 
         <!-- Avoid error with electron -->
-        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+        <script>if (typeof module === 'object') {
+            window.module = module;
+            module        = undefined;
+        }</script>
 
         <!-- build:js(.) scripts/vendor.js -->
         <!-- bower:js -->
