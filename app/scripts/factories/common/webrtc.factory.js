@@ -162,6 +162,24 @@
                     showStreamFriends(stream);
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is live');
                 });
+
+                mediaConnection.on('close', function () {
+                    cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is close');
+                    cozenFloatingFeedFactory.addAlert({
+                        type : 'error',
+                        label: 'alerts_error_chat_mediaConnection_close'
+                    });
+                    console.log(arguments);
+                });
+
+                mediaConnection.on('error', function () {
+                    cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream encounter an error');
+                    cozenFloatingFeedFactory.addAlert({
+                        type : 'error',
+                        label: 'alerts_error_chat_mediaConnection_error'
+                    });
+                    console.log(arguments);
+                });
             });
 
             // Listen for close window or refresh
@@ -380,6 +398,8 @@
 
         function showStreamFriends(stream) {
             $rootScope.$broadcast('cogeoWebRtc:streamStarted');
+            console.log(mediaStream);
+            console.log(stream);
             $('#user-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(mediaStream));
             $('#friend-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(stream));
             $rootScope.$broadcast('safeApplyChat');

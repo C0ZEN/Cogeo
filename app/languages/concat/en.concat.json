@@ -221,6 +221,8 @@
 	"alerts_success_friend_unblocked": "You have unblocked <strong>{{friend}}</strong> from your friends.",
 	"alerts_success_friend_remove": "You have removed <strong>{{friend}}</strong> from your friends.",
 	"alerts_error_get_mediaStream": "You can't start a call. You must authorize Cogeo to use your microphone and your camera.",
+	"alerts_error_chat_mediaConnection_error": "An unknown error has occurred during the call.<br>Sorry.",
+	"alerts_error_chat_mediaConnection_close": "The call has been closed.",
 	"COMMON": {
 		"FRIENDS": {},
 		"CHANNELS": {}
