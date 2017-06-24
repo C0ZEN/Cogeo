@@ -147,8 +147,8 @@
 
             // Listen for video calls
             peer.on('call', function (newMediaConnection) {
-                mediaConnection = newMediaConnection;
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'You received a call');
+                mediaConnection = newMediaConnection;
 
                 // Open the popup to accept or refuse the call
                 getMediaStream(true, true, function () {
@@ -412,6 +412,30 @@
         function makeCall($eventData) {
             mediaConnection = peer.call($eventData.friend, mediaStream);
             cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called ask for friend', $eventData.friend);
+
+            // When the call is answer, the stream is triggered
+            mediaConnection.on('stream', function (stream) {
+                showStreamFriends(stream);
+                cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is live');
+            });
+
+            // On close
+            mediaConnection.on('close', function () {
+                cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is close');
+                cozenFloatingFeedFactory.addAlert({
+                    type : 'error',
+                    label: 'alerts_error_chat_mediaConnection_close'
+                });
+            });
+
+            // On error
+            mediaConnection.on('error', function () {
+                cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream encounter an error');
+                cozenFloatingFeedFactory.addAlert({
+                    type : 'error',
+                    label: 'alerts_error_chat_mediaConnection_error'
+                });
+            });
         }
 
         function sendUpdateStatusMessage(statusIndex, callback) {
