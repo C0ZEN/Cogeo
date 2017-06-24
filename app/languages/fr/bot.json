@@ -18,7 +18,20 @@
         },
         "MESSAGES": {
             "HI": {
-                "1": ""
+                "1": "Salut !",
+                "2": "Coucou !",
+                "3": "Bonjour.",
+                "4": "Bonjour !",
+                "5": "Yop :smile:",
+                "6": "Yo",
+                "7": "Yo !",
+                "8": "Salut",
+                "9": "Coucou",
+                "10": "Bonjour",
+                "11": "Salut, ça va ?",
+                "12": "Hey !",
+                "13": "Welcome back my friend !",
+                "14": "Re"
             }
         }
     },

@@ -6,6 +6,7 @@
     "chat_close_channels": "Close",
     "chat_search_placeholder": "Search for a channel or a friend",
     "chat_no_result": "No results",
+    "chat_not_friend": "Error not friend",
     "chat_total_members": "{{total}} members",
     "chat_total_member": "{{total}} member",
     "chat_actionBar_phone": "Start a video conference call",

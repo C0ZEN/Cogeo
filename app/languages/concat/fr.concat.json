@@ -223,6 +223,7 @@
 	"alerts_error_get_mediaStream": "Tu ne peux pas démarrer d'appel. Tu dois autoriser Cogeo à utiliser ton micro et ta webcam.",
 	"alerts_error_chat_mediaConnection_error": "Une erreur inconnu est survenu pendant l'appel.<br>Désolé.",
 	"alerts_error_chat_mediaConnection_close": "L'appel s'est terminé.",
+	"alerts_error_chat_friendNotFound": "Tu ne peux pas parler avec <strong>{{username}}</strong> !<br> Tu n'es pas ami avec lui !",
 	"COMMON": {
 		"FRIENDS": {},
 		"CHANNELS": {}
@@ -239,7 +240,20 @@
 		"CHANNELS": {},
 		"MESSAGES": {
 			"HI": {
-				"1": ""
+				"1": "Salut !",
+				"2": "Coucou !",
+				"3": "Bonjour.",
+				"4": "Bonjour !",
+				"5": "Yop :smile:",
+				"6": "Yo",
+				"7": "Yo !",
+				"8": "Salut",
+				"9": "Coucou",
+				"10": "Bonjour",
+				"11": "Salut, ça va ?",
+				"12": "Hey !",
+				"13": "Welcome back my friend !",
+				"14": "Re"
 			}
 		}
 	},
@@ -426,6 +440,7 @@
 	"chat_close_channels": "Fermer",
 	"chat_search_placeholder": "Rechercher un channel ou un ami",
 	"chat_no_result": "Aucun résultat",
+	"chat_not_friend": "Erreur pas ami",
 	"chat_total_members": "{{total}} membres",
 	"chat_total_member": "{{total}} membre",
 	"chat_actionBar_phone": "Démarrer une conférence vidéo",

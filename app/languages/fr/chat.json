@@ -6,6 +6,7 @@
     "chat_close_channels": "Fermer",
     "chat_search_placeholder": "Rechercher un channel ou un ami",
     "chat_no_result": "Aucun résultat",
+    "chat_not_friend": "Erreur pas ami",
     "chat_total_members": "{{total}} membres",
     "chat_total_member": "{{total}} membre",
     "chat_actionBar_phone": "Démarrer une conférence vidéo",

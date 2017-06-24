@@ -223,6 +223,7 @@
 	"alerts_error_get_mediaStream": "You can't start a call. You must authorize Cogeo to use your microphone and your camera.",
 	"alerts_error_chat_mediaConnection_error": "An unknown error has occurred during the call.<br>Sorry.",
 	"alerts_error_chat_mediaConnection_close": "The call has been closed.",
+	"alerts_error_chat_friendNotFound": "You can't speak with <strong>{{username}}</strong> !<br> He's not your friend !",
 	"COMMON": {
 		"FRIENDS": {},
 		"CHANNELS": {}
@@ -236,7 +237,25 @@
 				"4": "To maintain solid friendships, it is not enough to appreciate our resemblances; We must also celebrate our differences."
 			}
 		},
-		"CHANNELS": {}
+		"CHANNELS": {},
+		"MESSAGES": {
+			"HI": {
+				"1": "Hello sugar !",
+				"2": "Hi sweety !",
+				"3": "Hello.",
+				"4": "Hello !",
+				"5": "Hi :smile:",
+				"6": "Yo",
+				"7": "Hi !",
+				"8": "Hi",
+				"9": "You missed me !",
+				"10": "Hello",
+				"11": "Hi, how are you ?",
+				"12": "Hey !",
+				"13": "Welcome back my friend !",
+				"14": "Welcome back"
+			}
+		}
 	},
 	"SPAMOBOT": {
 		"FRIENDS": {
@@ -421,6 +440,7 @@
 	"chat_close_channels": "Close",
 	"chat_search_placeholder": "Search for a channel or a friend",
 	"chat_no_result": "No results",
+	"chat_not_friend": "Error not friend",
 	"chat_total_members": "{{total}} members",
 	"chat_total_member": "{{total}} member",
 	"chat_actionBar_phone": "Start a video conference call",

@@ -72,7 +72,7 @@
                 volume    : globalVolume,
                 initVolume: globalInitVolume
             },
-            chat: {
+            chat                    : {
                 saveStatus: chatSaveStatus
             }
         };

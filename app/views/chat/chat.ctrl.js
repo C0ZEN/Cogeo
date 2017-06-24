@@ -25,12 +25,13 @@
         'directMessagesFactory',
         'cogeoWebRtc',
         'usersFactory',
-        'statusFactory'
+        'statusFactory',
+        'cozenFloatingFeedFactory'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope, $anchorScroll,
                       cozenOnClickService, $filter, botFactory, ngAudio, $location, cozenEnhancedLogs, $timeout, directMessagesFactory,
-                      cogeoWebRtc, usersFactory, statusFactory) {
+                      cogeoWebRtc, usersFactory, statusFactory, cozenFloatingFeedFactory) {
         var vm = this;
 
         // Methods
@@ -475,42 +476,64 @@
             vm.methods.stopAllEdit();
 
             // Find the active friend
+            var isRealFriend = false;
             vm.allFriends.forEach(function (friend) {
                 if (friend.username == username) {
+                    isRealFriend    = true;
                     vm.activeFriend = friend;
                 }
             });
 
             // Get the messages
-            var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, true);
-            $rootScope.directMessageId = directMessage._id;
-            vm.messages                = directMessage.messages;
-            vm.methods.addSmiley(vm.messages);
-            vm.methods.calcMediaLength(vm.messages);
+            if (isRealFriend) {
+                var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, true);
+                $rootScope.directMessageId = directMessage._id;
+                vm.messages                = directMessage.messages;
+                vm.methods.addSmiley(vm.messages);
+                vm.methods.calcMediaLength(vm.messages);
+                vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
+                    username: vm.activeFriend.alias || vm.activeFriend.username
+                });
+            }
             vm.methods.initMp3();
-            vm.chatTheme        = 'social-theme';
-            vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
-                username: vm.activeFriend.alias || vm.activeFriend.username
-            });
-            vm.isUserAdmin      = false;
+            vm.chatTheme   = 'social-theme';
+            vm.isUserAdmin = false;
 
             // Change the theme
             $rootScope.$broadcast('setChatTheme', {
                 theme: vm.chatTheme
             });
 
-            // Change the view
-            goTo.view('app.chat.user', {
-                username: username
-            });
+            // If the user is not a friend
+            if (!isRealFriend) {
+                cozenFloatingFeedFactory.addAlert({
+                    type       : 'error',
+                    label      : 'alerts_error_chat_friendNotFound',
+                    labelValues: {
+                        username: username
+                    }
+                });
 
-            // Scroll to the last message
-            vm.methods.scrollToBottom({
-                data: vm.messages[vm.messages.length - 1]
-            });
+                // Change the view
+                goTo.view('app.notFriend', {
+                    username: username
+                });
+            }
+            else {
 
-            // Connect with all people
-            cogeoWebRtc.connectFriends(vm.friends);
+                // Change the view
+                goTo.view('app.chat.user', {
+                    username: username
+                });
+
+                // Scroll to the last message
+                vm.methods.scrollToBottom({
+                    data: vm.messages[vm.messages.length - 1]
+                });
+
+                // Connect with all people
+                cogeoWebRtc.connectFriends(vm.friends);
+            }
         }
 
         // Toggle the global expand value
