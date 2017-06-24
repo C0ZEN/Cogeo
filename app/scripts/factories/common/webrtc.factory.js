@@ -130,7 +130,6 @@
             });
 
             // Listen for video calls
-            // Listen for video calls
             peer.on('call', function (newMediaConnection) {
                 mediaConnection = newMediaConnection;
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'You received a call');
@@ -143,6 +142,7 @@
                         username       : mediaConnection.peer,
                         type           : 'purple'
                     });
+                    Methods.safeApply($rootScope);
                 });
 
                 // When the call is answer, the stream is triggered
@@ -264,13 +264,16 @@
         }
 
         function getMediaStream(audio, video, successCallback) {
+            cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'getMediaStream');
 
             // If the media stream wasn't set
             if (Methods.isNullOrEmpty(mediaStream)) {
-                navigator.mediaDevices.getUserMedia({
+                var userMediaSettings = {
                     audio: Methods.isBoolean(audio) ? audio : true,
                     video: Methods.isBoolean(video) ? video : true
-                }).then(function (newMediaStream) {
+                };
+                cozenEnhancedLogs.explodeObject(userMediaSettings, true);
+                navigator.mediaDevices.getUserMedia(userMediaSettings).then(function (newMediaStream) {
                     mediaStream = newMediaStream;
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'We can start a media stream');
                     successCallback();
