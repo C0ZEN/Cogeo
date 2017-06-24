@@ -63,6 +63,7 @@
         $rootScope.$on('cogeoWebRtc:answerCall', function ($event, $eventData) {
 
             // Send a message to tell the other user to show his own stream
+            console.log($eventData);
             var connection = searchConnection($eventData.username);
             if (Methods.isNullOrEmpty(mediaStream)) {
                 getMediaStream(true, true, function () {
@@ -75,11 +76,10 @@
 
             function answer() {
                 if (!Methods.isNullOrEmpty(connection)) {
-                    var streamArray = [mediaStream];
                     connection.send({
                         tag     : 'showFriendStream',
                         username: $eventData.username,
-                        stream  : new Blob(streamArray)
+                        stream  : $eventData.mediaStream
                     });
                     cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
                 }
@@ -163,6 +163,7 @@
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is live');
                 });
 
+                // On close
                 mediaConnection.on('close', function () {
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is close');
                     cozenFloatingFeedFactory.addAlert({
@@ -172,6 +173,7 @@
                     console.log(arguments);
                 });
 
+                // On error
                 mediaConnection.on('error', function () {
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream encounter an error');
                     cozenFloatingFeedFactory.addAlert({
