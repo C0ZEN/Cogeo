@@ -9,10 +9,12 @@
         'httpRequest',
         '$rootScope',
         'CONFIG',
-        'cozenEnhancedLogs'
+        'cozenEnhancedLogs',
+        'cogeoStatus',
+        'botFactory'
     ];
 
-    function usersFactory(httpRequest, $rootScope, CONFIG, cozenEnhancedLogs) {
+    function usersFactory(httpRequest, $rootScope, CONFIG, cozenEnhancedLogs, cogeoStatus, botFactory) {
         var users = [];
 
         // Public functions
@@ -27,6 +29,7 @@
             updateUser       : updateUser,
             getUserImage     : getUserImage,
             getAvailableUsers: getAvailableUsers,
+            setStatus        : setStatus,
             httpRequest      : {
                 getAll: httpRequestGetAll
             }
@@ -305,6 +308,20 @@
                 availableUsers.splice(indexToRemove[i], 1);
             }
             return availableUsers;
+        }
+
+        function setStatus(targetUser, statusIndex) {
+
+            // A bot is always online
+            if (botFactory.isBot(targetUser.username)) {
+                targetUser.status = cogeoStatus.status[0];
+            }
+
+            // Else take the status on param
+            else {
+                targetUser.status = cogeoStatus.status[statusIndex];
+            }
+            return targetUser;
         }
 
         /// HTTP REQUEST ///

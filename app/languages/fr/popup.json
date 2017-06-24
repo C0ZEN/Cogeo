@@ -8,6 +8,7 @@
     "popup_chat_setStatus_body_subtitle": "Modifier la façon dont les autres utilisateurs vous voient.",
     "popup_chat_setStatus_body_status": "Statuts",
     "popup_chat_setStatus_body_status_pc": "Choisir un statut",
+    "popup_chat_setStatus_body_save_status": "Sauvegarder",
     "popup_test_microphone_header_title": "Essayer le microphone",
     "popup_test_microphone_body_title": "Essaye ton micro dès que tu es prêt.",
     "popup_test_microphone_body_subtitle_1": "Tu peux démarrer un enregistrement dès que tu le souhaites.",

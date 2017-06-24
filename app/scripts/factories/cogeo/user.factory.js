@@ -19,38 +19,14 @@
         '$filter',
         'CONFIG',
         'cozenEnhancedLogs',
-        'cogeoWebRtc'
+        'cogeoWebRtc',
+        'statusFactory'
     ];
 
     function userFactory(httpRequest, usersFactory, localStorageService, $rootScope, displayTypesFactory, CozenFloatingFeed,
-                         goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter, CONFIG, cozenEnhancedLogs, cogeoWebRtc) {
-        var user   = [];
-        var status = [
-            {
-                id      : 'online',
-                name    : 'other_status_online',
-                selected: true,
-                color   : '#2ecc71'
-            },
-            {
-                id      : 'absent',
-                name    : 'other_status_absent',
-                selected: false,
-                color   : '#e67e22'
-            },
-            {
-                id      : 'busy',
-                name    : 'other_status_busy',
-                selected: false,
-                color   : '#e74c3c'
-            },
-            {
-                id      : 'off',
-                name    : 'other_status_off',
-                selected: false,
-                color   : '#95a5a6'
-            }
-        ];
+                         goTo, cozenFloatingFeedFactory, accessLog, readableTime, $filter, CONFIG, cozenEnhancedLogs, cogeoWebRtc,
+                         statusFactory) {
+        var user = [];
 
         // Public functions
         return {
@@ -64,9 +40,6 @@
             getFriends                 : getFriends,
             getUnblockedFriends        : getUnblockedFriends,
             getBlockedFriends          : getBlockedFriends,
-            getStatus                  : getStatus,
-            setStatus                  : setStatus,
-            getAllStatus               : getAllStatus,
             getUserImage               : getUserImage,
             getUserFriendObject        : getUserFriendObject,
             getUserInvitationObject    : getUserInvitationObject,
@@ -322,13 +295,15 @@
 
         function getUnblockedFriends() {
             var friends = [], friend;
-            for (var i = 0, length = user.contacts.length; i < length; i++) {
-                if (user.contacts[i].removed == 0 && user.contacts[i].blocked == 0) {
-                    friend = usersFactory.getUserByUsername(user.contacts[i].username);
-                    if (!Methods.isNullOrEmpty(friend)) {
-                        user.contacts[i].givenName = friend.givenName;
-                        user.contacts[i].surname   = friend.surname;
-                        friends.push(user.contacts[i]);
+            if (!Methods.isNullOrEmpty(user.contacts)) {
+                for (var i = 0, length = user.contacts.length; i < length; i++) {
+                    if (user.contacts[i].removed == 0 && user.contacts[i].blocked == 0) {
+                        friend = usersFactory.getUserByUsername(user.contacts[i].username);
+                        if (!Methods.isNullOrEmpty(friend)) {
+                            user.contacts[i].givenName = friend.givenName;
+                            user.contacts[i].surname   = friend.surname;
+                            friends.push(user.contacts[i]);
+                        }
                     }
                 }
             }
@@ -337,39 +312,19 @@
 
         function getBlockedFriends() {
             var friends = [], friend;
-            for (var i = 0, length = user.contacts.length; i < length; i++) {
-                if (user.contacts[i].removed == 0 && user.contacts[i].blocked != 0) {
-                    friend = usersFactory.getUserByUsername(user.contacts[i].username);
-                    if (!Methods.isNullOrEmpty(friend)) {
-                        user.contacts[i].givenName = friend.givenName;
-                        user.contacts[i].surname   = friend.surname;
-                        friends.push(user.contacts[i]);
+            if (!Methods.isNullOrEmpty(user.contacts)) {
+                for (var i = 0, length = user.contacts.length; i < length; i++) {
+                    if (user.contacts[i].removed == 0 && user.contacts[i].blocked != 0) {
+                        friend = usersFactory.getUserByUsername(user.contacts[i].username);
+                        if (!Methods.isNullOrEmpty(friend)) {
+                            user.contacts[i].givenName = friend.givenName;
+                            user.contacts[i].surname   = friend.surname;
+                            friends.push(user.contacts[i]);
+                        }
                     }
                 }
             }
             return friends;
-        }
-
-        // Return the status of the current user
-        function getStatus() {
-            for (var i = 0, length = status.length; i < length; i++) {
-                if (status[i].selected) {
-                    return status[i];
-                }
-            }
-        }
-
-        // Update the status for the current user
-        function setStatus(status) {
-            for (var i = 0, length = status.length; i < length; i++) {
-                status[i].selected = false;
-            }
-            status[status].selected = true;
-        }
-
-        // Return the status
-        function getAllStatus() {
-            return status;
         }
 
         function getUserImage() {
@@ -482,6 +437,9 @@
                         }
                     });
 
+                    // Set online status for the current user
+                    statusFactory.setCurrentUserStatus(0);
+
                     // Create the peer
                     cogeoWebRtc.createPeer(response.data.data.username);
                 })
@@ -500,6 +458,13 @@
         function httpRequestLogout(username, callbackSuccess, callbackError) {
             httpRequest.requestGet('logout/' + username, callbackSuccess, callbackError)
                 .then(function (response) {
+
+                    // Set offline status for the current user
+                    statusFactory.setCurrentUserStatus(3);
+
+                    // Destroy the peer
+                    cogeoWebRtc.destroyPeer();
+
                     CozenFloatingFeed.rollbackOriginDisplayTypes();
                     cozenFloatingFeedFactory.addAlert({
                         type : 'info',

@@ -23,12 +23,14 @@
         'cozenEnhancedLogs',
         '$timeout',
         'directMessagesFactory',
-        'cogeoWebRtc'
+        'cogeoWebRtc',
+        'usersFactory',
+        'statusFactory'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope, $anchorScroll,
                       cozenOnClickService, $filter, botFactory, ngAudio, $location, cozenEnhancedLogs, $timeout, directMessagesFactory,
-                      cogeoWebRtc) {
+                      cogeoWebRtc, usersFactory, statusFactory) {
         var vm = this;
 
         // Methods
@@ -216,6 +218,9 @@
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
         cozenOnClickService.subscribe($scope, vm.methods.onActionClick);
+        statusFactory.subscribe($scope, function () {
+            vm.status = statusFactory.getCurrentUserStatus();
+        });
         directMessagesFactory.subscribe($scope, function () {
             var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, false);
             $rootScope.directMessageId = directMessage._id;
@@ -270,6 +275,14 @@
             vm.methods.setActiveFriend($eventData.botName);
         });
 
+        // Listen to know when a friend status is updated
+        $rootScope.$on('cogeoWebRtc:newStatus', function ($event, $eventData) {
+            updateStatusForFriends($eventData);
+
+            // Force the change of status to occur (UI)
+            Methods.safeApply($scope);
+        });
+
         // Called each time a view is loaded
         function onInit() {
 
@@ -285,8 +298,8 @@
             vm.groups         = groupsFactory.getUserActiveGroups(vm.user.username);
             vm.groups         = groupsFactory.removeGroupsWhereNoActiveMemberChannel(vm.groups, vm.user.username);
             vm.hasGroup       = vm.groups.length > 0;
+            vm.status         = statusFactory.getCurrentUserStatus();
             vm.methods.showChannels();
-            vm.status = userFactory.getStatus();
 
             // Add bots as friend
             var bots      = botFactory.getBotFriends();
@@ -295,20 +308,10 @@
 
             // Add status to friends
             vm.friends.forEach(function (friend) {
-                friend.status = {
-                    id      : 'online',
-                    name    : 'other_status_online',
-                    selected: true,
-                    color   : '#2ecc71'
-                };
+                friend = usersFactory.setStatus(friend, 3);
             });
-            vm.blockedFriends.forEach(function (friend) {
-                friend.status = {
-                    id      : 'online',
-                    name    : 'other_status_online',
-                    selected: true,
-                    color   : '#2ecc71'
-                };
+            vm.blockedFriends.forEach(function (oldFriend) {
+                oldFriend = usersFactory.setStatus(oldFriend, 3);
             });
 
             if (vm.hasGroup) {
@@ -473,13 +476,6 @@
                     vm.activeFriend = friend;
                 }
             });
-
-            vm.friendStatus = {
-                id      : 'online',
-                name    : 'other_status_online',
-                selected: true,
-                color   : '#2ecc71'
-            };
 
             // Get the messages
             var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, true);
@@ -801,6 +797,20 @@
                         channelName: $state.params.channelName,
                         channelId  : channelId
                     });
+                }
+            });
+        }
+
+        // Update the status for the friend
+        function updateStatusForFriends($eventData) {
+            vm.friends.forEach(function (friend) {
+                if (friend.username == $eventData.username) {
+                    friend = usersFactory.setStatus(friend, $eventData.statusIndex);
+                }
+            });
+            vm.blockedFriends.forEach(function (oldFriend) {
+                if (friend.username == $eventData.username) {
+                    oldFriend = usersFactory.setStatus(oldFriend, $eventData.statusIndex);
                 }
             });
         }

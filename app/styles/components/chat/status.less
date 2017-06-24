@@ -1,0 +1,10 @@
+.circle-color(@color-name) {
+    .circle-@{color-name} {
+        @color-variable: "atom-color-status-@{color-name}";
+        color: @@color-variable;
+    }
+}
+.circle-color(green);
+.circle-color(orange);
+.circle-color(red);
+.circle-color(grey);

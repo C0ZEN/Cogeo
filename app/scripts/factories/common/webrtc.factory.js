@@ -11,16 +11,23 @@
         'cozenEnhancedLogs',
         'directMessagesFactory',
         '$rootScope',
-        'cozenFloatingFeedFactory'
+        'cozenFloatingFeedFactory',
+        'statusFactory'
     ];
 
-    function cogeoWebRtc(CONFIG, $window, cozenEnhancedLogs, directMessagesFactory, $rootScope, cozenFloatingFeedFactory) {
+    function cogeoWebRtc(CONFIG, $window, cozenEnhancedLogs, directMessagesFactory, $rootScope, cozenFloatingFeedFactory,
+                         statusFactory) {
 
         // Private data
         var peer;
         var peerId;
         var mediaConnection;
         var mediaStream;
+
+        // Subscribe to current user status change
+        $rootScope.$on('statusFactoryChanged', function ($event) {
+            sendUpdateStatusMessage(statusFactory.getCurrentUserStatus().index);
+        });
 
         // Listener called when the user wish to start a call with a friend
         $rootScope.$on('cogeoWebRtc:callFriend', function ($event, $eventData) {
@@ -84,16 +91,18 @@
         });
 
         return {
-            createPeer       : createPeer,
-            createPeerBot    : createPeerBot,
-            connectFriends   : connectFriends,
-            connectionSend   : connectionSend,
-            destroyPeer      : destroyPeer,
-            searchConnection : searchConnection,
-            getMediaStream   : getMediaStream,
-            listenData       : listenData,
-            showStreamFriends: showStreamFriends,
-            makeCall         : makeCall
+            createPeer               : createPeer,
+            createPeerBot            : createPeerBot,
+            connectFriends           : connectFriends,
+            connectionSend           : connectionSend,
+            destroyPeer              : destroyPeer,
+            searchConnection         : searchConnection,
+            getMediaStream           : getMediaStream,
+            listenData               : listenData,
+            showStreamFriends        : showStreamFriends,
+            makeCall                 : makeCall,
+            sendUpdateStatusMessage  : sendUpdateStatusMessage,
+            sendUpdateStatusMessageTo: sendUpdateStatusMessageTo
         };
 
         function createPeer(username) {
@@ -115,7 +124,9 @@
             // When other users connect to you
             peer.on('connection', function (newConnection) {
                 cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'User', newConnection.peer, 'as established a connection with you');
-                listenData(newConnection);
+                listenData(newConnection, function () {
+                    sendUpdateStatusMessageTo(newConnection.peer, statusFactory.getCurrentUserStatus().index);
+                });
             });
 
             // Listen for video calls
@@ -143,6 +154,8 @@
 
             // Listen for close window or refresh
             $window.onbeforeunload = function () {
+                statusFactory.setCurrentUserStatus(3);
+                sendUpdateStatusMessage(3);
                 destroyPeer();
             };
             return peer;
@@ -201,7 +214,9 @@
                         cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'The connection with', friend.peerUsername, 'has been requested');
 
                         if (!Methods.isNullOrEmpty(newConnection)) {
-                            listenData(newConnection);
+                            listenData(newConnection, function () {
+                                sendUpdateStatusMessageTo(friend.peerUsername, statusFactory.getCurrentUserStatus().index);
+                            });
                         }
                     }
                 }
@@ -218,10 +233,13 @@
         }
 
         function destroyPeer() {
+            cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'destroyPeer');
             if (!Methods.isNullOrEmpty(peer)) {
-                cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'destroyPeer');
-                peer.disconnect();
-                peer.destroy();
+                cozenEnhancedLogs.info.functionCalled('cogeoWebRtc', 'Go offline and destroy peer');
+                sendUpdateStatusMessage(3, function () {
+                    peer.disconnect();
+                    peer.destroy();
+                });
             }
         }
 
@@ -271,7 +289,7 @@
             }
         }
 
-        function listenData(newConnection) {
+        function listenData(newConnection, callback) {
             if (!Methods.isNullOrEmpty(newConnection)) {
 
                 // Wait for the open state of the connection
@@ -313,9 +331,20 @@
                             $rootScope.$broadcast('cogeoWebRtc:refusedCall');
                         }
 
+                        // Display the view with the media
                         else if (data.tag == 'showFriendStream') {
                             showStreamFriends(data.stream);
                         }
+
+                        // Update the status for the user
+                        else if (data.tag == 'newStatus') {
+                            cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'New status');
+                            $rootScope.$broadcast('cogeoWebRtc:newStatus', {
+                                statusIndex: data.statusIndex,
+                                username   : data.username
+                            });
+                        }
+
                         else {
                             $rootScope.$broadcast('groupsFactory:newMessage', {
                                 groupName  : data.groupName,
@@ -324,6 +353,10 @@
                             });
                         }
                     });
+
+                    if (Methods.isFunction(callback)) {
+                        callback();
+                    }
                 });
             }
         }
@@ -337,6 +370,34 @@
         function makeCall($eventData) {
             mediaConnection = peer.call($eventData.friend, mediaStream);
             cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called ask for friend', $eventData.friend);
+        }
+
+        function sendUpdateStatusMessage(statusIndex, callback) {
+            for (var user in peer.connections) {
+                peer.connections[user].forEach(function (userConnection) {
+                    if (userConnection.open) {
+                        userConnection.send({
+                            tag        : 'newStatus',
+                            statusIndex: statusIndex, // Online
+                            username   : peerId       // Current user username
+                        });
+                    }
+                });
+            }
+            if (Methods.isFunction(callback)) {
+                callback();
+            }
+        }
+
+        function sendUpdateStatusMessageTo(username, statusIndex) {
+            var connection = searchConnection(username);
+            if (!Methods.isNullOrEmpty(connection)) {
+                connection.send({
+                    tag        : 'newStatus',
+                    statusIndex: statusIndex, // Online
+                    username   : peerId       // Current user username
+                });
+            }
         }
     }
 
