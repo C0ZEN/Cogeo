@@ -29,7 +29,7 @@
                cozen-btn-is-uploading="vm.upload.isUploading"
                cozen-btn-has-upload-error="vm.upload.hasUploadError"
                cozen-btn-upload-alert="false"
-               cozen-btn-disabled="vm.upload.isUploading"
+               cozen-btn-disabled="vm.upload.isUploading || vm.activeFriend.blocked != 0 && $state.current.name == 'app.chat.user'"
                cozen-btn-on-upload-success="vm.upload.onSuccess(model, file)">
     </cozen-btn>
 </cozen-form>

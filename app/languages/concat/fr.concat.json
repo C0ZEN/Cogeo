@@ -236,7 +236,12 @@
 				"4": "Pour entretenir des amitiés solides, il ne suffit pas d'apprécier nos ressemblances; il faut aussi célébrer nos différences."
 			}
 		},
-		"CHANNELS": {}
+		"CHANNELS": {},
+		"MESSAGES": {
+			"HI": {
+				"1": ""
+			}
+		}
 	},
 	"SPAMOBOT": {
 		"FRIENDS": {
