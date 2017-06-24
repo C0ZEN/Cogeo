@@ -74,13 +74,11 @@
             }
 
             function answer() {
-                console.log(mediaStream);
-                console.log(JSON.stringify(mediaStream));
                 if (!Methods.isNullOrEmpty(connection)) {
                     connection.send({
                         tag     : 'showFriendStream',
                         username: $eventData.username,
-                        stream  : JSON.stringify(mediaStream)
+                        stream  : mediaStream
                     });
                     cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
                 }
