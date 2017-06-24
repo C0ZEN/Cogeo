@@ -75,10 +75,11 @@
 
             function answer() {
                 if (!Methods.isNullOrEmpty(connection)) {
+                    var streamArray = [mediaStream];
                     connection.send({
                         tag     : 'showFriendStream',
                         username: $eventData.username,
-                        stream  : mediaStream
+                        stream  : new Blob(streamArray)
                     });
                     cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
                 }
@@ -379,8 +380,6 @@
 
         function showStreamFriends(stream) {
             $rootScope.$broadcast('cogeoWebRtc:streamStarted');
-            console.log(mediaStream);
-            console.log(stream);
             $('#user-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(mediaStream));
             $('#friend-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(stream));
             $rootScope.$broadcast('safeApplyChat');
