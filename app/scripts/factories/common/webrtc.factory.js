@@ -65,10 +65,11 @@
             // Send a message to tell the other user to show his own stream
             var connection = searchConnection($eventData.username);
             if (!Methods.isNullOrEmpty(connection)) {
+                console.log(mediaStream);
                 connection.send({
                     tag     : 'showFriendStream',
                     username: $eventData.username,
-                    stream  : mediaStream
+                    stream  : JSON.stringify(mediaStream)
                 });
                 cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
             }
@@ -368,6 +369,7 @@
             $rootScope.$broadcast('cogeoWebRtc:streamStarted');
             $('#user-stream').prop('src', URL.createObjectURL(mediaStream));
             $('#friend-stream').prop('src', URL.createObjectURL(stream));
+            Methods.safeApply($rootScope);
         }
 
         function makeCall($eventData) {
