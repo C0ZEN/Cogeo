@@ -77,12 +77,15 @@
                 if (!Methods.isNullOrEmpty(connection)) {
                     var streamArray = [];
                     streamArray.push($eventData.mediaStream);
-                    connection.send({
+                    var streamBlob = new Blob(streamArray);
+                    var newMessage = {
                         tag     : 'showFriendStream',
                         username: $eventData.username,
-                        stream  : new Blob(streamArray)
-                    });
+                        stream  : streamBlob
+                    };
+                    connection.send(newMessage);
                     cozenEnhancedLogs.info.customMessageEnhanced('cogeoWebRtc', 'Called accepted for friend', $eventData.username);
+                    cozenEnhancedLogs.explodeObject(newMessage, true);
                 }
 
                 // Start the media stream
