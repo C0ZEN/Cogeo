@@ -525,6 +525,8 @@
 	"chat_alert_friend_blocked": "Tu as bloqué {{username}} le {{date}}",
 	"chat_alert_friend_no_message": "Il n'y a pas encore de messages pour cette conversation",
 	"chat_no_video_support": "Ton navigateur ne supporte pas les vidéos !",
+	"chat_stop_call": "Arrêter l'appel",
+	"chat_change_volume": "Modifier le volume",
 	"DEV": {
 		"USERS_LIST": {
 			"PAGE_TITLE": "Liste des utilisateurs Cogeo",

@@ -15,9 +15,15 @@ div.action-bar {
         border           : 1px solid @atom-color-line-rule;
         color            : @atom-color-line-rule;
         outline          : @atom-outline;
+        transition       : @atom-transition;
+        &.ng-hide {
+            transition : none !important;
+        }
         i {
             vertical-align : middle;
         }
+        &:active,
+        &:focus,
         &:hover {
             background-color : @atom-color-line-rule-light;
             &.blue-hover {

@@ -123,7 +123,8 @@
             showStreamFriends        : showStreamFriends,
             makeCall                 : makeCall,
             sendUpdateStatusMessage  : sendUpdateStatusMessage,
-            sendUpdateStatusMessageTo: sendUpdateStatusMessageTo
+            sendUpdateStatusMessageTo: sendUpdateStatusMessageTo,
+            closeCall                : closeCall
         };
 
         function createPeer(username) {
@@ -176,9 +177,10 @@
                 mediaConnection.on('close', function () {
                     cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is close');
                     cozenFloatingFeedFactory.addAlert({
-                        type : 'error',
+                        type : 'info',
                         label: 'alerts_error_chat_mediaConnection_close'
                     });
+                    $rootScope.$broadcast('cogeoWebRtc:closeCall');
                 });
 
                 // On error
@@ -188,6 +190,7 @@
                         type : 'error',
                         label: 'alerts_error_chat_mediaConnection_error'
                     });
+                    $rootScope.$broadcast('cogeoWebRtc:closeCall');
                 });
             });
 
@@ -425,9 +428,10 @@
             mediaConnection.on('close', function () {
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'The stream is close');
                 cozenFloatingFeedFactory.addAlert({
-                    type : 'error',
+                    type : 'info',
                     label: 'alerts_error_chat_mediaConnection_close'
                 });
+                $rootScope.$broadcast('cogeoWebRtc:closeCall');
             });
 
             // On error
@@ -437,6 +441,7 @@
                     type : 'error',
                     label: 'alerts_error_chat_mediaConnection_error'
                 });
+                $rootScope.$broadcast('cogeoWebRtc:closeCall');
             });
         }
 
@@ -468,6 +473,11 @@
                     username   : peerId       // Current user username
                 });
             }
+        }
+
+        function closeCall() {
+            mediaConnection.close();
+            $rootScope.$broadcast('cogeoWebRtc:closeCall');
         }
     }
 

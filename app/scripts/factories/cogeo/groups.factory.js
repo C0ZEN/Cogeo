@@ -798,8 +798,14 @@
 
                     // The bot answered this message
                     if (!Methods.isNullOrEmpty(response.data.newBotMessage)) {
-                        cozenEnhancedLogs.info.customMessage('groupsFactory', 'New bot message');
+                        cozenEnhancedLogs.info.customMessage('groupsFactory', 'New bot message sent');
                         addMessage(groupName, channelName, response.data.newBotMessage);
+                    }
+
+                    // The bot executed an action
+                    if (!Methods.isNullOrEmpty(response.data.newBotAction)) {
+                        cozenEnhancedLogs.info.customMessage('groupsFactory', 'New bot action executed');
+                        // addMessage(groupName, channelName, response.data.newBotMessage);
                     }
                 })
             ;

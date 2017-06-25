@@ -1,23 +1,79 @@
 <div class="chat-video-container"
      ng-show="vm.chat.friends.isVisible">
     <div class="users-stream">
-        <video id="user-stream"
-               muted="true"
-               autoplay
-               controls
-               poster="{{ userFactory.getUserImage() }}"
-               class="stream user">
-            {{ 'chat_no_video_support' | translate }}
-        </video>
-        <video id="friend-stream"
-               autoplay
-               controls
-               poster="{{ usersFactory.getUserImage(vm.friendStream.username) }}"
-               class="stream friend">
-            {{ 'chat_no_video_support' | translate }}
-        </video>
+
+        <!-- Container for action -->
+        <div class="action-container action-container-hover-dark"
+             ng-mouseenter="vm.chat.friends.isHoverOwnStream = true"
+             ng-mouseleave="vm.chat.friends.isHoverOwnStream = false"
+             ng-click="vm.chat.friends.isOwnMicroMuted = !vm.chat.friends.isOwnMicroMuted">
+
+            <!-- Own stream -->
+            <video id="user-stream"
+                   muted="true"
+                   autoplay
+                   poster="{{ userFactory.getUserImage() }}"
+                   class="stream user">
+                {{ 'chat_no_video_support' | translate }}
+            </video>
+
+            <!-- Mute own micro action -->
+            <div ng-show="vm.chat.friends.isHoverOwnStream"
+                 class="action action-overflow-center"
+                 ng-class="[vm.chat.friends.isHoverOwnStream ? 'active' : '', vm.chat.friends.isOwnMicroMuted ? 'action-neutral' : 'action-danger']">
+                <i class="fa fa-fw"
+                   ng-class="vm.chat.friends.isOwnMicroMuted ? 'icons8-microphone-filled' : 'icons8-no-microphone-filled'">
+                </i>
+            </div>
+        </div>
+
+        <!-- Container for action -->
+        <div class="action-container action-container-hover-dark"
+             ng-mouseenter="vm.friendStream.isHoverStream = true"
+             ng-mouseleave="vm.friendStream.isHoverStream = false"
+             ng-click="vm.friendStream.isMuted = !vm.friendStream.isMuted">
+
+            <!-- Friend stream -->
+            <video id="friend-stream"
+                   muted="{{ vm.friendStream.isMuted }}"
+                   autoplay
+                   volume="{{ vm.user.settings.speaker.volume / 100 }}"
+                   poster="{{ usersFactory.getUserImage(vm.friendStream.username) }}"
+                   class="stream friend"
+                   ng-click="vm.friendStream.muted = !vm.friendStream.muted">
+                {{ 'chat_no_video_support' | translate }}
+            </video>
+
+            <!-- Mute action -->
+            <div ng-show="vm.friendStream.isHoverStream"
+                 class="action action-overflow-center"
+                 ng-class="[vm.friendStream.isHoverStream ? 'active' : '', vm.friendStream.isMuted ? 'action-neutral' : 'action-danger']">
+                <i class="fa fa-fw"
+                   ng-class="vm.friendStream.isMuted ? 'icons8-video' : 'icons8-no-video'">
+                </i>
+            </div>
+        </div>
     </div>
     <div class="action-container">
 
+        <!-- Change the volume -->
+        <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                       cozen-tooltip-label="'chat_change_volume'">
+            <div class="action action-safe"
+                 tabindex="0"
+                 ng-click="methods.showPopup($event, 'globalVolume')">
+                <i class="fa fa-fw icons8-speaker"></i>
+            </div>
+        </cozen-tooltip>
+
+        <!-- Close the call -->
+        <cozen-tooltip cozen-tooltip-placement="auto bottom"
+                       cozen-tooltip-label="'chat_stop_call'">
+            <div class="action action-danger"
+                 tabindex="0"
+                 ng-click="cogeoWebRtc.closeCall()">
+                <i class="fa fa-fw icons8-no-video"></i>
+            </div>
+        </cozen-tooltip>
     </div>
 </div>

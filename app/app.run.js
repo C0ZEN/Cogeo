@@ -21,11 +21,12 @@
         'userFactory',
         'cozenLazyLoadRandom',
         'cozenLanguage',
-        'CONFIG'
+        'CONFIG',
+        'cogeoWebRtc'
     ];
 
     function run($rootScope, $state, goTo, cozenPopupFactory, groupsFactory, $filter, channelsFactory, botFactory, usersFactory,
-                 rfc4122, logs, cozenEnhancedLogs, userFactory, cozenLazyLoadRandom, cozenLanguage, CONFIG) {
+                 rfc4122, logs, cozenEnhancedLogs, userFactory, cozenLazyLoadRandom, cozenLanguage, CONFIG, cogeoWebRtc) {
         cozenEnhancedLogs.wrap.starting('windowOnLoad');
 
         // Public global data
@@ -46,6 +47,7 @@
         $rootScope.cozenLanguage       = cozenLanguage;
         $rootScope.Utils               = Utils;
         $rootScope.$CONFIG             = CONFIG;
+        $rootScope.cogeoWebRtc         = cogeoWebRtc;
 
         // Public global functions
         $rootScope.methods = {

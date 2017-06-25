@@ -211,8 +211,10 @@
         };
         vm.chat      = {
             friends : {
-                isVisible: false,
-                isCalling: false
+                isVisible       : false,
+                isCalling       : false,
+                isOwnMicroMuted : false,
+                isHoverOwnStream: false
             },
             channels: {}
         };
@@ -297,10 +299,16 @@
             else {
                 vm.allFriends.forEach(function (friend) {
                     if (friend.username == $eventData.username) {
-                        vm.friendStream = friend;
+                        vm.friendStream         = friend;
+                        vm.friendStream.isMuted = false;
                     }
                 });
             }
+        });
+
+        $rootScope.$on('cogeoWebRtc:closeCall', function ($event) {
+            vm.chat.friends.isVisible = false;
+            Methods.safeApply($scope);
         });
 
         // Called each time a view is loaded
@@ -509,7 +517,7 @@
                 vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
                     username: vm.activeFriend.alias || vm.activeFriend.username
                 });
-                vm.friendStatus = vm.activeFriend.status;
+                vm.friendStatus     = vm.activeFriend.status;
             }
             vm.methods.initMp3();
             vm.chatTheme   = 'social-theme';
@@ -864,7 +872,7 @@
                     vm.friendStatus = friend.status;
                 }
             });
-            
+
         }
 
         function isMessageVisible(message) {
