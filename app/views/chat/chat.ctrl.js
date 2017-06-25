@@ -26,12 +26,14 @@
         'cogeoWebRtc',
         'usersFactory',
         'statusFactory',
-        'cozenFloatingFeedFactory'
+        'cozenFloatingFeedFactory',
+        'marked',
+        '$sce'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope, $anchorScroll,
                       cozenOnClickService, $filter, botFactory, ngAudio, $location, cozenEnhancedLogs, $timeout, directMessagesFactory,
-                      cogeoWebRtc, usersFactory, statusFactory, cozenFloatingFeedFactory) {
+                      cogeoWebRtc, usersFactory, statusFactory, cozenFloatingFeedFactory, marked, $sce) {
         var vm = this;
 
         // Methods
@@ -814,6 +816,7 @@
         }
 
         function addSmiley(messages) {
+            var compiledText;
             messages.forEach(function (message) {
                 if (message.category == 'text') {
 
@@ -824,6 +827,12 @@
 
                     // Create the emoticons
                     message.content.compiledText = $filter('embed')(message.content.text, CONFIG.internal.embed);
+
+                    // Create the markdown
+                    compiledText = $sce.valueOf(message.content.compiledText);
+                    compiledText = compiledText.replace(/&lt;/g, '<');
+                    compiledText = compiledText.replace(/&gt;/g, '>');
+                    message.content.compiledText2 = marked(compiledText);
                 }
             });
         }
