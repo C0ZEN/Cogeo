@@ -518,6 +518,7 @@
 	"chat_edit_cancel": "Annuler",
 	"chat_new_friend": "Nouvel ami",
 	"chat_no_friend_found": "Aucun ami",
+	"chat_message_bot_command": ", visible que par toi.",
 	"chat_alias": "alias",
 	"chat_user": "@{{username}}",
 	"chat_hello": "Bonjour !",

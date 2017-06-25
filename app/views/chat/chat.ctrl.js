@@ -68,7 +68,8 @@
             startEdit               : startEdit,
             editMessage             : editMessage,
             addSmiley               : addSmiley,
-            sendMessageToChannelPeer: sendMessageToChannelPeer
+            sendMessageToChannelPeer: sendMessageToChannelPeer,
+            isMessageVisible        : isMessageVisible
         };
 
         // Common data
@@ -840,6 +841,15 @@
                     oldFriend = usersFactory.setStatus(oldFriend, $eventData.statusIndex);
                 }
             });
+        }
+
+        function isMessageVisible(message) {
+            if (message.isBotCommand) {
+                return message.sender == vm.user.username;
+            }
+            else {
+                return true;
+            }
         }
     }
 

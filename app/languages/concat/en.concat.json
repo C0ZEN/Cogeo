@@ -517,6 +517,7 @@
 	"chat_edit_cancel": "Cancel",
 	"chat_new_friend": "New friend",
 	"chat_no_friend_found": "No friends",
+	"chat_message_bot_command": ", visible only by you.",
 	"chat_alias": "nickname",
 	"chat_user": "@{{username}}",
 	"chat_hello": "Hello !",
