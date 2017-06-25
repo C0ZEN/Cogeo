@@ -1,4 +1,4 @@
-# Autres
+# Autres vues
 
 Ce chapitre concerne toutes les autres informations et vues qui n'ont pas étaient expliqués jusqu'à présent.
 
