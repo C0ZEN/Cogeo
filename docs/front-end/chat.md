@@ -12,8 +12,7 @@ Le chat est composé en deux parties, les channels et les amis.
 
 Certains événements sont en temps-réel grâce à l'utilisation de Peer.js.
 
-**Chemin:** `app/fr/chat/[groupName]/[channelName]`
-
+**Chemin:** `app/fr/chat/[groupName]/[channelName]`  
 **Chemin:** `app/fr/chat/[username]`
 
 Les channels sont dans un contexte vert alors que les amis sont dans un contexte violet.
