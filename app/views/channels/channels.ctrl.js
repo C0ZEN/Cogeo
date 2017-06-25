@@ -69,6 +69,7 @@
         });
         userFactory.subscribe($scope, function () {
             vm.user = userFactory.getUser();
+
         });
 
         // Called on each view
@@ -294,12 +295,12 @@
 
             // Update the starred channels
             if (vm.editedChannel.isStarred) {
-                userFactory.httpRequest.removeToStarred({
+                userFactory.httpRequest.addToStarred({
                     channelId: vm.channel._id
                 });
             }
             else {
-                userFactory.httpRequest.addToStarred({
+                userFactory.httpRequest.removeToStarred({
                     channelId: vm.channel._id
                 });
             }

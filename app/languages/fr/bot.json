@@ -6,7 +6,7 @@
         }
     },
     "ACTION": {
-        "NOT_FOUND": "L'action {{action}} n'existe pas !<br>Tape `@bot help` pour voir la liste des actions.",
+        "NOT_FOUND": "L'action {{action}} n'existe pas !<br>Tape `@Friendybot /help` pour voir la liste des actions.",
         "USERNAME_NOT_FOUND": "L'utilisateur {{username}} n'existe pas.",
         "CHANNELS": {
             "BAN": {
@@ -15,7 +15,11 @@
             "KICK": {
                 "REASON_NOT_FOUND": "Le motif du ban n'existe pas.<br><strong>Choix:</strong> 1, 2, 3, 4, 5 ou X."
             }
-        }
+        },
+        "FRIENDS": {
+
+        },
+        "HELP": "<br><h2>Besoin d'aide ?</h2><br>Si tu souhaites parler à un Bot, mentionne le Bot puis écrit lui ton message.<br><strong>Exemple:</strong> @Friendybot bonjour !<br><br>Il existe également plusieurs actions qui vont te permettre de gagner du temps.<br><br><h3>Actions des channels:</h3><br><h4>Actions pour les administrateurs:</h4><br>`/ban [@username] [motif]`<br>Permet de bannir un utilisateur du channel<br><strong>Motifs:</strong><br>`1`: @:other_kicked_reason_1<br>`2`: @:other_kicked_reason_2<br>`3`: @:other_kicked_reason_3<br>`4`: @:other_kicked_reason_4<br>`5`: @:other_kicked_reason_5<br>`x`: @:other_kicked_reason_x<br><br>`/ban [@username] [motif] [temps]`<br>Permet de bannir un utilisateur du channel<br><strong>Motifs:</strong><br>`1`: @:other_kicked_reason_1<br>`2`: @:other_kicked_reason_2<br>`3`: @:other_kicked_reason_3<br>`4`: @:other_kicked_reason_4<br>`5`: @:other_kicked_reason_5<br>`x`: @:other_kicked_reason_x<br><strong>Temps:</strong><br>Temps en milisecondes.<br>"
     },
     "FRIENDYBOT": {
         "FRIENDS": {
