@@ -795,6 +795,12 @@
             httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/add', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     addMessage(groupName, channelName, response.data.data);
+
+                    // The bot answered this message
+                    if (!Methods.isNullOrEmpty(response.data.newBotMessage)) {
+                        cozenEnhancedLogs.info.customMessage('groupsFactory', 'New bot message');
+                        addMessage(groupName, channelName, response.data.newBotMessage);
+                    }
                 })
             ;
         }

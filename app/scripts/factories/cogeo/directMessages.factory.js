@@ -7,10 +7,11 @@
 
     directMessagesFactory.$inject = [
         'httpRequest',
-        '$rootScope'
+        '$rootScope',
+        'cozenEnhancedLogs'
     ];
 
-    function directMessagesFactory(httpRequest, $rootScope) {
+    function directMessagesFactory(httpRequest, $rootScope, cozenEnhancedLogs) {
         var messages = [];
 
         // Public functions
@@ -98,6 +99,12 @@
             httpRequest.requestPost('direct-messages/' + messageId + '/add', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     addMessage(messageId, response.data.data);
+
+                    // The bot answered this message
+                    if (!Methods.isNullOrEmpty(response.data.newBotMessage)) {
+                        cozenEnhancedLogs.info.customMessage('directMessagesFactory', 'New bot message');
+                        addMessage(messageId, response.data.newBotMessage);
+                    }
                 })
             ;
         }
