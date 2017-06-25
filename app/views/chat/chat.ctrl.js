@@ -289,6 +289,20 @@
             Methods.safeApply($scope);
         });
 
+        // Listener called when the user wish to start a call with a friend
+        $rootScope.$on('cogeoWebRtc:setActiveFriendStream', function ($event, $eventData) {
+            if (Methods.isNullOrEmpty($eventData)) {
+                vm.friendStream = angular.copy(vm.activeFriend);
+            }
+            else {
+                vm.allFriends.forEach(function (friend) {
+                    if (friend.username == $eventData.username) {
+                        vm.friendStream = friend;
+                    }
+                });
+            }
+        });
+
         // Called each time a view is loaded
         function onInit() {
 

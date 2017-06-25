@@ -31,6 +31,7 @@
 
         // Listener called when the user wish to start a call with a friend
         $rootScope.$on('cogeoWebRtc:callFriend', function ($event, $eventData) {
+            $rootScope.$broadcast('cogeoWebRtc:setActiveFriendStream');
 
             // Try to get the media stream
             getMediaStream(true, true, function () {
@@ -40,6 +41,7 @@
 
         // Listener called when the user wish to start a call audio with a friend
         $rootScope.$on('cogeoWebRtc:callFriendAudio', function ($event, $eventData) {
+            $rootScope.$broadcast('cogeoWebRtc:setActiveFriendStream');
 
             // Try to get the media stream
             getMediaStream(true, false, function () {
@@ -89,6 +91,9 @@
                 }
 
                 // Start the media stream
+                $rootScope.$broadcast('cogeoWebRtc:setActiveFriendStream', {
+                    username: $eventData.username
+                });
                 mediaConnection.answer(mediaStream);
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'Call answered');
             }
