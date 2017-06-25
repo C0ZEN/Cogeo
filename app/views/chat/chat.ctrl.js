@@ -509,6 +509,7 @@
                 vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
                     username: vm.activeFriend.alias || vm.activeFriend.username
                 });
+                vm.friendStatus = vm.activeFriend.status;
             }
             vm.methods.initMp3();
             vm.chatTheme   = 'social-theme';
@@ -855,6 +856,15 @@
                     oldFriend = usersFactory.setStatus(oldFriend, $eventData.statusIndex);
                 }
             });
+            vm.allFriends.forEach(function (friend) {
+                if (friend.username == $eventData.username) {
+                    friend = usersFactory.setStatus(friend, $eventData.statusIndex);
+                }
+                if (vm.activeFriend.username == friend.username) {
+                    vm.friendStatus = friend.status;
+                }
+            });
+            
         }
 
         function isMessageVisible(message) {
