@@ -36,4 +36,4 @@ Ce choix montre une fois de plus notre volontée à faire de Cogeo une applicati
 
 De plus, les **notifications** peuvent être régulées en fonction des paramètres de l'utilisateur pour cacher certains types de notifications (sauf les notifications d'erreur).
 
-<a href="{{ site.baseUrl }}front-end/bower/" class="btn btn-green">Chapitre suivant: Bower</a>
+<a href="{{ site.baseUrl }}front-end/behind-stuff/" class="btn btn-green">Chapitre suivant: Autres informations</a>
