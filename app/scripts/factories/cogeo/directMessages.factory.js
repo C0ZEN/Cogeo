@@ -99,11 +99,13 @@
             httpRequest.requestPost('direct-messages/' + messageId + '/add', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     addMessage(messageId, response.data.data);
+                    cozenEnhancedLogs.explodeObject(response.data.data, true);
 
                     // The bot answered this message
                     if (!Methods.isNullOrEmpty(response.data.newBotMessage)) {
                         cozenEnhancedLogs.info.customMessage('directMessagesFactory', 'New bot message');
                         addMessage(messageId, response.data.newBotMessage);
+                        cozenEnhancedLogs.explodeObject(response.data.newBotMessage, true);
                     }
                 })
             ;

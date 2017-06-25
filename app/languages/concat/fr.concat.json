@@ -228,6 +228,18 @@
 		"FRIENDS": {},
 		"CHANNELS": {}
 	},
+	"ACTION": {
+		"NOT_FOUND": "L'action {{action}} n'existe pas !<br>Tape `@bot help` pour voir la liste des actions.",
+		"USERNAME_NOT_FOUND": "L'utilisateur {{username}} n'existe pas.",
+		"CHANNELS": {
+			"BAN": {
+				"REASON_NOT_FOUND": "Le motif du ban n'existe pas.<br><strong>Choix:</strong> 1, 2, 3, 4, 5 ou X."
+			},
+			"KICK": {
+				"REASON_NOT_FOUND": "Le motif du ban n'existe pas.<br><strong>Choix:</strong> 1, 2, 3, 4, 5 ou X."
+			}
+		}
+	},
 	"FRIENDYBOT": {
 		"FRIENDS": {
 			"FIRST_MESSAGE": {

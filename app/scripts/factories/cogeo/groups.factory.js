@@ -795,11 +795,13 @@
             httpRequest.requestPost('group/' + groupName + '/channel/' + channelName + '/message/add', data, callbackSuccess, callbackError)
                 .then(function (response) {
                     addMessage(groupName, channelName, response.data.data);
+                    cozenEnhancedLogs.explodeObject(response.data.data, true);
 
                     // The bot answered this message
                     if (!Methods.isNullOrEmpty(response.data.newBotMessage)) {
                         cozenEnhancedLogs.info.customMessage('groupsFactory', 'New bot message sent');
                         addMessage(groupName, channelName, response.data.newBotMessage);
+                        cozenEnhancedLogs.explodeObject(response.data.newBotMessage, true);
                     }
 
                     // The bot executed an action

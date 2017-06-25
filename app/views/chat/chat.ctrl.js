@@ -832,7 +832,7 @@
                     compiledText = $sce.valueOf(message.content.compiledText);
                     compiledText = compiledText.replace(/&lt;/g, '<');
                     compiledText = compiledText.replace(/&gt;/g, '>');
-                    message.content.compiledText2 = marked(compiledText);
+                    message.content.compiledText = marked(compiledText);
                 }
             });
         }
