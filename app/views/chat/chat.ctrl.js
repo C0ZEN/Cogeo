@@ -868,8 +868,10 @@
                 if (friend.username == $eventData.username) {
                     friend = usersFactory.setStatus(friend, $eventData.statusIndex);
                 }
-                if (vm.activeFriend.username == friend.username) {
-                    vm.friendStatus = friend.status;
+                if (!Methods.isNullOrEmpty(vm.activeFriend)) {
+                    if (vm.activeFriend.username == friend.username) {
+                        vm.friendStatus = friend.status;
+                    }
                 }
             });
 

@@ -12,6 +12,7 @@
             <video id="user-stream"
                    muted="true"
                    autoplay
+                   enabled="{{ !vm.chat.friends.isOwnMicroMuted }}"
                    poster="{{ userFactory.getUserImage() }}"
                    class="stream user">
                 {{ 'chat_no_video_support' | translate }}
@@ -49,7 +50,7 @@
                  class="action action-overflow-center"
                  ng-class="[vm.friendStream.isHoverStream ? 'active' : '', vm.friendStream.isMuted ? 'action-neutral' : 'action-danger']">
                 <i class="fa fa-fw"
-                   ng-class="vm.friendStream.isMuted ? 'icons8-video' : 'icons8-no-video'">
+                   ng-class="vm.friendStream.isMuted ? 'icons8-speaker' : 'icons8-no-audio'">
                 </i>
             </div>
         </div>
