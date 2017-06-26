@@ -138,7 +138,11 @@ Par exemple:
 
 #### Description
 
-Lors d'une conversation dans le contexte ami, 
+Lors d'une conversation dans le contexte ami, deux boutons sont visibles.
+
+Un pour faire un appel vidéo, l'autre pour un appel audio.
+
+Lorsque l'utilisateur courant clic sur un bouton d'appel, ...
 
 <img class="atom-vertical-line"
      src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsLogs.png"
