@@ -14,5 +14,3 @@ Elle contient des informations sur la conception générale du service, nos choi
 - [Base de données](https://c0zen.github.io/Cogeo/back-end/database/)
 - [Web RTC](https://c0zen.github.io/Cogeo/back-end/web-rtc/)
 - [Bot api](https://c0zen.github.io/Cogeo/back-end/bot-api/)
-- [Guide à l'usage du développeur](https://c0zen.github.io/Cogeo/back-end/developer-guide/)
-
