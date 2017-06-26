@@ -20,6 +20,12 @@
 
         <!-- Send date -->
         <span class="sent-date">{{ message.sent | date: 'HH:mm' }}</span>
+
+        <!-- When bot command -->
+        <span ng-show="message.isBotCommand"
+              class="bot-command">
+            {{ 'chat_message_bot_command' | translate }}
+        </span>
     </div>
 
     <!-- Message content -->

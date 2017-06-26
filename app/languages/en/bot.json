@@ -9,12 +9,16 @@
         "NOT_FOUND": "The command {{action}} does not exist !<br>Enter `@Friendybot /help` so the the list of commands.",
         "USERNAME_NOT_FOUND": "The user {{username}} does not exist.",
         "CHANNELS": {
+            "HELP": "<br><h2>Need help ?</h2><br>If you wish to talk to a bot, tag the bot then send him your message.<br><strong>Example:</strong> @Friendybot yo !<br><br>There is also some actions that will help you to save some time.<br><br><h3>Channels actions:</h3><br><h4>Admin actions:</h4><br>`/ban [@username] [reason]`<br>Allow to ban a user from the channel<br><strong>Reasons:</strong><br>`1`: Insults<br>`2`: Threats<br>`3`: Not respecting other users<br>`4`: Spam<br>`5`: Offensive content<br>`x`: Other reason<br><br>`/kick [@username] [reason] [time]`<br>Allow to kick a user from channel<br><strong>Reasons:</strong><br>`1`: Insults<br>`2`: Threats<br>`3`: Not respecting other users<br>`4`: Spam<br>`5`: Offensive content<br>`x`: Other reason<br><strong>Time:</strong><br>Time in milliseconds.<br><br>`/unban [@username]`<br>Allow to unban a user kicked or banned for this channel<br>",
             "BAN": {
                 "REASON_NOT_FOUND": "The reason for the ban does not exist.<br><strong>Choices:</strong> 1, 2, 3, 4, 5 ou X."
             },
             "KICK": {
                 "REASON_NOT_FOUND": "The reason for the ban does not exist.<br><strong>Choices:</strong> 1, 2, 3, 4, 5 ou X."
             }
+        },
+        "FRIENDS": {
+            "HELP": "<br><h2>Need help ?</h2><br>If you wish to talk to a bot, tag the bot then send him your message.<br><strong>Example:</strong> @Friendybot yo !<br><br>There is also some actions that will help you to save some time.<br><br><h3>Friend actions:</h3><br>`/block`<br>Allow to block your (old) friend<br>`/unblock`<br>Allow to unblock your old friend<br>`/remove`<br>Allow to remove your (old) friend<br>"
         }
     },
     "FRIENDYBOT": {

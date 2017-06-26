@@ -888,7 +888,7 @@
 
         function isMessageVisible(message) {
             if (message.isBotCommand) {
-                return message.sender == vm.user.username;
+                return message.isBotCommandTarget == vm.user.username;
             }
             else {
                 return true;
