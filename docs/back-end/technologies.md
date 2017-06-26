@@ -19,4 +19,4 @@ Pour permettre l'échange de streams audio/video, nous avons logiquement choisi 
 
 Afin de créer des chatbots capables de dialoguer avec l'utilisateur et même de réaliser des actions d'administration nous créerons nous-même *from scratch* un analyseur de langage en Javascript utilisant des *Expressions Régulières* ainsi que des dictionnaires.
 
-<a href="{{ site.baseUrl }}back-end/design-patterns.md/" class="btn btn-green">Chapitre suivant: Design Patterns</a>
+<a href="{{ site.baseUrl }}back-end/design-patterns/" class="btn btn-green">Chapitre suivant: Design Patterns</a>
