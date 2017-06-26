@@ -6,13 +6,12 @@
         <div class="action-container action-container-hover-dark"
              ng-mouseenter="vm.chat.friends.isHoverOwnStream = true"
              ng-mouseleave="vm.chat.friends.isHoverOwnStream = false"
-             ng-click="vm.chat.friends.isOwnMicroMuted = !vm.chat.friends.isOwnMicroMuted">
+             ng-click="vm.methods.onClickStreamOwn()">
 
             <!-- Own stream -->
             <video id="user-stream"
                    muted="true"
-                   autoplay
-                   enabled="{{ !vm.chat.friends.isOwnMicroMuted }}"
+                   autoplay="true"
                    poster="{{ userFactory.getUserImage() }}"
                    class="stream user">
                 {{ 'chat_no_video_support' | translate }}
@@ -32,16 +31,13 @@
         <div class="action-container action-container-hover-dark"
              ng-mouseenter="vm.friendStream.isHoverStream = true"
              ng-mouseleave="vm.friendStream.isHoverStream = false"
-             ng-click="vm.friendStream.isMuted = !vm.friendStream.isMuted">
+             ng-click="vm.methods.onClickStreamFriend()">
 
             <!-- Friend stream -->
             <video id="friend-stream"
-                   muted="{{ vm.friendStream.isMuted }}"
-                   autoplay
-                   volume="{{ vm.user.settings.speaker.volume / 100 }}"
+                   autoplay="true"
                    poster="{{ usersFactory.getUserImage(vm.friendStream.username) }}"
-                   class="stream friend"
-                   ng-click="vm.friendStream.muted = !vm.friendStream.muted">
+                   class="stream friend">
                 {{ 'chat_no_video_support' | translate }}
             </video>
 

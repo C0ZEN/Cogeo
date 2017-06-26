@@ -272,6 +272,9 @@
                 connection.send(newMessage);
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'New message sent');
             }
+            else {
+                cozenEnhancedLogs.error.customMessage('cogeoWebRtc', 'connectionSend failed');
+            }
         }
 
         function destroyPeer() {
@@ -408,7 +411,10 @@
         }
 
         function showStreamFriends(stream) {
-            $rootScope.$broadcast('cogeoWebRtc:streamStarted');
+            $rootScope.$broadcast('cogeoWebRtc:streamStarted', {
+                mediaStream: mediaStream,
+                stream     : stream
+            });
             $('#user-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(mediaStream));
             $('#friend-stream').prop('src', (window.URL || window.webkitURL).createObjectURL(stream));
             $rootScope.$broadcast('safeApplyChat');

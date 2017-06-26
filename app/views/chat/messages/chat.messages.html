@@ -14,7 +14,7 @@
          ng-mouseleave="message.isHover = false"
          ng-class="{'is-hover': message.isHover, 'is-visible': !vm.loadingDomMessages}"
          ng-switch="message.tag"
-         id="message-{{ message._id }}">
+         id="message-{{ message.uuid }}">
 
         <!-- Message from a user -->
         <ng-switch ng-switch-when="user">

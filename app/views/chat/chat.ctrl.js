@@ -71,7 +71,9 @@
             editMessage             : editMessage,
             addSmiley               : addSmiley,
             sendMessageToChannelPeer: sendMessageToChannelPeer,
-            isMessageVisible        : isMessageVisible
+            isMessageVisible        : isMessageVisible,
+            onClickStreamFriend     : onClickStreamFriend,
+            onClickStreamOwn        : onClickStreamOwn
         };
 
         // Common data
@@ -195,6 +197,7 @@
                     if (!Methods.isNullOrEmpty(message.content) && !Methods.isNullOrEmpty(message.category)) {
                         if ($state.current.name == 'app.chat.user') {
                             directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message, function (response) {
+                                response.data.data.targetedUsername = vm.activeFriend.username;
                                 cogeoWebRtc.connectionSend({
                                     message  : response.data.data,
                                     tag      : 'friend',
@@ -271,9 +274,28 @@
         });
 
         // Listen to know when the stream start
-        $rootScope.$on('cogeoWebRtc:streamStarted', function () {
-            vm.chat.friends.isVisible = true;
-            vm.chat.friends.isCalling = false;
+        $rootScope.$on('cogeoWebRtc:streamStarted', function ($event, $eventData) {
+            cozenEnhancedLogs.info.customMessage('currentVolume', vm.user.settings.speaker.volume / 100);
+            vm.chat.friends.isVisible    = true;
+            vm.chat.friends.isCalling    = false;
+            vm.chat.friends.ownStream    = $eventData.mediaStream;
+            vm.chat.friends.friendStream = $eventData.stream;
+            var newVolume                = vm.user.settings.speaker.volume / 100;
+            $('#user-stream')
+                .prop('enabled', !vm.chat.friends.isOwnMicroMuted)
+                .prop('volume', newVolume);
+            $('#friend-stream')
+                .prop('muted', vm.friendStream.muted)
+                .prop('volume', newVolume);
+        });
+
+        $rootScope.$on('newGlobalVolume', function ($event, $eventData) {
+            var newVolume = $eventData.volume / 100;
+            cozenEnhancedLogs.info.customMessage('newGlobalVolume', newVolume);
+            $('#user-stream')
+                .prop('volume', newVolume);
+            $('#friend-stream')
+                .prop('volume', newVolume);
         });
 
         // Listen to know when the profile bot popup btn is called to set new active friend bot
@@ -747,7 +769,7 @@
             }
             $timeout(function () {
                 $timeout(function () {
-                    $location.hash('message-' + data.data._id);
+                    $location.hash('message-' + data.data.uuid);
                     $anchorScroll();
                     vm.loadingDomMessages = false;
                 });
@@ -766,6 +788,7 @@
                 };
                 if ($state.current.name == 'app.chat.user') {
                     directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message, function (response) {
+                        response.data.data.targetedUsername = vm.activeFriend.username;
                         cogeoWebRtc.connectionSend({
                             message  : response.data.data,
                             tag      : 'friend',
@@ -792,7 +815,7 @@
 
         function startEdit(messageId) {
             for (var i = 0, length = vm.messages.length; i < length; i++) {
-                if (vm.messages[i]._id == messageId) {
+                if (vm.messages[i].uuid == messageId) {
                     vm.messages[i].editMod   = true;
                     vm.messages[i].editModel = vm.messages[i].content.text;
                     break;
@@ -829,9 +852,9 @@
                     message.content.compiledText = $filter('embed')(message.content.text, CONFIG.internal.embed);
 
                     // Create the markdown
-                    compiledText = $sce.valueOf(message.content.compiledText);
-                    compiledText = compiledText.replace(/&lt;/g, '<');
-                    compiledText = compiledText.replace(/&gt;/g, '>');
+                    compiledText                 = $sce.valueOf(message.content.compiledText);
+                    compiledText                 = compiledText.replace(/&lt;/g, '<');
+                    compiledText                 = compiledText.replace(/&gt;/g, '>');
                     message.content.compiledText = marked(compiledText);
                 }
             });
@@ -888,11 +911,23 @@
 
         function isMessageVisible(message) {
             if (message.isBotCommand) {
-                return message.sender == vm.user.username;
+                return message.isBotCommandTarget == vm.user.username;
             }
             else {
                 return true;
             }
+        }
+
+        function onClickStreamFriend() {
+            vm.friendStream.isMuted = !vm.friendStream.isMuted;
+            $('#friend-stream').prop('muted', vm.friendStream.isMuted);
+        }
+
+        function onClickStreamOwn() {
+            vm.chat.friends.isOwnMicroMuted = !vm.chat.friends.isOwnMicroMuted;
+            vm.chat.friends.ownStream.getAudioTracks().forEach(function (track) {
+                track.enabled = !vm.chat.friends.isOwnMicroMuted;
+            });
         }
     }
 

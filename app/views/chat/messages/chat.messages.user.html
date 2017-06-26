@@ -67,14 +67,14 @@
 
     <!-- Edit -->
     <edit-action edit-action-display="message.category == 'text' && (message.sender == vm.user.username || vm.isUserAdmin)"
-                 edit-action-on-click="vm.methods.stopAllEdit(); vm.methods.startEdit(message._id);">
+                 edit-action-on-click="vm.methods.stopAllEdit(); vm.methods.startEdit(message.uuid);">
     </edit-action>
 
     <!-- Answer (quote) -->
     <answer-action answer-action-display="message.sender != vm.user.username && message.category == 'text'"></answer-action>
 
     <!-- Copy the text -->
-    <copy-action copy-action-message-id="'message-user-' + message._id"
+    <copy-action copy-action-message-id="'message-user-' + message.uuid"
                  copy-action-display="message.category == 'text'">
     </copy-action>
 
