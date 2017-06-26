@@ -142,7 +142,29 @@ Lors d'une conversation dans le contexte ami, deux boutons sont visibles.
 
 Un pour faire un appel vidéo, l'autre pour un appel audio.
 
-Lorsque l'utilisateur courant clic sur un bouton d'appel, ...
+Lorsque l'utilisateur courant clic sur un bouton d'appel, les boutons sont désactivés.
+
+Un bouton est alors visible et permet d'arrêter l'appel.
+
+#### Réception d'appel
+
+L'utilisateur qui reçoit l'appel voit une popup s'ouvrir.
+
+Il peut alors accepter ou décliner l'appel.
+
+S'il décline, l'autre utilisateur sera alors averti.
+
+S'il accepte, alors une nouvelle vue partielle s'affiche avec le stream des deux utilisateur (pour chacun des utilisateur, cette vue s'affiche).
+
+#### Appel
+
+Durant l'appel, nous pourrons voir à gauche le stream de l'utilisateur connecté et à droite celui de l'ami appelé.
+
+Si la vidéo n'est pas disponible, l'image de profil remplacera alors le stream.
+
+Des boutons d'actions permettent de modifier le volume, de muter les stream et de terminé l'appel.
+
+Au survol des stream, l'utilisateur peut couper son micro ou couper le son du stream de l'ami appelé.
 
 <img class="atom-vertical-line"
      src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsLogs.png"
