@@ -561,7 +561,9 @@
                 popup.methods.closePopup('globalVolume');
                 popup.methods.stopLoading();
                 $timeout(function () {
-                    $rootScope.$broadcast('newGlobalVolume');
+                    $rootScope.$broadcast('newGlobalVolume', {
+                        volume: popup.globalVolumeData.speaker.volume
+                    });
                 });
             }, function () {
                 popup.methods.closePopup('globalVolume');
