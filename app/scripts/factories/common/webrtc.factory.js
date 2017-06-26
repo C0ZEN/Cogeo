@@ -272,6 +272,9 @@
                 connection.send(newMessage);
                 cozenEnhancedLogs.info.customMessage('cogeoWebRtc', 'New message sent');
             }
+            else {
+                cozenEnhancedLogs.error.customMessage('cogeoWebRtc', 'connectionSend failed');
+            }
         }
 
         function destroyPeer() {

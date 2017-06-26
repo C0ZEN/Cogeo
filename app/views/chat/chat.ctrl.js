@@ -197,6 +197,7 @@
                     if (!Methods.isNullOrEmpty(message.content) && !Methods.isNullOrEmpty(message.category)) {
                         if ($state.current.name == 'app.chat.user') {
                             directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message, function (response) {
+                                response.data.data.targetedUsername = vm.activeFriend.username;
                                 cogeoWebRtc.connectionSend({
                                     message  : response.data.data,
                                     tag      : 'friend',
@@ -787,6 +788,7 @@
                 };
                 if ($state.current.name == 'app.chat.user') {
                     directMessagesFactory.httpRequest.addMessage($rootScope.directMessageId, message, function (response) {
+                        response.data.data.targetedUsername = vm.activeFriend.username;
                         cogeoWebRtc.connectionSend({
                             message  : response.data.data,
                             tag      : 'friend',
