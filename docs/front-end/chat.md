@@ -220,7 +220,7 @@ La fonctionnalité de Drag & Drop est disponible.
 
 #### Messages
 
-Les messages ont tous un tronc communs:
+Les messages ont tous un tronc commun:
 
 - Le nom de l'utilisateur
 - L'image de profil
