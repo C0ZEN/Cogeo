@@ -242,5 +242,32 @@ Chaque de ces élements peut être télécharger.
 
 De plus, l'image possède une fonctionnalité de preview en plein écran.
 
+#### BOT
+
+Deux amis sont toujours disponibles, Spamobot et Friendybot.
+
+Ils fonctionnent exactement de la même façons que les amis.
+
+Vous pouvez leur demander de faire des actions en particulières comme par exemple:
+
+- Dans un channel:
+   - Bannir
+   - Expulser
+   - Débannir
+- Dans une conversation privée:
+   - Bloquer
+   - Débloquer
+   - Supprimer
+- Une aide
+
+Le plus simple est de saisir la commande suivante:
+
+`@Spamobot /help`
+
+Pour avoir plus d'informations sur ce que l'on peut faire.
+
+Vous pouvez aussi parler à Friendybot (Spamobot ne vous répondra pas, c'est un rebel !).
+
+Pour le moment, seul quelques messages tel que `bonjour`, `salut`, etc... vont le faire répondre.
      
 <a href="{{ site.baseUrl }}front-end/others/" class="btn btn-green">Chapitre suivant: Autres vues</a>
