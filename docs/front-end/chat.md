@@ -21,6 +21,16 @@ Cette vue est un ensemble de morceaux de vues.
 
 En fonction des utilisateurs, certains morceaux seront donc cachés ou affichés.
 
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/chatChannel.png"
+     alt="Capture d'écran d'un chat de channel"
+     title="Chat channel"> 
+         
+<img class="atom-vertical-line"
+     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/chatFriend.png"
+     alt="Capture d'écran d'un chat entre ami"
+     title="Chat ami"> 
+
 ## Liste des groupes
 
 #### Description
@@ -166,9 +176,71 @@ Des boutons d'actions permettent de modifier le volume, de muter les stream et d
 
 Au survol des stream, l'utilisateur peut couper son micro ou couper le son du stream de l'ami appelé.
 
-<img class="atom-vertical-line"
-     src="https://res.cloudinary.com/cozen/image/upload/v1496917978/cogeoDoc/channelsLogs.png"
-     alt="Capture d'écran dde l'historique du channel"
-     title="Historique du channel"> 
+## Chat
+
+#### Description
+
+En bas de la vue, un champ et un bouton d'upload sont disponibles.
+
+Ils vont permettrent aux utilisateurs de communiquer entre eux.
+
+#### Message simple
+
+Le champ permet l'envoi de message 'simple', de type texte.
+
+Cela peut-être un message tout à faire simple comme plus complexe avec des features.
+
+**Note:** appuiyer sur `Enter` pour envoyer un message.
+
+L'utilisateur peut écrire des messages sur plusieurs lignes avec appuiyant sur `Maj + Enter`.
+
+L'HTML5, le Markdown et les emoticons peuvent être également ajouter.
+
+#### HTML5
+
+Toutes les balises HTML5 peuvent être ajouter.
+
+#### Markdown
+
+Tous les types de Markdown ne sont pas reconnus, mais la majeure partie d'entre eux oui.
+
+Par exemple, le gras, l'italique, le rayé, les titres, le code, etc...
+
+#### Emoticons
+
+Nous n'avons pas de liste d'emoticons pour le moment, mais plus de 700 emoticons sont disponibles (en anglais) avec une structure type `:emoticon:`.
+
+#### Upload
+
+Le bouton d'upload utilise les MIME types pour limiter le type d'éléments à uploadé.
+
+La limite en taille est de 50MB.
+
+La fonctionnalité de Drag & Drop est disponible.
+
+#### Messages
+
+Les messages ont tous un tronc communs:
+
+- Le nom de l'utilisateur
+- L'image de profil
+- La date
+
+Ensuite, le reste varie selon le type de message.
+
+Voici la liste des documents uploadables et avec preview:
+
+- Images (sauf GIF)
+- Excel
+- Word
+- PowerPoint
+- PDF
+- MP3
+- Videos
+
+Chaque de ces élements peut être télécharger.
+
+De plus, l'image possède une fonctionnalité de preview en plein écran.
+
      
 <a href="{{ site.baseUrl }}front-end/others/" class="btn btn-green">Chapitre suivant: Autres vues</a>
