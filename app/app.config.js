@@ -110,7 +110,7 @@
                     }
                 }
             },
-            appVersion   : '1.0.0',
+            appVersion   : '1.0.1',
             googleGraph  : {
                 pieChart: {
                     pieHole: 0.7,
