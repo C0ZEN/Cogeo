@@ -31,4 +31,4 @@ Pour l'implémentation de notre analyseur de langage lié à nos bots. Au runtim
 
 En plus des différents patrons de conception listés ci-dessus nous nous sommes efforcés de toujours respecter les bonnes pratiques de programmation afin d'avoir un code performant et surtout maintenable.
 
-<a href="{{ site.baseUrl }}front-end/node-server.md/" class="btn btn-green">Chapitre suivant: Serveur HTTP</a>
+<a href="{{ site.baseUrl }}front-end/node-server/" class="btn btn-green">Chapitre suivant: Serveur HTTP</a>
