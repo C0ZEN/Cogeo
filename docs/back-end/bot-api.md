@@ -24,5 +24,3 @@ Les dictionnaires de réponses ont été développés de façon minimaliste à d
 ## Perspectives
 
 L'Intelligence Artificielle étant un pôle de compétences au sein de Cogéo nous sommes à votre écoute pour tout développement spécifique.
-
-<a href="{{ site.baseUrl }}back-end/developer-guide/" class="btn btn-green">Chapitre suivant: Guide à l'usage du développeur</a>
