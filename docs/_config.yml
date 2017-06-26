@@ -1,7 +1,7 @@
 # Theme configuration
 theme: jekyll-theme-cayman
 title: Documentation officielle de Cogeo.
-description: Découvre nos documentations sur l'Architecture, le Back-End et le Front-End.
+description: Découvrer nos documentations sur l'Architecture, le Back-End et le Front-End.
 author: C0ZEN
 author_email: geoffrey.testelin@gmail.com
 permalink: pretty
