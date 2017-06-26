@@ -102,7 +102,7 @@ Vous pouvez jeter un oeil aux [tags pour ce repository](https://github.com/C0ZEN
 
 ## License
 
-Ce projet est sous la license de MIT - regarde [LICENSE.md](LICENSE.md) pour plus de détails.
+Ce projet est sous la license de MIT - voir [LICENSE.md](LICENSE.md) pour plus de détails.
 
 ## Remerciements
 
