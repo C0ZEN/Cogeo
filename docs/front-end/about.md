@@ -8,7 +8,7 @@ Elle contient des informations sur notre conception, le contenu du Front et tout
 
 De plus, elle contient une partie présentation pour chaque vue de Cogeo avec des screenshots.  
 
-**Note:** nous savons que lors de la présentation, le design sera largement impacté par le vidéo projecteur. Par conséquent, nous avons décider de faire des documentations complètes pour pallier à ce problème.
+**Note:** nous savons que lors de la présentation, le design sera largement impacté par le vidéo projecteur. Par conséquent, nous avons décidé de faire des documentations complètes pour pallier à ce problème.
 
 ## Type de documentation
 
@@ -16,7 +16,7 @@ Cette documentation n'est pas technique, ce n'est pas l'objectif.
 
 Elle sera utile pour comprendre nos choix et ce qu'il est possible de faire avec Cogeo.
 
-Cependant, une connaissance du web et des technologies est pour certaines parties de cette documentation recommandé.
+Cependant, une connaissance des technologies du web est pour certaines parties de cette documentation recommandée.
 
 # Sommaire
 
