@@ -40,7 +40,7 @@
                     colors.getColors().green
                 ]
             }
-        ;
+            ;
 
         // Channels data
         var _channels = {};

@@ -1,13 +1,5 @@
 <!-- Text -->
-<span ng-if="!message.editMod && message.tag == 'user'"
-      class="text"
-      marked="message.content.compiledText"
-      compile="true">
-</span>
-
-<!-- Text -->
-<span ng-if="!message.editMod && message.tag == 'bot'"
-      class="text"
+<span class="text"
       cozen-compile="message.content.compiledText"
       cozen-compile-rewrite-html="true">
 </span>

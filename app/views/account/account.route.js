@@ -67,7 +67,7 @@
                 data       : {
                     pageTitle: 'account_notifications'
                 },
-                resolve: {
+                resolve    : {
                     isConnected: function (navigationFactory) {
                         return navigationFactory.isAllowed();
                     }

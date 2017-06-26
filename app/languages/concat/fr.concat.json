@@ -176,6 +176,8 @@
 	"account_event_account": "Compte",
 	"account_event_warning": "Attention",
 	"alerts_info_logout": "Tu es maintenant déconnecté.<br>Merci et à la prochaine !",
+	"alerts_info_call_stop": "<strong>{{username}}</strong> a arrêté l'appel.",
+	"alerts_info_call_refused": "L'appel a été refusé.",
 	"alerts_invitations_user_accept": "Tu es maintenant ami avec <strong>{{sentBy}}.</strong>",
 	"alerts_invitations_group_accept": "Tu fais maintenant partie du groupe <strong>{{groupName}}.</strong>",
 	"alerts_invitations_channel_accept": "Tu fais maintenant partie du channel <strong>{{channelName}}.</strong>",
@@ -219,9 +221,26 @@
 	"alerts_success_friend_unblocked": "Tu as débloqué <strong>{{friend}}</strong> de tes amis.",
 	"alerts_success_friend_remove": "Tu as supprimé <strong>{{friend}}</strong> de tes amis.",
 	"alerts_error_get_mediaStream": "Tu ne peux pas démarrer d'appel. Tu dois autoriser Cogeo à utiliser ton micro et ta webcam.",
+	"alerts_error_chat_mediaConnection_error": "Une erreur inconnu est survenu pendant l'appel.<br>Désolé.",
+	"alerts_error_chat_mediaConnection_close": "L'appel s'est terminé.",
+	"alerts_error_chat_friendNotFound": "Tu ne peux pas parler avec <strong>{{username}}</strong> !<br> Tu n'es pas ami avec lui !",
 	"COMMON": {
 		"FRIENDS": {},
 		"CHANNELS": {}
+	},
+	"ACTION": {
+		"NOT_FOUND": "L'action {{action}} n'existe pas !<br>Tape `@Friendybot /help` pour voir la liste des actions.",
+		"USERNAME_NOT_FOUND": "L'utilisateur {{username}} n'existe pas.",
+		"CHANNELS": {
+			"BAN": {
+				"REASON_NOT_FOUND": "Le motif du ban n'existe pas.<br><strong>Choix:</strong> 1, 2, 3, 4, 5 ou X."
+			},
+			"KICK": {
+				"REASON_NOT_FOUND": "Le motif du ban n'existe pas.<br><strong>Choix:</strong> 1, 2, 3, 4, 5 ou X."
+			}
+		},
+		"FRIENDS": {},
+		"HELP": "<br><h2>Besoin d'aide ?</h2><br>Si tu souhaites parler à un Bot, mentionne le Bot puis écrit lui ton message.<br><strong>Exemple:</strong> @Friendybot bonjour !<br><br>Il existe également plusieurs actions qui vont te permettre de gagner du temps.<br><br><h3>Actions des channels:</h3><br><h4>Actions pour les administrateurs:</h4><br>`/ban [@username] [motif]`<br>Permet de bannir un utilisateur du channel<br><strong>Motifs:</strong><br>`1`: @:other_kicked_reason_1<br>`2`: @:other_kicked_reason_2<br>`3`: @:other_kicked_reason_3<br>`4`: @:other_kicked_reason_4<br>`5`: @:other_kicked_reason_5<br>`x`: @:other_kicked_reason_x<br><br>`/ban [@username] [motif] [temps]`<br>Permet de bannir un utilisateur du channel<br><strong>Motifs:</strong><br>`1`: @:other_kicked_reason_1<br>`2`: @:other_kicked_reason_2<br>`3`: @:other_kicked_reason_3<br>`4`: @:other_kicked_reason_4<br>`5`: @:other_kicked_reason_5<br>`x`: @:other_kicked_reason_x<br><strong>Temps:</strong><br>Temps en milisecondes.<br>"
 	},
 	"FRIENDYBOT": {
 		"FRIENDS": {
@@ -232,7 +251,25 @@
 				"4": "Pour entretenir des amitiés solides, il ne suffit pas d'apprécier nos ressemblances; il faut aussi célébrer nos différences."
 			}
 		},
-		"CHANNELS": {}
+		"CHANNELS": {},
+		"MESSAGES": {
+			"HI": {
+				"1": "Salut !",
+				"2": "Coucou !",
+				"3": "Bonjour.",
+				"4": "Bonjour !",
+				"5": "Yop :smile:",
+				"6": "Yo",
+				"7": "Yo !",
+				"8": "Salut",
+				"9": "Coucou",
+				"10": "Bonjour",
+				"11": "Salut, ça va ?",
+				"12": "Hey !",
+				"13": "Welcome back my friend !",
+				"14": "Re"
+			}
+		}
 	},
 	"SPAMOBOT": {
 		"FRIENDS": {
@@ -340,7 +377,7 @@
 	"channels_all_no_channel_found": "Aucun channel ne correspond à ta recherche !",
 	"channels_recruit_title": "J'invite des amis à rejoindre le channel {{channelName}}...",
 	"channels_recruit_subtitle_1": "Tu peux inviter des membres Cogeo via leurs identifiants.",
-	"channels_recruit_subtitle_2": "Seuls les utilisateurs du groupe peuvent être invités.",
+	"channels_recruit_subtitle_2": "Tous les utilisateurs qui ne sont pas encore invités ou bannis sont disponibles.",
 	"channels_recruit_subtitle_3": "Si la personne que tu souhaites inviter n'est pas encore dans le groupe, elle rejoindra automatiquement ce groupe.",
 	"channels_recruit_dropdown_help": "Seuls les membres qui sont dans le groupe et qui ne sont pas bannis sont visibles.",
 	"channels_recruit_dropdown_search_pc": "Rechercher un membre du groupe {{groupName}}",
@@ -417,10 +454,19 @@
 	"chat_close_channels": "Fermer",
 	"chat_search_placeholder": "Rechercher un channel ou un ami",
 	"chat_no_result": "Aucun résultat",
+	"chat_not_friend": "Erreur pas ami",
+	"chat_not_friend_title_1": "Désolé mais tu ne peux pas parler avec <strong>{{username}}</strong>.",
+	"chat_not_friend_title_2": "Ce n'est pas ton ami.",
+	"chat_not_friend_subtitle_1": "Vérifie que son username est valide.",
+	"chat_not_friend_subtitle_2": "Si oui, ajoute le d'abord à tes amis !",
+	"chat_not_friend_btn_label": "Retourner au chat",
 	"chat_total_members": "{{total}} membres",
 	"chat_total_member": "{{total}} membre",
-	"chat_actionBar_phone": "Démarrer une conférence",
-	"chat_actionBar_phone_simple": "Démarrer un appel",
+	"chat_actionBar_phone": "Démarrer une conférence vidéo",
+	"chat_actionBar_phone_audio": "Démarrer une conférence",
+	"chat_actionBar_phone_simple": "Démarrer un appel vidéo",
+	"chat_actionBar_phone_simple_audio": "Démarrer un appel",
+	"chat_actionBar_phone_stop": "Arrêter l'appel",
 	"chat_actionBar_options": "Plus d'options",
 	"chat_actionBar_options_members": "Membres",
 	"chat_actionBar_options_details": "Détails",
@@ -486,11 +532,15 @@
 	"chat_edit_cancel": "Annuler",
 	"chat_new_friend": "Nouvel ami",
 	"chat_no_friend_found": "Aucun ami",
+	"chat_message_bot_command": ", visible que par toi.",
 	"chat_alias": "alias",
 	"chat_user": "@{{username}}",
 	"chat_hello": "Bonjour !",
 	"chat_alert_friend_blocked": "Tu as bloqué {{username}} le {{date}}",
 	"chat_alert_friend_no_message": "Il n'y a pas encore de messages pour cette conversation",
+	"chat_no_video_support": "Ton navigateur ne supporte pas les vidéos !",
+	"chat_stop_call": "Arrêter l'appel",
+	"chat_change_volume": "Modifier le volume",
 	"DEV": {
 		"USERS_LIST": {
 			"PAGE_TITLE": "Liste des utilisateurs Cogeo",
@@ -975,6 +1025,7 @@
 	"popup_chat_setStatus_body_subtitle": "Modifier la façon dont les autres utilisateurs vous voient.",
 	"popup_chat_setStatus_body_status": "Statuts",
 	"popup_chat_setStatus_body_status_pc": "Choisir un statut",
+	"popup_chat_setStatus_body_save_status": "Changer de statut",
 	"popup_test_microphone_header_title": "Essayer le microphone",
 	"popup_test_microphone_body_title": "Essaye ton micro dès que tu es prêt.",
 	"popup_test_microphone_body_subtitle_1": "Tu peux démarrer un enregistrement dès que tu le souhaites.",

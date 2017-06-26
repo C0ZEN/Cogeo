@@ -32,6 +32,12 @@
                 {{ 'chat_message_edited_by' | translate:{username: message.editedBy} }}
             </span>
         </span>
+
+        <!-- When bot command -->
+        <span ng-show="message.isBotCommand"
+              class="bot-command">
+            {{ 'chat_message_bot_command' | translate }}
+        </span>
     </div>
 
     <!-- Message content -->

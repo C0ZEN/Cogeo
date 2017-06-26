@@ -26,7 +26,7 @@
                 }
             })
             .state('app.groupNew.firstStep', {
-                url        : '/groups/new/name',
+                url        : '/name',
                 templateUrl: 'views/groups/new/group.step1.html',
                 data       : {
                     pageTitle: 'group_new'
@@ -38,7 +38,7 @@
                 }
             })
             .state('app.groupNew.secondStep', {
-                url        : '/groups/new/details',
+                url        : '/details',
                 templateUrl: 'views/groups/new/group.step2.html',
                 data       : {
                     pageTitle: 'group_new'
@@ -50,7 +50,7 @@
                 }
             })
             .state('app.groupNew.thirdStep', {
-                url        : '/groups/new/recruit',
+                url        : '/recruit',
                 templateUrl: 'views/groups/new/group.step3.html',
                 data       : {
                     pageTitle: 'group_new'

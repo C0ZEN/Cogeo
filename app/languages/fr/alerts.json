@@ -1,5 +1,7 @@
 {
     "alerts_info_logout": "Tu es maintenant déconnecté.<br>Merci et à la prochaine !",
+    "alerts_info_call_stop": "<strong>{{username}}</strong> a arrêté l'appel.",
+    "alerts_info_call_refused": "L'appel a été refusé.",
     "alerts_invitations_user_accept": "Tu es maintenant ami avec <strong>{{sentBy}}.</strong>",
     "alerts_invitations_group_accept": "Tu fais maintenant partie du groupe <strong>{{groupName}}.</strong>",
     "alerts_invitations_channel_accept": "Tu fais maintenant partie du channel <strong>{{channelName}}.</strong>",
@@ -42,5 +44,8 @@
     "alerts_success_friend_blocked": "Tu as bloqué <strong>{{friend}}</strong> de tes amis.",
     "alerts_success_friend_unblocked": "Tu as débloqué <strong>{{friend}}</strong> de tes amis.",
     "alerts_success_friend_remove": "Tu as supprimé <strong>{{friend}}</strong> de tes amis.",
-    "alerts_error_get_mediaStream": "Tu ne peux pas démarrer d'appel. Tu dois autoriser Cogeo à utiliser ton micro et ta webcam."
+    "alerts_error_get_mediaStream": "Tu ne peux pas démarrer d'appel. Tu dois autoriser Cogeo à utiliser ton micro et ta webcam.",
+    "alerts_error_chat_mediaConnection_error": "Une erreur inconnu est survenu pendant l'appel.<br>Désolé.",
+    "alerts_error_chat_mediaConnection_close": "L'appel s'est terminé.",
+    "alerts_error_chat_friendNotFound": "Tu ne peux pas parler avec <strong>{{username}}</strong> !<br> Tu n'es pas ami avec lui !"
 }

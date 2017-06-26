@@ -48,6 +48,13 @@
                         return navigationFactory.isAllowed();
                     }
                 }
+            })
+            .state('app.notFriend', {
+                url        : '/not-friend/:username',
+                templateUrl: 'views/chat/not-friend/not-friend.template.html',
+                data       : {
+                    pageTitle: 'chat_not_friend'
+                }
             });
     }
 

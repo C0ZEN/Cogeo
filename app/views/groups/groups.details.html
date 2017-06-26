@@ -34,29 +34,35 @@
                                 <cozen-tooltip ng-show="vm.details.group.userRoles.isMember"
                                                cozen-tooltip-placement="auto bottom"
                                                cozen-tooltip-label="'groups_member_since' | translate:{'date': (vm.details.group.userRoles.joined | date: 'EEEE dd MMMM yyyy')}">
-                                    <mark class="atom-mark member space-small-left">{{ 'groups_member' | translate }}</mark>
+                                    <mark class="atom-mark member space-small-left">{{ 'groups_member' | translate }}
+                                    </mark>
                                 </cozen-tooltip>
                                 <cozen-tooltip ng-show="vm.details.group.userRoles.isCreator"
                                                cozen-tooltip-placement="auto bottom"
                                                cozen-tooltip-label="'groups_creator_in' | translate:{'date': (vm.details.group.date.creation | date: 'EEEE dd MMMM yyyy')}">
-                                    <mark class="atom-mark creator space-small-left">{{ 'groups_creator' | translate }}</mark>
+                                    <mark class="atom-mark creator space-small-left">{{ 'groups_creator' | translate
+                                        }}
+                                    </mark>
                                 </cozen-tooltip>
                                 <cozen-tooltip ng-show="vm.details.group.userRoles.isAdmin"
                                                cozen-tooltip-placement="auto bottom"
                                                cozen-tooltip-label="'groups_member_since' | translate:{'date': (vm.details.group.userRoles.joined | date: 'EEEE dd MMMM yyyy')}">
-                                    <mark class="atom-mark admin space-small-left">{{ 'groups_admin' | translate }}</mark>
+                                    <mark class="atom-mark admin space-small-left">{{ 'groups_admin' | translate }}
+                                    </mark>
                                 </cozen-tooltip>
                                 <cozen-tooltip ng-show="vm.details.group.userRoles.isBanned"
                                                cozen-tooltip-placement="auto bottom"
                                                cozen-tooltip-type-html
                                                cozen-tooltip-label="'groups_banned_since' | translate:{'date': (vm.details.group.userRoles.banned.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.details.group.userRoles.banned.by, 'for': methods.getKickBanFor(vm.details.group.userRoles.banned.for)}">
-                                    <mark class="atom-mark banned space-small-left">{{ 'groups_banned' | translate }}</mark>
+                                    <mark class="atom-mark banned space-small-left">{{ 'groups_banned' | translate }}
+                                    </mark>
                                 </cozen-tooltip>
                                 <cozen-tooltip ng-show="vm.details.group.userRoles.isKicked"
                                                cozen-tooltip-placement="auto bottom"
                                                cozen-tooltip-type-html
                                                cozen-tooltip-label="'groups_kicked_since' | translate:{'date': (vm.details.group.userRoles.kicked.on | date: 'EEEE dd MMMM yyyy'), 'userName': vm.details.group.userRoles.kicked.by, 'for': methods.getKickBanFor(vm.details.group.userRoles.kicked.for), 'time': (vm.methods.getKickedTime(vm.details.group.userRoles.kicked.time).key | translate)}">
-                                    <mark class="atom-mark kicked space-small-left">{{ 'groups_kicked' | translate }}</mark>
+                                    <mark class="atom-mark kicked space-small-left">{{ 'groups_kicked' | translate }}
+                                    </mark>
                                 </cozen-tooltip>
                             </div>
                             <p class="help-text">{{ vm.details.group.description }}</p>

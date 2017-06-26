@@ -115,13 +115,15 @@
                 <!-- Friend since -->
                 <p ng-if="vm.friend != false"
                    class="no-margin help-text animated fadeInUp force-ng-hide">
-                    {{ 'profiles_user_friend_since' | translate:{date: (vm.friend.date | date: 'EEEE dd MMMM yyyy'), username: vm.friend.username} }}
+                    {{ 'profiles_user_friend_since' | translate:{date: (vm.friend.date | date: 'EEEE dd MMMM yyyy'),
+                    username: vm.friend.username} }}
                 </p>
 
                 <!-- Invited on -->
                 <p ng-if="!vm.friend && vm.friendInvited.status.response == 1"
                    class="no-margin help-text animated fadeInUp force-ng-hide">
-                    {{ 'profiles_user_invited_on' | translate:{date: (vm.friendInvited.sentOn | date: 'EEEE dd MMMM yyyy')} }}
+                    {{ 'profiles_user_invited_on' | translate:{date: (vm.friendInvited.sentOn | date: 'EEEE dd MMMM
+                    yyyy')} }}
                 </p>
             </div>
         </div>

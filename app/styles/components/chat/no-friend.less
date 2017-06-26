@@ -1,0 +1,21 @@
+div.no-friend-container {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+    min-height      : ~"calc(100vh - 60px)";
+    span {
+        &.primary-title {
+            font-size : @atom-font-h1;
+        }
+        &.secondary-title {
+            font-size : @atom-font-h2;
+        }
+    }
+    img {
+        margin : @atom-space-medium 0 @atom-space-large 0;
+    }
+    cozen-btn {
+        margin-top : @atom-space-extra-large;
+    }
+}

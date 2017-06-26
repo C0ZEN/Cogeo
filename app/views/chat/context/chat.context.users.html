@@ -45,12 +45,41 @@
 <!-- Action bar -->
 <div class="chat-action-bar">
 
-    <!-- Call -->
-    <div class="action phone animated zoomIn"
-         ng-click="methods.broadcastEvent('cogeoWebRtc:callFriend', {friend: vm.activeFriend.username})">
+    <!-- Video call -->
+    <div class="action phone animated zoomIn force-ng-hide"
+         ng-class="{disabled: vm.chat.friends.isCalling}"
+         ng-show="!vm.chat.friends.isVisible"
+         ng-if="!botFactory.isBot(vm.activeFriend.username)"
+         ng-click="methods.broadcastEvent('cogeoWebRtc:callFriend', {friend: vm.activeFriend.username});
+         vm.chat.friends.isCalling = true;">
         <cozen-tooltip cozen-tooltip-label="'chat_actionBar_phone_simple'"
                        cozen-tooltip-placement="auto top">
-            <i class="fa icons8-video-call"></i>
+            <i class="fa fa-fw icons8-video-call"></i>
+        </cozen-tooltip>
+    </div>
+
+    <!-- Call -->
+    <div class="action phone animated zoomIn force-ng-hide"
+         ng-class="{disabled: vm.chat.friends.isCalling}"
+         ng-show="!vm.chat.friends.isVisible"
+         ng-if="!botFactory.isBot(vm.activeFriend.username)"
+         ng-click="methods.broadcastEvent('cogeoWebRtc:callFriendAudio', {friend: vm.activeFriend.username});
+         vm.chat.friends.isCalling = true;">
+        <cozen-tooltip cozen-tooltip-label="'chat_actionBar_phone_simple_audio'"
+                       cozen-tooltip-placement="auto top">
+            <i class="fa fa-fw icons8-phone"></i>
+        </cozen-tooltip>
+    </div>
+
+    <!-- Cancel call -->
+    <div class="action phone animated zoomIn force-ng-hide"
+         ng-show="vm.chat.friends.isCalling"
+         ng-if="!botFactory.isBot(vm.activeFriend.username)"
+         ng-click="methods.broadcastEvent('cogeoWebRtc:stopCallFriend', {friend: vm.activeFriend.username});
+         vm.chat.friends.isCalling = false;">
+        <cozen-tooltip cozen-tooltip-label="'chat_actionBar_phone_stop'"
+                       cozen-tooltip-placement="auto top">
+            <i class="fa fa-fw icons8-no-video"></i>
         </cozen-tooltip>
     </div>
 
@@ -58,7 +87,7 @@
     <div class="action options animated zoomIn"
          ng-mouseenter="vm.actionBar.options.down = true"
          ng-mouseleave="vm.actionBar.options.down = false">
-        <i class="fa fa-cog"></i>
+        <i class="fa fa-fw fa-cog"></i>
 
         <!-- Options dropdown -->
         <div class="link-dropdown link-floating"

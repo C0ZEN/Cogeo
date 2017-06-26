@@ -32,7 +32,7 @@
             .scrollsBar(false)
             .debug(false)
             .dev(false)
-            .logsEnabled(false)
+            .logsEnabled(true)
             .dropdownAutoCloseOthers(true)
             .inputModelLengthType('focus')
             .textareaModelLengthType('focus')
@@ -45,7 +45,7 @@
             .popupFooter(false)
             .btnToggleStartRight(false);
         CozenLazyLoadProvider
-            .log(false)
+            .log(true)
             .positionTop('70px')
             .positionLeft('10px');
         CozenFloatingFeedProvider
@@ -89,13 +89,6 @@
         // Avoid an error in the console when a deferred is rejected
         $qProvider.errorOnUnhandledRejections(false);
 
-        // Social client and secret (Google/Facebook)
-        // socialProvider.setGoogleKey("AIzaSyANiSj4N--3txST9re2QhbPuiifbx2HNQU");
-        // socialProvider.setFbKey({
-        //     appId     : "576889762516850",
-        //     apiVersion: "v2.8"
-        // });
-
         // Custom configuration of the markdown parser
         markedProvider.setOptions({
             gfm        : true,
@@ -107,7 +100,7 @@
 
         // Cogeo Config
         CONFIG.internal = {
-            API          : 'https://qwirk.herokuapp.com/',
+            API          : 'http://www.cogeo.ovh:3000/',
             video        : {
                 theme  : "bower_components/videogular-themes-default/videogular.css",
                 plugins: {
@@ -117,7 +110,7 @@
                     }
                 }
             },
-            appVersion   : '1.0.2',
+            appVersion   : '1.0.0',
             googleGraph  : {
                 pieChart: {
                     pieHole: 0.7,

@@ -5,8 +5,8 @@
              cozen-popup-on-show="popup.methods.onInitChatSetStatus()">
     <div class="row">
         <div class="col-xs-12">
-            <h3 class="space-large-before no-margin-bottom">{{ 'popup_chat_setStatus_body_title' | translate }}</h3>
-            <p class="no-margin-top space-large-after help-text">{{ 'popup_chat_setStatus_body_subtitle' | translate }}</p>
+            <h3 class="space-large-before">{{ 'popup_chat_setStatus_body_title' | translate }}</h3>
+            <p class="space-large-after help-text">{{ 'popup_chat_setStatus_body_subtitle' | translate }}</p>
         </div>
         <div class="col-xs-12 space-large-after text-center">
             <cozen-form cozen-form-name="chatSetStatus"
@@ -14,7 +14,7 @@
                         cozen-form-model="form">
 
                 <!-- Status -->
-                <cozen-dropdown cozen-dropdown-model="popup.chatSetStatus.trash"
+                <cozen-dropdown cozen-dropdown-model="popup.chatSetStatus.newStatus"
                                 cozen-dropdown-validator-all
                                 cozen-dropdown-single-display-selected-label="true"
                                 cozen-dropdown-label="popup_chat_setStatus_body_status"
@@ -23,11 +23,29 @@
                     <cozen-dropdown-item-simple ng-repeat="status in popup.chatSetStatus.status track by $index"
                                                 cozen-dropdown-item-simple-value="status.id"
                                                 cozen-dropdown-item-simple-label="{{ status.name }}"
-                                                cozen-dropdown-item-simple-icon-left="{{ event.icon }} {{ event.color }}"
-                                                cozen-dropdown-item-simple-selected="status.active">
+                                                cozen-dropdown-item-simple-icon-left="fa icons8-filled-circle circle-{{ status.colorName }}"
+                                                cozen-dropdown-item-simple-selected="status.selected">
                     </cozen-dropdown-item-simple>
                 </cozen-dropdown>
             </cozen-form>
+        </div>
+
+        <!-- Submit btn -->
+        <div class="col-xs-12 space-large-after flex-vertical-center">
+            <cozen-btn cozen-btn-type-success
+                       cozen-btn-icon-right="fa fa-fw icons8-clouds-filled"
+                       cozen-btn-label="'popup_chat_setStatus_body_save_status'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-loader="popup.loading"
+                       cozen-btn-on-click="popup.methods.chat.saveStatus()"
+                       cozen-btn-class="space-base-right">
+            </cozen-btn>
+            <cozen-btn cozen-btn-type-cold
+                       cozen-btn-label="'popup_cancel'"
+                       cozen-btn-auto-sizing="true"
+                       cozen-btn-on-click="popup.methods.closePopup('chatSetStatus')"
+                       cozen-btn-class="space-base-left">
+            </cozen-btn>
         </div>
     </div>
 </cozen-popup>

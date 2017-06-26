@@ -23,12 +23,17 @@
         'cozenEnhancedLogs',
         '$timeout',
         'directMessagesFactory',
-        'cogeoWebRtc'
+        'cogeoWebRtc',
+        'usersFactory',
+        'statusFactory',
+        'cozenFloatingFeedFactory',
+        'marked',
+        '$sce'
     ];
 
     function ChatCtrl(CONFIG, groupsFactory, userFactory, $state, channelsFactory, goTo, $rootScope, $scope, $anchorScroll,
                       cozenOnClickService, $filter, botFactory, ngAudio, $location, cozenEnhancedLogs, $timeout, directMessagesFactory,
-                      cogeoWebRtc) {
+                      cogeoWebRtc, usersFactory, statusFactory, cozenFloatingFeedFactory, marked, $sce) {
         var vm = this;
 
         // Methods
@@ -65,7 +70,8 @@
             startEdit               : startEdit,
             editMessage             : editMessage,
             addSmiley               : addSmiley,
-            sendMessageToChannelPeer: sendMessageToChannelPeer
+            sendMessageToChannelPeer: sendMessageToChannelPeer,
+            isMessageVisible        : isMessageVisible
         };
 
         // Common data
@@ -205,10 +211,22 @@
                 }
             }
         };
+        vm.chat      = {
+            friends : {
+                isVisible       : false,
+                isCalling       : false,
+                isOwnMicroMuted : false,
+                isHoverOwnStream: false
+            },
+            channels: {}
+        };
 
         // Listener
         userFactory.subscribe($scope, vm.methods.onInit);
         cozenOnClickService.subscribe($scope, vm.methods.onActionClick);
+        statusFactory.subscribe($scope, function () {
+            vm.status = statusFactory.getCurrentUserStatus();
+        });
         directMessagesFactory.subscribe($scope, function () {
             var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, false);
             $rootScope.directMessageId = directMessage._id;
@@ -247,6 +265,54 @@
             vm.methods.stopAllMp3();
         });
 
+        // Listen to know if the call was refused
+        $rootScope.$on('cogeoWebRtc:refusedCall', function () {
+            vm.chat.friends.isCalling = false;
+        });
+
+        // Listen to know when the stream start
+        $rootScope.$on('cogeoWebRtc:streamStarted', function () {
+            vm.chat.friends.isVisible = true;
+            vm.chat.friends.isCalling = false;
+        });
+
+        // Listen to know when the profile bot popup btn is called to set new active friend bot
+        $rootScope.$on('popups:onChatBot', function ($event, $eventData) {
+            vm.methods.setActiveFriend($eventData.botName);
+        });
+
+        // Listen to know when a friend status is updated
+        $rootScope.$on('cogeoWebRtc:newStatus', function ($event, $eventData) {
+            updateStatusForFriends($eventData);
+
+            // Force the change of status to occur (UI)
+            Methods.safeApply($scope);
+        });
+
+        $rootScope.$on('safeApplyChat', function () {
+            Methods.safeApply($scope);
+        });
+
+        // Listener called when the user wish to start a call with a friend
+        $rootScope.$on('cogeoWebRtc:setActiveFriendStream', function ($event, $eventData) {
+            if (Methods.isNullOrEmpty($eventData)) {
+                vm.friendStream = angular.copy(vm.activeFriend);
+            }
+            else {
+                vm.allFriends.forEach(function (friend) {
+                    if (friend.username == $eventData.username) {
+                        vm.friendStream         = friend;
+                        vm.friendStream.isMuted = false;
+                    }
+                });
+            }
+        });
+
+        $rootScope.$on('cogeoWebRtc:closeCall', function ($event) {
+            vm.chat.friends.isVisible = false;
+            Methods.safeApply($scope);
+        });
+
         // Called each time a view is loaded
         function onInit() {
 
@@ -262,8 +328,8 @@
             vm.groups         = groupsFactory.getUserActiveGroups(vm.user.username);
             vm.groups         = groupsFactory.removeGroupsWhereNoActiveMemberChannel(vm.groups, vm.user.username);
             vm.hasGroup       = vm.groups.length > 0;
+            vm.status         = statusFactory.getCurrentUserStatus();
             vm.methods.showChannels();
-            vm.status = userFactory.getStatus();
 
             // Add bots as friend
             var bots      = botFactory.getBotFriends();
@@ -272,20 +338,10 @@
 
             // Add status to friends
             vm.friends.forEach(function (friend) {
-                friend.status = {
-                    id      : 'online',
-                    name    : 'other_status_online',
-                    selected: true,
-                    color   : '#2ecc71'
-                };
+                friend = usersFactory.setStatus(friend, 3);
             });
-            vm.blockedFriends.forEach(function (friend) {
-                friend.status = {
-                    id      : 'online',
-                    name    : 'other_status_online',
-                    selected: true,
-                    color   : '#2ecc71'
-                };
+            vm.blockedFriends.forEach(function (oldFriend) {
+                oldFriend = usersFactory.setStatus(oldFriend, 3);
             });
 
             if (vm.hasGroup) {
@@ -445,49 +501,65 @@
             vm.methods.stopAllEdit();
 
             // Find the active friend
+            var isRealFriend = false;
             vm.allFriends.forEach(function (friend) {
                 if (friend.username == username) {
+                    isRealFriend    = true;
                     vm.activeFriend = friend;
                 }
             });
 
-            vm.friendStatus = {
-                id      : 'online',
-                name    : 'other_status_online',
-                selected: true,
-                color   : '#2ecc71'
-            };
-
             // Get the messages
-            var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, true);
-            $rootScope.directMessageId = directMessage._id;
-            vm.messages                = directMessage.messages;
-            vm.methods.addSmiley(vm.messages);
-            vm.methods.calcMediaLength(vm.messages);
+            if (isRealFriend) {
+                var directMessage          = directMessagesFactory.getMessages(vm.activeFriend.username, vm.user.username, true);
+                $rootScope.directMessageId = directMessage._id;
+                vm.messages                = directMessage.messages;
+                vm.methods.addSmiley(vm.messages);
+                vm.methods.calcMediaLength(vm.messages);
+                vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
+                    username: vm.activeFriend.alias || vm.activeFriend.username
+                });
+                vm.friendStatus     = vm.activeFriend.status;
+            }
             vm.methods.initMp3();
-            vm.chatTheme        = 'social-theme';
-            vm.inputPlaceholder = $filter('translate')('chat_newMessage_placeholder_user', {
-                username: vm.activeFriend.alias || vm.activeFriend.username
-            });
-            vm.isUserAdmin      = false;
+            vm.chatTheme   = 'social-theme';
+            vm.isUserAdmin = false;
 
             // Change the theme
             $rootScope.$broadcast('setChatTheme', {
                 theme: vm.chatTheme
             });
 
-            // Change the view
-            goTo.view('app.chat.user', {
-                username: username
-            });
+            // If the user is not a friend
+            if (!isRealFriend) {
+                cozenFloatingFeedFactory.addAlert({
+                    type       : 'error',
+                    label      : 'alerts_error_chat_friendNotFound',
+                    labelValues: {
+                        username: username
+                    }
+                });
 
-            // Scroll to the last message
-            vm.methods.scrollToBottom({
-                data: vm.messages[vm.messages.length - 1]
-            });
+                // Change the view
+                goTo.view('app.notFriend', {
+                    username: username
+                });
+            }
+            else {
 
-            // Connect with all people
-            cogeoWebRtc.connectFriends(vm.friends);
+                // Change the view
+                goTo.view('app.chat.user', {
+                    username: username
+                });
+
+                // Scroll to the last message
+                vm.methods.scrollToBottom({
+                    data: vm.messages[vm.messages.length - 1]
+                });
+
+                // Connect with all people
+                cogeoWebRtc.connectFriends(vm.friends);
+            }
         }
 
         // Toggle the global expand value
@@ -744,6 +816,7 @@
         }
 
         function addSmiley(messages) {
+            var compiledText;
             messages.forEach(function (message) {
                 if (message.category == 'text') {
 
@@ -755,17 +828,11 @@
                     // Create the emoticons
                     message.content.compiledText = $filter('embed')(message.content.text, CONFIG.internal.embed);
 
-                    that.messages = that.group.messages;
-                    var embed     = {
-                        fontSmiley  : true,
-                        sanitizeHtml: false,
-                        emoji       : true,
-                        link        : false,
-                        linkTarget  : '_self'
-                    };
-                    that.messages.forEach(function (message) {
-                        message.message = $filter('embed')(message.message, embed);
-                    });
+                    // Create the markdown
+                    compiledText = $sce.valueOf(message.content.compiledText);
+                    compiledText = compiledText.replace(/&lt;/g, '<');
+                    compiledText = compiledText.replace(/&gt;/g, '>');
+                    message.content.compiledText = marked(compiledText);
                 }
             });
         }
@@ -793,6 +860,41 @@
                 }
             });
         }
+
+        // Update the status for the friend
+        function updateStatusForFriends($eventData) {
+            vm.friends.forEach(function (friend) {
+                if (friend.username == $eventData.username) {
+                    friend = usersFactory.setStatus(friend, $eventData.statusIndex);
+                }
+            });
+            vm.blockedFriends.forEach(function (oldFriend) {
+                if (friend.username == $eventData.username) {
+                    oldFriend = usersFactory.setStatus(oldFriend, $eventData.statusIndex);
+                }
+            });
+            vm.allFriends.forEach(function (friend) {
+                if (friend.username == $eventData.username) {
+                    friend = usersFactory.setStatus(friend, $eventData.statusIndex);
+                }
+                if (!Methods.isNullOrEmpty(vm.activeFriend)) {
+                    if (vm.activeFriend.username == friend.username) {
+                        vm.friendStatus = friend.status;
+                    }
+                }
+            });
+
+        }
+
+        function isMessageVisible(message) {
+            if (message.isBotCommand) {
+                return message.sender == vm.user.username;
+            }
+            else {
+                return true;
+            }
+        }
     }
+
 })(window.angular, window.document);
 

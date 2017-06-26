@@ -89,13 +89,6 @@
         // Avoid an error in the console when a deferred is rejected
         $qProvider.errorOnUnhandledRejections(false);
 
-        // Social client and secret (Google/Facebook)
-        // socialProvider.setGoogleKey("AIzaSyANiSj4N--3txST9re2QhbPuiifbx2HNQU");
-        // socialProvider.setFbKey({
-        //     appId     : "576889762516850",
-        //     apiVersion: "v2.8"
-        // });
-
         // Custom configuration of the markdown parser
         markedProvider.setOptions({
             gfm        : true,
@@ -117,7 +110,7 @@
                     }
                 }
             },
-            appVersion   : '1.0.2',
+            appVersion   : '1.0.0',
             googleGraph  : {
                 pieChart: {
                     pieHole: 0.7,
@@ -134,7 +127,7 @@
                 key  : '9o3h3bvbimivbo6r'
             },
             documentation: {
-                screenshotMark: true
+                screenshotMark: false
             }
         };
 

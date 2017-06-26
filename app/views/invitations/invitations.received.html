@@ -39,7 +39,8 @@
                                 {{ 'INVITATIONS.RECEIVED.INVITE_YOU' | translate }}
                             </p>
                             <p class="help-text">
-                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn | date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
+                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn |
+                                date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
                             </p>
                         </div>
 
@@ -72,7 +73,8 @@
                                 <span cozen-compile="'INVITATIONS.RECEIVED.INVITE_IN_GROUP' | translate:{groupName: invitationReceived.groupName}"></span>
                             </p>
                             <p class="help-text">
-                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn | date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
+                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn |
+                                date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
                             </p>
                         </div>
 
@@ -105,7 +107,8 @@
                                 <span cozen-compile="'INVITATIONS.RECEIVED.INVITE_IN_CHANNEL' | translate:{groupName: invitationReceived.groupName, channelName: invitationReceived.channelName}"></span>
                             </p>
                             <p class="help-text">
-                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn | date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
+                                {{ 'INVITATIONS.RECEIVED.INVITED_ON' | translate:{date: (invitationReceived.sentOn |
+                                date: 'EEEE dd MMMM yyyy'), hour: (invitationReceived.sentOn | date: 'HH:mm')} }}
                             </p>
                         </div>
 

@@ -31,7 +31,7 @@
                 data       : {
                     pageTitle: 'account_invitations'
                 },
-                resolve: {
+                resolve    : {
                     isConnected: function (navigationFactory) {
                         return navigationFactory.isAllowed();
                     }
@@ -43,7 +43,7 @@
                 data       : {
                     pageTitle: 'account_recruit_pageTitle'
                 },
-                resolve: {
+                resolve    : {
                     isConnected: function (navigationFactory) {
                         return navigationFactory.isAllowed();
                     }
@@ -55,7 +55,7 @@
                 data       : {
                     pageTitle: 'account_friends'
                 },
-                resolve: {
+                resolve    : {
                     isConnected: function (navigationFactory) {
                         return navigationFactory.isAllowed();
                     }

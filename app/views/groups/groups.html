@@ -4,7 +4,9 @@
              ng-class="{'atom-screenshot-mark': $CONFIG.internal.documentation.screenshotMark}">
 
             <!-- Title -->
-            <h1 ng-show="goTo.isCurrentView('app.groups.all')">{{ 'groups_groups_title' | translate:{quantity: vm.groups.length} }}</h1>
+            <h1 ng-show="goTo.isCurrentView('app.groups.all')">{{ 'groups_groups_title' | translate:{quantity:
+                vm.groups.length} }}
+            </h1>
             <h1 ng-show="!goTo.isCurrentView('app.groups.all')">
                 {{ 'groups_groups_title_name' | translate:{groupName: vm.params.groupName} }}
             </h1>

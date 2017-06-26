@@ -1,7 +1,8 @@
 <div class="full-center-content">
     <div class="row">
         <div class="col-xs-12 col-md-5">
-            <div class="animated fadeInLeft">
+            <div class="animated fadeInLeft atom-screenshot-mark-extra-height atom-screenshot-mark-extra-width"
+                 ng-class="{'atom-screenshot-mark': $CONFIG.internal.documentation.screenshotMark}">
 
                 <!-- Title -->
                 <h1 class="no-margin-top">{{ 'log_login_title' | translate }}</h1>
@@ -17,7 +18,7 @@
                 <p class="help-text">{{ 'log_login_subtitle_4' | translate }}</p>
 
                 <!-- Form -->
-                <div class="no-padding col-xs-12 col-sm-9 col-md-12 col-lg-9">
+                <div class="no-padding col-xs-12">
                     <cozen-form cozen-form-name="login"
                                 cozen-form-ctrl="vm"
                                 cozen-form-model="form"
@@ -26,15 +27,15 @@
                         <!-- Socials -->
                         <!--<h3 class="space-medium-after">{{ 'log_login_socials_title' | translate }}</h3>-->
                         <!--<cozen-btn cozen-btn-label="'log_login_facebook'"-->
-                                   <!--cozen-btn-icon-left="fa fa-facebook-f"-->
-                                   <!--fb-login-->
-                                   <!--cozen-btn-type-facebook-->
-                                   <!--cozen-btn-class="space-base-after">-->
+                        <!--cozen-btn-icon-left="fa fa-facebook-f"-->
+                        <!--fb-login-->
+                        <!--cozen-btn-type-facebook-->
+                        <!--cozen-btn-class="space-base-after">-->
                         <!--</cozen-btn>-->
                         <!--<cozen-btn cozen-btn-label="'log_login_google'"-->
-                                   <!--g-login-->
-                                   <!--cozen-btn-icon-left="fa fa-google-plus"-->
-                                   <!--cozen-btn-type-google>-->
+                        <!--g-login-->
+                        <!--cozen-btn-icon-left="fa fa-google-plus"-->
+                        <!--cozen-btn-type-google>-->
                         <!--</cozen-btn>-->
 
                         <!--<hr class="space-medium-before space-medium-after">-->

@@ -19,11 +19,12 @@
         '$timeout',
         '$state',
         'directMessagesFactory',
-        'goTo'
+        'goTo',
+        'statusFactory'
     ];
 
     function PopupCtrl(cozenPopupFactory, CONFIG, $scope, $rootScope, userFactory, botFactory, cozenEnhancedLogs, usersFactory,
-                       groupsFactory, channelsFactory, $timeout, $state, directMessagesFactory, goTo) {
+                       groupsFactory, channelsFactory, $timeout, $state, directMessagesFactory, goTo, statusFactory) {
         var popup = this;
 
         // Methods
@@ -35,6 +36,7 @@
             onPopupSettingsClose    : onPopupSettingsClose,
             onInitChatSetStatus     : onInitChatSetStatus,
             onFriendActionRenameShow: onFriendActionRenameShow,
+            onChatBot               : onChatBot,
             userAction              : {
                 granted : userActionGranted,
                 revoked : userActionRevoked,
@@ -69,6 +71,9 @@
             global                  : {
                 volume    : globalVolume,
                 initVolume: globalInitVolume
+            },
+            chat                    : {
+                saveStatus: chatSaveStatus
             }
         };
 
@@ -87,20 +92,20 @@
             video: angular.merge({}, CONFIG.internal.video, {
                 sources: [
                     {
-                        src : "images/video/nyan-cat/nyan-cat.mp4",
-                        type: "video/mp4"
+                        src : 'images/video/nyan-cat/nyan-cat.mp4',
+                        type: 'video/mp4'
                     },
                     {
-                        src : "images/video/nyan-cat/nyan-cat.webm",
-                        type: "video/webm"
+                        src : 'images/video/nyan-cat/nyan-cat.webm',
+                        type: 'video/webm'
                     },
                     {
-                        src : "images/video/nyan-cat/nyan-cat.ogg",
-                        type: "video/ogg"
+                        src : 'images/video/nyan-cat/nyan-cat.ogg',
+                        type: 'video/ogg'
                     }
                 ],
                 plugins: {
-                    poster: "images/video/nyan-cat/nyan-cat.png"
+                    poster: 'images/video/nyan-cat/nyan-cat.png'
                 }
             })
         };
@@ -110,28 +115,28 @@
             data: {
                 reasons: [
                     {
-                        id : "1",
-                        key: "other_kicked_reason_1"
+                        id : '1',
+                        key: 'other_kicked_reason_1'
                     },
                     {
-                        id : "2",
-                        key: "other_kicked_reason_2"
+                        id : '2',
+                        key: 'other_kicked_reason_2'
                     },
                     {
-                        id : "3",
-                        key: "other_kicked_reason_3"
+                        id : '3',
+                        key: 'other_kicked_reason_3'
                     },
                     {
-                        id : "4",
-                        key: "other_kicked_reason_4"
+                        id : '4',
+                        key: 'other_kicked_reason_4'
                     },
                     {
-                        id : "5",
-                        key: "other_kicked_reason_5"
+                        id : '5',
+                        key: 'other_kicked_reason_5'
                     },
                     {
-                        id : "x",
-                        key: "other_kicked_reason_x"
+                        id : 'x',
+                        key: 'other_kicked_reason_x'
                     }
                 ],
                 times  : Utils.getKickedTimeList()
@@ -351,12 +356,30 @@
 
         function onInitChatSetStatus() {
             popup.chatSetStatus = {
-                status: userFactory.getAllStatus()
-            }
+                status: statusFactory.getAllStatus()
+            };
+            var currentStatus   = statusFactory.getCurrentUserStatus();
+            popup.chatSetStatus.status.forEach(function (status) {
+                status.selected = status.index == currentStatus.index;
+            });
         }
 
         function onFriendActionRenameShow(id, name, data) {
             popup.friendNewAlias = angular.copy(data.alias);
+        }
+
+        function onChatBot(botName) {
+            popup.methods.closePopup('botProfile' + botName);
+
+            // Specific event when on chat view to force to change a lot of things
+            if ($state.current.name == 'app.chat.user' || $state.current.name == 'app.chat.channel') {
+                $rootScope.$broadcast('popups:onChatBot', {
+                    botName: botName
+                });
+            }
+            else {
+                goTo.view('app.chat.user', {'username': botName});
+            }
         }
 
         function friendActionBlock() {
@@ -551,6 +574,11 @@
             $timeout(function () {
                 $rootScope.$broadcast('rzSliderForceRender');
             }, 400);
+        }
+
+        function chatSaveStatus() {
+            statusFactory.setCurrentUserStatusById(popup.chatSetStatus.newStatus);
+            popup.methods.closePopup('chatSetStatus');
         }
     }
 

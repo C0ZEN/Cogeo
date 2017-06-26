@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="no-friend-container">
+
+                <!-- Title -->
+                <span class="help-text primary-title"
+                      cozen-compile="'chat_not_friend_title_1' | translate:$state.params">
+                </span>
+                <span class="help-text primary-title">{{ 'chat_not_friend_title_2' | translate }}</span>
+
+                <!-- Warning img -->
+                <img ng-src="images/chat/Error-128.png">
+
+                <!-- Help text -->
+                <span class="help-text secondary-title">{{ 'chat_not_friend_subtitle_1' | translate }}</span>
+                <span class="help-text secondary-title">{{ 'chat_not_friend_subtitle_2' | translate }}</span>
+
+                <!-- Chat btn -->
+                <cozen-btn cozen-btn-label="'chat_not_friend_btn_label'"
+                           cozen-btn-size-large
+                           cozen-btn-auto-sizing="false"
+                           cozen-btn-on-click="goTo.view('app.chat.user', {username: 'Friendybot'})"
+                           cozen-btn-type-purple>
+                </cozen-btn>
+            </div>
+        </div>
+    </div>
+</div>

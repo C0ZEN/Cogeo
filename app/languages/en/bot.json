@@ -5,6 +5,18 @@
         "CHANNELS": {
         }
     },
+    "ACTION": {
+        "NOT_FOUND": "The command {{action}} does not exist !<br>Enter `@Friendybot /help` so the the list of commands.",
+        "USERNAME_NOT_FOUND": "The user {{username}} does not exist.",
+        "CHANNELS": {
+            "BAN": {
+                "REASON_NOT_FOUND": "The reason for the ban does not exist.<br><strong>Choices:</strong> 1, 2, 3, 4, 5 ou X."
+            },
+            "KICK": {
+                "REASON_NOT_FOUND": "The reason for the ban does not exist.<br><strong>Choices:</strong> 1, 2, 3, 4, 5 ou X."
+            }
+        }
+    },
     "FRIENDYBOT": {
         "FRIENDS": {
             "FIRST_MESSAGE": {
@@ -15,6 +27,24 @@
             }
         },
         "CHANNELS": {
+        },
+        "MESSAGES": {
+            "HI": {
+                "1": "Hello sugar !",
+                "2": "Hi sweety !",
+                "3": "Hello.",
+                "4": "Hello !",
+                "5": "Hi :smile:",
+                "6": "Yo",
+                "7": "Hi !",
+                "8": "Hi",
+                "9": "You missed me !",
+                "10": "Hello",
+                "11": "Hi, how are you ?",
+                "12": "Hey !",
+                "13": "Welcome back my friend !",
+                "14": "Welcome back"
+            }
         }
     },
     "SPAMOBOT": {
