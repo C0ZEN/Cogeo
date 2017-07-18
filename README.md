@@ -4,7 +4,6 @@
 
 A very simple but complete chat app like **Slack** and **Discord**.
 
-A very simple but complete chat app like Slack and Discord.
 You can manage groups, channels and users.
 
 The design is 100% homemade.  
